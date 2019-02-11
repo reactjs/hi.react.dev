@@ -1,8 +1,8 @@
 ---
-title: Learn Once, Write Anywhere
+title: एक बार जानें, कहीं भी लिखें
 order: 2
 ---
 
-We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code.
+हम आपके अन्य तकनिकी स्टैक के बारे में धारणा नहीं बनाते हैं। तो आप मौजूदा कोड को फिर से लिखे बिना React में नई सुविधाएँ बना सकते हैं।
 
-React can also render on the server using Node and power mobile apps using [React Native](https://facebook.github.io/react-native/).
+React सर्वर पर भी रेंडर कर सकता है और आप [React Native]((https://facebook.github.io/react-native/) का उपयोग करके पावर मोबाइल ऐप भी बना सकते हैं।
