@@ -44,11 +44,11 @@
           href: /tutorial/tutorial.html#inspecting-the-starter-code
           forceInternal: true
         - id: passing-data-through-props
-          title: Passing Data Through Props
+          title: Props के माध्यम से डेटा पास करना
           href: /tutorial/tutorial.html#passing-data-through-props
           forceInternal: true
         - id: making-an-interactive-component
-          title: Making an Interactive Component
+          title: इंटरएक्टिव कौम्पोनॅन्ट बनाना
           href: /tutorial/tutorial.html#making-an-interactive-component
           forceInternal: true
         - id: developer-tools

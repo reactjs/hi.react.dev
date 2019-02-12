@@ -189,13 +189,13 @@ JSX जावास्क्रिप्ट की पूरी शक्ति 
 * Board
 * Game
 
-Square कौम्पोनॅन्ट एक एकल `<button>` और Board 9 वर्गों रेंडर करता है। Game कौम्पोनॅन्ट प्लेसहोल्डर मानों के साथ एक बोर्ड रेंडर करता है जिसे हम बाद में संशोधित करेंगे। वर्तमान में कोई इंटरैक्टिव कौम्पोनॅन्ट नहीं हैं।
+Square कौम्पोनॅन्ट एक एकल `<button>` और Board को 9 वर्गों रेंडर करता है। Game कौम्पोनॅन्ट प्लेसहोल्डर मानों के साथ एक बोर्ड रेंडर करता है जिसे हम बाद में संशोधित करेंगे। वर्तमान में कोई इंटरैक्टिव कौम्पोनॅन्ट नहीं हैं।
 
-### Passing Data Through Props {#passing-data-through-props}
+### Props के माध्यम से डेटा पास करना {#passing-data-through-props}
 
-Just to get our feet wet, let's try passing some data from our Board component to our Square component.
+बस अपने पैरों को गीला करने के लिए, आइए हमारे Board कौम्पोनॅन्ट से हमारे Square कौम्पोनॅन्ट के कुछ डेटा को पास करने का प्रयास करें।
 
-In Board's `renderSquare` method, change the code to pass a prop called `value` to the Square:
+Board के `renderSquare` मेथड में, Square में `value` नामक एक props पास करने के लिए कोड को बदलें:
 
 ```js{3}
 class Board extends React.Component {
@@ -204,7 +204,7 @@ class Board extends React.Component {
   }
 ```
 
-Change Square's `render` method to show that value by replacing `{/* TODO */}` with `{this.props.value}`:
+`{/ * TODO * /}` को `{this.props.value}` से बदलकर उस वेलयु को दिखाने के लिए Square का `रेंडर` तरीका बदलें:
 
 ```js{5}
 class Square extends React.Component {
@@ -218,22 +218,23 @@ class Square extends React.Component {
 }
 ```
 
-Before:
+पहले:
 
 ![React Devtools](../images/tutorial/tictac-empty.png)
 
-After: You should see a number in each square in the rendered output.
+बादमे: आपको प्रदान किए गए आउटपुट में प्रत्येक वर्ग में एक संख्या दिखनी चाहिए।
 
 ![React Devtools](../images/tutorial/tictac-numbers.png)
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/aWWQOG?editors=0010)**
+**[इस बिंदु पर पूर्ण कोड देखें](https://codepen.io/gaearon/pen/aWWQOG?editors=0010)**
 
-Congratulations! You've just "passed a prop" from a parent Board component to a child Square component. Passing props is how information flows in React apps, from parents to children.
 
-### Making an Interactive Component {#making-an-interactive-component}
+बधाई हो! आपने अभि "एक props" पैरेंट Board कौम्पोनॅन्ट से एक चाइल्ड Square कौम्पोनॅन्ट को पास किया है। Props पासिंग यह है कि कैसे रिएक्ट एप्स में पैरेंट से लेकर चाइल्ड तक की जानकारी प्रवाहित होती है।
 
-Let's fill the Square component with an "X" when we click it. 
-First, change the button tag that is returned from the Square component's `render()` function to this:
+### इंटरएक्टिव कौम्पोनॅन्ट बनाना {#making-an-interactive-component}
+
+जब हम इसे क्लिक करते हैं तो Square कौम्पोनॅन्ट को "X" से भरें।
+सबसे पहले, Square कौम्पोनॅन्ट के `render()` फंक्शन से लौटाए गए button टैग को इसमें बदलें:
 
 ```javascript{4}
 class Square extends React.Component {
@@ -247,11 +248,11 @@ class Square extends React.Component {
 }
 ```
 
-If we click on a Square now, we should get an alert in our browser.
+यदि हम अभी Square पर क्लिक करते हैं, तो हमें अपने ब्राउज़र में अलर्ट प्राप्त करना चाहिए।
 
->Note
+>सलाह
 >
->To save typing and avoid the [confusing behavior of `this`](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), we will use the [arrow function syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) for event handlers here and further below:
+>टाइपिंग को बचाने और [`this` के भ्रामक व्यवहार](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/) से बचने के लिए, हम यहां और आगे के हैंडलर के लिए [एरो फ़ंक्शन सिंटैक्स](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) का उपयोग करेंगे:
 >
 >```javascript{4}
 >class Square extends React.Component {
@@ -265,13 +266,13 @@ If we click on a Square now, we should get an alert in our browser.
 >}
 >```
 >
->Notice how with `onClick={() => alert('click')}`, we're passing *a function* as the `onClick` prop. It only fires after a click. Forgetting `() =>` and writing `onClick={alert('click')}` is a common mistake, and would fire the alert every time the component re-renders.
+>ध्यान दें कि `onClick = {() => alert('click')}` के साथ, हम `onClick` props के रूप में एक फ़ंक्शन पास कर रहे हैं। यह केवल एक क्लिक के बाद फायर करता है। भूल जाना `() =>` और ऐसे `onClick = {alert('click')}` लिखना एक सामान्य गलती है, और हर बार कौम्पोनॅन्ट फिर से रेंडर करने पर अलर्ट दिखायेगा।
 
-As a next step, we want the Square component to "remember" that it got clicked, and fill it with an "X" mark. To "remember" things, components use **state**.
+अगले चरण के रूप में, हम Square कौम्पोनॅन्ट को "याद रखना" चाहते हैं कि यह क्लिक हो गया, और इसे "x" चिह्न के साथ भरें। चीजों को "याद रखने" के लिए, कौम्पोनॅन्ट **राज्य** का उपयोग करते हैं।
 
-React components can have state by setting `this.state` in their constructors. `this.state` should be considered as private to a React component that it's defined in. Let's store the current value of the Square in `this.state`, and change it when the Square is clicked.
+React कौम्पोनॅन्ट को अपने constructors में `this.state` सेट करके state रख सकता है। `this.state` को एक React कौम्पोनॅन्ट के रूप में निजी माना जाना चाहिए जो इसे परिभाषित करता है। चलो `this.state` में Square के वर्तमान मूल्य को स्टोर करते हैं, और Square को क्लिक करने पर इसे बदलते हैं।
 
-First, we'll add a constructor to the class to initialize the state:
+सबसे पहले, हम state को इनिशियलाइज़ करने के लिए class में एक कंस्ट्रक्टर जोड़ेंगे:
 
 ```javascript{2-7}
 class Square extends React.Component {
@@ -292,9 +293,9 @@ class Square extends React.Component {
 }
 ```
 
->Note
+>सलाह
 >
->In [JavaScript classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), you need to always call `super` when defining the constructor of a subclass. All React component classes that have a `constructor` should start it with a `super(props)` call.
+>[जावास्क्रिप्ट क्लासेस](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) में, उप-वर्ग के निर्माणकर्ता को परिभाषित करते समय आपको हमेशा `super` कॉल करने की आवश्यकता होती है। सभी React कौम्पोनॅन्ट क्लासेस जिनके पास `कंस्ट्रक्टर` है, उन्हें `super(props)` कॉल से शुरू करना चाहिए।
 
 Now we'll change the Square's `render` method to display the current state's value when clicked:
 
