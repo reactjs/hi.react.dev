@@ -51,7 +51,7 @@ class Home extends Component {
     return (
       <Layout location={location}>
         <TitleAndMetaTags
-          title="React &ndash; User interfaces के निर्माण के लिए एक जावास्क्रिप्ट लाइब्रेरी"
+          title="React &ndash; युज़र इंटरफ़ेसिज़ के निर्माण के लिए एक जावास्क्रिप्ट लाइब्रेरी"
           ogUrl={createOgUrl('index.html')}
         />
         <div css={{width: '100%'}}>
@@ -134,7 +134,7 @@ class Home extends Component {
                         fontSize: 30,
                       },
                     }}>
-                    User interfaces के निर्माण के लिए एक जावास्क्रिप्ट लाइब्रेरी
+                    युज़र इंटरफ़ेसिज़ के निर्माण के लिए एक जावास्क्रिप्ट लाइब्रेरी
                   </p>
                   <Flex
                     valign="center"
