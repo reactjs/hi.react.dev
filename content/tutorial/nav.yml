@@ -52,60 +52,60 @@
           href: /tutorial/tutorial.html#making-an-interactive-component
           forceInternal: true
         - id: developer-tools
-          title: Developer Tools
+          title: डेवलपर टूल
           href: /tutorial/tutorial.html#developer-tools
           forceInternal: true
     - id: completing-the-game
-      title: Completing the Game
+      title: खेल को पूरा करना
       href: /tutorial/tutorial.html#completing-the-game
       forceInternal: true
       subitems:
         - id: lifting-state-up
-          title: Lifting State Up
+          title: लिफ्टिंग स्टेट अप
           href: /tutorial/tutorial.html#lifting-state-up
           forceInternal: true
         - id: why-immutability-is-important
-          title: Why Immutability Is Important
+          title: क्यों अपरिवर्तनीयता महत्वपूर्ण है
           href: /tutorial/tutorial.html#why-immutability-is-important
           forceInternal: true
         - id: function-components
-          title: Function Components
+          title: फंक्शन कौम्पोनॅन्ट
           href: /tutorial/tutorial.html#function-components
           forceInternal: true
         - id: taking-turns
-          title: Taking Turns
+          title: बारी लेना
           href: /tutorial/tutorial.html#taking-turns
           forceInternal: true
         - id: declaring-a-winner
-          title: Declaring a Winner
+          title: विजेता घोषित करना
           href: /tutorial/tutorial.html#declaring-a-winner
           forceInternal: true
     - id: adding-time-travel
-      title: Adding Time Travel
+      title: समय यात्रा जोड़ना
       href: /tutorial/tutorial.html#adding-time-travel
       forceInternal: true
       subitems:
         - id: storing-a-history-of-moves
-          title: Storing a History of Moves
+          title: मूव्स की हिस्ट्री स्टोर करना
           href: /tutorial/tutorial.html#storing-a-history-of-moves
           forceInternal: true
         - id: lifting-state-up-again
-          title: Lifting State Up, Again
+          title: लिफ्टिंग स्टेट अप, अगेन
           href: /tutorial/tutorial.html#lifting-state-up-again
           forceInternal: true
         - id: showing-the-past-moves
-          title: Showing the Past Moves
+          title: पिछले चाल दिखाना
           href: /tutorial/tutorial.html#showing-the-past-moves
           forceInternal: true
         - id: picking-a-key
-          title: Picking a Key
+          title: एक कुंजी उठा रहा है
           href: /tutorial/tutorial.html#picking-a-key
           forceInternal: true
         - id: implementing-time-travel
-          title: Implementing Time Travel
+          title: टाइम ट्रेवल लागू करना
           href: /tutorial/tutorial.html#implementing-time-travel
           forceInternal: true
         - id: wrapping-up
-          title: Wrapping Up
+          title: समेट रहा हु
           href: /tutorial/tutorial.html#wrapping-up
           forceInternal: true
