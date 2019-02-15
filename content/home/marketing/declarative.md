@@ -1,8 +1,8 @@
 ---
-title: Declarative
+title: वर्णनात्मक
 order: 0
 ---
 
-React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
+React में इंटरैक्टिव यूआई बनाना काफी आसान है। अपने ऐप में प्रत्येक व्यू के लिए सरल विचार डिजाइन करें, और React कुशलता से आपके डेटा में बदलाव होने पर सिर्फ सही कौम्पोनॅन्ट को अपडेट और रेंडर करेगा।
 
-Declarative views make your code more predictable and easier to debug.
+वर्णनात्मक व्यू आपके कोड को अधिक अनुमानित और डिबग करने में आसान बनाते हैं।
