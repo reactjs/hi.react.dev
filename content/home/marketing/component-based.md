@@ -1,8 +1,8 @@
 ---
-title: Component-Based
+title: कौम्पोनॅन्ट पर आधारित
 order: 1
 ---
 
-Build encapsulated components that manage their own state, then compose them to make complex UIs.
+इनकैप्सुलेटेड कौम्पोनॅन्ट का निर्माण करें जो उनके अपने व्यू को संभालते हैं, फिर उनसे कठिन यूआई निर्मित करें।
 
-Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.
+चूँकि कौम्पोनॅन्ट तर्क टेम्पलेट के बजाय जावास्क्रिप्ट में लिखे गए हैं, आप आसानी से अपने ऐप के माध्यम से समृद्ध डेटा पास कर सकते हैं और DOM से बाहर रख सकते हैं।

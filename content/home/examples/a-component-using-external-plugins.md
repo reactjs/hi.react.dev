@@ -1,7 +1,7 @@
 ---
-title: A Component Using External Plugins
+title: बाहरी प्लगइन्स का उपयोग कर एक कौम्पोनॅन्ट
 order: 3
 domid: markdown-example
 ---
 
-React allows you to interface with other libraries and frameworks. This example uses **remarkable**, an external Markdown library, to convert the `<textarea>`'s value in real time.
+React आपको अन्य लाइब्रेरीज और फ़्रेमवर्क्स के साथ इंटरफेस करने की अनुमति देती है। यह उदाहरण वास्तविक समय में `<textarea>` के मूल्य को परिवर्तित करने के लिए, **remarkable**, एक बाहरी मार्कडाउन लाइब्रेरी का उपयोग करता है।
