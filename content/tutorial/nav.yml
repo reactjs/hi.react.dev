@@ -65,7 +65,7 @@
           href: /tutorial/tutorial.html#lifting-state-up
           forceInternal: true
         - id: why-immutability-is-important
-          title: क्यों अपरिवर्तनीयता महत्वपूर्ण है
+          title: अचल स्थिति होना क्यों महत्वपूर्ण है
           href: /tutorial/tutorial.html#why-immutability-is-important
           forceInternal: true
         - id: function-components
