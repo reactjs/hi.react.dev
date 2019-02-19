@@ -14,16 +14,16 @@
           href: /tutorial/tutorial.html#prerequisites
           forceInternal: true
     - id: setup-for-the-tutorial
-      title: ट्यूटोरियल के लिए व्यवस्था
+      title: ट्यूटोरियल के लिए सेटअप
       href: /tutorial/tutorial.html#setup-for-the-tutorial
       forceInternal: true
       subitems:
         - id: setup-option-1-write-code-in-the-browser
-          title: "व्यवस्था विकल्प 1: ब्राउज़र में कोड लिखें"
+          title: "सेटअप विकल्प 1: ब्राउज़र में कोड लिखें"
           href: /tutorial/tutorial.html#setup-option-1-write-code-in-the-browser
           forceInternal: true
         - id: setup-option-2-local-development-environment
-          title: "व्यवस्था विकल्प 1: स्थानीय विकास पर्यावरण"
+          title: "सेटअप विकल्प 1: स्थानीय विकास पर्यावरण"
           href: /tutorial/tutorial.html#setup-option-2-local-development-environment
           forceInternal: true
         - id: help-im-stuck
@@ -31,7 +31,7 @@
           href: /tutorial/tutorial.html#help-im-stuck
           forceInternal: true
     - id: overview
-      title: सिंहावलोकन
+      title: ओवरव्यू
       href: /tutorial/tutorial.html#overview
       forceInternal: true
       subitems:
@@ -81,7 +81,7 @@
           href: /tutorial/tutorial.html#declaring-a-winner
           forceInternal: true
     - id: adding-time-travel
-      title: समय यात्रा जोड़ना
+      title: टाइम ट्रेवल जोड़ना
       href: /tutorial/tutorial.html#adding-time-travel
       forceInternal: true
       subitems:
@@ -90,7 +90,7 @@
           href: /tutorial/tutorial.html#storing-a-history-of-moves
           forceInternal: true
         - id: lifting-state-up-again
-          title: लिफ्टिंग स्टेट अप, अगेन
+          title: लिफ्टिंग स्टेट अप, फिर से 
           href: /tutorial/tutorial.html#lifting-state-up-again
           forceInternal: true
         - id: showing-the-past-moves
@@ -98,7 +98,7 @@
           href: /tutorial/tutorial.html#showing-the-past-moves
           forceInternal: true
         - id: picking-a-key
-          title: एक कुंजी उठा रहा है
+          title: एक कुंजी उठाना
           href: /tutorial/tutorial.html#picking-a-key
           forceInternal: true
         - id: implementing-time-travel
@@ -106,6 +106,6 @@
           href: /tutorial/tutorial.html#implementing-time-travel
           forceInternal: true
         - id: wrapping-up
-          title: समेट रहा हु
+          title: समेटना
           href: /tutorial/tutorial.html#wrapping-up
           forceInternal: true
