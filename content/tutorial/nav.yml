@@ -23,7 +23,7 @@
           href: /tutorial/tutorial.html#setup-option-1-write-code-in-the-browser
           forceInternal: true
         - id: setup-option-2-local-development-environment
-          title: "सेटअप विकल्प 1: स्थानीय विकास पर्यावरण"
+          title: "सेटअप विकल्प 2: स्थानीय विकास पर्यावरण"
           href: /tutorial/tutorial.html#setup-option-2-local-development-environment
           forceInternal: true
         - id: help-im-stuck
@@ -69,7 +69,7 @@
           href: /tutorial/tutorial.html#why-immutability-is-important
           forceInternal: true
         - id: function-components
-          title: फंक्शन कौम्पोनॅन्ट
+          title: फंक्शन कौम्पोनॅन्टस
           href: /tutorial/tutorial.html#function-components
           forceInternal: true
         - id: taking-turns
@@ -94,7 +94,7 @@
           href: /tutorial/tutorial.html#lifting-state-up-again
           forceInternal: true
         - id: showing-the-past-moves
-          title: पिछले चाल दिखाना
+          title: पिछली चाल दिखाना
           href: /tutorial/tutorial.html#showing-the-past-moves
           forceInternal: true
         - id: picking-a-key
