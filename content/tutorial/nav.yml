@@ -52,7 +52,7 @@
           href: /tutorial/tutorial.html#making-an-interactive-component
           forceInternal: true
         - id: developer-tools
-          title: डेवलपर टूल
+          title: डेवलपर टूल्स
           href: /tutorial/tutorial.html#developer-tools
           forceInternal: true
     - id: completing-the-game
@@ -81,7 +81,7 @@
           href: /tutorial/tutorial.html#declaring-a-winner
           forceInternal: true
     - id: adding-time-travel
-      title: टाइम ट्रेवल जोड़ना
+      title: टाइम ट्रेवल गेम में डालना 
       href: /tutorial/tutorial.html#adding-time-travel
       forceInternal: true
       subitems:
