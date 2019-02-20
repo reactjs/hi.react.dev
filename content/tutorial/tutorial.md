@@ -1011,7 +1011,7 @@ class Board extends React.Component {
 
 **[इस बिंदु पर पूर्ण कोड देखें](https://codepen.io/gaearon/pen/EmmOqJ?editors=0010)**
 
-### पिछले चाल दिखाना {#showing-the-past-moves}
+### पिछली चाल दिखाना {#showing-the-past-moves}
 
 चूंकि हम टिक-टैक-टो गेम की history को रिकॉर्ड कर रहे हैं, इसलिए हम इसे पिछले चालों की सूची के रूप में खिलाड़ी को प्रदर्शित कर सकते हैं।
 
