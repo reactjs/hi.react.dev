@@ -29,19 +29,19 @@ redirect_from:
 वकुछ छूटा है?
 रियेक्ट का परीक्षड करें {#try-react}
 
-## Try React {#try-react}
+## React सीखें {#try-react}
 
-React has been designed from the start for gradual adoption, and **you can use as little or as much React as you need.** Whether you want to get a taste of React, add some interactivity to a simple HTML page, or start a complex React-powered app, the links in this section will help you get started.
+React को धीरे-धीरे ग्रहण करने के लिए बनाया गया है, और  **आप जितनी कम और ज्यादा चाहे उतनी React इस्तेमाल कर सकते है |** यदि आप React का नमूना देखना चाहें, अपने सरल HTML पेज के साथ कुछ इंटरएक्टिविट जोड़ना चाहें, या एक जटिल React-संचालित ऐप बनाना चाहे, इस अनुभाग में दी गई लिंक्स आपकी सहायता करेंगी | 
 
-### Online Playgrounds {#online-playgrounds}
+### ऑनलाइन प्रयोग का स्थान {#online-playgrounds}
 
-If you're interested in playing around with React, you can use an online code playground. Try a Hello World template on [CodePen](codepen://hello-world) or [CodeSandbox](https://codesandbox.io/s/new).
+अगर आप React को इस्तेमाल करने में रूचि रखतें है, आप एक ऑनलाइन कोड प्लेग्राउंड इस्तेमाल कर सकते है |  CodePen पर एक Hello World टेम्पलेट इस्तेमाल करें [CodePen](codepen://hello-world) or [CodeSandbox](https://codesandbox.io/s/new).
 
-If you prefer to use your own text editor, you can also [download this HTML file](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html), edit it, and open it from the local filesystem in your browser. It does a slow runtime code transformation, so we'd only recommend using this for simple demos.
+अगर आप अपना खुद का Text Editor इस्तमाल करना चा रहे है, अप्प  [इस HTML फाइल](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) को डाउनलोड कर सकतें हैं, एडिट करें, और अपने local filesystem से इसे अपने browser में खोल लें,  यह runtime code transformation को धीमे करता है, हम इसे खाली सरल डेमो के लिए ही इस्तेमाल करने का अनुग्रह करते हैं |
 
-### Add React to a Website {#add-react-to-a-website}
+### React को वेबसाइट के साथ जोड़ें {#add-react-to-a-website}
 
-You can [add React to an HTML page in one minute](/docs/add-react-to-a-website.html). You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.
+आप [React को अपने पेज में एक मिनट में ऐड कर सकते हैं |](/docs/add-react-to-a-website.html). इसके बाद या तो आप इसे धीमे से भाड़ा सकते है या इसे कुछ ही dynamic widgets तक सीमित रख सकते हैं |
 
 ### Create a New React App {#create-a-new-react-app}
 
