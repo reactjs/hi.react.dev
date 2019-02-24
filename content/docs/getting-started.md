@@ -18,19 +18,19 @@ redirect_from:
   - "docs/environments.html"
 ---
 
-This page is an overview of the React documentation and related resources.
+यह पन्ना रियेक्ट के प्रलेखन और उससे सम्बंधित साधनो  का अवलोकन है | 
 
-**React** is a JavaScript library for building user interfaces. Learn what React is all about on [our homepage](/) or [in the tutorial](/tutorial/tutorial.html).
+**रियेक्ट** एक जावास्क्रिप्ट लाइब्रेरी है जो उपयोगकर्ता के इंटरफेसेस बनाने में काम आती है | सीखे रियेक्ट किस चीज़ के बारे में है हमारे [होम पेज](/) पर या इस [टुटोरिअल] पर (/tutorial/tutorial.html).
 
 ---
 
-- [Try React](#try-react)
-- [Learn React](#learn-react)
-- [Staying Informed](#staying-informed)
-- [Versioned Documentation](#versioned-documentation)
-- [Something Missing?](#something-missing)
+- [रियेक्ट का परीक्षड करें](#try-react)
+- [रियेक्ट सीखे](#learn-react)
+- [सूचित रहे ](#staying-informed)
+- [वर्ज़न प्रलेखन](#versioned-documentation)
+- [वकुछ छूटा है?](#something-missing)
 
-## Try React {#try-react}
+## रियेक्ट का परीक्षड करें {#try-react}
 
 React has been designed from the start for gradual adoption, and **you can use as little or as much React as you need.** Whether you want to get a taste of React, add some interactivity to a simple HTML page, or start a complex React-powered app, the links in this section will help you get started.
 
