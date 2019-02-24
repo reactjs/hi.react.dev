@@ -18,17 +18,16 @@ redirect_from:
   - "docs/environments.html"
 ---
 
-This page is an overview of the React documentation and related resources.
+यह पन्ना react के प्रलेखन और उससे सम्बंधित साधनो का Overview है |
 
-**React** is a JavaScript library for building user interfaces. Learn what React is all about on [our homepage](/) or [in the tutorial](/tutorial/tutorial.html).
+**React** एक javascript  लाइब्रेरी है जो उपयोगकर्ता के इंटरफेसेस बनाने में काम आती है | हमारे होमपेज पर या इस टुटोरिअल पर सीखें की react किस चीज़ के बारे में है [हमारा होमपेज ](/) या [इस टुटोरिअल में](/tutorial/tutorial.html).
 
----
-
-- [Try React](#try-react)
-- [Learn React](#learn-react)
-- [Staying Informed](#staying-informed)
-- [Versioned Documentation](#versioned-documentation)
-- [Something Missing?](#something-missing)
+रियेक्ट का परीक्षड करें
+रियेक्ट सीखे
+सूचित रहे
+वर्ज़न प्रलेखन
+वकुछ छूटा है?
+रियेक्ट का परीक्षड करें {#try-react}
 
 ## Try React {#try-react}
 
