@@ -43,15 +43,15 @@ React को धीरे-धीरे ग्रहण करने के ल�
 
 आप [React को अपने पेज में एक मिनट में डाल सकते हैं](/docs/add-react-to-a-website.html) | इसके बाद या तो आप इसे धीमे से बड़ाह सकते है या इसे कुछ ही डायनामिक widgets तक सीमित रख सकते हैं |
 
-### Create a New React App {#create-a-new-react-app}
+### नया React ऐप बनाए {#create-a-new-react-app}
 
-When starting a React project, [a simple HTML page with script tags](/docs/add-react-to-a-website.html) might still be the best option. It only takes a minute to set up!
+जब आप नया React प्रोजेक्ट शुरू करते है, [एक सरल HTML पन्ना स्क्रिप्ट टैग्स के साथ](/docs/add-react-to-a-website.html) एक उत्तम विकल्प हो सकता है |  इसे तैयार करने में सिर्फ दो मिनट लगते है!
 
-As your application grows, you might want to consider a more integrated setup. There are [several JavaScript toolchains](/docs/create-a-new-react-app.html) we recommend for larger applications. Each of them can work with little to no configuration and lets you take full advantage of the rich React ecosystem.
+जैसे आपकी एप्लीकेशन बड़ी होती जाती है, आप शायद एक ज़्यादा इंटीग्रेटेड सेटअप इस्तेमाल करना चाहेंगे |  ऐसी [बहुत सारी जावास्क्रिप्ट तुलचैन हैं](/docs/create-a-new-react-app.html) जिन्हे हम बड़ी एप्लिकेशनों के साथ इस्तेमाल करने के लिए अनुरोध करते हैं | ये सारे थोड़ी या बिना कॉन्फ़िगरेशन के साथ आपको React के इकोसिस्टम का पूरा इस्तेमाल करने देते है | 
 
-## Learn React {#learn-react}
+## React सीखें {#learn-react}
 
-People come to React from different backgrounds and with different learning styles. Whether you prefer a more theoretical or a practical approach, we hope you'll find this section helpful.
+लोग React सिखने अलग-अलग परम्पराओ से आते हैं, उनके सिखने के ढंग भी अलग-अलग होते है | चाहे आप थेओरिटिकल ढंग से सीखना चाहे या एक ज़्यादा प्रायोगिक ढंग से , हम आशा करते हैं कि अनुभाग आपके लिए मददगार साबित होगा |
 
 * If you prefer to **learn by doing**, start with our [practical tutorial](/tutorial/tutorial.html).
 * If you prefer to **learn concepts step by step**, start with our [guide to main concepts](/docs/hello-world.html).
