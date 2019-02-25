@@ -1,6 +1,6 @@
 ---
 id: getting-started
-title: Getting Started
+title: 
 permalink: docs/getting-started.html
 next: add-react-to-a-website.html
 redirect_from:
@@ -59,9 +59,9 @@ React को धीरे-धीरे ग्रहण करने के ल�
 
 किसी भी अनजान  टेक्नोलॉजी की तरह React का भी एक सिखने का वक्र है | अभ्यास और धीरज के साथ आपको *जल्द ही* React समझ में आजाएगी |
 
-### First Examples {#first-examples}
+### पहले उदहारण {#first-examples}
 
-The [React homepage](/) contains a few small React examples with a live editor. Even if you don't know anything about React yet, try changing their code and see how it affects the result.
+[React के होमपेज](/) में लाइव एडिटर के साथ React के कुछ छोटे उद्धरण हैं | अगर आप React के बारे में कुछ नहीं जानते तो कोड में कुछ बदलाव करके देखें कि वो कैसे परिणाम को बदलता है |
 
 ### React for Beginners {#react-for-beginners}
 
