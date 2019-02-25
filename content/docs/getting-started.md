@@ -67,19 +67,19 @@ React को धीरे-धीरे ग्रहण करने के ल�
 
 अगर आप को लगता है की React के दस्तावेज आपकी गति पर नहीं चल रहे तो [तान्या रससीएल के इस ओवरव्यू को देखें](https://www.taniarascia.com/getting-started-with-react/). ये React के सबसे ज्यादा ज़रूरी कॉन्सेप्ट्स से आपका विस्तार और शुरुवातकर्ता-अनुकूल परिचय करता है | एक बार आप इसे पूरा करलें आप दस्तावेजों को दुबारा देख सकते हैं!
 
-### React for Designers {#react-for-designers}
+### देसिगनेरों के लिए React {#react-for-designers}
 
-If you're coming from a design background, [these resources](https://reactfordesigners.com/) are a great place to get started.
+आगर आप डिज़ाइनर बैकग्राउंड से आते हैं, [ये साधन](https://reactfordesigners.com/) आपकी शुरुवात करने में मदद करेंगे |
 
-### JavaScript Resources {#javascript-resources}
+### जावास्क्रिप्ट कि रिसोर्सेज़ {#javascript-resources}
 
-The React documentation assumes some familiarity with programming in the JavaScript language. You don't have to be an expert, but it's harder to learn both React and JavaScript at the same time.
+React का दस्तावेज़ मानता है की आप जावास्क्रिप्ट के साथ पहले से ही सूचित हैं | आपको जावास्क्रिप्ट में माहिम होने कि ज़रूरत नहीं है, लेकिन जावास्क्रिप्ट और React को एक साथ सीखना मुश्किल हैं |
 
-We recommend going through [this JavaScript overview](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) to check your knowledge level. It will take you between 30 minutes and an hour but you will feel more confident learning React.
+हम अनुरोध करते है की आप [इस जावास्क्रिप्ट के ओवरव्यू को देखे](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) ताकि आप अपने जानकारी के स्तर को आक सकें | इसमें आपको आधे से एक घंटा लगेगा लेकिन आप React को सिखने के प्रति और अच्छ महसूस करेंगे |
 
->Tip
+>सुझाव 
 >
->Whenever you get confused by something in JavaScript, [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [javascript.info](https://javascript.info/) are great websites to check. There are also [community support forums](/community/support.html) where you can ask for help.
+>जब भी आप किसी जावास्क्रिप्ट की चीज़ की वजह से भ्रमित हो जाएं तो [एम्. डी. एन.](https://developer.mozilla.org/en-US/docs/Web/JavaScript) और  [javascript.info](https://javascript.info/) अपने आप सही करने के लिए बहुत अछि वेबसीटे हैं | [कम्युनिटी सहायता मंच](/community/support.html) पे आप मदद माँग सकते हैं |
 
 ### Practical Tutorial {#practical-tutorial}
 
