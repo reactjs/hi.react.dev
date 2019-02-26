@@ -117,10 +117,10 @@ React का दस्तावेज़ मानता है की आप ज�
 
 हर React रिलीज़ अपने ब्लॉग पोस्ट के लायक नहीं है इसी लिए अगर आपको एक डिटेल्ड चेंज लॉग हर रिलीज़ के लिए चाहिए [तो वो `CHANGELOG.md` फाइल में है जो की React की रिपॉजिटरी में है](https://github.com/facebook/react/blob/master/CHANGELOG.md) या फिर आप [Releases](https://github.com/facebook/react) पेज पर भी जा सकते हैं |
 
-## Versioned Documentation {#versioned-documentation}
+## वर्ज़न्ड दस्तावेज़ {#versioned-documentation}
 
-This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation [on a separate page](/versions). Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.
+ये दस्तावेज़ हमेशा React के लेटेस्ट स्टेबल वर्ज़न पे आधारित होते हैं | आप React 16 के बाद के सारे दस्तावेज़ एक [अलग पेज पर](/versions) पा सकते हैं | ध्यान दें की सारे पिछले वर्ज़न अपने रिलीज़ के समय जैसे के तैसे हैं और उनमे लगातार बदलाव नहीं लाया जाता है |
 
-## Something Missing? {#something-missing}
+## कुछ छूटा है? {#something-missing}
 
-If something is missing in the documentation or if you found some part confusing, please [file an issue for the documentation repository](https://github.com/reactjs/reactjs.org/issues/new) with your suggestions for improvement, or tweet at the [@reactjs account](https://twitter.com/reactjs). We love hearing from you!
+अगर आप को लग रहा है की इन दस्तावेज़ों में कुछ छूटा है या आपको कुछ समझ नहीं आ रहा है तो कृपया अपने सुझाव के साथ [एक इशू दर्ज करें](https://github.com/reactjs/reactjs.org/issues/new) ताकि हम सुधार कि ओर बढ़ सकें, या फिर आप [@reactjs के अकाउंट](https://twitter.com/reactjs) पर ट्वीट भी कर सकते हैं | हम आपसे सुन्ना बेहद पसंद करेंगे | 
