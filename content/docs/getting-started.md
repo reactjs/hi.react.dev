@@ -105,17 +105,17 @@ React का दस्तावेज़ मानता है की आप ज�
 
 यह दस्तावेज़ का भाग काम का है अगर आप किसी विशेष React ए.पी.आई. के बारे में और जानना चाह रहें हों | उदहारण के लिए, [`React.Component` ए.पी.आई. रिफरेन्स](/docs/react-component.html) आपको `setState()` कैसे काम करता है, और दूसरे lifecycle methods किस काम के हैं इनपर आपको विवरण दे सखता है | 
 
-### Glossary and FAQ {#glossary-and-faq}
+### शब्दकोष और ऍफ़.ए.क्यू. {#glossary-and-faq}
 
-The [glossary](/docs/glossary.html) contains an overview of the most common terms you'll see in the React documentation. There is also a FAQ section dedicated to short questions and answers about common topics, including [making AJAX requests](/docs/faq-ajax.html), [component state](/docs/faq-state.html), and [file structure](/docs/faq-structure.html).
+इस [शब्दकोष](/docs/glossary.html) में React के दस्तावेज़ों में सबसे ज़्यादा बार आने वाले शब्दों का एक ओवरव्यू है | यहाँ पर एक ऍफ़.ए.क्यू. भाग भी है जहा पर [AJAX रिक्वैस्ट बनाए](/docs/faq-ajax.html), [कॉम्पोनेन्ट state](/docs/faq-state.html), और [फाइल स्ट्रक्चर](/docs/faq-structure.html)  जैसे अन्य साधारण विषयों के बारे में छोटे प्रष्न और उत्तर हैं |
 
-## Staying Informed {#staying-informed}
+## जागृत रहें {staying-informed}
 
-The [React blog](/blog/) is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted there first.
+[React ब्लॉग](/blog/) React टीम के द्वारा अपडेट्स के लिए एक आधिकारिक स्रोत है, इसमें रिलीज़ नोट्स और डेप्रिसिएशन की सूचनाए सबसे पहले आती हैं | 
 
-You can also follow the [@reactjs account](https://twitter.com/reactjs) on Twitter, but you won't miss anything essential if you only read the blog.
+आप ट्विटर पर [@reactjs का अकाउंट](https://twitter.com/reactjs) फॉलो कर सकते हैं, लेकिन अगर आप हमारा ब्लॉग पढ़ें तो आप कोई ज़रूरी चीज़ नहीं छोड़ेंगे | 
 
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release [in the `CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/master/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react) page.
+हर React रिलीज़ अपने ब्लॉग पोस्ट के लायक नहीं है इसी लिए अगर आपको एक डिटेल्ड चेंज लॉग हर रिलीज़ के लिए चाहिए [तो वो `CHANGELOG.md` फाइल में है जो की React की रिपॉजिटरी में है](https://github.com/facebook/react/blob/master/CHANGELOG.md) या फिर आप [Releases](https://github.com/facebook/react) पेज पर भी जा सकते हैं |
 
 ## Versioned Documentation {#versioned-documentation}
 
