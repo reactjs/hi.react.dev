@@ -48,7 +48,7 @@ redirect_from:
 
 हम मान लेंगे कि आप HTML और जावास्क्रिप्ट से थोड़े परिचित हैं, लेकिन अगर आप एक अलग प्रोग्रामिंग भाषा से आ रहे हैं तब भी आपको साथ चलने में सक्षम होना चाहिए। हम यह भी मान लेंगे कि आप फ़ंक्शंस, ऑब्जेक्ट्स, अरेस और कुछ हद तक, क्लास जैसी प्रोग्रामिंग कॉन्सेप्ट्स से परिचित हैं।
 
-यदि आपको जावास्क्रिप्ट की समीक्षा करने की आवश्यकता है, तो हम [इस मार्गदर्शिका](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) को पढ़ने की सलाह देते हैं। ध्यान दें कि हम ईएस 6 से कुछ सुविधाओं का उपयोग कर रहे हैं - जो की जावास्क्रिप्ट का एक हालिया संस्करण। इस ट्यूटोरियल में, हम [एरो फ़ंक्शंस](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [क्लासेस](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) और [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) स्टेटमेंट्स का उपयोग कर रहे हैं। ईएस 6 कोड क्या संकलित करता है यह जांचने के लिए आप [बैबल REPL](babel://es5-syntax-example) का उपयोग कर सकते हैं।
+यदि आपको जावास्क्रिप्ट की समीक्षा करने की आवश्यकता है, तो हम [इस मार्गदर्शिका](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) को पढ़ने की सलाह देते हैं। ध्यान दें कि हम ईएस 6 से कुछ सुविधाओं का उपयोग कर रहे हैं - जो की जावास्क्रिप्ट का एक हालिया संस्करण है। इस ट्यूटोरियल में, हम [एरो फ़ंक्शंस](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [क्लासेस](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) और [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) स्टेटमेंट्स का उपयोग कर रहे हैं। ईएस 6 कोड क्या संकलित करता है यह जांचने के लिए आप [Babel REPL](babel://es5-syntax-example) का उपयोग कर सकते हैं।
 
 ## ट्यूटोरियल के लिए सेटअप {#setup-for-the-tutorial}
 
@@ -65,18 +65,18 @@ redirect_from:
 
 ### सेटअप विकल्प 2: स्थानीय विकास पर्यावरण {#setup-option-2-local-development-environment}
 
-यह पूरी तरह से वैकल्पिक है और इस ट्यूटोरियल की आवश्यकता नहीं है!
+यह पूरी तरह से ऐच्छिक है और इस टुटोरिअल के लिए आवशयक नहीं है!
 
 <br>
 
 <details>
 
-<summary><b>वैकल्पिक: अपने पसंदीदा पाठ संपादक का उपयोग करके स्थानीय स्तर पर अनुसरण करने के निर्देश</b></summary>
+<summary><b>ऐच्छिक: अपने पसंदीदा टेक्स्ट एडिटर का उपयोग करके अपने लोकल पर्यावरण पर निर्देशों का पालन करें</b></summary>
 
-इस सेटअप को और अधिक काम करने की आवश्यकता है लेकिन आप अपनी पसंद के संपादक का उपयोग करके ट्यूटोरियल को पूरा कर सकते हैं। यहाँ चरणों का पालन करें:
+सेटअप में और अधिक काम करने की आवश्यकता है लेकिन आप अपनी पसंद के एडिटर का उपयोग करके ट्यूटोरियल को पूरा कर सकते हैं। इन चरणों का पालन करें:
 
 1. सुनिश्चित करें कि आपके पास हाल ही में स्थापित [Node.js](https://nodejs.org/en/) का संस्करण है।
-2. एक नई प्रोजेक्ट बनाने के लिए [क्रिएट React ऐप के इंस्टॉलेशन निर्देशों](/docs/create-a-new-react-app.html#create-react-app) का पालन करें।
+2. एक नई प्रोजेक्ट बनाने के लिए [Create React App के इंस्टॉलेशन निर्देशों](/docs/create-a-new-react-app.html#create-react-app) का पालन करें।
 
 ```bash
 npx create-react-app my-app
@@ -86,7 +86,7 @@ npx create-react-app my-app
 
 >ध्यान दें
 >
->**संपूर्ण `src` फ़ोल्डर को न हटाएं, केवल मूल स्रोत फ़ाइलों को इसके अंदर रखें।** हम अगले चरण में इस प्रोजेक्ट के लिए डिफ़ॉल्ट स्रोत फ़ाइलों को उदाहरणों के साथ बदल देंगे।
+>**संपूर्ण `src` फ़ोल्डर को न हटाएं, केवल इसके अंदर की मूल स्रोत फ़ाइलों को हटाएं।** हम अगले चरण में इस प्रोजेक्ट के लिए डिफ़ॉल्ट स्रोत फ़ाइलों को उदाहरणों के साथ बदल देंगे।
 
 ```bash
 cd my-app
