@@ -1,6 +1,6 @@
 ---
 id: forms
-title: Forms
+title: फॉर्म्स 
 permalink: docs/forms.html
 prev: lists-and-keys.html
 next: lifting-state-up.html
@@ -9,7 +9,7 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
-HTML form elements work a little bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
+रियेक्ट मै HTML फॉर्म के तत्व DOM के तत्वो से थोड़ा भिन्न तरीके से काम करते है, क्योंकि फार्म तत्व स्वाभाविक रूप से कुछ आंतरिक स्थिति रखते हैं . जैसे की, सादे HTML में यह फॉर्म एक ही नाम स्वीकार करेगा:
 
 ```html
 <form>
