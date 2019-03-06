@@ -9,23 +9,24 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
-रियेक्ट मै HTML फॉर्म के तत्व DOM के तत्वो से थोड़ा भिन्न तरीके से काम करते है, क्योंकि फार्म तत्व स्वाभाविक रूप से कुछ आंतरिक स्थिति रखते हैं . जैसे की, सादे HTML में यह फॉर्म एक ही नाम स्वीकार करेगा:
+रियेक्ट मै HTML फॉर्म के तत्व DOM के तत्वो से थोड़ा भिन्न तरीके से काम करते है, क्योंकि फार्म के तत्व स्वाभाविक रूप से कुछ आंतरिक स्थिति रखते हैं, जैसे की, सादे HTML में यह फॉर्म एक ही नाम स्वीकार करेगा:
 
 ```html
 <form>
   <label>
-    Name:
-    <input type="text" name="name" />
+    Name
+    <input  type ="text" name ="name" />
   </label>
-  <input type="submit" value="Submit" />
+  <input  type ="submit" value  ="submit" />
 </form>
 ```
 
-This form has the default HTML form behavior of browsing to a new page when the user submits the form. If you want this behavior in React, it just works. But in most cases, it's convenient to have a JavaScript function that handles the submission of the form and has access to the data that the user entered into the form. The standard way to achieve this is with a technique called "controlled components".
 
-## Controlled Components {#controlled-components}
+जब उपयोगकर्ता फॉर्म को सबमिट करता है, तो इस फ़ॉर्म में नए पेज पर ब्राउज़िंग का डिफ़ॉल्ट HTML फॉर्म व्यवहार होता है। यदि आप इस व्यवहार को प्रतिक्रिया में चाहते हैं, तो यह काम करता है। लेकिन ज्यादातर मामलों में, जावास्क्रिप्ट फ़ंक्शन का उपयोग करना सुविधाजनक होता है जो फ़ॉर्म को प्रस्तुत करने में सक्षम होता है और उस डेटा तक पहुंच होती है जो उपयोगकर्ता ने फॉर्म में दर्ज किया था। इसे प्राप्त करने का मानक तरीका "नियंत्रित घटकों" नामक एक तकनीक के साथ है।
 
-In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with [`setState()`](/docs/react-component.html#setstate).
+## नियंत्रित  अवयव {#controlled-components}
+
+HTML में, फॉर्म के तत्व जैसे कि `<input>`, `<textarea>`, और `<select>` आमतौर पर अपनी स्वयं की स्थिति बनाए रखते है और उपयोगकर्ता इनपुट के आधार पर इसे अपडेट करते है. रियेक्ट के अंदर, स्टेट को ज्यादातर अवयव की स्टेट प्रोपोपेर्टी के अंदर ही रखा जाता है, और उसे सिर्फ [`setState()`](/docs/react-component.html#setstate) के दवारा ही अपडेट किया जा सकता है| 
 
 We can combine the two by making the React state be the "single source of truth". Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a "controlled component".
 
