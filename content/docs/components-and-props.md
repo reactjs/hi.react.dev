@@ -1,6 +1,6 @@
 ---
 id: components-and-props
-title: Components and Props
+title: कौम्पोनॅन्ट तथा Props
 permalink: docs/components-and-props.html
 redirect_from:
   - "docs/reusable-components.html"
@@ -16,35 +16,38 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
-कौम्पोनॅन्टस let you split the UI into independent, reusable pieces, and think about each piece in isolation. This page provides an introduction to the idea of कौम्पोनॅन्टस. You can find a [detailed कौम्पोनॅन्ट API reference here](/docs/react-component.html).
+कौम्पोनॅन्टस हमें UI को स्वतंत्र, पुन: प्रयोज्य टुकड़ो में विभाजित करने में मदद करता है ,तथा
+हर हिस्से को अलग मानता है. यह पन्ना कौम्पोनॅन्टस का परिचय देता है. आप खोज सकते है [ विस्तृत कौम्पोनॅन्ट API reference यहाँ पर](/docs/react-component.html).
 
-Conceptually, कौम्पोनॅन्टस are like जावास्क्रिप्ट functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
+सैद्धांतिक रूप से, कौम्पोनॅन्टस जावास्क्रिप्ट फंक्शन्स जैसा है. 
+वे अर्बिट्ररी इनपुट्स स्वीकार करते है (जिससे "props" बुलाया जाता है ) और वापस आती है React एलिमेंट्स जो वर्णन करती है की स्क्रीन पर क्या आना चाहिए.
 
-## Function and Class कौम्पोनॅन्टस {#function-and-class-components}
+## फंक्शन्स तथा कौम्पोनॅन्टस {#function-and-class-components}
 
-The simplest way to define a कौम्पोनॅन्ट is to write a जावास्क्रिप्ट function:
+सबसे सरल तरीका एक कौम्पोनॅन्ट को परिभाषित करने की यह है की एक  जावास्क्रिप्ट फंक्शन्स लिखी जाए:
 
 ```js
 function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>नमस्ते, {props.name}</h1>;
 }
 ```
 
-This function is a valid React कौम्पोनॅन्ट because it accepts a single "props" (which stands for properties) object argument with data and returns a React element. We call such कौम्पोनॅन्टस "function कौम्पोनॅन्टस" because they are literally जावास्क्रिप्ट functions.
+यह फंक्शन्स एक वैध React कौम्पोनॅन्ट है क्योकि यह स्वीकार करता है एक अकेला "props" (which stands for properties) object argument with data और वापस आती है React एलिमेंट्स. हम उन कौम्पोनॅन्टस "फंक्शन्स कहते है  कौम्पोनॅन्टस "फंक्शन्स कौम्पोनॅन्टस" क्योकि वो वाकई में एक जावास्क्रिप्ट फंक्शन्स है.
 
-You can also use an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) to define a कौम्पोनॅन्ट:
+
+आप भी उपयोग कर सकते हैं [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) का ताकि परिभाषित कर सके कौम्पोनॅन्ट को:
 
 ```js
 class Welcome extends React.Component {
   render() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return <h1>नमस्ते, {this.props.name}</h1>;
   }
 }
 ```
 
-The above two कौम्पोनॅन्टस are equivalent from React's point of view.
+ऊपर के दोनों कौम्पोनॅन्टस बराबर है React's दृष्टिकोण से.
 
-Classes have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html). Until then, we will use function कौम्पोनॅन्टस for their conciseness.
+Classes have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html). Until then, we will use फंक्शन्स कौम्पोनॅन्टस for their conciseness.
 
 ## Rendering a कौम्पोनॅन्ट {#rendering-a-component}
 
@@ -62,11 +65,11 @@ const element = <Welcome name="Sara" />;
 
 When React sees an element representing a user-defined कौम्पोनॅन्ट, it passes JSX attributes to this कौम्पोनॅन्ट as a single object. We call this object "props".
 
-For example, this code रेंडरस "Hello, Sara" on the page:
+For example, this code रेंडरस "नमस्ते, Sara" on the page:
 
 ```js{1,5}
 function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>नमस्ते, {props.name}</h1>;
 }
 
 const element = <Welcome name="Sara" />;
@@ -82,8 +85,8 @@ Let's recap what happens in this example:
 
 1. We call `ReactDOM.render()` with the `<Welcome name="Sara" />` element.
 2. React calls the `Welcome` कौम्पोनॅन्ट with `{name: 'Sara'}` as the props.
-3. Our `Welcome` रेंडरस returns a `<h1>Hello, Sara</h1>` element as the result.
-4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
+3. Our `Welcome` रेंडरस returns a `<h1>नमस्ते, Sara</h1>` element as the result.
+4. React DOM efficiently updates the DOM to match `<h1>नमस्ते, Sara</h1>`.
 
 >**Note:** Always start रेंडरस names with a capital letter.
 >
@@ -99,7 +102,7 @@ For example, we can create an `App` रेंडरस that रेंडरस `
 
 ```js{8-10}
 function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>नमस्ते, {props.name}</h1>;
 }
 
 function App() {
@@ -237,7 +240,7 @@ Extracting कौम्पोनॅन्टस might seem like grunt work at fi
 
 ## Props are Read-Only {#props-are-read-only}
 
-Whether you declare a कौम्पोनॅन्ट [as a function or a class](#function-and-class-components), it must never modify its own props. Consider this `sum` function:
+Whether you declare a कौम्पोनॅन्ट [as a फंक्शन्स or a class](#function-and-class-components), it must never modify its own props. Consider this `sum` फंक्शन्स:
 
 ```js
 function sum(a, b) {
@@ -245,9 +248,9 @@ function sum(a, b) {
 }
 ```
 
-Such functions are called ["pure"](https://en.wikipedia.org/wiki/Pure_function) because they do not attempt to change their inputs, and always return the same result for the same inputs.
+Such फंक्शन्स are called ["pure"](https://en.wikipedia.org/wiki/Pure_function) because they do not attempt to change their inputs, and always return the same result for the same inputs.
 
-In contrast, this function is impure because it changes its own input:
+In contrast, this फंक्शन्स is impure because it changes its own input:
 
 ```js
 function withdraw(account, amount) {
@@ -257,6 +260,6 @@ function withdraw(account, amount) {
 
 React is pretty flexible but it has a single strict rule:
 
-**All React कौम्पोनॅन्टस must act like pure functions with respect to their props.**
+**All React कौम्पोनॅन्टस must act like pure फंक्शन्स with respect to their props.**
 
 Of course, application UIs are dynamic and change over time. In the [next section](/docs/state-and-lifecycle.html), we will introduce a new concept of "state". State allows React कौम्पोनॅन्टस to change their output over time in response to user actions, network responses, and anything else, without violating this rule.
