@@ -47,25 +47,25 @@ class Welcome extends React.Component {
 
 ऊपर के दोनों कौम्पोनॅन्टस बराबर है React's दृष्टिकोण से.
 
-Classes have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html). Until then, we will use फंक्शन्स कौम्पोनॅन्टस for their conciseness.
+Classes की कुछ अतिरिक्त विशेषताएं भी हैं जिसकी हम चर्चा करेंगे [अगले खंड](/docs/state-and-lifecycle.html) में. तब तक, हम इस्तेमाल करेंगे फंक्शन्स कौम्पोनॅन्टस के संक्षिप्ति होने का.
 
-## Rendering a कौम्पोनॅन्ट {#rendering-a-component}
+## कौम्पोनॅन्ट रेंडरिंग {#rendering-a-component}
 
-Previously, we only encountered React elements that represent DOM tags:
+इससे पहले, हमने केवल वही React एलिमेंट्स का सामना किया जो DOM टैग्स का दर्शाता था:
 
 ```js
 const element = <div />;
 ```
 
-However, elements can also represent user-defined कौम्पोनॅन्टस:
+हालाँकि, एलिमेंट्स उपयोगकर्ता परिभाषित कौम्पोनॅन्टस को भी दर्शा सकते है:
 
 ```js
 const element = <Welcome name="Sara" />;
 ```
 
-When React sees an element representing a user-defined कौम्पोनॅन्ट, it passes JSX attributes to this कौम्पोनॅन्ट as a single object. We call this object "props".
+जब कभी भी React देखता है एलिमेंट को यूजर-डिफाइंड  कौम्पोनॅन्ट का प्रतिनिधित्व करते हुए, it passes JSX attributes to this कौम्पोनॅन्ट as a single object. We call this object "props".
 
-For example, this code रेंडरस "नमस्ते, Sara" on the page:
+उदाहरण के लिए, यह कोड पेज पर रेंडर करता है "नमस्ते, Sara" :
 
 ```js{1,5}
 function Welcome(props) {
@@ -81,24 +81,24 @@ ReactDOM.render(
 
 [](codepen://components-and-props/rendering-a-component)
 
-Let's recap what happens in this example:
+चलो देकते है इस उदाहरण में क्या होता है:
 
-1. We call `ReactDOM.render()` with the `<Welcome name="Sara" />` element.
-2. React calls the `Welcome` कौम्पोनॅन्ट with `{name: 'Sara'}` as the props.
-3. Our `Welcome` रेंडरस returns a `<h1>नमस्ते, Sara</h1>` element as the result.
-4. React DOM efficiently updates the DOM to match `<h1>नमस्ते, Sara</h1>`.
+1. हम बुलाते है `ReactDOM.render()` को `<Welcome name="Sara" />` एलिमेंट्स से.
+2. React बुलाते है `Welcome` कौम्पोनॅन्ट को `name: 'Sara'}` के साथ props के रूप में.
+3. यह `Welcome` रेंडरस और वापस आती है `<h1>नमस्ते, Sara</h1>` एलिमेंट परिणाम के तौर पर .
+4. React DOM कुशलता पूर्वक DOM को अपडेट करता है `<h1>नमस्ते, Sara</h1>` से.
 
->**Note:** Always start रेंडरस names with a capital letter.
+>**Note:** हमेशा रेंडरस में नेम्स की शुरुवात कैपिटल लेटर से  होना चाहिए.
 >
->React treats कौम्पोनॅन्टस starting with lowercase letters as DOM tags. For example, `<div />` represents an HTML div tag, but `<Welcome />` represents a रेंडरस and requires `Welcome` to be in scope.
+>React उन कौम्पोनॅन्टस को जो लोअरकेस से स्टार्ट होते है उससे DOM टैग्स मानता है. उदाहरण के लिए, `<div />` HTML div टैग्स को दर्शाता है, पर `<Welcome />` दर्शाता है रेंडरस को और ज़रुरत होती है `Welcome` को दायरे में होने की.
 >
->To learn more about the reasoning behind this convention, please read [JSX In Depth](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
+>इस सम्मेलन के पीछे तर्क के बारे में अधिक जानने के लिए, कृपया पढ़ें [JSX गहराई में](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
 
-## Composing कौम्पोनॅन्टस {#composing-components}
+## कौम्पोनॅन्टस लिखना {#composing-components}
 
-कौम्पोनॅन्टस can refer to other कौम्पोनॅन्टस in their output. This lets us use the same रेंडरस abstraction for any level of detail. A button, a form, a dialog, a screen: in React apps, all those are commonly expressed as कौम्पोनॅन्टस.
+कौम्पोनॅन्टस अन्य कौम्पोनॅन्टस का उल्लेख कर सकते हैं अपने आउटपुट में. इससे हम उसी रेंडरस का उपयोग कर सकते हैं, विस्तार के किसी भी स्तर के लिए. एक बटन, फॉर्म, डायलॉग, स्क्रीन: React अप्प्स में, वे सब को आमतौर पर कौम्पोनॅन्टस के रूप में व्यक्त किया जाता है.
 
-For example, we can create an `App` रेंडरस that रेंडरस `Welcome` many times:
+उदाहरण के लिए, हम एक `App` बना सकते हैं जो रेंडरस करता है `Welcome` को कई बार:
 
 ```js{8-10}
 function Welcome(props) {
@@ -123,13 +123,13 @@ ReactDOM.render(
 
 [](codepen://components-and-props/composing-components)
 
-Typically, new React apps have a single `App` रेंडरस at the very top. However, if you integrate React into an existing app, you might start bottom-up with a small रेंडरस like `Button` and gradually work your way to the top of the view hierarchy.
+आम तौर पर, नया React अप्प्स के पास एक अकेला `App`  रेंडरस होता है सबसे ऊपर में. हालाँकि, अगर आप एकीकृत करते हैं React एक मौजूदा ऐप में, आप नीचे शुरू कर सकते छोटी चीज़ो के रेंडर्स से हैं जैसे `Button` और धीरे-धीरे दृश्य पदानुक्रम के ऊपर तक.
 
-## Extracting कौम्पोनॅन्टस {#extracting-components}
+## कौम्पोनॅन्टस निकालना {#extracting-components}
 
-Don't be afraid to split कौम्पोनॅन्टस into smaller कौम्पोनॅन्टस.
+कौम्पोनॅन्टस को छोटे छोटे कौम्पोनॅन्टस में विभाजित करने से डरना नहीं चाहिए.
 
-For example, consider this `Comment` रेंडरस:
+उदाहरण के लिए, इस पर विचार करो की `Comment` रेंडरस:
 
 ```js
 function Comment(props) {
@@ -157,11 +157,11 @@ function Comment(props) {
 
 [](codepen://components-and-props/extracting-components)
 
-It accepts `author` (an object), `text` (a string), and `date` (a date) as props, and describes a comment on a social media website.
+यह स्वीकार करता है `author` (एक ऑब्जेक्ट), `text` (एक स्ट्रिंग), और `date` (एक डेट) जैसे props, और सोशल मीडिया वेबसाइट पर एक टिप्पणी का वर्णन करता है.
 
-This रेंडरस can be tricky to change because of all the nesting, and it is also hard to reuse individual parts of it. Let's extract a few कौम्पोनॅन्टस from it.
+यह रेंडरस को बदलने के लिए मुश्किल हो सकता है क्योंकि एक के अंदर दूसरी संरचना के वजह से,तथा इसकी अकेली पार्ट्स का पुन: उपयोग करना भी कठिन है. चलो कुछ कौम्पोनॅन्टस निकालते हैं.
 
-First, we will extract `Avatar`:
+सबसे पहले, हम निकालेंगे `Avatar`:
 
 ```js{3-6}
 function Avatar(props) {
@@ -173,8 +173,10 @@ function Avatar(props) {
   );
 }
 ```
+ 
 
-The `Avatar` doesn't need to know that it is being rendered inside a `Comment`. This is why we have given its prop a more generic name: `user` rather than `author`.
+यह `Avatar` को जानने की जरूरत नहीं है कि यह एक `Comment` के अंदर रेंडर किया जा रहा है. इसलिए हमने इसके prop को एक ज्यादा सामान्य नाम दिया है : `user` 
+बजाय `author` के.
 
 We recommend naming props from the रेंडरस's own point of view rather than the context in which it is being used.
 
