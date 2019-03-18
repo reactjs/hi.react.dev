@@ -53,7 +53,7 @@ class Welcome extends React.Component {
 const element = <div />;
 ```
 
-हालाँकि, एलिमेंट्स उपयोगकर्ता परिभाषित कौम्पोनॅन्टस को भी दर्शा सकते है:
+हालाँकि, एलिमेंट्स यूज़र डिफ़ाइंड कौम्पोनॅन्टस को भी दर्शा सकते है:
 
 ```js
 const element = <Welcome name="Sara" />;
