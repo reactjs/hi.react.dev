@@ -18,19 +18,19 @@ const element = <h1>नमस्ते दुनिया!</h1>;
 
 JSX React "एलिमेंट्स" का उत्पादन करता है। हम [अगले भाग](/docs/rendering-elements.html) में उन्हें DOM में रेंडर करने के बारे में देखेंगे।
 
-### Why JSX? {#why-jsx}
+### JSX क्यों? {#why-jsx}
 
-React embraces the fact that rendering logic is inherently coupled with other UI logic: how events are handled, how the state changes over time, and how the data is prepared for display.
+React इस वास्तिविकता को स्वीकार करती है कि तर्क प्रदान करना स्वाभाविक रूप से अन्य UI तर्क के साथ जुड़ा है: कैसे इवेंट्स को नियंत्रित किया जाता है, समय के साथ state कैसे बदलता है, और प्रदर्शन के लिए डेटा कैसे तैयार किया जाता है।
 
-Instead of artificially separating *technologies* by putting markup and logic in separate files, React [separates *concerns*](https://en.wikipedia.org/wiki/Separation_of_concerns) with loosely coupled units called "components" that contain both. We will come back to components in a [further section](/docs/components-and-props.html), but if you're not yet comfortable putting markup in JS, [this talk](https://www.youtube.com/watch?v=x7cQ3mrcKaY) might convince you otherwise.
+बनावटी रूप से मार्कअप और लॉजिक को अलग-अलग फाइलों में रख कर *टेक्नोलॉजीज* को अलग करने के बजाय, React लूज़ली कपल्ड यूनिट्स से [*कंसर्नस* को अलग](https://en.wikipedia.org/wiki/Separation_of_concerns) करता है जिसे कंपोनेंट्स कहते है, जिसमें दोनों होते हैं। हम [आगे के भाग](/docs/components-and-props.html) में कौम्पोनॅन्ट पर वापस आएंगे, लेकिन अगर आप अभी तक JS में मार्कअप डालने में सहज नहीं हैं,  अन्यथा [यह टॉक](https://www.youtube.com/watch?v=x7cQ3mrcKaY) आपको समझाने मदद कर सकता है।
 
-React [doesn't require](/docs/react-without-jsx.html) using JSX, but most people find it helpful as a visual aid when working with UI inside the JavaScript code. It also allows React to show more useful error and warning messages.
+JSX का उपयोग करना React के लिए [आवशयक नहीं](/docs/react-without-jsx.html) है, लेकिन अधिकांश लोग इसे जावास्क्रिप्ट कोड के अंदर UI के साथ काम करते समय दृश्य सहायता के रूप में उपयोगी पाते हैं। यह React को अधिक उपयोगी एरर और चेतावनी संदेश दिखाने की भी अनुमति देता है।
 
-With that out of the way, let's get started!
+इसको समझने के बाद, चलो सुरु करते हैं!
 
-### Embedding Expressions in JSX {#embedding-expressions-in-jsx}
+### JSX में एक्सप्रेशंस एम्बेड करना {#embedding-expressions-in-jsx}
 
-In the example below, we declare a variable called `name` and then use it inside JSX by wrapping it in curly braces:
+नीचे दिए गए उदाहरण में, हम `name` नामक एक वेरिएबल की घोषणा करते हैं और फिर इसे कर्ली ब्रेसिज़ में लपेटकर JSX के अंदर उपयोग करते हैं:
 
 ```js{1,2}
 const name = 'Josh Perez';
@@ -42,9 +42,9 @@ ReactDOM.render(
 );
 ```
 
-You can put any valid [JavaScript expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) inside the curly braces in JSX. For example, `2 + 2`, `user.firstName`, or `formatName(user)` are all valid JavaScript expressions.
+आप JSX में कर्ली ब्रेसिज़ के अंदर कोई भी मान्य [जावास्क्रिप्ट एक्सप्रेशंस](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) डाल सकते हैं। उदाहरण के लिए, `2 + 2`, `user.firstName`, या `formatName(user)` सभी मान्य जावास्क्रिप्ट अभिव्यक्तियाँ हैं।
 
-In the example below, we embed the result of calling a JavaScript function, `formatName(user)`, into an `<h1>` element.
+नीचे दिए गए उदाहरण में, हम एक जावास्क्रिप्ट फ़ंक्शन, `formatName(user)`, को `<h1>` एलिमेंट में कॉल करते हैं।
 
 ```js{12}
 function formatName(user) {
@@ -70,13 +70,13 @@ ReactDOM.render(
 
 [](codepen://introducing-jsx)
 
-We split JSX over multiple lines for readability. While it isn't required, when doing this, we also recommend wrapping it in parentheses to avoid the pitfalls of [automatic semicolon insertion](https://stackoverflow.com/q/2846283).
+हम पठनीयता के लिए JSX को कई लाइनों में विभाजित करते हैं। जबकि यह आवश्यक नहीं है, ऐसा करते समय, हम इसे [आटोमेटिक सेमीकोलन इंसर्शन](https://stackoverflow.com/q/2846283) के नुकसान से बचने के लिए इसे पैरेंथेसेस में लपेटने की भी सलाह देते हैं।
 
-### JSX is an Expression Too {#jsx-is-an-expression-too}
+### JSX एक एक्सप्रेशन भी है {#jsx-is-an-expression-too}
 
-After compilation, JSX expressions become regular JavaScript function calls and evaluate to JavaScript objects.
+कंपाइलेशन के बाद, JSX एक्सप्रेशंस नियमित जावास्क्रिप्ट फ़ंक्शन कॉल बन जाती हैं और जावास्क्रिप्ट ऑब्जेक्ट्स का मूल्यांकन करती हैं।
 
-This means that you can use JSX inside of `if` statements and `for` loops, assign it to variables, accept it as arguments, and return it from functions:
+इसका मतलब है कि आप JSX का उपयोग `if` स्टेटमेंट्स और `फॉर` लूप्स के अंदर कर सकते हैं, इसे वेरिएबल्स को असाइन कर सकते हैं, इसे आर्ग्यूमेंट्स के रूप में स्वीकार कर सकते हैं, और फ़ंक्शंस से इसे वापस कर सकते हैं:
 
 ```js{3,5}
 function getGreeting(user) {
@@ -87,27 +87,27 @@ function getGreeting(user) {
 }
 ```
 
-### Specifying Attributes with JSX {#specifying-attributes-with-jsx}
+### JSX के साथ ऐट्रिब्यूट्स बनाना {#specifying-attributes-with-jsx}
 
-You may use quotes to specify string literals as attributes:
+आप स्ट्रिंग लिटेरल्स को ऐट्रिब्यूट्स के रूप में निर्दिष्ट करने के लिए कोट्स का उपयोग कर सकते हैं:
 
 ```js
 const element = <div tabIndex="0"></div>;
 ```
 
-You may also use curly braces to embed a JavaScript expression in an attribute:
+आप एक ऐट्रिब्यूट् में जावास्क्रिप्ट एक्सप्रेशन को एम्बेड करने के लिए कर्ली ब्रेसिज़ का उपयोग भी कर सकते हैं:
 
 ```js
 const element = <img src={user.avatarUrl}></img>;
 ```
 
-Don't put quotes around curly braces when embedding a JavaScript expression in an attribute. You should either use quotes (for string values) or curly braces (for expressions), but not both in the same attribute.
+किसी ऐट्रिब्यूट् में जावास्क्रिप्ट एक्सप्रेशन को एम्बेड करते समय कर्ली ब्रेसिज़ के आसपास कोट्स न डालें। आपको या तो कोट्स (स्ट्रिंग वैल्यूज़ के लिए) या कर्ली ब्रेसिज़ (एक्सप्रेशंस के लिए) का उपयोग करना चाहिए, लेकिन दोनों एक ही ऐट्रिब्यूट् में नहीं।
 
->**Warning:**
+>**चेतावनी:**
 >
->Since JSX is closer to JavaScript than to HTML, React DOM uses `camelCase` property naming convention instead of HTML attribute names.
+>चूंकि JSX HTML की तुलना में जावास्क्रिप्ट के अधिक करीब है, इसलिए React DOM, HTML ऐट्रिब्यूट् नामों के बजाय `camelCase` प्रॉपर्टी नामकरण सम्मेलन का उपयोग करता है।
 >
->For example, `class` becomes [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) in JSX, and `tabindex` becomes [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex).
+>उदाहरण के लिए, JSX में `class` बन जाता है [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className), और `tabindex` बन जाता है [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex)।
 
 ### Specifying Children with JSX {#specifying-children-with-jsx}
 
