@@ -56,19 +56,19 @@ const element = <div />;
 हालाँकि, एलिमेंट्स यूज़र डिफ़ाइंड कौम्पोनॅन्टस को भी दर्शा सकते है:
 
 ```js
-const element = <Welcome name="Sara" />;
+const element = <Welcome name=" नेहा" />;
 ```
 
 जब कभी भी React एक एलिमेंट को यूजर-डिफाइंड कौम्पोनॅन्ट का प्रतिनिधित्व करते हुए देखता है, तुरंत ही इन कौम्पोनॅन्टs को एक ऑब्जेक्ट के रूप में JSX ऐट्रिब्यूट्स पास कर देता है| हम इस ऑब्जेक्ट को "props" कहते हैं|
 
-उदाहरण के लिए, यह कोड पेज पर रेंडर करता है "नमस्ते, Sara":
+उदाहरण के लिए, यह कोड पेज पर रेंडर करता है "नमस्ते,  नेहा":
 
 ```js{1,5}
 function Welcome(props) {
   return <h1>नमस्ते, {props.name}</h1>;
 }
 
-const element = <Welcome name="Sara" />;
+const element = <Welcome name=" नेहा" />;
 ReactDOM.render(
   element,
   document.getElementById('root')
@@ -79,10 +79,10 @@ ReactDOM.render(
 
 चलिए देख़ते है इस उदाहरण में क्या होता है:
 
-1. हम `<Welcome name="Sara" />` के द्वारा `ReactDOM.render()` को call karte है|
-2. React `Welcome` कौम्पोनॅन्ट को `name: 'Sara'}` के साथ props के रूप मे call करती है|
-3. हमारा `Welcome` कौम्पोनॅन्ट परिणाम के तौर पर `<h1>नमस्ते, Sara</h1>` एलिमेंट वापस लौटाता करता है|
-4. React DOM कुशलता पूर्वक DOM को `<h1>नमस्ते, Sara</h1>` से अपडेट करता है|
+1. हम `<Welcome name=" नेहा" />` के द्वारा `ReactDOM.render()` को call karte है|
+2. React `Welcome` कौम्पोनॅन्ट को `name: ' नेहा'}` के साथ props के रूप मे call करती है|
+3. हमारा `Welcome` कौम्पोनॅन्ट परिणाम के तौर पर `<h1>नमस्ते,  नेहा</h1>` एलिमेंट वापस लौटाता करता है|
+4. React DOM कुशलता पूर्वक DOM को `<h1>नमस्ते,  नेहा</h1>` से अपडेट करता है|
 
 >**ध्यान दें:** कौम्पोनॅन्टस की नाम की शुरुवात हमेशा कैपिटल लेटर से होनी चाहिए|
 >
@@ -104,9 +104,9 @@ function Welcome(props) {
 function App() {
   return (
     <div>
-      <Welcome name="Sara" />
-      <Welcome name="Cahal" />
-      <Welcome name="Edite" />
+      <Welcome name=" नेहा" />
+      <Welcome name="चहल" />
+      <Welcome name="राम" />
     </div>
   );
 }
