@@ -8,7 +8,7 @@ prev: components-and-props.html
 next: handling-events.html
 ---
 
-यह पृष्ठ एक React कौम्पोनॅन्ट में state और जीवनचक्र की अवधारणा का परिचय देता है। आप [यहाँ एक विस्तृत कौम्पोनॅन्ट API संदर्भ](/docs/react-component.html)पा सकते हैं।
+यह पृष्ठ एक React कौम्पोनॅन्ट में state और जीवनचक्र की अवधारणा का परिचय देता है। आप [यहाँ एक विस्तृत कौम्पोनॅन्ट API संदर्भ](/docs/react-component.html) पा सकते हैं।
 
 [पिछले अनुभागों में से एक](/docs/rendering-elements.html#updating-the-rendered-element) घड़ी के उदाहरण पर विचार करें। [रेंडरिंग एलिमेंट्स](/docs/rendering-elements.html#rendering-an-element-into-the-dom) में हमने UI को अपडेट करने का केवल एक तरीका सीखा है। प्रदान किए गए आउटपुट को बदलने के लिए हम `ReactDOM.render()` को कॉल करते हैं :
 
