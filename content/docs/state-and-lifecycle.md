@@ -157,7 +157,7 @@ class Clock extends React.Component {
 
 क्लास के कौम्पोनॅन्टों को हमेशा बेस कंस्ट्रक्टर को `props` के साथ कॉल करना चाहिए।
 
-3) `<Clock />` एलिमेंट से `date` प्रोप निकालें:
+3) `<Clock />` एलिमेंट से `date` prop निकालें:
 
 ```js{2}
 ReactDOM.render(
@@ -203,7 +203,7 @@ ReactDOM.render(
 
 हम चाहते हैं कि जब भी `Clock` को पहली बार DOM को प्रदान किया जाए तो एक [टाइमर सेट करें](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) । इसे रिएक्ट में "माउंटिंग" कहा जाता है।
 
-हम यह भी चाहते हैं कि जब भी `Clock` द्वारा निर्मित DOM को हटाया जाए तो वह [उस टाइमर](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval) को हटा कर दे। इसे रिएक्ट में "अनमाउंटिंग" कहा जाता है।
+हम यह भी चाहते हैं कि जब भी `Clock` द्वारा निर्मित DOM को हटाया जाए तो वह [उस टाइमर](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval) को हटा दे। इसे रिएक्ट में "अनमाउंटिंग" कहा जाता है।
 
 जब एक कौम्पोनॅन्ट माउंट और अनमाउंट करता है तब कौम्पोनॅन्ट क्लास में कोड को चलने के लिए हम कुछ विशेष तरीकों की घोषणा कर सकते हैं:
 
