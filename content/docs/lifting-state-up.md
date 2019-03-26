@@ -1,6 +1,6 @@
 ---
 id: lifting-state-up
-title: Lifting State Up
+title: स्टेट को ऊपर लेजाना
 permalink: docs/lifting-state-up.html
 prev: forms.html
 next: composition-vs-inheritance.html
@@ -9,11 +9,11 @@ redirect_from:
   - "docs/flux-todo-list.html"
 ---
 
-Often, several components need to reflect the same changing data. We recommend lifting the shared state up to their closest common ancestor. Let's see how this works in action.
+अक्सर, कई कौम्पोनॅन्टस को एक ही बदलते डेटा को प्रतिबिंबित करने की आवश्यकता होती है। हम उनके निकटतम सामान्य पूर्वज तक स्टेट को उठाने की सलाह देते हैं| आइए देखें कि यह कैसे कार्य करता है।
 
-In this section, we will create a temperature calculator that calculates whether the water would boil at a given temperature.
+इस खंड में, हम एक तापमान कैलकुलेटर बनाएंगे जो गणना करता है कि पानी किसी दिए गए तापमान पर उबलता है या नहीं।
 
-We will start with a component called `BoilingVerdict`. It accepts the `celsius` temperature as a prop, and prints whether it is enough to boil the water:
+हम `BoilingVerdict` नामक एक कौम्पोनॅन्ट के साथ शुरू करेंगे। यह `celsius` तापमान को prop के रूप में स्वीकार करता है, और प्रिंट करता है यदि पानी उबालने वाला है:
 
 ```js{3,5}
 function BoilingVerdict(props) {
@@ -24,9 +24,9 @@ function BoilingVerdict(props) {
 }
 ```
 
-Next, we will create a component called `Calculator`. It renders an `<input>` that lets you enter the temperature, and keeps its value in `this.state.temperature`.
+इसके बाद, हम 'Calculator' नामक एक घटक बनाएंगे। यह एक `<input>` बनाएगा, जिसमे आप तापमान दर्ज कर सकते हैं, जिसकी value `this.state.temperature` में रहेगी.
 
-Additionally, it renders the `BoilingVerdict` for the current input value.
+इसके अतिरिक्त, यह वर्तमान इनपुट मूल्य के लिए `BoilingVerdict` बना देता है।
 
 ```js{5,9,13,17-21}
 class Calculator extends React.Component {
@@ -58,11 +58,11 @@ class Calculator extends React.Component {
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/ZXeOBm?editors=0010)
 
-## Adding a Second Input {#adding-a-second-input}
+## एक दूसरा इनपुट जोड़ना {#adding-a-second-input}
 
-Our new requirement is that, in addition to a Celsius input, we provide a Fahrenheit input, and they are kept in sync.
+हमारी नई आवश्यकता यह है कि, एक Celsius इनपुट के अलावा, हम एक Fahrenheit इनपुट प्रदान करें, और वे sync में रहें|
 
-We can start by extracting a `TemperatureInput` component from `Calculator`. We will add a new `scale` prop to it that can either be `"c"` or `"f"`:
+हम `Calculator` से एक `TemperatureInput` कौम्पोनॅन्ट निकालने से शुरुआत कर सकते. हम इसमें एक नया `scale` prop जोड़ेंगे, जो या तो `"c"` या `"f"` हो सकता  है:
 
 ```js{1-4,19,22}
 const scaleNames = {
@@ -95,7 +95,7 @@ class TemperatureInput extends React.Component {
 }
 ```
 
-We can now change the `Calculator` to render two separate temperature inputs:
+अब हम `Calculator` को दो अलग-अलग तापमान इनपुट दिखाने के लिए बदल सकते हैं: 
 
 ```js{5,6}
 class Calculator extends React.Component {
@@ -110,15 +110,16 @@ class Calculator extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/jGBryx?editors=0010)
+[**इसे CodePen पर आज़माएँ**](https://codepen.io/gaearon/pen/jGBryx?editors=0010)
 
-We have two inputs now, but when you enter the temperature in one of them, the other doesn't update. This contradicts our requirement: we want to keep them in sync.
+अभ हमारे पास दो इनपुट हैं, लेकिन जब आप उनमें से एक में तापमान दर्ज करते हैं, तो दूसरा अपडेट नहीं होता| यह हमारी आवश्यकता के विपरीत है: हम उन्हें sync में रखना चाहते हैं।
 
-We also can't display the `BoilingVerdict` from `Calculator`. The `Calculator` doesn't know the current temperature because it is hidden inside the `TemperatureInput`.
+हम `Calculator` से `BoilingVerdict` भी प्रदर्शित नहीं कर सकते| `Calculator` वर्तमान तापमान को नहीं जानता है क्योंकि यह `TemperatureInput` के अंदर छिपा हुआ है।
 
-## Writing Conversion Functions {#writing-conversion-functions}
+## कन्वर्शन फंक्शन्स लिखना {#writing-conversion-functions}
 
 First, we will write two functions to convert from Celsius to Fahrenheit and back:
+सबसे पहले, हम दो फंक्शन्स लिखेंगे| Celsius से Fahrenheit और वापस Fahrenheit से Celsius में बदलने के लिए:
 
 ```js
 function toCelsius(fahrenheit) {
@@ -130,9 +131,9 @@ function toFahrenheit(celsius) {
 }
 ```
 
-These two functions convert numbers. We will write another function that takes a string `temperature` and a converter function as arguments and returns a string. We will use it to calculate the value of one input based on the other input.
+ये दो फंक्शन्स संख्याओं को परिवर्तित करते हैं|हम एक और फ़ंक्शन लिखेंगे जो एक स्ट्रिंग `temperature` और एक कनवर्टर फ़ंक्शन को आर्गुमेंट के रूप में लेता है और एक स्ट्रिंग देता है। हम इसका उपयोग एक इनपुट के आधार पर दूसरे इनपुट की गणना करने के लिए करेंगे।
 
-It returns an empty string on an invalid `temperature`, and it keeps the output rounded to the third decimal place:
+यह अमान्य `temperature` पर एक खाली स्ट्रिंग देता है, और यह आउटपुट को तीसरे दशमलव स्थान पर रखता है:
 
 ```js
 function tryConvert(temperature, convert) {
@@ -146,11 +147,12 @@ function tryConvert(temperature, convert) {
 }
 ```
 
-For example, `tryConvert('abc', toCelsius)` returns an empty string, and `tryConvert('10.22', toFahrenheit)` returns `'50.396'`.
+For example, `tryConvert('abc', toCelsius)` returns an empty string, and `tryConvert('10.22', toFahrenheit)` returns `'50.396'`|
+उदाहरण के लिए, `tryConvert ('abc', toCelsius)` एक खाली स्ट्रिंग लौटाता है, और `tryConvert ('10 .22 ', toFahrenheit)` लौटाता है ` '50 .396'`|
 
-## Lifting State Up {#lifting-state-up}
+## स्टेट को ऊपर लेजाना {#lifting-state-up}
 
-Currently, both `TemperatureInput` components independently keep their values in the local state:
+वर्तमान में, दोनों `TemperatureInput` कौम्पोनॅन्टस अपनी स्थानीय स्टेट को स्वतंत्र रूप में बनाये रखते हैं:
 
 ```js{5,9,13}
 class TemperatureInput extends React.Component {
@@ -169,9 +171,9 @@ class TemperatureInput extends React.Component {
     // ...  
 ```
 
-However, we want these two inputs to be in sync with each other. When we update the Celsius input, the Fahrenheit input should reflect the converted temperature, and vice versa.
+हालाँकि, हम चाहते हैं कि ये दोनों इनपुट एक दूसरे के sync में रहें। जब हम Celsius इनपुट को अपडेट करें, तो Fahrenheit इनपुट अपडेट हो और इसके विपरीत को प्रतिबिंबित करना चाहिए।
 
-In React, sharing state is accomplished by moving it up to the closest common ancestor of the components that need it. This is called "lifting state up". We will remove the local state from the `TemperatureInput` and move it into the `Calculator` instead.
+React में , sharing state is accomplished by moving it up to the closest common ancestor of the components that need it. This is called "lifting state up". We will remove the local state from the `TemperatureInput` and move it into the `Calculator` instead.
 
 If the `Calculator` owns the shared state, it becomes the "source of truth" for the current temperature in both inputs. It can instruct them both to have values that are consistent with each other. Since the props of both `TemperatureInput` components are coming from the same parent `Calculator` component, the two inputs will always be in sync.
 
