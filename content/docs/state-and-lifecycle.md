@@ -1,6 +1,6 @@
 ---
 id: state-and-lifecycle
-title: State और जीवनचक्र
+title: State और Lifecycle
 permalink: docs/state-and-lifecycle.html
 redirect_from:
   - "docs/interactivity-and-dynamic-uis.html"
@@ -8,7 +8,7 @@ prev: components-and-props.html
 next: handling-events.html
 ---
 
-यह पृष्ठ एक React कौम्पोनॅन्ट में state और जीवनचक्र की अवधारणा का परिचय देता है। आप [यहाँ एक विस्तृत कौम्पोनॅन्ट API संदर्भ](/docs/react-component.html) पा सकते हैं।
+यह पृष्ठ एक React कौम्पोनॅन्ट में state और Lifecycle की अवधारणा का परिचय देता है। आप [यहाँ एक विस्तृत कौम्पोनॅन्ट API संदर्भ](/docs/react-component.html) पा सकते हैं।
 
 [पिछले अनुभागों में से एक](/docs/rendering-elements.html#updating-the-rendered-element) घड़ी के उदाहरण पर विचार करें। [रेंडरिंग एलिमेंट्स](/docs/rendering-elements.html#rendering-an-element-into-the-dom) में हमने UI को अपडेट करने का केवल एक तरीका सीखा है। प्रदान किए गए आउटपुट को बदलने के लिए हम `ReactDOM.render()` को कॉल करते हैं :
 
@@ -17,7 +17,8 @@ function tick() {
   const element = (
     <div>
       <h1> नमस्ते, दुनिया!</h1>
-      <h2>यह {new Date().toLocaleTimeString()}.</h2>
+      <h2>अभी {new Date().toLocaleTimeString()}बजे हैं।
+</h2>
     </div>
   );
   ReactDOM.render(
@@ -31,16 +32,16 @@ setInterval(tick, 1000);
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/gwoJZk?editors=0010)
 
-इस खंड में, हम सीखेंगे कि `Clock` कौम्पोनॅन्ट को वास्तव में पुन: प्रयोज्य और समझाया कैसे बनाया जाए। यह अपना खुद का टाइमर सेट करेगा और हर सेकंड खुद को अपडेट करेगा।
+इस खंड में, हम सीखेंगे कि `Clock` कौम्पोनॅन्ट को वास्तव में पुन: प्रयोज्य और संपुटित कैसे बनाया जाए। यह अपना खुद का टाइमर सेट करेगा और हर सेकंड खुद को अपडेट करेगा।
 
-घडी देखने में कैसी लगेगी यह हम एन्काप्सुलेटिंग द्वारा सुरु कर सकते हैं:
+घडी देखने में कैसी लगेगी यह हम एन्काप्सुलेटिंग द्वारा शुरु कर सकते हैं:
 
 ```js{3-6,12}
 function Clock(props) {
   return (
     <div>
       <h1>नमस्ते, दुनिया!</h1>
-      <h2>यह  {props.date.toLocaleTimeString()} है। </h2>
+      <h2>अभी {props.date.toLocaleTimeString()} बजे हैं। </h2>
     </div>
   );
 }
@@ -94,7 +95,7 @@ class Clock extends React.Component {
     return (
       <div>
         <h1>नमस्ते, दुनिया! </h1>
-        <h2>यह {this.props.date.toLocaleTimeString()} है। </h2>
+        <h2>अभी {this.props.date.toLocaleTimeString()} बजे हैं। </h2>
       </div>
     );
   }
@@ -105,7 +106,7 @@ class Clock extends React.Component {
 
 `Clock` को अब एक फ़ंक्शन के बजाय एक क्लास के रूप में परिभाषित किया गया है।
 
-हर अपडेट पर `render` फंक्शन कॉल होगा, लेकिन जब तक हम `<Clock />` को एक ही DOM नोड में रेंडर करते हैं, तब तक `Clock` क्लास का केवल एक ही उदाहरण इस्तेमाल किया जाएगा। इससे हम लोकल state और जीवनचक्र विधियों जैसी अतिरिक्त सुविधाओं का उपयोग कर सकते हैं।
+हर अपडेट पर `render` फंक्शन कॉल होगा, लेकिन जब तक हम `<Clock />` को एक ही DOM नोड में रेंडर करते हैं, तब तक `Clock` क्लास का केवल एक ही उदाहरण इस्तेमाल किया जाएगा। इससे हम लोकल state और Lifecycle विधियों जैसी अतिरिक्त सुविधाओं का उपयोग कर सकते हैं।
 
 ## क्लास में लोकल state ऐड करना {#adding-local-state-to-a-class}
 
@@ -119,7 +120,7 @@ class Clock extends React.Component {
     return (
       <div>
         <h1>नमस्ते, दुनिया!</h1>
-        <h2>यह  {this.state.date.toLocaleTimeString()} है।</h2>
+        <h2>अभी {this.state.date.toLocaleTimeString()} बजे हैं। </h2>
       </div>
     );
   }
@@ -139,7 +140,7 @@ class Clock extends React.Component {
     return (
       <div>
         <h1>नमस्ते, दुनिया!</h1>
-        <h2>यह  {this.state.date.toLocaleTimeString()} है।</h2>
+        <h2>अभी {this.state.date.toLocaleTimeString()} बजे हैं।</h2>
       </div>
     );
   }
@@ -181,7 +182,7 @@ class Clock extends React.Component {
     return (
       <div>
         <h1>नमस्ते, दुनिया!</h1>
-        <h2>यह  {this.state.date.toLocaleTimeString()} है।</h2>
+        <h2>अभी {this.state.date.toLocaleTimeString()} बजे हैं।</h2>
       </div>
     );
   }
@@ -197,7 +198,7 @@ ReactDOM.render(
 
 इसके बाद, हम `Clock` को अपना टाइमर सेट और हर सेकंड में खुद को अपडेट करने देंगे।
 
-## क्लास में जीवनचक्र की विधियाँ डालना {#adding-lifecycle-methods-to-a-class}
+## क्लास में Lifecycle की विधियाँ डालना {#adding-lifecycle-methods-to-a-class}
 
 कई कौम्पोनॅन्ट के साथ अनुप्रयोगों में, जब वे नष्ट हो जाते हैं तो कौम्पोनॅन्ट द्वारा लिए गए संसाधनों को मुक्त करना बहुत महत्वपूर्ण है।
 
@@ -226,14 +227,14 @@ class Clock extends React.Component {
     return (
       <div>
         <h1>नमस्ते, दुनिया!</h1>
-        <h2>यह  {this.state.date.toLocaleTimeString()} है।</h2>
+        <h2>अभी {this.state.date.toLocaleTimeString()} बजे हैं।</h2>
       </div>
     );
   }
 }
 ```
 
-इन विधियों को "जीवनचक्र विधियां" कहा जाता है।
+इन विधियों को "Lifecycle विधियां" कहा जाता है।
 
 DOM के लिए कौम्पोनॅन्ट आउटपुट दिए जाने के बाद `componentsDidMount()` फंक्शन चलता है। टाइमर सेट करने के लिए यह एक अच्छी जगह है:
 
@@ -250,7 +251,7 @@ DOM के लिए कौम्पोनॅन्ट आउटपुट दि
 
 जबकि `this.props` को React द्वारा स्थापित किया गया है और `this.state` का एक विशेष अर्थ है, यदि आप डेटा प्रवाह में भाग नहीं लेने वाली किसी चीज़ को संग्रहीत करने की आवश्यकता है, तो आप क्लास में अतिरिक्त फ़ील्ड ऐड करने के लिए स्वतंत्र हैं (एक टाइमर ID की तरह)।
 
-हम `componentWillUnmount()` जीवनचक्र विधि में टाइमर को नष्ट कर देंगे:
+हम `componentWillUnmount()` Lifecycle विधि में टाइमर को नष्ट कर देंगे:
 
 ```js{2}
   componentWillUnmount() {
@@ -290,7 +291,7 @@ class Clock extends React.Component {
     return (
       <div>
         <h1>नमस्ते, दुनिया!</h1>
-        <h2>यह  {this.state.date.toLocaleTimeString()} है।</h2>
+        <h2>अभी {this.state.date.toLocaleTimeString()} बजे हैं।</h2>
       </div>
     );
   }
@@ -312,11 +313,11 @@ ReactDOM.render(
 
 2) इसके बाद React `Clock` कौम्पोनॅन्ट के `render()` फंक्शन को कॉल करता है। यह कैसे React स्क्रीन पर प्रदर्शित किया जाना चाहिए सीखता है। रिएक्ट तो DOM को `Clock` के रेंडर आउटपुट से मैच करने के लिए अपडेट करता है।
 
-3) जब DOM में `Clock` आउटपुट डाला जाता है, तो React `componentDidMount()` जीवनचक्र फंक्शन को कॉल करता है। इसके अंदर, `Clock` कौम्पोनॅन्ट एक सेकंड में एक बार कौम्पोनॅन्ट के `tick()` फंक्शन को कॉल करने के लिए एक टाइमर सेट करने के लिए ब्राउज़र से पूछता है।
+3) जब DOM में `Clock` आउटपुट डाला जाता है, तो React `componentDidMount()` Lifecycle फंक्शन को कॉल करता है। इसके अंदर, `Clock` कौम्पोनॅन्ट एक सेकंड में एक बार कौम्पोनॅन्ट के `tick()` फंक्शन को कॉल करने के लिए एक टाइमर सेट करने के लिए ब्राउज़र से पूछता है।
 
 4) हर सेकंड ब्राउज़र `tick()` फंक्शन को कॉल करता है। इसके अंदर, `Clock` कौम्पोनॅन्ट वर्तमान समय वाले ऑब्जेक्ट के साथ `setstate()` कॉल करके UI अपडेट को शेड्यूल करता है। `setState()` कॉल के लिए धन्यवाद, React जानता है कि state बदल गई है, और स्क्रीन पर क्या होना चाहिए जानने के लिए फिर से `render()` फंक्शन को कॉल करता है। इस बार `render()` फंक्शन में `this.state.date` अलग होगा, और इसलिए रेंडर आउटपुट में अपडेटेड समय शामिल होगा। React उसी हिसाब से DOM को अपडेट करता है।
 
-5) यदि DOM से `Clock` कौम्पोनॅन्ट को कभी हटा दिया जाता है, तो React `componentWillUnmount()` जीवनचक्र फंक्शन को कॉल करता है ताकि टाइमर बंद हो जाए।
+5) यदि DOM से `Clock` कौम्पोनॅन्ट को कभी हटा दिया जाता है, तो React `componentWillUnmount()` Lifecycle फंक्शन को कॉल करता है ताकि टाइमर बंद हो जाए।
 
 ## सही ढंग से state का उपयोग करना {#using-state-correctly}
 
@@ -420,7 +421,7 @@ this.setState(function(state, props) {
 एक कौम्पोनॅन्ट अपने state को अपने चाइल्ड कौम्पोनॅन्ट के लिए सहारा के रूप में पारित करने का विकल्प चुन सकता है:
 
 ```js
-<h2>यह {this.state.date.toLocaleTimeString()} है।</h2>
+<h2>अभी {this.state.date.toLocaleTimeString()} बजे हैं।</h2>
 ```
 
 यह उपयोगकर्ता द्वारा परिभाषित कौम्पोनॅन्ट के लिए भी काम करता है:
@@ -433,7 +434,7 @@ this.setState(function(state, props) {
 
 ```js
 function FormattedDate(props) {
-  return <h2>यह {props.date.toLocaleTimeString()} है।</h2>;
+  return <h2>अभी {props.date.toLocaleTimeString()} बजे हैं।</h2>;
 }
 ```
 
