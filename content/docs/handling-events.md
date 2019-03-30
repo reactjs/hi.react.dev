@@ -10,10 +10,10 @@ redirect_from:
 
 React के एलिमेंट्स के साथ इवेंट्स हैंडल करना DOM के एलिमेंट्स को हैंडल करने जैसा ही है | इनमे खली कुछ सिंटैक्टिक अंतर हैं |
 
-* React events are named using camelCase, rather than lowercase.
-* With JSX you pass a function as the event handler, rather than a string.
+* React के इवेंट्स का नाम लोअरकेस कि जगह camelCase में रक्खा जाता है |
+* JSX के साथ आप एक function को एक string कि जगह इवेंट हैंडलर कि तरह उसमें पास करते हैं |
 
-For example, the HTML:
+उधारण के तौर पर, यह HTML code:
 
 ```html
 <button onclick="activateLasers()">
@@ -21,7 +21,7 @@ For example, the HTML:
 </button>
 ```
 
-is slightly different in React:
+React में थोडा अलग है:
 
 ```js{1}
 <button onClick={activateLasers}>
