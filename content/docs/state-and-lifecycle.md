@@ -108,7 +108,7 @@ class Clock extends React.Component {
 
 हर अपडेट पर `render` फंक्शन कॉल होगा, लेकिन जब तक हम `<Clock />` को एक ही DOM नोड में रेंडर करते हैं, तब तक `Clock` क्लास का केवल एक ही दृष्टांत इस्तेमाल किया जाएगा। इससे हम लोकल state और Lifecycle विधियों जैसी अतिरिक्त सुविधाओं का उपयोग कर सकते हैं।
 
-## क्लास में लोकल state डालना {#adding-local-state-to-a-class}
+## क्लास में लोकल state ऐड करना {#adding-local-state-to-a-class}
 
 हम तीन चरणों में date को props से state में भेजेंगे:
 
