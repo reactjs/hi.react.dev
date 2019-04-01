@@ -1,4 +1,4 @@
----
+﻿---
 id: lists-and-keys
 title: Lists and Keys
 permalink: docs/lists-and-keys.html
@@ -20,7 +20,7 @@ console.log(doubled);
 
 React में, array को [एलिमेंट्स] की लिस्ट(/docs/rendering-elements.html) में बदलना लगभग समान है।
 
-### कई कौम्पोनॅन्टस को रेंडर करना  {#rendering-multiple-components}
+### कई कौम्पोनॅन्टस को रेंडर करना{#rendering-multiple-components}
 
 आप एलिमेंट्स का संग्रह बना सकते हैं और कर्ली ब्रेसिज़ `{}` का उपयोग करके [उन्हें JSX में शामिल कर सकते हैं।](/docs/introducing-jsx.html#embedding-expressions-in-jsx)
 
@@ -201,7 +201,7 @@ ReactDOM.render(
 );
 ```
 
-[**कोडपेन पर इसे आजमाएं**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
+[**CodePen पर इसे आजमाएं**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
 एक अच्छा नियम यह है कि एलिमेंटस  को `map()` कॉल के समय पर key  की जरुरत पड़ती है।  
 
