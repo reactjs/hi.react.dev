@@ -18,9 +18,9 @@ console.log(doubled);
 
 यह कोड [2, 4, 6, 8, 10] को कंसोल पर लोग करता है।।
 
-React में, array को [एलिमेंट्स] की लिस्ट(/docs/rendering-elements.html) में बदलना लगभग समान है।
+React में,  array को [एलिमेंट्स] की लिस्ट(/docs/rendering-elements.html) में बदलना लगभग समान है।
 
-### कई कौम्पोनॅन्टस को रेंडर करना{#rendering-multiple-components}
+### कई कौम्पोनॅन्टस को रेंडर करना {#rendering-multiple-components}
 
 आप एलिमेंट्स का संग्रह बना सकते हैं और कर्ली ब्रेसिज़ `{}` का उपयोग करके [उन्हें JSX में शामिल कर सकते हैं।](/docs/introducing-jsx.html#embedding-expressions-in-jsx)
 
