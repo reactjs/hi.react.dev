@@ -29,11 +29,11 @@ React में थोडा अलग है:
 </button>
 ```
 
-Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default link behavior of opening a new page, you can write:
+इसमें एक फरक यह भी है कि आप React में default behavior से बचने के लिए `false` रिटर्न नही कर सकते | आपको `preventDefault` अलग से बुलाना पड़ेगा | उदहारण के तौर पर, सिर्फ HTML के साथ अगर आपको link के नए पेज खोलने के default behavior से बचना है तो आप यह लिख सकते हैं:
 
 ```html
 <a href="#" onclick="console.log('The link was clicked.'); return false">
-  Click me
+  इसे दबाएँ
 </a>
 ```
 
