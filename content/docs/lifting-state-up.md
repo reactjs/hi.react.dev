@@ -13,7 +13,7 @@ redirect_from:
 
 इस खंड में, हम एक तापमान कैलकुलेटर बनाएंगे जो गणना करता है कि पानी किसी दिए गए तापमान पर उबलता है या नहीं।
 
-हम `BoilingVerdict` नामक एक कौम्पोनॅन्ट के साथ शुरू करेंगे। यह `celsius` तापमान को prop के रूप में स्वीकार करता है, और प्रिंट करता है यदि पानी उबालने वाला है:
+हम `BoilingVerdict` नामक एक कौम्पोनॅन्ट के साथ शुरुआत करेंगे। यह `celsius` तापमान को prop के रूप में स्वीकार करता है, और प्रिंट करता है यदि पानी उबलने वाला है:
 
 ```js{3,5}
 function BoilingVerdict(props) {
@@ -24,7 +24,7 @@ function BoilingVerdict(props) {
 }
 ```
 
-इसके बाद, हम 'Calculator' नामक एक घटक बनाएंगे। यह एक `<input>` बनाएगा, जिसमे आप तापमान दर्ज कर सकते हैं, जिसकी value `this.state.temperature` में रहेगी.
+इसके बाद, हम 'Calculator' नामक एक कौम्पोनॅन्ट बनाएंगे। यह एक `<input>` बनाएगा, जिसमे आप तापमान दर्ज कर सकते हैं, जिसकी value `this.state.temperature` में रहेगी.
 
 इसके अतिरिक्त, यह वर्तमान इनपुट मूल्य के लिए `BoilingVerdict` बना देता है।
 
@@ -62,7 +62,7 @@ class Calculator extends React.Component {
 
 हमारी नई आवश्यकता यह है कि, एक Celsius इनपुट के अलावा, हम एक Fahrenheit इनपुट प्रदान करें, और वे sync में रहें|
 
-हम `Calculator` से एक `TemperatureInput` कौम्पोनॅन्ट निकालने से शुरुआत कर सकते. हम इसमें एक नया `scale` prop जोड़ेंगे, जो या तो `"c"` या `"f"` हो सकता  है:
+हम `Calculator` से एक `TemperatureInput` कौम्पोनॅन्ट निकालने से शुरुआत कर सकते हैं| हम इसमें एक नया `scale` prop जोड़ेंगे, जो या तो `"c"` या `"f"` हो सकता है:
 
 ```js{1-4,19,22}
 const scaleNames = {
@@ -118,7 +118,6 @@ class Calculator extends React.Component {
 
 ## कन्वर्शन फंक्शन्स लिखना {#writing-conversion-functions}
 
-First, we will write two functions to convert from Celsius to Fahrenheit and back:
 सबसे पहले, हम दो फंक्शन्स लिखेंगे| Celsius से Fahrenheit और वापस Fahrenheit से Celsius में बदलने के लिए:
 
 ```js
@@ -131,7 +130,7 @@ function toFahrenheit(celsius) {
 }
 ```
 
-ये दो फंक्शन्स संख्याओं को परिवर्तित करते हैं|हम एक और फ़ंक्शन लिखेंगे जो एक स्ट्रिंग `temperature` और एक कनवर्टर फ़ंक्शन को आर्गुमेंट के रूप में लेता है और एक स्ट्रिंग देता है। हम इसका उपयोग एक इनपुट के आधार पर दूसरे इनपुट की गणना करने के लिए करेंगे।
+यह दो फंक्शन्स संख्याओं को परिवर्तित करते हैं|हम एक और फ़ंक्शन लिखेंगे जो एक स्ट्रिंग `temperature` और एक कनवर्टर फ़ंक्शन को आर्गुमेंट के रूप में लेता है और एक स्ट्रिंग देता है। हम इसका उपयोग एक इनपुट के आधार पर दूसरे इनपुट की गणना करने के लिए करेंगे।
 
 यह अमान्य `temperature` पर एक खाली स्ट्रिंग देता है, और यह आउटपुट को तीसरे दशमलव स्थान पर रखता है:
 
@@ -147,7 +146,6 @@ function tryConvert(temperature, convert) {
 }
 ```
 
-For example, `tryConvert('abc', toCelsius)` returns an empty string, and `tryConvert('10.22', toFahrenheit)` returns `'50.396'`|
 उदाहरण के लिए, `tryConvert ('abc', toCelsius)` एक खाली स्ट्रिंग लौटाता है, और `tryConvert ('10 .22 ', toFahrenheit)` लौटाता है ` '50 .396'`|
 
 ## स्टेट को ऊपर लेजाना {#lifting-state-up}
@@ -173,9 +171,9 @@ class TemperatureInput extends React.Component {
 
 हालाँकि, हम चाहते हैं कि ये दोनों इनपुट एक दूसरे के sync में रहें। जब हम Celsius इनपुट को अपडेट करें, तो Fahrenheit इनपुट अपडेट हो और इसके विपरीत को प्रतिबिंबित करना चाहिए।
 
-React में , sharing state is accomplished by moving it up to the closest common ancestor of the components that need it. This is called "lifting state up". We will remove the local state from the `TemperatureInput` and move it into the `Calculator` instead.
+React में , state साझाकरण का कार्य उसे कौम्पोनॅन्टस के निकटतम सामान्य पूर्वज तक ले जाकर पूरा किया जाता है|यह "स्टेट को ऊपर लेजाना" कहलाता है| हम लोकल स्टेट को `TemperatureInput` से हटा देंगे एवं  `Calculator` में ले जायेंगे|
 
-If the `Calculator` owns the shared state, it becomes the "source of truth" for the current temperature in both inputs. It can instruct them both to have values that are consistent with each other. Since the props of both `TemperatureInput` components are coming from the same parent `Calculator` component, the two inputs will always be in sync.
+यदि साझा स्टेट का मालिक `Calculator` हे, तो वह दोनों इन्पुट्स में वर्तमान तापमान के लिए "सत्य का स्रोत" बन जाता है| यह उन दोनों को एक दूसरे के अनुरूप वैल्यूज रखने का निर्देश दे सकता है| चूंकि दोनों `TemperatureInput` कौम्पोनॅन्टस के props एक ही मूल `Calculator` कौम्पोनॅन्ट से हैं, यह दोनों हमेशा सिंक में रहेंगे| 
 
 Let's see how this works step by step.
 
