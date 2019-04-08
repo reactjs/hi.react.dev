@@ -175,9 +175,9 @@ React में , state साझाकरण का कार्य उसे �
 
 यदि साझा स्टेट का मालिक `Calculator` हे, तो वह दोनों इन्पुट्स में वर्तमान तापमान के लिए "सत्य का स्रोत" बन जाता है| यह उन दोनों को एक दूसरे के अनुरूप वैल्यूज रखने का निर्देश दे सकता है| चूंकि दोनों `TemperatureInput` कौम्पोनॅन्टस के props एक ही मूल `Calculator` कौम्पोनॅन्ट से हैं, यह दोनों हमेशा सिंक में रहेंगे| 
 
-Let's see how this works step by step.
+आइए देखें कि यह चरण दर चरण कैसे काम करता है।
 
-First, we will replace `this.state.temperature` with `this.props.temperature` in the `TemperatureInput` component. For now, let's pretend `this.props.temperature` already exists, although we will need to pass it from the `Calculator` in the future:
+सबसे पहले, हम `TemperatureInput` कौम्पोनॅन्ट में `this.state.temperature` को `this.props.temperature` से बदल देंगे| अभी के लिए, मान लीजिये कि `this.props.temperature` पहले से ही मौजूद है, हालाँकि हमें भविष्य में इसे `Calculator` से पास करना होगा:
 
 ```js{3}
   render() {
@@ -186,11 +186,11 @@ First, we will replace `this.state.temperature` with `this.props.temperature` in
     // ...
 ```
 
-We know that [props are read-only](/docs/components-and-props.html#props-are-read-only). When the `temperature` was in the local state, the `TemperatureInput` could just call `this.setState()` to change it. However, now that the `temperature` is coming from the parent as a prop, the `TemperatureInput` has no control over it.
+हम जानते हैं कि [Props केवल-पढ़ने के लिए हैं](/docs/components-and-props.html#props-are-read-only). जब `temperature` local state में था, तो `TemperatureInput` इसे बदलने के लिए `this.setState ()` को कॉल कर सकता है| हालाँकि, अब `temperature` अपने मूल से prop बनकर आ रहा है, `TemperatureInput' का इस पर कोई नियंत्रण नहीं है।
 
-In React, this is usually solved by making a component "controlled". Just like the DOM `<input>` accepts both a `value` and an `onChange` prop, so can the custom `TemperatureInput` accept both `temperature` and `onTemperatureChange` props from its parent `Calculator`.
+React में, यह मसला आमतौर पर कौम्पोनॅन्ट को "नियंत्रित" बनाकर हल किया जाता है| जैसे DOM `<input>`, `value` एवं `onChange` prop दोनों को स्वीकार करता है, ठीक वैसे ही, `TemperatureInput` दोनों `temperature` एवं `onTemperatureChange` props को उसके मूल `Calculator` से स्वीकार करता है|
 
-Now, when the `TemperatureInput` wants to update its temperature, it calls `this.props.onTemperatureChange`:
+अब, जब `TemperatureInput` अपने तापमान को अपडेट करना चाहेगा, तो वह `this.props.onTemperChange` को कॉल करेगा:
 
 ```js{3}
   handleChange(e) {
@@ -199,9 +199,9 @@ Now, when the `TemperatureInput` wants to update its temperature, it calls `this
     // ...
 ```
 
->Note:
+>ध्यान दें:
 >
->There is no special meaning to either `temperature` or `onTemperatureChange` prop names in custom components. We could have called them anything else, like name them `value` and `onChange` which is a common convention.
+>कस्टम कौम्पोनॅन्टस में `temperature` या `onTemperatureChange` prop नामों का कोई विशेष अर्थ नहीं है। We could have called them anything else, like name them `value` and `onChange` which is a common convention.
 
 The `onTemperatureChange` prop will be provided together with the `temperature` prop by the parent `Calculator` component. It will handle the change by modifying its own local state, thus re-rendering both inputs with the new values. We will look at the new `Calculator` implementation very soon.
 
