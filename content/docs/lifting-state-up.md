@@ -173,7 +173,7 @@ class TemperatureInput extends React.Component {
 
 React में , state साझाकरण का कार्य उसे कौम्पोनॅन्टस के निकटतम सामान्य पूर्वज तक ले जाकर पूरा किया जाता है|यह "स्टेट को ऊपर लेजाना" कहलाता है| हम लोकल स्टेट को `TemperatureInput` से हटा देंगे एवं  `Calculator` में ले जायेंगे|
 
-यदि साझा स्टेट का मालिक `Calculator` हे, तो वह दोनों इन्पुट्स में वर्तमान तापमान के लिए "सत्य का स्रोत" बन जाता है| यह उन दोनों को एक दूसरे के अनुरूप वैल्यूज रखने का निर्देश दे सकता है| चूंकि दोनों `TemperatureInput` कौम्पोनॅन्टस के props एक ही मूल `Calculator` कौम्पोनॅन्ट से हैं, यह दोनों हमेशा सिंक में रहेंगे| 
+यदि साझा स्टेट का मालिक `Calculator` हे, तो वह दोनों इन्पुट्स में वर्तमान तापमान के लिए "सत्य का स्रोत" बन जाता है| यह उन दोनों को एक दूसरे के अनुरूप वैल्यूज रखने का निर्देश दे सकता है| चूंकि दोनों `TemperatureInput` कौम्पोनॅन्टस के props एक ही मूल `Calculator` कौम्पोनॅन्ट से हैं, यह दोनों हमेशा sync में रहेंगे| 
 
 आइए देखें कि यह चरण दर चरण कैसे काम करता है।
 
@@ -201,11 +201,11 @@ React में, यह मसला आमतौर पर कौम्पो�
 
 >ध्यान दें:
 >
->कस्टम कौम्पोनॅन्टस में `temperature` या `onTemperatureChange` prop नामों का कोई विशेष अर्थ नहीं है। We could have called them anything else, like name them `value` and `onChange` which is a common convention.
+>कस्टम कौम्पोनॅन्टस में `temperature` या `onTemperatureChange` prop नामों का कोई विशेष अर्थ नहीं है। हम उन्हें और कुछ भी कह सकते थे, जैसे कि `value` और `onChange` जो एक आम परंपरा है।
 
-The `onTemperatureChange` prop will be provided together with the `temperature` prop by the parent `Calculator` component. It will handle the change by modifying its own local state, thus re-rendering both inputs with the new values. We will look at the new `Calculator` implementation very soon.
+`Calculator` कौम्पोनॅन्ट के द्वारा `onTemperatureChange` prop को `temperature` prop के साथ प्रदान किया जाएगा| यह स्वयं के local state को संशोधित करके परिवर्तन को नियंत्रित करेगा, और इस प्रकार दोनों इनपुट्स को नए मूल्यों के साथ फिर से प्रस्तुत करेगा| हम बहुत जल्द नए `Calculator` के परिपालन को देखेंगे।
 
-Before diving into the changes in the `Calculator`, let's recap our changes to the `TemperatureInput` component. We have removed the local state from it, and instead of reading `this.state.temperature`, we now read `this.props.temperature`. Instead of calling `this.setState()` when we want to make a change, we now call `this.props.onTemperatureChange()`, which will be provided by the `Calculator`:
+आईये `Calculator` में परिवर्तन करने से पहले, `TemperatureInput` कौम्पोनॅन्ट में किये गए परिवर्तनों को याद कर लेते हैं| हमने इसमें से local state को हटा दिया है, और `this.state.temperature` रीड करने के बजाय, हम अब `this.props.temperature` रीड करते हैं| जब हम कोई बदलाव करना चाहते हैं तो `this.setState()` को कॉल करने के बजाय हम अब `this.props.onTemperatureChange()` को कॉल करते हैं, जो `Calculator` प्रदान करता है|
 
 ```js{8,12}
 class TemperatureInput extends React.Component {
@@ -232,11 +232,11 @@ class TemperatureInput extends React.Component {
 }
 ```
 
-Now let's turn to the `Calculator` component.
+अब `Calculator` कौम्पोनॅन्ट की ओर मुड़ते हैं।
 
-We will store the current input's `temperature` and `scale` in its local state. This is the state we "lifted up" from the inputs, and it will serve as the "source of truth" for both of them. It is the minimal representation of all the data we need to know in order to render both inputs.
+हम वर्तमान इनपुट के `temperature` और `scale` को उसके local state में जमा करेंगे. यह वही स्टेट जिसे हमने इनपुट्स से "lifted up" किया, और यह उन दोनों के लिए "source of truth" के रूप में काम करेगी| यह दोनों इनपुट्स को रेंडर करने के लिए हमारे द्वारा आवश्यक सभी डेटा का न्यूनतम प्रतिनिधित्व है।
 
-For example, if we enter 37 into the Celsius input, the state of the `Calculator` component will be:
+उदाहरण के लिए, यदि हम Celsius इनपुट में 37 दर्ज करते हैं, तो `Calculator` कौम्पोनॅन्ट की state होगी:
 
 ```js
 {
@@ -245,7 +245,7 @@ For example, if we enter 37 into the Celsius input, the state of the `Calculator
 }
 ```
 
-If we later edit the Fahrenheit field to be 212, the state of the `Calculator` will be:
+यदि हम बाद में Fahrenheit फ़ील्ड को 212 में संपादित करते हैं, तो `Calculator` की state होगी:
 
 ```js
 {
@@ -254,9 +254,9 @@ If we later edit the Fahrenheit field to be 212, the state of the `Calculator` w
 }
 ```
 
-We could have stored the value of both inputs but it turns out to be unnecessary. It is enough to store the value of the most recently changed input, and the scale that it represents. We can then infer the value of the other input based on the current `temperature` and `scale` alone.
+हम दोनों इनपुट्स की वैल्यू स्टोर कर सकते थे लेकिन यह अनावश्यक है। सबसे हाल ही में बदले गये इनपुट की वैल्यू एवं उसका प्रतिनिधित्व करने वाले scale को ही स्टोर करना पर्याप्त है| तब हम वर्तमान `temperature` और `scale` के आधार पर अन्य इनपुट के वैल्यू का अनुमान लगा सकते हैं|
 
-The inputs stay in sync because their values are computed from the same state:
+इनपुट्स sync में रहेंगे क्योंकि उनकी वैल्यूज की गणना एक ही state से होगी:
 
 ```js{6,10,14,18-21,27-28,31-32,34}
 class Calculator extends React.Component {
@@ -301,7 +301,7 @@ class Calculator extends React.Component {
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/WZpxpz?editors=0010)
 
-Now, no matter which input you edit, `this.state.temperature` and `this.state.scale` in the `Calculator` get updated. One of the inputs gets the value as is, so any user input is preserved, and the other input value is always recalculated based on it.
+अब, कोई फर्क नहीं पड़ता कि आप किस इनपुट को संपादित करते हैं, `Calculator` के `this.state.temperature` और `this.state.scale` अपडेट हो जायेंगे| One of the inputs gets the value as is, so any user input is preserved, and the other input value is always recalculated based on it.
 
 Let's recap what happens when you edit an input:
 
