@@ -60,7 +60,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             },
           }}>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>Docs</MetaTitle>
+            <MetaTitle onDark={true}>दस्तावेज़</MetaTitle>
             {sectionListDocs.map(section => {
               const defaultItem = section.items[0];
               return (
@@ -73,7 +73,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             })}
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>Channels</MetaTitle>
+            <MetaTitle onDark={true}>चैनल</MetaTitle>
             <ExternalFooterLink
               href="https://github.com/facebook/react"
               target="_blank"
@@ -90,19 +90,19 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               href="https://discuss.reactjs.org"
               target="_blank"
               rel="noopener">
-              Discussion Forum
+              चर्चा मंच
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://discord.gg/0ZcbPKXt5bZjGY5n"
               target="_blank"
               rel="noopener">
-              Reactiflux Chat
+              Reactiflux बातचीत
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://dev.to/t/react"
               target="_blank"
               rel="noopener">
-              DEV Community
+              DEV समुदाय
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://www.facebook.com/react"
@@ -118,7 +118,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             </ExternalFooterLink>
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>Community</MetaTitle>
+            <MetaTitle onDark={true}>समुदाय</MetaTitle>
             {sectionListCommunity.map(section => (
               <FooterLink
                 to={`/community/${section.items[0].id}.html`}
@@ -128,11 +128,11 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             ))}
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>More</MetaTitle>
-            <FooterLink to="/tutorial/tutorial.html">Tutorial</FooterLink>
-            <FooterLink to="/blog/">Blog</FooterLink>
+            <MetaTitle onDark={true}>अधिक</MetaTitle>
+            <FooterLink to="/tutorial/tutorial.html">ट्यूटोरियल</FooterLink>
+            <FooterLink to="/blog/">ब्लॉग</FooterLink>
             <FooterLink to="/acknowledgements.html">
-              Acknowledgements
+            स्वीकृतियाँ
             </FooterLink>
             <ExternalFooterLink
               href="https://facebook.github.io/react-native/"
