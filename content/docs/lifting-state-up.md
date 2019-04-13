@@ -306,23 +306,23 @@ class Calculator extends React.Component {
 आइये संक्षेप में देखते हैं की एक इनपुट को संपादित करते पर क्या होता है :
 
 * React `onChange` के द्वारा निर्दिष्ट फंक्शन को DOM `<input>` पर कॉल करता है| हमारे लिए, यह `TemperatureInput` कौम्पोनॅन्ट का `handleChange` method है।
-* `TemperatureInput` कौम्पोनॅन्ट का  `handleChange` method, नए वांछित वैल्यू के साथ `this.props.onTemperChange()` को कॉल करता है| इसके props, जिनमें `onTemperatureChange` शामिल हैं, को इसके मूल कौम्पोनॅन्ट, 'कैलकुलेटर' द्वारा प्रदान किया गया।
-* जब यह पूर्व में render किया गया था, तो `Calculator` ने निर्दिष्ट किया है कि Celsius `TemperatureInput` का `onTemperatureChange` ही `Calculator` का `handleCelsiusChange` method  है, इसी प्रकार Fahrenheit `TemperatureInput` का `onTemperatureChange` ही `कैलकुलेटर` का `handleFahrenheitChange` method है|So either of these two `Calculator` methods gets called depending on which input we edited.
-* Inside these methods, the `Calculator` component asks React to re-render itself by calling `this.setState()` with the new input value and the current scale of the input we just edited.
-* React calls the `Calculator` component's `render` method to learn what the UI should look like. The values of both inputs are recomputed based on the current temperature and the active scale. The temperature conversion is performed here.
+* `TemperatureInput` कौम्पोनॅन्ट का  `handleChange` method, नए वांछित वैल्यू के साथ `this.props.onTemperChange()` को कॉल करता है| इसके props, जिनमें `onTemperatureChange` शामिल हैं, को इसके मूल कौम्पोनॅन्ट, 'कैलकुलेटर' द्वारा प्रदान किया जाता है।
+* जब यह पूर्व में render किया गया था, तो `Calculator` ने निर्दिष्ट किया है कि Celsius `TemperatureInput` का `onTemperatureChange` ही `Calculator` का `handleCelsiusChange` method  है, इसी प्रकार Fahrenheit `TemperatureInput` का `onTemperatureChange` ही `कैलकुलेटर` का `handleFahrenheitChange` method है|इनपुट के सम्पादन के आधार इन दोनों `Calculator` methods में से किसी एक को कॉल किया जाता है| 
+* इन methods के अंदर, `Calculator` कौम्पोनॅन्ट React से `this.setState()` को कॉल करके, नयी इनपुट वैल्यू एवं वर्तमान scale जिसको हमने बस अभी सम्पादित किया, के साथ  re-render होने को कहता है|
+* `Calculator` कौम्पोनॅन्ट के `render`method को React कॉल करता है ताकि वह UI कैसा दिखता है यह जान सखे| दोनों इनपुट के वैल्यूज की वर्तमान तापमान और सक्रिय scale के आधार पर पुनर्गणना की जाती है। तापमान रूपांतरण यहां किया जाता है।
 * React calls the `render` methods of the individual `TemperatureInput` components with their new props specified by the `Calculator`. It learns what their UI should look like.
-* React calls the `render` method of the `BoilingVerdict` component, passing the temperature in Celsius as its props.
-* React DOM updates the DOM with the boiling verdict and to match the desired input values. The input we just edited receives its current value, and the other input is updated to the temperature after conversion.
+* React `कैलकुलेटर` द्वारा निर्देशित नए props के साथ  `TemperatureInput` कौम्पोनॅन्टस के `render` methods को कॉल करता है|
+* React DOM, boiling verdict के साथ DOM को अपडेट करता है और वांछित इनपुट वैल्यूज से मेल कराता है। जिस इनपुट को हमने अभी संपादित किया है, वह अपनी वर्तमान वैल्यू प्राप्त करता है, और अन्य इनपुट को रूपांतरण के बाद तापमान में अपडेट किया जाता है।
 
-Every update goes through the same steps so the inputs stay in sync.
+हर अपडेट समान चरणों के माध्यम से जाता है ताकि इनपुट sync में रहें।
 
-## Lessons Learned {#lessons-learned}
+## सबक सीखा {#lessons-learned}
 
-There should be a single "source of truth" for any data that changes in a React application. Usually, the state is first added to the component that needs it for rendering. Then, if other components also need it, you can lift it up to their closest common ancestor. Instead of trying to sync the state between different components, you should rely on the [top-down data flow](/docs/state-and-lifecycle.html#the-data-flows-down).
+React एप्लीकेशन में परिवर्तन करने वाले किसी भी डेटा के लिए "सत्य का एक स्रोत" केवल एक होना चाहिए। आमतौर पर, state को पहले कौम्पोनॅन्ट में जोड़ा जाता है जो इसे render करने के लिए आवश्यक होता है. फिर, अगर अन्य कौम्पोनॅन्टस को भी इसकी आवश्यकता होती है, तो आप इसे अपने निकटतम सामान्य पूर्वज तक उठा सकते हैं।. अलग-अलग कौम्पोनॅन्टस के बीच state को sync करने की कोशिश करने के बजाय, आपको इस पर भरोसा करना चाहिए [top-down data flow](/docs/state-and-lifecycle.html#the-data-flows-down).
 
-Lifting state involves writing more "boilerplate" code than two-way binding approaches, but as a benefit, it takes less work to find and isolate bugs. Since any state "lives" in some component and that component alone can change it, the surface area for bugs is greatly reduced. Additionally, you can implement any custom logic to reject or transform user input.
+state को लिफ्ट करने में दो-तरफ़ा बंधन दृष्टिकोण की तुलना में अधिक "boilerplate" कोड लिखना शामिल है, लेकिन एक लाभ के रूप में, bug को खोजने और अलग करने में कम काम लगता है|चूंकि कोई भी state किसी कौम्पोनॅन्ट में "रहता है" और वह कौम्पोनॅन्ट अकेले इसे बदल सकता है, bug के लिए सतह क्षेत्र बहुत कम हो गया है। इसके अतिरिक्त, आप यूजर इनपुट को अस्वीकार या परिवर्तित करने के लिए कोई भी कस्टम लॉजिक लागू कर सकते हैं।
 
-If something can be derived from either props or state, it probably shouldn't be in the state. For example, instead of storing both `celsiusValue` and `fahrenheitValue`, we store just the last edited `temperature` and its `scale`. The value of the other input can always be calculated from them in the `render()` method. This lets us clear or apply rounding to the other field without losing any precision in the user input.
+यदि किसी चीज़ को किसी props या state से प्राप्त किया जा सकता है, तो यह संभवतः state में नहीं होना चाहिए। उदाहरण के लिए, दोनों `celsiusValue` और `fahrenheitValue` को स्टोर करने के बजाय, हम केवल अंतिम संपादित `temperature` और इसके `scale` को स्टोर करते हैं| 'render()' method में उनकी सहायता से अन्य इनपुट की वैल्यू की गणना हमेशा की जा सकती है| This lets us clear or apply rounding to the other field without losing any precision in the user input.
 
 When you see something wrong in the UI, you can use [React Developer Tools](https://github.com/facebook/react-devtools) to inspect the props and move up the tree until you find the component responsible for updating the state. This lets you trace the bugs to their source:
 
