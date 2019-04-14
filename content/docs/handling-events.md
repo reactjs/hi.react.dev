@@ -54,11 +54,11 @@ function ActionLink() {
 }
 ```
 
-Here, `e` is a synthetic event. React defines these synthetic events according to the [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/), so you don't need to worry about cross-browser compatibility. See the [`SyntheticEvent`](/docs/events.html) reference guide to learn more.
+यहाँ पर 'e' एक synthetic इवेंट है | React इन synthetic इवेंट्स को [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/) के हिसाब से परिभाषित करता है, इसी लिए आपको cross-browser compatibility कि चिंता नही करनी चाहिए | और सिखने के लिए [`SyntheticEvent`](/docs/events.html) कि reference guide को देखें |
 
-When using React you should generally not need to call `addEventListener` to add listeners to a DOM element after it is created. Instead, just provide a listener when the element is initially rendered.
+React को इस्तेमाल करते वक्त आपको अगर किसी DOM एलिमेंट को बनाने के बाद उस में लिस्तेनेर्स तो आम तौर पर आपको `addEventListener` को कॉल करने कि जरुरत नही पड़ेगी | इसकी जगह पर आप listener उस एलिमेंट के सबसे पहली बार रेंडर होने पर ही दाल सकते है |
 
-When you define a component using an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes), a common pattern is for an event handler to be a method on the class. For example, this `Toggle` component renders a button that lets the user toggle between "ON" and "OFF" states:
+जब आप [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) से एक component डिफाइन करते हैं, तो इसके लिए event handler का उस class का method होना एक आम पैटर्न है | उद्धरण के तौर पर यह `Toggle` component एक बटन को रेंडर करता है जो कि आपको states को "ON" और "OFF" में बदलने देते हैं:
 
 ```js{6,7,10-14,18}
 class Toggle extends React.Component {
