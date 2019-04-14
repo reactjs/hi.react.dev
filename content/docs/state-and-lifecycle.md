@@ -73,11 +73,11 @@ ReactDOM.render(
 
 State "props" के समान है, लेकिन यह निजी और कौम्पोनॅन्ट द्वारा पूरी तरह से नियंत्रित है।
 
-हमने [पहले उल्लेख किया है](/docs/components-and-props.html#functional-and-class-components) कि क्लासेज के रूप में परिभाषित components में कुछ अतिरिक्त विशेषताएं हैं। लोकल state एक सुविधा है जो केवल क्लासेज के लिए उपलब्ध है।
+हमने [पहले उल्लेख किया है](/docs/components-and-props.html#functional-and-class-components) कि क्लासेज के रूप में परिभाषित कौम्पोनॅन्ट में कुछ अतिरिक्त विशेषताएं हैं। लोकल state एक सुविधा है जो केवल क्लासेज के लिए उपलब्ध है।
 
 ## किसी फंक्शन को क्लास में बदलना {#converting-a-function-to-a-class}
 
-आप `Clock` जैसे फंक्शन components को पांच चरणों में क्लास में बदल सकते हैं:
+आप `Clock` जैसे फंक्शन कौम्पोनॅन्ट को पांच चरणों में क्लास में बदल सकते हैं:
 
 1. `Clock` फंक्शन कंपोनेंट के नाम की ही एक [ES6 क्लास](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) बनाएँ, जो `React.Component` को एक्सटेंड करती है।
 
@@ -110,7 +110,7 @@ class Clock extends React.Component {
 
 ## क्लास में लोकल state ऐड करना {#adding-local-state-to-a-class}
 
-हम तीन चरणों में date को props से state में भेजेंगे:
+हम तीन चरणों में date को props से state में बदलेंगे:
 
 1) `render()` फंक्शन में `this.props.date` को `this.state.date` के साथ बदलें:
 
@@ -127,7 +127,7 @@ class Clock extends React.Component {
 }
 ```
 
-2) एक [class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor) जोड़ें जो प्रारंभिक `this.state` को असाइन करता है:
+2) एक [class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor) जोड़ें जो प्रारंभिक `this.state` को असाइन करेगा:
 
 ```js{4}
 class Clock extends React.Component {
@@ -156,7 +156,7 @@ class Clock extends React.Component {
   }
 ```
 
-क्लास के components को हमेशा बेस कंस्ट्रक्टर को `props` के साथ कॉल करना चाहिए।
+क्लास के कौम्पोनॅन् को हमेशा बेस कंस्ट्रक्टर को `props` के साथ कॉल करना चाहिए।
 
 3) `<Clock />` एलिमेंट से `date` prop निकालें:
 
