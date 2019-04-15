@@ -18,7 +18,7 @@ console.log(doubled);
 
 यह कोड [2, 4, 6, 8, 10] को कंसोल पर लोग करता है।
 
-React में,  array को [एलिमेंट्स](/docs/rendering-elements.html) की लिस्ट में बदलना लगभग समान है।
+React में, array को [एलिमेंट्स](/docs/rendering-elements.html) की लिस्ट में बदलना लगभग समान है।
 
 ### कई कौम्पोनॅन्टस को रेंडर करना {#rendering-multiple-components}
 
