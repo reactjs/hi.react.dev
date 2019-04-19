@@ -8,10 +8,10 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
-React के एलिमेंट्स के साथ इवेंट्स हैंडल करना DOM के एलिमेंट्स को हैंडल करने जैसा ही है | इनमे खली कुछ सिंटैक्टिक अंतर हैं |
+React के एलिमेंट्स के साथ इवेंट्स हैंडल करना DOM के एलिमेंट्स को हैंडल करने जैसा ही है । इनमे खाली कुछ सिंटैक्टिक अंतर हैं ।
 
-* React के इवेंट्स का नाम लोअरकेस कि जगह camelCase में रक्खा जाता है |
-* JSX के साथ आप एक function को एक string कि जगह इवेंट हैंडलर कि तरह उसमें पास करते हैं |
+* React के इवेंट्स का नाम lowercase कि जगह camelCase में रक्खा जाता है ।
+* JSX के साथ, आप एक function को इवेंट हैंडलर कि तरह पास करते हैं,  न कि एक string को ।
 
 उधारण के तौर पर, यह HTML code:
 
@@ -29,7 +29,7 @@ React में थोडा अलग है:
 </button>
 ```
 
-इसमें एक फरक यह भी है कि आप React में default behavior से बचने के लिए `false` रिटर्न नही कर सकते | आपको `preventDefault` अलग से बुलाना पड़ेगा | उदहारण के तौर पर, सिर्फ HTML के साथ अगर आपको link के नए पेज खोलने के default behavior से बचना है तो आप यह लिख सकते हैं:
+इसमें एक फरक यह भी है कि आप React में default behavior से बचने के लिए `false` रिटर्न नही कर सकते । आपको `preventDefault` अलग से कॉल करना पड़ेगा । उदहारण के तौर पर, अगर आप किसी HTML डॉक्यूमेंट कि लिंक के दुसरे पन्ने को खोलने के डिफ़ॉल्ट बेहेवियर से बचना चाहते हैं तो आप यह लिख सकते हैं:
 
 ```html
 <a href="#" onclick="console.log('The link was clicked.'); return false">
@@ -54,11 +54,11 @@ function ActionLink() {
 }
 ```
 
-यहाँ पर 'e' एक synthetic इवेंट है | React इन synthetic इवेंट्स को [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/) के हिसाब से परिभाषित करता है, इसी लिए आपको cross-browser compatibility कि चिंता नही करनी चाहिए | और सिखने के लिए [`SyntheticEvent`](/docs/events.html) कि reference guide को देखें |
+यहाँ पर `e` एक synthetic इवेंट है । React इन सिंथेटिक इवेंट्स को [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/) के हिसाब से परिभाषित करता है, इसी लिए आपको cross-browser compatibility कि चिंता नही करनी चाहिए । और सिखने के लिए [`SyntheticEvent`](/docs/events.html)की रिफरेन्स गाइड को देखें ।
 
-React को इस्तेमाल करते वक्त आपको अगर किसी DOM एलिमेंट को बनाने के बाद उस में लिस्तेनेर्स तो आम तौर पर आपको `addEventListener` को कॉल करने कि जरुरत नही पड़ेगी | इसकी जगह पर आप listener उस एलिमेंट के सबसे पहली बार रेंडर होने पर ही दाल सकते है |
+React को इस्तेमाल करते वक्त आपको ज्यादातर `addEventListener` कि किसी DOM एलिमेंट में लिस्टनर ऐड करने के बाद कॉल करने की ज़रूरत नहीं पड़ेगी । इसकी जगह पर आप listener उस एलिमेंट पर तब ऐड कर सकते हैं जब वो इनिश्यली रेंडर होता है ।
 
-जब आप [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) से एक component डिफाइन करते हैं, तो इसके लिए event handler का उस class का method होना एक आम पैटर्न है | उद्धरण के तौर पर यह `Toggle` component एक बटन को रेंडर करता है जो कि आपको states को "ON" और "OFF" में बदलने देते हैं:
+जब आप [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) से एक कौम्पोनॅन्ट डिफाइन करते हैं, तो इसके लिए इवेंट हैंडलर को उस क्लास का मेथड होना एक आम पैटर्न है । उद्धरण के तौर पर यह `Toggle` कौम्पोनॅन्ट एक बटन को रेंडर करता है जो यूजर को states को "ON" और "OFF" में बदलने देते हैं:
 
 ```js{6,7,10-14,18}
 class Toggle extends React.Component {
