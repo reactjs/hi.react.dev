@@ -26,7 +26,7 @@ function BoilingVerdict(props) {
 
 इसके बाद, हम 'Calculator' नामक एक कौम्पोनॅन्ट बनाएंगे। यह एक `<input>` रेंडर करेगा, जिसमे आप तापमान दर्ज कर सकते हैं, जिसकी value `this.state.temperature` में रहेगी।
 
-इसके अतिरिक्त, यह वर्तमान इनपुट मूल्य के लिए `BoilingVerdict` रेंडर कर देता है।
+इसके अतिरिक्त, यह वर्तमान इनपुट मूल्य के लिए `BoilingVerdict` को रेंडर करेगा।
 
 ```js{5,9,13,17-21}
 class Calculator extends React.Component {
@@ -118,7 +118,7 @@ class Calculator extends React.Component {
 
 ## कन्वर्शन फंक्शन्स लिखना {#writing-conversion-functions}
 
-सबसे पहले, हम दो फंक्शन्स लिखेंगे। Celsius से Fahrenheit और वापस Fahrenheit से Celsius में बदलने के लिए:
+सबसे पहले, हम दो फंक्शन्स लिखेंगे, Celsius से Fahrenheit और वापस Fahrenheit से Celsius में बदलने के लिए:
 
 ```js
 function toCelsius(fahrenheit) {
@@ -130,9 +130,9 @@ function toFahrenheit(celsius) {
 }
 ```
 
-यह दो फंक्शन्स संख्याओं को परिवर्तित करते हैं।हम एक और फ़ंक्शन लिखेंगे जो एक स्ट्रिंग `temperature` और एक कनवर्टर फ़ंक्शन को आर्गुमेंट के रूप में लेता है और एक स्ट्रिंग वापिस देता है। हम इसका उपयोग एक इनपुट के आधार पर दूसरे इनपुट की गणना करने के लिए करेंगे।
+यह दो फंक्शन्स संख्याओं को परिवर्तित करते हैं। हम एक और फ़ंक्शन लिखेंगे जो एक स्ट्रिंग `temperature` और एक कनवर्टर फ़ंक्शन को आर्गुमेंट के रूप में लेता है और एक स्ट्रिंग वापिस देता है। हम इसका उपयोग एक इनपुट के आधार पर दूसरे इनपुट की गणना करने के लिए करेंगे।
 
-यह अमान्य `temperature` पर एक खाली स्ट्रिंग देता है, और यह आउटपुट को तीसरे दशमलव स्थान तक रखता है:
+यह अमान्य `temperature` पर एक खाली स्ट्रिंग देता है, और यह आउटपुट को तीसरे दशमलव स्थान तक सीमित रखता है:
 
 ```js
 function tryConvert(temperature, convert) {
@@ -146,9 +146,9 @@ function tryConvert(temperature, convert) {
 }
 ```
 
-उदाहरण के लिए, `tryConvert('abc', toCelsius)` एक खाली स्ट्रिंग लौटाता है, और `tryConvert('10.22', toFahrenheit)` लौटाता है `'50.396'`।
+उदाहरण के लिए, `tryConvert('abc', toCelsius)` एक खाली स्ट्रिंग लौटाता है, और `tryConvert('10.22', toFahrenheit)` `'50.396'` लौटाता है।
 
-## स्टेट को ऊपर लेजाना {#lifting-state-up}
+## लिफ्टिंग स्टेट अप {#lifting-state-up}
 
 वर्तमान में, दोनों `TemperatureInput` कौम्पोनॅन्टस अपनी लोकल स्टेट को स्वतंत्र रूप में बनाये रखते हैं:
 
