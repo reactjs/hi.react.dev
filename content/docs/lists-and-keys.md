@@ -42,7 +42,7 @@ ReactDOM.render(
 );
 ```
 
-[** CodePen पर इसे आजमाएं**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
+[**इसे CodePen पर आज़माएँ**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
 
 यह कोड 1 से 5 के बीच संख्याओं की एक बुलेट लिस्ट प्रदर्शित करता है।
 
@@ -94,11 +94,11 @@ ReactDOM.render(
 );
 ```
 
-[**CodePen पर इसे आजमाएं**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
+[**इसे CodePen पर आज़माएँ**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
 
-## Keys {#Keys}
+## Keys {#keys}
 
-Keys प्रतिक्रिया को पहचानने में मदद करती हैं कि कौन से आइटम बदले गए हैं, जोड़े गए हैं, या हटा दिए गए हैं। एलिमेंटस को स्थिर पहचान देने के लिए array के अंदर तत्वों को key दी जानी चाहिए:
+Keys React को पहचानने में मदद करती हैं कि कौन से आइटम ऐड किये गए, जोड़े गए हैं या हटा दिए गए हैं। एलिमेंटस को स्थिर पहचान देने के लिए array के अंदर एलिमेंट्स को key दी जानी चाहिए:
 
 ```js{3}
 const numbers = [1, 2, 3, 4, 5];
@@ -109,7 +109,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-key चुनने का सबसे अच्छा तरीका एक String का उपयोग करना है जो विशिष्ट रूप से अपने भाई-बहनों के बीच एक लिस्ट आइटम की पहचान करता है। अक्सर आप अपने डेटा की IDs को key के रूप में उपयोग करेंगे:
+Key चुनने का सबसे अच्छा तरीका एक string का उपयोग करना है जो विशिष्ट रूप से अपने सिब्लिंग्स के बीच एक लिस्ट आइटम की पहचान करता है। अक्सर आप अपने डेटा की IDs को key के रूप में उपयोग करेंगे:
 
 ```js{2}
 const todoItems = todos.map((todo) =>
@@ -119,7 +119,7 @@ const todoItems = todos.map((todo) =>
 );
 ```
 
-जब आपके पास प्रदान की गई वस्तुओं के लिए स्थिर ID नहीं है, तो आप अंतिम उपाय के रूप में key के रूप में आइटम इंडेक्स का उपयोग कर सकते हैं:
+जब आपके पास प्रदान की गई वस्तुओं के लिए स्थिर ID नहीं है, तो आप अंतिम उपाय के रूप में आइटम इंडेक्स का key के रूप में उपयोग कर सकते हैं:
 
 ```js{2,3}
 const todoItems = todos.map((todo, index) =>
@@ -130,16 +130,16 @@ const todoItems = todos.map((todo, index) =>
 );
 ```
 
-यदि आइटम का क्रम बदल सकता है तो हम key के लिए इंडेक्स का उपयोग करने की सिफारिश करते हैं। यह प्रदर्शन को नकारात्मक रूप से प्रभावित कर सकता है और कौम्पोनॅन्ट की अवस्था के साथ समस्या पैदा कर सकता है। [इंडेक्स को key  के रूप में उपयोग करने के नकारात्मक प्रभावों](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318). पर गहन व्याख्या के लिए रॉबिन पोकोर्न के लेख को देखें। यदि आप आइटमों को सूचीबद्ध करने के लिए एक स्पष्ट key  निर्दिष्ट नहीं करने का विकल्प चुनते हैं तो React key  के रूप में इंडेक्स का उपयोग करने के लिए डिफ़ॉल्ट होगा।
+यदि आइटम का क्रम बदल सकता है तो हम key के लिए इंडेक्स का उपयोग ना करने की सिफारिश करते हैं। यह प्रदर्शन को नकारात्मक रूप से प्रभावित कर सकता है और कौम्पोनॅन्ट की अवस्था के साथ समस्या पैदा कर सकता है। Robin Pokorny के [इंडेक्स को key के रूप में उपयोग करने के नकारात्मक प्रभाव](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) के आर्टिकल को देखें। यदि आप आइटमों को सूचीबद्ध करने के लिए एक स्पष्ट key निर्दिष्ट नहीं करते हैं तो React key के रूप में इंडेक्स का उपयोग करता है।
 
-यदि आप अधिक सीखने में रुचि रखते हैं, [तो key क्यों आवश्यक है](/docs/reconciliation.html#recursing-on-children) , इस बारे में गहराई से व्याख्या करे ।
-###key के साथ कंपोनेंट्स निकालना{#Extracting-Components-with-Keys}
+यदि आप अधिक सीखने में रुचि रखते हैं, [तो key क्यों आवश्यक है](/docs/reconciliation.html#recursing-on-children), इस बारे में गहराई से व्याख्या करें।
+### Key के साथ कौम्पोनॅन्टस निकालना {#extracting-components-with-keys}
 
-keys केवल आस-पास के array के संदर्भ में समझ में आती हैं।
+keys केवल उनके array के लिए ही होती है|।
 
-उदाहरण के लिए, यदि आप एक ListItem कौम्पोनॅन्ट को [निकालते](/docs/components-and-props.html#extracting-components) हैं,तो आपको key  array के `<ListItem />` एलिमेंट पर रखनी चाहिए बजाये खुद `ListItem` के `<li>` एलिमेंट पर रखने के। 
+उदाहरण के लिए, यदि आप एक ListItem कौम्पोनॅन्ट को [निकालते](/docs/components-and-props.html#extracting-components) हैं, तो आपको key `ListItem` के `<li>` एलिमेंट पर रखने के बजाये array में `<ListItem />` एलिमेंट पर रखनी चाहिए। 
 
-**उदाहरण: गलत key  का उपयोग**
+**उदाहरण: key का गलत उपयोग**
 
 ```javascript{4,5,14,15}
 function ListItem(props) {
@@ -172,7 +172,7 @@ ReactDOM.render(
 );
 ```
 
-**उदाहरण:key  का सही उपयोग**
+**उदाहरण: key का सही उपयोग**
 
 ```javascript{2,3,9,10}
 function ListItem(props) {
@@ -201,13 +201,12 @@ ReactDOM.render(
 );
 ```
 
-[**CodePen पर इसे आजमाएं**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
+[**इसे CodePen पर आज़माएँ**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
-एक अच्छा नियम यह है कि एलिमेंटस  को `map()` कॉल के समय पर key  की जरुरत पड़ती है।  
+एक अच्छा नियम यह है कि एलिमेंटस को `map()` कॉल के समय पर key की जरुरत होती है।  
 
-### keys सिर्फ़ भाई-बहनों के बीच अद्वितीय होनी चाहिए{#Keys-Must-Only-Be-Unique-Among-Siblings}
-
-arrays के भीतर उपयोग की जाने वाली key उनके भाई-बहनों के बीच अद्वितीय होनी चाहिए। हालाँकि उन्हें विश्व स्तर पर अद्वितीय होने की आवश्यकता नहीं है। जब हम दो अलग-अलग arrays का उत्पादन करते हैं, तो हम उसी key  का उपयोग कर सकते हैं
+### Keys सिर्फ़ सिब्लिंग्स के बीच अद्वितीय होनी चाहिए {#keys-must-only-be-unique-among-siblings}
+Arrays के भीतर उपयोग की जाने वाली key उनके सिब्लिंग्स के बीच अद्वितीय होनी चाहिए। हालाँकि उन्हें विश्व स्तर पर अद्वितीय होने की आवश्यकता नहीं है। जब हम दो अलग-अलग arrays का उत्पादन करते हैं, तो हम उसी key का उपयोग कर सकते हैं:
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
@@ -245,9 +244,9 @@ ReactDOM.render(
 );
 ```
 
-[**CodePen पर इसे आज़माएं**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
+[**इसे CodePen पर आज़माएँ**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
 
-keys रियेक्ट के लिए संकेत के रूप में काम करती हैं  लेकिन वे आपके कौम्पोनॅन्टस  को पास नहीं की जाती हैं।  यदि आपको अपने कौम्पोनॅन्ट में समान मूल्य की आवश्यकता है,तो इसे अलग नाम के साथ prop के रूप में स्पष्ट रूप से पास करें:
+Keys React के लिए संकेत के रूप में काम करती हैं लेकिन वे आपके कौम्पोनॅन्टस को पास नहीं की जाती हैं। यदि आपको अपने कौम्पोनॅन्ट में समान वैल्यू की आवश्यकता है, तो इसे अलग नाम के साथ स्पष्ट रूप से prop की तरह पास करें:
 
 ```js{3,4}
 const content = posts.map((post) =>
@@ -258,9 +257,9 @@ const content = posts.map((post) =>
 );
 ```
 
-ऊपर के उदाहरण के साथ,`Post` कौम्पोनॅन्ट `props.id` पढ़ सकता है, लेकिन `props.key` नहीं।
+ऊपर के उदाहरण के साथ, `Post` कौम्पोनॅन्ट `props.id` पढ़ सकता है, लेकिन `props.key` नहीं।
 
-### JSX में मैप की एम्बेडिंग  {#Embedding-map()-in-JSX}
+### JSX में map() की एम्बेडिंग {#embedding-map-in-jsx}
 
 ऊपर दिए गए उदाहरणों में हमने एक अलग `listItems` वेरिएबल को घोषित किया था और इसे JSX में शामिल किया था:
 
@@ -279,8 +278,7 @@ function NumberList(props) {
 }
 ```
 
-JSX allows [embedding any expression](/docs/introducing-jsx.html#embedding-expressions-in-jsx) in curly braces so we could inline the `map()` result:
-JSX कर्ली ब्रेसिज़ में किसी भी एक्सप्रेशन को एम्बेडिंग करने की अनुमति देता है ताकि हम `map()` के परिणाम को इनलाइन कर सकें:
+JSX कर्ली ब्रेसिज़ में किसी भी [एक्सप्रेशन की एम्बेडिंग](/docs/introducing-jsx.html#embedding-expressions-in-jsx) करने की अनुमति देता है ताकि हम `map()` के परिणाम को इनलाइन कर सकें:
 
 ```js{5-8}
 function NumberList(props) {
@@ -296,6 +294,6 @@ function NumberList(props) {
 }
 ```
 
-[**CodePen पर इसे आज़माएं**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
+[**इसे CodePen पर आज़माएँ**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
-कभी-कभी इसका परिणाम स्पष्ट कोड होता है, लेकिन इस शैली का दुरुपयोग भी किया जा सकता है। जावास्क्रिप्ट की तरह, यह आपको तय करना है कि यह पठनीयता के लिए एक चर निकालने के लायक है या नहीं। ध्यान रखें कि यदि `map()` बॉडी बहुत नेस्टेड है, तो [कंपोनेंट निकालने](/docs/components-and-props.html#extracting-components).का अच्छा समय हो सकता है।
+कभी-कभी इसका परिणाम स्पष्ट कोड होता है, लेकिन इस शैली का दुरुपयोग भी किया जा सकता है। जैसे जावास्क्रिप्ट में ये आपको तय करना होता है की Readability के लिए एक variable को extract करना चाहिए या नहीं। ध्यान रखें कि यदि `map()` बॉडी बहुत नेस्टेड है, तो [कंपोनेंट निकालने](/docs/components-and-props.html#extracting-components) का अच्छा समय हो सकता है।
