@@ -8,7 +8,7 @@ prev: introducing-jsx.html
 next: components-and-props.html
 ---
 
-एलिमेंट्स एक रिएक्ट ऐप्स के सबसे छोटे बिल्डिंग ब्लॉक हैं।
+एलिमेंट्स रिएक्ट ऐप्स के सबसे छोटे बिल्डिंग ब्लॉक हैं।
 
 एक एलिमेंट वर्णन करता है कि आप स्क्रीन पर क्या देखना चाहते हैं:      
 
@@ -16,9 +16,9 @@ next: components-and-props.html
 const element = <h1>Hello, world</h1>;
 ```
 
-ब्राउज़र DOM एलेमेंट के विपरीत, React एलेमेंट्स एक सादा ऑब्जेक्ट है और इन्हें बनाना आसान है। React DOM React एलेमेंट्स के अनुसार DOM को अद्यतन बनाए रखता है।
+ब्राउज़र DOM एलेमेंट्स के विपरीत, React एलेमेंट्स प्लेन ऑब्जेक्ट है और इन्हें बनाना आसान है। React DOM React एलेमेंट्स के अनुसार DOM को अपडेट रखता है।
 
->**टिप्पणी:**
+>**ध्यान दें:**
 >
 > आप एलेमेंट्स को बहुचर्चित "कौम्पोनॅन्टस" समझ कर भ्रमित हो सकते है, हम "कौम्पोनॅन्टस" के बारे में [अगले भाग](/docs/components-and-props.html) में बतायेंगे। एलेमेंट्स वो है जिनका उपयोग करके एक कौम्पोनॅन्ट को बनाया जाता। आगे बढ़ने से पहले इस भाग को अवश्य पढ़े।
 
@@ -54,22 +54,23 @@ React एलेमेंट्स  [immutable](https://en.wikipedia.org/wiki/Imm
 
 [](codepen://rendering-elements/update-rendered-element)
 
-ये `ReactDOM.render()` को प्रत्येक सेकंड [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback से कोल करता है।
+ये `ReactDOM.render()` को प्रत्येक सेकंड [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback से कॉल करता है।
 
->**टिप्पणी:**
+>**ध्यान दें:**
 >
->व्यवहार में, ज़्यादातर React apps `ReactDOM.render()` को एक ही बार कोल करते है. अगले भाग में हम ये सीखेंगे कि कैसे इस तरह के कोड को [stateful components](/docs/state-and-lifecycle.html) में encapsulate करते है।
+>व्यवहार में, ज़्यादातर React apps `ReactDOM.render()` को एक ही बार कॉल करते है. अगले भाग में हम ये सीखेंगे कि कैसे इस तरह के कोड को [stateful components](/docs/state-and-lifecycle.html) में एन्काप्सुलेट करते है।
 >
 >हम अनुशंसा करते हैं कि आप विषयों को छोड़ें नहीं क्योंकि वे एक-दूसरे पर निर्माण करते हैं।
 
 ## React वही अपडेट करता है जो आवश्यक है {#react-only-updates-whats-necessary}
 
-React DOM एलेमेंट्स और उसके चिल्डरेंस की तुलना उसके पहले की अवस्था से करता है और केवल उन्ही चीज़ों में परिवर्तन करता जिससे की DOM वांछित स्थिति में आ जाय।
+React, DOM एलेमेंट्स और उसके चिल्डरेंस की तुलना उसके पहले की अवस्था से करता है और केवल उन्ही चीज़ों में परिवर्तन करता जिससे की DOM अप्डेट हो जाए।
 
-आप ब्राउज़र टूल की सहायता से [अंतिम उदाहरण](codepen://rendering-elements/update-rendered-element) का निरीक्षण करके सत्यापित कर सकते हैं:
+आप ब्राउज़र टूलस की सहायता से [अंतिम उदाहरण](codepen://rendering-elements/update-rendered-element) का निरीक्षण करके सत्यापित कर सकते हैं:
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
 भले ही हम हर टिक पर पूरे UI ट्री का वर्णन करने वाला एक एलेमेंट बनाते हैं, लेकिन केवल Text नोड जिसकी सामग्री बदल गई है वह React DOM द्वारा अपडेट हो जाता है।
 
-हमारे अनुभव में, यह सोचना कि UI को किसी भी क्षण को कैसे दिखना चाहिए, न कि इसे समय के साथ कैसे बदलना है, बहुत सारी बग की संभावनाओं को दूर कर देता है।
+हमारे अनुभव से, UI को कैसे अप्डेट करना है के बिपरीत यदि हम ये सोचे की UI को किसी समय कैसे दिखाना है तो हम बहुत सारी बग से बच सकते है।
+
