@@ -98,7 +98,7 @@ ReactDOM.render(
 
 ## Keys {#keys}
 
-Keys React को पहचानने में मदद करती हैं कि कौन से आइटम ऐड किये गए, जोड़े गए हैं या हटा दिए गए हैं। एलिमेंटस को स्थिर पहचान देने के लिए array के अंदर एलिमेंट्स को key दी जानी चाहिए:
+Keys React को पहचानने में मदद करती हैं कि कौन से आइटम ऐड किये गए हैं, या हटा दिए गए हैं। एलिमेंटस को स्थिर पहचान देने के लिए array के अंदर एलिमेंट्स को key दी जानी चाहिए:
 
 ```js{3}
 const numbers = [1, 2, 3, 4, 5];
@@ -135,7 +135,8 @@ const todoItems = todos.map((todo, index) =>
 यदि आप अधिक सीखने में रुचि रखते हैं, [तो key क्यों आवश्यक है](/docs/reconciliation.html#recursing-on-children), इस बारे में गहराई से व्याख्या करें।
 ### Key के साथ कौम्पोनॅन्टस निकालना {#extracting-components-with-keys}
 
-keys केवल उनके array के लिए ही होती है|।
+
+Keys केवल उनके array के लिए ही होती है।
 
 उदाहरण के लिए, यदि आप एक ListItem कौम्पोनॅन्ट को [निकालते](/docs/components-and-props.html#extracting-components) हैं, तो आपको key `ListItem` के `<li>` एलिमेंट पर रखने के बजाये array में `<ListItem />` एलिमेंट पर रखनी चाहिए। 
 
@@ -296,4 +297,4 @@ function NumberList(props) {
 
 [**इसे CodePen पर आज़माएँ**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
-कभी-कभी इसका परिणाम स्पष्ट कोड होता है, लेकिन इस शैली का दुरुपयोग भी किया जा सकता है। जैसे जावास्क्रिप्ट में ये आपको तय करना होता है की Readability के लिए एक variable को extract करना चाहिए या नहीं। ध्यान रखें कि यदि `map()` बॉडी बहुत नेस्टेड है, तो [कंपोनेंट निकालने](/docs/components-and-props.html#extracting-components) का अच्छा समय हो सकता है।
+कभी-कभी इसका परिणाम स्पष्ट कोड होता है, लेकिन इस शैली का दुरुपयोग भी किया जा सकता है। जैसे जावास्क्रिप्ट में ये आपको तय करना होता है की readability के लिए एक variable को extract करना चाहिए या नहीं। ध्यान रखें कि यदि `map()` बॉडी बहुत नेस्टेड है, तो [कंपोनेंट निकालने](/docs/components-and-props.html#extracting-components) का अच्छा समय हो सकता है।
