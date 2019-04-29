@@ -99,11 +99,7 @@ React के दस्तावेज़ मानते है की आपको
 
 ### एडवांस्ड कॉन्सेप्ट्स {#advanced-concepts}
 
-<<<<<<< HEAD
-जब आप [मुख्य कॉन्सेप्ट्स](#main-concepts) के साथ सहज महसूस करना शुरू कर दें और React का थोड़ा अभ्यास करलें, हो सकता है आपको एडवांस्ड विषयों में भी दिलचस्पी हों | यह भाग आपको ताकतवर लेकिन कम इस्तेमाल किये जाने वाली React की खासियत जैसे कि [context](/docs/context.html) और [refs](/docs/refs-and-the-dom.html) से आपका परिचय करवाएगा।
-=======
-Once you're comfortable with the [main concepts](/docs/hello-world.html) and played with React a little bit, you might be interested in more advanced topics. This section will introduce you to the powerful, but less commonly used React features like [context](/docs/context.html) and [refs](/docs/refs-and-the-dom.html).
->>>>>>> b8b3db7acbba117addeea8a7fb86957eb046d7ce
+जब आप [मुख्य कॉन्सेप्ट्स](/docs/hello-world.html) के साथ सहज महसूस करना शुरू कर दें और React का थोड़ा अभ्यास करलें, हो सकता है आपको एडवांस्ड विषयों में भी दिलचस्पी हों | यह भाग आपको ताकतवर लेकिन कम इस्तेमाल किये जाने वाली React की खासियत जैसे कि [context](/docs/context.html) और [refs](/docs/refs-and-the-dom.html) से आपका परिचय करवाएगा।
 
 ### API रिफरेन्स {#api-reference}
 
