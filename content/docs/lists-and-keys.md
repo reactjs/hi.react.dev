@@ -133,8 +133,8 @@ const todoItems = todos.map((todo, index) =>
 यदि आइटम का क्रम बदल सकता है तो हम key के लिए इंडेक्स का उपयोग ना करने की सिफारिश करते हैं। यह प्रदर्शन को नकारात्मक रूप से प्रभावित कर सकता है और कौम्पोनॅन्ट की अवस्था के साथ समस्या पैदा कर सकता है। Robin Pokorny के [इंडेक्स को key के रूप में उपयोग करने के नकारात्मक प्रभाव](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) के आर्टिकल को देखें। यदि आप आइटमों को सूचीबद्ध करने के लिए एक स्पष्ट key निर्दिष्ट नहीं करते हैं तो React key के रूप में इंडेक्स का उपयोग करता है।
 
 यदि आप अधिक सीखने में रुचि रखते हैं, [तो key क्यों आवश्यक है](/docs/reconciliation.html#recursing-on-children), इस बारे में गहराई से व्याख्या करें।
-### Key के साथ कौम्पोनॅन्टस निकालना {#extracting-components-with-keys}
 
+### Key के साथ कौम्पोनॅन्टस निकालना {#extracting-components-with-keys}
 
 Keys केवल उनके array के लिए ही होती है।
 
