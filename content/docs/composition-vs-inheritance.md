@@ -8,15 +8,15 @@ prev: lifting-state-up.html
 next: thinking-in-react.html
 ---
 
-React has a powerful composition model, and we recommend using composition instead of inheritance to reuse code between components.
+React का कम्पोजीशन मॉडल शक्तिशाली है, और हम सलाह देते है कि आप कौम्पोनॅन्ट के बीच कोड के दुबारा प्रयोग के लिए इनहेरिटेंस कि जगह कम्पोजीशन का प्रयोग करे|
 
-In this section, we will consider a few problems where developers new to React often reach for inheritance, and show how we can solve them with composition.
+इस भाग में, हम कुछ समस्याएं देखेंगे जहाँ React के नए डेवेलपर्स इनहेरिटेंस का प्रयोग करने की दिशा में जाते है, और यह भी देखेंगे की हम उनका समाधान कम्पोजीशन से कैसे कर सकते हैं|
 
-## Containment {#containment}
+## कन्टेनमेंट {#containment}
 
-Some components don't know their children ahead of time. This is especially common for components like `Sidebar` or `Dialog` that represent generic "boxes".
+कुछ कौम्पोनॅन्ट अपने children के बारे में समय से पूर्व नहीं जान पाते| यह उन कौम्पोनॅन्ट्स के लिए आम बात है, जो सामान्य "boxes" दर्शाते है, जैसे `Sidebar` एवं `Dialog`।
 
-We recommend that such components use the special `children` prop to pass children elements directly into their output:
+हम सलाह देते है कि, यह कौम्पोनॅन्ट्स विशेष `children` props का प्रयोग करे जिनसे children एलिमेंट्स को सीधा आउटपुट में पास करना मुमकिन होगा|
 
 ```js{4}
 function FancyBorder(props) {
@@ -28,7 +28,7 @@ function FancyBorder(props) {
 }
 ```
 
-This lets other components pass arbitrary children to them by nesting the JSX:
+यह दूसरे कौम्पोनॅन्ट्स को JSX की nesting के माध्यम से मनमाना children पास करने देता है|
 
 ```js{4-9}
 function WelcomeDialog() {
@@ -47,9 +47,9 @@ function WelcomeDialog() {
 
 **[Try it on CodePen](https://codepen.io/gaearon/pen/ozqNOV?editors=0010)**
 
-Anything inside the `<FancyBorder>` JSX tag gets passed into the `FancyBorder` component as a `children` prop. Since `FancyBorder` renders `{props.children}` inside a `<div>`, the passed elements appear in the final output.
+`<FancyBorder>` JSX टैग के अंदर कुछ भी हो, वह `FancyBorder` कौम्पोनॅन्ट में `चिल्ड्रेंस` prop की तरह पास किया जा सकता है। क्यूंकि `FancyBorder`, `{props.children}` को `<div>` के अंदर रेंडर करता है, पास किये गए एल्मेंट्स अंतिम परिणाम में देखे जा सकते हैं|
 
-While this is less common, sometimes you might need multiple "holes" in a component. In such cases you may come up with your own convention instead of using `children`:
+जबकि यह सामान्य नहीं है, कई बारी आपको एक कौम्पोनॅन्ट में एक से अधिक "holes" की आवश्यकता पढ़ सकती है। इन परिस्थियों में आप `children` की जगह अपनी कन्वेंशंस इजात कर सकते हैं:
 
 ```js{5,8,18,21}
 function SplitPane(props) {
@@ -80,13 +80,13 @@ function App() {
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/gwZOJp?editors=0010)
 
-React elements like `<Contacts />` and `<Chat />` are just objects, so you can pass them as props like any other data. This approach may remind you of "slots" in other libraries but there are no limitations on what you can pass as props in React.
+React एलिमेंट्स जैसे कि `<Contacts />` एवं `<Chat />` केवल एक ऑब्जेक्ट है, आप इनको props की तरह पास कर सकते है, जैसे आप बाक़ी डाटा को पास करते है । यह तरिका आपको और लाइब्रेरीज में "slot" की तरह लग रहा होगा परन्तु React में कोई रोक नहीं है कि आप props में क्या पास कर सकते हैं|
 
-## Specialization {#specialization}
+## स्पेशलाइजेशन {#specialization}
 
-Sometimes we think about components as being "special cases" of other components. For example, we might say that a `WelcomeDialog` is a special case of `Dialog`.
+कई बार हम कौम्पोनॅन्ट्स को और कौम्पोनॅन्ट्स का "स्पेशल केसेस" समझते है। उदहारण के लिए हम कह सकते है `WelcomeDialog`, `Dialog` का विशेष केस है।
 
-In React, this is also achieved by composition, where a more "specific" component renders a more "generic" one and configures it with props:
+React में यह भी कम्पोजीशन से उपलब्ध किया जाता है, जहाँ एक "विशिष्ट" कौम्पोनॅन्ट एक "सामान्य" कौम्पोनॅन्ट को रेंडर करता है और उसको props के द्वारा कॉन्फ़िगर करता है:
 
 ```js{5,8,16-18}
 function Dialog(props) {
@@ -113,7 +113,7 @@ function WelcomeDialog() {
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/kkEaOZ?editors=0010)
 
-Composition works equally well for components defined as classes:
+कम्पोजीशन, classes वाले कौम्पोनॅन्ट के लिए भी समान रूप से काम करता है:
 
 ```js{10,27-31}
 function Dialog(props) {
@@ -165,8 +165,8 @@ class SignUpDialog extends React.Component {
 
 ## So What About Inheritance? {#so-what-about-inheritance}
 
-At Facebook, we use React in thousands of components, and we haven't found any use cases where we would recommend creating component inheritance hierarchies.
+Facebook में हम हज़ारों React कौम्पोनॅन्ट्स का प्रयोग करते हैं, लेकिन हमे कोई भी ऐसा केस नहीं मिला जहाँ हम आपको कौम्पोनॅन्ट्स इन्हेरिटेंस हाईरारकीस बनाने की सलाह दे।
 
-Props and composition give you all the flexibility you need to customize a component's look and behavior in an explicit and safe way. Remember that components may accept arbitrary props, including primitive values, React elements, or functions.
+Props एवं कम्पोजीशन आपको हर प्रकार का लचीलापन देता है ताकि आप अपने कौम्पोनॅन्ट का देख दिखाव एवं बिहेवियर एक सुरक्षित एवं एक्सप्लिसित तरीके से बदल सके। याद रखिये की एक कौम्पोनॅन्ट आरबिटीआरी props, जिसमे प्रिमिटिव वैल्यू हो, React एलिमेंट्स या फिर फंक्शन्स को स्वीकार कर सकता है।
 
-If you want to reuse non-UI functionality between components, we suggest extracting it into a separate JavaScript module. The components may import it and use that function, object, or a class, without extending it.
+अगर आप अपने कौम्पोनॅन्ट के बीच कोई भी non-UI फंक्शनलिटी का प्रयोग करना चाहते है, हम सुझाव देंगे की आप एक अलग जावास्क्रिप्ट मॉड्यूल का प्रयोग करें क्योंकि कोई भी कौम्पोनॅन्ट इसको इम्पोर्ट कर सकता है एवं बिना इसको एक्सटेंड करे इसको फंक्शन, ऑब्जेक्ट, या फिर class की तरह प्रयोग कर सकता है|
