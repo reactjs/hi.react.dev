@@ -91,13 +91,13 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/xEmzGg?editors=0010)
+[**इससे CodePen पर इस्तेमाल करें**](https://codepen.io/gaearon/pen/xEmzGg?editors=0010)
 
-You have to be careful about the meaning of `this` in JSX callbacks. In JavaScript, class methods are not [bound](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind) by default. If you forget to bind `this.handleClick` and pass it to `onClick`, `this` will be `undefined` when the function is actually called.
+JSX callbacks आपको `this` के मतलब के साथ ध्यानपूर्वक रहना चाहिए । जावास्क्रिप्ट में class मेथड्स पहले से [bound](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind) नहीं होते । अगर आप `this.handleClick` को bind करना भूल जाते हैं और उसे `onClick` पर पास कर देते हैं तो, `this` function के बुलाने पर `undefined` हो जाता है ।
 
-This is not React-specific behavior; it is a part of [how functions work in JavaScript](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/). Generally, if you refer to a method without `()` after it, such as `onClick={this.handleClick}`, you should bind that method.
+यह बर्ताव React कि वजेह से नहीं होता बल्कि यह [जावास्क्रिप्ट के functions के काम करने के तरीके का एक भाग है ](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/). आम तौर पर अगर आप किसी मेथड को बिना `()` को उसके बाद में लगाये refer करते है, जैसे, `onClick={this.handleClick}` तो आपको वो मेथड bind करना चाहिए ।
 
-If calling `bind` annoys you, there are two ways you can get around this. If you are using the experimental [public class fields syntax](https://babeljs.io/docs/plugins/transform-class-properties/), you can use class fields to correctly bind callbacks:
+अगर `bind` का बार बार कॉल करना आपको परेशान करता है, तो इससे बचने के आपके पास दो तरीके हैं । अगर आप experimental [public class फ़ील्ड्स सिंटेक्स](https://babeljs.io/docs/plugins/transform-class-properties/) इस्तेमाल कर रहे हैं, तो आप class फ़ील्ड्स का इस्तेमाल करके callbacks को सही से bind कर सकते हैं:
 
 ```js{2-6}
 class LoggingButton extends React.Component {
