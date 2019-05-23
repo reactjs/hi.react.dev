@@ -8,7 +8,7 @@ next: forms.html
 
 पहले, आइए समीक्षा करें कि आप जावास्क्रिप्ट में लिस्ट्स को कैसे बदलते हैं।
 
-नीचे दिए गए कोड में हम `numbers` की एक array लेने और उनके मूल्यों को दोगुना करने के लिए [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) फ़ंक्शन का उपयोग करते हैं। हम `map()` द्वारा दिए गए नए array को `double` नाम के वेरिएबल को सौपते हैं और फिर लॉग करते हैं।
+नीचे दिए गए कोड में हम `numbers` की एक array के मूल्यों को दोगुना करने के लिए [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) फ़ंक्शन का उपयोग करते हैं। हम `map()` द्वारा दिए गए नए array को `doubled` नाम के वेरिएबल को सौपते हैं और फिर लॉग करते हैं।
 
 ```javascript{2}
 const numbers = [1, 2, 3, 4, 5];
@@ -16,7 +16,7 @@ const doubled = numbers.map((number) => number * 2);
 console.log(doubled);
 ```
 
-यह कोड [2, 4, 6, 8, 10] को कंसोल पर लोग करता है।
+यह कोड [2, 4, 6, 8, 10] को कंसोल main लोग करता है।
 
 React में, array को [एलिमेंट्स](/docs/rendering-elements.html) की लिस्ट में बदलना लगभग समान है।
 
@@ -24,7 +24,7 @@ React में, array को [एलिमेंट्स](/docs/rendering-elem
 
 आप एलिमेंट्स का संग्रह बना सकते हैं और कर्ली ब्रेसिज़ `{}` का उपयोग करके [उन्हें JSX में शामिल कर सकते हैं।](/docs/introducing-jsx.html#embedding-expressions-in-jsx)
 
-हमने जावास्क्रिप्ट [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) फंक्शन का उपयोग करके `numbers` नाम की array में लूप लगाया है। हमने प्रत्येक आइटम के लिए  `<li>` एलिमेंट को रिटर्न किया है। अंत में, हम परिणामस्वरूप आयी हुई एलिमेंट्स की array को `listItems` को सौपते है:
+हमने जावास्क्रिप्ट [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) फंक्शन का उपयोग करके `numbers` नाम की array में लूप लगाया है। हमने प्रत्येक आइटम के लिए `<li>` एलिमेंट को रिटर्न किया है। अंत में, हम परिणामस्वरूप आयी हुई एलिमेंट्स की array को `listItems` को सौपते है:
 
 ```javascript{2-4}
 const numbers = [1, 2, 3, 4, 5];
@@ -48,7 +48,7 @@ ReactDOM.render(
 
 ### मूल लिस्टस कौम्पोनॅन्ट {#basic-list-component}
 
-आमतौर पर आप एक [कौम्पोनॅन्ट](/docs/components-and-props.html) के अंदर लिस्ट रेंडर करते हैं।। 
+आमतौर पर आप एक [कौम्पोनॅन्ट](/docs/components-and-props.html) के अंदर लिस्ट रेंडर करते हैं। 
 
 हम पिछले उदाहरण को एक कौम्पोनॅन्ट में बदल सकते हैं जो `numbers` की एक array को स्वीकार करता है और एलिमेंटस की लिस्ट को आउटपुट करता है।
 
@@ -70,9 +70,9 @@ ReactDOM.render(
 );
 ```
 
-जब आप यह कोड चलाते हैं, तो आपको एक चेतावनी दी जाती है कि लिस्ट आइटम के लिए एक key प्रदान की जानी चाहिए। "key" एक विशेष स्ट्रिंग विशेषता है जिसे आपको एलिमेंटस की सूची बनाते समय शामिल करने की आवश्यकता होती है। हम अगले भाग में चर्चा करेंगे कि यह महत्वपूर्ण क्यों है।
+जब आप यह कोड चलाते हैं, तो आपको एक चेतावनी दी जाती है कि लिस्ट आइटम के लिए एक key प्रदान की जानी चाहिए। "key" एक विशेष स्ट्रिंग एट्रिब्यूट है जिसे आपको एलिमेंटस की सूची बनाते समय शामिल करने की आवश्यकता होती है। हम अगले भाग में चर्चा करेंगे कि यह महत्वपूर्ण क्यों है।
 
-आइए `numbers.map()` के अंदर हमारी लिस्ट आइटम की एक `key`असाइन करें और लापता key की समस्या को ठीक करें।
+आइए `numbers.map()` के अंदर हमारी लिस्ट आइटम को एक `key`असाइन करें और लापता key की समस्या को ठीक करें।
 
 ```javascript{4}
 function NumberList(props) {
