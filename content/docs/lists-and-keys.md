@@ -16,7 +16,7 @@ const doubled = numbers.map((number) => number * 2);
 console.log(doubled);
 ```
 
-यह कोड [2, 4, 6, 8, 10] को कंसोल मैं लोग करता है।
+यह कोड [2, 4, 6, 8, 10] को कंसोल में लोग करता है।
 
 React में, array को [एलिमेंट्स](/docs/rendering-elements.html) की लिस्ट में बदलना लगभग समान है।
 
