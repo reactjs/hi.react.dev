@@ -136,7 +136,7 @@ const todoItems = todos.map((todo, index) =>
 
 ### Key के साथ कौम्पोनॅन्टस निकालना {#extracting-components-with-keys}
 
-Keys केवल उनके array के लिए ही होती है।
+Keys केवल आस-पास के array के संदर्भ में ही समझ में आती हैं।
 
 उदाहरण के लिए, यदि आप एक ListItem कौम्पोनॅन्ट को [निकालते](/docs/components-and-props.html#extracting-components) हैं, तो आपको key `ListItem` के `<li>` एलिमेंट पर रखने के बजाये array में `<ListItem />` एलिमेंट पर रखनी चाहिए। 
 
