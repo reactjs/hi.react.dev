@@ -248,7 +248,7 @@ This is typically implemented by attaching a `click` event to the `window` objec
 
 ```javascript{12-14,26-30}
 class OuterClickExample extends React.Component {
-constructor(props) {
+  constructor(props) {
     super(props);
 
     this.state = { isOpen: false };
@@ -299,7 +299,7 @@ This may work fine for users with pointer devices, such as a mouse, but operatin
 
 <img src="../images/docs/outerclick-with-keyboard.gif" alt="A toggle button opening a popover list implemented with the click outside pattern and operated with the keyboard showing the popover not being closed on blur and it obscuring other screen elements." />
 
-The same functionality can be achieved by using an appropriate event handlers instead, such as `onBlur` and `onFocus`:
+The same functionality can be achieved by using appropriate event handlers instead, such as `onBlur` and `onFocus`:
 
 ```javascript{19-29,31-34,37-38,40-41}
 class BlurExample extends React.Component {
@@ -421,7 +421,7 @@ There are a number of tools we can use to assist in the creation of accessible w
 
 By far the easiest and also one of the most important checks is to test if your entire website can be reached and used with the keyboard alone. Do this by:
 
-1. Plugging out your mouse.
+1. Disconnecting your mouse.
 1. Using `Tab` and `Shift+Tab` to browse.
 1. Using `Enter` to activate elements.
 1. Where required, using your keyboard arrow keys to interact with some elements, such as menus and dropdowns.
