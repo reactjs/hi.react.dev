@@ -10,7 +10,7 @@ redirect_from:
 
 रीएक्ट में, आप अलग-अलग घटक बना सकते हैं जो आपके लिए आवश्यक व्यवहार को संक्षिप्त करते हैं। फिर, आप अपने आवेदन की स्थिति के आधार पर उनमें से कुछ को ही प्रस्तुत कर सकते हैं।.
 
-कंडीशनल रेंडरिंग रियेक्ट में वैसे ही काम करता हे जैसे कंडीशंस जावास्क्रिप्ट में करते हे । Use JavaScript operators like [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) or the [conditional operator](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) to create elements representing the current state, and let React update the UI to match them.
+कंडीशनल रेंडरिंग रियेक्ट में वैसे ही काम करता हे जैसे कंडीशंस जावास्क्रिप्ट में करते हे । जावास्क्रिप्ट ऑपरेटर्स जैसे [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) और [`कंडीशनल ऑपरेटर्स `](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) जो एलिमेंट्स बनके करंट स्टेट को रिप्रेजेंट करते हे । , and let React update the UI to match them.
 
 Consider these two components:
 
