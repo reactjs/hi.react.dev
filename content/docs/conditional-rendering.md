@@ -12,7 +12,7 @@ React में, आप अलग-अलग कॉम्पोनेन्ट �
 
 कंडीशनल रेंडरिंग React में वैसे ही काम करता हे जैसे कंडीशंस जावास्क्रिप्ट में करते हे । जावास्क्रिप्ट ऑपरेटर्स जैसे [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) और [`कंडीशनल ऑपरेटर्स `](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) जो एलिमेंट्स बनके करंट स्टेट को रिप्रेजेंट करते हे । , फिर  React UI को  अपडेट करके मैच कर देगा । 
 
-Consider these two components:
+एक्साम्पल के तौर पे यह दो कॉम्पोनेन्ट देखो :
 
 ```js
 function UserGreeting(props) {
@@ -24,7 +24,7 @@ function GuestGreeting(props) {
 }
 ```
 
-We'll create a `Greeting` component that displays either of these components depending on whether a user is logged in:
+हम `Greeting` कॉम्पोनेन्ट बना रहे हे । अगर यूजर लॉगिन हे तभी देखेगा :
 
 ```javascript{3-7,11,12}
 function Greeting(props) {
@@ -44,13 +44,15 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
 
-This example renders a different greeting depending on the value of `isLoggedIn` prop.
 
-### Element Variables {#element-variables}
+यह एक्साम्पल `isLoggedIn` प्रोप के वैल्यू के अनुसार अलग अलग ग्रीटिंग्स रेंडर करता हे 
 
-You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn't change.
+### एलिमेंट वेरिएबल {#element-variables}
 
-Consider these two new components representing Logout and Login buttons:
+आप एलिमेंट्स को स्टोर करने के लिए वेरिएबल्स का उसे कर सकते हो . 
+जिससे आपको कंडीशनल रेंडरिंग में मदत होगी और बाकि का आउटपुट चेंज नहीं होगा 
+
+अब लॉगिन और लॉगआउट बटन्स नए कंपोनेंट्स को देखो :
 
 ```js
 function LoginButton(props) {
@@ -70,9 +72,10 @@ function LogoutButton(props) {
 }
 ```
 
-In the example below, we will create a [stateful component](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) called `LoginControl`.
 
-It will render either `<LoginButton />` or `<LogoutButton />` depending on its current state. It will also render a `<Greeting />` from the previous example:
+इस एक्साम्पल में हम बना रहे हे [स्टैटिफुल कम्पोनेनेट ] (/docs/state-and-lifecycle.html#adding-local-state-to-a-class) जिसे बोलते हे  `LoginControl`.
+
+जो करंट स्टेट के हिसाब से `<LoginButton />` या  `<LogoutButton />` को रेंडर करेगा वो `<Greeting />` को भी रेंडर करेगा जैसे पिछले एक्साम्पल में बताया था :
 
 ```javascript{20-25,29,30}
 class LoginControl extends React.Component {
@@ -118,7 +121,7 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
 
-While declaring a variable and using an `if` statement is a fine way to conditionally render a component, sometimes you might want to use a shorter syntax. There are a few ways to inline conditions in JSX, explained below.
+वेरिएबल डिक्लेअर करके और  `if`  स्टेटमेंट का यूज़ करना जिससे हम कॉम्पोनेन्ट को कंडशनल रेंडर कर सके यह अच्छी बात हे ,कभी आपको छोटा शार्ट सिंटेक्स उसे करना पड़ सकता हे .यहाँ नीचे, JSX में इन लाइन कंडीशंस के कुछ पर्याय दिए  हे 
 
 ### Inline If with Logical && Operator {#inline-if-with-logical--operator}
 
