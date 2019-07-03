@@ -194,9 +194,9 @@ render() {
 
 ### कॉम्पोनेन्ट को रेंडर करने से बचाये {#preventing-component-from-rendering}
 
-In rare cases you might want a component to hide itself even though it was rendered by another component. To do this return `null` instead of its render output.
+कुछ केसेस में कंपोनेंट को छिपाना पड़ता हे जब की वह किसी दूसरे कॉम्पोनेन्ट में रेंडर हो रहे हो. तब हमको आउटपुट को रेंडर करने के अलावा `null` रीटर्न करना हे .
 
-In the example below, the `<WarningBanner />` is rendered depending on the value of the prop called `warn`. If the value of the prop is `false`, then the component does not render:
+जैसे नीचे के एक्साम्पल में, `<WarningBanner />` यह कॉम्पोनेन्ट  `warn` प्रोप के वैल्यू के अनुसार रेंडर हुआ हे. अगर इसकी वैल्यू `false` रहती तोह कॉम्पोनेन्ट रेंडर नहीं होता :
 
 ```javascript{2-4,29}
 function WarningBanner(props) {
@@ -244,4 +244,4 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
 
-Returning `null` from a component's `render` method does not affect the firing of the component's lifecycle methods. For instance `componentDidUpdate` will still be called.
+कॉम्पोनेन्ट के `रेंडर` से `null` रीटर्न करने का और कॉम्पोनेन्ट के लाइफ साइकिल मेथड्स पर कोई असर नहीं पड़ता. जैसे की `componentDidUpdate` फिर भी कॉल होगा .
