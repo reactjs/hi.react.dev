@@ -123,9 +123,9 @@ ReactDOM.render(
 
 वेरिएबल डिक्लेअर करके और  `if`  स्टेटमेंट का यूज़ करना जिससे हम कॉम्पोनेन्ट को कंडशनल रेंडर कर सके यह अच्छी बात हे ,कभी आपको छोटा शार्ट सिंटेक्स उसे करना पड़ सकता हे .यहाँ नीचे, JSX में इन लाइन कंडीशंस के कुछ पर्याय दिए  हे 
 
-### Inline If with Logical && Operator {#inline-if-with-logical--operator}
+### लॉजिकल && ऑपरेटर के साथ इन लाइन `if` का इस्तेमाल  {#inline-if-with-logical--operator}
 
-You may [embed any expressions in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) by wrapping them in curly braces. This includes the JavaScript logical `&&` operator. It can be handy for conditionally including an element:
+आप  [कोई भी एक्सप्रेशन `jsx` में डाल सकते हे](/docs/introducing-jsx.html#embedding-expressions-in-jsx) उसको कर्ली ब्रेसेस के अंदर व्रैप करना पड़ेगा. इसमें जावास्क्रिप्ट का लॉजिकल `&&` ऑपरेटर भी शामिल हे. इसकी मदत से हम कोई एलिमेंट को कंडीशंस से इन्क्लूड कर सकते हे: 
 
 ```js{6-10}
 function Mailbox(props) {
@@ -151,15 +151,15 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
-It works because in JavaScript, `true && expression` always evaluates to `expression`, and `false && expression` always evaluates to `false`.
+जैवसक्रिप्ट मे  यह काम करता हे,  `true && expression` हमेशा `expression` होता हे , और `false && expression` हमेशा `false` होता हे.
 
-Therefore, if the condition is `true`, the element right after `&&` will appear in the output. If it is `false`, React will ignore and skip it.
+इसीलिए, अगर कोई कंडीशन `true` हे, तोह `&&` के आगे का एलिमेंट आउटपुट में आ जाता हे. अगर यह `false` हे, फिर रियेक्ट इसको इग्नोर कर स्किप करेगा.   
 
-### Inline If-Else with Conditional Operator {#inline-if-else-with-conditional-operator}
+### कंडीशनल ऑपरेटर्स के साथ इन लाइन if-else {#inline-if-else-with-conditional-operator}
 
-Another method for conditionally rendering elements inline is to use the JavaScript conditional operator [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator).
+जावास्क्रिप्ट की कंडीशनल ऑपरेटर्स का उसे करना [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) यह इन लाइन एलिमेंट्स की कंडीशनल रेंडरिंग की दूसरी पद्धति हे. 
 
-In the example below, we use it to conditionally render a small block of text.
+जैसे नीचे के एक्साम्पल में, कंडीशनल रेंडर कर छोटे टेक्स्ट ब्लॉक को रेंडर किआ.
 
 ```javascript{5}
 render() {
@@ -172,7 +172,7 @@ render() {
 }
 ```
 
-It can also be used for larger expressions although it is less obvious what's going on:
+इसे हम बड़े एक्सप्रेशन्स के साथ भी उसे कर सकते हे इससे कैसे काम हो रहा हे यह समझना आसान हो जाता हे :
 
 ```js{5,7,9}
 render() {
@@ -189,9 +189,10 @@ render() {
 }
 ```
 
-Just like in JavaScript, it is up to you to choose an appropriate style based on what you and your team consider more readable. Also remember that whenever conditions become too complex, it might be a good time to [extract a component](/docs/components-and-props.html#extracting-components).
+जैसे की जावास्क्रिप्ट में होता हे, यह हम पे निर्भर करता हे की कोनसा स्टाइल उसे करे जिससे आप और आपि टीम को समझना आसान हो. यह भी याद रहना की जैसे कंडीशंस बड़ी और बेचिदा हो, तब कॉम्पोनेन्ट को एक्सट्रेक्ट करना अच्छा रहता हे [कॉम्पोनेन्ट को एक्सट्रेक्ट](/docs/components-and-props.html#extracting-components).
+,  
 
-### Preventing Component from Rendering {#preventing-component-from-rendering}
+### कॉम्पोनेन्ट को रेंडर करने से बचाये {#preventing-component-from-rendering}
 
 In rare cases you might want a component to hide itself even though it was rendered by another component. To do this return `null` instead of its render output.
 
