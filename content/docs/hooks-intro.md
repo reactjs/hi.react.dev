@@ -56,9 +56,9 @@ React कांफ्रेंस 2018 में, सोफी अल्पर�
 
 **रियेक्ट से क्लासेज को निकलने का कोई प्लान नहीं हे** Hooks के बारे में ज्यादा जानकारी के लिए [नीचे](#gradual-adoption-strategy) इस पेज पर.
 
-**Hooks don't replace your knowledge of React concepts.** Instead, Hooks provide a more direct API to the React concepts you already know: props, state, context, refs, and lifecycle. As we will show later, Hooks also offer a new powerful way to combine them.
+**हुक्स React कॉन्सेप्ट्स को रेप्लस करने हेतु नहीं हे** हलाकि, Hooks आपका पहले का रियेक्ट नॉलेज के प्रति डायरेक्ट API हे: props, state, context, refs, and lifecycle. hooks एक भरी फरकम सब को मिलके एक पर्याय हे.
 
-**If you just want to start learning Hooks, feel free to [jump directly to the next page!](/docs/hooks-overview.html)** You can also keep reading this page to learn more about why we're adding Hooks, and how we're going to start using them without rewriting our applications.
+**यहाँ आप हुक्स के बारे में सीखना स्टार्ट कर सकते हे [अगले पेज पर जम्प करे!](/docs/hooks-overview.html)** hooks के बारे में ज्यादा जानकारी के लिए पेज पढ़ते रहिये, और कोड फिरसे न लिख कर उसक यूज़ करना स्टार्ट करे.
 
 ## Motivation {#motivation}
 
