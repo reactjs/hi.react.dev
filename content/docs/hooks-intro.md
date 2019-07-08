@@ -6,7 +6,6 @@ next: hooks-overview.html
 ---
 
 *Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
-*Hooks* ये React 16.8 में नए से डाले हे। जिससे आप स्टेट और रियेक्ट के फीचर्स बिना क्लास लिखे भी इस्तेमाल कर सकते हे।
 
 ```js{4,5}
 import React, { useState } from 'react';
@@ -26,39 +25,35 @@ function Example() {
 }
 ```
 
-`useState` यह हमारा पहला "Hook" फंक्शन हे जिसके बारे में हम सीखेंगे, यह उदाहरण महज एक टीज़र हे.
-यह समझ नहीं आया तोह भी फ़िक्र की कोई बात नहीं हे!
+This new function `useState` is the first "Hook" we'll learn about, but this example is just a teaser. Don't worry if it doesn't make sense yet!
 
+**You can start learning Hooks [on the next page](/docs/hooks-overview.html).** On this page, we'll continue by explaining why we're adding Hooks to React and how they can help you write great applications.
 
-**यहाँ आप हुक्स के बारे में सीखना स्टार्ट कर सकते हे [अगले पेज पर](/docs/hooks-overview.html)** इस पेज पर हम, React में Hooks कैसे डाले और वो एक अच्छे एप्लीकेशन में कैसे मदत करेगा यह सीखेंगे 
-
->नोंद
+>Note
 >
->React 16.8.0 यह hooks को सपोर्ट करने वाला पहला रिलीज़ हे. 
-जब अपग्रेड करे, तब सभी पैकेजेस को अपग्रेड करना मत भूलना,React DOM के साथ. React Native अगले स्टेबल वर्शन से सपोर्ट करना स्टार्ट करेगा.
+>React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM. React Native will support Hooks in the next stable release.
 
-## विडिओ इंट्रोडक्शन {#video-introduction}
+## Video Introduction {#video-introduction}
 
-React कांफ्रेंस 2018 में, सोफी अल्पर्ट और ड़यांन एब्रामोव Hooks को प्रदर्शित किआ, बादमे रायण फ्लोरेंस ने एप्लीकेशन को रेफेक्टर कर कैसे इस्तेमाल करे यह दिखाया. यहाँ वीडियो देखो:
-  
+At React Conf 2018, Sophie Alpert and Dan Abramov introduced Hooks, followed by Ryan Florence demonstrating how to refactor an application to use them. Watch the video here:
 
 <br>
 
 <iframe width="650" height="366" src="//www.youtube.com/embed/dpw9EHDh2bM" frameborder="0" allowfullscreen></iframe>
 
-## कोई बदलाव नहीं {#no-breaking-changes}
+## No Breaking Changes {#no-breaking-changes}
 
-चालू करने से पहले, यह जान ले की hooks:
+Before we continue, note that Hooks are:
 
-* **पूर्णतः ऑप्ट-इन हे** कोड फिरसे बिना लिखे आप हुक्स को कुछ कॉम्पोनेन्ट में यूज़ कर सकते हे. अगर आप नहीं कहते तोह अभी आपको सिखने की और इस्तेमाल करने की कोई जरुरत नहीं हे.
-* **100% बैकवर्ड-कम्पेटिबल हे.** Hooks में कोई नुकसानदायी बदलाव नहीं होता.
-* **अभी मौजूद हे.** Hooks अब वर्शन v16.8.0 में मौजद हे 
+* **Completely opt-in.** You can try Hooks in a few components without rewriting any existing code. But you don't have to learn or use Hooks right now if you don't want to.
+* **100% backwards-compatible.** Hooks don't contain any breaking changes.
+* **Available now.** Hooks are now available with the release of v16.8.0.
 
-**रियेक्ट से क्लासेज को निकलने का कोई प्लान नहीं हे** Hooks के बारे में ज्यादा जानकारी के लिए [नीचे](#gradual-adoption-strategy) इस पेज पर.
+**There are no plans to remove classes from React.** You can read more about the gradual adoption strategy for Hooks in the [bottom section](#gradual-adoption-strategy) of this page.
 
-**हुक्स React कॉन्सेप्ट्स को रेप्लस करने हेतु नहीं हे** हलाकि, Hooks आपका पहले का रियेक्ट नॉलेज के प्रति डायरेक्ट API हे: props, state, context, refs, and lifecycle. hooks एक भरी फरकम सब को मिलके एक पर्याय हे.
+**Hooks don't replace your knowledge of React concepts.** Instead, Hooks provide a more direct API to the React concepts you already know: props, state, context, refs, and lifecycle. As we will show later, Hooks also offer a new powerful way to combine them.
 
-**यहाँ आप हुक्स के बारे में सीखना स्टार्ट कर सकते हे [अगले पेज पर जम्प करे!](/docs/hooks-overview.html)** hooks के बारे में ज्यादा जानकारी के लिए पेज पढ़ते रहिये, और कोड फिरसे न लिख कर उसक यूज़ करना स्टार्ट करे.
+**If you just want to start learning Hooks, feel free to [jump directly to the next page!](/docs/hooks-overview.html)** You can also keep reading this page to learn more about why we're adding Hooks, and how we're going to start using them without rewriting our applications.
 
 ## Motivation {#motivation}
 
