@@ -71,7 +71,7 @@ function LogoutButton(props) {
 ```
 
 
-इस उदहारण में हम बना रहे हे [स्टेटफुल कौम्पोनॅन्ट](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) जिसे बोलते हे `LoginControl`। 
+इस उदहारण में हम बना रहे हे [स्टेटफुल कौम्पोनॅन्ट](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) जिसे बोलते हैं `LoginControl`। 
 
 जो करंट स्टेट के हिसाब से `<LoginButton />` या  `<LogoutButton />` को रेंडर करेगा। वो `<Greeting />` को भी रेंडर करेगा जैसे पिछले उदहारण में बताया था:
 
@@ -123,7 +123,7 @@ ReactDOM.render(
 
 ### लॉजिकल && ऑपरेटर के साथ इन लाइन `if` का इस्तेमाल  {#inline-if-with-logical--operator}
 
-आप  [कोई भी एक्सप्रेशन `jsx` में डाल सकते हे](/docs/introducing-jsx.html#embedding-expressions-in-jsx) उसको कर्ली ब्रेसेस के अंदर व्रैप करना पड़ेगा।  इसमें जावास्क्रिप्ट का लॉजिकल `&&` ऑपरेटर भी शामिल हे. इसकी मदद से हम कोई एलिमेंट को कंडीशंस से इन्क्लूड कर सकते हे: 
+आप [किसी भी एक्सप्रेशन को `jsx`](/docs/introducing-jsx.html#embedding-expressions-in-jsx) में कर्ली ब्रेसेस इस्तेमाल करके ड़ाल सकते हैं। इसमें जावास्क्रिप्ट का लॉजिकल `&&` ऑपरेटर भी शामिल हे। इसकी मदद से हम किसी भी एलिमेंट को कंडीशंस से इन्क्लूड कर सकते हे: 
 
 ```js{6-10}
 function Mailbox(props) {
@@ -149,9 +149,9 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
-जैवसक्रिप्ट मे यह काम करता हे, `true && expression` हमेशा `expression` होता हे, और `false && expression` हमेशा `false` होता हे।
+जैवसक्रिप्ट मे यह काम करता है क्यूंकि, `true && expression` हमेशा `expression` बन जाता है, और `false && expression` हमेशा `false` बन जाता है।
 
-इसीलिए, अगर कोई कंडीशन `true` हे, तोह `&&` के आगे का एलिमेंट आउटपुट में आ जाता हे। अगर यह `false` हे, फिर रियेक्ट इसको इग्नोर कर स्किप करेगा। 
+इसीलिए, अगर कोई कंडीशन `true` है, तोह `&&` के आगे का एलिमेंट आउटपुट में आ जाता हे। अगर यह `false` है, फिर React इसको रेंडर नहीं करता है। 
 
 ### कंडीशनल ऑपरेटर्स के साथ इन लाइन if-else {#inline-if-else-with-conditional-operator}
 
