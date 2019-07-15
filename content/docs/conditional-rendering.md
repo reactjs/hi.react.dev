@@ -71,7 +71,7 @@ function LogoutButton(props) {
 ```
 
 
-इस उदहारण में हम बना रहे हे [स्टेटफुल कौम्पोनॅन्ट](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) जिसे बोलते हे  `LoginControl`। 
+इस उदहारण में हम बना रहे हे [स्टेटफुल कौम्पोनॅन्ट](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) जिसे बोलते हे `LoginControl`। 
 
 जो करंट स्टेट के हिसाब से `<LoginButton />` या  `<LogoutButton />` को रेंडर करेगा। वो `<Greeting />` को भी रेंडर करेगा जैसे पिछले उदहारण में बताया था:
 
@@ -119,7 +119,7 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
 
-वेरिएबल डिक्लेअर करते वक्त, `if` स्टेटमेंट उसे कर्कटे कौम्पोनॅन्ट को कण्डीशनली रेंडर करना सही तरीका है, कभी आपको छोटा शार्ट सिंटेक्स उसे करना पड़ सकता हे। यहाँ नीचे, JSX में इन लाइन कंडीशंस के कुछ पर्याय दिए गए हैं। 
+वेरिएबल डिक्लेअर करते वक्त, `if` टमेंट से कौम्पोनॅन्ट को कण्डीशनली रेंडर करना सही तरीका है, कभी आपको छोटा शार्ट सिंटेक्स उसे करना पड़ सकता हे। यहाँ नीचे, JSX में इन लाइन कंडीशंस के कुछ पर्याय दिए गए हैं। 
 
 ### लॉजिकल && ऑपरेटर के साथ इन लाइन `if` का इस्तेमाल  {#inline-if-with-logical--operator}
 
@@ -149,7 +149,7 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
-जैवसक्रिप्ट मे  यह काम करता हे,  `true && expression` हमेशा `expression` होता हे, और `false && expression` हमेशा `false` होता हे।
+जैवसक्रिप्ट मे यह काम करता हे, `true && expression` हमेशा `expression` होता हे, और `false && expression` हमेशा `false` होता हे।
 
 इसीलिए, अगर कोई कंडीशन `true` हे, तोह `&&` के आगे का एलिमेंट आउटपुट में आ जाता हे। अगर यह `false` हे, फिर रियेक्ट इसको इग्नोर कर स्किप करेगा। 
 
