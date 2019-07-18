@@ -24,7 +24,7 @@ function GuestGreeting(props) {
 }
 ```
 
-हम `Greeting` कौम्पोनॅन्ट बना रहे हे। अगर यूजर लॉगिन है तभी देखेगा:
+हम `Greeting` कौम्पोनॅन्ट बना रहे है। अगर यूजर लॉगिन है तभी देखेगा:
 
 ```javascript{3-7,11,12}
 function Greeting(props) {
@@ -71,7 +71,7 @@ function LogoutButton(props) {
 ```
 
 
-इस उदहारण में हम बना रहे हे [स्टेटफुल कौम्पोनॅन्ट](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) जिसे बोलते हैं `LoginControl`। 
+इस उदहारण में हम बना रहे है [स्टेटफुल कौम्पोनॅन्ट](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) जिसे बोलते हैं `LoginControl`। 
 
 जो करंट स्टेट के हिसाब से `<LoginButton />` या  `<LogoutButton />` को रेंडर करेगा। वो `<Greeting />` को भी रेंडर करेगा जैसे पिछले उदहारण में बताया था:
 
