@@ -13,7 +13,7 @@ import ShallowRenderer from 'react-test-renderer/shallow'; // ES6
 var ShallowRenderer = require('react-test-renderer/shallow'); // ES5 with npm
 ```
 
-## अवलोकन {#overview}
+## ओवरव्यू {#overview}
 
 React के लिए यूनिट टेस्ट लिखते समय शैलो रेंडरिंग काफ़ी उपयोगी हो सकती है। शैलो रेंडरिंग आपको एक कौम्पोनॅन्ट को "एक स्तर गहरा" रेंडर करने देता है और आपको दृढ़ता से ये जांच करने की क्षमता प्रदान करता है कि इस कौम्पोनॅन्ट का रेंडर मेथड क्या return करेगा, child कौम्पोनॅन्टस के व्यव्हार की चिंता किये बिना, जो की instantiate या रेंडर नहीं होते। इसमें DOM की आवश्यकता नहीं होती है।
 
@@ -65,4 +65,4 @@ expect(result.props.children).toEqual([
 
 `shallowRenderer.render()` के call हो जाने के बाद आप शैलो रेंडर हुए आउटपुट को पाने के लिए `shallowRenderer.getRenderOutput()` का इस्तेमाल कर सकते हैं।
 
-तब आप आउटपुट के बारे में तथ्यों की जांच कर सकते हैं। 
+तब आप आउटपुट के बारे में तथ्यों की जांच करना शुरू कर सकते हैं।
