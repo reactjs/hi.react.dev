@@ -10,8 +10,7 @@ redirect_from:
 
 React में, आप अलग-अलग कौम्पोनॅन्ट बना सकते हैं जो आपके लिए आवश्यक व्यवहार को encapsulate करते हैं। फिर, आप अपने ऍप की स्टेट के आधार पर उनमें से कुछ को ही रिप्रेजेंट कर सकते हैं।
 
-कंडीशनल रेंडरिंग React में वैसे ही काम करता है जैसे कंडीशंस जावास्क्रिप्ट में करते है। जावास्क्रिप्ट ऑपरेटर्स जैसे [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) और [`कंडीशनल ऑपरेटर्स `](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) जो एलिमेंट्स बनके करंट स्टेट को रिप्रेजेंट करते है। फिर React UI को अपडेट करके मैच कर देगा।
-
+जावास्क्रिप्ट के ऑपरेटर्स [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) और [`कंडीशनल ऑपरेटर्स `](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) जैसे काम करते हे वैसे ही React में कंडीशनल रेंडरिंग काम करता हे। जिससे चालू स्टेट के एलिमेंट्स बना कर React को UI बदलने दो।   
 उदाहरण के तौर पे यह दो कौम्पोनॅन्ट को देखे:
 
 ```js
