@@ -8,9 +8,9 @@ redirect_from:
   - "tips/false-in-jsx.html"
 ---
 
-React में, आप अलग-अलग कौम्पोनॅन्ट बना सकते हैं जो आपके लिए आवश्यक व्यवहार को encapsulate करते हैं। फिर, आप अपने ऍप की स्टेट के आधार पर उनमें से कुछ को ही रिप्रेजेंट कर सकते हैं।
+React में, आप अलग-अलग कौम्पोनॅन्ट बना सकते हैं जो आपके लिए आवश्यक व्यवहार को एनकैप्सुलेट करते हैं। फिर, आप अपने ऍप की स्टेट के आधार पर उनमें से कुछ को ही रिप्रेजेंट कर सकते हैं।
 
-जावास्क्रिप्ट के ऑपरेटर्स [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) और [`कंडीशनल ऑपरेटर्स `](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) जैसे काम करते हे वैसे ही React में कंडीशनल रेंडरिंग काम करता हे। जिससे चालू स्टेट के एलिमेंट्स बना कर React को UI बदलने दो।   
+जावास्क्रिप्ट के ऑपरेटर्स [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) और [`कंडीशनल ऑपरेटर्स `](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) जैसे काम करते हे वैसे ही React में कंडीशनल रेंडरिंग काम करता हे। करंट स्टेट के एलिमेंट्स बना कर उस हिसाब से React UI को अपडेट कर देता हे।
 उदाहरण के तौर पे यह दो कौम्पोनॅन्ट को देखे:
 
 ```js
@@ -23,7 +23,7 @@ function GuestGreeting(props) {
 }
 ```
 
-हम एक `Greeting` कौम्पोनॅन्ट बनाएंगे जो तभी दिखेगा जब यूजर लॉगिन हे:
+हम एक `Greeting` कौम्पोनॅन्ट बनाएंगे जो तभी दिखेगा जब यूजर लॉग्डइन हे:
 
 ```javascript{3-7,11,12}
 function Greeting(props) {
@@ -45,7 +45,7 @@ ReactDOM.render(
 
 यह उदहारण `isLoggedIn` प्रोप के वैल्यू के अनुसार अलग अलग ग्रीटिंग्स रेंडर करता है।
 
-### एलिमेंट variables {#element-variables}
+### एलिमेंट वेरिएबल्स {#element-variables}
 
 आप एलिमेंट्स को स्टोर करने के लिए वेरिएबल्स का उसे कर सकते हो। जिससे आपको कंडीशनल रेंडरिंग में मदद होगी और बाकि का आउटपुट चेंज नहीं होगा। 
 
