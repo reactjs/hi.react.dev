@@ -10,7 +10,7 @@ redirect_from:
 
 React में, आप अलग-अलग कौम्पोनॅन्ट बना सकते हैं जो आपके लिए आवश्यक व्यवहार को एनकैप्सुलेट करते हैं। फिर, आप अपने ऍप की स्टेट के आधार पर उनमें से कुछ को ही रिप्रेजेंट कर सकते हैं।
 
-जावास्क्रिप्ट के ऑपरेटर्स [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) और [`कंडीशनल ऑपरेटर्स `](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) जैसे काम करते हे वैसे ही React में कंडीशनल रेंडरिंग काम करता हे। करंट स्टेट के एलिमेंट्स बना कर उस हिसाब से React UI को अपडेट कर देता हे।
+कंडीशनल रेंडरिंग React में वैसे ही काम करता है जैसे कंडीशंस जावास्क्रिप्ट में करते है। जावास्क्रिप्ट के ऑपरेटर्स [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) और [`कंडीशनल ऑपरेटर्स `](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) का इस्तेमाल ऐसे एलिमेंट्स बनाने के लिए किया जा सकता हे जो करंट स्टेट को रिप्रेजेंट करे, और React उस हिसाब UI को अपडेट करेगा ताकि वेह UI से मैच करे।
 उदाहरण के तौर पे यह दो कौम्पोनॅन्ट को देखे:
 
 ```js
@@ -23,7 +23,7 @@ function GuestGreeting(props) {
 }
 ```
 
-हम एक `Greeting` कौम्पोनॅन्ट बनाएंगे जो तभी दिखेगा जब यूजर लॉग्डइन हे:
+हम एक Greeting कौम्पोनॅन्ट बनाएंगे जो यूजर की लॉग्डइन स्थिति के अनुसार इन दोनों में से एक कॉम्पोनेन्ट दिखायेगा:
 
 ```javascript{3-7,11,12}
 function Greeting(props) {
