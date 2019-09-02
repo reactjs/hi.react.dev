@@ -119,11 +119,7 @@ React के दस्तावेज़ मानते है की आपक
 
 ## वर्ज़न्ड दस्तावेज़ {#versioned-documentation}
 
-<<<<<<< HEAD
-ये दस्तावेज़ हमेशा React के लेटेस्ट स्टेबल वर्ज़न पे आधारित होते हैं। आप React 16 के बाद के सारे दस्तावेज़ एक [अलग पेज पर](/versions) पर पा सकते हैं। ध्यान दें की सारे पिछले वर्ज़न अपने रिलीज़ के समय जैसे थे वैसे ही हैं और इनमें लगातार बदलाव नहीं किये जाते।
-=======
-This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a [separate page](/versions). Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.
->>>>>>> 941f54180ef5e652221f54ef6d1f6f2e9e063597
+ये दस्तावेज़ हमेशा React के लेटेस्ट स्टेबल वर्ज़न पे आधारित होते हैं। आप React 16 के बाद के सारे दस्तावेज़ एक [अलग पेज पर](/versions) पा सकते हैं। ध्यान दें की सारे पिछले वर्ज़न अपने रिलीज़ के समय जैसे थे वैसे ही हैं और इनमें लगातार बदलाव नहीं किये जाते।
 
 ## क्या कुछ छूट रहा है? {#something-missing}  
 
