@@ -1,27 +1,27 @@
 ---
 id: test-utils
-title: Test Utilities
+title: परीक्षण उपयोगिताएँ
 permalink: docs/test-utils.html
 layout: docs
 category: Reference
 ---
 
-**Importing**
+**आयात करना**
 
 ```javascript
 import ReactTestUtils from 'react-dom/test-utils'; // ES6
 var ReactTestUtils = require('react-dom/test-utils'); // ES5, npm के द्वारा
 ```
 
-## Overview {#overview}
+## अवलोकन {#overview}
 
-`ReactTestUtils` आपकी पसंद के परीक्षण ढांचे में रिएक्ट घटकों का परीक्षण करना आसान बनाता है। फेसबुक में हम व्यथाहीन जावास्क्रिप्ट परीक्षण के लिए [Jest](https://facebook.github.io/jest/) का उपयोग करते हैं। जेस्ट वेबसाइट के माध्यम से जेस्ट के साथ शुरुआत करने का तरीका जानें [React ट्यूटोरियल](https://jestjs.io/docs/tutorial-react).
+`ReactTestUtils` आपकी पसंद के परीक्षण ढांचे में रिएक्ट घटकों का परीक्षण करना आसान बनाता है। फेसबुक में हम व्यथाहीन जावास्क्रिप्ट परीक्षण के लिए [Jest](https://facebook.github.io/jest/) का उपयोग करते हैं। Jest वेबसाइट के माध्यम से Jest के साथ शुरुआत करने का तरीका जानें [React ट्यूटोरियल](https://jestjs.io/docs/tutorial-react).
 
 > नोट:
 >
 > हम [React टेस्टिंग लाइब्रेरी](https://testing-library.com/react) का उपयोग करने की सलाह देते हैं, जो अंतिम उपयोगकर्ताओं के रूप में आपके घटकों का उपयोग करने वाले लेखन परीक्षणों को सक्षम और प्रोत्साहित करने के लिए डिज़ाइन किया गया है।
 >
-> वैकल्पिक रूप से, Airbnb ने [Enzyme](https://airbnb.io/enzyme/) नामक एक परीक्षण उपयोगिता जारी की है, जो आपके React कंपोनेंट्स के आउटपुट को मुखर, हेरफेर करना और ट्रैवर्स करना आसान बनाता है।
+> वैकल्पिक रूप से, Airbnb ने [Enzyme](https://airbnb.io/enzyme/) नामक एक परीक्षण उपयोगिता जारी की है, जो आपके React कौम्पोनॅन्ट के आउटपुट को मुखर, हेरफेर करना और ट्रैवर्स करना आसान बनाता है।
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
@@ -40,17 +40,17 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5, npm के द्�
  - [`renderIntoDocument()`](#renderintodocument)
  - [`Simulate`](#simulate)
 
-## Reference {#reference}
+## संदर्भ {#reference}
 
 ### `act()` {#act}
 
-To prepare a component for assertions, wrap the code rendering it and performing updates inside an `act()` call. This makes your test run closer to how React works in the browser.
+कथनों के लिए एक कौम्पोनॅन्ट तैयार करने के लिए, उसे प्रदान करने वाले कोड को लपेटें और `act()` कॉल के अंदर अपडेट करते हुए। यह आपके टेस्ट को ब्राउज़र में React कैसे काम करता है, के करीब लाता है।
 
->Note
+>नोट
 >
->If you use `react-test-renderer`, it also provides an `act` export that behaves the same way.
+>यदि आप `react-test-renderer` का उपयोग करते हैं, तो यह एक `act` एक्सपोर्ट भी प्रदान करता है जो उसी तरह व्यवहार करता है।
 
-For example, let's say we have this `Counter` component:
+उदाहरण के लिए, मान लें कि हमारे पास यह `Counter` कौम्पोनॅन्ट है:
 
 ```js
 class Counter extends React.Component {
@@ -60,10 +60,10 @@ class Counter extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    document.title = `You clicked ${this.state.count} times`;
+    document.title = `आपने ${this.state.count} बार क्लिक किया`;
   }
   componentDidUpdate() {
-    document.title = `You clicked ${this.state.count} times`;
+    document.title = `आपने ${this.state.count} बार क्लिक किया`;
   }
   handleClick() {
     this.setState(state => ({
@@ -73,9 +73,9 @@ class Counter extends React.Component {
   render() {
     return (
       <div>
-        <p>You clicked {this.state.count} times</p>
+        <p>आपने ${this.state.count} बार क्लिक किया</p>
         <button onClick={this.handleClick}>
-          Click me
+          क्लिक करें
         </button>
       </div>
     );
@@ -83,7 +83,7 @@ class Counter extends React.Component {
 }
 ```
 
-Here is how we can test it:
+हम इसे इस तरह से परख सकते हैं:
 
 ```js{3,20-22,29-31}
 import React from 'react';
@@ -103,28 +103,28 @@ afterEach(() => {
   container = null;
 });
 
-it('can render and update a counter', () => {
+it('काउंटर रेंडर और अपडेट कर सकते हैं', () => {
   // Test first render and componentDidMount
   act(() => {
     ReactDOM.render(<Counter />, container);
   });
   const button = container.querySelector('button');
   const label = container.querySelector('p');
-  expect(label.textContent).toBe('You clicked 0 times');
-  expect(document.title).toBe('You clicked 0 times');
+  expect(label.textContent).toBe('आपने 0 बार क्लिक किया');
+  expect(document.title).toBe('आपने 0 बार क्लिक किया');
 
   // Test second render and componentDidUpdate
   act(() => {
     button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
   });
-  expect(label.textContent).toBe('You clicked 1 times');
-  expect(document.title).toBe('You clicked 1 times');
+  expect(label.textContent).toBe('आपने 1 बार क्लिक किया');
+  expect(document.title).toBe('आपने 1 बार क्लिक किया');
 });
 ```
 
-- Don't forget that dispatching DOM events only works when the DOM container is added to the `document`. You can use a library like [React Testing Library](https://testing-library.com/react) to reduce the boilerplate code.
+- यह मत भूलिए कि DOM स्पर्धाएँ को प्रेषण तभी काम करता है जब DOM कंटेनर को `document` में जोड़ा जाता है। आप बॉयलरप्लेट कोड को कम करने के लिए [React Testing Library](https://testing-library.com/react) जैसी लाइब्रेरी का उपयोग कर सकते हैं।
 
-- The [`recipes`](/docs/testing-recipes.html) document contains more details on how `act()` behaves, with examples and usage.
+- [`रेसिपी`](/docs/testing-recipes.html) डॉक्यूमेंट में उदाहरण और उपयोग के साथ `act()` व्यवहार करता है, पर अधिक विवरण हैं।
 
 * * *
 
