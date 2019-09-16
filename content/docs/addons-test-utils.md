@@ -310,7 +310,7 @@ ReactDOM.render(element, domContainer);
 > आपके द्वारा `React` आयात करने से **पहले** आपको `window`, `window.document` और `window.document.createElement` को विश्व स्तर पर उपलब्ध कराने की आवश्यकता होगी। अन्यथा प्रतिक्रिया से लगता है कि यह DOM तक नहीं पहुंच सकता है और `setState` जैसे तरीके काम नहीं करेंगे।
 * * *
 
-## Other Utilities {#other-utilities}
+## अन्य उपयोगिताएँ {#other-utilities}
 
 ### `Simulate` {#simulate}
 
@@ -321,11 +321,11 @@ Simulate.{eventName}(
 )
 ```
 
-Simulate an event dispatch on a DOM node with optional `eventData` event data.
+वैकल्पिक `eventData` घटना डेटा के साथ एक DOM नोड पर एक घटना प्रेषण अनुकरण।
 
-`Simulate` has a method for [every event that React understands](/docs/events.html#supported-events).
+`Simulate` के पास [प्रत्येक घटना के लिए एक विधि है जो प्रतिक्रिया को समझती है](/docs/events.html#supported-events)।
 
-**Clicking an element**
+**किसी तत्व पर क्लिक करना**
 
 ```javascript
 // <button ref={(node) => this.button = node}>...</button>
@@ -333,7 +333,7 @@ const node = this.button;
 ReactTestUtils.Simulate.click(node);
 ```
 
-**Changing the value of an input field and then pressing ENTER.**
+**इनपुट फ़ील्ड का मान बदलना और फिर ENTER दबाना।**
 
 ```javascript
 // <input ref={(node) => this.textInput = node} />
@@ -345,6 +345,6 @@ ReactTestUtils.Simulate.keyDown(node, {key: "Enter", keyCode: 13, which: 13});
 
 > Note
 >
-> You will have to provide any event property that you're using in your component (e.g. keyCode, which, etc...) as React is not creating any of these for you.
+> आपके द्वारा अपने घटक में उपयोग की जा रही कोई भी घटना संपत्ति (जैसे कि keyCode, which, आदि...) आपको प्रदान करनी होगी क्योंकि React आपके लिए इनमें से कोई भी नहीं बना रहा है।
 
 * * *
