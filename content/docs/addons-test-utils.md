@@ -137,11 +137,11 @@ mockComponent(
 )
 ```
 
-Pass a mocked component module to this method to augment it with useful methods that allow it to be used as a dummy React component. Instead of rendering as usual, the component will become a simple `<div>` (or other tag if `mockTagName` is provided) containing any provided children.
+इस विधि के लिए एक नकली कौम्पोनॅन्ट मॉड्यूल को पारित करें इसे उपयोगी विधियों के साथ संवर्धित करें जो इसे डमी React कौम्पोनॅन्ट के रूप में उपयोग करने की अनुमति देता है। हमेशा की तरह रेंडर करने के बजाय, कौम्पोनॅन्ट प्रदान किया जाएगा एक सरल `<div>` (या अन्य टैग यदि `mockTagName` प्रदान किया गया है) किसी भी प्रदान की बच्चों से युक्त।
 
-> Note:
+> नोट:
 >
-> `mockComponent()` is a legacy API. We recommend using [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) instead.
+> `mockComponent()` एक विरासत API है। हम इसके बजाय [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-react-native.html#mock-native-modules-use-jestockock) का उपयोग करने की सलाह देते हैं।
 
 * * *
 
@@ -151,7 +151,7 @@ Pass a mocked component module to this method to augment it with useful methods 
 isElement(element)
 ```
 
-Returns `true` if `element` is any React element.
+रिटर्न `true` अगर `element` कोई React एलिमेंट है।
 
 * * *
 
@@ -164,7 +164,7 @@ isElementOfType(
 )
 ```
 
-Returns `true` if `element` is a React element whose type is of a React `componentClass`.
+रिटर्न `true` अगर `element` एक React एलिमेंट है जिसका टाइप एक रिएक्ट `componentClass` है।
 
 * * *
 
@@ -174,7 +174,7 @@ Returns `true` if `element` is a React element whose type is of a React `compone
 isDOMComponent(instance)
 ```
 
-Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
+रिटर्न `true` यदि `instance` एक DOM कौम्पोनॅन्ट है (जैसे कि `<div>` या `<span>`)।
 
 * * *
 
@@ -184,7 +184,7 @@ Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
 isCompositeComponent(instance)
 ```
 
-Returns `true` if `instance` is a user-defined component, such as a class or a function.
+रिटर्न `true` यदि `instance` एक उपयोगकर्ता-परिभाषित कौम्पोनॅन्ट है, जैसे कि class या फ़ंक्शन।
 
 * * *
 
@@ -197,7 +197,7 @@ isCompositeComponentWithType(
 )
 ```
 
-Returns `true` if `instance` is a component whose type is of a React `componentClass`.
+रिटर्न `true` अगर `instance` एक कौम्पोनॅन्ट है जिसका प्रकार एक प्रतिक्रिया `componentClass` है।
 
 * * *
 
@@ -210,7 +210,7 @@ findAllInRenderedTree(
 )
 ```
 
-Traverse all components in `tree` and accumulate all components where `test(component)` is `true`. This is not that useful on its own, but it's used as a primitive for other test utils.
+सभी कौम्पोनॅन्ट को `tree` में रखें और उन सभी कौम्पोनॅन्ट को संचित करें जहां `test(component)` `true` है। यह अपने आप में उपयोगी नहीं है, लेकिन इसका उपयोग अन्य परीक्षण बर्तनों के लिए एक आदिम के रूप में किया जाता है।
 
 * * *
 
@@ -223,7 +223,7 @@ scryRenderedDOMComponentsWithClass(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the class name matching `className`.
+प्रदान किए गए पेड़ में कौम्पोनॅन्ट के सभी DOM तत्वों को ढूँढता है जो DOM कौम्पोनॅन्ट हैं जिनका नाम `className` से मेल खाते हैं।
 
 * * *
 
@@ -236,7 +236,7 @@ findRenderedDOMComponentWithClass(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+जैसे [`scryRenderedDOMCompordsWithClass()`](#scryrendereddomcompocuswithclass) लेकिन एक परिणाम होने की उम्मीद करता है, और एक परिणाम देता है, या एक के अलावा किसी अन्य संख्या के मैच होने पर अपवाद फेंकता है।
 
 * * *
 
@@ -249,7 +249,7 @@ scryRenderedDOMComponentsWithTag(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the tag name matching `tagName`.
+प्रदान किए गए ट्री में कौम्पोनॅन्ट के सभी DOM तत्वों को ढूँढता है जो DOM टैग `tagName` नाम के टैग के साथ कौम्पोनॅन्ट हैं।
 
 * * *
 
@@ -262,7 +262,7 @@ findRenderedDOMComponentWithTag(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+जैसे [`scryRenderedDOMCompordsWithTag()`](#scryrendereddomcompocuswithtag), लेकिन वहाँ एक परिणाम होने की उम्मीद करता है, और वह एक परिणाम देता है, या एक के अलावा किसी अन्य संख्या के मैच होने पर अपवाद फेंकता है।
 
 * * *
 
@@ -275,7 +275,7 @@ scryRenderedComponentsWithType(
 )
 ```
 
-Finds all instances of components with type equal to `componentClass`.
+प्रकार के घटकों के सभी उदाहरणों को `componentClass` के बराबर जोड़ता है।
 
 * * *
 
@@ -288,7 +288,7 @@ findRenderedComponentWithType(
 )
 ```
 
-Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) but expects there to be one result and returns that one result, or throws exception if there is any other number of matches besides one.
+के रूप में ही [`scryRenderedCompordsWithType()`](#scryrenderedcompordswithtype), लेकिन वहाँ एक परिणाम होने की उम्मीद करता है और एक परिणाम देता है, या एक के अलावा किसी भी संख्या में मैच होने पर अपवाद छोड़ देता है।
 
 ***
 
@@ -298,17 +298,16 @@ Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) bu
 renderIntoDocument(element)
 ```
 
-Render a React element into a detached DOM node in the document. **This function requires a DOM.** It is effectively equivalent to:
+दस्तावेज़ में एक अलग DOM नोड में एक प्रतिक्रिया तत्व प्रदान करें। **इस फ़ंक्शन के लिए DOM की आवश्यकता है।** यह प्रभावी रूप से इसके बराबर है:
 
 ```js
 const domContainer = document.createElement('div');
 ReactDOM.render(element, domContainer);
 ```
 
-> Note:
+> नोट:
 >
-> You will need to have `window`, `window.document` and `window.document.createElement` globally available **before** you import `React`. Otherwise React will think it can't access the DOM and methods like `setState` won't work.
-
+> आपके द्वारा `React` आयात करने से **पहले** आपको `window`, `window.document` और `window.document.createElement` को विश्व स्तर पर उपलब्ध कराने की आवश्यकता होगी। अन्यथा प्रतिक्रिया से लगता है कि यह DOM तक नहीं पहुंच सकता है और `setState` जैसे तरीके काम नहीं करेंगे।
 * * *
 
 ## Other Utilities {#other-utilities}
