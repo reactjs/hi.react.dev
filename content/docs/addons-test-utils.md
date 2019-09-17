@@ -13,7 +13,7 @@ import ReactTestUtils from 'react-dom/test-utils'; // ES6
 var ReactTestUtils = require('react-dom/test-utils'); // ES5, npm के द्वारा
 ```
 
-## अवलोकन {#overview}
+## ओवरव्यू {#overview}
 
 `ReactTestUtils` आपकी पसंद के परीक्षण ढांचे में React कौम्पोनॅन्ट का परीक्षण करना आसान बनाता है। Facebook में हम व्यथाहीन जावास्क्रिप्ट परीक्षण के लिए [Jest](https://facebook.github.io/jest/) का उपयोग करते हैं। Jest वेबसाइट के माध्यम से Jest के साथ शुरुआत करने का तरीका जानें [React ट्यूटोरियल](https://jestjs.io/docs/tutorial-react).
 
