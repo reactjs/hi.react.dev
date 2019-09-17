@@ -6,7 +6,7 @@ layout: docs
 category: Reference
 ---
 
-**आयात करना**
+**इम्पॉर्टिंग**
 
 ```javascript
 import ReactTestUtils from 'react-dom/test-utils'; // ES6
