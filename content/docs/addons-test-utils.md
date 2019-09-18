@@ -141,7 +141,7 @@ mockComponent(
 
 > नोट:
 >
-> `mockComponent()` एक लेहगसी API है। हम इसके बजाय [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-react-native.html#mock-native-modules-using-jestmock) का उपयोग करने की सलाह देते हैं।
+> `mockComponent()` एक लेहगसी API है। हम इसके बजाय [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) का उपयोग करने की सलाह देते हैं।
 
 * * *
 
