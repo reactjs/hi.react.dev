@@ -30,7 +30,7 @@ function MyComponent() {
 }
 ```
 
-तब आप जांच कर सकते हैं:
+तब आप अस्सर्ट कर सकते हैं:
 
 ```javascript
 import ShallowRenderer from 'react-test-renderer/shallow';
@@ -57,7 +57,7 @@ expect(result.props.children).toEqual([
 
 ### `shallowRenderer.render()` {#shallowrendererrender}
 
-आप जिस कौम्पोनॅन्ट का परीक्षण कर रहे हैं, shallowRenderer को आप उसे रेंडर करने के एक "स्थान" की तरह सोच सकते हैं, और जिससे आप कौम्पोनॅन्ट के आउटपुट को निकाल सकते हैं।
+आप जिस कौम्पोनॅन्ट का परीक्षण कर रहे हैं, shallowRenderer को आप उसे रेंडर करने के एक "स्थान" की तरह सोच सकते हैं, और इससे आप कौम्पोनॅन्ट के आउटपुट को निकाल सकते हैं।
 
 `shallowRenderer.render()` [`ReactDOM.render()`](/docs/react-dom.html#render) के समान ही है लेकिन इसे DOM की आवश्यकता नहीं है और यह केवल एक स्तर गहराई तक ही रेंडर करता है। इसका मतलब आप कौम्पोनॅन्टस का परिक्षण उनके children के लागू होने के तरीके से अलग रखकर कर सकते हैं।
 
@@ -65,4 +65,4 @@ expect(result.props.children).toEqual([
 
 `shallowRenderer.render()` के call हो जाने के बाद आप शैलो रेंडर हुए आउटपुट को पाने के लिए `shallowRenderer.getRenderOutput()` का इस्तेमाल कर सकते हैं।
 
-तब आप आउटपुट के बारे में तथ्यों की जांच करना शुरू कर सकते हैं।
+तब आप आउटपुट के बारे में तथ्यों को अस्सर्ट करना शुरू कर सकते हैं।
