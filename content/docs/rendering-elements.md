@@ -1,6 +1,6 @@
 ---
 id: rendering-elements
-title: Rendering Elements
+title: रेंडरिंग एलिमेंट्स
 permalink: docs/rendering-elements.html
 redirect_from:
   - "docs/displaying-data.html"
@@ -59,7 +59,7 @@ React एलिमेंट्स [अचल](https://en.wikipedia.org/wiki/Immu
 
 >**ध्यान दें:**
 >
->व्यवहार में, ज़्यादातर React apps `ReactDOM.render()` को एक ही बार कॉल करते है। अगले भाग में हम ये सीखेंगे कि कैसे इस तरह के कोड को [stateful components](/docs/state-and-lifecycle.html) में एन्काप्सुलेट करते है।
+>व्यवहार में, ज़्यादातर React ऍप्स `ReactDOM.render()` को एक ही बार कॉल करते है। अगले भाग में हम ये सीखेंगे कि कैसे इस तरह के कोड को [stateful components](/docs/state-and-lifecycle.html) में एन्काप्सुलेट करते है।
 >
 >हम अनुशंसा करते हैं कि आप विषयों को छोड़ें नहीं क्योंकि वे एक-दूसरे पर निर्माण करते हैं।
 
@@ -71,6 +71,6 @@ React, DOM एलिमेंट्स और उसके चिल्डरे
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
-भले ही हम हर टिक पर पूरे UI ट्री का वर्णन करने वाला एक एलेमेंट बनाते हैं, लेकिन केवल Text नोड जिसकी सामग्री बदल गई है वह React DOM द्वारा अपडेट हो जाता है।
+भले ही हम हर टिक पर पूरे UI ट्री का वर्णन करने वाला एक एलेमेंट बनाते हैं, लेकिन केवल टेक्स्ट नोड जिसकी सामग्री बदल गई है वह React DOM द्वारा अपडेट हो जाता है।
 
 हमारे अनुभव से, UI को कैसे अप्डेट करना है के बिपरीत यदि हम ये सोचे की UI को किसी समय कैसे दिखाना है तो हम बहुत सारी बग से बच सकते है।
