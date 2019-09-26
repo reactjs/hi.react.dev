@@ -1,14 +1,14 @@
 ---
 id: javascript-environment-requirements
-title: जावास्क्रिप्ट पर्यावरण आवश्यकताएँ
+title: जावास्क्रिप्ट एनवायरनमेंट आवश्यकताएँ
 layout: docs
 category: Reference
 permalink: docs/javascript-environment-requirements.html
 ---
 
-React 16 संग्रह के प्रकार पर निर्भर करता है [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) और [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)। यदि आप पुराने ब्राउज़रों और उपकरणों का समर्थन करते हैं, जो अभी तक ये मूल रूप से प्रदान नहीं कर सकते हैं (जैसे IE <11) या जिनके पास गैर-अनुरूप कार्यान्वयन हैं (उदाहरण IE 11), तो अपने बंडल किए गए एप्लिकेशन में एक वैश्विक polyfill शामिल करें, जैसे कि [core-js](https://github.com/zloirock/core-js) या [babel-polyfill](https://babeljs.io/docs/usage/polyfill/)।
+React 16 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) और [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) संग्रह के प्रकार पर निर्भर करता है। यदि आप पुराने ब्राउज़रों और उपकरणों का समर्थन करते हैं, जो अभी तक ये मूल रूप से प्रदान नहीं कर सकते हैं (जैसे IE <11) या जिनके पास गैर-अनुरूप कार्यान्वयन हैं (उदाहरण IE 11), तो अपने बंडल किए गए एप्लिकेशन में एक वैश्विक polyfill शामिल करें, जैसे कि [core-js](https://github.com/zloirock/core-js) या [babel-polyfill](https://babeljs.io/docs/usage/polyfill/)।
 
-पुराने ब्राउज़र का समर्थन करने के लिए core-js का उपयोग करके React 16 के लिए एक polyfilled वातावरण ऐसा दिख सकता है:
+पुराने ब्राउज़र का समर्थन करने के लिए core-js का उपयोग करके React 16 के लिए एक polyfilled एनवायरनमेंट ऐसा दिख सकता है:
 
 ```js
 import 'core-js/es/map';
@@ -23,8 +23,8 @@ ReactDOM.render(
 );
 ```
 
-React `requestAnimationFrame` पर भी निर्भर करती है (परीक्षण वातावरण में भी)।
-आप `requestAnimationFrame` के समर्थन के लिए [raf](https://www.npmjs.com/package/raf) package का उपयोग कर सकते हैं :  
+React `requestAnimationFrame` पर भी निर्भर करती है (परीक्षण एनवायरनमेंट में भी)।
+आप `requestAnimationFrame` के समर्थन के लिए [raf](https://www.npmjs.com/package/raf) package का उपयोग कर सकते हैं :
 
 ```js
 import 'raf/polyfill';
