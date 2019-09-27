@@ -13,9 +13,9 @@ permalink: docs/glossary.html
 
 यद्यपि आप React में सिंगल पेज एप्लिकेशन का निर्माण कर सकते हैं, यह कोई आवश्यकता नहीं है। React का उपयोग मौजूदा वेबसाइटों के छोटे हिस्सों को अतिरिक्त अन्तरक्रियाशीलता के साथ बढ़ाने के लिए भी किया जा सकता है। React में लिखा कोड सर्वर पर PHP, या अन्य क्लाइंट-साइड लाइब्रेरी जैसी किसी चीज़ के द्वारा प्रदान किए गए मार्कअप के साथ शांतिपूर्वक सहवास कर सकता है। वास्तव में, ठीक इसी तरहे फेसबुक में React का उपयोग किया जा रहा है।
 
-## ES6, ES2015, ES2016, etc {#es6-es2015-es2016-etc}
+## ES6, ES2015, ES2016, आदि {#es6-es2015-es2016-etc}
 
-These acronyms all refer to the most recent versions of the ECMAScript Language Specification standard, which the JavaScript language is an implementation of. The ES6 version (also known as ES2015) includes many additions to the previous versions such as: arrow functions, classes, template literals, `let` and `const` statements. You can learn more about specific versions [here](https://en.wikipedia.org/wiki/ECMAScript#Versions).
+ये सभी शब्द ECMAScript लैंग्वेज स्पेसिफिकेशन स्टैंडर्ड के सबसे हाल के संस्करणों को संदर्भित करते हैं, जो जावास्क्रिप्ट भाषा का एक कार्यान्वयन है। ES6 संस्करण (जिसे ES2015 के रूप में भी जाना जाता है) में पिछले संस्करणों में कई परिवर्धन शामिल हैं जैसे: तीर फ़ंक्शंस, क्लासेस, टेम्प्लेट शाब्दिक, `let` और `const` स्टेटमेंट। आप [यहां](https://en.wikipedia.org/wiki/ECMAScript#Versions) विशिष्ट संस्करणों के बारे में अधिक जान सकते हैं।
 
 ## Compilers {#compilers}
 
