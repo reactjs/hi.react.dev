@@ -1,17 +1,17 @@
 ---
 id: glossary
-title: Glossary of React Terms
+title: React की शर्तों की शब्दावली
 layout: docs
 category: Reference
 permalink: docs/glossary.html
 
 ---
 
-## Single-page Application {#single-page-application}
+## सिंगल पेज एप्लीकेशन {#single-page-application}
 
-A single-page application is an application that loads a single HTML page and all the necessary assets (such as JavaScript and CSS) required for the application to run. Any interactions with the page or subsequent pages do not require a round trip to the server which means the page is not reloaded.
+सिंगल पेज एप्लिकेशन एक ऐसा एप्लिकेशन है जो एकल HTML पेज को लोड करता है और आवश्यक सभी संपत्तियो को भी (जैसे जावास्क्रिप्ट और सीएसएस)जो एप्लिकेशन को चलाने के लिए आवश्यक है। पृष्ठ या बाद के पृष्ठों के साथ किसी भी बातचीत को सर्वर के लिए एक गोल यात्रा की आवश्यकता नहीं होती है जिसका अर्थ है कि पृष्ठ पुनः लोड नहीं किया गया है।
 
-Though you may build a single-page application in React, it is not a requirement. React can also be used for enhancing small parts of existing websites with additional interactivity. Code written in React can coexist peacefully with markup rendered on the server by something like PHP, or with other client-side libraries. In fact, this is exactly how React is being used at Facebook.
+यद्यपि आप React में सिंगल पेज एप्लिकेशन का निर्माण कर सकते हैं, यह कोई आवश्यकता नहीं है। React का उपयोग मौजूदा वेबसाइटों के छोटे हिस्सों को अतिरिक्त अन्तरक्रियाशीलता के साथ बढ़ाने के लिए भी किया जा सकता है। React में लिखा कोड सर्वर पर PHP, या अन्य क्लाइंट-साइड लाइब्रेरी जैसी किसी चीज़ के द्वारा प्रदान किए गए मार्कअप के साथ शांतिपूर्वक सहवास कर सकता है। वास्तव में, ठीक इसी तरहे फेसबुक में React का उपयोग किया जा रहा है।
 
 ## ES6, ES2015, ES2016, etc {#es6-es2015-es2016-etc}
 
