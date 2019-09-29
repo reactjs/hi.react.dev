@@ -21,9 +21,9 @@ permalink: docs/glossary.html
 
 एक जावास्क्रिप्ट कंपाइलर जावास्क्रिप्ट कोड लेता है, और उसे बदल कर एक अलग प्रारूप में जावास्क्रिप्ट कोड देता है। सबसे आम उपयोग ES6 सिंटैक्स लेने और इसे ऊस सिंटैक्स में बदलने का है जिसे कि पुराने ब्राउज़र व्याख्या करने में सक्षम हैं। आमतौर पर React के साथ [बैबेल](https://babeljs.io/) कंपाइलर का उपयोग किया जाता है।
 
-## Bundlers {#bundlers}
+## बंडलर्स {#bundlers}
 
-Bundlers take JavaScript and CSS code written as separate modules (often hundreds of them), and combine them together into a few files better optimized for the browsers. Some bundlers commonly used in React applications include [Webpack](https://webpack.js.org/) and [Browserify](http://browserify.org/).
+बंडलर्स अलग-अलग मॉड्यूल (अक्सर सैकड़ों में) के रूप में लिखे गए जावास्क्रिप्ट और सीएसएस कोड को कुछ फाइलों में एक साथ जोड़ते हैं जो की ब्राउज़रों के लिए बेहतर अनुकूलित हैं। आमतौर पर React एप्लिकेशन में उपयोग किए जाने वाले कुछ बंडलों में [वेबपैक](https://webpack.js.org/) और [ब्राउज़रीफ़ाय](http://browserify.org/) शामिल हैं।
 
 ## Package Managers {#package-managers}
 
