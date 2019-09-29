@@ -17,9 +17,9 @@ permalink: docs/glossary.html
 
 ये सभी शब्द ECMAScript लैंग्वेज स्पेसिफिकेशन स्टैंडर्ड के सबसे हाल के संस्करणों को संदर्भित करते हैं, जो जावास्क्रिप्ट भाषा का एक कार्यान्वयन है। ES6 संस्करण (जिसे ES2015 के रूप में भी जाना जाता है) में पिछले संस्करणों में कई परिवर्धन शामिल हैं जैसे: तीर फ़ंक्शंस, क्लासेस, टेम्प्लेट शाब्दिक, `let` और `const` स्टेटमेंट। आप [यहां](https://en.wikipedia.org/wiki/ECMAScript#Versions) विशिष्ट संस्करणों के बारे में अधिक जान सकते हैं।
 
-## Compilers {#compilers}
+## कम्पाइलर {#compilers}
 
-A JavaScript compiler takes JavaScript code, transforms it and returns JavaScript code in a different format. The most common use case is to take ES6 syntax and transform it into syntax that older browsers are capable of interpreting. [Babel](https://babeljs.io/) is the compiler most commonly used with React.
+एक जावास्क्रिप्ट कंपाइलर जावास्क्रिप्ट कोड लेता है, और उसे बदल कर एक अलग प्रारूप में जावास्क्रिप्ट कोड देता है। सबसे आम उपयोग ES6 सिंटैक्स लेने और इसे ऊस सिंटैक्स में बदलने का है जिसे कि पुराने ब्राउज़र व्याख्या करने में सक्षम हैं। आमतौर पर React के साथ [बैबेल](https://babeljs.io/) कंपाइलर का उपयोग किया जाता है।
 
 ## Bundlers {#bundlers}
 
