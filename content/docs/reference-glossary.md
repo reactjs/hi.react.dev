@@ -47,15 +47,15 @@ ReactDOM.render(
 );
 ```  
 
-## [Elements](/docs/rendering-elements.html) {#elements}
+## [एलिमेंट्स](/docs/rendering-elements.html) {#elements}
 
-React elements are the building blocks of React applications. One might confuse elements with a more widely known concept of "components". An element describes what you want to see on the screen. React elements are immutable.
+React एलिमेंट्स React एप्लीकेशन के निर्माण खंड हैं। एक अधिक व्यापक रूप से ज्ञात अवधारणा "कौम्पोनॅन्ट्स" के साथ एलिमेंट्स को भ्रमित कर सकता है। एक एलिमेंट्स वर्णन करता है कि आप स्क्रीन पर क्या देखना चाहते हैं। React एलिमेंट्स अपरिवर्तनीय हैं।
 
 ```js
 const element = <h1>Hello, world</h1>;
 ```
 
-Typically, elements are not used directly, but get returned from components.
+आमतौर पर, एलिमेंट्स का सीधे उपयोग नहीं किया जाता है, लेकिन कौम्पोनॅन्ट्स से वापस किये जाते हैं।
 
 ## [Components](/docs/components-and-props.html) {#components}
 
