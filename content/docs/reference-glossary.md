@@ -25,9 +25,9 @@ permalink: docs/glossary.html
 
 बंडलर्स अलग-अलग मॉड्यूल (अक्सर सैकड़ों में) के रूप में लिखे गए जावास्क्रिप्ट और सीएसएस कोड को कुछ फाइलों में एक साथ जोड़ते हैं जो की ब्राउज़रों के लिए बेहतर अनुकूलित हैं। आमतौर पर React एप्लिकेशन में उपयोग किए जाने वाले कुछ बंडलों में [वेबपैक](https://webpack.js.org/) और [ब्राउज़रीफ़ाय](http://browserify.org/) शामिल हैं।
 
-## Package Managers {#package-managers}
+## Package मैनेजर {#package-managers}
 
-Package managers are tools that allow you to manage dependencies in your project. [npm](https://www.npmjs.com/) and [Yarn](https://yarnpkg.com/) are two package managers commonly used in React applications. Both of them are clients for the same npm package registry.
+Package मैनेजर वे उपकरण हैं जो आपको अपनी परियोजना में निर्भरता का प्रबंधन करने की अनुमति देते हैं। [npm](https://www.npmjs.com/) और [Yarn](https://yarnpkg.com/) दो package मैनेजर हैं जो आमतौर पर React एप्लिकेशन में उपयोग किए जाते हैं। ये दोनों समान npm package रजिस्ट्री के लिए क्लाइंट हैं।
 
 ## CDN {#cdn}
 
