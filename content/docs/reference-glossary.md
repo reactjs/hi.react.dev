@@ -35,9 +35,9 @@ Package मैनेजर वे उपकरण हैं जो आपको 
 
 ## JSX {#jsx}
 
-JSX is a syntax extension to JavaScript. It is similar to a template language, but it has full power of JavaScript. JSX gets compiled to `React.createElement()` calls which return plain JavaScript objects called "React elements". To get a basic introduction to JSX [see the docs here](/docs/introducing-jsx.html) and find a more in-depth tutorial on JSX [here](/docs/jsx-in-depth.html).
+JSX जावास्क्रिप्ट का एक सिंटैक्स एक्सटेंशन है। यह एक टेम्पलेट भाषा के समान है, लेकिन इसमें जावास्क्रिप्ट की पूरी शक्ति है। JSX `React.createElement()` कॉल में कम्पाइल होता है जो सादे जावास्क्रिप्ट ऑब्जेक्ट वापस करता है जिसे "React एलिमेंट्स" कहते हैं। JSX का मूल परिचय प्राप्त करने के लिए [यहां डॉक्स देखें](/docs/introducing-jsx.html) और JSX पर अधिक गहराई से ट्यूटोरियल [यहां](/docs/jsx-in-depth.html) देखें।
 
-React DOM uses camelCase property naming convention instead of HTML attribute names. For example, `tabindex` becomes `tabIndex` in JSX. The attribute `class` is also written as `className` since `class` is a reserved word in JavaScript:
+React DOM, HTML विशेषता नामों के बजाय कैमलकेस प्रॉपर्टी नेमिंग कन्वेंशन का उपयोग करता है। उदाहरण के लिए, `tabindex` JSX में `tabIndex` बन जाता है। विशेषता `class` को `className` के रूप में भी लिखा जाता है क्योंकि `class` जावास्क्रिप्ट में एक आरक्षित शब्द है:
 
 ```js
 const name = 'Clementine';
