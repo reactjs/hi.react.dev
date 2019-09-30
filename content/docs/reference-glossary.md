@@ -29,9 +29,9 @@ permalink: docs/glossary.html
 
 Package मैनेजर वे उपकरण हैं जो आपको अपनी परियोजना में निर्भरता का प्रबंधन करने की अनुमति देते हैं। [npm](https://www.npmjs.com/) और [Yarn](https://yarnpkg.com/) दो package मैनेजर हैं जो आमतौर पर React एप्लिकेशन में उपयोग किए जाते हैं। ये दोनों समान npm package रजिस्ट्री के लिए क्लाइंट हैं।
 
-## CDN {#cdn}
+## सीडीएन {#cdn}
 
-CDN stands for Content Delivery Network. CDNs deliver cached, static content from a network of servers across the globe. 
+सीडीएन कंटेंट डिलीवरी नेटवर्क के लिए है। सीडीएन दुनिया भर में सर्वर के नेटवर्क से कैश्ड, स्थिर सामग्री वितरित करते हैं।
 
 ## JSX {#jsx}
 
