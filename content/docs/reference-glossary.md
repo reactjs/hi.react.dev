@@ -155,12 +155,12 @@ React supports a special attribute that you can attach to any component. The `re
 
 Use refs sparingly. If you find yourself often using refs to "make things happen" in your app, consider getting more familiar with [top-down data flow](/docs/lifting-state-up.html).
 
-## [Events](/docs/handling-events.html) {#events}
+## [इवेंट्स](/docs/handling-events.html) {#events}
 
-Handling events with React elements has some syntactic differences:
+React एलिमेंट्स के साथ इवेंट्स को संभालने से कुछ वाक्यात्मक अंतर होते हैं:
 
-* React event handlers are named using camelCase, rather than lowercase.
-* With JSX you pass a function as the event handler, rather than a string.
+* React इवेंट हैंडलर्स को लोअरकेस के बजाय कैमकलेस का उपयोग करके नामित किया जाता है।
+* JSX के साथ आप एक string के बजाय फंक्शन को हैंडलर के रूप में पास करते हैं।
 
 ## [Reconciliation](/docs/reconciliation.html) {#reconciliation}
 
