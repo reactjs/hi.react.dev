@@ -57,9 +57,9 @@ const element = <h1>Hello, world</h1>;
 
 आमतौर पर, एलिमेंट्स का सीधे उपयोग नहीं किया जाता है, लेकिन कौम्पोनॅन्ट्स से वापस किये जाते हैं।
 
-## [Components](/docs/components-and-props.html) {#components}
+## [कौम्पोनॅन्ट्स](/docs/components-and-props.html) {#components}
 
-React components are small, reusable pieces of code that return a React element to be rendered to the page. The simplest version of React component is a plain JavaScript function that returns a React element:
+React कौम्पोनॅन्ट्स छोटे, पुन: प्रयोज्य टुकड़े हैं जो पृष्ठ पर रेंडर करने के लिए एक React एलिमेंट्स को वापस करते हैं। React कौम्पोनॅन्ट का सबसे सरल संस्करण एक सादे जावास्क्रिप्ट फ़ंक्शन है जो एक React एलिमेंट देता है:
 
 ```js
 function Welcome(props) {
@@ -67,7 +67,7 @@ function Welcome(props) {
 }
 ```
 
-Components can also be ES6 classes:
+कौम्पोनॅन्ट्स ES6 classes भी हो सकते हैं:
 
 ```js
 class Welcome extends React.Component {
@@ -77,7 +77,7 @@ class Welcome extends React.Component {
 }
 ```
 
-Components can be broken down into distinct pieces of functionality and used within other components. Components can return other components, arrays, strings and numbers. A good rule of thumb is that if a part of your UI is used several times (Button, Panel, Avatar), or is complex enough on its own (App, FeedStory, Comment), it is a good candidate to be a reusable component. Component names should also always start with a capital letter (`<Wrapper/>` **not** `<wrapper/>`). See [this documentation](/docs/components-and-props.html#rendering-a-component) for more information on rendering components. 
+कौम्पोनॅन्ट्स को कार्यक्षमता के अलग-अलग टुकड़ों में विभाजित किया जा सकता है और अन्य कौम्पोनॅन्ट्स के भीतर उपयोग किया जा सकता है। कौम्पोनॅन्ट्स अन्य कौम्पोनॅन्ट्स, arrays, strings और numbers को वापस कर सकते हैं। अंगूठे का एक अच्छा नियम यह है कि यदि आपके UI का एक हिस्सा कई बार उपयोग किया जाता है (बटन, पैनल, अवतार), या अपने आप में पर्याप्त जटिल है (ऐप, फीडस्टोरी, टिप्पणी), तो पुन: प्रयोज्य कौम्पोनॅन्ट होने के लिए यह एक अच्छा उम्मीदवार है । कौम्पोनॅन्ट नाम हमेशा एक कैपिटल लेटर (`<Wrapper/>` **not** `<wrapper/>`) से शुरू होना चाहिए। रेंडरिंग कौम्पोनॅन्ट्स के बारे में अधिक जानकारी के लिए [यह दस्तावेज़](/docs/components-and-props.html#rendering-a-component) देखें।
 
 ### [`props`](/docs/components-and-props.html) {#props}
 
