@@ -81,26 +81,27 @@ class Welcome extends React.Component {
 
 ### [`props`](/docs/components-and-props.html) {#props}
 
-`props` are inputs to a React component. They are data passed down from a parent component to a child component.
+`props` एक React कौम्पोनॅन्ट के लिए इनपुट हैं। वे डेटा हैं जो मूल कौम्पोनॅन्ट से चाइल्ड कौम्पोनॅन्ट तक जाते हैं।
 
-Remember that `props` are readonly. They should not be modified in any way:
+याद रखें कि `props` को सिर्फ सिफ़ पढ़िये। उन्हें किसी भी तरह से संशोधित नहीं किया जाना चाहिए:
 
 ```js
 // Wrong!
 props.number = 42;
 ```
 
-If you need to modify some value in response to user input or a network response, use `state` instead.
+यदि आपको उपयोगकर्ता इनपुट या नेटवर्क प्रतिक्रिया के जवाब में कुछ मूल्य को संशोधित करने की आवश्यकता है, तो इसके बजाय `state` का उपयोग करें।
 
 ### `props.children` {#propschildren}
 
-`props.children` is available on every component. It contains the content between the opening and closing tags of a component. For example:
+
+`props.children` हर कौम्पोनॅन्ट पर उपलब्ध है। इसमें किसी कौम्पोनॅन्ट के खुलने और बंद होने के बीच की सामग्री शामिल है। उदाहरण के लिए:
 
 ```js
 <Welcome>Hello world!</Welcome>
 ```
 
-The string `Hello world!` is available in `props.children` in the `Welcome` component:
+String `Hello world!` `Welcome` कौम्पोनॅन्ट में `props.children` में उपलब्ध है:
 
 ```js
 function Welcome(props) {
@@ -108,7 +109,7 @@ function Welcome(props) {
 }
 ```
 
-For components defined as classes, use `this.props.children`:
+classes के रूप में परिभाषित कौम्पोनॅन्ट्स के लिए, `this.props.children` का उपयोग करें:
 
 ```js
 class Welcome extends React.Component {
