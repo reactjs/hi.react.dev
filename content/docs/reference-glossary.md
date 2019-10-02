@@ -151,9 +151,9 @@ Don't pass something like `Math.random()` to keys. It is important that keys hav
 
 ## [Refs](/docs/refs-and-the-dom.html) {#refs}
 
-React supports a special attribute that you can attach to any component. The `ref` attribute can be an object created by [`React.createRef()` function](/docs/react-api.html#reactcreateref) or a callback function, or a string (in legacy API). When the `ref` attribute is a callback function, the function receives the underlying DOM element or class instance (depending on the type of element) as its argument. This allows you to have direct access to the DOM element or component instance.
+React एक विशेष गुण का समर्थन करता है जिसे आप किसी भी कौम्पोनॅन्ट से जोड़ सकते हैं। `ref` गुण [`React.createRef()` फ़ंक्शन](/docs/react-api.html#reactcreateref) या कॉलबैक फ़ंक्शन, या string (लीगेसी API में) द्वारा बनाई गई ऑब्जेक्ट हो सकती है। जब `ref` गुण कॉलबैक फ़ंक्शन होती है, तो फ़ंक्शन अपने तर्क के रूप में अंतर्निहित DOM एलिमेंट या class इंस्टेंस उदाहरण (एलिमेंट के प्रकार के आधार पर) प्राप्त करता है। यह आपको DOM एलिमेंट या कौम्पोनॅन्ट इंस्टेंस तक सीधी पहुँच प्रदान करने की अनुमति देता है।
 
-Use refs sparingly. If you find yourself often using refs to "make things happen" in your app, consider getting more familiar with [top-down data flow](/docs/lifting-state-up.html).
+संयम से refs का प्रयोग करें। यदि आप अक्सर अपने ऐप में "चीजों को बनाने" के लिए refs का उपयोग करते हैं, तो [टॉप-डाउन डेटा प्रवाह](/docs/lifting-state-up.html) के साथ अधिक परिचित होने पर विचार करें।
 
 ## [इवेंट्स](/docs/handling-events.html) {#events}
 
