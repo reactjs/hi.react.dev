@@ -143,11 +143,11 @@ In most cases you should use controlled components.
 
 ## [Keys](/docs/lists-and-keys.html) {#keys}
 
-A "key" is a special string attribute you need to include when creating arrays of elements. Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside an array to give the elements a stable identity.
+"keys" एक विशेष string विशेषता है जिसे आपको एलिमेंट्स की सारणी बनाते समय शामिल करना होगा। keys React को पहचानने में मदद करती हैं कि कौन से आइटम बदल गए हैं, जोड़े गए हैं या हटा दिए गए हैं। तत्वों को एक स्थिर पहचान देने के लिए सरणी के अंदर तत्वों को कुंजी दी जानी चाहिए।
 
-Keys only need to be unique among sibling elements in the same array. They don't need to be unique across the whole application or even a single component.
+Keys को केवल एक ही array में सिबलिंग एलिमेंट्स के बीच अद्वितीय होना चाहिए। उन्हें संपूर्ण एप्लिकेशन या किसी एकल कौम्पोनॅन्ट में विशिष्ट होने की आवश्यकता नहीं है।
 
-Don't pass something like `Math.random()` to keys. It is important that keys have a "stable identity" across re-renders so that React can determine when items are added, removed, or re-ordered. Ideally, keys should correspond to unique and stable identifiers coming from your data, such as `post.id`.
+`Math.random()` की तरह keys को कुछ भी पास मत करो। यह महत्वपूर्ण है कि keys में फिर से रेंडर करने वालों की एक "स्थिर पहचान" हो ताकि React यह निर्धारित कर सके कि आइटम कब जोड़े गए, हटाए गए या फिर से ऑर्डर किए गए। आदर्श रूप से, keys को आपके डेटा से आने वाले अद्वितीय और स्थिर पहचानकर्ताओं के अनुरूप होना चाहिए, जैसे कि `post.id`.
 
 ## [Refs](/docs/refs-and-the-dom.html) {#refs}
 
