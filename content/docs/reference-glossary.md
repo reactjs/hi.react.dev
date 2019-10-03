@@ -131,15 +131,15 @@ For each particular piece of changing data, there should be just one component t
 
 Lifecycle methods are custom functionality that gets executed during the different phases of a component. There are methods available when the component gets created and inserted into the DOM ([mounting](/docs/react-component.html#mounting)), when the component updates, and when the component gets unmounted or removed from the DOM.
 
- ## [Controlled](/docs/forms.html#controlled-components) vs. [Uncontrolled Components](/docs/uncontrolled-components.html)
+ ## [नियंत्रित](/docs/forms.html#controlled-components) बनाम [अनियंत्रित कौम्पोनॅन्ट](/docs/uncontrolled-components.html)
 
-React has two different approaches to dealing with form inputs. 
+फॉर्म इनपुट से निपटने के लिए React के दो अलग-अलग दृष्टिकोण हैं। 
 
-An input form element whose value is controlled by React is called a *controlled component*. When a user enters data into a controlled component a change event handler is triggered and your code decides whether the input is valid (by re-rendering with the updated value). If you do not re-render then the form element will remain unchanged.
+एक इनपुट फॉर्म एलिमेंट जिसका मूल्य React द्वारा नियंत्रित किया जाता है, एक *नियंत्रित कौम्पोनॅन्ट* कहा जाता है। जब कोई उपयोगकर्ता एक नियंत्रित कौम्पोनॅन्ट में डेटा दर्ज करता है तो एक परिवर्तन ईवेंट हैंडलर चालू हो जाता है और आपका कोड तय करता है कि इनपुट वैध है (अपडेट किए गए मूल्य के साथ पुन: रेंडर करके)। यदि आप फिर से री-रेंडर नहीं करते हैं, तो फार्म एलिमेंट अपरिवर्तित रहेगा।
 
-An *uncontrolled component* works like form elements do outside of React. When a user inputs data into a form field (an input box, dropdown, etc) the updated information is reflected without React needing to do anything. However, this also means that you can't force the field to have a certain value.
+एक *अनियंत्रित कौम्पोनॅन्ट* React के बाहर फार्म एलिमेंट्स की तरह काम करता है। जब कोई उपयोगकर्ता किसी प्रपत्र फ़ील्ड (एक इनपुट बॉक्स, ड्रॉपडाउन, आदि) में डेटा इनपुट करता है, तो अपडेट की गई जानकारी React के कुछ भी करने की आवश्यकता के बिना परिलक्षित होती है। हालाँकि, इसका अर्थ यह भी है कि आप किसी निश्चित मान के लिए फ़ील्ड को बाध्य नहीं कर सकते।
 
-In most cases you should use controlled components.
+ज्यादातर मामलों में आपको नियंत्रित कौम्पोनॅन्ट्स का उपयोग करना चाहिए।
 
 ## [Keys](/docs/lists-and-keys.html) {#keys}
 
