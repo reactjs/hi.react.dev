@@ -127,9 +127,9 @@ The most important difference between `state` and `props` is that `props` are pa
 
 For each particular piece of changing data, there should be just one component that "owns" it in its state. Don't try to synchronize states of two different components. Instead, [lift it up](/docs/lifting-state-up.html) to their closest shared ancestor, and pass it down as props to both of them.
 
-## [Lifecycle Methods](/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class) {#lifecycle-methods}
+## [Lifecycle मेथड्स](/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class) {#lifecycle-methods}
 
-Lifecycle methods are custom functionality that gets executed during the different phases of a component. There are methods available when the component gets created and inserted into the DOM ([mounting](/docs/react-component.html#mounting)), when the component updates, and when the component gets unmounted or removed from the DOM.
+Lifecycle मेथड्स कस्टम कार्यक्षमता हैं जो किसी कौम्पोनॅन्ट के विभिन्न चरणों के दौरान निष्पादित होते हैं। मेथड्स तब उपलब्ध  होते हैं जब कौम्पोनॅन्ट उपलब्ध होने के बाद DOM ([माउंटिंग](/docs/react-component.html#mounting)) में सम्मिलित होता हैं, जब कौम्पोनॅन्ट अपडेट करता है, और जब कौम्पोनॅन्ट अनमाउंट हो जाता है या DOM से हटा दिया जाता है।
 
  ## [नियंत्रित](/docs/forms.html#controlled-components) बनाम [अनियंत्रित कौम्पोनॅन्ट](/docs/uncontrolled-components.html)
 
