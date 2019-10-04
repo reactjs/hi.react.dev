@@ -121,11 +121,11 @@ class Welcome extends React.Component {
 
 ### [`state`](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) {#state}
 
-A component needs `state` when some data associated with it changes over time. For example, a `Checkbox` component might need `isChecked` in its state, and a `NewsFeed` component might want to keep track of `fetchedPosts` in its state.
+एक कौम्पोनॅन्ट को `state` की आवश्यकता होती है जब समय के साथ जुड़े कुछ डेटा बदलते हैं। उदाहरण के लिए, एक `Checkbox` कौम्पोनॅन्ट को अपने state में `isChecked` की आवश्यकता हो सकती है, और एक `NewsFeed` कौम्पोनॅन्ट अपने state में `fetchedPosts` का ट्रैक रखना चाह सकता है।
 
-The most important difference between `state` and `props` is that `props` are passed from a parent component, but `state` is managed by the component itself. A component cannot change its `props`, but it can change its `state`.
+`state` और `props` के बीच सबसे महत्वपूर्ण अंतर यह है कि `props` को मूल कौम्पोनॅन्ट से पारित किया जाता है, लेकिन `state` को कौम्पोनॅन्ट द्वारा ही प्रबंधित किया जाता है। एक कौम्पोनॅन्ट अपने `props` को नहीं बदल सकता है, लेकिन यह अपनी `state` को बदल सकता है।
 
-For each particular piece of changing data, there should be just one component that "owns" it in its state. Don't try to synchronize states of two different components. Instead, [lift it up](/docs/lifting-state-up.html) to their closest shared ancestor, and pass it down as props to both of them.
+बदलते डेटा के प्रत्येक विशेष टुकड़े के लिए, केवल एक कौम्पोनॅन्ट होना चाहिए जो उस डेटा का "मालिक" हो और अपने state में रखे। दो अलग-अलग कौम्पोनॅन्ट्स की states को सिंक्रनाइज़ करने का प्रयास न करें। इसके बजाय, इसे उनके निकटतम साझा पूर्वज [में रखे](/docs/lifting-state-up.html), और इसे उन दोनों को props के रूप में नीचे दें।
 
 ## [Lifecycle मेथड्स](/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class) {#lifecycle-methods}
 
