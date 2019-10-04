@@ -164,4 +164,4 @@ React एलिमेंट्स के साथ इवेंट्स को 
 
 ## [Reconciliation](/docs/reconciliation.html) {#reconciliation}
 
-When a component's props or state change, React decides whether an actual DOM update is necessary by comparing the newly returned element with the previously rendered one. When they are not equal, React will update the DOM. This process is called "reconciliation".
+जब किसी कौम्पोनॅन्ट की props या state में परिवर्तन होता है, तो React पहले से रेंडर किए गए व नए लौटे एलिमेंट की तुलना करके निर्णय करता है कि वास्तविक DOM को अपडेट की आवश्यक है या नहीं। जब वे समान नहीं होते हैं, तो React DOM को अपडेट करता है। इस प्रक्रिया को "reconciliation" कहा जाता है।
