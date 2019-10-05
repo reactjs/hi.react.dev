@@ -11,7 +11,7 @@ redirect_from:
 React के एलिमेंट्स के साथ इवेंट्स हैंडल करना DOM के एलिमेंट्स को हैंडल करने जैसा ही है । इनमे खाली कुछ सिंटैक्टिक अंतर हैं ।
 
 * React के इवेंट्स का नाम lowercase कि जगह camelCase में रक्खा जाता है ।
-* JSX के साथ, आप एक function को इवेंट हैंडलर कि तरह पास करते हैं,  न कि एक string को ।
+* JSX का उपयोग करते समय, आप एक function को string की जगह इवेंट हैंडलर में पास करते हैं ।
 
 उधारण के तौर पर, यह HTML code:
 
@@ -54,7 +54,7 @@ function ActionLink() {
 }
 ```
 
-यहाँ पर `e` एक synthetic इवेंट है । React इन सिंथेटिक इवेंट्स को [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/) के हिसाब से परिभाषित करता है, इसी लिए आपको cross-browser compatibility कि चिंता नही करनी चाहिए । और सिखने के लिए [`SyntheticEvent`](/docs/events.html)की रिफरेन्स गाइड को देखें ।
+यहाँ पर `e` एक सिंथेटिक इवेंट है । React इन सिंथेटिक इवेंट्स को [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/) के हिसाब से परिभाषित करता है, इसी लिए आपको cross-browser compatibility कि चिंता नही करनी चाहिए । और सिखने के लिए [`SyntheticEvent`](/docs/events.html)की रिफरेन्स गाइड को देखें ।
 
 React को इस्तेमाल करते वक्त आपको ज्यादातर `addEventListener` कि किसी DOM एलिमेंट में लिस्टनर ऐड करने के बाद कॉल करने की ज़रूरत नहीं पड़ेगी । इसकी जगह पर आप listener उस एलिमेंट पर तब ऐड कर सकते हैं जब वो इनिश्यली रेंडर होता है ।
 
