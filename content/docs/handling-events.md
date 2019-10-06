@@ -117,9 +117,9 @@ class LoggingButton extends React.Component {
 }
 ```
 
-This syntax is enabled by default in [Create React App](https://github.com/facebookincubator/create-react-app).
+यह सिंटैक्स [Create React App](https://github.com/facebookincubator/create-react-app) में by default पाया जाता है। 
 
-If you aren't using class fields syntax, you can use an [arrow function](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) in the callback:
+अगर आप class field सिंटैक्स नहीं इस्तेमाल कर रहें  हैं तो आप callback में [arrow function](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) का इस्तेमाल कर सकते हैं। 
 
 ```js{7-9}
 class LoggingButton extends React.Component {
@@ -138,7 +138,7 @@ class LoggingButton extends React.Component {
 }
 ```
 
-The problem with this syntax is that a different callback is created each time the `LoggingButton` renders. In most cases, this is fine. However, if this callback is passed as a prop to lower components, those components might do an extra re-rendering. We generally recommend binding in the constructor or using the class fields syntax, to avoid this sort of performance problem.
+इस सिंटैक्स के साथ यह दिक्कत है की जितनी बार कोई अलग callback बनता है उतनी बार `LoggingButton` फिरसे render होता है। ज़्यादातर मामलो में इससे कोई समस्या नहीं होती है। लेकिन अगर इस callback को निचले कौम्पोनॅन्ट में पास किया जाता है तो हो सकता है की कौम्पोनॅन्ट को ज़्यादा री-रेंडरिंग करनी पड़े। हम आम तौर पर constructor को bind करने के लिए या class फील्ड सिंटैक्स के इस्तेमाल को भडावा देते हैं ताकि इस तरह की परफॉरमेंस की दिक्कते ना आए। 
 
 ## Passing Arguments to Event Handlers {#passing-arguments-to-event-handlers}
 
