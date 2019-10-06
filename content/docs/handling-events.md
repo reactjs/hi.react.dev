@@ -54,7 +54,7 @@ function ActionLink() {
 }
 ```
 
-यहाँ पर `e` एक सिंथेटिक इवेंट है । React इन सिंथेटिक इवेंट्स को [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/) के हिसाब से परिभाषित करता है, इसी लिए आपको cross-browser compatibility कि चिंता नही करनी चाहिए । और सिखने के लिए [`SyntheticEvent`](/docs/events.html)की रिफरेन्स गाइड को देखें ।
+यहाँ पर `e` एक सिंथेटिक इवेंट है । React इन सिंथेटिक इवेंट्स को [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/) के हिसाब से परिभाषित करता है, इसी लिए आपको cross-browser compatibility कि चिंता नही करनी चाहिए । और सिखने के लिए [`SyntheticEvent`](/docs/events.html) की रिफरेन्स गाइड को देखें ।
 
 React को इस्तेमाल करते वक्त आपको ज्यादातर `addEventListener` कि किसी DOM एलिमेंट में लिस्टनर ऐड करने के बाद कॉल करने की ज़रूरत नहीं पड़ेगी । इसकी जगह पर आप listener उस एलिमेंट पर तब ऐड कर सकते हैं जब वो इनिश्यली रेंडर होता है ।
 
