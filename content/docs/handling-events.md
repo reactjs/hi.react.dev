@@ -140,15 +140,15 @@ class LoggingButton extends React.Component {
 
 इस सिंटैक्स के साथ यह दिक्कत है की जितनी बार कोई अलग callback बनता है उतनी बार `LoggingButton` फिरसे रेंडर होता है। ज़्यादातर मामलो में इससे कोई समस्या नहीं होती है। लेकिन अगर इस callback को निचले कौम्पोनॅन्ट में पास किया जाता है तो हो सकता है की कौम्पोनॅन्ट को ज़्यादा री-रेंडरिंग करनी पड़े। हम आम तौर पर constructor को bind करने के लिए या class फील्ड सिंटैक्स के इस्तेमाल को बढ़ावा देते हैं ताकि इस तरह की परफॉरमेंस की दिक्कते ना आए। 
 
-## Passing Arguments to Event Handlers {#passing-arguments-to-event-handlers}
+## इवेंट हैंडलर में आर्ग्यूमेंट्स देना {#passing-arguments-to-event-handlers}
 
-Inside a loop it is common to want to pass an extra parameter to an event handler. For example, if `id` is the row ID, either of the following would work:
+एक loop के अंदर अक्सर लोग इवेंट हैंडलर में एक एक्स्ट्रा पैरामीटर देना चाहते हैं। उदहारण के तौर पर अगर `id` एक row की id है तो इनमे से कोई भी काम करजाएगा:
 
 ```js
 <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
 <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
 ```
 
-The above two lines are equivalent, and use [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) and [`Function.prototype.bind`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) respectively.
+ऊपर की दोनों लिने एक ही काम करती हैं और [एरो फंक्शन्स](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) और [`Function.prototype.bind`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) का क्रमशः इस्तेमाल करती हैं।
 
-In both cases, the `e` argument representing the React event will be passed as a second argument after the ID. With an arrow function, we have to pass it explicitly, but with `bind` any further arguments are automatically forwarded.
+इन दोनों ही मामलो में `e` आर्गुमेंट जो की React इवेंट को दिखाता है वो एक दूसरे आर्गुमेंट की तरह ID के बाद pass किया जाएगा। एरो फंक्शन्स के साथ हमे इसे स्पष्ठ रूप में पास करना होगा, लेकिन `bind` के साथ कोई भी अतिरिक्त आर्ग्यूमेंट्स खुद ब खुद आगे चले जाते हैं।
