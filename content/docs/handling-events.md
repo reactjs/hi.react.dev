@@ -142,13 +142,13 @@ class LoggingButton extends React.Component {
 
 ## इवेंट हैंडलर में आर्ग्यूमेंट्स देना {#passing-arguments-to-event-handlers}
 
-एक loop के अंदर अक्सर लोग इवेंट हैंडलर में एक एक्स्ट्रा पैरामीटर देना चाहते हैं। उदहारण के तौर पर अगर `id` एक row की id है तो इनमे से कोई भी काम करजाएगा:
+एक loop के अंदर अक्सर लोग इवेंट हैंडलर में एक एक्स्ट्रा पैरामीटर देना चाहते हैं। उदहारण के तौर पर अगर `id` एक row की id है तो इनमे से कोई भी काम कर जाएगा:
 
 ```js
 <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
 <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
 ```
 
-ऊपर की दोनों लिने एक ही काम करती हैं और [एरो फंक्शन्स](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) और [`Function.prototype.bind`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) का क्रमशः इस्तेमाल करती हैं।
+ऊपर की दोनों लाइने एक ही काम करती हैं और [एरो फंक्शन्स](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) और [`Function.prototype.bind`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) का क्रमशः इस्तेमाल करती हैं।
 
 इन दोनों ही मामलो में `e` आर्गुमेंट जो की React इवेंट को दिखाता है वो एक दूसरे आर्गुमेंट की तरह ID के बाद pass किया जाएगा। एरो फंक्शन्स के साथ हमे इसे स्पष्ठ रूप में पास करना होगा, लेकिन `bind` के साथ कोई भी अतिरिक्त आर्ग्यूमेंट्स खुद ब खुद आगे चले जाते हैं।
