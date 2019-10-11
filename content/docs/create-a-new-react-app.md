@@ -53,7 +53,7 @@ npm start
 
 Create React App बैकएंड लॉजिक या डेटाबेस नहीं संभालता है; यह सिर्फ फ्रंटएंड बिल्ड पाइपलाइन बनाता है, इसलिए आप इसका उपयोग किसी भी बैकएंड के साथ कर सकते हैं। हुड के निचे, यह [Babel](https://babeljs.io/) और [webpack](https://webpack.js.org/) का उपयोग करता है, लेकिन आपको उनके बारे में कुछ भी जानने की आवश्यकता नहीं है।
 
-जब आप प्रोडक्शन में डेप्लॉय करने के लिए तैयार होते हैं, तो `npm run build` चलाकर `build` फोल्डर में आपके एप्प का एक अनुकूलित निर्माण होगा। आप Create React App के बारे में और जान सकते हैं, [उसकी रीडमी से](https://github.com/facebookincubator/create-react-app#create-react-app--) और [यूजर गाइड से](https://facebook.github.io/create-react-app/)।
+जब आप प्रोडक्शन में डेप्लॉय करने के लिए तैयार होते हैं, तो `npm run build` चलाकर `build` फोल्डर में आपके एप्प का एक ऑप्टीमाइज़्ड निर्माण होगा। आप Create React App के बारे में और जान सकते हैं, [उसकी रीडमी से](https://github.com/facebookincubator/create-react-app#create-react-app--) और [यूजर गाइड से](https://facebook.github.io/create-react-app/)।
 
 ### Next.js {#nextjs}
 
