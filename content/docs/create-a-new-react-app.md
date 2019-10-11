@@ -10,7 +10,6 @@ next: cdn-links.html
 
 सर्वश्रेष्ठ उपयोगकर्ता और डेवलपर अनुभव के लिए एक संघटित टूलचेन का उपयोग करें।
 
-
 इस पृष्ठ में कुछ लोकप्रिय React टूलचेन का वर्णन किया गया है जो निम्न कार्यों में मदद करते हैं:
 
 * कई फ़ाइलों और कौम्पोनॅन्टस के लिए स्केलिंग।
@@ -29,10 +28,10 @@ next: cdn-links.html
 
 ## अनुशंसित टूलचेनस {#recommended-toolchains}
 
-React टीम मुख्य रूप से इन समाधानों की सिफारिश करती है:
+React टीम मुख्य रूप से इन समाधानों को इस्तेमाल करने की सलाह देती है:
 
-- यदि आप **React सीख** रहे हैं या **एक नया [एकल-पृष्ठ](/docs/glossary.html#single-page-application) एप्प** बना रहे हैं, तो [Create React App](#create-react-app) उपयोग करें।
-- यदि आप **Node.js के साथ एक सर्वर-रेंडर वेबसाइट बना रहे हैं,** तो [Next.js](#nextjs) उपयोग करें।
+- यदि आप **React सीख** रहे हैं या **एक नया [एक पृष्ठ का](/docs/glossary.html#single-page-application) एप्प** बना रहे हैं, तो [Create React App](#create-react-app) का उपयोग करें।
+- यदि आप **Node.js के साथ एक सर्वर द्वारा रेंडर की गयी वेबसाइट बना रहे हैं,** तो [Next.js](#nextjs) उपयोग करें।
 - यदि आप एक **स्थिर सामग्री-उन्मुख वेबसाइट** का निर्माण कर रहे हैं, तो [Gatsby](#gatsby) का प्रयोग करें।
 - यदि आप किसी **कॉम्पोनेन्ट लाइब्रेरी** का निर्माण कर रहे हैं या किसी **मौजूदा कोडबेस के साथ एकीकरण** कर रहे हैं, तो अधिक [लचीले टूलचेनस](#more-flexible-toolchains) का प्रयोग करें।
 
@@ -66,7 +65,7 @@ Next.js को [आधिकारिक गाइड](https://nextjs.org/learn/
 
 React के साथ **स्थिर वेबसाइट** बनाने के लिए [Gatsby](https://www.gatsbyjs.org/) सबसे अच्छा तरीका है। यह आपको React कौम्पोनॅन्ट का उपयोग करने देता है, लेकिन सबसे तेज़ लोड समय की गारंटी के लिए HTML और CSS के पहले से रेंडर किए गए आउटपुट देता है।
 
-Gatsby को [आधिकारिक गाइड](https://www.gatsbyjs.org/docs/) और [स्टार्टर किट की गैलरी](https://www.gatsbyjs.org/docs/gatsby-starters/) से सीखें।
+Gatsby को इसकी[ऑफिसियल गाइड](https://www.gatsbyjs.org/docs/) और [स्टार्टर किट की गैलरी](https://www.gatsbyjs.org/docs/gatsby-starters/) से सीखें।
 
 ### और लचीले टूलचेनस {#more-flexible-toolchains}
 
@@ -76,7 +75,7 @@ Gatsby को [आधिकारिक गाइड](https://www.gatsbyjs.org/d
 
 - **[nwb](https://github.com/insin/nwb)** npm के लिए [React कौम्पोनॅन्टस को प्रकाशित ](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb)करने के लिए विशेष रूप से अच्छा है. React ऐप्स बनाने के लिए भी इसका [इस्तेमाल किया जा सकता है](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb)।
 
-- **[Parcel](https://parceljs.org/)** एक तेज़, शून्य कॉन्फ़िगरेशन वाला वेब एप्लिकेशन बंडल है जो [React के साथ काम करता है](https://parceljs.org/recipes.html#react)।
+- **[Parcel](https://parceljs.org/)** एक तेज़, बिना कॉन्फ़िगरेशन वाला वेब एप्लिकेशन बंडल है जो [React के साथ काम करता है](https://parceljs.org/recipes.html#react)।
 
 - **[Razzle](https://github.com/jaredpalmer/razzle)** एक सर्वर-रेंडरिंग फ्रेमवर्क है जिसमें किसी भी कॉन्फ़िगरेशन की आवश्यकता नहीं होती है, लेकिन Next.js की तुलना में अधिक लचीलापन प्रदान करता है।
 
@@ -84,12 +83,12 @@ Gatsby को [आधिकारिक गाइड](https://www.gatsbyjs.org/d
 
 एक जावास्क्रिप्ट बिल्ड टूलचेन में आम तौर पर शामिल होते हैं:
 
-* एक **package मैनेजर**, जैसे [Yarn](https://yarnpkg.com/) या [npm](https://www.npmjs.com/)। यह आपको तृतीय-पक्ष पैकेज के विशाल पारिस्थितिकी तंत्र का लाभ उठाने देता है, और उन्हें आसानी से स्थापित या अपडेट करता है।
+* एक **package मैनेजर**, जैसे [Yarn](https://yarnpkg.com/) या [npm](https://www.npmjs.com/)। यह आपको थर्ड पार्टी पैकेज के विशाल इकोसिस्टम का लाभ उठाने देता है, और उन्हें आसानी से स्थापित या अपडेट करता है।
 
-* एक **bundler**, जैसे [webpack](https://webpack.js.org/) या [Parcel](https://parceljs.org/)। यह आपको मॉड्यूलर कोड लिखने और लोड समय का अनुकूलन करने के लिए छोटे पैकेज में एक साथ बंडल करने देता है।
+* एक **bundler**, जैसे [webpack](https://webpack.js.org/) या [Parcel](https://parceljs.org/)। यह आपको मॉड्यूलर कोड लिखने और लोड समय को ऑप्टिमाइज़ करने के लिए छोटे पैकेज में एक साथ बंडल करने देता है।
 
 * एक **compiler**, जैसे [Babel](https://babeljs.io/)। यह आपको आधुनिक जावास्क्रिप्ट कोड लिखने देता है जो अभी भी पुराने ब्राउज़रों में काम करता है।
 
-यदि आप स्क्रैच से अपना स्वयं का जावास्क्रिप्ट टूलचैन सेट करना पसंद करते हैं, [इस गाइड की जांच करें जो ](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) जो Create React App की कार्यक्षमता जैसे बनाता है।
+यदि आप स्क्रैच से अपना स्वयं का जावास्क्रिप्ट टूलचैन सेट करना पसंद करते हैं, [इस गाइड की जांच करें ](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) जो Create React App की कार्यक्षमता जैसे बनाता है।
 
 यह सुनिश्चित करना न भूलें कि आपका कस्टम टूलचेन प्रोडक्शन के लिए सही तरीके से सेट है](/docs/optimizing-performance.html#use-the-production-build)।
