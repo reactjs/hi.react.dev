@@ -1,6 +1,6 @@
 ---
 id: cdn-links
-title: CDN लिंक
+title: CDN लिंकस
 permalink: docs/cdn-links.html
 prev: create-a-new-react-app.html
 next: hello-world.html
@@ -13,7 +13,7 @@ React एवं ReactDOM दोनों CDN पर उपलब्ध हैं
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 ```
 
-उपरोक्त वर्शन केवल परीक्षण परिवर्धन के लिए हैं, एवं परिनियोजन के लिए नहीं। React के minified एवं optimized परिनियोजन वर्शन निम्नलिखित लिंक पर उपलब्ध हैं:
+उपरोक्त वर्शन केवल डेवलपमेंट के लिए हैं, एवं प्रोडक्शन के लिए नहीं। React के minified एवं ऑप्टीमाइज़्ड परिनियोजन वर्शन निम्नलिखित लिंक पर उपलब्ध हैं:
 
 ```html
 <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
@@ -30,8 +30,8 @@ React एवं ReactDOM दोनों CDN पर उपलब्ध हैं
 <script crossorigin src="..."></script>
 ```
 
-हमारा यह भी सुझाव है कि आप सुनिश्चित कर लें जिस CDN का आप उपयोग कर रहे हैं वह `Access-Control-Allow-Origin: *` HTTP हेडर तय करता है:
+हमारा यह भी सुझाव है कि आप सुनिश्चित कर लें जिस CDN का आप उपयोग कर रहे हैं वह `Access-Control-Allow-Origin: *` HTTP हेडर सेट करता है:
 
 ![Access-Control-Allow-Origin: *](../images/docs/cdn-cors-header.png)
 
-ऐसा करने से React 16 एवं बाद के वर्शन में [बेहतर त्रुटि नियंत्रण](/blog/2017/07/26/error-handling-in-react-16.html) होता है।
+ऐसा करने से React 16 एवं बाद के वर्शन में [बेहतर एरर नियंत्रण](/blog/2017/07/26/error-handling-in-react-16.html) होता है।
