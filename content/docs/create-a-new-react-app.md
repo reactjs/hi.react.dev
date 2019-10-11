@@ -91,4 +91,4 @@ Gatsby को इसकी[ऑफिसियल गाइड](https://www.gatsb
 
 यदि आप स्क्रैच से अपना स्वयं का जावास्क्रिप्ट टूलचैन सेट करना पसंद करते हैं, [इस गाइड की जांच करें ](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) जो Create React App की कार्यक्षमता जैसे बनाता है।
 
-यह सुनिश्चित करना न भूलें कि आपका कस्टम टूलचेन प्रोडक्शन के लिए सही तरीके से सेट है](/docs/optimizing-performance.html#use-the-production-build)।
+यह सुनिश्चित करना न भूलें कि आपका कस्टम टूलचेन [प्रोडक्शन के लिए सही तरीके से सेट है](/docs/optimizing-performance.html#use-the-production-build)।
