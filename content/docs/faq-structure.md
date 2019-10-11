@@ -6,13 +6,13 @@ layout: docs
 category: FAQ
 ---
 
-### Is there a recommended way to structure React projects? {#is-there-a-recommended-way-to-structure-react-projects}
+### क्या रियेक्ट प्रोजेक्ट्स की संरचना का अनुशंसित तरीका है? {#is-there-a-recommended-way-to-structure-react-projects}
 
-React doesn't have opinions on how you put files into folders. That said there are a few common approaches popular in the ecosystem you may want to consider.
+रियेक्ट को यह नहीं पता कि आप फ़ाइलों को फ़ोल्डर्स में कैसे डालते हैं। आप जिस पारिस्थितिकी तंत्र पर विचार करना चाहते हैं, उसमें कुछ सामान्य दृष्टिकोण लोकप्रिय हैं।
 
-#### Grouping by features or routes {#grouping-by-features-or-routes}
+#### फीचर्स या रुट्स द्वारा समूहीकरण {#grouping-by-features-or-routes}
 
-One common way to structure projects is locate CSS, JS, and tests together inside folders grouped by feature or route.
+प्रोजेक्ट्स की संरचना का एक सामान्य तरीका सीएसएस, जेएस का पता लगाकर,फ़ीचर या मार्ग द्वारा समूहीकृत फ़ोल्डर के अंदर एक साथ परीक्षण करना हैं।
 
 ```
 common/
@@ -35,11 +35,11 @@ profile/
   ProfileAPI.js
 ```
 
-The definition of a "feature" is not universal, and it is up to you to choose the granularity. If you can't come up with a list of top-level folders, you can ask the users of your product what major parts it consists of, and use their mental model as a blueprint.
+"फीचर" की परिभाषा सार्वभौमिक नहीं है, और यह आप पर निर्भर है कि आप किस विवरण का चयन करते हैं। यदि आप शीर्ष स्तर के फ़ोल्डरों की सूची के साथ नहीं आ सकते हैं, तो आप अपने उत्पाद के उपयोगकर्ताओं से पूछ सकते हैं कि इसमें कौन से प्रमुख भाग हैं, और उनके मानसिक मॉडल का ब्लूप्रिंट के रूप में उपयोग कर सकते हैं।
 
-#### Grouping by file type {#grouping-by-file-type}
+#### फ़ाइल प्रकार द्वारा समूहीकरण {#grouping-by-file-type}
 
-Another popular way to structure projects is to group similar files together, for example:
+परियोजनाओं के लिए एक और लोकप्रिय तरीका समान फ़ाइलों को एक साथ समूहित करना है, उदाहरण के लिए:
 
 ```
 api/
@@ -59,16 +59,17 @@ components/
   ProfileHeader.css
 ```
 
-Some people also prefer to go further, and separate components into different folders depending on their role in the application. For example, [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) is a design methodology built on this principle. Remember that it's often more productive to treat such methodologies as helpful examples rather than strict rules to follow.
+कुछ लोग गहराई में जाना पसंद करते हैं, और कॉम्पोनेन्ट को उनकी भूमिका के आधार पर विभिन्न फ़ोल्डर्स में अलग अलग करते हैं। उदाहरण के लिए, [परमाणु डिजाइन](http://bradfrost.com/blog/post/atomic-web-design/) इस सिद्धांत पर निर्मित एक डिजाइन पद्धति है। याद रखें कि इस तरह की कार्यप्रणालियों को व्यवहार में लाने के लिए अक्सर सख्त नियमों के बजाय सहायक उदाहरणों का उपयोग करना अधिक लाभदायक होता है।
 
-#### Avoid too much nesting {#avoid-too-much-nesting}
+#### बहुत ज्यादा नेस्टिंग से बचें {#avoid-too-much-nesting}
 
-There are many pain points associated with deep directory nesting in JavaScript projects. It becomes harder to write relative imports between them, or to update those imports when the files are moved. Unless you have a very compelling reason to use a deep folder structure, consider limiting yourself to a maximum of three or four nested folders within a single project. Of course, this is only a recommendation, and it may not be relevant to your project.
+जावास्क्रिप्ट प्रोजेक्ट्स में डीप डायरेक्टरी नेस्टिंग को लेकर काफी समस्याएं हैं। जब फाइल्स को मूव कराते हैं तब उनके बीच सापेक्ष इम्पोर्ट्स लिखना या उन इम्पोर्ट्स को अपडेट करना मुश्किल हो जाता है। जब तक आपके पास एक गहरी फ़ोल्डर संरचना का उपयोग करने के लिए एक बहुत ही सम्मोहक कारण नहीं है, तब तक अपने आप को एक ही प्रोजेक्ट के भीतर अधिकतम तीन या चार नेस्टेड फ़ोल्डरों तक सीमित करने पर विचार करें। बेशक, यह केवल एक सिफारिश है, और यह आपके प्रोजेक्ट के लिए प्रासंगिक नहीं हो सकता है।
 
-#### Don't overthink it {#dont-overthink-it}
+#### ज्यादा न सोचें {#dont-overthink-it}
 
-If you're just starting a project, [don't spend more than five minutes](https://en.wikipedia.org/wiki/Analysis_paralysis) on choosing a file structure. Pick any of the above approaches (or come up with your own) and start writing code! You'll likely want to rethink it anyway after you've written some real code.
+यदि आप एक प्रोजेक्ट शुरू कर रहें हैं, तो फ़ाइल संरचना चुनने के लिए [पांच मिनट से अधिक समय न लगाएं।](https://en.wikipedia.org/wiki/Analysis_paralysis) 
+उपरोक्त किसी भी दृष्टिकोण को चुनें (या अपने स्वयं के साथ आएं) और कोड लिखना शुरू करें! आपके द्वारा कुछ वास्तविक कोड लिखे जाने के बाद, आप इसे वैसे भी पुनर्विचार करना चाहेंगे।
 
-If you feel completely stuck, start by keeping all files in a single folder. Eventually it will grow large enough that you will want to separate some files from the rest. By that time you'll have enough knowledge to tell which files you edit together most often. In general, it is a good idea to keep files that often change together close to each other. This principle is called "colocation".
+यदि आप पूरी तरह से फंसे हुए महसूस करते हैं, तो सभी फ़ाइलों को एक फ़ोल्डर में रखकर शुरू करें। आखिरकार यह काफी बड़ा हो जाएगा कि आप कुछ फ़ाइलों को बाकी हिस्सों से अलग करना चाहेंगे। उस समय तक आपको यह पर्याप्त ज्ञान होगा कि आप यह बता सकेंगे की आप किन फ़ाइलों को अक्सर एक साथ संपादित करते हैं। सामान्य तौर पर, फाइलों को रखना एक अच्छा विचार है जो अक्सर एक-दूसरे के करीब बदल जाते हैं। इस सिद्धांत को "कोलोकेशन" कहा जाता है।
 
-As projects grow larger, they often use a mix of both of the above approaches in practice. So choosing the "right" one in the beginning isn't very important.
+जैसे-जैसे प्रोजेक्ट बड़े होते हैं, वे अक्सर अभ्यास में उपरोक्त दोनों दृष्टिकोणों के मिश्रण का उपयोग करते हैं। इसलिए शुरुआत में किसी एक को "सही" चुनना बहुत महत्वपूर्ण नहीं है।
