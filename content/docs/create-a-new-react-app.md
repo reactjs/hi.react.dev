@@ -32,14 +32,14 @@ React टीम मुख्य रूप से इन समाधानों
 
 - यदि आप **React सीख** रहे हैं या **एक नया [एक पृष्ठ का](/docs/glossary.html#single-page-application) एप्प** बना रहे हैं, तो [Create React App](#create-react-app) का उपयोग करें।
 - यदि आप **Node.js के साथ एक सर्वर द्वारा रेंडर की गयी वेबसाइट बना रहे हैं,** तो [Next.js](#nextjs) उपयोग करें।
-- यदि आप एक **स्थिर सामग्री-उन्मुख वेबसाइट** का निर्माण कर रहे हैं, तो [Gatsby](#gatsby) का प्रयोग करें।
-- यदि आप किसी **कॉम्पोनेन्ट लाइब्रेरी** का निर्माण कर रहे हैं या किसी **मौजूदा कोडबेस के साथ एकीकरण** कर रहे हैं, तो अधिक [लचीले टूलचेनस](#more-flexible-toolchains) का प्रयोग करें।
+- यदि आप एक **स्टैटिक सामग्री-उन्मुख वेबसाइट** का निर्माण कर रहे हैं, तो [Gatsby](#gatsby) का प्रयोग करें।
+- यदि आप किसी **कौम्पोनॅन्ट लाइब्रेरी** का निर्माण कर रहे हैं या किसी **मौजूदा कोडबेस के साथ एकीकरण** कर रहे हैं, तो अधिक [लचीले टूलचेनस](#more-flexible-toolchains) का प्रयोग करें।
 
 ### Create React App {#create-react-app}
 
-[Create React App](https://github.com/facebookincubator/create-react-app) **React सीखने** के लिए एक आरामदायक वातावरण है, और React में एक **नया [एकल-पृष्ठ](/docs/glossary.html#single-page-application) एप्लिकेशन** बनाना शुरू करने का सबसे अच्छा तरीका है।
+[Create React App](https://github.com/facebookincubator/create-react-app) **React सीखने** के लिए एक आरामदायक वातावरण है, और React में एक **नया [एक पृष्ठ का](/docs/glossary.html#single-page-application) एप्लिकेशन** बनाना शुरू करने का सबसे अच्छा तरीका है।
 
-यह आपके डेवलपमेंट के वातावरण को स्थापित करता है ताकि आप नवीनतम जावास्क्रिप्ट सुविधाओं का उपयोग कर सकें, एक अच्छा डेवलपर अनुभव प्रदान करता है, और प्रोडक्शन के लिए अपने एप्प का अनुकूलन करता है। आपको अपनी मशीन पर node >= 8.10 और npm >= 5.6 होना चाहिए। प्रोजेक्ट बनाने के लिए, रन करें:
+यह आपके डेवलपमेंट के वातावरण को स्थापित करता है ताकि आप लेटेस्ट जावास्क्रिप्ट सुविधाओं का उपयोग कर सकें, एक अच्छा डेवलपर अनुभव प्रदान करता है, और प्रोडक्शन के लिए अपने एप्प को ऑप्टिमाइज़ करता है। आपको अपनी मशीन पर node >= 8.10 और npm >= 5.6 होना चाहिए। प्रोजेक्ट बनाने के लिए, रन करें:
 
 ```bash
 npx create-react-app my-app
@@ -49,31 +49,31 @@ npm start
 
 >Note
 >
->`npx` पहली पंक्ति में एक टाइपो नहीं है -- यह एक [पैकेज runner उपकरण है जो npm 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) के साथ आता है।
+>`npx` पहली पंक्ति में एक टाइपो नहीं है -- यह एक [पैकेज रनर उपकरण है जो npm 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) के साथ आता है।
 
-Create React App बैकएंड लॉजिक या डेटाबेस नहीं संभालता है; यह सिर्फ फ्रंटएंड बिल्ड पाइपलाइन बनाता है, इसलिए आप इसका उपयोग किसी भी बैकएंड के साथ कर सकते हैं। हुड के तहत, यह [Babel](https://babeljs.io/) और [webpack](https://webpack.js.org/) का उपयोग करता है, लेकिन आपको उनके बारे में कुछ भी जानने की आवश्यकता नहीं है।
+Create React App बैकएंड लॉजिक या डेटाबेस नहीं संभालता है; यह सिर्फ फ्रंटएंड बिल्ड पाइपलाइन बनाता है, इसलिए आप इसका उपयोग किसी भी बैकएंड के साथ कर सकते हैं। हुड के निचे, यह [Babel](https://babeljs.io/) और [webpack](https://webpack.js.org/) का उपयोग करता है, लेकिन आपको उनके बारे में कुछ भी जानने की आवश्यकता नहीं है।
 
-जब आप प्रोडक्शन के लिए तैनात करने के लिए तैयार होते हैं, तो `npm run build` चलाकर `build` फोल्डर में आपके एप्प का एक अनुकूलित निर्माण होगा। आप Create React App के बारे में और जान सकते हैं, [उसकी रीडमी से](https://github.com/facebookincubator/create-react-app#create-react-app--) और [यूजर गाइड से](https://facebook.github.io/create-react-app/)।
+जब आप प्रोडक्शन में डेप्लॉय करने के लिए तैयार होते हैं, तो `npm run build` चलाकर `build` फोल्डर में आपके एप्प का एक अनुकूलित निर्माण होगा। आप Create React App के बारे में और जान सकते हैं, [उसकी रीडमी से](https://github.com/facebookincubator/create-react-app#create-react-app--) और [यूजर गाइड से](https://facebook.github.io/create-react-app/)।
 
 ### Next.js {#nextjs}
 
-[Next.js](https://nextjs.org/) **स्थैतिक और सर्वर** के लिए एक लोकप्रिय और हल्का ढांचा है, जो React के साथ निर्मित अनुप्रयोगों का उपयोग करता है। इसमें स्टाइलिंग और राउटिंग समाधान शामिल हैं, और यह मान लेता है कि आप सर्वर वातावरण के रूप में [Node.js](https://nodejs.org/) का उपयोग कर रहे हैं।
+[Next.js](https://nextjs.org/) **स्टैटिक और सर्वर द्वारा रेंडर की गयी ऍप्लिकेशन्स** के लिए एक लोकप्रिय और हल्का फ्रेमवर्क है, जो React के साथ निर्मित अनुप्रयोगों का उपयोग करता है। इसमें **स्टाइलिंग और राउटिंग समाधान** शामिल हैं, और यह मान लेता है कि आप सर्वर वातावरण के रूप में [Node.js](https://nodejs.org/) का उपयोग कर रहे हैं।
 
-Next.js को [आधिकारिक गाइड](https://nextjs.org/learn/) से सीखें।
+Next.js को इसकी [ऑफिसियल गाइड](https://nextjs.org/learn/) से सीखें।
 
 ### Gatsby {#gatsby}
 
-React के साथ **स्थिर वेबसाइट** बनाने के लिए [Gatsby](https://www.gatsbyjs.org/) सबसे अच्छा तरीका है। यह आपको React कौम्पोनॅन्ट का उपयोग करने देता है, लेकिन सबसे तेज़ लोड समय की गारंटी के लिए HTML और CSS के पहले से रेंडर किए गए आउटपुट देता है।
+React के साथ **स्टैटिक वेबसाइट** बनाने के लिए [Gatsby](https://www.gatsbyjs.org/) सबसे अच्छा तरीका है। यह आपको React कौम्पोनॅन्ट का उपयोग करने देता है, लेकिन सबसे तेज़ लोड समय की गारंटी के लिए HTML और CSS के पहले से रेंडर किए गए आउटपुट देता है।
 
 Gatsby को इसकी[ऑफिसियल गाइड](https://www.gatsbyjs.org/docs/) और [स्टार्टर किट की गैलरी](https://www.gatsbyjs.org/docs/gatsby-starters/) से सीखें।
 
 ### और लचीले टूलचेनस {#more-flexible-toolchains}
 
-निम्नलिखित टूलचेनस अधिक लचीलापन और पसंद प्रदान करते हैं। हम इन्हे अधिक अनुभवी उपयोगकर्ताओं के लिए सलाह देते हैं:
+निम्नलिखित टूलचेनस अधिक लचीलापन और अधिक विकल्प प्रदान करते हैं। हम इन्हे अधिक अनुभवी उपयोगकर्ताओं के लिए सलाह देते हैं:
 
 - **[Neutrino](https://neutrinojs.org/)** प्रीसेट की सादगी के साथ [webpack](https://webpack.js.org/) की शक्ति को जोड़ती है, और इसमें [React apps](https://neutrinojs.org/packages/react/) and [React components](https://neutrinojs.org/packages/react-components/) के लिए एक प्रीसेट शामिल है।
 
-- **[nwb](https://github.com/insin/nwb)** npm के लिए [React कौम्पोनॅन्टस को प्रकाशित ](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb)करने के लिए विशेष रूप से अच्छा है. React ऐप्स बनाने के लिए भी इसका [इस्तेमाल किया जा सकता है](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb)।
+- **[nwb](https://github.com/insin/nwb)** [React कौम्पोनॅन्टस को npm के लिए प्रकाशित ](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb) करने के लिए विशेष रूप से अच्छा है। React ऐप्स बनाने के लिए भी इसका [इस्तेमाल किया जा सकता है](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb)।
 
 - **[Parcel](https://parceljs.org/)** एक तेज़, बिना कॉन्फ़िगरेशन वाला वेब एप्लिकेशन बंडल है जो [React के साथ काम करता है](https://parceljs.org/recipes.html#react)।
 
