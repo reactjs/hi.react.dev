@@ -13,7 +13,7 @@ React एवं ReactDOM दोनों CDN पर उपलब्ध हैं
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 ```
 
-उपरोक्त वर्शन केवल डेवलपमेंट के लिए हैं, एवं प्रोडक्शन के लिए नहीं। React के minified एवं ऑप्टीमाइज़्ड प्रोडक्शन वर्शन निम्नलिखित लिंक पर उपलब्ध हैं:
+उपरोक्त वर्शन केवल डेवलपमेंट के लिए हैं, एवं प्रोडक्शन के लिए उपयुक्त नहीं हैं। React के minified एवं ऑप्टीमाइज़्ड प्रोडक्शन वर्शन निम्नलिखित लिंक पर उपलब्ध हैं:
 
 ```html
 <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
