@@ -10,7 +10,8 @@ redirect_from:
 
 React में, आप अलग-अलग कौम्पोनॅन्ट बना सकते हैं जो आपके लिए आवश्यक व्यवहार को एनकैप्सुलेट करते हैं। फिर, आप अपने ऍप की स्टेट के आधार पर उनमें से कुछ को ही रिप्रेजेंट कर सकते हैं।
 
-कंडीशनल रेंडरिंग React में वैसे ही काम करता है जैसे कंडीशंस जावास्क्रिप्ट में करते है। जावास्क्रिप्ट के ऑपरेटर्स [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) और [`कंडीशनल ऑपरेटर्स `](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) का इस्तेमाल ऐसे एलिमेंट्स बनाने के लिए किया जा सकता हे जो करंट स्टेट को रिप्रेजेंट करे, और React उस हिसाब UI को अपडेट करेगा ताकि वेह UI से मैच करे।
+कंडीशनल रेंडरिंग React में वैसे ही काम करता है जैसे कंडीशंस जावास्क्रिप्ट में करते है। जावास्क्रिप्ट के ऑपरेटर्स [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) और [`कंडीशनल ऑपरेटर्स `](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) का इस्तेमाल ऐसे एलिमेंट्स बनाने के लिए किया जा सकता हे जो करंट स्टेट को रिप्रेजेंट करे, और React उस हिसाब से UI को अपडेट करेगा ताकि वेह UI से मैच करे।
+
 उदाहरण के तौर पे यह दो कौम्पोनॅन्ट को देखे:
 
 ```js
@@ -41,15 +42,15 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
+[**CodePen में कोशिश करो**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
 
 यह उदहारण `isLoggedIn` प्रोप के वैल्यू के अनुसार अलग अलग ग्रीटिंग्स रेंडर करता है।
 
 ### एलिमेंट वेरिएबल्स {#element-variables}
 
-आप एलिमेंट्स को स्टोर करने के लिए वेरिएबल्स का उसे कर सकते हो। जिससे आपको कंडीशनल रेंडरिंग में मदद होगी और बाकि का आउटपुट चेंज नहीं होगा। 
+आप एलिमेंट्स को स्टोर करने के लिए वेरिएबल्स का उसे उपयोग कर सकते हैं। यह आपको कंडीशनल रेंडरिंग में मदद करेगा जबकि बाकि का आउटपुट नहीं बदलेगा। 
 
-अब लॉगिन और लॉगआउट बटन्स नए कौम्पोनॅन्टस को देखो :
+लॉगिन और लॉगआउट बटन्स के नए कौम्पोनॅन्टस पर विचार करें :
 
 ```js
 function LoginButton(props) {
