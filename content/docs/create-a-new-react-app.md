@@ -65,13 +65,13 @@ Next.js को इसकी [ऑफिसियल गाइड](https://nextjs.
 
 React के साथ **स्टैटिक वेबसाइट** बनाने के लिए [Gatsby](https://www.gatsbyjs.org/) सबसे अच्छा तरीका है। यह आपको React कौम्पोनॅन्ट का उपयोग करने देता है, लेकिन सबसे तेज़ लोड समय की गारंटी के लिए HTML और CSS के पहले से रेंडर किए गए आउटपुट देता है।
 
-Gatsby को इसकी[ऑफिसियल गाइड](https://www.gatsbyjs.org/docs/) और [स्टार्टर किट की गैलरी](https://www.gatsbyjs.org/docs/gatsby-starters/) से सीखें।
+Gatsby को इसकी[ऑफिसियल गाइड](https://www.gatsbyjs.org/docs/) और [स्टार्टर किटस की गैलरी](https://www.gatsbyjs.org/docs/gatsby-starters/) से सीखें।
 
 ### और लचीले टूलचेनस {#more-flexible-toolchains}
 
 निम्नलिखित टूलचेनस अधिक लचीलापन और अधिक विकल्प प्रदान करते हैं। हम इन्हे अधिक अनुभवी उपयोगकर्ताओं के लिए सलाह देते हैं:
 
-- **[Neutrino](https://neutrinojs.org/)** प्रीसेट की सादगी के साथ [webpack](https://webpack.js.org/) की शक्ति को जोड़ती है, और इसमें [React apps](https://neutrinojs.org/packages/react/) and [React components](https://neutrinojs.org/packages/react-components/) के लिए एक प्रीसेट शामिल है।
+- **[Neutrino](https://neutrinojs.org/)** प्रीसेट की सादगी के साथ [webpack](https://webpack.js.org/) की शक्ति को जोड़ती है, और इसमें [React एप्पस](https://neutrinojs.org/packages/react/) and [React कौम्पोनॅन्टस](https://neutrinojs.org/packages/react-components/) के लिए प्रीसेट शामिल है।
 
 - **[nwb](https://github.com/insin/nwb)** [React कौम्पोनॅन्टस को npm के लिए प्रकाशित ](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb) करने के लिए विशेष रूप से अच्छा है। React ऐप्स बनाने के लिए भी इसका [इस्तेमाल किया जा सकता है](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb)।
 
