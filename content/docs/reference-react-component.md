@@ -17,9 +17,13 @@ redirect_from:
 
 This page contains a detailed API reference for the React component class definition. It assumes you're familiar with fundamental React concepts, such as [Components and Props](/docs/components-and-props.html), as well as [State and Lifecycle](/docs/state-and-lifecycle.html). If you're not, read them first.
 
-## Overview {#overview}
+इस पृष्ठ में React component class की परिभाषा के लिए एक विस्तृत API का संदर्भ शामिल है। यह मानता है कि आप मूलभूत React अवधारणाओं से परिचित हैं, जैसे Components और Props, साथ ही State और Lifecycle। यदि आप नहीं हैं, तो उन्हें पहले पढ़ें।
+
+## अवलोकन {#overview}
 
 React lets you define components as classes or functions. Components defined as classes currently provide more features which are described in detail on this page. To define a React component class, you need to extend `React.Component`:
+
+React आपको classes या functions के रूप में घटकों को परिभाषित करने देता है। क्लास के रूप में परिभाषित Components वर्तमान में अधिक सुविधाएँ प्रदान करते हैं जो इस पृष्ठ पर विस्तार से वर्णित किए गए । React component class को परिभाषित करने के लिए, आपको `React.Component` को विस्तारित (extend) करना होगा:
 
 ```js
 class Welcome extends React.Component {
@@ -31,19 +35,33 @@ class Welcome extends React.Component {
 
 The only method you *must* define in a `React.Component` subclass is called [`render()`](#render). All the other methods described on this page are optional.
 
+[`render()`](#render) एकमात्र method है जिसे आपको `React.Component` से विस्तारित (extend) किये हुए एक subclass में परिभाषित (define) *करना ही* होगा। इस पृष्ठ पर वर्णित अन्य सभी methods वैकल्पिक हैं।
+
 **We strongly recommend against creating your own base component classes.** In React components, [code reuse is primarily achieved through composition rather than inheritance](/docs/composition-vs-inheritance.html).
 
+**हम आपको सलाह देते है की आप अपने base component classes बनाने से परहेज़ करे।** रिएक्ट components में, [कोड का पुन: उपयोग मुख्य रूप से विरासत (inheritance) के बजाय संयोजन (composition) के माध्यम से प्राप्त किया जाता है](/docs/composition-vs-inheritance.html)।
+
 >Note:
+>ध्यान दें:
 >
 >React doesn't force you to use the ES6 class syntax. If you prefer to avoid it, you may use the `create-react-class` module or a similar custom abstraction instead. Take a look at [Using React without ES6](/docs/react-without-es6.html) to learn more.
+>React आपको ES6 class वाक्य-रचना (सिंटैक्स) का उपयोग करने के लिए बाध्य नहीं करता है। यदि आप इससे बचना पसंद करते हैं, तो आप इसके बजाय `create-react-class` मॉड्यूल या इसी तरह के कस्टम निराकार (अब्स्ट्रक्शन) का उपयोग कर सकते हैं। अधिक जानने के लिए [ES6 के बिना React का उपयोग करना](/docs/react-without-es6.html) पर एक नज़र डालें।
 
 ### The Component Lifecycle {#the-component-lifecycle}
 
+### Component जीवनचक्र (लाइफसाईकल) {#the-component-lifecycle}
+
 Each component has several "lifecycle methods" that you can override to run code at particular times in the process. **You can use [this lifecycle diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) as a cheat sheet.** In the list below, commonly used lifecycle methods are marked as **bold**. The rest of them exist for relatively rare use cases.
+
+प्रत्येक component में कई "लाइफसाईकल मेथड्स" होती हैं, जिन्हें आप प्रक्रिया में विशेष समय पर कोड चलाने के लिए ओवरराइड कर सकते हैं। **आप इस [लाइफसाईकल आकृति](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) को एक नकल पुस्तिका (चीट शीट) के रूप में उपयोग कर सकते हैं।** नीचे दी गई सूची में, आमतौर पर उपयोग की जाने वाली जीवनचक्र विधियों को **बोल्ड** के रूप में चिह्नित किया गया है। उनमें से बाकी अपेक्षाकृत दुर्लभ उपयोग के मामलों के लिए मौजूद हैं।
 
 #### Mounting {#mounting}
 
+#### माउंटिंग - ढांचा खड़ा करना (Mounting) {#mounting}
+
 These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
+
+जब एक component का एक उदाहरण बनाया जा रहा हो और DOM में डाला जाता हो, तो इन मेथड्स को निम्न क्रम में बुलाया जाता है:
 
 - [**`constructor()`**](#constructor)
 - [`static getDerivedStateFromProps()`](#static-getderivedstatefromprops)
@@ -51,14 +69,19 @@ These methods are called in the following order when an instance of a component 
 - [**`componentDidMount()`**](#componentdidmount)
 
 >Note:
+>ध्यान दें:
 >
 >These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>इन मेथड्स को लेगसी (विरासत) माना जाता है और आपको नए कोड में इनसे [बचना चाहिए](/blog/2018/03/27/update-on-async-rendering.html):
 >
 >- [`UNSAFE_componentWillMount()`](#unsafe_componentwillmount)
 
 #### Updating {#updating}
+#### अपडेटिंग (Updating) {#updating}
 
 An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:
+
+अपडेट करने के लिए प्रॉप्स या स्टेट में बदलाव किया जा सकता है। इन मेथड्स को निम्नलिखित क्रम में बुलाया जाता है जब एक component को फिर से प्रस्तुत किया जा रहा है:
 
 - [`static getDerivedStateFromProps()`](#static-getderivedstatefromprops)
 - [`shouldComponentUpdate()`](#shouldcomponentupdate)
@@ -67,38 +90,54 @@ An update can be caused by changes to props or state. These methods are called i
 - [**`componentDidUpdate()`**](#componentdidupdate)
 
 >Note:
+>ध्यान दें:
 >
 >These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>इन मेथड्स को लेगसी (विरासत) माना जाता है और आपको नए कोड में इनसे [बचना चाहिए](/blog/2018/03/27/update-on-async-rendering.html):
 >
 >- [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate)
 >- [`UNSAFE_componentWillReceiveProps()`](#unsafe_componentwillreceiveprops)
 
 #### Unmounting {#unmounting}
+#### अनमाउंट (Unmounting) {#unmounting}
 
 This method is called when a component is being removed from the DOM:
+यह मेथड उस समय बुलाई जाती है जब DOM से component को हटाया जा रहा हो:
 
 - [**`componentWillUnmount()`**](#componentwillunmount)
 
 #### Error Handling {#error-handling}
 
+#### एरर हैंडलिंग (Error Handling) {#error-handling}
+
 These methods are called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
+
+इन मेथड्स को तब बुलाया जाता है जब रेंडरिंग के दौरान कोई त्रुटि हो, एक लाइफसाईकल में कोई त्रुटि होती है या किसी भी child के component के कंस्ट्रक्टर में कोई त्रुटि हो।
 
 - [`static getDerivedStateFromError()`](#static-getderivedstatefromerror)
 - [`componentDidCatch()`](#componentdidcatch)
 
 ### Other APIs {#other-apis}
 
+### अन्य API {#other-apis}
+
 Each component also provides some other APIs:
+
+प्रत्येक component कुछ अन्य API भी प्रदान करता है:
 
   - [`setState()`](#setstate)
   - [`forceUpdate()`](#forceupdate)
 
 ### Class Properties {#class-properties}
 
+### क्लास प्रॉपर्टीज़ {#class-properties}
+
   - [`defaultProps`](#defaultprops)
   - [`displayName`](#displayname)
 
 ### Instance Properties {#instance-properties}
+
+### इंस्टेंस प्रॉपर्टीज़ {#instance-properties}
 
   - [`props`](#props)
   - [`state`](#state)
@@ -107,17 +146,27 @@ Each component also provides some other APIs:
 
 ## Reference {#reference}
 
+## संदर्भ {#reference}
+
 ### Commonly Used Lifecycle Methods {#commonly-used-lifecycle-methods}
+
+### आमतौर पर इस्तेमाल किया जाने वाले लाइफसाईकल मेथड्स
 
 The methods in this section cover the vast majority of use cases you'll encounter creating React components. **For a visual reference, check out [this lifecycle diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).**
 
+इस अनुभाग की मेथड्स उन अधिकांश उपयोग मामलों को कवर करती हैं, जो आप एक रिएक्ट component बनाते समय पाएंगे। **एक दृश्य संदर्भ के लिए, इस [लाइफसाईकल आकृति](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) की जाँच करें।**
+
 ### `render()` {#render}
+
+### `रेंडर` {#render}
 
 ```javascript
 render()
 ```
 
 The `render()` method is the only required method in a class component.
+
+रेंडर `render()` मेथड एक class में एकमात्र आवश्यक विधि है।
 
 When called, it should examine `this.props` and `this.state` and return one of the following types:
 
@@ -278,7 +327,7 @@ static getDerivedStateFromProps(props, state)
 
 This method exists for [rare use cases](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state) where the state depends on changes in props over time. For example, it might be handy for implementing a `<Transition>` component that compares its previous and next children to decide which of them to animate in and out.
 
-Deriving state leads to verbose code and makes your components difficult to think about.  
+Deriving state leads to verbose code and makes your components difficult to think about.
 [Make sure you're familiar with simpler alternatives:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
 
 * If you need to **perform a side effect** (for example, data fetching or an animation) in response to a change in props, use [`componentDidUpdate`](#componentdidupdate) lifecycle instead.
@@ -324,7 +373,7 @@ Only use error boundaries for recovering from unexpected exceptions; **don't try
 For more details, see [*Error Handling in React 16*](/blog/2017/07/26/error-handling-in-react-16.html).
 
 > Note
-> 
+>
 > Error boundaries only catch errors in the components **below** them in the tree. An error boundary can’t catch an error within itself.
 
 ### `static getDerivedStateFromError()` {#static-getderivedstatefromerror}
@@ -353,7 +402,7 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
@@ -408,13 +457,13 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
 
 > Note
-> 
+>
 > In the event of an error, you can render a fallback UI with `componentDidCatch()` by calling `setState`, but this will be deprecated in a future release.
 > Use `static getDerivedStateFromError()` to handle fallback rendering instead.
 
