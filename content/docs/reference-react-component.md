@@ -187,33 +187,33 @@ constructor(props) {
 
 * * *
 
-### `componentDidMount()` {#componentdidmount}
+### कॉम्पोनेन्ट डीड माउंट `componentDidMount()` {#componentdidmount}
 
 ```javascript
 componentDidMount()
 ```
 
-`componentDidMount()` is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+एक .component के माउंट (ट्री में सम्मिलित) होने के तुरंत बाद `componentDidMount()` को बुलाया किया जाता है। यदि इनिशियलाइज़ेशन के लिए DOM नोड की आवश्यकता होती है, तो उस कोड को यहाँ जाना होना चाहिए। यदि आपको रिमोट एंडपॉइंट से डेटा लोड करने की आवश्यकता है, तो नेटवर्क अनुरोध (network request) को आरंभ करने के लिए यह एक अच्छी जगह है।
 
-This method is a good place to set up any subscriptions. If you do that, don't forget to unsubscribe in `componentWillUnmount()`.
+यह मेथड किसी भी सब्स्क्रिप्शन (सदस्यता or subscriptions) को स्थापित करने के लिए एक अच्छी जगह है। यदि आप ऐसा करते हैं, तो कॉम्पोनेन्ट विल अनमाउंट `componentWillUnmount()` में सब्स्क्रिप्शन समाप्त करना न भूलें।
 
-You **may call `setState()` immediately** in `componentDidMount()`. It will trigger an extra rendering, but it will happen before the browser updates the screen. This guarantees that even though the `render()` will be called twice in this case, the user won't see the intermediate state. Use this pattern with caution because it often causes performance issues. In most cases, you should be able to assign the initial state in the `constructor()` instead. It can, however, be necessary for cases like modals and tooltips when you need to measure a DOM node before rendering something that depends on its size or position.
+आप `setState()` को `componentDidMount()` में तुरंत कॉल कर सकते हैं। यह एक अतिरिक्त रेंडरिंग को ट्रिगर करेगा, लेकिन यह ब्राउज़र द्वारा स्क्रीन को अपडेट करने से पहले होगा। यह गारंटी देता है कि भले ही रेंडर `render()` को इस मामले में दो बार बुलाया जाएगा, लेकिन यूजर (उपयोगकर्ता - user) बीच का स्टेट नहीं देखेगा। इस पैटर्न का उपयोग सावधानी के साथ करें क्योंकि यह अक्सर परफॉरमेंस समस्याओं का कारण बनता है। ज्यादातर मामलों में, आपको इसके बजाय कंस्ट्रक्टर `constructor()` में इनिशियल स्टेट (प्रारंभिक स्थिति) सेट करने में सक्षम होना चाहिए। हालाँकि, यह उन मोडल्स और टूलटिप्स जैसे मामलों के लिए आवश्यक हो सकता है जब आपको किसी ऐसी चीज़ को प्रस्तुत करने से पहले एक डोम नोड को मापने की आवश्यकता होती है जो उसके आकार या स्थिति पर निर्भर करता है।
 
 * * *
 
-### `componentDidUpdate()` {#componentdidupdate}
+### कॉम्पोनेन्ट डीड अपडेट `componentDidUpdate()` {#componentdidupdate}
 
 ```javascript
 componentDidUpdate(prevProps, prevState, snapshot)
 ```
 
-`componentDidUpdate()` is invoked immediately after updating occurs. This method is not called for the initial render.
+अपडेट करने के तुरंत बाद `componentDidUpdate()` को कॉल होता है। इनिशियल रेंडर के लिए यह विधि कॉल नहीं होता है।
 
-Use this as an opportunity to operate on the DOM when the component has been updated. This is also a good place to do network requests as long as you compare the current props to previous props (e.g. a network request may not be necessary if the props have not changed).
+जब कंपोनेंट को अपडेट किया गया हो तो इसे DOM पर ऑपरेट करने के अवसर के रूप में उपयोग करें। यह नेटवर्क रिक्वेस्ट्स करने के लिए भी एक अच्छा स्थान है जब तक कि आप वर्तमान प्रॉप्स की तुलना पिछले प्रॉप्स से करते हैं (e.g. यदि प्रॉप्स नहीं बदले गए हैं तो नेटवर्क रिक्वेस्ट्स आवश्यक नहीं हो सकता है).
 
 ```js
 componentDidUpdate(prevProps) {
-  // Typical usage (don't forget to compare props):
+  // टिपिकल उपयोग (प्रॉप्स की तुलना करना मत भूलना):
   if (this.props.userID !== prevProps.userID) {
     this.fetchData(this.props.userID);
   }
