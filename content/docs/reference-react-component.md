@@ -220,34 +220,32 @@ componentDidUpdate(prevProps) {
 }
 ```
 
-You **may call `setState()` immediately** in `componentDidUpdate()` but note that **it must be wrapped in a condition** like in the example above, or you'll cause an infinite loop. It would also cause an extra re-rendering which, while not visible to the user, can affect the component performance. If you're trying to "mirror" some state to a prop coming from above, consider using the prop directly instead. Read more about [why copying props into state causes bugs](/blog/2018/06/07/you-probably-dont-need-derived-state.html).
+आप **`componentDidUpdate()` में तुरंत `setState()` कॉल कर सकते** हैं, लेकिन ध्यान दें कि इसे ऊपर दिए उदाहरण की तरह **एक शर्त में लपेटा जाना चाहिए**, अन्यथा यह एक इनफिनिट (अनंत - infinite) लूप का कारण होगा। यह अतिरिक्त री-रेंडरिंग का कारण भी बनेगा, जो उपयोगकर्ता को दिखाई नहीं देगा, लेकिन यह component के performance को प्रभावित कर सकता है। यदि आप ऊपर से आने वाले किसी प्रॉप को "मिरर" करने की कोशिश कर रहे हैं, तो इसके बजाय सीधे प्रॉप का उपयोग करने पर विचार करें। [स्टेट में प्रॉप्स कॉपी करने से बग के कारण](/blog/2018/06/07/you-probably-dont-need-derived-state.html) के बारे में और पढ़ें।
 
-If your component implements the `getSnapshotBeforeUpdate()` lifecycle (which is rare), the value it returns will be passed as a third "snapshot" parameter to `componentDidUpdate()`. Otherwise this parameter will be undefined.
+यदि आपका component `getSnapshotBeforeUpdate()` लाइफसाइकिल को लागू करता है (जो शायद ही कभी उपयोग किया जाता है), तो यह जो वैल्यू रिटर्न देता है, उसे एक तीसरे पैरामीटर "स्नैपशॉट" के रूप में पास जाएगा `componentDidUpdate()`। अन्यथा यह पैरामीटर अन्डिफ़ाइंड हो जाएगा।
 
-> Note
+> ध्यान दें
 >
-> `componentDidUpdate()` will not be invoked if [`shouldComponentUpdate()`](#shouldcomponentupdate) returns false.
-
+> यदि `shouldComponentUpdate()` फाल्स (false) लौटाता है तो [`componentDidUpdate()`](#shouldcomponentupdate) बुलाया नहीं जाएगा।
 * * *
 
-### `componentWillUnmount()` {#componentwillunmount}
+### कम्पोनेंट विल अनमाउंट `componentWillUnmount()` {#componentwillunmount}
 
 ```javascript
 componentWillUnmount()
 ```
 
-`componentWillUnmount()` is invoked immediately before a component is unmounted and destroyed. Perform any necessary cleanup in this method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in `componentDidMount()`.
+`componentWillUnmount()` को तब बुलाया किया जाता है, जब एक कम्पोनेंट को अनमाउंट किया जाता है और नष्ट कर दिया जाता है। इस विधि में कोई भी आवश्यक सफाई करें, जैसे कि टाइमर को अमान्य करना, नेटवर्क अनुरोधों को रद्द करना, या किसी भी सदस्यता को साफ करना जो कि `componentDidMount()` में बनाए गए थे।
 
-You **should not call `setState()`** in `componentWillUnmount()` because the component will never be re-rendered. Once a component instance is unmounted, it will never be mounted again.
+आपको **`setState()` में `componentWillUnmount()` कॉल नहीं करना चाहिए** क्योंकि कम्पोनेंट कभी भी रे-रेंडरड नहीं होगा। एक बार कम्पोनेंट के अनमाउंट होने के बाद, इसे फिर से माउंट नहीं किया जाएगा।
 
 * * *
 
-### Rarely Used Lifecycle Methods {#rarely-used-lifecycle-methods}
+### बहुत कम उपयोग होने वाले लाइफसाइकिल मेथडस {#rarely-used-lifecycle-methods}
 
-The methods in this section correspond to uncommon use cases. They're handy once in a while, but most of your components probably don't need any of them. **You can see most of the methods below on [this lifecycle diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) if you click the "Show less common lifecycles" checkbox at the top of it.**
+इस अनुभाग में मेथडस असामान्य उपयोग के मामलों के अनुरूप हैं। वे एक समय में एक बार काम करते हैं, लेकिन आपके अधिकांश कम्पोनेंटस को शायद उनमें से किसी की भी आवश्यकता नहीं होती। **यदि आप [लाइफसाइकिल आकृति](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) केे शीर्ष पर "Show less common lifecylces" चेकबॉक्स पर क्लिक करते हैं तो आप इसके नीचे दिए गए अधिकांश मेथडस को देख सकते हैं**।
 
-
-### `shouldComponentUpdate()` {#shouldcomponentupdate}
+### शुड कॉम्पोनेन्ट अपडेट `shouldComponentUpdate()` {#shouldcomponentupdate}
 
 ```javascript
 shouldComponentUpdate(nextProps, nextState)
