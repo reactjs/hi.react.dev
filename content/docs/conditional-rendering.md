@@ -16,11 +16,11 @@ React में, आप अलग-अलग कौम्पोनॅन्ट �
 
 ```js
 function UserGreeting(props) {
-  return <h1>Welcome back!</h1>;
+  return <h1>वापसी पर स्वागत है!</h1>;
 }
 
 function GuestGreeting(props) {
-  return <h1>Please sign up.</h1>;
+  return <h1>कृपया साइन अप करो।</h1>;
 }
 ```
 
