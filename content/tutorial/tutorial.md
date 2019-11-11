@@ -202,6 +202,7 @@ class Board extends React.Component {
   renderSquare(i) {
     return <Square value={i} />;
   }
+}
 ```
 
 `{/ * TODO * /}` को `{this.props.value}` से बदलकर उस वैल्यू को दिखाने के लिए Square का `render` मेथड बदलें:
