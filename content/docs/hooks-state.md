@@ -6,9 +6,9 @@ next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+React 16.8 में *Hooks* एक नया ऐडीशं है। ये आपको बिना class लिखे state और React की अन्य सुविधाओं का उपयोग करने देते हैं।
 
-The [introduction page](/docs/hooks-intro.html) used this example to get familiar with Hooks:
+[इंट्रोडक्शन पृष्ठ](/docs/hooks-intro.html) ने Hooks से परिचित कराने के लिए इस उदाहरण का उपयोग किया है:
 
 ```js{4-5}
 import React, { useState } from 'react';
@@ -28,7 +28,7 @@ function Example() {
 }
 ```
 
-We'll start learning about Hooks by comparing this code to an equivalent class example.
+हम इस कोड की तुलना एक समान class उदाहरण से करके Hooks के बारे में सीखना शुरू करेंगे।
 
 ## Equivalent Class Example {#equivalent-class-example}
 
