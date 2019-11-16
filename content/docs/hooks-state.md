@@ -30,9 +30,9 @@ function Example() {
 
 हम इस कोड की तुलना एक समान class उदाहरण से करके Hooks के बारे में सीखना शुरू करेंगे।
 
-## Equivalent Class Example {#equivalent-class-example}
+## एक्विवैलेन्ट Class उदाहरण {#equivalent-class-example}
 
-If you used classes in React before, this code should look familiar:
+यदि आपने पहले React में classes इस्तेमाल की हैं, तो यह कोड परिचित लगना चाहिए:
 
 ```js
 class Example extends React.Component {
@@ -56,11 +56,11 @@ class Example extends React.Component {
 }
 ```
 
-The state starts as `{ count: 0 }`, and we increment `state.count` when the user clicks a button by calling `this.setState()`. We'll use snippets from this class throughout the page.
+state `{ count: 0 }` के रूप में शुरू होता है, और जब यूजर बटन को क्लिक करता है तब हम `this.setState()` को कॉल करके `state.count` को बढ़ाते हैं। हम पूरे पृष्ठ में इस class के स्निपेट का उपयोग करेंगे।
 
->Note
+>नोट
 >
->You might be wondering why we're using a counter here instead of a more realistic example. This is to help us focus on the API while we're still making our first steps with Hooks.
+>आप सोच रहे होंगे कि हम अधिक यथार्थवादी उदाहरण के बजाय यहां एक काउंटर का उपयोग क्यों कर रहे हैं। जबतक हम Hooks की तरफ पहला कदम बड़ा रहे हैं, यह हमें API पर ध्यान केंद्रित करने में मदद करने के लिए है।
 
 ## Hooks and Function Components {#hooks-and-function-components}
 
