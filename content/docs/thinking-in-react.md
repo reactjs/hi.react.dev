@@ -1,6 +1,6 @@
 ---
 id: thinking-in-react
-title: Thinking in React
+title: React में सोचना 
 permalink: docs/thinking-in-react.html
 redirect_from:
   - 'blog/2013/11/05/thinking-in-react.html'
@@ -10,15 +10,24 @@ prev: composition-vs-inheritance.html
 
 React is, in our opinion, the premier way to build big, fast Web apps with JavaScript. It has scaled very well for us at Facebook and Instagram.
 
+React, हमारी राय में, एक मुख्य तरीका है, जावास्क्रिप्ट द्वारा, बड़ी और तेज़ वेब एप्प बनाने का। यह हमारे लिए फेसबुक और इंस्टाग्राम के लिए काफी अच्छे से बढ़ा।
+
 One of the many great parts of React is how it makes you think about apps as you build them. In this document, we'll walk you through the thought process of building a searchable product data table using React.
+
+कई में से एक मुख्य बात React की है कि कैसे यह आपको एप्प बनाते हुए उसके बारे में सोचने पर मजबूर करता है। इस आलेख में हम React से बने खोजनीय डाटा टेबल को बनाने की विचार प्रक्रिया पर ध्यान देंगे ।
+
 
 ## Start With A Mock {#start-with-a-mock}
 
 Imagine that we already have a JSON API and a mock from our designer. The mock looks like this:
 
+कल्पना कीजिये की हमारे पास पहले से JSON API और मॉक उपलब्ध है। मॉक ऐसा कुछ दीखता है:
+
 ![Mockup](../images/blog/thinking-in-react-mock.png)
 
 Our JSON API returns some data that looks like this:
+
+हमारी JSON API कुछ ऐसा डाटा वापस भेजेगी:
 
 ```
 [
@@ -32,6 +41,8 @@ Our JSON API returns some data that looks like this:
 ```
 
 ## Step 1: Break The UI Into A Component Hierarchy {#step-1-break-the-ui-into-a-component-hierarchy}
+
+## स्टेप १ : UI को कॉम्पोनेन्ट पदक्रम में तोड़े {#step-1-break-the-ui-into-a-component-hierarchy}
 
 The first thing you'll want to do is to draw boxes around every component (and subcomponent) in the mock and give them all names. If you're working with a designer, they may have already done this, so go talk to them! Their Photoshop layer names may end up being the names of your React components!
 
