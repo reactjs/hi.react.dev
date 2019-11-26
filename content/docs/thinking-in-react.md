@@ -14,10 +14,12 @@ React, हमारी राय में, एक मुख्य तरीक�
 
 One of the many great parts of React is how it makes you think about apps as you build them. In this document, we'll walk you through the thought process of building a searchable product data table using React.
 
-कई में से एक मुख्य बात React की है कि कैसे यह आपको एप्प बनाते हुए उसके बारे में सोचने पर मजबूर करता है। इस आलेख में हम React से बने खोजनीय डाटा टेबल को बनाने की विचार प्रक्रिया पर ध्यान देंगे ।
+कई में से एक मुख्य बात React की है कि कैसे यह आपको एप्प बनाते हुए उसके बारे में सोचने पर मजबूर करता है। इस आलेख में हम React से बने खोजनीय डाटा टेबल को बनाने की विचार प्रक्रिया पर ध्यान देंगे।
 
 
 ## Start With A Mock {#start-with-a-mock}
+
+## मॉक से शुरुवात {#start-with-a-mock}
 
 Imagine that we already have a JSON API and a mock from our designer. The mock looks like this:
 
@@ -46,13 +48,21 @@ Our JSON API returns some data that looks like this:
 
 The first thing you'll want to do is to draw boxes around every component (and subcomponent) in the mock and give them all names. If you're working with a designer, they may have already done this, so go talk to them! Their Photoshop layer names may end up being the names of your React components!
 
+पहेली चीज़ जो आप करना चाहेंगे, वह होगी की अपने हर मॉक कॉम्पोनेन्ट (और उप कॉम्पोनेन्ट) के आस पास बक्से बना दे और सब को नाम दे दें। अगर आप डिज़ाइनर के साथ काम कर रहे है, तो उन्होंने यह काम पहले ही कर रखा होगा, उनसे बात कीजिये! उनकी फोटोशॉप परत के नाम, आपके react कॉम्पोनेन्ट के नाम हो सकते है।
+
 But how do you know what should be its own component? Use the same techniques for deciding if you should create a new function or object. One such technique is the [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is, a component should ideally only do one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
+
+परन्तु आप को कैसे पता चलेगा कि खुद का कॉम्पोनेन्ट क्या होना चाहिए? वो ही तकनीक का इस्तेमाल कीजिये जो आप एक नया ऑब्जेक्ट या फंक्शन बनाने के निर्णय के लिए लेते है। एक ऐसी तकनीक है  [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), अर्थात्, कॉम्पोनेन्ट को आदर्श रूप में एक ही चीज़ करना चाहिए। अगर वह बढ़ रहा है, तो उसे छोटे उप कॉम्पोनेन्ट में तोड़ देना चाहिए।
 
 Since you're often displaying a JSON data model to a user, you'll find that if your model was built correctly, your UI (and therefore your component structure) will map nicely. That's because UI and data models tend to adhere to the same *information architecture*. Separate your UI into components, where each component matches one piece of your data model.
 
-![Component diagram](../images/blog/thinking-in-react-components.png)
+चुकी आप अक्सर उपभोक्ता को JSON डाटा मॉडल दिखते है, आप ये देखेंगे की यदि आपका मॉडल सही बना है, आपका UI (और इसलिए आपका कॉम्पोनेन्ट ढांचा) सही दिखेगा। यह इसलिए खूकि UI और डाटा मॉडल समान *इनफार्मेशन आर्किटेक्चर* इस्तेमाल करते है। अपने UI कॉम्पोनेन्ट को बाँट दीजिये, ताकि हर एक कॉम्पोनेन्ट डाटा मॉडल के एक टुकड़े मिल जाए।
+
+![कॉम्पोनेन्ट आलेख](../images/blog/thinking-in-react-components.png)
 
 You'll see here that we have five components in our app. We've italicized the data each component represents.
+
+आप देखेंगे कि हमारे एप्प में ५ कॉम्पोनेन्ट है। हर कॉम्पोनेन्ट जो डाटा वर्णन करता है, उसे हमने तिर्थकित किया हुआ है।
 
   1. **`FilterableProductTable` (orange):** contains the entirety of the example
   2. **`SearchBar` (blue):** receives all *user input*
@@ -60,9 +70,19 @@ You'll see here that we have five components in our app. We've italicized the da
   4. **`ProductCategoryRow` (turquoise):** displays a heading for each *category*
   5. **`ProductRow` (red):** displays a row for each *product*
 
+  1. **`FilterableProductTable` (orange):** उदाहरण का सम्पूर्णता शामिल
+  2. **`SearchBar` (blue):** प्राप्त हुआ  *उपभोक्ता इनपुट*
+  3. **`ProductTable` (green):** *डाटा समूह* का प्रदर्शन और फ़िल्टर *उपभोक्ता इनपुट* पर आधारित 
+  4. **`ProductCategoryRow` (turquoise):**  हर *श्रेणी* के शीर्षक का प्रदर्शन 
+  5. **`ProductRow` (red):** हर *प्रोडक्ट* की पंक्ति का प्रदर्शन 
+
 If you look at `ProductTable`, you'll see that the table header (containing the "Name" and "Price" labels) isn't its own component. This is a matter of preference, and there's an argument to be made either way. For this example, we left it as part of `ProductTable` because it is part of rendering the *data collection* which is `ProductTable`'s responsibility. However, if this header grows to be complex (e.g., if we were to add affordances for sorting), it would certainly make sense to make this its own `ProductTableHeader` component.
 
+अगर आप `ProductTable` पर नज़र डालेंगे, तो आप देखेंगे कि टेबल हैडर ("Name" और "Price" नाम युक्त) अपना खुद का कॉम्पोनेन्ट नहीं है। यह पसंद पर निर्भर करता है और कैसे रखना है, यह चर्चा का विषय है। उदाहरण के तौर पर, हमने इसे `ProductTable` का ही भाग रखा है क्युकी यह *डाटा समूह* कि रेंडरिंग का भाग है, जो कि `ProductTable` की जिम्मेदारी है। मगर, यदि यह हैडर कठिन बनता जाता है (उदहारण के तौर पर, उसमे श्रेणीकरण की संभावना जोड़ना), तो उसका अपना खुद का कॉम्पोनेन्ट, `ProductTableHeader`, बनाना उचित होगा।
+
 Now that we've identified the components in our mock, let's arrange them into a hierarchy. Components that appear within another component in the mock should appear as a child in the hierarchy:
+
+अब जब हमे अपने मॉक कॉम्पोनेन्ट की पहचान हो गई है, उन्हें अब हम पदक्रम में जमाएंगे। मॉक में, जो कॉम्पोनेन्ट दूसरे कॉम्पोनेन्ट के भीतर दिखाई दे रहे है, उन्हें पदक्रम में उनके बच्चे की तरह दिखाना होगा:
 
   * `FilterableProductTable`
     * `SearchBar`
@@ -72,24 +92,42 @@ Now that we've identified the components in our mock, let's arrange them into a 
 
 ## Step 2: Build A Static Version in React {#step-2-build-a-static-version-in-react}
 
-<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/BwWzwm">Thinking In React: Step 2</a> on <a href="https://codepen.io">CodePen</a>.</p>
+## स्टेप २: React में स्थिर वर्शन बनाए {#step-2-build-a-static-version-in-react}
+
+<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">पेन को देखे<a href="https://codepen.io/gaearon/pen/BwWzwm">React में सोचना: स्टेप २</a><a href="https://codepen.io">कड़पेन</a>पर।</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 Now that you have your component hierarchy, it's time to implement your app. The easiest way is to build a version that takes your data model and renders the UI but has no interactivity. It's best to decouple these processes because building a static version requires a lot of typing and no thinking, and adding interactivity requires a lot of thinking and not a lot of typing. We'll see why.
 
+अब जब आपके पास कॉम्पोनेन्ट पदक्रम है, अब समय हो गया है की हम एप्प लागु करे। सबसे आसान तरीका होगा, जहा ऐसा वर्शन बनाए जो आपका डाटा मॉडल लेगा और UI रेंडर करेगा पर उसमे कोई अन्तरक्रियाशीलता नहीं होगी। इन प्रक्रिया को भाग करना श्रेष्ठ रहेगा क्युकी एक स्थिर वर्शन बनाने में लिखना ज्यादा होता है और सोचना कम, और अन्तरक्रियाशीलता जोड़ने में सोचना ज्यादा होता है, और लिखना कम। क्यों, वह हम देखेंगे।
+
 To build a static version of your app that renders your data model, you'll want to build components that reuse other components and pass data using *props*. *props* are a way of passing data from parent to child. If you're familiar with the concept of *state*, **don't use state at all** to build this static version. State is reserved only for interactivity, that is, data that changes over time. Since this is a static version of the app, you don't need it.
+
+अपनी एप्प का स्थिर वर्शन, जो आपका डाटा मॉडल रेंडर करेगा, वह बनाने के लिए आपको ऐसे कंपोनेंट्स बनाने होंगे जो दूसरे कॉम्पोनेन्ट को पुनः उपयोग करे, डाटा को *props* से दे। *props* मूल से बच्चे को डाटा देने का तरीका है। अगर आप *state* संकल्पना से परिचित है, तो यह स्थिर वर्शन बनाने के लिए *state बिलकुल भी उपयोग न करे*। state सिर्फ अन्तरक्रियाशीलता के लिए आरक्षित है, मतलब, डाटा जो समय के साथ बदलता है. चुकी ये एप्प का  स्थिर वर्शन है, आपको इसकी जरुरत नहीं।
 
 You can build top-down or bottom-up. That is, you can either start with building the components higher up in the hierarchy (i.e. starting with `FilterableProductTable`) or with the ones lower in it (`ProductRow`). In simpler examples, it's usually easier to go top-down, and on larger projects, it's easier to go bottom-up and write tests as you build.
 
+आप ऊपर-से-नीचे या नीचे-से-ऊपर बना सकते है. मतलब, या तो आप अपने कॉम्पोनेन्ट पदक्रम में ऊपर (अर्थात `FilterableProductTable` से शुरू) या सबसे नीचे (`ProductRow`) से शुरू कर सकते है। सरल उदाहरण में, बड़े प्रोजेक्ट में ऊपर-से-नीचे और टेस्ट लिखना नीचे-से-ऊपर करेंगे तो ज्यादा आसान होगा।
+
 At the end of this step, you'll have a library of reusable components that render your data model. The components will only have `render()` methods since this is a static version of your app. The component at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. If you make a change to your underlying data model and call `ReactDOM.render()` again, the UI will be updated. You can see how your UI is updated and where to make changes. React's **one-way data flow** (also called *one-way binding*) keeps everything modular and fast.
+
+इस स्टेप के अंत तक, आपके पास एक लाइब्रेरी होगी पुनः-प्रयोज्य कंपोनेंट्स की जो डाटा मॉडल रेंडर कर सके। कॉम्पोनेन्ट में सिर्फ `render()` मेथड होगा, चुकी ये एप्प का स्थिर वर्शन है। पदक्रम में शीर्ष वाला  कॉम्पोनेन्ट  (`FilterableProductTable`) आपका डाटा मॉडल prop की तरह लेगा। यदि आप अपने मुख्य डाटा मॉडल बदलाव कर `ReactDOM.render()` फिर से कॉल करते है, आपका UI अपडेट हो जाएगा। आप देख सकते है की आपका UI कैसे अपडेट होता है और कहा बदलाव करना है। React **one-way data flow** का (जिसे *one-way binding* भी बुला सकते है) सब चीज़ो को मॉड्यूलर और तेज़ रखता है।
 
 Refer to the [React docs](/docs/) if you need help executing this step.
 
+[React docs](/docs/) को देखे अगर आपको इस स्टेप में कोई सहायता लगे।
+
 ### A Brief Interlude: Props vs State {#a-brief-interlude-props-vs-state}
+
+### संक्षिप्त अन्तराल: Props की तुलना में State {#a-brief-interlude-props-vs-state}
 
 There are two types of "model" data in React: props and state. It's important to understand the distinction between the two; skim [the official React docs](/docs/state-and-lifecycle.html) if you aren't sure what the difference is. See also [FAQ: What is the difference between state and props?](/docs/faq-state.html#what-is-the-difference-between-state-and-props)
 
+React में दो प्रकार के डाटा "मॉडल" है: props और state। दोनों के अंतर को समझना महत्वपूर्ण है; पढ़िए  [React का शासकीय आलेख](/docs/state-and-lifecycle.html) यदि आपको डॉनो के अंतर के बारे में नहीं पता हो तो। देखिये [FAQ: state और props में क्या अंतर है?](/docs/faq-state.html#what-is-the-difference-between-state-and-props)
+
 ## Step 3: Identify The Minimal (but complete) Representation Of UI State {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
+
+## स्टेप ३: UI state का न्यूनतम (परन्तु पूर्ण) प्रतिनिधित्व {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
 To make your UI interactive, you need to be able to trigger changes to your underlying data model. React achieves this with **state**.
 
@@ -117,6 +155,8 @@ So finally, our state is:
 
 ## Step 4: Identify Where Your State Should Live {#step-4-identify-where-your-state-should-live}
 
+## स्टेप ४: जानिए आपके state का निवास {#step-4-identify-where-your-state-should-live}
+
 <p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/qPrNQZ">Thinking In React: Step 4</a> on <a href="https://codepen.io">CodePen</a>.</p>
 
 OK, so we've identified what the minimal set of app state is. Next, we need to identify which component mutates, or *owns*, this state.
@@ -142,6 +182,8 @@ You can start seeing how your application will behave: set `filterText` to `"bal
 
 ## Step 5: Add Inverse Data Flow {#step-5-add-inverse-data-flow}
 
+## स्टेप ५: उल्टा डाटा बहाव जोड़ना {#step-5-add-inverse-data-flow}
+
 <p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/LzWZvb">Thinking In React: Step 5</a> on <a href="https://codepen.io">CodePen</a>.</p>
 
 So far, we've built an app that renders correctly as a function of props and state flowing down the hierarchy. Now it's time to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`.
@@ -154,4 +196,8 @@ Let's think about what we want to happen. We want to make sure that whenever the
 
 ## And That's It {#and-thats-it}
 
+## और बस {#and-thats-it}
+
 Hopefully, this gives you an idea of how to think about building components and applications with React. While it may be a little more typing than you're used to, remember that code is read far more than it's written, and it's less difficult to read this modular, explicit code. As you start to build large libraries of components, you'll appreciate this explicitness and modularity, and with code reuse, your lines of code will start to shrink. :)
+
+उम्मीद है कि इससे आपकी कॉम्पोनेन्ट और रियेक्ट की एप्प बनाने कि सोच को योजना मिली होगी। जबकि इसमें लिखना ज्यादा है जितने की आपको आदत होगी, याद रखिये कि code को लिखने से ज्यादा पढ़ा जाता है, और ऐसे मॉड्यूलर और स्पष्ट code को पढ़ना कम कठिन होता है। जैसे जैसे आप कंपोनेंट्स की बढ़ी लाइब्रेरी बनानी शुरू करेंगे, आप इस स्पष्टता और मॉड्युलरिटी को सरहाने लगेंगे और code के पुनः उपयोग के चलते आपका code सिकुड़ता जाएगा। :)
