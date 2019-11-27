@@ -185,9 +185,15 @@ So finally, our state is:
 
 OK, so we've identified what the minimal set of app state is. Next, we need to identify which component mutates, or *owns*, this state.
 
+ठीक, तो हमने एप्प state का न्यूतम सेट पहचान लिया है. अब, हमे ये पहचानना है की इस state का कोनसा कौम्पोनॅन्ट म्यूटेट होता है या *कोन मालिक है*।
+
 Remember: React is all about one-way data flow down the component hierarchy. It may not be immediately clear which component should own what state. **This is often the most challenging part for newcomers to understand,** so follow these steps to figure it out:
 
+याद रखे: React कौम्पोनॅन्ट हायरार्की से नीचे के बहाव में वन-वे डाटा के बारे में है। यह शायद एकदम से साफ नहीं होगा की कोनसा कौम्पोनॅन्ट state का मालिक है। **अक्सर यह सबसे ज्यादा चुनौतीपूर्ण भाग होता है अपरिचित लोगो के लिए समझने के लिए**, तो समझने के लिए यह कीजिये: 
+
 For each piece of state in your application:
+
+अपनी एप्प के हर state के भाग के लिए: 
 
   * Identify every component that renders something based on that state.
   * Find a common owner component (a single component above all the components that need the state in the hierarchy).
@@ -196,13 +202,24 @@ For each piece of state in your application:
 
 Let's run through this strategy for our application:
 
+अपनी एप्प की रणनीति के बारे में देखते है:
+
   * `ProductTable` needs to filter the product list based on state and `SearchBar` needs to display the search text and checked state.
   * The common owner component is `FilterableProductTable`.
   * It conceptually makes sense for the filter text and checked value to live in `FilterableProductTable`
 
+  * `ProductTable` को state के आधार पर प्रोडक्ट लिस्ट फ़िल्टर करना है ओर `SearchBar` को खोजने वाला टेक्स्ट ओर चुना हुआ state बताना है।
+  * `FilterableProductTable` एक कॉमन मालिक कॉम्पोनेन्ट होगा।
+  * फ़िल्टर टेक्स्ट ओर चुनी हुई वैल्यू को `FilterableProductTable` में रखना सही होगा।
+
+
 Cool, so we've decided that our state lives in `FilterableProductTable`. First, add an instance property `this.state = {filterText: '', inStockOnly: false}` to `FilterableProductTable`'s `constructor` to reflect the initial state of your application. Then, pass `filterText` and `inStockOnly` to `ProductTable` and `SearchBar` as a prop. Finally, use these props to filter the rows in `ProductTable` and set the values of the form fields in `SearchBar`.
 
+हमने अपने state को `FilterableProductTable` में रखने का निर्णय लिया है। सबसे पहले, एक इंस्टैंस प्रॉपर्टी ऐड करे `this.state = {filterText: '', inStockOnly: false}` अपने `FilterableProductTable` के `constructor` में, अपना प्रारंभिक state बनाने के लिए। फिर  `filterText`  ओर  `inStockOnly` को `ProductTable` ओर `SearchBar` में props की तरह दीजिये। आखिरकार, इन props को इस्तेमाल करके `ProductTable` की रौ को फ़िल्टर करे ओर `SearchBar` में फॉर्म फील्ड की वैल्यू सेट करे।
+
 You can start seeing how your application will behave: set `filterText` to `"ball"` and refresh your app. You'll see that the data table is updated correctly.
+
+आप अपनी एप्प का व्यव्हार देख सकते है: `filterText` को `"ball"` वैल्यू दीजिये ओर अपनी एप्प रिफ्रेश कीजिये। आप देखेंगे की टेबल का डाटा सही से बदलेगा।
 
 ## Step 5: Add Inverse Data Flow {#step-5-add-inverse-data-flow}
 
@@ -212,11 +229,19 @@ You can start seeing how your application will behave: set `filterText` to `"bal
 
 So far, we've built an app that renders correctly as a function of props and state flowing down the hierarchy. Now it's time to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`.
 
+अब तक हमने ऐसी एप्प बना ली जो हायरार्की से नीचे जाते हुए props ओर state से रेंडर सही से करती है। अब समय है डाटा के उलटे बहाव का: `FilterableProductTable` का state अपडेट होना च्चिए फॉर्म कॉम्पोनेन्ट के हायरार्की में।
+
 React makes this data flow explicit to help you understand how your program works, but it does require a little more typing than traditional two-way data binding.
+
+React डाटा फ्लो स्पष्ट करता है, जो आपको ये समझने में सहायता करेगा की आपका प्रोग्राम काम कैसे करता है, पर इसमें परंपरागत two-way-binding से ज्यादा लिखना होगा।
 
 If you try to type or check the box in the current version of the example, you'll see that React ignores your input. This is intentional, as we've set the `value` prop of the `input` to always be equal to the `state` passed in from `FilterableProductTable`.
 
+अगर आप इस उदाहरण में कुछ लिखने का या चेकबॉक्स को चुन ने की कोशिश करेंगे, आप देखेंगे की react आपके इनपुट को नज़र अंदाज़ कर रहा है। यह जान बूझकर किया गया है, क्युकी हमने `input` का `value` prop हमेशा `FilterableProductTable` में पास किये हुए `state` के बराबर रखा है। 
+
 Let's think about what we want to happen. We want to make sure that whenever the user changes the form, we update the state to reflect the user input. Since components should only update their own state, `FilterableProductTable` will pass callbacks to `SearchBar` that will fire whenever the state should be updated. We can use the `onChange` event on the inputs to be notified of it. The callbacks passed by `FilterableProductTable` will call `setState()`, and the app will be updated.
+
+अब हम सोचते है की हम क्या चाहते है। हम चाहते है की जब भी उपभोक्ता फॉर्म में बदलाव करे, हमारा state भी इनपुट जैसा ही बदले। चुकी कंपोनेंट्स को अपना खुद का ही state बदलना चाहिए, `FilterableProductTable` `SearchBar` को कालबैक देगा, जो state के बदलने पर ही दिखेगा। हम `onChange` इवेंट का प्रयोग इनपुट पर कर सकते है। जो `FilterableProductTable` से पास किया हुआ कालबैक है, वो `setState()` को कॉल करेगा ओर एप्प अपडेट हो जाएगी।
 
 ## And That's It {#and-thats-it}
 
