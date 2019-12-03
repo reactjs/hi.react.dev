@@ -128,7 +128,7 @@ function FriendStatus(props) {
 }
 ```
 
-इस उदाहरण में, React हमारे `ChatAPI` से तब अनसब्सक्राइब हो जाती है जब कौम्पोनॅन्ट अनमाउंट हो जाता है, साथ ही अगले रेंडर की वजह से effect को दुबारा चलाने से पहले। (यदि आप चाहते हैं, यहाँ एक तरीका है [React को बताये की री-सब्सक्राइबिंग को कैसे स्किप करें](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects) अगर `props.friend.id` नहीं बदलता जो हमने `ChatAPI` को पास किया है।)
+इस उदाहरण में, React हमारे `ChatAPI` से तब अनसब्सक्राइब हो जाती है जब कौम्पोनॅन्ट अनमाउंट हो जाता है, साथ ही अगले रेंडर की वजह से effect को दुबारा चलाने से पहले। (यदि आप चाहते हैं, यहाँ एक तरीका है [React को बताने का की री-सब्सक्राइबिंग को कैसे स्किप करें](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects) अगर `props.friend.id` नहीं बदलता जो हमने `ChatAPI` को पास किया है।)
 
 `useState` की तरह, आप एक कौम्पोनॅन्ट में एक से अधिक effect का उपयोग कर सकते हैं:
 
