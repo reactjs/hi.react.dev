@@ -154,15 +154,15 @@ We declare a state variable called `count`, and set it to `0`. React will rememb
 >
 >"Create" wouldn't be quite accurate because the state is only created the first time our component renders. During the next renders, `useState` gives us the current state. Otherwise it wouldn't be "state" at all! There's also a reason why Hook names *always* start with `use`. We'll learn why later in the [Rules of Hooks](/docs/hooks-rules.html).
 
-## Reading State {#reading-state}
+## रीडिंग State {#reading-state}
 
-When we want to display the current count in a class, we read `this.state.count`:
+जब हम एक class में वर्तमान count प्रदर्शित करना चाहते हैं, तो हम `this.state.count` को पढ़ते हैं:
 
 ```js
   <p>You clicked {this.state.count} times</p>
 ```
 
-In a function, we can use `count` directly:
+एक फ़ंक्शन में, हम सीधे `count` का उपयोग कर सकते हैं:
 
 
 ```js
