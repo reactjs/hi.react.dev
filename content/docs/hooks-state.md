@@ -169,9 +169,9 @@ We declare a state variable called `count`, and set it to `0`. React will rememb
   <p>You clicked {count} times</p>
 ```
 
-## Updating State {#updating-state}
+## अपडेटिंग State {#updating-state}
 
-In a class, we need to call `this.setState()` to update the `count` state:
+एक class में, हमें `count` state को अपडेट करने के लिए `this.setState()` को कॉल करने की आवश्यकता होती है:
 
 ```js{1}
   <button onClick={() => this.setState({ count: this.state.count + 1 })}>
@@ -179,7 +179,7 @@ In a class, we need to call `this.setState()` to update the `count` state:
   </button>
 ```
 
-In a function, we already have `setCount` and `count` as variables so we don't need `this`:
+एक फ़ंक्शन में, `setCount` और `count` पहले से ही हमारे पास वेरिएबल्स के रूप है, इसलिए हमें `this` की आवश्यकता नहीं है:
 
 ```js{1}
   <button onClick={() => setCount(count + 1)}>
