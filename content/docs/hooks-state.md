@@ -86,9 +86,9 @@ function Example(props) {
 
 Hooks classes के अंदर काम **नहीं** करते हैं। लेकिन आप classes को लिखने के बजाय इनका उपयोग कर सकते हैं।
 
-## What's a Hook? {#whats-a-hook}
+## क्या है एक Hook? {#whats-a-hook}
 
-Our new example starts by importing the `useState` Hook from React:
+हमारा नया उदाहरण React से `useState` Hook के आयात से शुरू होता है:
 
 ```js{1}
 import React, { useState } from 'react';
@@ -98,13 +98,13 @@ function Example() {
 }
 ```
 
-**What is a Hook?** A Hook is a special function that lets you "hook into" React features. For example, `useState` is a Hook that lets you add React state to function components. We'll learn other Hooks later.
+**क्या है एक Hook?** Hook एक विशेष फ़ंक्शन है जो आपको React के फीचर्स "में हुक" करने देता है। उदाहरण के लिए, `useState` एक ऐसा Hook है जो आपके फ़ंक्शन कौम्पोनॅन्टस में React state जोड़ने देता है। हम अन्य Hooks के बारे में बाद में सीखेंगे।
 
-**When would I use a Hook?** If you write a function component and realize you need to add some state to it, previously you had to convert it to a class. Now you can use a Hook inside the existing function component. We're going to do that right now!
+**मैं एक Hook का उपयोग कब करूंगा?** यदि आप एक फ़ंक्शन कौम्पोनॅन्ट लिखते हैं और महसूस करते हैं कि आपको इसमें कुछ state जोड़ने की आवश्यकता है, तो पहले आपको इसे एक class में बदलना पड़ता। अब आप मौजूदा फ़ंक्शन कौम्पोनॅन्ट के अंदर एक Hook का उपयोग कर सकते हैं। हम अभी ऐसा ही करने जा रहे हैं!
 
 >Note:
 >
->There are some special rules about where you can and can't use Hooks within a component. We'll learn them in [Rules of Hooks](/docs/hooks-rules.html).
+>कुछ विशेष नियम हैं जो बताते है की आप किस कौम्पोनॅन्ट के भीतर Hooks का उपयोग कर सकते हैं और किस में नहीं कर सकते हैं। हम उन्हें [Hooks के नियमों](/docs/hooks-rules.html) में सीखेंगे।
 
 ## Declaring a State Variable {#declaring-a-state-variable}
 
