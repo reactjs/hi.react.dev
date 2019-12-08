@@ -62,9 +62,9 @@ state `{ count: 0 }` के रूप में शुरू होता है
 >
 >आप सोच रहे होंगे कि हम अधिक यथार्थवादी उदाहरण के बजाय यहां एक काउंटर का उपयोग क्यों कर रहे हैं। जबतक हम Hooks की तरफ पहला कदम बड़ा रहे हैं, यह हमें API पर ध्यान केंद्रित करने में मदद करने के लिए है।
 
-## Hooks and Function Components {#hooks-and-function-components}
+## Hooks और फ़ंक्शन कौम्पोनॅन्टस {#hooks-and-function-components}
 
-As a reminder, function components in React look like this:
+एक अनुस्मारक के रूप में, React में फ़ंक्शन कौम्पोनॅन्टस इस तरह दिखते हैं:
 
 ```js
 const Example = (props) => {
@@ -82,9 +82,9 @@ function Example(props) {
 }
 ```
 
-You might have previously known these as "stateless components". We're now introducing the ability to use React state from these, so we prefer the name "function components".
+आप पहले इन्हें "स्टेटलेस कौम्पोनॅन्टस" के रूप में जानते होंगे। अब हम इनमें से React state का उपयोग करने की क्षमता का परिचय दे रहे हैं, इसलिए अब हम इन्हे "फ़ंक्शन कौम्पोनॅन्टस" कहना पसंद करते हैं।
 
-Hooks **don't** work inside classes. But you can use them instead of writing classes.
+Hooks classes के अंदर काम **नहीं** करते हैं। लेकिन आप classes को लिखने के बजाय इनका उपयोग कर सकते हैं।
 
 ## What's a Hook? {#whats-a-hook}
 
