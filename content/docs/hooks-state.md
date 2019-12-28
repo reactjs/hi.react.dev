@@ -106,9 +106,9 @@ function Example() {
 >
 >कुछ विशेष नियम हैं जो बताते है की आप किस कौम्पोनॅन्ट के भीतर Hooks का उपयोग कर सकते हैं और किस में नहीं कर सकते हैं। हम उन्हें [Hooks के नियमों](/docs/hooks-rules.html) में सीखेंगे।
 
-## Declaring a State Variable {#declaring-a-state-variable}
+## एक State वेरिएबल घोषित करना {#declaring-a-state-variable}
 
-In a class, we initialize the `count` state to `0` by setting `this.state` to `{ count: 0 }` in the constructor:
+एक class में, constructor में हम `this.state` को `{ count: 0 }` सेट कर के `count` state को `0` इनिशियलाइज़ करते हैं:
 
 ```js{4-6}
 class Example extends React.Component {
@@ -120,7 +120,7 @@ class Example extends React.Component {
   }
 ```
 
-In a function component, we have no `this`, so we can't assign or read `this.state`. Instead, we call the `useState` Hook directly inside our component:
+एक फ़ंक्शन कौम्पोनॅन्ट में, हमारे पास `this` नहीं है, इसलिए हम `this.state` को असाइन नहीं कर सकते हैं और न ही इसे पढ़ सकते हैं। इसके बजाय, हम सीधे हमारे कौम्पोनॅन्ट के अंदर `useState` Hook को कॉल करते हैं:
 
 ```js{4,5}
 import React, { useState } from 'react';
@@ -130,13 +130,13 @@ function Example() {
   const [count, setCount] = useState(0);
 ```
 
-**What does calling `useState` do?** It declares a "state variable". Our variable is called `count` but we could call it anything else, like `banana`. This is a way to "preserve" some values between the function calls — `useState` is a new way to use the exact same capabilities that `this.state` provides in a class. Normally, variables "disappear" when the function exits but state variables are preserved by React.
+**कॉलिंग `useState` क्या करता है?** यह एक "state वेरिएबल" घोषित करता है। हमारे वेरिएबल को `count` कहा जाता है लेकिन हम इसे कुछ और भी कह सकते हैं जैसे की `banana`। यह फ़ंक्शन कॉल के बीच कुछ वैल्यूज को "संरक्षित" करने का एक तरीका है - `useState` एक class में `this.state` दवारा प्रदान की क्षमताओं को उपयोग करने का एक नया तरीका है। आम तौर पर, फ़ंक्शन के ख़तम होने पर वेरिएबल्स "गायब" हो जाते हैं, लेकिन state वेरिएबल्स React द्वारा संरक्षित होते हैं।
 
-**What do we pass to `useState` as an argument?** The only argument to the `useState()` Hook is the initial state. Unlike with classes, the state doesn't have to be an object. We can keep a number or a string if that's all we need. In our example, we just want a number for how many times the user clicked, so pass `0` as initial state for our variable. (If we wanted to store two different values in state, we would call `useState()` twice.)
+**हम `useState` को एक आर्गुमेंट के रूप में क्या पास करते हैं?** `useState()` Hook के लिए initial state एकमात्र आर्गुमेंट है। classes के विपरीत, state को एक object होना आवश्यक नहीं है। अगर हमें आवश्यकता है तो हम एक संख्या या एक स्ट्रिंग रख सकते हैं। हमारे उदाहरण में, हम केवल एक संख्या चाहते हैं कि कितनी बार उपयोगकर्ता ने क्लिक किया, इसलिए हमारे वेरिएबल के लिए initial state के रूप में `0` पास करें। (यदि हम state में दो अलग-अलग वैल्यूज को संग्रहीत करना चाहते हैं, तो हम दो बार `useState()` का उपयोग करेंगे।)
 
-**What does `useState` return?** It returns a pair of values: the current state and a function that updates it. This is why we write `const [count, setCount] = useState()`. This is similar to `this.state.count` and `this.setState` in a class, except you get them in a pair. If you're not familiar with the syntax we used, we'll come back to it [at the bottom of this page](/docs/hooks-state.html#tip-what-do-square-brackets-mean).
+**`useState` क्या return करता है?** यह वैल्यूज की एक जोड़ी return करता है: current state और एक फ़ंक्शन जो इसे अपडेट करता है। यही कारण है कि हम `const [count, setCount] = useState()` लिखते हैं। यह class के `this.state.count` और `this.setState` के समान है, सिवाय इसके कि आप को ये एक जोड़ी में मिले हैं। यदि आप हमारे द्वारा उपयोग किए गए सिंटेक्स से परिचित नहीं हैं, तो हम इस पर [पृष्ठ के अंत भाग में](/docs/hooks-state.html#tip-what-do-square-brackets-mean) वापस आएंगे।
 
-Now that we know what the `useState` Hook does, our example should make more sense:
+अब जब हम जानते हैं कि `useState` Hook क्या करता है, तो हमारे उदाहरण और अधिक समझ में आना चाहिए:
 
 ```js{4,5}
 import React, { useState } from 'react';
@@ -146,13 +146,13 @@ function Example() {
   const [count, setCount] = useState(0);
 ```
 
-We declare a state variable called `count`, and set it to `0`. React will remember its current value between re-renders, and provide the most recent one to our function. If we want to update the current `count`, we can call `setCount`.
+हम `count` नामक एक state वेरिएबल घोषित करते हैं, और इसे `0` पर सेट करते हैं। React री-रेंडरर्स के बीच इसकी मौजूदा वैल्यू को याद रखेगा, और हमारे फ़ंक्शन को सबसे हाल ही की वैल्यू प्रदान करेगा। यदि हम current `count` को अपडेट करना चाहते हैं, तो हम `setCount` को कॉल कर सकते हैं।
 
->Note
+>ध्यान दें
 >
->You might be wondering: why is `useState` not named `createState` instead?
+>आप सोच रहे होंगे: क्यों `useState` को `createState` नाम नहीं दिया गया है?
 >
->"Create" wouldn't be quite accurate because the state is only created the first time our component renders. During the next renders, `useState` gives us the current state. Otherwise it wouldn't be "state" at all! There's also a reason why Hook names *always* start with `use`. We'll learn why later in the [Rules of Hooks](/docs/hooks-rules.html).
+>"Create" बहुत सटीक नहीं होगा क्योंकि state केवल हमारे कौम्पोनॅन्ट के पहली बार रेंडर पर बनाता है। अगले रेंडर्स के दौरान, `useState` हमें वर्तमान स्थिति देता है। अन्यथा यह बिल्कुल भी "state" नहीं होगा! Hook नाम हमेशा `use` से शुरू होने का एक कारण है। हम बाद में [Hooks के नियमों](/docs/hooks-rules.html) में सीखेंगे क्यों।
 
 ## रीडिंग State {#reading-state}
 
