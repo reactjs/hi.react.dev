@@ -246,9 +246,9 @@ function Example() {
 >
 >आप उत्सुक हो सकते हैं कि कैसे React जानता है कि कौन सा कौम्पोनॅन्ट `useState` से मेल खाता है क्योंकि हम `this` की तरह का कुछ भी React में पास नहीं कर रहे हैं। हम FAQ अनुभाग में [इस सवाल](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components) का जवाब देंगे और कई अन्य परशनो का भी।
 
-### Tip: Using Multiple State Variables {#tip-using-multiple-state-variables}
+### टिप: एकाधिक State वेरिएबल्स का उपयोग करना {#tip-using-multiple-state-variables}
 
-Declaring state variables as a pair of `[something, setSomething]` is also handy because it lets us give *different* names to different state variables if we want to use more than one:
+state के वेरिएबल्स को एक जोड़ी के रूप में `[something, setSomething]` घोषित करना भी सुविधाजनक है क्योंकि यह हमें अलग-अलग state वेरिएबल्स को *अलग* नाम देने देता है यदि हम एक से अधिक का उपयोग करना चाहते हैं:
 
 ```js
 function ExampleWithManyStates() {
@@ -258,7 +258,7 @@ function ExampleWithManyStates() {
   const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
 ```
 
-In the above component, we have `age`, `fruit`, and `todos` as local variables, and we can update them individually:
+उपरोक्त कौम्पोनॅन्ट में, हमारे पास स्थानीय वेरिएबल्स के रूप में `age`, `fruit`, और `todos` हैं, और हम उन्हें व्यक्तिगत रूप से अपडेट कर सकते हैं:
 
 ```js
   function handleOrangeClick() {
@@ -267,9 +267,9 @@ In the above component, we have `age`, `fruit`, and `todos` as local variables, 
   }
 ```
 
-You **don't have to** use many state variables. State variables can hold objects and arrays just fine, so you can still group related data together. However, unlike `this.setState` in a class, updating a state variable always *replaces* it instead of merging it.
+आपको कई state वेरिएबल्स का उपयोग **नहीं करना होगा**। State वेरिएबल्स में objects और arrays को भी रखा जा सकता हैं, इसलिए आप अभी भी संबंधित डेटा को एक साथ समूहित कर सकते हैं। हालाँकि, एक class के `this.setState` के विपरीत, एक state वैरिएबल को अपडेट करना उसे मर्ज करने के बजाय हमेशा उसे बदल देता है।
 
-We provide more recommendations on splitting independent state variables [in the FAQ](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables).
+हम [FAQ में](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables) स्वतंत्र state वेरिएबल्स को विभाजित करने के लिए अधिक सिफारिशें प्रदान करते हैं।
 
 ## अगला कदम {#next-steps}
 
