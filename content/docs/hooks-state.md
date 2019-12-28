@@ -271,10 +271,10 @@ You **don't have to** use many state variables. State variables can hold objects
 
 We provide more recommendations on splitting independent state variables [in the FAQ](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables).
 
-## Next Steps {#next-steps}
+## अगला कदम {#next-steps}
 
-On this page we've learned about one of the Hooks provided by React, called `useState`. We're also sometimes going to refer to it as the "State Hook". It lets us add local state to React function components -- which we did for the first time ever!
+इस पृष्ठ पर हमने React द्वारा प्रदान किए गए Hooks में से एक के बारे में सीखा, जिसे `useState` कहा जाता है। हम कभी-कभी इसे "State Hook" के रूप में भी संदर्भित करेंगे। यह हमें React फ़ंक्शन कौम्पोनॅन्ट्स में लोकल state जोड़ने देता है - जो हमने पहली बार किया है!
 
-We also learned a little bit more about what Hooks are. Hooks are functions that let you "hook into" React features from function components. Their names always start with `use`, and there are more Hooks we haven't seen yet.
+Hooks क्या हैं इसके बारे में हमने थोड़ा और सीखा। Hooks ऐसे फ़ंक्शन हैं जो आपको फ़ंक्शन कौम्पोनॅन्ट्स में React फीचर्स "hook इन" करने देते हैं। उनके नाम हमेशा `use` के साथ शुरू होते हैं, और ऐसे कई Hooks हैं जिन्हें हमने अभी तक नहीं देखा है।
 
-**Now let's continue by [learning the next Hook: `useEffect`.](/docs/hooks-effect.html)** It lets you perform side effects in components, and is similar to lifecycle methods in classes.
+**अब इसे जारी रखते हुए [अगले Hook सीखे: `useEffect`।](/docs/hooks-effect.html)** यह आपको कौम्पोनॅन्ट्स में साइड इफेक्ट्स करने देता है, और यह classes में lifecycle मेथड्स के समान है।
