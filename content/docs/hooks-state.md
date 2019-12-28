@@ -218,21 +218,21 @@ function Example() {
 
 यह पहली बार में समझने के लिए बहुत कुछ लग सकता है। इसे जल्दी मत करो! यदि आप स्पष्टीकरण में खो गए हैं, तो ऊपर दिए गए कोड को फिर से देखें और इसे ऊपर से नीचे तक पढ़ने की कोशिश करें। हम वादा करते हैं कि जब आप state classes में कैसे काम करता है को एक बार "भूलकर", इस कोड को दोबारा से देखेंगे, तो यह आपको समझ में आएगा।
 
-### Tip: What Do Square Brackets Mean? {#tip-what-do-square-brackets-mean}
+### टिप: स्क्वायर ब्रैकेट्स का क्या मतलब है? {#tip-what-do-square-brackets-mean}
 
-You might have noticed the square brackets when we declare a state variable:
+जब हमने state वेरिएबल घोषित किया तो आपने स्क्वायर ब्रैकेट्स देखे होंगे:
 
 ```js
   const [count, setCount] = useState(0);
 ```
 
-The names on the left aren't a part of the React API. You can name your own state variables:
+बाईं ओर के नाम React API का एक हिस्सा नहीं हैं। आप state वेरिएबल्स को अपने स्वयं के नाम दे सकते हैं:
 
 ```js
   const [fruit, setFruit] = useState('banana');
 ```
 
-This JavaScript syntax is called ["array destructuring"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring). It means that we're making two new variables `fruit` and `setFruit`, where `fruit` is set to the first value returned by `useState`, and `setFruit` is the second. It is equivalent to this code:
+इस जावास्क्रिप्ट सिंटैक्स को ["array destructuring"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring) कहा जाता है। इसका मतलब है कि हम दो नए वेरिएबल्स `fruit` और `setFruit` बना रहे हैं, जहाँ `fruit` को `useState` के दवारा लौटाए गए पहले वैल्यू पर सेट किया जाता है, और `setFruit` को दूसरे पर। यह इस कोड के बराबर है:
 
 ```js
   var fruitStateVariable = useState('banana'); // Returns a pair
@@ -240,11 +240,11 @@ This JavaScript syntax is called ["array destructuring"](https://developer.mozil
   var setFruit = fruitStateVariable[1]; // Second item in a pair
 ```
 
-When we declare a state variable with `useState`, it returns a pair — an array with two items. The first item is the current value, and the second is a function that lets us update it. Using `[0]` and `[1]` to access them is a bit confusing because they have a specific meaning. This is why we use array destructuring instead.
+जब हम `useState` के साथ एक state वैरिएबल घोषित करते हैं, तो यह एक जोड़ी देता है - दो आइटम का array। पहला आइटम वर्तमान वैल्यू है, और दूसरा एक फ़ंक्शन है जो हमें इसे अपडेट करने देता है। उन्हें एक्सेस करने के लिए `[0]` और `[1]` का उपयोग करना थोड़ा भ्रामक है क्योंकि उनका एक विशिष्ट अर्थ है। यही कारण है कि हम इसके बजाय array destructuring का उपयोग करते हैं।
 
->Note
+>ध्यान दें
 >
->You might be curious how React knows which component `useState` corresponds to since we're not passing anything like `this` back to React. We'll answer [this question](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components) and many others in the FAQ section.
+>आप उत्सुक हो सकते हैं कि कैसे React जानता है कि कौन सा कौम्पोनॅन्ट `useState` से मेल खाता है क्योंकि हम `this` की तरह का कुछ भी React में पास नहीं कर रहे हैं। हम FAQ अनुभाग में [इस सवाल](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components) का जवाब देंगे और कई अन्य परशनो का भी।
 
 ### Tip: Using Multiple State Variables {#tip-using-multiple-state-variables}
 
