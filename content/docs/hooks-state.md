@@ -189,7 +189,7 @@ function Example() {
 
 ## Recap {#recap}
 
-Let's now **recap what we learned line by line** and check our understanding.
+चलिए अब जो **हमने सीखा है उसे लाइन से फिर से पढ़ते हैं** और अपनी समझ की जाँच करते हैं।
 
 <!--
   I'm not proud of this line markup. Please somebody fix this.
@@ -212,11 +212,11 @@ Let's now **recap what we learned line by line** and check our understanding.
 14:  }
 ```
 
-* **Line 1:** We import the `useState` Hook from React. It lets us keep local state in a function component.
-* **Line 4:** Inside the `Example` component, we declare a new state variable by calling the `useState` Hook. It returns a pair of values, to which we give names. We're calling our variable `count` because it holds the number of button clicks. We initialize it to zero by passing `0` as the only `useState` argument. The second returned item is itself a function. It lets us update the `count` so we'll name it `setCount`.
-* **Line 9:** When the user clicks, we call `setCount` with a new value. React will then re-render the `Example` component, passing the new `count` value to it.
+* **Line 1:** हम React से `useState` Hook हुक का import करते हैं। यह हमें फंक्शन कौम्पोनॅन्ट में लोकल state रखने की सुविधा देता है।
+* **Line 4:** `Example` कौम्पोनॅन्ट के अंदर, हम `useState` Hook को कॉल करके एक नया state वेरिएबल घोषित करते हैं। यह एक जोड़ी वैल्यूज लौटाता है, जिसे हम नाम देते हैं। हम अपनी वेरिएबल `count` को बुला रहे हैं क्योंकि यह बटन क्लिकों की संख्या रखती है। हम `useState` में केवल `0` को आर्गुमेंट के रूप में पास करके इसे शून्य पर इनिशियलाइज़ करते हैं। दूसरा लौटा आइटम स्वयं एक फ़ंक्शन है। इससे हम `count` को अपडेट कर सकते हैं इसलिए हम इसे `setCount` नाम देते हैं।
+* **Line 9:** जब उपयोगकर्ता क्लिक करता है, हम एक नए वैल्यू के साथ `setCount` को कॉल करते हैं। React तब `Example` कौम्पोनॅन्ट को फिर से री-रेंडर करेगी, नई `count` वैल्यू को पास करके।
 
-This might seem like a lot to take in at first. Don't rush it! If you're lost in the explanation, look at the code above again and try to read it from top to bottom. We promise that once you try to "forget" how state works in classes, and look at this code with fresh eyes, it will make sense.
+यह पहली बार में समझने के लिए बहुत कुछ लग सकता है। इसे जल्दी मत करो! यदि आप स्पष्टीकरण में खो गए हैं, तो ऊपर दिए गए कोड को फिर से देखें और इसे ऊपर से नीचे तक पढ़ने की कोशिश करें। हम वादा करते हैं कि जब आप state classes में कैसे काम करता है को एक बार "भूलकर", इस कोड को दोबारा से देखेंगे, तो यह आपको समझ में आएगा।
 
 ### Tip: What Do Square Brackets Mean? {#tip-what-do-square-brackets-mean}
 
