@@ -46,7 +46,7 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
+    alert('एक नाम सबमिट किया गया: ' + this.state.value);
     event.preventDefault();
   }
 
