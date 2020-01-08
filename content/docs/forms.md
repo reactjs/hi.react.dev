@@ -93,7 +93,7 @@ class EssayForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'Please write an essay about your favorite DOM element.'
+      value: 'कृपया आपके पसंदीदा DOM element के बारे में एक निबंध लिखें।'
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -105,7 +105,7 @@ class EssayForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('An essay was submitted: ' + this.state.value);
+    alert('एक निबंध सब्मिट किया गया: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -155,7 +155,7 @@ class FlavorForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('Your favorite flavor is: ' + this.state.value);
+    alert('आपका पसंदीदा रंग है: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -192,7 +192,7 @@ class FlavorForm extends React.Component {
 
 ## फाइल इनपुट टैग {#the-file-input-tag}
 
-HTML में, एक `<input type="file">` से यूजर अपने डिवाइस की स्टोरेज से एक या अनेक file का जिन्हें या तो सर्वर पर अपलोड किया जाता है या जावास्क्रिप्ट के [File API Inc(https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications) से मैनिपुलेट किया जाता है।
+HTML में, एक `<input type="file">` से यूजर अपने डिवाइस की स्टोरेज से एक या अनेक file का चयन कर सकता है जिन्हें या तो सर्वर पर अपलोड किया जाता है या जावास्क्रिप्ट के [File API Inc(https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications) से मैनिपुलेट किया जाता है।
 
 ```html
 <input type="file" />
