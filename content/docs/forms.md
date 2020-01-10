@@ -127,24 +127,24 @@ class EssayForm extends React.Component {
 
 ## सेलेक्ट टैग {#the-select-tag}
 
-HTML में, `<select>` एक ड्राप-डाउन लिस्ट बनाता है। उदाहरण के तौर पर, यह HTML फ्लेवर्स की एक ड्राप-डाउन लिस्ट बनाती है:
+HTML में, `<select>` एक ड्राप-डाउन लिस्ट बनाता है। उदाहरण के तौर पर, यह HTML, फ्लेवर्स की एक ड्राप-डाउन लिस्ट बनाती है:
 
 ```html
 <select>
-  <option value="grapefruit">Grapefruit</option>
-  <option value="lime">Lime</option>
-  <option selected value="coconut">Coconut</option>
-  <option value="mango">Mango</option>
+  <option value="चकोतरा">Grapefruit</option>
+  <option value="नींबू">Lime</option>
+  <option selected value="नारियल">Coconut</option>
+  <option value="आम">Mango</option>
 </select>
 ```
 
-ध्यान दीजिये की `selected` एट्रिब्यूट की वजह से Coconut ऑप्शन पहले से सेलेक्टेड है। React में, `selected` एट्रिब्यूट इस्तेमाल करने के बजाए, `value` एट्रिब्यूट का इस्तेमाल रुट `select` टैग पर करते है। यह एक कंट्रोल्ड कौम्पोनॅन्ट में बहुत सुविधाजनक रहता है क्यूंकि हमे इसे सिर्फ एक जगह अपडेट करना होता है। उदाहरण के तौर पर:
+ध्यान दीजिये की `selected` एट्रिब्यूट की वजह से नारियल ऑप्शन पहले से सेलेक्टेड है। लेकिन React में, `selected` एट्रिब्यूट इस्तेमाल करने के बजाए, रुट `select` टैग पर `value` एट्रिब्यूट का इस्तेमाल करते है। यह एक कंट्रोल्ड कौम्पोनॅन्ट में बहुत सुविधाजनक रहता है क्यूंकि हमे इसे सिर्फ एक जगह अपडेट करना होता है। उदाहरण के तौर पर:
 
 ```javascript{4,10-12,24}
 class FlavorForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: 'coconut'};
+    this.state = {value: 'नारियल'};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -155,7 +155,7 @@ class FlavorForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('आपका पसंदीदा रंग है: ' + this.state.value);
+    alert('आपका पसंदीदा स्वाद है: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -163,12 +163,12 @@ class FlavorForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Pick your favorite flavor:
+          आपके पसंदीदा स्वाद का चयन करें:
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
+            <option value="चकोतरा">Grapefruit</option>
+            <option value="नींबू">Lime</option>
+            <option value="नारियल">Coconut</option>
+            <option value="आम">Mango</option>
           </select>
         </label>
         <input type="submit" value="Submit" />
@@ -232,7 +232,7 @@ class Reservation extends React.Component {
     return (
       <form>
         <label>
-          Is going:
+          जा रहा है:
           <input
             name="isGoing"
             type="checkbox"
@@ -241,7 +241,7 @@ class Reservation extends React.Component {
         </label>
         <br />
         <label>
-          Number of guests:
+          Nमेहमानों की संख्या:
           <input
             name="numberOfGuests"
             type="number"
