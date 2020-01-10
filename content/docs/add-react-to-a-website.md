@@ -118,11 +118,12 @@ React को एकीकृत (इंटिग्रेटिंग) करन
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
-If you don't have a minification step for your scripts, [here's one way to set it up](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
+यदि आपके पास अपनी स्क्रिप्ट के लिए कोई मिनिमाइज़ेशन चरण नहीं है, [यहाँ इसे स्थापित करने का एक तरीका है](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
 
-## Optional: Try React with JSX {#optional-try-react-with-jsx}
+## वैकल्पिक: JSX के साथ React का उपयोग करे {#optional-try-react-with-jsx}
 
-In the examples above, we only relied on features that are natively supported by the browsers. This is why we used a JavaScript function call to tell React what to display:
+ऊपर दिए गए उदाहरणों में, हम केवल उन विशेषताओं पर भरोसा करते हैं जो ब्राउज़र द्वारा मूल रूप से समर्थित (सपोर्टेड) हैं। यही कारण है कि हमें React को बताने के लिए
+JavaScript (जावास्क्रिप्ट) फ़ंक्शन कॉल का उपयोग किया कि क्या प्रदर्शित करें:
 
 ```js
 const e = React.createElement;
@@ -135,7 +136,7 @@ return e(
 );
 ```
 
-However, React also offers an option to use [JSX](/docs/introducing-jsx.html) instead:
+हालाँकि, React इसके बजाय [JSX](/docs/introducing-jsx.html) का उपयोग करने का एक विकल्प प्रदान करता है:
 
 ```js
 // Display a "Like" <button>
@@ -146,41 +147,41 @@ return (
 );
 ```
 
-These two code snippets are equivalent. While **JSX is [completely optional](/docs/react-without-jsx.html)**, many people find it helpful for writing UI code -- both with React and with other libraries.
+ये दोनों कोड स्निपेट समान हैं। जबकि **JSX [पूरी तरह से वैकल्पिक](/docs/react-without-jsx.html) है**, कई लोगों को यह UI (यूआई) कोड लिखने के लिए उपयोगी लगता है - दोनों React (रिएक्ट) के साथ और अन्य पुस्तकालयों (लिबरेरिएस) के साथ।
 
-You can play with JSX using [this online converter](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3).
+[यह ऑनलाइन कनवर्टर](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3) का उपयोग करके आप JSX के साथ खेल सकते हैं।
 
-### Quickly Try JSX {#quickly-try-jsx}
+### जल्दी से JSX की कोशिश करो {#quickly-try-jsx}
 
-The quickest way to try JSX in your project is to add this `<script>` tag to your page:
+JSX को अपने प्रोजेक्ट में आज़माने का सबसे तेज़ तरीका है कि इस `<script>` टैग को अपने पेज में जोड़ें:
 
 ```html
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 ```
 
-Now you can use JSX in any `<script>` tag by adding `type="text/babel"` attribute to it. Here is [an example HTML file with JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) that you can download and play with.
+अब आप JSX का उपयोग किसी भी `<script>` टैग में `type="text/babel"` विशेषता को जोड़कर कर सकते हैं। यहां [JSX के साथ एक उदाहरण HTML फ़ाइल](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) है जिसे आप डाउनलोड कर सकते हैं और साथ खेल सकते हैं।
 
-This approach is fine for learning and creating simple demos. However, it makes your website slow and **isn't suitable for production**. When you're ready to move forward, remove this new `<script>` tag and the `type="text/babel"` attributes you've added. Instead, in the next section you will set up a JSX preprocessor to convert all your `<script>` tags automatically.
+सीखने और सरल डेमो बनाने के लिए यह दृष्टिकोण ठीक है। हालाँकि, यह आपकी वेबसाइट को धीमा और **उत्पादन के लिए उपयुक्त नहीं** बनाता है। जब आप आगे बढ़ने के लिए तैयार हों, तो इस नई `<script>` टैग और आपके द्वारा जोड़े गए `type="text/babel"` विशेषता (attributes) को हटा दें। इसके बजाय, अगले भाग में आप अपने सभी <script> टैग को स्वचालित रूप से परिवर्तित करने के लिए JSX प्रीप्रोसेसर सेट करेंगे।
 
-### Add JSX to a Project {#add-jsx-to-a-project}
+### JSX को किसी प्रोजेक्ट में जोड़ें {#add-jsx-to-a-project}
 
-Adding JSX to a project doesn't require complicated tools like a bundler or a development server. Essentially, adding JSX **is a lot like adding a CSS preprocessor.** The only requirement is to have [Node.js](https://nodejs.org/) installed on your computer.
+JSX को किसी प्रोजेक्ट में जोड़ने के लिए किसी बंडल या डेवलपमेंट सर्वर जैसे जटिल टूल की आवश्यकता नहीं होती है। अनिवार्य रूप से, JSX को जोड़ना **एक सीएसएस प्रीप्रोसेसर को जोड़ने जैसा है।** केवल आवश्यकता आपके कंप्यूटर पर [Node.js](https://nodejs.org/) को स्थापित करने की है।
 
-Go to your project folder in the terminal, and paste these two commands:
+टर्मिनल में अपने प्रोजेक्ट फ़ोल्डर में जाएं, और इन दोनों कमांडों को पेस्ट करें:
 
-1. **Step 1:** Run `npm init -y` (if it fails, [here's a fix](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
-2. **Step 2:** Run `npm install babel-cli@6 babel-preset-react-app@3`
+1. **चरण 1:** Run `npm init -y` (यदि यह विफल रहता है, [तो यहां एक तय (उपाय) है](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
+2. **चरण 2:** Run `npm install babel-cli@6 babel-preset-react-app@3`
 
->Tip
+>सुझाव
 >
->We're **using npm here only to install the JSX preprocessor;** you won't need it for anything else. Both React and the application code can stay as `<script>` tags with no changes.
+>हम **केवल JSX प्रीप्रोसेसर को स्थापित करने के लिए npm का उपयोग कर रहे हैं;** आपको किसी और चीज़ के लिए इसकी आवश्यकता नहीं है React और एप्लिकेशन कोड दोनों ही बिना किसी बदलाव के `<script>` टैग के रूप में रह सकते हैं।
 
-Congratulations! You just added a **production-ready JSX setup** to your project.
+बधाई हो! आप अपनी परियोजना (प्रोजेक्ट) में **उत्पादन-तैयार JSX सेटअप** जोड़ चुके है।
 
 
-### Run JSX Preprocessor {#run-jsx-preprocessor}
+### JSX प्रीप्रोसेसर चलाएँ {#run-jsx-preprocessor}
 
-Create a folder called `src` and run this terminal command:
+`src` नामक एक फ़ोल्डर बनाएँ और इस टर्मिनल कमांड को चलाएं:
 
 ```
 npx babel --watch src --out-dir . --presets react-app/prod 
@@ -188,14 +189,16 @@ npx babel --watch src --out-dir . --presets react-app/prod
 
 >Note
 >
->`npx` is not a typo -- it's a [package runner tool that comes with npm 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
+>`npx` एक टाइपो नहीं है -- यह एक [पैकेज रनर उपकरण है जो npm 5.2+ के साथ आता](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) है।
 >
->If you see an error message saying "You have mistakenly installed the `babel` package", you might have missed [the previous step](#add-jsx-to-a-project). Perform it in the same folder, and then try again.
+>यदि आपको एक त्रुटि संदेश दिखाई देता है, जिसमें कहा गया है कि "आपने गलती से `babel (बैबल)` पैकेज स्थापित किया है", तो आप [पिछले चरण](#add-jsx-to-a-project) से चूक गए होंगे। इसे उसी फ़ोल्डर में निष्पादित (परफॉर्म) करें, और फिर पुन: प्रयास करें।
 
-Don't wait for it to finish -- this command starts an automated watcher for JSX.
+इसके खत्म होने का इंतजार न करें -- यह कमांड JSX के लिए एक स्वचालित वॉचर शुरू करता है।
 
-If you now create a file called `src/like_button.js` with this **[JSX starter code](https://gist.github.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**, the watcher will create a preprocessed `like_button.js` with the plain JavaScript code suitable for the browser. When you edit the source file with JSX, the transform will re-run automatically.
+ JSX स्टार्टर कोड के साथ src / like_button.js नामक एक फाइल बनाते हैं, तो देखने वाला ब्राउज़र के लिए उपयुक्त सादे जावास्क्रिप्ट कोड के साथ preprocessed like_button.js बना देगा। जब आप JSX के साथ स्रोत फ़ाइल को संपादित करते हैं, तो परिवर्तन स्वचालित रूप से फिर से चलेगा।
 
-As a bonus, this also lets you use modern JavaScript syntax features like classes without worrying about breaking older browsers. The tool we just used is called Babel, and you can learn more about it from [its documentation](https://babeljs.io/docs/en/babel-cli/).
+यदि आप अब इस **[JSX स्टार्टर कोड](https://gist.github.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)** के साथ `src/like_button.js` नामक एक फाइल बनाते हैं, तो देखने वाला ब्राउज़र के लिए उपयुक्त सादे जावास्क्रिप्ट कोड के साथ प्रेप्रोसेस्सेड (पहले से तैयार) `like_button.js` बना देगा। जब आप JSX के साथ स्रोत फ़ाइल को संपादित (एडिट) करते हैं, तो परिवर्तन स्वचालित रूप से फिर से चलेगा।
 
-If you notice that you're getting comfortable with build tools and want them to do more for you, [the next section](/docs/create-a-new-react-app.html) describes some of the most popular and approachable toolchains. If not -- those script tags will do just fine!
+एक बोनस के रूप में, यह आपको पुराने ब्राउज़रों को तोड़ने के बारे में चिंता किए बिना classes (कक्षाओं) की तरह आधुनिक जावास्क्रिप्ट सिंटैक्स सुविधाओं का उपयोग करने देता है। जिस उपकरण का हमने अभी उपयोग किया है उसे babel (बैबल) कहा जाता है, और आप [इसके प्रलेखन](https://babeljs.io/docs/en/babel-cli/) से इसके बारे में अधिक जान सकते हैं। 
+
+यदि आप देखते हैं कि आप बिल्ड टूल के साथ सहज हो रहे हैं और चाहते हैं कि वे आपके लिए और अधिक करें, तो  [अगला भाग](/docs/create-a-new-react-app.html) कुछ सबसे लोकप्रिय और स्वीकार्य टूलचैनस का वर्णन करता है। यदि नहीं -- तो वे स्क्रिप्ट टैग ठीक काम करेंगे!
