@@ -7,29 +7,28 @@ redirect_from:
 prev: getting-started.html
 next: create-a-new-react-app.html
 ---
+अपनी आवश्यकता के अनुसार कम या ज्यादा React का उपयोग करें
 
-Use as little or as much React as you need.
+क्रमिक गोद या अपने तरीके से उपयोग करने के लिए शुरू से ही इसी तरह डिज़ाइन की गई है, और **आप आवश्यकतानुसार कम या ज्यादा इसका उपयोग कर सकते हैं**। शायद आप केवल एक मौजूदा पेज पर कुछ "अन्तरक्रियाशीलता के छिड़काव( इसके अंतर्गत कुछ छोटा सा काम )" जोड़ना चाहते हैं। React Component ऐसा करने का एक शानदार तरीका है।
 
-React has been designed from the start for gradual adoption, and **you can use as little or as much React as you need**. Perhaps you only want to add some "sprinkles of interactivity" to an existing page. React components are a great way to do that.
-
-The majority of websites aren't, and don't need to be, single-page apps. With **a few lines of code and no build tooling**, try React in a small part of your website. You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.
+अधिकांश वेबसाइटों को एकल-पृष्ठ ऐप्स होने की आवश्यकता नहीं है, और नहीं भी। **कोड की कुछ पंक्तियों और बिना किसी बिल्ड टूलिंग** के साथ, अपनी वेबसाइट के एक छोटे से हिस्से में React उपयोग  करने का प्रयास करें। आप तब या तो धीरे-धीरे अपनी उपस्थिति का विस्तार कर सकते हैं, या इसे कुछ गतिशील विजेट में समाहित में रखे।
 
 ---
 
-- [Add React in One Minute](#add-react-in-one-minute)
-- [Optional: Try React with JSX](#optional-try-react-with-jsx) (no bundler necessary!)
+- [एक मिनट में React जोड़ें](#add-react-in-one-minute)
+- [वैकल्पिक: JSX के साथ React का उपयोग करे](#optional-try-react-with-jsx) ( किसी भी बंडल आवश्यकता नहीं !)
 
-## Add React in One Minute {#add-react-in-one-minute}
+## एक मिनट में React जोड़ें {#add-react-in-one-minute}
 
-In this section, we will show how to add a React component to an existing HTML page. You can follow along with your own website, or create an empty HTML file to practice.
+इस अनुभाग में, हम यह दिखाएंगे कि किसी मौजूदा HTML पृष्ठ पर एक React Component कैसे जोड़ा जाए। आप अपनी वेबसाइट के साथ अनुसरण कर सकते हैं, या अभ्यास करने के लिए एक खाली HTML फ़ाइल बना सकते हैं।
 
-There will be no complicated tools or install requirements -- **to complete this section, you only need an internet connection, and a minute of your time.**
+यहाँ कोई जटिल उपकरण नहीं होगा या आवश्यकताओं को स्थापित( इनस्टॉल ) नहीं किया जाएगा -- **इस अनुभाग को पूरा करने के लिए, आपको केवल एक इंटरनेट कनेक्शन और आपके समय का एक मिनट चाहिए।**
 
-Optional: [Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
+वैकल्पिक: [पूरा उदाहरण डाउनलोड करें (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
 
-### Step 1: Add a DOM Container to the HTML {#step-1-add-a-dom-container-to-the-html}
+### चरण 1: HTML में DOM कंटेनर जोड़ें {#step-1-add-a-dom-container-to-the-html}
 
-First, open the HTML page you want to edit. Add an empty `<div>` tag to mark the spot where you want to display something with React. For example:
+सबसे पहले, उस HTML पेज को खोलें जिसे आप संपादित( एडिट ) करना चाहते हैं। उस स्थान को चिह्नित करने के लिए एक खाली `<div>` टैग जोड़ें जहां आप React के साथ कुछ प्रदर्शित करना चाहते हैं। उदाहरण के लिए:
 
 ```html{3}
 <!-- ... existing HTML ... -->
@@ -39,15 +38,15 @@ First, open the HTML page you want to edit. Add an empty `<div>` tag to mark the
 <!-- ... existing HTML ... -->
 ```
 
-We gave this `<div>` a unique `id` HTML attribute. This will allow us to find it from the JavaScript code later and display a React component inside of it.
+हमने इस `<div>`  को एक अद्वितीय ( नया ) `id` HTML attribute दिया  है। यह हमें बाद में जावास्क्रिप्ट ( JavaScript ) कोड से इसे खोजने और इसके अंदर एक React Component प्रदर्शित करने की अनुमति देगा।
 
->Tip
+>टिप
 >
->You can place a "container" `<div>` like this **anywhere** inside the `<body>` tag. You may have as many independent DOM containers on one page as you need. They are usually empty -- React will replace any existing content inside DOM containers.
+>आप एक "कंटेनर" `<div>` को इस तरह से **कहीं भी** `<body>` टैग के अंदर रख सकते हैं। आपके पास एक पृष्ठ पर कई स्वतंत्र डोम कंटेनर हो सकते हैं जैसी आपकी आवश्यकता हो। वे आम तौर पर खाली होते हैं - React डोम (Dom) कंटेनर के अंदर किसी भी मौजूदा सामग्री को बदल देगी।
 
-### Step 2: Add the Script Tags {#step-2-add-the-script-tags}
+### चरण 2: स्क्रिप्ट टैग जोड़ें {#step-2-add-the-script-tags}
 
-Next, add three `<script>` tags to the HTML page right before the closing `</body>` tag:
+अगला, `</ body>` टैग बंद करने से ठीक पहले HTML पेज पर तीन `<script>` टैग जोड़ें:
 
 ```html{5,6,9}
   <!-- ... other HTML ... -->
@@ -63,19 +62,19 @@ Next, add three `<script>` tags to the HTML page right before the closing `</bod
 </body>
 ```
 
-The first two tags load React. The third one will load your component code.
+पहले दो टैग React लोड करते हैं। तीसरा आपके घटक (Component) कोड को लोड करेगा।
 
-### Step 3: Create a React Component {#step-3-create-a-react-component}
+### चरण 3: एक React Component(प्रतिक्रिया घटक) बनाएँ {#step-3-create-a-react-component}
 
-Create a file called `like_button.js` next to your HTML page.
+अपने HTML पृष्ठ के बगल में `like_button.js` नामक एक फ़ाइल बनाएँ।
 
-Open **[this starter code](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** and paste it into the file you created.
+खोले **[इस स्टार्टर कोड](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** और आपके द्वारा बनाई गई फ़ाइल में पेस्ट करें या छांपे।
 
 >Tip
 >
->This code defines a React component called `LikeButton`. Don't worry if you don't understand it yet -- we'll cover the building blocks of React later in our [hands-on tutorial](/tutorial/tutorial.html) and [main concepts guide](/docs/hello-world.html). For now, let's just get it showing on the screen!
+>यह कोड `LikeButton` नामक एक रिएक्ट घटक (React Component) को परिभाषित करता है। चिंता न करें अगर आप इसे अभी तक नहीं समझे हैं - हम बाद में रिएक्ट  (React) के बिल्डिंग ब्लॉक्स को अपने [हैंड्स-ऑन टुटोरिअल (हाथों पर ट्यूटोरियल)](/tutorial/tutorial.html) और [मुख्य अवधारणा गाइड](/docs/hello-world.html) में कवर करेंगे। अभी के लिए, चलो इसे स्क्रीन पर देख कर प्राप्त करे!
 
-After **[the starter code](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, add two lines to the bottom of `like_button.js`:
+**[स्टार्टर कोड](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** के बाद, like_button.js के नीचे दो लाइनें जोड़ें:
 
 ```js{3,4}
 // ... the starter code you pasted ...
@@ -84,35 +83,35 @@ const domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(e(LikeButton), domContainer);
 ```
 
-These two lines of code find the `<div>` we added to our HTML in the first step, and then display our "Like" button React component inside of it. 
+कोड की ये दो पंक्तियाँ उस `<div>` को ढूंढती है जिसे हमने पहले चरण में अपने HTML में जोड़ा था, और फिर इसके अंदर अपने "Like" बटन रिएक्ट घटक (React Component) को प्रदर्शित करते हैं।
 
-### That's It! {#thats-it}
+### बस! {#thats-it}
 
-There is no step four. **You have just added the first React component to your website.**
+कोई चरण चार नहीं है। **आपने अपनी वेबसाइट पर पहला रिएक्ट घटक जोड़ा चुके है।**
 
-Check out the next sections for more tips on integrating React.
+React को एकीकृत (इंटिग्रेटिंग) करने के बारे में अधिक सुझावों के लिए अगला अनुभाग देखें।
 
-**[View the full example source code](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
+**[पूर्ण उदाहरण स्रोत कोड देखें](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
 
-**[Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
+**[पूरा उदाहरण डाउनलोड करें (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
 
-### Tip: Reuse a Component {#tip-reuse-a-component}
+### सुझाव: एक घटक का पुन: उपयोग करें {#tip-reuse-a-component}
 
-Commonly, you might want to display React components in multiple places on the HTML page. Here is an example that displays the "Like" button three times and passes some data to it:
+आमतौर पर, आप HTML पृष्ठ पर कई स्थानों पर React Component (प्रतिक्रिया घटकों) को प्रदर्शित करना चाह सकते हैं। यहाँ एक उदाहरण है जो "लाइक" बटन को तीन बार प्रदर्शित करता है और इसके लिए कुछ डेटा पास करता है:
 
-[View the full example source code](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
+[पूर्ण उदाहरण स्रोत कोड देखें](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
 
-[Download the full example (2KB zipped)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
+[पूरा उदाहरण डाउनलोड करें (2KB zipped)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
 
 >Note
 >
->This strategy is mostly useful while React-powered parts of the page are isolated from each other. Inside React code, it's easier to use [component composition](/docs/components-and-props.html#composing-components) instead.
+>यह रणनीति सबसे उपयोगी है, जब पृष्ठ के रिएक्ट-संचालित हिस्से एक-दूसरे से अलग-थलग (आइसोलेटेड) हो। रिएक्ट कोड के अंदर, इसके बजाय [component composition (घटक संरचना) ](/docs/components-and-props.html#composing-components) का उपयोग करना आसान है।
 
-### Tip: Minify JavaScript for Production {#tip-minify-javascript-for-production}
+### सुझाव: उत्पादन के लिए JavaScript (जावास्क्रिप्ट) को छोटा करें {#tip-minify-javascript-for-production}
 
-Before deploying your website to production, be mindful that unminified JavaScript can significantly slow down the page for your users.
+अपनी वेबसाइट को उत्पादन में तैनात या अपलोड करने से पहले, इस बात का ध्यान रखें कि निर्विवाद (अनावश्यक) JavaSript (जावास्क्रिप्ट) कोड आपके उपयोगकर्ताओं के लिए पेज को काफी धीमा कर सकता है।
 
-If you already minify the application scripts, **your site will be production-ready** if you ensure that the deployed HTML loads the versions of React ending in `production.min.js`:
+यदि आप पहले से ही एप्लिकेशन स्क्रिप्ट को छोटा करते हैं, तो **आपकी साइट का उत्पादन तैयार हो जाएगा** यदि आप सुनिश्चित करते हैं कि तैनात HTML रिएक्शन के संस्करणों (वर्जन) को `production.min.js` में समाप्त करता है:
 
 ```js
 <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
