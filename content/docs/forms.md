@@ -131,10 +131,10 @@ HTML में, `<select>` एक ड्राप-डाउन लिस्ट �
 
 ```html
 <select>
-  <option value="चकोतरा">Grapefruit</option>
-  <option value="नींबू">Lime</option>
-  <option selected value="नारियल">Coconut</option>
-  <option value="आम">Mango</option>
+  <option value="grapefruit">चकोतरा</option>
+  <option value="lime">नींबू</option>
+  <option selected value="cocunut">नारियल</option>
+  <option value="mango">आम</option>
 </select>
 ```
 
@@ -165,10 +165,10 @@ class FlavorForm extends React.Component {
         <label>
           आपके पसंदीदा स्वाद का चयन करें:
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="चकोतरा">Grapefruit</option>
-            <option value="नींबू">Lime</option>
-            <option value="नारियल">Coconut</option>
-            <option value="आम">Mango</option>
+            <option value="grapefruit">चकोतरा</option>
+            <option value="lime">नींबू</option>
+            <option value="cocunut">नारियल</option>
+            <option value="mango">आम</option>
           </select>
         </label>
         <input type="submit" value="Submit" />
@@ -241,7 +241,7 @@ class Reservation extends React.Component {
         </label>
         <br />
         <label>
-          Nमेहमानों की संख्या:
+          मेहमानों की संख्या:
           <input
             name="numberOfGuests"
             type="number"
