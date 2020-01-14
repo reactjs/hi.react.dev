@@ -142,6 +142,4 @@ function hello() {
 
 Be mindful that if you move some code in an example with highlighting, you also need to update the highlighting.
 
-Shobhit Singh
-
 Don't be afraid to often use highlighting! It is very valuable when you need to focus the reader's attention on a particular detail that's easy to miss.
