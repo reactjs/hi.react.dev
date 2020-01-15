@@ -151,7 +151,7 @@ mockComponent(
 isElement(element)
 ```
 
-रिटर्नस `true` यदि `element` कोई React एलिमेंट है।
+`true` रिटर्न करता है यदि `element` कोई React एलिमेंट है।
 
 * * *
 
@@ -164,7 +164,7 @@ isElementOfType(
 )
 ```
 
-रिटर्नस `true` यदि `element` एक React एलिमेंट है जिसका टाइप एक React `componentClass` है।
+`true` रिटर्न करता है यदि `element` एक React एलिमेंट है जिसका टाइप एक React `componentClass` है।
 
 * * *
 
@@ -174,7 +174,7 @@ isElementOfType(
 isDOMComponent(instance)
 ```
 
-रिटर्नस `true` यदि `instance` एक DOM कौम्पोनॅन्ट है (जैसे कि `<div>` या `<span>`)।
+`true` रिटर्न करता है यदि `instance` एक DOM कौम्पोनॅन्ट है (जैसे कि `<div>` या `<span>`)।
 
 * * *
 
@@ -184,7 +184,7 @@ isDOMComponent(instance)
 isCompositeComponent(instance)
 ```
 
-रिटर्नस `true` यदि `instance` एक उपयोगकर्ता-परिभाषित कौम्पोनॅन्ट है, जैसे कि class या फ़ंक्शन।
+`true` रिटर्न करता है यदि `instance` एक उपयोगकर्ता-परिभाषित कौम्पोनॅन्ट है, जैसे कि class या फ़ंक्शन।
 
 * * *
 
