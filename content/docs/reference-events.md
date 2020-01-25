@@ -1,18 +1,18 @@
 ---
 id: events
-title: SyntheticEvent(कृत्रिम इवेंट)
+title: SyntheticEvent
 permalink: docs/events.html
 layout: docs
 category: Reference
 ---
 
-यह संदर्भ React इवेंट सिस्टम का हिस्सा बनने वाले `SyntheticEvent` आवरण को निर्देशित करता है. अधिक जानने के लिए मार्गदर्शिका देखें | [Handling Events](/docs/handling-events.html)
+यह संदर्भ React इवेंट सिस्टम का हिस्सा बनने वाले `SyntheticEvent` आवरण को निर्देशित करता है। अधिक जानने के लिए [Handling Events](/docs/handling-events.html) गाइड देखें।
 
-## अवलोकन {#overview}
+## ओवरव्यू {#overview}
 
-आपके ईवेंट हैंडलर को `SyntheticEvent` के उदाहरण दिए जाएंगे, जो ब्राउज़र के मूल ईवेंट के आसपास एक क्रॉस-ब्राउज़र आवरण है। यह ब्राउज़र के मूल ईवेंट के समान है, जिसमें `stopPropagation()` और `stopDefault()` शामिल हैं, सिवाय उन घटनाओं के, जो सभी ब्राउज़रों में समान रूप से काम करते हैं।
+आपके ईवेंट हैंडलर को `SyntheticEvent` के उदाहरण दिए जाएंगे, जो ब्राउज़र के मूल ईवेंट के आसपास एक क्रॉस-ब्राउज़र आवरण है। यह ब्राउज़र के मूल ईवेंट के समान है, जिसमें `stopPropagation()` और `preventDefault()` शामिल हैं, सिवाय उन घटनाओं के, जो सभी ब्राउज़रों में समान रूप से काम करते हैं।
 
-यदि आप पाते हैं कि आपको किसी कारण से अंतर्निहित ब्राउज़र इवेंट की आवश्यकता है, तो इसे प्राप्त करने के लिए केवल `nativeEvent` विशेषता का उपयोग करें। प्रत्येक `SyntheticEvent` object में निम्न विशेषताएँ होती हैं।
+यदि आप पाते हैं कि आपको किसी कारण से अंतर्निहित ब्राउज़र इवेंट की आवश्यकता है, तो इसे प्राप्त करने के लिए केवल `nativeEvent` विशेषता का उपयोग करें। प्रत्येक `SyntheticEvent` ऑब्जेक्ट में निम्न विशेषताएँ होती हैं।
 
 ```javascript
 boolean bubbles
@@ -33,11 +33,13 @@ string type
 
 > ध्यान दें:
 >
-> V0.14 के अनुसार, किसी इवेंट हैंडलर से `false` वापस करना अब event propagation को रोक नहीं पाएगा। इसके बजाय, `e.stopPropagation()` या `e.preventDefault()` को मैन्युअल रूप से, उपयुक्त के रूप में चालू/ट्रिगर किया जाना चाहिए।
+> v0.14 के अनुसार, किसी इवेंट हैंडलर से `false` वापस करना अब event propagation को रोक नहीं पाएगा। इसके बजाय, `e.stopPropagation()` या `e.preventDefault()` को ज़रूरत के अनुसार मैन्युअली स्टार्ट किया जाना चाहिए।
 
 ### इवेंट इकट्ठा करना {#event-pooling}
 
-`SyntheticEvent` को इकट्ठा किया जाता है। इसका मतलब यह है कि `SyntheticEvent` object का पुन: उपयोग किया जाएगा और ईवेंट कॉलबैक लागू होने के बाद सभी गुणों को null कर दिया जाएगा। यह निष्पादन कारणों से है। जैसे, आप ईवेंट को asynchronous तरीके से एक्सेस नहीं कर सकते.
+`SyntheticEvent` को इकट्ठा किया जाता है। इसका मतलब यह है कि `SyntheticEvent` ऑब्जेक्ट का पुन: उपयोग किया जाएगा और ईवेंट कॉलबैक लागू होने के बाद सभी प्रॉपर्टीज को nullify कर दिया जाएगा।
+यह परफॉरमेंस कारणों से है।
+जैसे, आप ईवेंट को asynchronous तरीके से एक्सेस नहीं कर सकते।
 
 ```javascript
 function onClick(event) {
@@ -60,13 +62,13 @@ function onClick(event) {
 
 > ध्यान दें:
 >
-> यदि आप एक asynchronous तरीके से इवेंट के गुणों का उपयोग करना चाहते हैं, तो आपको इवेंट पर `event.persist()` को कॉल करना चाहिए, जो पूल(इकट्ठा इवेंट) से `SyntheticEvent` को हटा देगा और उपयोगकर्ता कोड द्वारा इवेंट के संदर्भ को बनाए रखने की अनुमति देगा।
+> यदि आप एक asynchronous तरीके से इवेंट के प्रॉपर्टीज का उपयोग करना चाहते हैं, तो आपको इवेंट पर `event.persist()` को कॉल करना चाहिए, जो पूल से `सिंथेटिक इवेंट` को हटा देगा और उपयोगकर्ता कोड द्वारा इवेंट के संदर्भ को बनाए रखने की अनुमति देगा।
 
 ## समर्थित इवेंट्स {#supported-events}
 
-React घटनाओं को सामान्य करता है ताकि उनके विभिन्न ब्राउज़रों में सुसंगत गुण हों।
+React इवेंट्स को सामान्य करता है ताकि उनके विभिन्न ब्राउज़रों में सुसंगत गुण हों।
 
-नीचे दिए गए घटना संचालकों को bubbling चरण में एक इवेंट द्वारा ट्रिगर किया गया है। कैप्चर/पकड़ना चरण के लिए एक ईवेंट हैंडलर पंजीकृत करने के लिए, `Capture` को ईवेंट नाम में जोड़ें, उदाहरण के लिए, `onClick` का उपयोग करने के बजाय, आप कैप्चर/पकड़ना चरण में click इवेंट को संभालने के लिए `onClickCapture` का उपयोग करेंगे।
+नीचे दिए गए घटना संचालकों को bubbling चरण में एक इवेंट द्वारा ट्रिगर किया गया है। कैप्चर चरण के लिए एक ईवेंट हैंडलर रजिस्टर करने के लिए, `Capture` को ईवेंट नाम में जोड़ें, उदाहरण के लिए, `onClick` का उपयोग करने के बजाय, आप कैप्चर/पकड़ना चरण में click इवेंट को संभालने के लिए `onClickCapture` का उपयोग करेंगे।
 
 - [Clipboard Events](#clipboard-events)
 - [Composition Events](#composition-events)
@@ -97,7 +99,7 @@ React घटनाओं को सामान्य करता है ता
 onCopy onCut onPaste
 ```
 
-गुण:
+प्रॉपर्टीज:
 
 ```javascript
 DOMDataTransfer clipboardData
@@ -105,7 +107,7 @@ DOMDataTransfer clipboardData
 
 * * *
 
-### संयोजन इवेंट्स {#composition-events}
+### कम्पोजीशन इवेंट्स {#composition-events}
 
 ईवेंट के नाम:
 
@@ -113,7 +115,7 @@ DOMDataTransfer clipboardData
 onCompositionEnd onCompositionStart onCompositionUpdate
 ```
 
-गुण:
+प्रॉपर्टीज:
 
 ```javascript
 string data
@@ -130,7 +132,7 @@ string data
 onKeyDown onKeyPress onKeyUp
 ```
 
-गुण:
+प्रॉपर्टीज:
 
 ```javascript
 boolean altKey
@@ -147,7 +149,7 @@ boolean shiftKey
 number which
 ```
 
-`key` संपत्ति, [DOM स्तर 3 इवेंट्स विनिर्देश](https://www.w3.org/TR/uievents-key/#named-key-attribute-values) में प्रलेखित किसी भी मान को ले सकती है।
+`key` प्रॉपर्टीज, [DOM स्तर 3 इवेंट्स विनिर्देश](https://www.w3.org/TR/uievents-key/#named-key-attribute-values) में प्रलेखित किसी भी वैल्यू को ले सकती है।
 
 * * *
 
@@ -159,9 +161,9 @@ number which
 onFocus onBlur
 ```
 
-ये फ़ोकस इवेंट React DOM में सभी elements पर काम करते हैं, न कि केवल फार्म elements।
+ये फ़ोकस इवेंट React DOM में सभी एलिमेंट्स पर काम करते हैं, न कि केवल फार्म एलिमेंट्स।
 
-गुण:
+प्रॉपर्टीज:
 
 ```javascript
 DOMEventTarget relatedTarget
@@ -177,7 +179,7 @@ DOMEventTarget relatedTarget
 onChange onInput onInvalid onSubmit
 ```
 
-OnChange ईवेंट के बारे में अधिक जानकारी के लिए [फार्म](/docs/forms.html) देखें।
+onChange ईवेंट के बारे में अधिक जानकारी के लिए [फॉर्म्स](/docs/forms.html) देखें।
 
 * * *
 
@@ -191,9 +193,9 @@ onDragLeave onDragOver onDragStart onDrop onMouseDown onMouseEnter onMouseLeave
 onMouseMove onMouseOut onMouseOver onMouseUp
 ```
 
-`OnMouseEnter` और` onMouseLeave` ईवेंट उस element से प्रचारित होते हैं जिसे साधारण bubbling के बजाय किसी एक में छोड़ा जा रहा है और कैप्चर चरण/फेज नहीं है।
+`onMouseEnter` और` onMouseLeave` ईवेंट उस एलिमेंट से प्रचारित होते हैं जिसे साधारण बब्बलिङ्ग के बजाय किसी एक में छोड़ा जा रहा है और कैप्चर फेज नहीं है।
 
-गुण:
+प्रॉपर्टीज:
 
 ```javascript
 boolean altKey
@@ -214,7 +216,7 @@ boolean shiftKey
 
 * * *
 
-### सूचक इवेंट्स {#pointer-events}
+### पॉइंटर इवेंट्स {#pointer-events}
 
 ईवेंट के नाम:
 
@@ -223,11 +225,11 @@ onPointerDown onPointerMove onPointerUp onPointerCancel onGotPointerCapture
 onLostPointerCapture onPointerEnter onPointerLeave onPointerOver onPointerOut
 ```
 
-`OnPointerEnter` और` onPointerLeave` ईवेंट उस element से प्रचारित होते हैं जिसे साधारण bubbling के बजाय एक में छोड़ा जा रहा है और कैप्चर चरण/फेज नहीं है।
+`onPointerEnter` और` onPointerLeave` ईवेंट उस एलिमेंट से प्रचारित होते हैं जिसे साधारण बब्बलिङ्ग के बजाय एक में छोड़ा जा रहा है और कैप्चर फेज नहीं है।
 
-गुण:
+प्रॉपर्टीज:
 
-जैसा कि [W3 विनिर्देश](https://www.w3.org/TR/pointerevents/) में परिभाषित किया गया है, pointer events निम्नलिखित गुणों के साथ [माउस इवेंट्स](#mouse-events) का विस्तार करती हैं:
+जैसा कि [W3 विनिर्देश](https://www.w3.org/TR/pointerevents/) में परिभाषित किया गया है, पॉइंटर इवेंट्स निम्नलिखित गुणों के साथ [माउस इवेंट्स](#mouse-events) का विस्तार करती हैं:
 
 ```javascript
 number pointerId
@@ -244,9 +246,9 @@ boolean isPrimary
 
 क्रॉस-ब्राउज़र समर्थन पर ध्यान दें:
 
-पॉइंटर ईवेंट्स अभी तक हर ब्राउज़र में समर्थित नहीं हैं (इस लेख को लिखने के समय, समर्थित ब्राउज़र में शामिल हैं: क्रोम, फ़ायरफ़ॉक्स, एज और इंटरनेट एक्सप्लोरर)। React जानबूझकर अन्य ब्राउज़रों के लिए polyfill समर्थन नहीं करता है क्योंकि एक मानक-अनुरूप polyfill `react-dom` के बंडल आकार में काफी वृद्धि करेगा।
+पॉइंटर ईवेंट्स अभी तक हर ब्राउज़र में समर्थित नहीं हैं (इस लेख को लिखने के समय, समर्थित ब्राउज़र में शामिल हैं: क्रोम, फ़ायरफ़ॉक्स, एज और इंटरनेट एक्सप्लोरर)। React जानबूझकर अन्य ब्राउज़रों के लिए पॉलीफिल समर्थन नहीं करता है क्योंकि एक मानक-अनुरूप पॉलीफिल `react-dom` के बंडल आकार में काफी वृद्धि करेगा।
 
-यदि आपके एप्लिकेशन को pointer events की आवश्यकता है, तो हम तीसरे पक्ष के pointer events polyfill को जोड़ने की सलाह देते हैं.
+यदि आपके एप्लिकेशन को पॉइंटर इवेंट्स की आवश्यकता है, तो हम तीसरे पक्ष के पॉइंटर इवेंट्स पॉलीफिल को जोड़ने की सलाह देते हैं।
 
 * * *
 
@@ -268,7 +270,7 @@ onSelect
 onTouchCancel onTouchEnd onTouchMove onTouchStart
 ```
 
-गुण:
+प्रॉपर्टीज:
 
 ```javascript
 boolean altKey
@@ -291,7 +293,7 @@ DOMTouchList touches
 onScroll
 ```
 
-गुण:
+प्रॉपर्टीज:
 
 ```javascript
 number detail
@@ -308,7 +310,7 @@ DOMAbstractView view
 onWheel
 ```
 
-गुण:
+प्रॉपर्टीज:
 
 ```javascript
 number deltaMode
@@ -350,7 +352,7 @@ onLoad onError
 onAnimationStart onAnimationEnd onAnimationIteration
 ```
 
-गुण:
+प्रॉपर्टीज:
 
 ```javascript
 string animationName
@@ -368,7 +370,7 @@ float elapsedTime
 onTransitionEnd
 ```
 
-गुण:
+प्रॉपर्टीज:
 
 ```javascript
 string propertyName
