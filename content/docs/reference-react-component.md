@@ -31,7 +31,7 @@ class Welcome extends React.Component {
 
 [`render()`](#render) एकमात्र method है जिसे आपको `React.Component` से विस्तारित (extend) किये हुए एक subclass में परिभाषित (define) *करना ही* होगा। इस पृष्ठ पर वर्णित अन्य सभी methods वैकल्पिक हैं।
 
-**हम आपको सलाह देते है की आप अपने base component classes बनाने से परहेज़ करे।** रिएक्ट components में, [कोड का पुन: उपयोग मुख्य रूप से विरासत (inheritance) के बजाय संयोजन (composition) के माध्यम से प्राप्त किया जाता है](/docs/composition-vs-inheritance.html)।
+**हम आपको सलाह देते है की आप अपने base component classes बनाने से परहेज़ करे।** रिऍक्ट components में, [कोड का पुन: उपयोग मुख्य रूप से विरासत (inheritance) के बजाय संयोजन (composition) के माध्यम से प्राप्त किया जाता है](/docs/composition-vs-inheritance.html)।
 
 >ध्यान दें:
 >
@@ -39,7 +39,7 @@ class Welcome extends React.Component {
 
 ### Component जीवनचक्र (लाइफसाईकल) {#the-component-lifecycle}
 
-प्रत्येक component में कई "लाइफसाईकल मेथड्स" होती हैं, जिन्हें आप प्रक्रिया में विशेष समय पर कोड चलाने के लिए ओवरराइड कर सकते हैं। **आप इस [लाइफसाईकल आकृति](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) को एक नकल पुस्तिका (चीट शीट) के रूप में उपयोग कर सकते हैं।** नीचे दी गई सूची में, आमतौर पर उपयोग की जाने वाली जीवनचक्र विधियों को **बोल्ड** के रूप में चिह्नित किया गया है। उनमें से बाकी अपेक्षाकृत दुर्लभ उपयोग के मामलों के लिए मौजूद हैं।
+प्रत्येक component में कई "लाइफसाईकल मेथड्स" होती हैं, जिन्हें आप प्रक्रिया में विशेष समय पर कोड चलाने के लिए ओवरराइड कर सकते हैं। **आप इस [लाइफसाईकल आकृति](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) को एक नकल पुस्तिका (चीट शीट) के रूप में उपयोग कर सकते हैं।** नीचे दी गई सूची में, आमतौर पर उपयोग की जाने वाली जीवनचक्र विधियों को **बोल्ड** के रूप में चिह्नित किया गया है। उनमें से बाकी अपेक्षाकृत दुर्लभ उदाहरणों के लिए मौजूद हैं।
 
 #### माउंटिंग - ढांचा खड़ा करना (Mounting) {#mounting}
 
@@ -109,7 +109,7 @@ class Welcome extends React.Component {
 
 ### आमतौर पर इस्तेमाल किया जाने वाले लाइफसाईकल मेथड्स
 
-इस अनुभाग की मेथड्स उन अधिकांश उपयोग मामलों को कवर करती हैं, जो आप एक रिएक्ट component बनाते समय पाएंगे। **एक दृश्य संदर्भ के लिए, इस [लाइफसाईकल आकृति](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) की जाँच करें।**
+इस अनुभाग की मेथड्स उन अधिकांश उदाहरणों को कवर करती हैं, जो आप एक रिऍक्ट component बनाते समय पाएंगे। **एक दृश्य संदर्भ के लिए, इस [लाइफसाईकल आकृति](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) की जाँच करें।**
 
 ### `रेंडर` {#render}
 
@@ -121,7 +121,7 @@ render()
 
 जब इस `render()` को कॉल किया जाता है, तो इसे this.props और this.state की जांच करनी करनी पड़ती है और निम्न प्रकारों में से एक को वापस करना होता है:
 
-- **रिएक्ट एलिमेंट्स (React elements).** यह आमतौर पर [JSX](/docs/introducing-jsx.html) के माध्यम से बनाया जाता है। उदाहरण के लिए, `<div />` और `<MyComponent />` रिएक्ट एलिमेंट्स हैं जो क्रमशः DOM नोड, या किसी अन्य उपयोगकर्ता द्वारा परिभाषित component को प्रस्तुत करने के लिए React को निर्देश देते हैं।
+- **रिऍक्ट एलिमेंट्स (React elements).** यह आमतौर पर [JSX](/docs/introducing-jsx.html) के माध्यम से बनाया जाता है। उदाहरण के लिए, `<div />` और `<MyComponent />` रिऍक्ट एलिमेंट्स हैं जो क्रमशः DOM नोड, या किसी अन्य उपयोगकर्ता द्वारा परिभाषित component को प्रस्तुत करने के लिए React को निर्देश देते हैं।
 - **अर्रे एंड फ्रेग्मेंट्स (Arrays and fragments).**  यह आपको रेंडर से कई एलिमेंट्स वापस करने देता है। अधिक विवरण के लिए [फ़्रेगमेंट](/docs/fragments.html) के प्रलेखन को देखें।
 - **पोर्टल्स (Portals).** यह आपको कम्पोनेंट के अंदर दिखने वाले एलिमेंट्स यानि की कम्पोनेंट के बच्चों को एक अलग DOM सबट्री में रेंडर करता है। अधिक विवरण के लिए [पोर्टल](/docs/portals.html) पर प्रलेखन देखें।
 - **स्ट्रिंग और संख्या (String and numbers).** ये DOM में टेक्स्ट नोड्स के रूप में प्रस्तुत किए जाते हैं।
@@ -143,11 +143,11 @@ render()
 constructor(props)
 ```
 
-**यदि आप स्टेट को इनिशियलाइज़ नहीं करते हैं और आप मेथड्स नहीं बाँधते हैं, तो आपको अपने रिएक्ट कंपोनेंट के लिए कंस्ट्रक्टर लागू करने की आवश्यकता नहीं है।**
+**यदि आप स्टेट को इनिशियलाइज़ नहीं करते हैं और आप मेथड्स नहीं बाँधते हैं, तो आपको अपने रिऍक्ट कंपोनेंट के लिए कंस्ट्रक्टर लागू करने की आवश्यकता नहीं है।**
 
-रिएक्टर कंपोनेंट के कंस्ट्रक्टर को कंपोनेंट के माउंट होने से पहले बुलाया जाता है। जब एक `React.Component` सबक्लास के लिए कंस्ट्रक्टर को लागू किया जाता है, तो आपको किसी अन्य स्टेटमेंट से पहले सुपर (प्रॉप्स) `super(props)` को कॉल करना चाहिए। अन्यथा, कंस्ट्रक्टर में `this.props` के लिए अनडिफाइंड मिलेगा, जिससे आपके कोड में बग्स आ सकते हैं।
+रिऍक्टर कंपोनेंट के कंस्ट्रक्टर को कंपोनेंट के माउंट होने से पहले बुलाया जाता है। जब एक `React.Component` सबक्लास के लिए कंस्ट्रक्टर को लागू किया जाता है, तो आपको किसी अन्य स्टेटमेंट से पहले सुपर (प्रॉप्स) `super(props)` को कॉल करना चाहिए। अन्यथा, कंस्ट्रक्टर में `this.props` के लिए अनडिफाइंड मिलेगा, जिससे आपके कोड में बग्स आ सकते हैं।
 
-आमतौर पर, रिएक्ट में कंस्ट्रक्टर केवल दो उद्देश्यों के लिए उपयोग किए जाते हैं:
+आमतौर पर, रिऍक्ट में कंस्ट्रक्टर केवल दो उद्देश्यों के लिए उपयोग किए जाते हैं:
 
 * `this.state` को ऑब्जेक्ट असाइन करके लोकल स्टेट [local state](/docs/state-and-lifecycle.html) को इनिशियलाइज़ करना।
 * एक इंस्टेंस के लिए इवेंट हैंडलर [event handler](/docs/handling-events.html) बाइंड करना।
@@ -165,7 +165,7 @@ constructor(props) {
 
 कंस्ट्रक्टर एकमात्र ऐसी जगह है जहाँ आपको सीधे `this.state` असाइन करना चाहिए। अन्य सभी तरीकों में, आपको इसके बजाय `this.setState()` का उपयोग करने की आवश्यकता है।
 
-कंस्ट्रक्टर में किसी भी साइड-इफेक्ट्स या सब्सक्रिप्शन को उपयोग करने से बचें। उन मामलों का उपयोग करने के लिए, इसके बजाय `componentDidMount()` का उपयोग करें।
+कंस्ट्रक्टर में किसी भी साइड-इफेक्ट्स या सब्सक्रिप्शन को उपयोग करने से बचें। उन उदाहरणों करने के लिए, इसके बजाय `componentDidMount()` का उपयोग करें।
 
 >ध्यान दें
 >
@@ -197,7 +197,7 @@ componentDidMount()
 
 यह मेथड किसी भी सब्स्क्रिप्शन (सदस्यता or subscriptions) को स्थापित करने के लिए एक अच्छी जगह है। यदि आप ऐसा करते हैं, तो कॉम्पोनेन्ट विल अनमाउंट `componentWillUnmount()` में सब्स्क्रिप्शन समाप्त करना न भूलें।
 
-आप `setState()` को `componentDidMount()` में तुरंत कॉल कर सकते हैं। यह एक अतिरिक्त रेंडरिंग को ट्रिगर करेगा, लेकिन यह ब्राउज़र द्वारा स्क्रीन को अपडेट करने से पहले होगा। यह गारंटी देता है कि भले ही रेंडर `render()` को इस मामले में दो बार बुलाया जाएगा, लेकिन यूजर (उपयोगकर्ता - user) बीच का स्टेट नहीं देखेगा। इस पैटर्न का उपयोग सावधानी के साथ करें क्योंकि यह अक्सर परफॉरमेंस समस्याओं का कारण बनता है। ज्यादातर मामलों में, आपको इसके बजाय कंस्ट्रक्टर `constructor()` में इनिशियल स्टेट (प्रारंभिक स्थिति) सेट करने में सक्षम होना चाहिए। हालाँकि, यह उन मोडल्स और टूलटिप्स जैसे मामलों के लिए आवश्यक हो सकता है जब आपको किसी ऐसी चीज़ को प्रस्तुत करने से पहले एक डोम नोड को मापने की आवश्यकता होती है जो उसके आकार या स्थिति पर निर्भर करता है।
+आप `setState()` को `componentDidMount()` में तुरंत कॉल कर सकते हैं। यह एक अतिरिक्त रेंडरिंग को ट्रिगर करेगा, लेकिन यह ब्राउज़र द्वारा स्क्रीन को अपडेट करने से पहले होगा। यह गारंटी देता है कि भले ही रेंडर `render()` को इस परिस्थिति में दो बार बुलाया जाएगा, लेकिन यूजर (उपयोगकर्ता - user) बीच का स्टेट नहीं देखेगा। इस पैटर्न का उपयोग सावधानी के साथ करें क्योंकि यह अक्सर परफॉरमेंस समस्याओं का कारण बनता है। ज्यादातर परिस्थितियो में, आपको इसके बजाय कंस्ट्रक्टर `constructor()` में इनिशियल स्टेट (प्रारंभिक स्थिति) सेट करने में सक्षम होना चाहिए। हालाँकि, यह उन मोडल्स और टूलटिप्स जैसे परिस्थितियो के लिए आवश्यक हो सकता है जब आपको किसी ऐसी चीज़ को प्रस्तुत करने से पहले एक डोम नोड को मापने की आवश्यकता होती है जो उसके आकार या स्थिति पर निर्भर करता है।
 
 * * *
 
@@ -220,9 +220,9 @@ componentDidUpdate(prevProps) {
 }
 ```
 
-आप **`componentDidUpdate()` में तुरंत `setState()` कॉल कर सकते** हैं, लेकिन ध्यान दें कि इसे ऊपर दिए उदाहरण की तरह **एक शर्त में लपेटा जाना चाहिए**, अन्यथा यह एक इनफिनिट (अनंत - infinite) लूप का कारण होगा। यह अतिरिक्त री-रेंडरिंग का कारण भी बनेगा, जो उपयोगकर्ता को दिखाई नहीं देगा, लेकिन यह component के performance को प्रभावित कर सकता है। यदि आप ऊपर से आने वाले किसी प्रॉप को "मिरर" करने की कोशिश कर रहे हैं, तो इसके बजाय सीधे प्रॉप का उपयोग करने पर विचार करें। [स्टेट में प्रॉप्स कॉपी करने से बग के कारण](/blog/2018/06/07/you-probably-dont-need-derived-state.html) के बारे में और पढ़ें।
+आप **`componentDidUpdate()` में तुरंत `setState()` कॉल कर सकते** हैं, लेकिन ध्यान दें कि इसे ऊपर दिए उदाहरण की तरह **एक शर्त में लपेटा जाना चाहिए**, अन्यथा यह एक इनफिनिट (अनंत - infinite) लूप का कारण होगा। यह अतिरिक्त री-रेंडरिंग का कारण भी बनेगा, जो उपयोगकर्ता को दिखाई नहीं देगा, लेकिन यह component के performance को प्रभावित कर सकता है। यदि आप ऊपर से आने वाले किसी प्रॉप को स्टेट में "मिरर" करने की कोशिश कर रहे हैं, तो इसके बजाय सीधे प्रॉप का उपयोग करने पर विचार करें। [स्टेट में प्रॉप्स कॉपी करने से बग के कारण](/blog/2018/06/07/you-probably-dont-need-derived-state.html) के बारे में और पढ़ें।
 
-यदि आपका component `getSnapshotBeforeUpdate()` लाइफसाइकिल को लागू करता है (जो शायद ही कभी उपयोग किया जाता है), तो यह जो वैल्यू रिटर्न देता है, उसे एक तीसरे पैरामीटर "स्नैपशॉट" के रूप में पास जाएगा `componentDidUpdate()`। अन्यथा यह पैरामीटर अन्डिफ़ाइंड हो जाएगा।
+यदि आपका component `getSnapshotBeforeUpdate()` लाइफसाइकिल को लागू करता है (जो शायद ही कभी उपयोग किया जाता है), तो यह जो वॅल्यू रिटर्न देता है, उसे एक तीसरे पैरामीटर "स्नैपशॉट" के रूप में पास जाएगा `componentDidUpdate()`। अन्यथा यह पैरामीटर अन्डिफ़ाइंड हो जाएगा।
 
 > ध्यान दें
 >
@@ -243,7 +243,7 @@ componentWillUnmount()
 
 ### बहुत कम उपयोग होने वाले लाइफसाइकिल मेथडस {#rarely-used-lifecycle-methods}
 
-इस अनुभाग में मेथडस असामान्य उपयोग के मामलों के अनुरूप हैं। वे एक समय में एक बार काम करते हैं, लेकिन आपके अधिकांश कम्पोनेंटस को शायद उनमें से किसी की भी आवश्यकता नहीं होती। **यदि आप [लाइफसाइकिल आकृति](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) केे शीर्ष पर "Show less common lifecylces" चेकबॉक्स पर क्लिक करते हैं तो आप इसके नीचे दिए गए अधिकांश मेथडस को देख सकते हैं**।
+इस भाग में बताये गए मेथडस का उपयोग असामान्य उदाहरणों के अनुरूप हैं। वे कभी कभी ही काम में आते है, लेकिन आपके अधिकांश कम्पोनेंटस को शायद उनमें से किसी की भी आवश्यकता नहीं होती। **यदि आप [लाइफसाइकिल आकृति](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) केे शीर्ष पर "Show less common lifecylces" चेकबॉक्स पर क्लिक करते हैं तो आप इसके नीचे दिए गए अधिकांश मेथडस को देख सकते हैं**।
 
 ### शुड कॉम्पोनेन्ट अपडेट `shouldComponentUpdate()` {#shouldcomponentupdate}
 
@@ -251,62 +251,61 @@ componentWillUnmount()
 shouldComponentUpdate(nextProps, nextState)
 ```
 
-Use `shouldComponentUpdate()` to let React know if a component's output is not affected by the current change in state or props. The default behavior is to re-render on every state change, and in the vast majority of cases you should rely on the default behavior.
+यदि स्टेट या प्रॉप्स में बदलाव से किसी कॉम्पोनेन्ट का आउटपुट प्रभावित न करना चाहे, तो ये रिऍक्ट को बताने के लिए `shouldComponentUpdate()` का उपयोग करें। इसका डिफ़ॉल्ट व्यवहार है कि हर स्टेट परिवर्तन पर कॉम्पोनेन्ट को रे-रेंडर करना है, और अधिकांश परिस्थितियो में आपको डिफ़ॉल्ट व्यवहार पर भरोसा करना चाहिए।
 
-`shouldComponentUpdate()` is invoked before rendering when new props or state are being received. Defaults to `true`. This method is not called for the initial render or when `forceUpdate()` is used.
+जब नया प्रॉप्स या स्टेट प्राप्त किया जा रहा हो तो रेंडर करने से पहले `shouldComponentUpdate()` को कॉल किया जाता है। इसका डिफ़ॉल्ट वॅल्यू है `true`। इस मेथड को न तो प्रारंभिक रेंडर के दौरान बुलाया जाता है और न ही जब `forceUpdate()` का उपयोग किया जाता है।
 
-This method only exists as a **[performance optimization](/docs/optimizing-performance.html).** Do not rely on it to "prevent" a rendering, as this can lead to bugs. **Consider using the built-in [`PureComponent`](/docs/react-api.html#reactpurecomponent)** instead of writing `shouldComponentUpdate()` by hand. `PureComponent` performs a shallow comparison of props and state, and reduces the chance that you'll skip a necessary update.
+यह मेथड केवल **[परफॉरमेंस ऑप्टिमाइजेशन](/docs/optimizing-performance.html)** के रूप में मौजूद है। इसका उपयोग रेंडरिंग रोकने के लिए न करे नहीं तो आपके ऍप्लिकेशन में बग्स आ सकते है। खुद से `shouldComponentUpdate()` लिखने के बजाय **रिऍक्ट में बने हुए [PureComponent](/docs/react-api.html#reactpurecomponent) का उपयोग करने पर विचार करें**। `PureComponent`, प्रॉप्स और स्टेट्स की एक ऊपरी तुलना करता है, और इस संभावना को कम कर देता है कि आप एक आवश्यक अपडेट छोड़ देंगे।
 
-If you are confident you want to write it by hand, you may compare `this.props` with `nextProps` and `this.state` with `nextState` and return `false` to tell React the update can be skipped. Note that returning `false` does not prevent child components from re-rendering when *their* state changes.
+यदि आप आश्वस्त हैं कि आप इसे स्वयं लिखना चाहते हैं, तो आप `this.props` की तुलना `nextProps` के साथ कर सकते हैं और `this.state` की तुलना `nextState` के साथ तुलना कर सकते हैं, और React को `false` वापस कर अपडेट को टाल सकते हैं। ध्यान दे की जब चाइल्ड कंपोनेंट्स का स्टेट बदलता है तो `false` रिटर्न कर के भी उन कंपोनेंट्स को रेंडर होने से टाला नहीं जा सकता।
 
-We do not recommend doing deep equality checks or using `JSON.stringify()` in `shouldComponentUpdate()`. It is very inefficient and will harm performance.
+हम आपको `state` or `props` की गहरी समानता की जाँच करने या `shouldComponentUpdate()` में `JSON.stringify()` का उपयोग करने की सलाह नहीं देते हैं। यह बहुत अक्षम है और कार्य को नुकसान पहुंचाएगा।
 
-Currently, if `shouldComponentUpdate()` returns `false`, then [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate), [`render()`](#render), and [`componentDidUpdate()`](#componentdidupdate) will not be invoked. In the future React may treat `shouldComponentUpdate()` as a hint rather than a strict directive, and returning `false` may still result in a re-rendering of the component.
+वर्तमान में, अगर `shouldComponentUpdate()` `false` रिटर्न करता है, तो [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate), [`render()`](#render), और [`componentDidUpdate()`](#componentdidupdate) लागू नहीं होगा। भविष्य में रिऍक्ट `shouldComponentUpdate()` को एक सख्त निर्देश के बजाय एक संकेत के रूप में मान सकता है, और `false` को वापस करने पर भी कम्पोनेंट पुन: रेंडर हो सकता है।
 
 * * *
 
-### `static getDerivedStateFromProps()` {#static-getderivedstatefromprops}
+### `स्टॅटिक गेट-डीराइव्ड-स्टेट-फ्रॉम-प्रॉप्स` {#static-getderivedstatefromprops}
 
 ```js
 static getDerivedStateFromProps(props, state)
 ```
 
-`getDerivedStateFromProps` is invoked right before calling the render method, both on the initial mount and on subsequent updates. It should return an object to update the state, or null to update nothing.
+`getDerivedStateFromProps` को रेंडर विधि को कॉल करने से पहले, आरंभिक माउंट पर और बाद के अपडेट्स पर लागू किया जाता है। इसे स्टेट को अपडेट करने के लिए एक ऑब्जेक्ट वापस भेजना चाहिए, या इसे कुछ भी अपडेट नहीं करने के लिए null वापस करना चाहिए।
 
-This method exists for [rare use cases](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state) where the state depends on changes in props over time. For example, it might be handy for implementing a `<Transition>` component that compares its previous and next children to decide which of them to animate in and out.
+यह विधि [दुर्लभ उदाहरणों](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state) के लिए मौजूद है जहां स्टेट समय के साथ प्रॉप्स में हो रहे परिवर्तनों पर निर्भर करता है। उदाहरण के लिए, यह एक `<Transition>` कम्पोनेंट को लागू करने के लिए आसान हो सकता है जो अपने पिछले और अगले बच्चों की तुलना करता है ताकि यह तय किया जा सके कि उनमें से कौन से बच्चों को जीवित या निर्जीव करना है।
 
-Deriving state leads to verbose code and makes your components difficult to think about.
-[Make sure you're familiar with simpler alternatives:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
+स्टेट प्राप्त करने से आपका कोड वर्बोज़ (जरूरत से ज्यादा कोड) बनता है और आपके कंपोनेंट्स के बारे में सोचना मुश्किल हो जाता है।
+[सुनिश्चित करें कि आप सरल विकल्पों से परिचित हैं:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
+* यदि आपको प्रॉप्स में परिवर्तन के जवाब में एक **साइड इफेक्ट** (उदाहरण के लिए, डेटा लाने या एनीमेशन) करने की आवश्यकता है, तो इसके बजाय [`componentDidUpdate`](#componentdidupdate) जलाइफसाईकल का उपयोग करें।
 
-* If you need to **perform a side effect** (for example, data fetching or an animation) in response to a change in props, use [`componentDidUpdate`](#componentdidupdate) lifecycle instead.
+* यदि आप किसी **डेटा को केवल तभी बदलते हैं, जब कोई प्रॉप बदलता है**, [तो इसके बजाय एक मेमोइज़ेशन (संस्मरण) सहायक का उपयोग करें](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)।
 
-* If you want to **re-compute some data only when a prop changes**, [use a memoization helper instead](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization).
+* यदि आप प्रॉप में परिवर्तन होने पर कुछ स्टेट को "रीसेट" करना चाहते हैं, तो एक कम्पोनेंट को या तो [पूरी तरह से नियंत्रित](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component) करने या [एक की (कुंजी) के साथ पूरी तरह से अनियंत्रित](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) बनाने पर विचार करें।
 
-* If you want to **"reset" some state when a prop changes**, consider either making a component [fully controlled](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component) or [fully uncontrolled with a `key`](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) instead.
+इस मेथड को घटक तक पहुँच नहीं है। यदि आप चाहें तो, आप `getDerivedStateFromProps()` और अन्य क्लास मेथडस् के बीच क्लास डेफिनिशन के कम्पोनेंट प्रॉप्स और स्टेट के प्योर फंक्शंस को बाहर निकालकर कुछ कोड का पुन: उपयोग कर सकते हैं।
 
-This method doesn't have access to the component instance. If you'd like, you can reuse some code between `getDerivedStateFromProps()` and the other class methods by extracting pure functions of the component props and state outside the class definition.
-
-Note that this method is fired on *every* render, regardless of the cause. This is in contrast to `UNSAFE_componentWillReceiveProps`, which only fires when the parent causes a re-render and not as a result of a local `setState`.
+ध्यान दें कि इस मेथड को *हर* &nbsp;रेंडर पर फायर किया जाता है, कारण चाहे जो भी हो। यह `UNSAFE_componentWillReceiveProps` के विपरीत है, जो केवल तभी फायर करता है जब पैरेंट पुन: रेंडर का कारण बनता है, न कि स्थानीय `setState` के परिणामस्वरूप।
 
 * * *
 
-### `getSnapshotBeforeUpdate()` {#getsnapshotbeforeupdate}
+### `गेट-स्नॅपशॉट-बिफोर-अपडेट()` {#getsnapshotbeforeupdate}
 
 ```javascript
 getSnapshotBeforeUpdate(prevProps, prevState)
 ```
 
-`getSnapshotBeforeUpdate()` is invoked right before the most recently rendered output is committed to e.g. the DOM. It enables your component to capture some information from the DOM (e.g. scroll position) before it is potentially changed. Any value returned by this lifecycle will be passed as a parameter to `componentDidUpdate()`.
+`getSnapshotBeforeUpdate()` को हाल ही में प्रस्तुत किए गए आउटपुट से पहले, उदाहरण के लिए DOM के लिए, प्रतिबद्ध होने से ठीक पहले बुलाया जाता है। यह आपके घटक को संभावित रूप से परिवर्तित होने से पहले DOM (जैसे स्क्रॉल स्थिति) से कुछ जानकारी कैप्चर करने में सक्षम बनाता है। इस लाइफसाईकल द्वारा लौटाए गए किसी भी मान को `componentDidUpdate()` के पैरामीटर के रूप में पारित किया जाएगा।
 
-This use case is not common, but it may occur in UIs like a chat thread that need to handle scroll position in a special way.
+यह उदाहरण आम नहीं है, लेकिन यह UI में हो सकता है, एक चैट थ्रेड की तरह, जिसे एक विशेष तरीके से स्क्रॉल स्थिति को संभालने की आवश्यकता है।
 
-A snapshot value (or `null`) should be returned.
+एक स्नैपशॉट वॅल्यू (या `null`) वापस किया जाना चाहिए।
 
-For example:
+उदाहरण के लिए:
 
 `embed:react-component-reference/get-snapshot-before-update.js`
 
-In the above examples, it is important to read the `scrollHeight` property in `getSnapshotBeforeUpdate` because there may be delays between "render" phase lifecycles (like `render`) and "commit" phase lifecycles (like `getSnapshotBeforeUpdate` and `componentDidUpdate`).
+उपरोक्त उदाहरणों में, `getSnapshotBeforeUpdate` में `scrollHeight` प्रॉपर्टी का वॅल्यू पढ़ना महत्वपूर्ण है क्योंकि "रेंडर" चरण लाइफसाईकल (जैसे `render`) और "commit" चरण लाइफसाईकल (जैसे `getSnapshotBeforeUpdate` और `componentDidUpdate`) के बीच देरी हो सकती है।
 
 * * *
 
