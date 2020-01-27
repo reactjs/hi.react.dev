@@ -31,7 +31,7 @@ prev: composition-vs-inheritance.html
 ];
 ```
 
-## स्टेप १ : UI को कौम्पोनॅन्ट हायरार्की में ब्रेक करें {#step-1-break-the-ui-into-a-component-hierarchy}
+## स्टेप 1 : UI को कौम्पोनॅन्ट हायरार्की में ब्रेक करें {#step-1-break-the-ui-into-a-component-hierarchy}
 
 पहली चीज़ जो आप करना चाहेंगे, वह होगी कि अपने हर मॉक कौम्पोनॅन्ट (और उप कौम्पोनॅन्ट) के आस पास बक्से बना दे और सब को नाम दे दें। अगर आप डिज़ाइनर के साथ काम कर रहे है, तो उन्होंने यह काम पहले ही कर रखा होगा, उनसे बात कीजिये! उनकी फोटोशॉप परत के नाम, आपके react कौम्पोनॅन्ट के नाम हो सकते है।
 
@@ -59,7 +59,7 @@ prev: composition-vs-inheritance.html
       * `ProductCategoryRow`
       * `ProductRow`
 
-## स्टेप २: React में स्थिर वर्शन बनाए {#step-2-build-a-static-version-in-react}
+## स्टेप 2: React में स्थिर वर्शन बनाए {#step-2-build-a-static-version-in-react}
 
 <p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">पेन को देखे <a href="https://codepen.io/gaearon/pen/BwWzwm">React में सोचना: स्टेप २</a>, <a href="https://codepen.io">कोडपेन </a>पर।</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
@@ -78,7 +78,7 @@ prev: composition-vs-inheritance.html
 
 React में दो प्रकार के डाटा "मॉडल" है: props और state। दोनों के अंतर को समझना महत्वपूर्ण है; पढ़िए  [React का शासकीय डॉक्यूमेंट](/docs/state-and-lifecycle.html) यदि आपको दोनों के अंतर के बारे में नहीं पता हो तो। देखिये [FAQ: state और props में क्या अंतर है?](/docs/faq-state.html#what-is-the-difference-between-state-and-props)
 
-## स्टेप ३: UI state का न्यूनतम (परन्तु पूर्ण) प्रतिनिधित्व {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
+## स्टेप 3: UI state का न्यूनतम (परन्तु पूर्ण) प्रतिनिधित्व {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
 अपने UI को इंटरैक्टिव बनाने के लिए आपको अपने मुख्य डाटा मॉडल में बदलाव करवाने होंगे। React यह **state** के द्वारा हासिल करता है।
 
@@ -104,7 +104,7 @@ React में दो प्रकार के डाटा "मॉडल" ह
   * उपभोक्ता ने जो सर्च टेक्स्ट डाला है 
   * चेकबॉक्स की वैल्यू
 
-## स्टेप ४: जानिए आपके state का निवास {#step-4-identify-where-your-state-should-live}
+## स्टेप 4: जानिए आपके state का निवास {#step-4-identify-where-your-state-should-live}
 
 <p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">पेन को देखे <a href="https://codepen.io/gaearon/pen/qPrNQZ">React में सोचना: स्टेप ४</a>, <a href="https://codepen.io">कोडपेन </a>पर।</p>
 
@@ -129,7 +129,7 @@ React में दो प्रकार के डाटा "मॉडल" ह
 
 आप अपनी एप्प का व्यव्हार देख सकते है: `filterText` को `"ball"` वैल्यू दीजिये ओर अपनी एप्प रिफ्रेश कीजिये। आप देखेंगे की टेबल का डाटा सही से बदलेगा।
 
-## स्टेप ५: उल्टा डाटा बहाव जोड़ना {#step-5-add-inverse-data-flow}
+## स्टेप 5: उल्टा डाटा बहाव जोड़ना {#step-5-add-inverse-data-flow}
 
 <p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">पेन को देखे <a href="https://codepen.io/gaearon/pen/LzWZvb">React में सोचना: स्टेप ५</a>, <a href="https://codepen.io">कोडपेन </a>पर।</p>
 
