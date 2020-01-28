@@ -193,7 +193,7 @@ onDragLeave onDragOver onDragStart onDrop onMouseDown onMouseEnter onMouseLeave
 onMouseMove onMouseOut onMouseOver onMouseUp
 ```
 
-`onMouseEnter` और` onMouseLeave` ईवेंट उस एलिमेंट से प्रचारित होते हैं जिसे साधारण बब्बलिङ्ग के बजाय किसी एक में छोड़ा जा रहा है और कैप्चर फेज नहीं है।
+`onMouseEnter` और `onMouseLeave` ईवेंट उस एलिमेंट से प्रचारित होते हैं जिसे साधारण bubbling के बजाय किसी एक में छोड़ा जा रहा है और कैप्चर फेज नहीं है।
 
 प्रॉपर्टीज:
 
@@ -225,7 +225,7 @@ onPointerDown onPointerMove onPointerUp onPointerCancel onGotPointerCapture
 onLostPointerCapture onPointerEnter onPointerLeave onPointerOver onPointerOut
 ```
 
-`onPointerEnter` और` onPointerLeave` ईवेंट उस एलिमेंट से प्रचारित होते हैं जिसे साधारण बब्बलिङ्ग के बजाय एक में छोड़ा जा रहा है और कैप्चर फेज नहीं है।
+`onPointerEnter` और `onPointerLeave` ईवेंट उस एलिमेंट से प्रचारित होते हैं जिसे साधारण bubbling के बजाय एक में छोड़ा जा रहा है और कैप्चर फेज नहीं है।
 
 प्रॉपर्टीज:
 
@@ -246,7 +246,7 @@ boolean isPrimary
 
 क्रॉस-ब्राउज़र समर्थन पर ध्यान दें:
 
-पॉइंटर ईवेंट्स अभी तक हर ब्राउज़र में समर्थित नहीं हैं (इस लेख को लिखने के समय, समर्थित ब्राउज़र में शामिल हैं: क्रोम, फ़ायरफ़ॉक्स, एज और इंटरनेट एक्सप्लोरर)। React जानबूझकर अन्य ब्राउज़रों के लिए पॉलीफिल समर्थन नहीं करता है क्योंकि एक मानक-अनुरूप पॉलीफिल `react-dom` के बंडल आकार में काफी वृद्धि करेगा।
+पॉइंटर ईवेंट्स अभी तक हर ब्राउज़र में समर्थित नहीं हैं (इस लेख को लिखने के समय, समर्थित ब्राउज़र में शामिल हैं: Chrome, Firefox, Edge और Internet Explorer)। React जानबूझकर अन्य ब्राउज़रों के लिए पॉलीफिल समर्थन नहीं करता है क्योंकि एक मानक-अनुरूप पॉलीफिल `react-dom` के बंडल आकार में काफी वृद्धि करेगा।
 
 यदि आपके एप्लिकेशन को पॉइंटर इवेंट्स की आवश्यकता है, तो हम तीसरे पक्ष के पॉइंटर इवेंट्स पॉलीफिल को जोड़ने की सलाह देते हैं।
 
