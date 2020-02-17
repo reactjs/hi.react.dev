@@ -82,10 +82,20 @@ July 18, 2020. Medellín, Colombia.
 
 [Website](https://reactlaconf.co/) - [Twitter](https://twitter.com/reactlaconf)
 
+### Chain React 2020 {#chain-react-2020}
+July 29-30, 2020. Portland, Oregon, USA.
+
+[Website](https://infinite.red/ChainReactConf) - [Twitter](https://twitter.com/ChainReactConf)
+
 ### ComponentsConf 2020 {#components20}
 September 1, 2020 in Melbourne, Australia
 
 [Website](https://www.componentsconf.com.au/) - [Twitter](https://twitter.com/ComponentsConf) - [Facebook](https://www.facebook.com/ComponentsConf/) - [LinkedIn](https://www.linkedin.com/company/componentsconf/) - [YouTube](https://www.youtube.com/ComponentsConf)
+
+### React Native EU 2020 {#react-native-eu-2020}
+September 5-6, 2020 in Wrocław, Poland
+
+[Website](https://www.react-native.eu/) - [Twitter](https://twitter.com/react_native_eu) - [Facebook](https://www.facebook.com/reactnativeeu/) - [YouTube](https://www.youtube.com/watch?v=m0GfmlGFh3E&list=PLZ3MwD-soTTHy9_88QPLF8DEJkvoB5Tl-) - [Instagram](https://www.instagram.com/reactnative_eu/)
 
 ### React India 2020 {#react-india-2020}
 November 6, 2020 in Mumbai, India
