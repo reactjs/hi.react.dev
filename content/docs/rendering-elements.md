@@ -71,10 +71,6 @@ React, DOM एलिमेंट्स और उसके चिल्डरे
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
-<<<<<<< HEAD
 भले ही हम हर टिक पर पूरे UI ट्री का वर्णन करने वाला एक एलेमेंट बनाते हैं, लेकिन केवल टेक्स्ट नोड जिसकी सामग्री बदल गई है वह React DOM द्वारा अपडेट हो जाता है।
-=======
-Even though we create an element describing the whole UI tree on every tick, only the text node whose contents have changed gets updated by React DOM.
->>>>>>> 821e20726266bc8113353d0c2b6d885f82e584a8
 
 हमारे अनुभव से, UI को कैसे अप्डेट करना है के बिपरीत यदि हम ये सोचे की UI को किसी समय कैसे दिखाना है तो हम बहुत सारी बग से बच सकते है।
