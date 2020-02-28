@@ -25,7 +25,7 @@ February 27 & 28, 2020 in Sydney, Australia
 ### ReactConf Japan 2020 {#reactconfjp-2020}
 March 21, 2020 in Tokyo, Japan
 
-[Website](https://reactconf.jp/) - [Twitter](https://twitter.com/reactjapanconf)
+[Website](https://reactconf.jp/) - [Twitter](https://twitter.com/reactjp)
 
 ### Reactathon 2020 {#reactathon-2020}
 March 30 - 31, 2020 in San Francisco, CA
@@ -46,6 +46,11 @@ April 23 - 24, 2020 in Kraków, Poland
 April 25, 2020 in Bangalore, India
 
 [Website](https://reactday.in) - [Twitter](https://twitter.com/ReactDayIn) - [LinkedIn](https://www.linkedin.com/company/react-day/)
+
+### Byteconf React 2020 {#byteconf-react-2020}
+May 1, 2020. Streamed online on YouTube.
+
+[Website](https://www.bytesized.xyz) - [Twitter](https://twitter.com/bytesizedcode) - [YouTube](https://www.youtube.com/channel/UC046lFvJZhiwSRWsoH8SFjg)
 
 ### render(ATL) 2020 {#render-atlanta-2020}
 May 4-6, 2020. Atlanta, GA, USA.
