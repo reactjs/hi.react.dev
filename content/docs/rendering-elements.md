@@ -32,14 +32,7 @@ const element = <h1>Hello, world</h1>;
 
 हम इसे "रूट" DOM नोड कहते है क्यूँकि इसके अंदर की सारी चीज़ें React DOM के द्वारा संचालित होगी।
 
-
-<<<<<<< HEAD
-React के उपयोग से बने ज़्यादातर ऐप्लिकेशन में एक ही रूट DOM नोड होता है। परंतु यदि आप React को किसी पहले से बने हुए app में उपयोग करना चाहते है तो आप कितने भी अलग अलग रूट DOM नोड बना सकते है।
-
-एक React एलिमेंट्स को DOM नोड में दर्शाने के लिए, आपको इन दोनो को `ReactDOM.render()` में भेजना पड़ेगा:
-=======
-To render a React element into a root DOM node, pass both to [`ReactDOM.render()`](/docs/react-dom.html#render):
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+एक React एलिमेंट्स को DOM नोड में दर्शाने के लिए, आपको इन दोनो को [`ReactDOM.render()`](/docs/react-dom.html#render) में भेजना पड़ेगा:
 
 `embed:rendering-elements/render-an-element.js`
 
@@ -51,11 +44,7 @@ To render a React element into a root DOM node, pass both to [`ReactDOM.render()
 
 React एलिमेंट्स [अचल](https://en.wikipedia.org/wiki/Immutable_object) होते है। एक बार एलेमेंट के बनने के बाद, आप उसके चिल्ड्रन या ऐट्रिब्यूट्स में परिवर्तन नहीं कर सकते। एक एलेमेंट एक चलचित्र के एक दृश्य के समान है, ये UI को एक निश्चित समय के लिए दर्शाता है।
 
-<<<<<<< HEAD
-हमारे अब तक के ज्ञान के अनुसार, UI में परिवर्तन करने का एक ही तरीक़ा है। इसके लिए हमें एक नया एलेमेंट बना कर उसे `ReactDOM.render()` को भेजना पड़ेगा।
-=======
-With our knowledge so far, the only way to update the UI is to create a new element, and pass it to [`ReactDOM.render()`](/docs/react-dom.html#render).
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+हमारे अब तक के ज्ञान के अनुसार, UI में परिवर्तन करने का एक ही तरीक़ा है। इसके लिए हमें एक नया एलेमेंट बना कर उसे [`ReactDOM.render()`](/docs/react-dom.html#render) को भेजना पड़ेगा।
 
 इस टिकिंग घड़ी उदाहरण पर विचार करें:
 
@@ -63,19 +52,11 @@ With our knowledge so far, the only way to update the UI is to create a new elem
 
 [](codepen://rendering-elements/update-rendered-element)
 
-<<<<<<< HEAD
-ये `ReactDOM.render()` को प्रत्येक सेकंड [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback से कॉल करता है।
-=======
-It calls [`ReactDOM.render()`](/docs/react-dom.html#render) every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+ये [`ReactDOM.render()`](/docs/react-dom.html#render) को प्रत्येक सेकंड [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback से कॉल करता है।
 
 >**ध्यान दें:**
 >
-<<<<<<< HEAD
->व्यवहार में, ज़्यादातर React ऍप्स `ReactDOM.render()` को एक ही बार कॉल करते है। अगले भाग में हम ये सीखेंगे कि कैसे इस तरह के कोड को [stateful components](/docs/state-and-lifecycle.html) में एन्काप्सुलेट करते है।
-=======
->In practice, most React apps only call [`ReactDOM.render()`](/docs/react-dom.html#render) once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+>व्यवहार में, ज़्यादातर React ऍप्स [`ReactDOM.render()`](/docs/react-dom.html#render) को एक ही बार कॉल करते है। अगले भाग में हम ये सीखेंगे कि कैसे इस तरह के कोड को [stateful components](/docs/state-and-lifecycle.html) में एन्काप्सुलेट करते है।
 >
 >हम अनुशंसा करते हैं कि आप विषयों को छोड़ें नहीं क्योंकि वे एक-दूसरे पर निर्माण करते हैं।
 
@@ -89,8 +70,4 @@ React, DOM एलिमेंट्स और उसके चिल्डरे
 
 भले ही हम हर टिक पर पूरे UI ट्री का वर्णन करने वाला एक एलेमेंट बनाते हैं, लेकिन केवल टेक्स्ट नोड जिसकी सामग्री बदल गई है वह React DOM द्वारा अपडेट हो जाता है।
 
-<<<<<<< HEAD
 हमारे अनुभव से, UI को कैसे अप्डेट करना है के बिपरीत यदि हम ये सोचे की UI को किसी समय कैसे दिखाना है तो हम बहुत सारी बग से बच सकते है।
-=======
-In our experience, thinking about how the UI should look at any given moment, rather than how to change it over time, eliminates a whole class of bugs.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
