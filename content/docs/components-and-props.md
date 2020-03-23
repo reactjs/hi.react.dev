@@ -43,7 +43,11 @@ class Welcome extends React.Component {
 
 ऊपर के दोनों कौम्पोनॅन्ट React के दृष्टिकोण से बराबर है|
 
+<<<<<<< HEAD
 क्लासेज की कुछ अतिरिक्त विशेषताएं भी हैं जिसकी हम चर्चा [अगले खंड](/docs/state-and-lifecycle.html) में करेंगे| तब तक, हम उनकी संक्षिप्तता के लिए फ़ंक्शन कौम्पोनॅन्टस का उपयोग करेंगे।
+=======
+Function and Class components both have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html).
+>>>>>>> 7e4f503d86bee08b88eed77a6c9d06077863a27c
 
 ## कौम्पोनॅन्ट रेंडरिंग {#rendering-a-component}
 
@@ -59,7 +63,11 @@ const element = <div />;
 const element = <Welcome name="नेहा" />;
 ```
 
+<<<<<<< HEAD
 जब कभी भी React एक एलिमेंट को यूजर-डिफाइंड कौम्पोनॅन्ट का प्रतिनिधित्व करते हुए देखता है, तुरंत ही इन कौम्पोनॅन्टs को एक ऑब्जेक्ट के रूप में JSX ऐट्रिब्यूट्स पास कर देता है| हम इस ऑब्जेक्ट को "props" कहते हैं|
+=======
+When React sees an element representing a user-defined component, it passes JSX attributes and children to this component as a single object. We call this object "props".
+>>>>>>> 7e4f503d86bee08b88eed77a6c9d06077863a27c
 
 उदाहरण के लिए, यह कोड पेज पर रेंडर करता है "नमस्ते, नेहा":
 
