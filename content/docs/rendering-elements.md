@@ -32,6 +32,8 @@ const element = <h1>Hello, world</h1>;
 
 हम इसे "रूट" DOM नोड कहते है क्यूँकि इसके अंदर की सारी चीज़ें React DOM के द्वारा संचालित होगी।
 
+React के उपयोग से बने ज़्यादातर ऐप्लिकेशन में एक ही रूट DOM नोड होता है। परंतु यदि आप React को किसी पहले से बने हुए app में उपयोग करना चाहते है तो आप कितने भी अलग अलग रूट DOM नोड बना सकते है।
+
 एक React एलिमेंट्स को DOM नोड में दर्शाने के लिए, आपको इन दोनो को [`ReactDOM.render()`](/docs/react-dom.html#render) में भेजना पड़ेगा:
 
 `embed:rendering-elements/render-an-element.js`
