@@ -295,11 +295,7 @@ class Square extends React.Component {
 
 >ध्यान दें
 >
-<<<<<<< HEAD
->[जावास्क्रिप्ट क्लासेस](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) में, सबक्लास के constructor को परिभाषित करते समय आपको हमेशा `super` कॉल करने की आवश्यकता होती है। सभी React कौम्पोनॅन्ट क्लासेस जिनके पास `कंस्ट्रक्टर` है, उन्हें `super(props)` कॉल से शुरू करना चाहिए।
-=======
->In [JavaScript classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), you need to always call `super` when defining the constructor of a subclass. All React component classes that have a `constructor` should start with a `super(props)` call.
->>>>>>> 9e5a358cb24a665fc48615ae224f26a4f2191b32
+>[जावास्क्रिप्ट क्लासेस](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) में, सबक्लास के constructor को परिभाषित करते समय आपको हमेशा `super` कॉल करने की आवश्यकता होती है। सभी React कौम्पोनॅन्ट क्लासेस जिनके पास `constructor` है, उन्हें `super(props)` कॉल से शुरू करना चाहिए।
 
 अब हम क्लिक करने पर वर्तमान state की वैल्यू प्रदर्शित करने के लिए Square के `render` मेथड को कुछ ऐसे बदलेंगे :
 
