@@ -74,7 +74,7 @@ function FriendListItem(props) {
 **एक कस्टम Hook एक JavaScript फ़ंक्शन है जिसका नाम "`use`" से शुरू होता है और इसे अन्य Hook कॉल करते है।** उदाहरण के लिए, `useFriendStatus` नीचे हमारा पहला कस्टम Hook है:
 
 ```js{3}
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function useFriendStatus(friendID) {
   const [isOnline, setIsOnline] = useState(null);
