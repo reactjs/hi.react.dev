@@ -26,6 +26,7 @@ void preventDefault()
 boolean isDefaultPrevented()
 void stopPropagation()
 boolean isPropagationStopped()
+void persist()
 DOMEventTarget target
 number timeStamp
 string type
@@ -75,6 +76,7 @@ React इवेंट्स को सामान्य करता है त
 - [Keyboard Events](#keyboard-events)
 - [Focus Events](#focus-events)
 - [Form Events](#form-events)
+- [Generic Events](#generic-events)
 - [Mouse Events](#mouse-events)
 - [Pointer Events](#pointer-events)
 - [Selection Events](#selection-events)
@@ -176,12 +178,19 @@ DOMEventTarget relatedTarget
 ईवेंट के नाम:
 
 ```
-onChange onInput onInvalid onSubmit
+onChange onInput onInvalid onReset onSubmit 
 ```
 
 onChange ईवेंट के बारे में अधिक जानकारी के लिए [फॉर्म्स](/docs/forms.html) देखें।
 
-* * *
+
+### सामान्य इवेंट्स {#generic-events}
+
+ईवेंट के नाम:
+
+```
+onError onLoad
+```
 
 ### माउस इवेंट्स {#mouse-events}
 
