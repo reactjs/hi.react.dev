@@ -4,21 +4,21 @@ title: Portals
 permalink: docs/portals.html
 ---
 
-Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+Portals चिल्ड्रन को एक ऐसे DOM नोड में रेंडर करने का तरीका प्रदान करते हैं जो पैरेंट कौम्पोनॅन्ट के DOM हायरार्की के बाहर मौजूद हो।
 
 ```js
 ReactDOM.createPortal(child, container)
 ```
 
-The first argument (`child`) is any [renderable React child](/docs/react-component.html#render), such as an element, string, or fragment. The second argument (`container`) is a DOM element.
+सबसे पहला आर्गुमेंट (`child`) कोई भी [रेंडर होने में सक्षम React चाइल्ड](/docs/react-component.html#render) है, जैसे कोई एलिमेंट, स्ट्रिंग या फ्रेगमेंट। दूसरा आर्गुमेंट (`container`) एक DOM एलिमेंट है।
 
-## Usage {#usage}
+## उपयोग {#usage}
 
-Normally, when you return an element from a component's render method, it's mounted into the DOM as a child of the nearest parent node:
+आम तौर पर, जब आप किसी कौम्पोनॅन्ट के रेंडर मेथड से एक एलिमेंट return करते हैं, तो उसे नज़दीकी पैरेंट नोड के चाइल्ड के रूप में DOM में माउंट करा जाता है:
 
 ```js{4,6}
 render() {
-  // React mounts a new div and renders the children into it
+  // React एक नया div माउंट करता है और इसमें चिल्ड्रन को रेंडर करता है
   return (
     <div>
       {this.props.children}
@@ -27,12 +27,12 @@ render() {
 }
 ```
 
-However, sometimes it's useful to insert a child into a different location in the DOM:
+हालांकि, कभी कभार DOM में किसी अलग स्थान पर एक चाइल्ड को डालने की उपयोगिता होती है:
 
 ```js{6}
 render() {
-  // React does *not* create a new div. It renders the children into `domNode`.
-  // `domNode` is any valid DOM node, regardless of its location in the DOM.
+  // React एक नया div *नहीं* बनाता। वह चिल्ड्रन को `domNode` में रेंडर करता है।
+  // `domNode` कोई भी एक मान्य DOM नोड है, DOM में इसका स्थान मायने नहीं रखता।
   return ReactDOM.createPortal(
     this.props.children,
     domNode
@@ -40,21 +40,21 @@ render() {
 }
 ```
 
-A typical use case for portals is when a parent component has an `overflow: hidden` or `z-index` style, but you need the child to visually "break out" of its container. For example, dialogs, hovercards, and tooltips.
+Portals के विशिष्ट उपयोग का उदाहरण है जब एक पैरेंट कौम्पोनॅन्ट में `overflow: hidden` या `z-index` स्टाइल हो, लेकिन नेत्रहीन आपको चाइल्ड को उसके कंटेनर से "बाहर" करने की आवश्यकता हो। जैसे की डॉयलोग्स, होवरकार्ड और टूलटिप्स।
 
-> Note:
+> टिप्पणी:
 >
-> When working with portals, remember that [managing keyboard focus](/docs/accessibility.html#programmatically-managing-focus) becomes very important.
+> ध्यान रखें, Portals के साथ काम करते वक्त [कीबोर्ड फोकस को मैनेज करना](/docs/accessibility.html#programmatically-managing-focus) बहुत जरूरी हो जाता है।
 >
-> For modal dialogs, ensure that everyone can interact with them by following the [WAI-ARIA Modal Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal).
+> मोडल डॉयलोग्स के लिए, ये सुनिश्चित करें कि हर कोई [WAI-ARIA मोडल संलेखन प्रथाएं](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal) का पालन करते हुए उनके साथ इंटरैक्ट कर सके।
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/yzMaBd)
+[**इसे CodePen पर आजमाएं**](https://codepen.io/gaearon/pen/yzMaBd)
 
-## Event Bubbling Through Portals {#event-bubbling-through-portals}
+## Portals के माध्यम से इवेंट बबलिंग {#event-bubbling-through-portals}
 
-Even though a portal can be anywhere in the DOM tree, it behaves like a normal React child in every other way. Features like context work exactly the same regardless of whether the child is a portal, as the portal still exists in the *React tree* regardless of position in the *DOM tree*.
+एक portal DOM ट्री में कहीं भी हो, यह हर नज़रिये से एक सामान्य React चाइल्ड की तरह व्यवहार करता है। Context जैसे फीचर्स बिल्कुल उसी तरह से काम करते हैं, भले ही चाइल्ड एक portal हो, क्योंकि portal अभी भी *React ट्री* के अंदर है, इसका स्थान *DOM ट्री* में बेशक कहीं भी हो।
 
-This includes event bubbling. An event fired from inside a portal will propagate to ancestors in the containing *React tree*, even if those elements are not ancestors in the *DOM tree*. Assuming the following HTML structure:
+इसमें इवेंट बबलिंग भी शामिल है। एक portal के अंदर से चलाया गया इवेंट उस *React ट्री* के ऐन्सिस्टर्ज़ तक प्रचारित करेगा, भले ही वे एलिमेंट्स *DOM ट्री* में ऐन्सिस्टर्ज़ न हों। निम्न HTML ढांचे को मानते हुए:
 
 ```html
 <html>
@@ -65,10 +65,11 @@ This includes event bubbling. An event fired from inside a portal will propagate
 </html>
 ```
 
-A `Parent` component in `#app-root` would be able to catch an uncaught, bubbling event from the sibling node `#modal-root`.
+`#app-root` में एक `पैरेंट` कौम्पोनॅन्ट अपने सिबलिंग नोड `#modal-root` से एक अज्ञात बबलिंग इवेंट को पकड़ने में सक्षम होगा।
 
-```js{28-31,42-49,53,61-63,70-71,74}
-// These two containers are siblings in the DOM
+
+```js{26-29,40-47,51,58-60,67-68,71}
+// ये दो कंटेनर DOM में सिबलिंग हैं
 const appRoot = document.getElementById('app-root');
 const modalRoot = document.getElementById('modal-root');
 
@@ -79,14 +80,12 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
-    // The portal element is inserted in the DOM tree after
-    // the Modal's children are mounted, meaning that children
-    // will be mounted on a detached DOM node. If a child
-    // component requires to be attached to the DOM tree
-    // immediately when mounted, for example to measure a
-    // DOM node, or uses 'autoFocus' in a descendant, add
-    // state to Modal and only render the children when Modal
-    // is inserted in the DOM tree.
+    // Modal के चिल्ड्रन को माउंट किए जाने के बाद portal एलिमेंट को DOM ट्री
+    // में डाला जाता है, अर्थात चिल्ड्रन को एक अलग DOM नोड पर रखा जाएगा। यदि
+    // चाइल्ड कौम्पोनॅन्ट को माउंट होने पर तुरंत DOM ट्री से जोड़ने की आवश्यकता होती है,
+    // जैसे डोम नोड को मापने के लिए, या डिसेंडेंट में 'autoFocus' का उपयोग करना
+    // हो, Modal में state जोड़ने के लिए और चिल्ड्रन केवल तभी रेंडर करने हों जब
+    // DOM ट्री में Modal डाला जाये।
     modalRoot.appendChild(this.el);
   }
 
@@ -97,7 +96,7 @@ class Modal extends React.Component {
   render() {
     return ReactDOM.createPortal(
       this.props.children,
-      this.el,
+      this.el
     );
   }
 }
@@ -110,9 +109,9 @@ class Parent extends React.Component {
   }
 
   handleClick() {
-    // This will fire when the button in Child is clicked,
-    // updating Parent's state, even though button
-    // is not direct descendant in the DOM.
+    // चाइल्ड में बटन पर क्लिक करने पर यह शुरू हो जाएगा,
+    // पैरेंट की state को अपडेट करते हुए, भले ही DOM
+    // में बटन प्रत्यक्ष डिसेंडेंट नहीं है।
     this.setState(state => ({
       clicks: state.clicks + 1
     }));
@@ -121,12 +120,11 @@ class Parent extends React.Component {
   render() {
     return (
       <div onClick={this.handleClick}>
-        <p>Number of clicks: {this.state.clicks}</p>
+        <p>क्लिक की संख्या: {this.state.clicks}</p>
         <p>
-          Open up the browser DevTools
-          to observe that the button
-          is not a child of the div
-          with the onClick handler.
+          ब्राउज़र DevTools खोलें और यह देखें 
+          की बटन onClick हैंडलर वाले div का 
+          चाइल्ड नहीं है।
         </p>
         <Modal>
           <Child />
@@ -137,11 +135,11 @@ class Parent extends React.Component {
 }
 
 function Child() {
-  // The click event on this button will bubble up to parent,
-  // because there is no 'onClick' attribute defined
+  // इस बटन का क्लिक इवेंट पैरेंट तक पहुंच जाएगा,
+  // क्योंकि कोई 'onClick' एट्रिब्यूट परिभाषित नहीं है
   return (
     <div className="modal">
-      <button>Click</button>
+      <button>क्लिक</button>
     </div>
   );
 }
@@ -149,6 +147,6 @@ function Child() {
 ReactDOM.render(<Parent />, appRoot);
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/jGBWpE)
+[**इसे CodePen पर आजमाएं**](https://codepen.io/gaearon/pen/jGBWpE)
 
-Catching an event bubbling up from a portal in a parent component allows the development of more flexible abstractions that are not inherently reliant on portals. For example, if you render a `<Modal />` component, the parent can capture its events regardless of whether it's implemented using portals.
+किसी portal की इवेंट बबलिंग को उसके पैरेंट कौम्पोनॅन्ट में पकड़ने से अधिक लचीले सार का विकास होता है जो स्वाभाविक रूप से portals पर निर्भर नहीं होते हैं। उदाहरण के लिए, यदि आप एक `<Modal />` कौम्पोनॅन्ट रेंडर करते हैं तो पैरेंट इसके इवेंट्स को पकड़ सकते हैं भले ही यह portals का उपयोग करके लागू किया गया हो।
