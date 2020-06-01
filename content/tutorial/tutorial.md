@@ -1202,7 +1202,11 @@ class Game extends React.Component {
 * खेल के प्रोग्रेस को गेम की हिस्ट्री में रखता है,
 * प्लेयर्स को गेम के हिस्ट्री को रिव्यु करने और गेम के बोर्ड के पिछले वर्शनस को देखने की अनुमति देता है।
 
+<<<<<<< HEAD
 बहुत अच्छे! हमें उम्मीद है कि अब आप महसूस करेंगे कि आपके पास React कैसे काम करता है, इस पर एक सभ्य समझ है।
+=======
+Nice work! We hope you now feel like you have a decent grasp of how React works.
+>>>>>>> b4b59062e59d56da37274c6de1fa4a134d2d8f49
 
 अंतिम परिणाम यहां देखें: **[अंतिम परिणाम](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
 
