@@ -236,7 +236,7 @@ findRenderedDOMComponentWithClass(
 )
 ```
 
-जैसे [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) लेकिन एक परिणाम होने की उम्मीद करता है, और एक परिणाम देता है, या एक के अलावा किसी अन्य संख्या के मैच होने पर एक्सेप्शन थ्रो करता है।
+[`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) के समान, लेकिन एक परिणाम होने की उम्मीद करता है, और एक परिणाम देता है, या एक के अलावा किसी अन्य संख्या के मैच होने पर एक्सेप्शन थ्रो करता है।
 
 * * *
 
@@ -262,7 +262,7 @@ findRenderedDOMComponentWithTag(
 )
 ```
 
-जैसे [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag), लेकिन वहाँ एक परिणाम होने की उम्मीद करता है, और वह एक परिणाम देता है, या एक के अलावा किसी अन्य संख्या के मैच होने पर एक्सेप्शन थ्रो करता है।
+[`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) के समान, लेकिन वहाँ एक परिणाम होने की उम्मीद करता है, और वह एक परिणाम देता है, या एक के अलावा किसी अन्य संख्या के मैच होने पर एक्सेप्शन थ्रो करता है।
 
 * * *
 
