@@ -298,7 +298,7 @@ findRenderedComponentWithType(
 renderIntoDocument(element)
 ```
 
-दस्तावेज़ में एक अलग DOM नोड में एक React एलिमेंट रेंडर करें। **इस फ़ंक्शन के लिए DOM की आवश्यकता है।** यह प्रभावी रूप से इसके बराबर है:
+React एलिमेंट को दस्तावेज़ के एक अलग DOM नोड में रेंडर करें। **इस फ़ंक्शन के लिए DOM की आवश्यकता है।** यह प्रभावी रूप से इसके बराबर है:
 
 ```js
 const domContainer = document.createElement('div');
