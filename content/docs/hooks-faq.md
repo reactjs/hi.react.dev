@@ -7,7 +7,7 @@ prev: hooks-reference.html
 
 *Hooks* React 16.8 में जोड़ा गया है जो, आपको बिना क्लास कॉम्पोनेन्ट के स्टेट और अन्य React फीचर्स का उपयोग करने देते हैं
 
-यह पृष्ठ [Hooks](/docs/hooks-overview.html) के बारे में अक्सर पूछे जाने वाले प्रश्नों के उत्तर देता है.
+यह पृष्ठ [Hooks](/docs/hooks-overview.html) के बारे में अक्सर पूछे जाने वाले प्रश्नों के उत्तर देता है
 
 <!--
   if you ever need to regenerate this, this snippet in the devtools console might help:
@@ -19,7 +19,7 @@ prev: hooks-reference.html
 -->
 
 * **[एडॉप्शन स्ट्रेटेजी](#adoption-strategy)**
-  * [React के कौन से संस्करणों में हुक शामिल हैं?](#which-versions-of-react-include-hooks)
+  * [React के कौन से संस्करणों में hooks शामिल हैं?](#which-versions-of-react-include-hooks)
   * [क्या मुझे अपने सभी क्लास कॉम्पोनेन्ट को फिर से लिखना होगा?](#do-i-need-to-rewrite-all-my-class-components)
   * [मैं Hooks के साथ क्या कर सकता हूं जो मैं क्लासेज के साथ नहीं कर सकता हूं?](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
   * [मेरा React ज्ञान कितना प्रासंगिक है?](#how-much-of-my-react-knowledge-stays-relevant)
@@ -57,11 +57,11 @@ prev: hooks-reference.html
   * [कंपोनेंट्स के साथ React सहयोगी हुक कैसे कॉल करता है?](#how-does-react-associate-hook-calls-with-components)
   * [Hooks के लिए पूर्व कला क्या है?](#what-is-the-prior-art-for-hooks)
 
-## Adoption Strategy {#adoption-strategy}
+## एडॉप्शन स्ट्रेटेजी {#adoption-strategy}
 
-### Which versions of React include Hooks? {#which-versions-of-react-include-hooks}
+### React के कौन से संस्करणों में hooks शामिल हैं? {#which-versions-of-react-include-hooks}
 
-Starting with 16.8.0, React includes a stable implementation of React Hooks for:
+16.8.0 के साथ शुरू, React में React Hooks का एक स्थिर इम्प्लीमेंटेशन शामिल है:
 
 * React DOM
 * React Native
@@ -69,29 +69,30 @@ Starting with 16.8.0, React includes a stable implementation of React Hooks for:
 * React Test Renderer
 * React Shallow Renderer
 
-Note that **to enable Hooks, all React packages need to be 16.8.0 or higher**. Hooks won't work if you forget to update, for example, React DOM.
+ध्यान दें **hook को इस्तेमाल करने के लिए, सभी React पैकेज 16.8.0 या higher होना चाहिए**. यदि आप अपडेट करना भूल जाते हैं तो hook काम नहीं करेंगे, उदाहरण के लिए, React DOM.
 
 [React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
 
-### Do I need to rewrite all my class components? {#do-i-need-to-rewrite-all-my-class-components}
+### क्या मुझे अपने सभी क्लास कॉम्पोनेन्ट को फिर से लिखना होगा? {#do-i-need-to-rewrite-all-my-class-components}
 
-No. There are [no plans](/docs/hooks-intro.html#gradual-adoption-strategy) to remove classes from React -- we all need to keep shipping products and can't afford rewrites. We recommend trying Hooks in new code.
+नहीं, रियेक्ट से क्लासेज को हटाने का कोई प्लान [no plans](/docs/hooks-intro.html#gradual-adoption-strategy) नहीं है, हम सभी को शिपिंग उत्पादों को रखने की आवश्यकता है और वे फिर से लिखे नहीं जा सकते,
+हम नए कोड में हुक को शामिल करने की सलाह देते हैं
 
-### What can I do with Hooks that I couldn't with classes? {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
+### मैं Hooks के साथ क्या कर सकता हूं जो मैं क्लासेज के साथ नहीं कर सकता हूं? {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
 
-Hooks offer a powerful and expressive new way to reuse functionality between components. ["Building Your Own Hooks"](/docs/hooks-custom.html) provides a glimpse of what's possible. [This article](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) by a React core team member dives deeper into the new capabilities unlocked by Hooks.
+हुक कंपोनेंट्स के बीच फंक्शनलिटी का री-यूज़ करने के लिए एक शक्तिशाली और नया एक्सप्रेसिव तरीका प्रदान करते हैं. ["Building Your Own Hooks"](/docs/hooks-custom.html) provides a glimpse of what's possible. [लेख](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) में एक रिएक्ट कोर टीम के सदस्य द्वारा हुक द्वारा अनलॉक की गई नई क्षमताओं पर गहन अध्ययन
 
-### How much of my React knowledge stays relevant? {#how-much-of-my-react-knowledge-stays-relevant}
+### मेरा React ज्ञान कितना प्रासंगिक है? {#how-much-of-my-react-knowledge-stays-relevant}
 
-Hooks are a more direct way to use the React features you already know -- such as state, lifecycle, context, and refs. They don't fundamentally change how React works, and your knowledge of components, props, and top-down data flow is just as relevant.
+हुक, आपके द्वारा पहले से ही पहचाने जाने वाले रिएक्ट फीचर्स का उपयोग करने के लिए एक अधिक सीधा तरीका है - जैसे कि स्टेट ,लाइफसाइकिल, रेफ्स और कॉन्टेक्स्ट । वे मूल रूप से परिवर्तन नहीं करते हैं कि रिएक्ट कैसे काम करता है, और आपके कंपोनेंट्स, प्रॉप्स और टॉप-डाउन डेटा प्रवाह का ज्ञान पूरी तरह से प्रासंगिक है
 
-Hooks do have a learning curve of their own. If there's something missing in this documentation, [raise an issue](https://github.com/reactjs/reactjs.org/issues/new) and we'll try to help.
+हुक्स का अपना लर्निंग कर्व है. यदि इस डॉक्यूमेंटेशन में कुछ कमी हैn, [इशू रेज करें](https://github.com/reactjs/reactjs.org/issues/new) और हम मदद करने की कोशिश करेंगे
 
-### Should I use Hooks, classes, or a mix of both? {#should-i-use-hooks-classes-or-a-mix-of-both}
+### क्या मुझे Hook, क्लासेज या दोनों का मिश्रण इस्तेमाल करना चाहिए? {#should-i-use-hooks-classes-or-a-mix-of-both}
 
-When you're ready, we'd encourage you to start trying Hooks in new components you write. Make sure everyone on your team is on board with using them and familiar with this documentation. We don't recommend rewriting your existing classes to Hooks unless you planned to rewrite them anyway (e.g. to fix bugs).
+जब आप तैयार हों, तो हम आपके द्वारा लिखे गए नए कंपोनेंट्स में हुक इम्प्लीमेंट की कोशिश करने के लिए प्रोत्साहित करेंगे। सुनिश्चित करें कि आपकी टीम में हर कोई उन्हें इस्तेमाल करने और इस डॉक्यूमेंटेशन से परिचित हों ।हम आपके पहले से उपस्थित क्लासेज को हुक्स का इस्तेमाल कर के लिखने के लिए प्रोत्साहित नहीं करते(जैसे बग को ठीक करने के लिए) जब तक आप उन्हें फिर से लिखने की योजना नहीं बनाते।
 
-You can't use Hooks *inside* a class component, but you can definitely mix classes and function components with Hooks in a single tree. Whether a component is a class or a function that uses Hooks is an implementation detail of that component. In the longer term, we expect Hooks to be the primary way people write React components.
+आप एक क्लास कॉम्पोनेन्ट * के अंदर हुक * का उपयोग नहीं कर सकते हैं, लेकिन आप निश्चित रूप से एक ही ट्री में हुक के साथ क्लासेज और फ़ंक्शन कंपोनेंट्स को मिला सकते हैं। एक कॉम्पोनेन्ट एक क्लास या एक फ़ंक्शन है जो हुक का उपयोग करता है, उस कॉम्पोनेन्ट का कार्यान्वयन विवरण है। लंबी अवधि में, हम उम्मीद करते हैं कि प्राथमिक रूप से लोग के रिएक्ट कॉम्पोनेन्ट लिखने का तरीका हुक्स बनेगा।
 
 ### Do Hooks cover all use cases for classes? {#do-hooks-cover-all-use-cases-for-classes}
 
