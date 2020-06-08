@@ -194,42 +194,43 @@ it('can render and update a counter', () => {
 
 अधिक जानकारी के लिए,[Testing Recipes](/docs/testing-recipes.html) चेक करें।
 
-### What exactly do the [lint rules](https://www.npmjs.com/package/eslint-plugin-react-hooks) enforce? {#what-exactly-do-the-lint-rules-enforce}
+### लिंट नियम[लिंट नियम](https://www.npmjs.com/package/eslint-plugin-react-hooks) क्या लागू करते हैं? {#what-exactly-do-the-lint-rules-enforce}
 
-We provide an [ESLint plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) that enforces [rules of Hooks](/docs/hooks-rules.html) to avoid bugs. It assumes that any function starting with "`use`" and a capital letter right after it is a Hook. We recognize this heuristic isn't perfect and there may be some false positives, but without an ecosystem-wide convention there is just no way to make Hooks work well -- and longer names will discourage people from either adopting Hooks or following the convention.
+हम बग्स से बचने के लिए एक प्लग-इन  [ESLint plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) जो हुक्स के रूल्स [rules of Hooks](/docs/hooks-rules.html) लागू करते हैं। यह मानता है कि कोई भी फ़ंक्शन "`use`" और एक कैपिटल लेटर के बाद के शुरू होने वाला एक हुक है। हम पहचानते हैं कि यह अनुमान सही नहीं है और कुछ गलत सकारात्मक हो सकते हैं, लेकिन पारिस्थितिकी तंत्र के व्यापक सम्मेलन के बिना, हुक को अच्छी तरह से काम करने का कोई तरीका नहीं है - और लंबे समय तक लोग हुक को अपनाने या सम्मेलन का पालन करने से लोगों को हतोत्साहित करेंगे।
 
-In particular, the rule enforces that:
+विशेष रूप से, नियम लागू होता है:
 
-* Calls to Hooks are either inside a `PascalCase` function (assumed to be a component) or another `useSomething` function (assumed to be a custom Hook).
-* Hooks are called in the same order on every render.
+* हुक कॉल या तो एक `PascalCase` फ़ंक्शन (एक कॉम्पोनेन्ट माना जाता है) या किसी अन्य` useSomething` फ़ंक्शन (एक कस्टम हुक माना जाता है) के अंदर हैं
+* हुक हर रेंडर पर एक ही क्रम में कॉल किया जाता है।
 
-There are a few more heuristics, and they might change over time as we fine-tune the rule to balance finding bugs with avoiding false positives.
+कुछ और आंकड़े हैं, और वे समय के साथ बदल सकते हैं क्योंकि हम झूठी सकारात्मकता से बचने के साथ बग को खोजने के लिए नियम को ठीक करते हैं।
 
-## From Classes to Hooks {#from-classes-to-hooks}
+## क्लासेज से हूक्स तक {#from-classes-to-hooks}
 
-### How do lifecycle methods correspond to Hooks? {#how-do-lifecycle-methods-correspond-to-hooks}
+### लाइफ साइकिल मेथड्स Hooks को कैसे करेस्पॉन्ड करते हैं? {#how-do-lifecycle-methods-correspond-to-hooks}
 
-* `constructor`: Function components don't need a constructor. You can initialize the state in the [`useState`](/docs/hooks-reference.html#usestate) call. If computing the initial state is expensive, you can pass a function to `useState`.
+* `constructor`: फ़ंक्शन कंपोनेंट्स को कंट्रक्टर की आवश्यकता नहीं है। आप [`useState`] (/ डॉक्स / हुक-संदर्भ.html # usestate) कॉल में इनिशियलाइज़ कर सकते हैं। यदि इनिशियल स्थिति की कंप्यूटिंग करना महंगा है, तो आप एक फ़ंक्शन को 'useState' में पास कर सकते हैं।
 
-* `getDerivedStateFromProps`: Schedule an update [while rendering](#how-do-i-implement-getderivedstatefromprops) instead.
+* `getDerivedStateFromProps`: इसके बजाय `[while rendering](#how-do-i-implement-getderivedstatefromprops)` को रेंडर करते हुए अपडेट शेड्यूल करें
 
-* `shouldComponentUpdate`: See `React.memo` [below](#how-do-i-implement-shouldcomponentupdate).
+* `shouldComponentUpdate`: देखें `React.memo` [निचे देखें](#how-do-i-implement-shouldcomponentupdate).
 
-* `render`: This is the function component body itself.
+* `render`: यह फंक्शन कंपोनेंट बॉडी है.
 
 * `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`: The [`useEffect` Hook](/docs/hooks-reference.html#useeffect) can express all combinations of these (including [less](#can-i-skip-an-effect-on-updates) [common](#can-i-run-an-effect-only-on-updates) cases).
 
-* `getSnapshotBeforeUpdate`, `componentDidCatch` and `getDerivedStateFromError`: There are no Hook equivalents for these methods yet, but they will be added soon.
+* `getSnapshotBeforeUpdate`, `componentDidCatch` and `getDerivedStateFromError`: इन विधियों के लिए कोई हुक समकक्ष नहीं हैं, लेकिन उन्हें जल्द ही जोड़ दिया जाएगा।
 
-### How can I do data fetching with Hooks? {#how-can-i-do-data-fetching-with-hooks}
+### Hooks के द्वारा डाटा फेचिंग कैसे करें {#how-can-i-do-data-fetching-with-hooks}
 
-Here is a [small demo](https://codesandbox.io/s/jvvkoo8pq3) to get you started. To learn more, check out [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) about data fetching with Hooks.
+आपकी शुरुआत के लिए एक [छोटा डेमो](https://codesandbox.io/s/jvvkoo8pq3). अधिक जानने के लिए, हुक के साथ डेटा फेच के बारे में [यह लेख](https://www.robinwieruch.de/react-hooks-fetch-data/) देखें।
 
-### Is there something like instance variables? {#is-there-something-like-instance-variables}
+### या इंस्टैंस वेरिएबल की तरह कुछ है? {#is-there-something-like-instance-variables}
 
-Yes! The [`useRef()`](/docs/hooks-reference.html#useref) Hook isn't just for DOM refs. The "ref" object is a generic container whose `current` property is mutable and can hold any value, similar to an instance property on a class.
+हाँ, [`useRef()`](/docs/hooks-reference.html#useref) हुक केवल एक डॉम रेफ्स नहीं है 
+"रेफ" ऑब्जेक्ट एक सामान्य कंटेनर है, जिसका `current` प्रॉपर्टी परस्पर भिन्न होता है और किसी क्लास पर एक उदाहरण प्रॉपर्टी के समान किसी भी वैल्यू को होल्ड सकता है।
 
-You can write to it from inside `useEffect`:
+आप इसे `useEffect` के अंदर से लिख सकते हैं:
 
 ```js{2,8}
 function Timer() {
@@ -249,7 +250,7 @@ function Timer() {
 }
 ```
 
-If we just wanted to set an interval, we wouldn't need the ref (`id` could be local to the effect), but it's useful if we want to clear the interval from an event handler:
+अगर हम सिर्फ एक इंटरवल निर्धारित करना चाहते हैं, तो हमें रेफ की आवश्यकता नहीं होगी (`id` इफ़ेक्ट के लिए लोकल हो सकती है), लेकिन यह उपयोगी है अगर हम एक इवेंट  हैंडलर से इंटरवल को क्लियर करना चाहते हैं।:
 
 ```js{3}
   // ...
