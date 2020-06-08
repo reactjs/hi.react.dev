@@ -71,11 +71,11 @@ prev: hooks-reference.html
 
 ध्यान दें **hook को इस्तेमाल करने के लिए, सभी React पैकेज 16.8.0 या उच्चतर होना चाहिए**. यदि आप अपडेट करना भूल जाते हैं तो hook काम नहीं करेंगे, उदाहरण के लिए, React DOM.
 
-[React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
+[React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) और उच्चतर हुक को सपोर्ट करते हैं।
 
 ### क्या मुझे अपने सभी क्लास कॉम्पोनेन्ट को फिर से लिखना होगा? {#do-i-need-to-rewrite-all-my-class-components}
 
-नहीं, रियेक्ट से क्लासेज को हटाने का [कोई प्लान](/docs/hooks-intro.html#gradual-adoption-strategy) नहीं है, हम सभी को शिपिंग उत्पादों को रखने की आवश्यकता है और वे फिर से लिखे नहीं जा सकते,
+नहीं, रियेक्ट से क्लासेज को हटाने का [कोई प्लान](/docs/hooks-intro.html#gradual-adoption-strategy) नहीं है, हम सभी को शिपिंग उत्पादों को रखने की आवश्यकता है और वे फिर से लिखे नहीं जा सकते।
 हम नए कोड में हुक को शामिल करने की सलाह देते हैं।
 
 ### मैं Hooks के साथ क्या कर सकता हूं जो मैं क्लासेज के साथ नहीं कर सकता हूं? {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
@@ -219,7 +219,7 @@ it('can render and update a counter', () => {
 
 * `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`: The [`useEffect` Hook](/docs/hooks-reference.html#useeffect) can express all combinations of these (including [less](#can-i-skip-an-effect-on-updates) [common](#can-i-run-an-effect-only-on-updates) cases).
 
-* `getSnapshotBeforeUpdate`, `componentDidCatch` and `getDerivedStateFromError`: इन विधियों के लिए कोई हुक समकक्ष नहीं हैं, लेकिन उन्हें जल्द ही जोड़ दिया जाएगा।
+* `getSnapshotBeforeUpdate`, `componentDidCatch` और `getDerivedStateFromError`: इन विधियों के लिए कोई हुक समकक्ष नहीं हैं, लेकिन उन्हें जल्द ही जोड़ दिया जाएगा।
 
 ### Hooks के द्वारा डाटा फेचिंग कैसे करें {#how-can-i-do-data-fetching-with-hooks}
 
@@ -227,7 +227,7 @@ it('can render and update a counter', () => {
 
 ### या इंस्टैंस वेरिएबल की तरह कुछ है? {#is-there-something-like-instance-variables}
 
-हाँ, [`useRef()`](/docs/hooks-reference.html#useref) हुक केवल एक डॉम रेफ्स नहीं है। `ref` ऑब्जेक्ट एक सामान्य कंटेनर है, जिसका `current` प्रॉपर्टी परस्पर भिन्न होता है और किसी क्लास पर एक उदाहरण प्रॉपर्टी के समान किसी भी वैल्यू को होल्ड सकता है।
+हाँ, [useRef()](/docs/hooks-reference.html#useref) हुक केवल एक डॉम रेफ्स नहीं है। `ref` ऑब्जेक्ट एक सामान्य कंटेनर है, जिसका `current` प्रॉपर्टी परस्पर भिन्न होता है और किसी क्लास पर एक उदाहरण प्रॉपर्टी के समान किसी भी वैल्यू को होल्ड सकता है।
 
 आप इसे `useEffect` के अंदर से लिख सकते हैं:
 
@@ -258,12 +258,11 @@ function Timer() {
   }
   // ...
 ```
+वैचारिक रूप से, आप किसी क्लास में वेरिएबल के समान रेफ के बारे में सोच सकते हैं। जब तक आप [लेज़ी इनिशियलएसशन](#how-to-create-expensive-objects-lazily) नहीं कर रहे हैं, रेंडरिंग के दौरान रिफ सेट करने से बचें - इससे आश्चर्यजनक व्यवहार हो सकता है। इसके बजाय, आमतौर पर आप ईवेंट हैंडलर और इफ़ेक्ट्स में Refs को संशोधित कर सकते हैं। 
 
-Conceptually, you can think of refs as similar to instance variables in a class. Unless you're doing [lazy initialization](#how-to-create-expensive-objects-lazily), avoid setting refs during rendering -- this can lead to surprising behavior. Instead, typically you want to modify refs in event handlers and effects.
+### एक या एक से ज्यादा स्टेट वेरिएबल का इस्तेमाल करना चाहिए? {#should-i-use-one-or-many-state-variables}
 
-### Should I use one or many state variables? {#should-i-use-one-or-many-state-variables}
-
-If you're coming from classes, you might be tempted to always call `useState()` once and put all state into a single object. You can do it if you'd like. Here is an example of a component that follows the mouse movement. We keep its position and size in the local state:
+यदि आप क्लासेज का यूज़ करते आ रहे हैं, तो आपको हमेशा एक बार `useState()` को कॉल करने और सभी स्टेट को एक ही ऑब्जेक्ट में डालने की कोशिश कर के सामान बिहेवियर पाने की कोशिश करनी चाहिए। आप चाहें तो ऐसा कर सकते हैं। यहां एक कॉम्पोनेन्ट का उदाहरण है जो माउस मूवमेंट  फॉलो करता है। हम इसकी पोजीशन और साइज को लोकल स्टेट में रखते हैं:
 
 ```js
 function Box() {
@@ -272,7 +271,7 @@ function Box() {
 }
 ```
 
-Now let's say we want to write some logic that changes `left` and `top` when the user moves their mouse. Note how we have to merge these fields into the previous state object manually:
+अब मान लें कि हम कुछ तर्क लिखना चाहते हैं जो यूजर के माउस को स्थानांतरित करने पर `left` और `top` बदलता है। ध्यान दें कि हमें इन फ़ील्ड्स को पिछली स्टेट  ऑब्जेक्ट में मैन्युअल रूप से कैसे मर्ज करना है:
 
 ```js{4,5}
   // ...
