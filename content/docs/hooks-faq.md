@@ -106,11 +106,11 @@ prev: hooks-reference.html
 
 ### पॉपुलर APIs जैसे Redux connect() और React Router के लिए रियेक्ट के मायने? {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}
 
-आप हमेशा के समान सटीक API का उपयोग करना जारी रख सकते हैं, वे काम करेंगे।
+आप हमेशा के समान सटीक API का उपयोग जारी रख सकते हैं, वे काम करेंगे।
 
-V7.1.0 के बाद से React Redux [हुक्स API का सपोर्ट करते हैं](https://react-redux.js.org/api/hooks) और `useDispatch` or `useSelector` जैसे हुक्स एक्सपोज़ करते हैं।
+React Redux V7.1.0 के बाद से [हुक्स API का सपोर्ट करते हैं](https://react-redux.js.org/api/hooks) और `useDispatch` or `useSelector` जैसे हुक्स एक्सपोज़ करते हैं।
 
-v5.1 के बाद से React Router [हुक्स का सपोर्ट करते हैं](https://reacttraining.com/react-router/web/api/Hooks) 
+React Router v5.1 के बाद से [हुक्स का सपोर्ट करते हैं](https://reacttraining.com/react-router/web/api/Hooks) 
 
 अन्य लाइब्रेरीज भी भविष्य में हुक का समर्थन कर सकते हैं।
 
@@ -287,11 +287,11 @@ function Box() {
   // ...
 ```
 
-This is because when we update a state variable, we *replace* its value. This is different from `this.setState` in a class, which *merges* the updated fields into the object.
+ऐसा इसलिए है क्योंकि जब हम किसी स्टेट वैरिएबल को अपडेट करते हैं, तो हम उसकी वैल्यू को *रिप्लेस* करते हैं। यह एक क्लास में `this.setState` से अलग है, जो ऑब्जेक्ट में अपडेटेड फ़ील्ड को *मर्ज* करता है।
 
-If you miss automatic merging, you could write a custom `useLegacyState` Hook that merges object state updates. However, **we recommend to split state into multiple state variables based on which values tend to change together.**
+यदि आप आटोमेटिक मर्जिंग को मिस करते हैं, तो आप एक कस्टम `useLegacyState` हुक लिख सकते हैं जो ऑब्जेक्ट स्टेट अपडेट को मर्ज करता है। हालाँकि, **हम स्टेट को कई स्टेट वेरिएबल में विभाजित करने की सलाह देते हैं जिसके आधार पर वैल्यू एक साथ बदलते हैं।**
 
-For example, we could split our component state into `position` and `size` objects, and always replace the `position` with no need for merging:
+उदाहरण के लिए, हम अपने कंपोनेंट स्टेट को `position` और `size` ऑब्जेक्ट्स में विभाजित कर सकते हैं, और हमेशा `position` को बदलने की आवश्यकता नहीं है:
 
 ```js{2,7}
 function Box() {
@@ -305,7 +305,7 @@ function Box() {
     // ...
 ```
 
-Separating independent state variables also has another benefit. It makes it easy to later extract some related logic into a custom Hook, for example:
+इंडिपेंडेंट स्टेट वेरिएबल को अलग करने का एक और लाभ भी है। उदाहरण के लिए, कस्टम हुक में बाद में कुछ संबंधित लॉजिक को एक्सट्रेक्ट करना आसान बनाता है:
 
 ```js{2,7}
 function Box() {
@@ -323,17 +323,17 @@ function useWindowPosition() {
 }
 ```
 
-Note how we were able to move the `useState` call for the `position` state variable and the related effect into a custom Hook without changing their code. If all state was in a single object, extracting it would be more difficult.
+ध्यान दें कि हम अपने कोड को बदले बिना एक कस्टम हुक में `position` स्टेट वेरिएबल और रिलेटेड इफ़ेक्ट के लिए `useState` कॉल को कैसे मूव करने में सक्षम थे। यदि सभी स्टेट एक ही ऑब्जेक्ट में थे, तो इसे निकालना अधिक कठिन होगा।
 
-Both putting all state in a single `useState` call, and having a `useState` call per each field can work. Components tend to be most readable when you find a balance between these two extremes, and group related state into a few independent state variables. If the state logic becomes complex, we recommend [managing it with a reducer](/docs/hooks-reference.html#usereducer) or a custom Hook.
+सभी स्टेट एक `useState` कॉल में रखने, और प्रत्येक फील्ड में एक `useState` कॉल, दोनों करने से काम चल सकता है। जब आप इन दो चरम सीमाओं और समूह से संबंधित स्टेट के बीच कुछ इंडिपेंडेंट स्टेट वेरिएबल में संतुलन पाते हैं, तो कॉम्पोनेन्ट सबसे अधिक रीडबल होते हैं। यदि स्टेट लॉजिक जटिल हो जाता है, तो हम इसे [रिड्यूसर के साथ मैनेज](/docs/hooks-reference.html#usereducer) या कस्टम हुक के साथ मैनेज करने की सलाह देते हैं।
 
-### Can I run an effect only on updates? {#can-i-run-an-effect-only-on-updates}
+### क्या इफेक्ट को सिर्फ उपडटेस के बाद इस्तेमाल करना चाहिए? {#can-i-run-an-effect-only-on-updates}
 
-This is a rare use case. If you need it, you can [use a mutable ref](#is-there-something-like-instance-variables) to manually store a boolean value corresponding to whether you are on the first or a subsequent render, then check that flag in your effect. (If you find yourself doing this often, you could create a custom Hook for it.)
+यह एक दुर्लभ उपयोग मामला है। यदि आपको इसकी आवश्यकता है, तो आप मैन्युअल रूप से बूलियन मान को स्टोर करने के लिए एक [म्यूटेबल रेफ का उपयोग](#is-there-something-like-instance-variables) कर सकते हैं, चाहे आप पहले या बाद के रेंडर पर हों, फिर उस फ्लैग को अपने प्रभाव में देखें। (यदि आप खुद को अक्सर ऐसा करते हुए पाते हैं, तो आप इसके लिए एक कस्टम हुक बना सकते हैं।)
 
-### How to get the previous props or state? {#how-to-get-the-previous-props-or-state}
+### पिछले प्रॉप्स या स्टेट को कैसे प्राप्त करें? {#how-to-get-the-previous-props-or-state}
 
-Currently, you can do it manually [with a ref](#is-there-something-like-instance-variables):
+वर्तमान में, आप इसे [रेफ के साथ](#is-there-something-like-instance-variables) मैन्युअल रूप से कर सकते हैं:
 
 ```js{6,8}
 function Counter() {
@@ -349,7 +349,7 @@ function Counter() {
 }
 ```
 
-This might be a bit convoluted but you can extract it into a custom Hook:
+यह थोड़ा जटिल हो सकता है लेकिन आप इसे कस्टम हुक में एक्सट्रेक्ट कर सकते हैं:
 
 ```js{3,7}
 function Counter() {
@@ -367,7 +367,7 @@ function usePrevious(value) {
 }
 ```
 
-Note how this would work for props, state, or any other calculated value.
+ध्यान दें कि यह प्रॉप्स , स्टेट या किसी अन्य कैलक्युलेटेड वैल्यू के लिए कैसे काम करेगा.
 
 ```js{5}
 function Counter() {
