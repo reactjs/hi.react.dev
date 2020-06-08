@@ -69,66 +69,66 @@ prev: hooks-reference.html
 * React Test Renderer
 * React Shallow Renderer
 
-ध्यान दें **hook को इस्तेमाल करने के लिए, सभी React पैकेज 16.8.0 या higher होना चाहिए**. यदि आप अपडेट करना भूल जाते हैं तो hook काम नहीं करेंगे, उदाहरण के लिए, React DOM.
+ध्यान दें **hook को इस्तेमाल करने के लिए, सभी React पैकेज 16.8.0 या उच्चतर होना चाहिए**. यदि आप अपडेट करना भूल जाते हैं तो hook काम नहीं करेंगे, उदाहरण के लिए, React DOM.
 
-[React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
+[React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) और उच्चतर हुक को सपोर्ट करते हैं।
 
 ### क्या मुझे अपने सभी क्लास कॉम्पोनेन्ट को फिर से लिखना होगा? {#do-i-need-to-rewrite-all-my-class-components}
 
-नहीं, रियेक्ट से क्लासेज को हटाने का कोई प्लान [no plans](/docs/hooks-intro.html#gradual-adoption-strategy) नहीं है, हम सभी को शिपिंग उत्पादों को रखने की आवश्यकता है और वे फिर से लिखे नहीं जा सकते,
-हम नए कोड में हुक को शामिल करने की सलाह देते हैं
+नहीं, रियेक्ट से क्लासेज को हटाने का [कोई प्लान](/docs/hooks-intro.html#gradual-adoption-strategy) नहीं है, हम सभी को शिपिंग उत्पादों को रखने की आवश्यकता है और वे फिर से लिखे नहीं जा सकते।
+हम नए कोड में हुक को शामिल करने की सलाह देते हैं।
 
 ### मैं Hooks के साथ क्या कर सकता हूं जो मैं क्लासेज के साथ नहीं कर सकता हूं? {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
 
-हुक कंपोनेंट्स के बीच फंक्शनलिटी का री-यूज़ करने के लिए एक शक्तिशाली और नया एक्सप्रेसिव तरीका प्रदान करते हैं. ["Building Your Own Hooks"](/docs/hooks-custom.html) provides a glimpse of what's possible. [लेख](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) में एक रिएक्ट कोर टीम के सदस्य द्वारा हुक द्वारा अनलॉक की गई नई क्षमताओं पर गहन अध्ययन
+["अपनी खुद की हुक का निर्माण"](/docs/hooks-custom.html) विभिन्न संभावनाओं की एक झलक प्रदान करता है। हुक कंपोनेंट्स के बीच फंक्शनलिटी का री-यूज़ करने के लिए एक शक्तिशाली और नया एक्सप्रेसिव तरीका प्रदान करते हैं. ["लेख"](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) में एक रिएक्ट कोर टीम के सदस्य द्वारा हुक द्वारा अनलॉक की गई नई क्षमताओं पर गहन अध्ययन।
 
 ### मेरा React ज्ञान कितना प्रासंगिक है? {#how-much-of-my-react-knowledge-stays-relevant}
 
-हुक, आपके द्वारा पहले से ही पहचाने जाने वाले रिएक्ट फीचर्स का उपयोग करने के लिए एक अधिक सीधा तरीका है - जैसे कि स्टेट ,लाइफसाइकिल, रेफ्स और कॉन्टेक्स्ट । वे मूल रूप से परिवर्तन नहीं करते हैं कि रिएक्ट कैसे काम करता है, और आपके कंपोनेंट्स, प्रॉप्स और टॉप-डाउन डेटा प्रवाह का ज्ञान पूरी तरह से प्रासंगिक है
+हुक, आपके द्वारा पहले से ही पहचाने जाने वाले रिएक्ट फीचर्स का उपयोग करने के लिए एक अधिक सीधा तरीका है - जैसे कि स्टेट ,लाइफसाइकिल, रेफ्स और कॉन्टेक्स्ट । वे मूल रूप से परिवर्तन नहीं करते हैं कि रिएक्ट कैसे काम करता है, और आपके कंपोनेंट्स, प्रॉप्स और टॉप-डाउन डेटा प्रवाह का ज्ञान पूरी तरह से प्रासंगिक है।
 
-हुक्स का अपना लर्निंग कर्व है. यदि इस डॉक्यूमेंटेशन में कुछ कमी हैn, [इशू रेज करें](https://github.com/reactjs/reactjs.org/issues/new) और हम मदद करने की कोशिश करेंगे
+हुक्स का अपना लर्निंग कर्व है. यदि इस डॉक्यूमेंटेशन में कुछ कमी है,तो [इशू रेज करें](https://github.com/reactjs/reactjs.org/issues/new) और हम मदद करने की कोशिश करेंगे।
 
 ### क्या मुझे Hook, क्लासेज या दोनों का मिश्रण इस्तेमाल करना चाहिए? {#should-i-use-hooks-classes-or-a-mix-of-both}
 
-जब आप तैयार हों, तो हम आपके द्वारा लिखे गए नए कंपोनेंट्स में हुक इम्प्लीमेंट की कोशिश करने के लिए प्रोत्साहित करेंगे। सुनिश्चित करें कि आपकी टीम में हर कोई उन्हें इस्तेमाल करने और इस डॉक्यूमेंटेशन से परिचित हों ।हम आपके पहले से उपस्थित क्लासेज को हुक्स का इस्तेमाल कर के लिखने के लिए प्रोत्साहित नहीं करते(जैसे बग को ठीक करने के लिए) जब तक आप उन्हें फिर से लिखने की योजना नहीं बनाते।
+जब आप तैयार हों, तो हम आपके द्वारा लिखे गए नए कंपोनेंट्स में हुक इम्प्लीमेंट की कोशिश करने के लिए प्रोत्साहित करेंगे। सुनिश्चित करें कि आपकी टीम में हर कोई उन्हें इस्तेमाल करने और इस डॉक्यूमेंटेशन से परिचित हों। जब तक आप उन्हें फिर से लिखने की योजना नहीं बनाते, हम आपके पहले से उपस्थित क्लासेज को हुक्स का इस्तेमाल कर के लिखने के लिए प्रोत्साहित नहीं करते(जैसे बग को ठीक करने के लिए)।
 
-आप एक क्लास कॉम्पोनेन्ट * के अंदर हुक * का उपयोग नहीं कर सकते हैं, लेकिन आप निश्चित रूप से एक ही ट्री में हुक के साथ क्लासेज और फ़ंक्शन कंपोनेंट्स को मिला सकते हैं। एक कॉम्पोनेन्ट एक क्लास या एक फ़ंक्शन है जो हुक का उपयोग करता है, उस कॉम्पोनेन्ट का कार्यान्वयन विवरण है। लंबी अवधि में, हम उम्मीद करते हैं कि प्राथमिक रूप से लोग के रिएक्ट कॉम्पोनेन्ट लिखने का तरीका हुक्स बनेगा।
+आप एक क्लास कॉम्पोनेन्ट *के अंदर हुक* का उपयोग नहीं कर सकते हैं, लेकिन आप निश्चित रूप से एक ही ट्री में हुक के साथ क्लासेज और फ़ंक्शन कंपोनेंट्स को मिला सकते हैं। एक कॉम्पोनेन्ट एक क्लास या एक फ़ंक्शन है जो हुक का उपयोग करता है, उस कॉम्पोनेन्ट का कार्यान्वयन विवरण है। लंबी अवधि में, हम उम्मीद करते हैं कि प्राथमिक रूप से लोग के रिएक्ट कॉम्पोनेन्ट लिखने का तरीका हुक्स बनेगा।
 
-### Do Hooks cover all use cases for classes? {#do-hooks-cover-all-use-cases-for-classes}
+### क्या Hooks, क्लासेज के सारे उपयोगों को कवर करता है? {#do-hooks-cover-all-use-cases-for-classes}
 
-Our goal is for Hooks to cover all use cases for classes as soon as possible. There are no Hook equivalents to the uncommon `getSnapshotBeforeUpdate`, `getDerivedStateFromError` and `componentDidCatch` lifecycles yet, but we plan to add them soon.
+हमारा लक्ष्य हुक के लिए जितनी जल्दी हो सके क्लासेज के सभी उपयोग के मामलों को कवर करना है। असामान्य `getSnapshotBeforeUpdate`, ` getDerivedStateFromError` और `componentDidCatch` लाइफसाइकिल के लिए कोई हुक समकक्ष नहीं हैं, लेकिन हम जल्द ही इसे जोड़ने की योजना बना रहे हैं।
 
-It is an early time for Hooks, and some third-party libraries might not be compatible with Hooks at the moment.
+यह हुक के लिए एक प्रारंभिक समय है, और कुछ थर्ड-पार्टी लाइब्रेरीज इस समय हुक के अनुरूप नहीं हो सकते हैं।
 
-### Do Hooks replace render props and higher-order components? {#do-hooks-replace-render-props-and-higher-order-components}
+### क्या Hooks रेंडर प्रॉप्स और हायर आर्डर कंपोनेंट्स को रेप्लस करता है? {#do-hooks-replace-render-props-and-higher-order-components}
 
-Often, render props and higher-order components render only a single child. We think Hooks are a simpler way to serve this use case. There is still a place for both patterns (for example, a virtual scroller component might have a `renderItem` prop, or a visual container component might have its own DOM structure). But in most cases, Hooks will be sufficient and can help reduce nesting in your tree.
+अक्सर, प्रॉप्स और उच्च-क्रम के कॉम्पोनेन्ट केवल एक ही चाइल्ड को प्रस्तुत करते हैं। हमें लगता है कि हुक इस उपयोग के मामले को पूरा करने का एक सरल तरीका है। दोनों पैटर्न के लिए अभी भी एक जगह है (उदाहरण के लिए, एक वर्चुअल स्कॉलर कंपोनेंट में एक `renderItem` 'प्रोप हो सकता है, या एक विज़ुअल कंटेनर कंपोनेंट की अपनी DOM स्ट्रक्चर हो सकती है)। लेकिन ज्यादातर मामलों में, हुक पर्याप्त होंगे और आपके ट्री में नेस्टिंग काम करने में मदद करेंगे।
 
-### What do Hooks mean for popular APIs like Redux `connect()` and React Router? {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}
+### पॉपुलर APIs जैसे Redux connect() और React Router के लिए रियेक्ट के मायने? {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}
 
-You can continue to use the exact same APIs as you always have; they'll continue to work.
+आप हमेशा के समान सटीक API का उपयोग जारी रख सकते हैं, वे काम करेंगे।
 
-React Redux since v7.1.0 [supports Hooks API](https://react-redux.js.org/api/hooks) and exposes hooks like `useDispatch` or `useSelector`.
+React Redux V7.1.0 के बाद से [हुक्स API का सपोर्ट करते हैं](https://react-redux.js.org/api/hooks) और `useDispatch` or `useSelector` जैसे हुक्स एक्सपोज़ करते हैं।
 
-React Router [supports hooks](https://reacttraining.com/react-router/web/api/Hooks) since v5.1.
+React Router v5.1 के बाद से [हुक्स का सपोर्ट करते हैं](https://reacttraining.com/react-router/web/api/Hooks) 
 
-Other libraries might support hooks in the future too.
+अन्य लाइब्रेरीज भी भविष्य में हुक का समर्थन कर सकते हैं।
 
-### Do Hooks work with static typing? {#do-hooks-work-with-static-typing}
+### क्या Hook स्टैटिक टाइपिंग के साथ काम करता है? {#do-hooks-work-with-static-typing}
 
-Hooks were designed with static typing in mind. Because they're functions, they are easier to type correctly than patterns like higher-order components. The latest Flow and TypeScript React definitions include support for React Hooks.
+हुक को स्टैटिक टाइपिंग को ध्यान में रखकर डिजाइन किया गया था। क्योंकि वे कार्य कर रहे हैं, वे उच्च-क्रम के कंपोनेंट्स जैसे पैटर्न की तुलना में सही प्रकार से लिखना आसान है। नवीनतम फ्लो और टाइपस्क्रिप्ट रिएक्ट डेफिनिशंस में रिएक्ट हुक के लिए समर्थन शामिल है।
 
-Importantly, custom Hooks give you the power to constrain React API if you'd like to type them more strictly in some way. React gives you the primitives, but you can combine them in different ways than what we provide out of the box.
+महत्वपूर्ण बात यह है कि कस्टम हुक आपको React API को बाधित करने की शक्ति देता है यदि आप उन्हें किसी तरह से अधिक सख्ती से टाइप करना चाहते हैं। रिएक्ट आपको प्रिमितिवेस देता है, लेकिन आप उन्हें अलग-अलग तरीकों से जोड़ सकते हैं जो हम लीक से हटकर प्रदान करते हैं।
 
-### How to test components that use Hooks? {#how-to-test-components-that-use-hooks}
+### Hooks का इस्तेमाल करते वाले कंपोनेंट्स का टेस्ट कैसे करें? {#how-to-test-components-that-use-hooks}
 
-From React's point of view, a component using Hooks is just a regular component. If your testing solution doesn't rely on React internals, testing components with Hooks shouldn't be different from how you normally test components.
+रिएक्ट के दृष्टिकोण से, हुक का उपयोग करने वाला एक कॉम्पोनेन्ट सिर्फ एक रेगुलर कॉम्पोनेन्ट है। यदि आपका टेस्ट समाधान रिएक्ट इंटर्नल्स पर निर्भर नहीं करता है, तो हुक के साथ टेस्टिंग कम्पोनेंट आपको सामान्य रूप से कम्पोनेंट्स का टेस्ट करने के तरीके से अलग नहीं होना चाहिए।
 
->Note
+> ध्यान दें
 >
->[Testing Recipes](/docs/testing-recipes.html) include many examples that you can copy and paste.
+> [टेस्टिंग रेसिपीज](/docs/testing-recipes.html) कई उदाहरणों को शामिल करते हैं जिन्हें आप कॉपी और पेस्ट कर सकते हैं
 
-For example, let's say we have this counter component:
+उदाहरण के लिए, मान लें कि हमारे पास यह काउंटर कॉम्पोनेन्ट है:
 
 ```js
 function Example() {
@@ -147,7 +147,7 @@ function Example() {
 }
 ```
 
-We'll test it using React DOM. To make sure that the behavior matches what happens in the browser, we'll wrap the code rendering and updating it into [`ReactTestUtils.act()`](/docs/test-utils.html#act) calls:
+हम रिएक्ट डोम का उपयोग करके इसका टेस्ट करेंगे। यह सुनिश्चित करने के लिए कि ब्राउज़र में क्या बिहेवियर है, हम कोड रेंडरिंग को व्रैप और [ReactTestUtils.act()](/docs/test-utils.html#act) कॉल में अपडेट करेंगे:
 
 ```js{3,20-22,29-31}
 import React from 'react';
@@ -186,50 +186,50 @@ it('can render and update a counter', () => {
 });
 ```
 
-The calls to `act()` will also flush the effects inside of them.
+`act()` के लिए कॉल भी उनके अंदर इफ़ेक्ट फ्लश जाएगा.
 
-If you need to test a custom Hook, you can do so by creating a component in your test, and using your Hook from it. Then you can test the component you wrote.
+यदि आपको एक कस्टम हुक का टेस्ट करने की आवश्यकता है, तो आप अपने टेस्ट में एक कॉम्पोनेन्ट बनाकर, और उसमें अपने हुक का उपयोग करके ऐसा कर सकते हैं। फिर आप लिखे गए कॉम्पोनेन्ट का टेस्ट कर सकते हैं।
 
-To reduce the boilerplate, we recommend using [React Testing Library](https://testing-library.com/react) which is designed to encourage writing tests that use your components as the end users do.
+बॉयलरप्लेट को कम करने के लिए, हम [रियेक्ट टेस्टिंग लाइब्रेरी](https://testing-library.com/react) का उपयोग करने की सलाह देते हैं जो टेस्ट राइटिंग को प्रोत्साहित करने के लिए डिज़ाइन किया गया है जो आपके कंपोनेंट्स का उपयोग एन्ड यूजर के रूप में करते हैं।
 
-For more information, check out [Testing Recipes](/docs/testing-recipes.html).
+अधिक जानकारी के लिए [टेस्टिंग रेसिपीज़](/docs/testing-recipes.html) चेक करें।
 
-### What exactly do the [lint rules](https://www.npmjs.com/package/eslint-plugin-react-hooks) enforce? {#what-exactly-do-the-lint-rules-enforce}
+### [लिंट नियम](https://www.npmjs.com/package/eslint-plugin-react-hooks) क्या लागू करते हैं? {#what-exactly-do-the-lint-rules-enforce}
 
-We provide an [ESLint plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) that enforces [rules of Hooks](/docs/hooks-rules.html) to avoid bugs. It assumes that any function starting with "`use`" and a capital letter right after it is a Hook. We recognize this heuristic isn't perfect and there may be some false positives, but without an ecosystem-wide convention there is just no way to make Hooks work well -- and longer names will discourage people from either adopting Hooks or following the convention.
+हम बग्स से बचने के लिए एक प्लग-इन  [ESLint plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) जो [हुक्स के रूल्स](/docs/hooks-rules.html) लागू करते हैं। यह मानता है कि कोई भी फ़ंक्शन "`use`" और एक कैपिटल लेटर के बाद के शुरू होने वाला एक हुक है। हम पहचानते हैं कि यह अनुमान सही नहीं है और कुछ गलत सकारात्मक हो सकते हैं, लेकिन पारिस्थितिकी तंत्र के व्यापक सम्मेलन के बिना, हुक को अच्छी तरह से काम करने का कोई तरीका नहीं है - और लंबे समय तक लोग हुक को अपनाने या सम्मेलन का पालन करने से लोगों को हतोत्साहित करेंगे।
 
-In particular, the rule enforces that:
+विशेष रूप से, नियम लागू होता है:
 
-* Calls to Hooks are either inside a `PascalCase` function (assumed to be a component) or another `useSomething` function (assumed to be a custom Hook).
-* Hooks are called in the same order on every render.
+* हुक कॉल या तो एक `PascalCase` फ़ंक्शन (एक कॉम्पोनेन्ट माना जाता है) या किसी अन्य` useSomething` फ़ंक्शन (एक कस्टम हुक माना जाता है) के अंदर हैं।
+* हुक हर रेंडर पर एक ही क्रम में कॉल किया जाता है।
 
-There are a few more heuristics, and they might change over time as we fine-tune the rule to balance finding bugs with avoiding false positives.
+कुछ और आंकड़े हैं, और वे समय के साथ बदल सकते हैं क्योंकि हम झूठी सकारात्मकता से बचने के साथ बग को खोजने के लिए नियम को ठीक करते हैं।
 
-## From Classes to Hooks {#from-classes-to-hooks}
+## क्लासेज से हूक्स तक {#from-classes-to-hooks}
 
-### How do lifecycle methods correspond to Hooks? {#how-do-lifecycle-methods-correspond-to-hooks}
+### लाइफ साइकिल मेथड्स Hooks को कैसे करेस्पॉन्ड करते हैं? {#how-do-lifecycle-methods-correspond-to-hooks}
 
-* `constructor`: Function components don't need a constructor. You can initialize the state in the [`useState`](/docs/hooks-reference.html#usestate) call. If computing the initial state is expensive, you can pass a function to `useState`.
+* `constructor`: फ़ंक्शन कंपोनेंट्स को कंट्रक्टर की आवश्यकता नहीं है। आप [`useState`] (/ डॉक्स / हुक-संदर्भ.html # usestate) कॉल में इनिशियलाइज़ कर सकते हैं। यदि इनिशियल स्थिति की कंप्यूटिंग करना महंगा है, तो आप एक फ़ंक्शन को 'useState' में पास कर सकते हैं।
 
-* `getDerivedStateFromProps`: Schedule an update [while rendering](#how-do-i-implement-getderivedstatefromprops) instead.
+* `getDerivedStateFromProps`: इसके बजाय [रेंडर करते हुए](#how-do-i-implement-getderivedstatefromprops) को अपडेट शेड्यूल करें।
 
-* `shouldComponentUpdate`: See `React.memo` [below](#how-do-i-implement-shouldcomponentupdate).
+* `shouldComponentUpdate`: `React.memo` [देखें](#how-do-i-implement-shouldcomponentupdate).
 
-* `render`: This is the function component body itself.
+* `render`: यह फंक्शन कंपोनेंट बॉडी है.
 
 * `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`: The [`useEffect` Hook](/docs/hooks-reference.html#useeffect) can express all combinations of these (including [less](#can-i-skip-an-effect-on-updates) [common](#can-i-run-an-effect-only-on-updates) cases).
 
-* `getSnapshotBeforeUpdate`, `componentDidCatch` and `getDerivedStateFromError`: There are no Hook equivalents for these methods yet, but they will be added soon.
+* `getSnapshotBeforeUpdate`, `componentDidCatch` और `getDerivedStateFromError`: इन विधियों के लिए कोई हुक समकक्ष नहीं हैं, लेकिन उन्हें जल्द ही जोड़ दिया जाएगा।
 
-### How can I do data fetching with Hooks? {#how-can-i-do-data-fetching-with-hooks}
+### Hooks के द्वारा डाटा फेचिंग कैसे करें {#how-can-i-do-data-fetching-with-hooks}
 
-Here is a [small demo](https://codesandbox.io/s/jvvkoo8pq3) to get you started. To learn more, check out [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) about data fetching with Hooks.
+आपकी शुरुआत के लिए एक [छोटा डेमो](https://codesandbox.io/s/jvvkoo8pq3). अधिक जानने के लिए, हुक के साथ डेटा फेच के बारे में [यह लेख](https://www.robinwieruch.de/react-hooks-fetch-data/) देखें।
 
-### Is there something like instance variables? {#is-there-something-like-instance-variables}
+### या इंस्टैंस वेरिएबल की तरह कुछ है? {#is-there-something-like-instance-variables}
 
-Yes! The [`useRef()`](/docs/hooks-reference.html#useref) Hook isn't just for DOM refs. The "ref" object is a generic container whose `current` property is mutable and can hold any value, similar to an instance property on a class.
+हाँ, [useRef()](/docs/hooks-reference.html#useref) हुक केवल एक डॉम रेफ्स नहीं है। `ref` ऑब्जेक्ट एक सामान्य कंटेनर है, जिसका `current` प्रॉपर्टी परस्पर भिन्न होता है और किसी क्लास पर एक उदाहरण प्रॉपर्टी के समान किसी भी वैल्यू को होल्ड सकता है।
 
-You can write to it from inside `useEffect`:
+आप इसे `useEffect` के अंदर से लिख सकते हैं:
 
 ```js{2,8}
 function Timer() {
@@ -249,7 +249,7 @@ function Timer() {
 }
 ```
 
-If we just wanted to set an interval, we wouldn't need the ref (`id` could be local to the effect), but it's useful if we want to clear the interval from an event handler:
+अगर हम सिर्फ एक इंटरवल निर्धारित करना चाहते हैं, तो हमें रेफ की आवश्यकता नहीं होगी (`id` इफ़ेक्ट के लिए लोकल हो सकती है), लेकिन यह उपयोगी है अगर हम एक इवेंट  हैंडलर से इंटरवल को क्लियर करना चाहते हैं।:
 
 ```js{3}
   // ...
@@ -258,12 +258,11 @@ If we just wanted to set an interval, we wouldn't need the ref (`id` could be lo
   }
   // ...
 ```
+वैचारिक रूप से, आप किसी क्लास में वेरिएबल के समान रेफ के बारे में सोच सकते हैं। जब तक आप [लेज़ी इनिशियलएसशन](#how-to-create-expensive-objects-lazily) नहीं कर रहे हैं, रेंडरिंग के दौरान रिफ सेट करने से बचें - इससे आश्चर्यजनक व्यवहार हो सकता है। इसके बजाय, आमतौर पर आप ईवेंट हैंडलर और इफ़ेक्ट्स में Refs को संशोधित कर सकते हैं। 
 
-Conceptually, you can think of refs as similar to instance variables in a class. Unless you're doing [lazy initialization](#how-to-create-expensive-objects-lazily), avoid setting refs during rendering -- this can lead to surprising behavior. Instead, typically you want to modify refs in event handlers and effects.
+### एक या एक से ज्यादा स्टेट वेरिएबल का इस्तेमाल करना चाहिए? {#should-i-use-one-or-many-state-variables}
 
-### Should I use one or many state variables? {#should-i-use-one-or-many-state-variables}
-
-If you're coming from classes, you might be tempted to always call `useState()` once and put all state into a single object. You can do it if you'd like. Here is an example of a component that follows the mouse movement. We keep its position and size in the local state:
+यदि आप क्लासेज का यूज़ करते आ रहे हैं, तो आपको हमेशा एक बार `useState()` को कॉल करने और सभी स्टेट को एक ही ऑब्जेक्ट में डालने की कोशिश कर के सामान बिहेवियर पाने की कोशिश करनी चाहिए। आप चाहें तो ऐसा कर सकते हैं। यहां एक कॉम्पोनेन्ट का उदाहरण है जो माउस मूवमेंट  फॉलो करता है। हम इसकी पोजीशन और साइज को लोकल स्टेट में रखते हैं:
 
 ```js
 function Box() {
@@ -272,7 +271,7 @@ function Box() {
 }
 ```
 
-Now let's say we want to write some logic that changes `left` and `top` when the user moves their mouse. Note how we have to merge these fields into the previous state object manually:
+अब मान लें कि हम कुछ तर्क लिखना चाहते हैं जो यूजर के माउस को स्थानांतरित करने पर `left` और `top` बदलता है। ध्यान दें कि हमें इन फ़ील्ड्स को पिछली स्टेट  ऑब्जेक्ट में मैन्युअल रूप से कैसे मर्ज करना है:
 
 ```js{4,5}
   // ...
@@ -288,11 +287,11 @@ Now let's say we want to write some logic that changes `left` and `top` when the
   // ...
 ```
 
-This is because when we update a state variable, we *replace* its value. This is different from `this.setState` in a class, which *merges* the updated fields into the object.
+ऐसा इसलिए है क्योंकि जब हम किसी स्टेट वैरिएबल को अपडेट करते हैं, तो हम उसकी वैल्यू को *रिप्लेस* करते हैं। यह एक क्लास में `this.setState` से अलग है, जो ऑब्जेक्ट में अपडेटेड फ़ील्ड को *मर्ज* करता है।
 
-If you miss automatic merging, you could write a custom `useLegacyState` Hook that merges object state updates. However, **we recommend to split state into multiple state variables based on which values tend to change together.**
+यदि आप आटोमेटिक मर्जिंग को मिस करते हैं, तो आप एक कस्टम `useLegacyState` हुक लिख सकते हैं जो ऑब्जेक्ट स्टेट अपडेट को मर्ज करता है। हालाँकि, **हम स्टेट को कई स्टेट वेरिएबल में विभाजित करने की सलाह देते हैं जिसके आधार पर वैल्यू एक साथ बदलते हैं।**
 
-For example, we could split our component state into `position` and `size` objects, and always replace the `position` with no need for merging:
+उदाहरण के लिए, हम अपने कंपोनेंट स्टेट को `position` और `size` ऑब्जेक्ट्स में विभाजित कर सकते हैं, और हमेशा `position` को बदलने की आवश्यकता नहीं है:
 
 ```js{2,7}
 function Box() {
@@ -306,7 +305,7 @@ function Box() {
     // ...
 ```
 
-Separating independent state variables also has another benefit. It makes it easy to later extract some related logic into a custom Hook, for example:
+इंडिपेंडेंट स्टेट वेरिएबल को अलग करने का एक और लाभ भी है। उदाहरण के लिए, कस्टम हुक में बाद में कुछ संबंधित लॉजिक को एक्सट्रेक्ट करना आसान बनाता है:
 
 ```js{2,7}
 function Box() {
@@ -324,17 +323,17 @@ function useWindowPosition() {
 }
 ```
 
-Note how we were able to move the `useState` call for the `position` state variable and the related effect into a custom Hook without changing their code. If all state was in a single object, extracting it would be more difficult.
+ध्यान दें कि हम अपने कोड को बदले बिना एक कस्टम हुक में `position` स्टेट वेरिएबल और रिलेटेड इफ़ेक्ट के लिए `useState` कॉल को कैसे मूव करने में सक्षम थे। यदि सभी स्टेट एक ही ऑब्जेक्ट में थे, तो इसे निकालना अधिक कठिन होगा।
 
-Both putting all state in a single `useState` call, and having a `useState` call per each field can work. Components tend to be most readable when you find a balance between these two extremes, and group related state into a few independent state variables. If the state logic becomes complex, we recommend [managing it with a reducer](/docs/hooks-reference.html#usereducer) or a custom Hook.
+सभी स्टेट एक `useState` कॉल में रखने, और प्रत्येक फील्ड में एक `useState` कॉल, दोनों करने से काम चल सकता है। जब आप इन दो चरम सीमाओं और समूह से संबंधित स्टेट के बीच कुछ इंडिपेंडेंट स्टेट वेरिएबल में संतुलन पाते हैं, तो कॉम्पोनेन्ट सबसे अधिक रीडबल होते हैं। यदि स्टेट लॉजिक जटिल हो जाता है, तो हम इसे [रिड्यूसर के साथ मैनेज](/docs/hooks-reference.html#usereducer) या कस्टम हुक के साथ मैनेज करने की सलाह देते हैं।
 
-### Can I run an effect only on updates? {#can-i-run-an-effect-only-on-updates}
+### क्या इफेक्ट को सिर्फ उपडटेस के बाद इस्तेमाल करना चाहिए? {#can-i-run-an-effect-only-on-updates}
 
-This is a rare use case. If you need it, you can [use a mutable ref](#is-there-something-like-instance-variables) to manually store a boolean value corresponding to whether you are on the first or a subsequent render, then check that flag in your effect. (If you find yourself doing this often, you could create a custom Hook for it.)
+यह एक दुर्लभ उपयोग मामला है। यदि आपको इसकी आवश्यकता है, तो आप मैन्युअल रूप से बूलियन मान को स्टोर करने के लिए एक [म्यूटेबल रेफ का उपयोग](#is-there-something-like-instance-variables) कर सकते हैं, चाहे आप पहले या बाद के रेंडर पर हों, फिर उस फ्लैग को अपने प्रभाव में देखें। (यदि आप खुद को अक्सर ऐसा करते हुए पाते हैं, तो आप इसके लिए एक कस्टम हुक बना सकते हैं।)
 
-### How to get the previous props or state? {#how-to-get-the-previous-props-or-state}
+### पिछले प्रॉप्स या स्टेट को कैसे प्राप्त करें? {#how-to-get-the-previous-props-or-state}
 
-Currently, you can do it manually [with a ref](#is-there-something-like-instance-variables):
+वर्तमान में, आप इसे [रेफ के साथ](#is-there-something-like-instance-variables) मैन्युअल रूप से कर सकते हैं:
 
 ```js{6,8}
 function Counter() {
@@ -350,7 +349,7 @@ function Counter() {
 }
 ```
 
-This might be a bit convoluted but you can extract it into a custom Hook:
+यह थोड़ा जटिल हो सकता है लेकिन आप इसे कस्टम हुक में एक्सट्रेक्ट कर सकते हैं:
 
 ```js{3,7}
 function Counter() {
@@ -368,7 +367,7 @@ function usePrevious(value) {
 }
 ```
 
-Note how this would work for props, state, or any other calculated value.
+ध्यान दें कि यह प्रॉप्स , स्टेट या किसी अन्य कैलक्युलेटेड वैल्यू के लिए कैसे काम करेगा.
 
 ```js{5}
 function Counter() {
