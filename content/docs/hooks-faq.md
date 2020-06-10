@@ -712,9 +712,9 @@ function Counter() {
 
 अब, `setInterval` कॉलबैक एक सेकंड में एक बार एक्सेक्यूट करता है, लेकिन हर बार `सेटकाउंट` का इंटरनल कॉल `काउंट` के लिए अप-टू-डेट मान का उपयोग कर सकता है (जिसे कॉलबैक में `c` कहा जाता है)।
 
-In more complex cases (such as if one state depends on another state), try moving the state update logic outside the effect with the [`useReducer` Hook](/docs/hooks-reference.html#usereducer). [This article](https://adamrackis.dev/state-and-use-reducer/) offers an example of how you can do this. **The identity of the `dispatch` function from `useReducer` is always stable** — even if the reducer function is declared inside the component and reads its props.
+अधिक जटिल मामलों में (जैसे कि यदि एक स्टेट दूसरे स्टेट पर निर्भर करता है), तो [`useReducer` हुक](/docs/hooks-reference.html#usereducer) के इफ़ेक्ट के बाहर स्टेट अपडेट लॉजिक को मूव करने का प्रयास करें। [यह आलेख](https://adamrackis.dev/state-and-use-reducer/) एक उदाहरण प्रस्तुत करता है कि आप यह कैसे कर सकते हैं। **`useReducer` से `dispatch` फ़ंक्शन की पहचान हमेशा स्टेबल होती है** - भले ही रीड्यूसर फ़ंक्शन कॉम्पोनेन्ट के अंदर डिक्लेअर किया गया हो और इसके प्रॉप को रीड करता हो।
 
-As a last resort, if you want something like `this` in a class, you can [use a ref](/docs/hooks-faq.html#is-there-something-like-instance-variables) to hold a mutable variable. Then you can write and read to it. For example:
+एक अंतिम उपाय के रूप में, यदि आप एक क्लास में `this` जैसा कुछ चाहते हैं, तो आप एक मुतबल वेरिएबल को होल्ड करने के लिए [रेफ का उपयोग](/docs/hooks-faq.html#is-there-something-like-instance-variables) कर सकते हैं। फिर आप इसे रिड और राइट सकते हैं। उदाहरण के लिए:
 
 ```js{2-6,10-11,16}
 function Example(props) {
@@ -736,11 +736,11 @@ function Example(props) {
 }
 ```
 
-Only do this if you couldn't find a better alternative, as relying on mutation makes components less predictable. If there's a specific pattern that doesn't translate well, [file an issue](https://github.com/facebook/react/issues/new) with a runnable example code and we can try to help.
+ऐसा केवल तभी करें जब आप एक बेहतर विकल्प नहीं ढूंढ सकते हैं, क्योंकि म्यूटेशन पर निर्भर रहने से कंपोनेंट्स कम प्रेडिक्टेबल होते हैं। यदि कोई विशिष्ट पैटर्न है जो अच्छी तरह से ट्रांसलेट नहीं करता है, तो एक रनेबल उदाहरण कोड के साथ [एक समस्या दर्ज करें](https://github.com/facebook/react/issues/new) और हम मदद करने की कोशिश कर सकते हैं।
 
-### How do I implement `shouldComponentUpdate`? {#how-do-i-implement-shouldcomponentupdate}
+### shouldComponentUpdate कैसे इम्प्लीमेंट करें? {#how-do-i-implement-shouldcomponentupdate}
 
-You can wrap a function component with `React.memo` to shallowly compare its props:
+आप एक फंक्शन कॉम्पोनेन्ट को `React.memo` के साथ व्रैप कर के शैलो रूप से इसकी प्रॉप्स की तुलना कर सकते हैं:
 
 ```js
 const Button = React.memo((props) => {
@@ -748,11 +748,11 @@ const Button = React.memo((props) => {
 });
 ```
 
-It's not a Hook because it doesn't compose like Hooks do. `React.memo` is equivalent to `PureComponent`, but it only compares props. (You can also add a second argument to specify a custom comparison function that takes the old and new props. If it returns true, the update is skipped.)
+यह हुक नहीं है क्योंकि यह हुक की तरह कंपोज़ नहीं है। `React.memo` `PureComponent` के बराबर है, लेकिन यह केवल प्रॉप्स की तुलना करता है। (आप पुराने और नए प्रॉप्स लेने वाले कस्टम कंपरिसों फ़ंक्शन को स्पेसिफी करने के लिए दूसरा लॉजिक भी जोड़ सकते हैं। यदि यह सही है, तो अपडेट स्किप कर दिया जाता है।)
 
-`React.memo` doesn't compare state because there is no single state object to compare. But you can make children pure too, or even [optimize individual children with `useMemo`](/docs/hooks-faq.html#how-to-memoize-calculations).
+`React.memo` स्टेट की तुलना नहीं करता है क्योंकि तुलना करने के लिए कोई सिंगल स्टेट ऑब्जेक्ट नहीं है। लेकिन आप चिल्ड्रन  को प्योर भी बना सकते हैं, या [इंडिविजुअल चिल्ड्रन को भी `useMemo` के साथ ऑप्टिमाइज़ कर सकते हैं](/docs/hooks-faq.html#how-to-memoize-calculations)
 
-### How to memoize calculations? {#how-to-memoize-calculations}
+### कॅल्क्युलेशन्स को कैसे मेमोइज़ी करें? {#how-to-memoize-calculations}
 
 The [`useMemo`](/docs/hooks-reference.html#usememo) Hook lets you cache calculations between multiple renders by "remembering" the previous computation:
 
@@ -889,7 +889,7 @@ function TodosApp() {
 }
 ```
 
-Any child in the tree inside `TodosApp` can use the `dispatch` function to pass actions up to `TodosApp`:
+`TodosApp` के अंदर ट्री का कोई भी चाइल्ड  `TodosApp` में एक्शन को पास करने के लिए `dispatch` फ़ंक्शन का उपयोग कर सकता है:
 
 ```js{2,3}
 function DeepChild(props) {
@@ -906,7 +906,7 @@ function DeepChild(props) {
 }
 ```
 
-This is both more convenient from the maintenance perspective (no need to keep forwarding callbacks), and avoids the callback problem altogether. Passing `dispatch` down like this is the recommended pattern for deep updates.
+यह रखरखाव के दृष्टिकोण (कॉल फॉरवार्डिंग को रखने की कोई आवश्यकता नहीं) से अधिक सुविधाजनक है, और कॉलबैक समस्या से पूरी तरह से बचाता है। इस तरह से `dispatch` को पास करना डीप अपडेट के लिए रेकमेण्डेड पैटर्न है।
 
 Note that you can still choose whether to pass the application *state* down as props (more explicit) or as context (more convenient for very deep updates). If you use context to pass down the state too, use two different context types -- the `dispatch` context never changes, so components that read it don't need to rerender unless they also need the application state.
 
@@ -943,7 +943,7 @@ function Form() {
 }
 ```
 
-This is a rather convoluted pattern but it shows that you can do this escape hatch optimization if you need it. It's more bearable if you extract it to a custom Hook:
+यह बल्कि एक जटिल पैटर्न है, लेकिन यह दिखाता है कि यदि आपको इसकी ज़रूरत है तो आप यह एस्केप हैच ऑप्टिमाइजेशन कर सकते हैं। यदि आप इसे कस्टम हुक में एक्सट्रेक्ट करते हैं तो यह अधिक अच्छा है:
 
 ```js{4,16}
 function Form() {
@@ -977,20 +977,20 @@ function useEventCallback(fn, dependencies) {
 }
 ```
 
-In either case, we **don't recommend this pattern** and only show it here for completeness. Instead, it is preferable to [avoid passing callbacks deep down](#how-to-avoid-passing-callbacks-down).
+किसी भी स्थिति में, हम **इस पैटर्न की सिफारिश नहीं करते हैं** और केवल इसे पूर्णता के लिए यहां दिखाते हैं। इसके बजाय,  [डीप कॉलबैक से गुजरने से बचना ](#how-to-avoid-passing-callbacks-down) बेहतर है।
 
 
-## Under the Hood {#under-the-hood}
+## अंडर द हुड {#under-the-hood}
 
-### How does React associate Hook calls with components? {#how-does-react-associate-hook-calls-with-components}
+### React एसोसिएट हुक कंपोनेंट्स के साथ कैसे कॉल करता है?  {#how-does-react-associate-hook-calls-with-components}
 
 React keeps track of the currently rendering component. Thanks to the [Rules of Hooks](/docs/hooks-rules.html), we know that Hooks are only called from React components (or custom Hooks -- which are also only called from React components).
 
 There is an internal list of "memory cells" associated with each component. They're just JavaScript objects where we can put some data. When you call a Hook like `useState()`, it reads the current cell (or initializes it during the first render), and then moves the pointer to the next one. This is how multiple `useState()` calls each get independent local state.
 
-### What is the prior art for Hooks? {#what-is-the-prior-art-for-hooks}
+### हुक के लिए पूर्व क्या है? {#what-is-the-prior-art-for-hooks}
 
-Hooks synthesize ideas from several different sources:
+हुक कई अलग-अलग स्रोतों से विचारों का संश्लेषण करते हैं:
 
 * Our old experiments with functional APIs in the [react-future](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) repository.
 * React community's experiments with render prop APIs, including [Ryan Florence](https://github.com/ryanflorence)'s [Reactions Component](https://github.com/reactions/component).
