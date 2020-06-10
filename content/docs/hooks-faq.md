@@ -415,6 +415,7 @@ function Example() {
 यदि आप जानबूझकर कुछ असिंक्रोनोस कॉलबैक से *लेटेस्ट* स्टेट पढ़ना चाहते हैं, तो आप इसे [एक रेफ](/docs/hooks-faq.html#is-there-something-like-instance-variables) में रख सकते हैं, इसे mutate कर, और पढ़ सकते हैं।
 
 अंत में, एक और संभावित कारण जो आप स्टेल प्रॉप्स या स्टेट देख रहे हैं यदि आप "डिपेंडेंसी ऐरे" ऑप्टिमाइजेशन का उपयोग करते हैं, लेकिन सभी डेपेंडेंसीएस को सही ढंग से निर्दिष्ट नहीं करते हैं। उदाहरण के लिए, यदि कोई इफ़ेक्ट दूसरे आर्गुमेंट  के रूप में  `[]` को निर्दिष्ट करता है, लेकिन `someProp` को अंदर पढ़ता है, तो यह `someProp` के इनिशियल वैल्यू को "देखता" रहेगा। समाधान या तो डिपेंडेंसी ऐरे को हटाने के लिए है, या इसे ठीक करने के लिए है। यहां बताया गया है कि आप [फ़ंक्शंस से कैसे डील कर सकते हैं](#is-it-safe-to-omit-functions-from-the-list-of-dependencies), और यहाँ गलत तरीके से डेपेंडेन्सीज़ को कम करने के बिना इफ़ेक्ट को रन करने के लिए [अन्य आम स्ट्रेटेजीज](#what-can-i-do-if-my-effect-dependencies-change-too-often) हैं।
+
 > ध्यान दें
 >
 > हम [`एक्सहॉस्टिव-डिप्स`](https://github.com/facebook/react/issues/14920) ESLint नियम [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) पैकेज के एक भाग के रूप में प्रदान करते हैं।जब डेपेंडेन्सीज़ गलत तरीके से निर्दिष्ट की जाती है यह चेतावनी और एक फिक्स का सुझाव देती है।
@@ -486,13 +487,13 @@ function MeasureExample() {
 }
 ```
 
-We didn't choose `useRef` in this example because an object ref doesn't notify us about *changes* to the current ref value. Using a callback ref ensures that [even if a child component displays the measured node later](https://codesandbox.io/s/818zzk8m78) (e.g. in response to a click), we still get notified about it in the parent component and can update the measurements.
+हमने इस उदाहरण में `useRef` का चयन नहीं किया है क्योंकि कोई ऑब्जेक्ट रेफ हमें करंट रेफ वैल्यू के लिए *चेंज* के बारे में सूचित नहीं करता है। [भले ही एक चाइल्ड कॉम्पोनेन्ट मेझड नोड को बाद में प्रदर्शित करता है(https://codesandbox.io/s/818zzk8m78) कॉलबैक रेफ का उपयोग यह सुनिश्चित करता है, (उदहारण । एक क्लिक के रिस्पांस में ), हम अभी भी पैरेंट कॉम्पोनेन्ट में इसके बारे में सूचित रहते हैं और मासुरेमेन्ट्स को अपडेट कर सकते हैं।
 
-Note that we pass `[]` as a dependency array to `useCallback`. This ensures that our ref callback doesn't change between the re-renders, and so React won't call it unnecessarily.
+ध्यान दें कि हम `[]` को एक डिपेंडेंसी ऐरे के रूप में `useCallback` पास करते हैं। यह सुनिश्चित करता है कि री-रेंडरर्स के बीच हमारा रेफ कॉलबैक न बदले, और इसलिए React इसे अनावश्यक रूप से कॉल नहीं करेगा।
 
-In this example, the callback ref will be called only when the component mounts and unmounts, since the rendered `<h1>` component stays present throughout any rerenders. If you want to be notified any time a component resizes, you may want to use [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) or a third-party Hook built on it.
+इस उदाहरण में, कॉलबैक रेफ केवल तभी कॉल होगा जब कॉम्पोनेन्ट माउंट और अनमाउंट करता है, क्योंकि रेंडर किए गए `<h1>`कॉम्पोनेन्ट किसी भी रेंडरर्स में मौजूद रहता है। यदि आप किसी भी समय किसी कॉम्पोनेन्ट का साइज बदलना चाहते हैं, तो आप [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) या उस पर बने हुए किसी थर्ड पार्टी हुक का उपयोग कर सकते हैं।
 
-If you want, you can [extract this logic](https://codesandbox.io/s/m5o42082xy) into a reusable Hook:
+यदि आप चाहें, तो आप इस [लॉजिक को एक रीयूज़बल हुक में एक्सट्रेक्ट](https://codesandbox.io/s/m5o42082xy) कर सकते हैं:
 
 ```js{2}
 function MeasureExample() {
@@ -519,20 +520,20 @@ function useClientRect() {
 ```
 
 
-### What does `const [thing, setThing] = useState()` mean? {#what-does-const-thing-setthing--usestate-mean}
+### const [thing, setThing क्या करते हैं] = useState() mean? {#what-does-const-thing-setthing--usestate-mean}
 
-If you're not familiar with this syntax, check out the [explanation](/docs/hooks-state.html#tip-what-do-square-brackets-mean) in the State Hook documentation.
+यदि आप इस सिंटेक्स से परिचित नहीं हैं, तो स्टेट हुक डॉक्यूमेंटेशन में [स्पष्टीकरण](/docs/hooks-state.html#tip-what-do-square-brackets-mean) देखें।
 
 
-## Performance Optimizations {#performance-optimizations}
+## परफॉरमेंस ऑप्टिमिजाशंस {#performance-optimizations}
 
-### Can I skip an effect on updates? {#can-i-skip-an-effect-on-updates}
+### क्या अपडेट पर एक इफ़ेक्ट स्किप कर सकते हैं? {#can-i-skip-an-effect-on-updates}
 
-Yes. See [conditionally firing an effect](/docs/hooks-reference.html#conditionally-firing-an-effect). Note that forgetting to handle updates often [introduces bugs](/docs/hooks-effect.html#explanation-why-effects-run-on-each-update), which is why this isn't the default behavior.
+हाँ। [कण्डीशनली इफ़ेक्ट फायरिंग देखें](/docs/hooks-reference.html#conditionally-firing-an-effect)। ध्यान दें कि अपडेट को हैंडल न करने की भूल अक्सर [बग का कारण](/docs/hooks-effect.html#explanation-why-effects-run-on-each-update) बनती है, यही कारण है कि यह डिफ़ॉल्ट बिहेवियर नहीं है।
 
-### Is it safe to omit functions from the list of dependencies? {#is-it-safe-to-omit-functions-from-the-list-of-dependencies}
+### क्या डेपेंडेन्सीज़ की सूची से फंक्शन्स को छोड़ना सुरक्षित है? {#is-it-safe-to-omit-functions-from-the-list-of-dependencies}
 
-Generally speaking, no.
+सामान्यतया, नहीं।
 
 ```js{3,8}
 function Example({ someProp }) {
@@ -546,7 +547,7 @@ function Example({ someProp }) {
 }
 ```
 
-It's difficult to remember which props or state are used by functions outside of the effect. This is why **usually you'll want to declare functions needed by an effect *inside* of it.** Then it's easy to see what values from the component scope that effect depends on:
+यह याद रखना मुश्किल है कि कौन से प्रॉप्स या स्टेट इफ़ेक्ट बाहर के कार्यों द्वारा उपयोग किए जाते हैं। यही कारण है कि **आमतौर पर आप इसके अंदर** के एक इफ़ेक्ट द्वारा आवश्यक फंक्शन को डिक्लेअर करना चाहते हैं। **फिर यह देखना आसान है कि कॉम्पोनेन्ट स्कोप कौन से इफ़ेक्ट पर निर्भर करता है:
 
 ```js{4,8}
 function Example({ someProp }) {
@@ -560,7 +561,7 @@ function Example({ someProp }) {
 }
 ```
 
-If after that we still don't use any values from the component scope, it's safe to specify `[]`:
+यदि उसके बाद भी हम कॉम्पोनेन्ट के दायरे से किसी भी वैल्यू का उपयोग नहीं करते हैं, तो यह `[]` निर्दिष्ट करना सुरक्षित है:
 
 ```js{7}
 useEffect(() => {
@@ -574,15 +575,15 @@ useEffect(() => {
 
 Depending on your use case, there are a few more options described below.
 
->Note
+> ध्यान दें
 >
->We provide the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint rule as a part of the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It helps you find components that don't handle updates consistently.
+> हम [`एक्सहॉस्टिव-डिप्स`](https://github.com/facebook/react/issues/14920) ESLint नियम [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) पैकेज के एक भाग के रूप में प्रदान करते हैं।जब डेपेंडेन्सीज़ गलत तरीके से निर्दिष्ट की जाती है यह चेतावनी और एक फिक्स का सुझाव देती है।
 
-Let's see why this matters.
+आइए देखें कि यह क्यों मायने रखता है।
 
-If you specify a [list of dependencies](/docs/hooks-reference.html#conditionally-firing-an-effect) as the last argument to `useEffect`, `useMemo`, `useCallback`, or `useImperativeHandle`, it must include all values that are used inside the callback and participate in the React data flow. That includes props, state, and anything derived from them.
+यदि आप [डेपेंडेन्सीज़ की एक सूची](/docs/hooks-reference.html#conditionally-firing-an-effect) को `useEffect`,`useMemo`, `useCallback` या `useImperativeHandle` के अंतिम आर्गूमेंट के रूप में स्पेसिफी करते हैं, तो इसमें कॉलबैक के अंदर उपयोग किए जाने वाले सभी वैल्यू और रिएक्ट डेटा फ्लो में शामिल होना चाहिए। जिसमें प्रॉप्स, स्टेट और उनसे डेरिवेद कुछ भी शामिल है।
 
-It is **only** safe to omit a function from the dependency list if nothing in it (or the functions called by it) references props, state, or values derived from them. This example has a bug:
+यह **केवल** निर्भरता सूची से किसी फ़ंक्शन को छोड़ने के लिए सुरक्षित है अगर इसमें कुछ भी नहीं (या इसके द्वारा कॉल किये गए फंक्शन्स) रेफरेन्सेस, स्टेट, या उनसे प्राप्त वैल्यूज को संदर्भित करता है। इस उदाहरण में एक बग है:
 
 ```js{5,12}
 function ProductPage({ productId }) {
@@ -601,7 +602,7 @@ function ProductPage({ productId }) {
 }
 ```
 
-**The recommended fix is to move that function _inside_ of your effect**. That makes it easy to see which props or state your effect uses, and to ensure they're all declared:
+**रेकमेंडेड फ़िक्स उस फ़ंक्शन को आपके प्रभाव के _inside_ मूव करने के लिए है**। यही कारण है कि यह सुनिश्चित करता है के आपके स्टेट और प्रॉप्स सभी घोषित है और आप आसानी से देख सकें की वो कौन सा इफ़ेक्ट यूज़ कर रहे हैं:
 
 ```js{5-10,13}
 function ProductPage({ productId }) {
@@ -621,7 +622,7 @@ function ProductPage({ productId }) {
 }
 ```
 
-This also allows you to handle out-of-order responses with a local variable inside the effect:
+यह आपको इफ़ेक्ट के अंदर एक लोकल वेरिएबल के साथ आउट-ऑफ-ऑर्डर रेस्पॉन्सेस को संभालने की अनुमति देता है:
 
 ```js{2,6,10}
   useEffect(() => {
@@ -637,17 +638,17 @@ This also allows you to handle out-of-order responses with a local variable insi
   }, [productId]);
 ```
 
-We moved the function inside the effect so it doesn't need to be in its dependency list.
+हमने फ़ंक्शन को प्रभाव के अंदर मूव कर दिया है, इसलिए इसकी डिपेंडेंसी लिस्ट में होने की आवश्यकता नहीं है।
 
->Tip
+>टिप
 >
->Check out [this small demo](https://codesandbox.io/s/jvvkoo8pq3) and [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) to learn more about data fetching with Hooks.
+>हुक के साथ डेटा फेच के बारे में अधिक जानने के लिए [इस छोटे डेमो](https://codesandbox.io/s/jvvkoo8pq3) और [इस लेख](https://www.robinwieruch.de/react-hooks-fetch-data/) को देखें।
 
-**If for some reason you _can't_ move a function inside an effect, there are a few more options:**
+**यदि किसी कारण से आप किसी इफ़ेक्ट के अंदर फ़ंक्शन को मूव __नहीं__ कर पाते, तो कुछ और विकल्प हैं:**
 
-* **You can try moving that function outside of your component**. In that case, the function is guaranteed to not reference any props or state, and also doesn't need to be in the list of dependencies.
-* If the function you're calling is a pure computation and is safe to call while rendering, you may **call it outside of the effect instead,** and make the effect depend on the returned value.
-* As a last resort, you can **add a function to effect dependencies but _wrap its definition_** into the [`useCallback`](/docs/hooks-reference.html#usecallback) Hook. This ensures it doesn't change on every render unless *its own* dependencies also change:
+* **आप उस फ़ंक्शन को अपने कॉम्पोनेन्ट के बाहर मूव करने का प्रयास कर सकते हैं**. उस मामले में, फ़ंक्शन को किसी भी प्रॉप्स या स्टेट का संदर्भ नहीं देने की गारंटी है, और डेपेंडेन्सीज़ लिस्ट में होने की भी आवश्यकता नहीं है।
+* यदि आप जिस फ़ंक्शन को कॉल कर रहे हैं वह एक प्योर कम्प्यूटेशन है और रेंडर करते समय कॉल करना सुरक्षित है, तो आप इसे **इफ़ेक्ट के बाहर से कॉल कर सकते है** और इफ़ेक्ट को रिटर्न्ड वैल्यू पर आश्रित बना सकते हैं।
+* एक अंतिम उपाय के रूप में, आप **इफ़ेक्ट डेपेंडेन्सीज़ में एक फंक्शन जोड़ सकते हैं लेकिन _इसकी डेफिनिशन को_ [`useCallback`](/docs/hooks-reference.html#usecallback) हुक में व्रैप करें**। यह सुनिश्चित करता है कि यह हर रेंडर पर तब तक न बदले जब तक कि इसकी *अपनी* डेपेंडेन्सीज़ न बदल जाएँ:
 
 ```js{2-5}
 function ProductPage({ productId }) {
@@ -667,7 +668,7 @@ function ProductDetails({ fetchProduct }) {
 }
 ```
 
-Note that in the above example we **need** to keep the function in the dependencies list. This ensures that a change in the `productId` prop of `ProductPage` automatically triggers a refetch in the `ProductDetails` component.
+ध्यान दें कि उपरोक्त उदाहरण में हमें फ़ंक्शन को डेपेंडेन्सीज़ लिस्ट में रखने की **आवश्यकता** है। यह सुनिश्चित करता है कि `ProductPd` के` productId` प्रोप में एक परिवर्तन `ProductDetails` कॉम्पोनेन्ट में ऑटोमेटिकली रीफ़ेच को ट्रिगर करता है।
 
 ### What can I do if my effect dependencies change too often? {#what-can-i-do-if-my-effect-dependencies-change-too-often}
 
