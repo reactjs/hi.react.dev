@@ -440,13 +440,14 @@ function ScrollView({row}) {
 }
 ```
 
-यह पहली बार में अजीब लग सकता है, लेकिन रेंडरिंग के दौरान `getDerivedStateFromProps` एक अपडेट हमेशा कन्सेप्तुअली रूप से पसंद किया गया है।
+यह पहली बार में अजीब लग सकता है, लेकिन रेंडरिंग के दौरान वास्तव में `getDerivedStateFromProps` हमेशा कन्सेप्तुअली एक अपडेट जैसा रहा है।
 
-### Is there something like forceUpdate? {#is-there-something-like-forceupdate}
+### क्या forceUpdate जैसा कुछ है? {#is-there-something-like-forceupdate}
 
-Both `useState` and `useReducer` Hooks [bail out of updates](/docs/hooks-reference.html#bailing-out-of-a-state-update) if the next value is the same as the previous one. Mutating state in place and calling `setState` will not cause a re-render.
+दोनों `useState` और `useReducer` हुक्स अपडेट की [जमानत नहीं करते](/docs/hooks-reference.html#bailing-out-of-a-state-update) अगर पिछली और अगली वैल्यू सामान है। मुतातिंग स्टेट और `setState` को कॉल करने से पुन: रेंडर नहीं होगा।
 
-Normally, you shouldn't mutate local state in React. However, as an escape hatch, you can use an incrementing counter to force a re-render even if the state has not changed:
+
+आम तौर पर, आपको रियेक्ट में लोकल स्टेट में बदलाव नहीं करना चाहिए। हालाँकि, बचाव के रूप में, आप एक फिर से रेंडर करने के लिए एक इंक्रीमेंटिंग काउंटर का उपयोग कर सकते हैं, भले ही स्टेट में कोई बदलाव न हो:
 
 ```js
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
@@ -456,15 +457,15 @@ Normally, you shouldn't mutate local state in React. However, as an escape hatch
   }
 ```
 
-Try to avoid this pattern if possible.
+यदि संभव हो तो इस पैटर्न से बचने की कोशिश करें
 
-### Can I make a ref to a function component? {#can-i-make-a-ref-to-a-function-component}
+### क्या फंक्शन कम्पोनेंट क लिए ref बना सकते हैं? {#can-i-make-a-ref-to-a-function-component}
 
-While you shouldn't need this often, you may expose some imperative methods to a parent component with the [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) Hook.
+आपको अक्सर इसकी आवश्यकता नहीं होती है, तो आप कुछ इम्पेरेटिव मेथड को किसी पैरेंट कॉम्पोनेन्ट के साथ [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) हुक एक्सपोज़ कर सकते हैं।
 
 ### How can I measure a DOM node? {#how-can-i-measure-a-dom-node}
 
-One rudimentary way to measure the position or size of a DOM node is to use a [callback ref](/docs/refs-and-the-dom.html#callback-refs). React will call that callback whenever the ref gets attached to a different node. Here is a [small demo](https://codesandbox.io/s/l7m0v5x4v9):
+एक DOM नोड की पोजीशन या साइज को मैसूर करने के लिए एक रुड़ीमेंटरी तरीका [कॉलबैक रिफ](/docs/refs-and-the-dom.html#callback-refs) का उपयोग करना है। जब भी रेफ एक अलग नोड से जुड़ जाता है तो React उस कॉलबैक को कॉल करेगा। यहाँ एक [छोटा डेमो है](https://codesandbox.io/s/l7m0v5x4v9):
 
 ```js{4-8,12}
 function MeasureExample() {
