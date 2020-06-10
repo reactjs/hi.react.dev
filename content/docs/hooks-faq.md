@@ -102,7 +102,7 @@ prev: hooks-reference.html
 
 ### क्या Hooks रेंडर प्रॉप्स और हायर आर्डर कंपोनेंट्स को रेप्लस करता है? {#do-hooks-replace-render-props-and-higher-order-components}
 
-अक्सर, प्रॉप्स और उच्च-क्रम के कॉम्पोनेन्ट केवल एक ही चाइल्ड को प्रस्तुत करते हैं। हमें लगता है कि हुक इस उपयोग के मामले को पूरा करने का एक सरल तरीका है। दोनों पैटर्न के लिए अभी भी एक जगह है (उदाहरण के लिए, एक वर्चुअल स्कॉलर कंपोनेंट में एक `renderItem` 'प्रोप हो सकता है, या एक विज़ुअल कंटेनर कंपोनेंट की अपनी DOM स्ट्रक्चर हो सकती है)। लेकिन ज्यादातर मामलों में, हुक पर्याप्त होंगे और आपके ट्री में नेस्टिंग काम करने में मदद करेंगे।
+अक्सर, प्रॉप्स और उच्च-क्रम के कॉम्पोनेन्ट केवल एक ही चाइल्ड को प्रस्तुत करते हैं। हमें लगता है कि हुक इस उपयोग के मामले को पूरा करने का एक सरल तरीका है। दोनों पैटर्न के लिए अभी भी एक जगह है (उदाहरण के लिए, एक वर्चुअल स्कॉलर कंपोनेंट में एक `renderItem` प्रोप हो सकता है, या एक विज़ुअल कंटेनर कंपोनेंट की अपनी DOM स्ट्रक्चर हो सकती है)। लेकिन ज्यादातर मामलों में, हुक पर्याप्त होंगे और आपके ट्री में नेस्टिंग कम करने में मदद करेंगे।
 
 ### पॉपुलर APIs जैसे Redux connect() और React Router के लिए रियेक्ट के मायने? {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}
 
@@ -221,7 +221,7 @@ it('can render and update a counter', () => {
 
 * `getSnapshotBeforeUpdate`, `componentDidCatch` और `getDerivedStateFromError`: इन विधियों के लिए कोई हुक समकक्ष नहीं हैं, लेकिन उन्हें जल्द ही जोड़ दिया जाएगा।
 
-### Hooks के द्वारा डाटा फेचिंग कैसे करें {#how-can-i-do-data-fetching-with-hooks}
+### Hooks के द्वारा डाटा फेचिंग कैसे करें? {#how-can-i-do-data-fetching-with-hooks}
 
 आपकी शुरुआत के लिए एक [छोटा डेमो](https://codesandbox.io/s/jvvkoo8pq3). अधिक जानने के लिए, हुक के साथ डेटा फेच के बारे में [यह लेख](https://www.robinwieruch.de/react-hooks-fetch-data/) देखें।
 
@@ -271,7 +271,7 @@ function Box() {
 }
 ```
 
-अब मान लें कि हम कुछ तर्क लिखना चाहते हैं जो यूजर के माउस को स्थानांतरित करने पर `left` और `top` बदलता है। ध्यान दें कि हमें इन फ़ील्ड्स को पिछली स्टेट  ऑब्जेक्ट में मैन्युअल रूप से कैसे मर्ज करना है:
+अब मान लें कि हम कुछ तर्क लिखना चाहते हैं जो यूजर के माउस को स्थानांतरित करने पर `left` और `top` बदलता है। ध्यान दें कि हमें इन फ़ील्ड्स को पिछली स्टेट ऑब्जेक्ट में मैन्युअल रूप से कैसे मर्ज करना है:
 
 ```js{4,5}
   // ...
@@ -367,7 +367,7 @@ function usePrevious(value) {
 }
 ```
 
-ध्यान दें कि यह प्रॉप्स , स्टेट या किसी अन्य कैलक्युलेटेड वैल्यू के लिए कैसे काम करेगा.
+ध्यान दें कि यह प्रॉप्स, स्टेट या किसी अन्य कैलक्युलेटेड वैल्यू के लिए कैसे काम करेगा
 
 ```js{5}
 function Counter() {
@@ -378,13 +378,13 @@ function Counter() {
   // ...
 ```
 
-It's possible that in the future React will provide a `usePrevious` Hook out of the box since it's a relatively common use case.
+यह संभव है कि भविष्य में रिएक्ट लीक से हटकर एक `usePrevious` प्रदान करेगा क्योंकि यह अपेक्षाकृत सामान्य उपयोग का मामला है।
 
-See also [the recommended pattern for derived state](#how-do-i-implement-getderivedstatefromprops).
+[डेरिवेद स्टेट के लिए अनुशंसित पैटर्न](#how-do-i-implement-getderivedstatefromprops) भी देखें.
 
-### Why am I seeing stale props or state inside my function? {#why-am-i-seeing-stale-props-or-state-inside-my-function}
+### पुराने स्टेट्स और प्रॉप्स का फंक्शन में दिखने का क्या मतलब है? {#why-am-i-seeing-stale-props-or-state-inside-my-function}
 
-Any function inside a component, including event handlers and effects, "sees" the props and state from the render it was created in. For example, consider code like this:
+एक कॉम्पोनेन्ट के अंदर कोई भी कार्य, जिसमें ईवेंट हैंडलर और इफेक्ट्स शामिल हैं, प्रॉप्स को "रेंडर" करता है और रेंडर से स्टेट करता है कि यह किस तरह से बनाया गया था। उदाहरण के लिए, इस तरह कोड पर विचार करें।:
 
 ```js
 function Example() {
@@ -410,21 +410,20 @@ function Example() {
 }
 ```
 
-If you first click "Show alert" and then increment the counter, the alert will show the `count` variable **at the time you clicked the "Show alert" button**. This prevents bugs caused by the code assuming props and state don't change.
+यदि आप पहले "अलर्ट दिखाएं" पर क्लिक करते हैं और फिर काउंटर को बढ़ाते हैं, **जब आपने "अलर्ट दिखाएं" बटन पर क्लिक किया था तो अलर्ट `काउंट` वेरिएबल** दिखाएगा। यह कोड की वजह से बग को रोकता है, जो अनुमान लगाता है कि प्रॉप्स और स्टेट नहीं बदलते हैं।
 
-If you intentionally want to read the *latest* state from some asynchronous callback, you could keep it in [a ref](/docs/hooks-faq.html#is-there-something-like-instance-variables), mutate it, and read from it.
+यदि आप जानबूझकर कुछ असिंक्रोनोस कॉलबैक से *लेटेस्ट* स्टेट पढ़ना चाहते हैं, तो आप इसे [एक रेफ](/docs/hooks-faq.html#is-there-something-like-instance-variables) में रख सकते हैं, इसे mutate कर, और पढ़ सकते हैं।
 
-Finally, another possible reason you're seeing stale props or state is if you use the "dependency array" optimization but didn't correctly specify all the dependencies. For example, if an effect specifies `[]` as the second argument but reads `someProp` inside, it will keep "seeing" the initial value of `someProp`. The solution is to either remove the dependency array, or to fix it. Here's [how you can deal with functions](#is-it-safe-to-omit-functions-from-the-list-of-dependencies), and here's [other common strategies](#what-can-i-do-if-my-effect-dependencies-change-too-often) to run effects less often without incorrectly skipping dependencies.
-
->Note
+अंत में, एक और संभावित कारण जो आप स्टेल प्रॉप्स या स्टेट देख रहे हैं यदि आप "डिपेंडेंसी ऐरे" ऑप्टिमाइजेशन का उपयोग करते हैं, लेकिन सभी डेपेंडेंसीएस को सही ढंग से निर्दिष्ट नहीं करते हैं। उदाहरण के लिए, यदि कोई इफ़ेक्ट दूसरे आर्गुमेंट  के रूप में  `[]` को निर्दिष्ट करता है, लेकिन `someProp` को अंदर पढ़ता है, तो यह `someProp` के इनिशियल वैल्यू को "देखता" रहेगा। समाधान या तो डिपेंडेंसी ऐरे को हटाने के लिए है, या इसे ठीक करने के लिए है। यहां बताया गया है कि आप [फ़ंक्शंस से कैसे डील कर सकते हैं](#is-it-safe-to-omit-functions-from-the-list-of-dependencies), और यहाँ गलत तरीके से डेपेंडेन्सीज़ को कम करने के बिना इफ़ेक्ट को रन करने के लिए [अन्य आम स्ट्रेटेजीज](#what-can-i-do-if-my-effect-dependencies-change-too-often) हैं।
+> ध्यान दें
 >
->We provide an [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint rule as a part of the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
+> हम [`एक्सहॉस्टिव-डिप्स`](https://github.com/facebook/react/issues/14920) ESLint नियम [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) पैकेज के एक भाग के रूप में प्रदान करते हैं।जब डेपेंडेन्सीज़ गलत तरीके से निर्दिष्ट की जाती है यह चेतावनी और एक फिक्स का सुझाव देती है।
 
-### How do I implement `getDerivedStateFromProps`? {#how-do-i-implement-getderivedstatefromprops}
+### getDerivedStateFromProps कैसे इम्प्लीमेंट करें? {#how-do-i-implement-getderivedstatefromprops}
 
-While you probably [don't need it](/blog/2018/06/07/you-probably-dont-need-derived-state.html), in rare cases that you do (such as implementing a `<Transition>` component), you can update the state right during rendering. React will re-run the component with updated state immediately after exiting the first render so it wouldn't be expensive.
+आपको शायद [इसकी आवश्यकता नहीं है](/blog/2018/06/07/you-probably-dont-need-derived-state.html), दुर्लभ मामलों में (जैसे कि एक `<Transition>` कॉम्पोनेन्ट) को लागू करना, आप रेंडरिंग के दौरान स्टेट को सही अपडेट कर सकते हैं। रियेक्ट पहले रेंडर से बाहर निकलने के तुरंत बाद अपडेटेड स्टेट के साथ कॉम्पोनेन्ट को फिर से रन करेगा ताकि यह एक्सपेंसिव प्रोसेस न हो।
 
-Here, we store the previous value of the `row` prop in a state variable so that we can compare:
+यहां, हम एक स्टेट वेरिएबल में `रो` प्रोप के पिछले वैल्यू को स्टोर करते हैं ताकि हम तुलना कर सकें:
 
 ```js
 function ScrollView({row}) {
@@ -441,7 +440,7 @@ function ScrollView({row}) {
 }
 ```
 
-This might look strange at first, but an update during rendering is exactly what `getDerivedStateFromProps` has always been like conceptually.
+यह पहली बार में अजीब लग सकता है, लेकिन रेंडरिंग के दौरान `getDerivedStateFromProps` एक अपडेट हमेशा कन्सेप्तुअली रूप से पसंद किया गया है।
 
 ### Is there something like forceUpdate? {#is-there-something-like-forceupdate}
 
