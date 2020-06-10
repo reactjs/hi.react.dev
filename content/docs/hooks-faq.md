@@ -670,9 +670,9 @@ function ProductDetails({ fetchProduct }) {
 
 ध्यान दें कि उपरोक्त उदाहरण में हमें फ़ंक्शन को डेपेंडेन्सीज़ लिस्ट में रखने की **आवश्यकता** है। यह सुनिश्चित करता है कि `ProductPd` के` productId` प्रोप में एक परिवर्तन `ProductDetails` कॉम्पोनेन्ट में ऑटोमेटिकली रीफ़ेच को ट्रिगर करता है।
 
-### What can I do if my effect dependencies change too often? {#what-can-i-do-if-my-effect-dependencies-change-too-often}
+### इफ़ेक्ट डेपेंडेन्सीज़ के बार बार बदलने की दशा में क्या करें? {#what-can-i-do-if-my-effect-dependencies-change-too-often}
 
-Sometimes, your effect may be using state that changes too often. You might be tempted to omit that state from a list of dependencies, but that usually leads to bugs:
+कभी-कभी, आपका इफ़ेक्ट उस स्टेट का यूज़ कर करता है जो बहुत बार बदलता है। आप उस स्टेट को एक डिपेंडेंसी लिस्ट से छोड़ सकते हैं, लेकिन आमतौर पर ऐसा करना कोड में बग्स लाता है:
 
 ```js{6,9}
 function Counter() {
@@ -689,9 +689,9 @@ function Counter() {
 }
 ```
 
-The empty set of dependencies, `[]`, means that the effect will only run once when the component mounts, and not on every re-render. The problem is that inside the `setInterval` callback, the value of `count` does not change, because we've created a closure with the value of `count` set to `0` as it was when the effect callback ran. Every second, this callback then calls `setCount(0 + 1)`, so the count never goes above 1.
+डेपेंडेन्सीज़ के खाली सेट, `[]` का मतलब है कि इफ़ेक्ट केवल एक बार चलेगा जब कॉम्पोनेन्ट माउंट होगा, न कि प्रत्येक पुन: रेंडर पर। समस्या यह है कि `setInterval` कॉलबैक के अंदर, `काउंट` का मान नहीं बदलता है, क्योंकि हमने `0` सेट के मान के साथ एक क्लोजर बनाया है क्योंकि यह तब था जब इफेक्ट कॉलबैक चला। हर सेकंड, यह कॉलबैक फिर `setCount (0 + 1)` को कॉल करता है, इसलिए गिनती कभी भी 1 से ऊपर नहीं जाती है।
 
-Specifying `[count]` as a list of dependencies would fix the bug, but would cause the interval to be reset on every change. Effectively, each `setInterval` would get one chance to execute before being cleared (similar to a `setTimeout`.) That may not be desirable. To fix this, we can use the [functional update form of `setState`](/docs/hooks-reference.html#functional-updates). It lets us specify *how* the state needs to change without referencing the *current* state:
+डेपेंडेन्सीज़ की लिस्ट के रूप में  `[काउंट]` को स्पेसिफी करना बग को फिक्स करेगा, लेकिन हर बदलाव पर अंतराल को रीसेट करेगा। प्रभावी रूप से, प्रत्येक `setInterval` को क्लियर होने से पहले एक्सीक्यूट करने का एक मौका मिलेगा (एक` setTimeout` के समान)। जो वांछनीय नहीं हो सकता है। इसे ठीक करने के लिए, हम [`setState` के फंक्शनल अपडेट](/docs/hooks-reference.html#functional-updates) का उपयोग कर सकते हैं। यह हमें स्पेसिफी करता है कि *करंट* स्टेट को रिफरेन्स किए बिना *कैसे* स्टेट  को बदलने की आवश्यकता है:
 
 ```js{6,9}
 function Counter() {
@@ -708,9 +708,9 @@ function Counter() {
 }
 ```
 
-(The identity of the `setCount` function is guaranteed to be stable so it's safe to omit.)
+(`SetCount` फ़ंक्शन की पहचान स्टेबल होने की गारंटी है, इसलिए इसे छोड़ना सुरक्षित है।)
 
-Now, the `setInterval` callback executes once a second, but each time the inner call to `setCount` can use an up-to-date value for `count` (called `c` in the callback here.)
+अब, `setInterval` कॉलबैक एक सेकंड में एक बार एक्सेक्यूट करता है, लेकिन हर बार `सेटकाउंट` का इंटरनल कॉल `काउंट` के लिए अप-टू-डेट मान का उपयोग कर सकता है (जिसे कॉलबैक में `c` कहा जाता है)।
 
 In more complex cases (such as if one state depends on another state), try moving the state update logic outside the effect with the [`useReducer` Hook](/docs/hooks-reference.html#usereducer). [This article](https://adamrackis.dev/state-and-use-reducer/) offers an example of how you can do this. **The identity of the `dispatch` function from `useReducer` is always stable** — even if the reducer function is declared inside the component and reads its props.
 
