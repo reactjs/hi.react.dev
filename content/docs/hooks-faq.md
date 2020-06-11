@@ -51,8 +51,8 @@ prev: hooks-reference.html
   * [कॅल्क्युलेशन्स को कैसे मेमोइज़ी करें?](#how-to-memoize-calculations)
   * [एक्सपेंसिव ऑब्जेक्ट को लॉज़ीली कैसे क्रिएट करें?](#how-to-create-expensive-objects-lazily)
   * [क्या रेंडर में फंक्शन क्रिएट करने की वजह से Hooks धीमा है?](#are-hooks-slow-because-of-creating-functions-in-render)
-  * [कॉलबॉक्स को डाउन पास करने से कैसे बचें?](#how-to-avoid-passing-callbacks-down)
-  * [से बार बार बदलती हुई एक वैल्यू को कैसे रीड करें?](#how-to-read-an-often-changing-value-from-usecallback)
+  * [कालबैकस को डाउन पास करने से कैसे बचें?](#how-to-avoid-passing-callbacks-down)
+  * [कालबैक से बार बार बदलती हुई एक वैल्यू को कैसे रीड करें?](#how-to-read-an-often-changing-value-from-usecallback)
 * **[अंडर द हुड](#under-the-hood)**
   * [कंपोनेंट्स के साथ React सहयोगी हुक कैसे कॉल करता है?](#how-does-react-associate-hook-calls-with-components)
   * [Hooks के लिए पूर्व कला क्या है?](#what-is-the-prior-art-for-hooks)
@@ -754,19 +754,20 @@ const Button = React.memo((props) => {
 
 ### कॅल्क्युलेशन्स को कैसे मेमोइज़ी करें? {#how-to-memoize-calculations}
 
-The [`useMemo`](/docs/hooks-reference.html#usememo) Hook lets you cache calculations between multiple renders by "remembering" the previous computation:
+
+[`UseMemo`](/docs/hooks-reference.html#usememo) हुक मल्टिपल रेंडर्स के बीच कैश कैलकुलेशन कर आपको पिछले कॅल्क्युलेशन्स को "याद रखने" की सुविधा देता है:
 
 ```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
-This code calls `computeExpensiveValue(a, b)`. But if the dependencies `[a, b]` haven't changed since the last value, `useMemo` skips calling it a second time and simply reuses the last value it returned.
+यह कोड `computeExpensiveValue (a, b)` कहलाता है। लेकिन अगर डेपेंडेन्सीज़ `[a, b]` अंतिम मूल्य के बाद से नहीं बदली है, `useMemo` इसे दूसरी बार कॉल करने के लिए छोड़ देता है और बस अंतिम वैल्यू का पुन: उपयोग करता है।
 
-Remember that the function passed to `useMemo` runs during rendering. Don't do anything there that you wouldn't normally do while rendering. For example, side effects belong in `useEffect`, not `useMemo`.
+याद रखें कि रेंडरिंग के दौरान फंक्शन जो `useMemo` में पास किया जाता, रन होता है। वहां कुछ भी ऐसा न करें जो नार्मल रेंडरिंग के दौरान करते हैं। उदाहरण के लिए, साइड इफेक्ट्स `useEffect` में होते हैं, न कि `useMemo`।
 
-**You may rely on `useMemo` as a performance optimization, not as a semantic guarantee.** In the future, React may choose to "forget" some previously memoized values and recalculate them on next render, e.g. to free memory for offscreen components. Write your code so that it still works without `useMemo` — and then add it to optimize performance. (For rare cases when a value must *never* be recomputed, you can [lazily initialize](#how-to-create-expensive-objects-lazily) a ref.)
+**परफॉरमेंस ऑप्टिमाइजेशन के लिए आप `useMemo` पर भरोसा कर सकते हैं, न कि सेमेंटिक गारंटी के रूप में।** भविष्य में, React कुछ पहले से याद किए गए वैल्यूज को "भूल" सकता है और अगले रेंडर पर उन्हें रीकैलकुलेट कर सकता है, उदहारण के लिए, ऑफस्क्रीन कंपोनेंट्स को मेमोरी से फ्री करना। अपना ऐसा कोड लिख सकते हैं , जो अभी भी `useMemo` के बिना काम करता है - और फिर परफॉरमेंस ऑप्टिमाइजेशन करने के लिए इसे जोड़ें। (दुर्लभ मामलों के लिए जब एक वैल्यू *कभी* रीकंप्यूट नहीं किया जाए, तो आप [लाज़िली इनिशियलाइज़](#how-to-create-expensive-objects-lazily) कर सकते हैं।)
 
-Conveniently, `useMemo` also lets you skip an expensive re-render of a child:
+आसानी से, `useMemo` भी आपको एक चाइल्ड के एक्सपेंसिव री-रेंडर को स्किप करने देता है:
 
 ```js
 function Parent({ a, b }) {
@@ -783,13 +784,13 @@ function Parent({ a, b }) {
 }
 ```
 
-Note that this approach won't work in a loop because Hook calls [can't](/docs/hooks-rules.html) be placed inside loops. But you can extract a separate component for the list item, and call `useMemo` there.
+ध्यान दें कि यह एप्रोच लूप में काम नहीं करेगा क्योंकि हुक कॉल को लूप के अंदर [नहीं](/docs/hooks-rules.html) रखा जा सकता है। लेकिन आप लिस्ट आइटम के लिए एक अलग कॉम्पोनेन्ट को निकाल सकते हैं, और वहां `useMemo` को कॉल कर सकते हैं।
 
-### How to create expensive objects lazily? {#how-to-create-expensive-objects-lazily}
+### एक्सपेंसिव ऑब्जेक्ट को लॉज़ीली कैसे क्रिएट करें? {#how-to-create-expensive-objects-lazily}
 
-`useMemo` lets you [memoize an expensive calculation](#how-to-memoize-calculations) if the dependencies are the same. However, it only serves as a hint, and doesn't *guarantee* the computation won't re-run. But sometimes you need to be sure an object is only created once.
+यदि डेपेंडेन्सीज़ समान हैं, तो `useMemo` आपको [एक एक्सपेंसिव गणना को याद](#how-to-memoize-calculations) करने की सुविधा देता है। हालाँकि, यह केवल एक संकेत के रूप में कार्य करता है, और *गारंटी* की कम्प्युटशन नहीं करता है। लेकिन कभी-कभी आपको यह सुनिश्चित करने की आवश्यकता होती है कि एक ऑब्जेक्ट केवल एक बार क्रिएट किया गया है।
 
-**The first common use case is when creating the initial state is expensive:**
+**जब प्रारंभिक स्टेट बनाना एक्सपेंसिव है, पहला सामान्य उपयोग मामला है:**
 
 ```js
 function Table(props) {
@@ -799,7 +800,7 @@ function Table(props) {
 }
 ```
 
-To avoid re-creating the ignored initial state, we can pass a **function** to `useState`:
+इग्नोरेड इनिशियल स्टेट को रेक्रेट होने से बचने के लिए, हम एक **फ़ंक्शन** को `useState` में पास कर सकते हैं:
 
 ```js
 function Table(props) {
@@ -809,9 +810,9 @@ function Table(props) {
 }
 ```
 
-React will only call this function during the first render. See the [`useState` API reference](/docs/hooks-reference.html#usestate).
+React केवल पहले रेंडर के दौरान इस फ़ंक्शन को कॉल करेगा। [`UseState` API संदर्भ देखें](/docs/hooks-reference.html#usestate)
 
-**You might also occasionally want to avoid re-creating the `useRef()` initial value.** For example, maybe you want to ensure some imperative class instance only gets created once:
+**आप कभी-कभार `useRef()` प्रारंभिक वैल्यू को फिर से बनाने से बचना चाह सकते हैं।** उदाहरण के लिए, शायद आप यह सुनिश्चित करना चाहते हैं कि कुछ इम्पेरटिव क्लास केवल एक बार बने:
 
 ```js
 function Image(props) {
@@ -821,7 +822,7 @@ function Image(props) {
 }
 ```
 
-`useRef` **does not** accept a special function overload like `useState`. Instead, you can write your own function that creates and sets it lazily:
+`useRef` एक विशेष फ़ंक्शन ओवरलोड को **स्वीकार नहीं करता** है जैसे `useState`। इसके बजाय, आप अपना स्वयं का फ़ंक्शन लिख सकते हैं जो इसे लॉज़ीली बनाता है और सेट करता है:
 
 ```js
 function Image(props) {
@@ -840,22 +841,22 @@ function Image(props) {
 }
 ```
 
-This avoids creating an expensive object until it's truly needed for the first time. If you use Flow or TypeScript, you can also give `getObserver()` a non-nullable type for convenience.
+यह एक एक्सपेंसिव ऑब्जेक्ट बनाने से बचता है जब तक कि यह पहली बार वास्तव में आवश्यक न हो। यदि आप फ़्लो या टाइपस्क्रिप्ट का उपयोग करते हैं, तो आप सुविधा के लिए `getObserver ()` को एक नॉन-नलबल प्रकार भी दे सकते हैं।
 
 
-### Are Hooks slow because of creating functions in render? {#are-hooks-slow-because-of-creating-functions-in-render}
+### क्या रेंडर में फंक्शन क्रिएट करने की वजह से Hooks धीमा है? {#are-hooks-slow-because-of-creating-functions-in-render}
 
-No. In modern browsers, the raw performance of closures compared to classes doesn't differ significantly except in extreme scenarios.
+आधुनिक ब्राउज़रों में, क्लासेज की तुलना में क्लोसूरेस का रॉ परफॉरमेंस चरम परिदृश्यों को छोड़कर महत्वपूर्ण रूप से भिन्न नहीं है।
 
-In addition, consider that the design of Hooks is more efficient in a couple ways:
+इसके अलावा, विचार करें कि हुक के डिजाइन कुछ तरीकों से अधिक कुशल हैं:
 
-* Hooks avoid a lot of the overhead that classes require, like the cost of creating class instances and binding event handlers in the constructor.
+* हुक बहुत सारे ओवरहेड से बचते हैं जिनकी क्लासेज को आवश्यकता होती है, जैसे उदाहरण के लिए, क्लास इंस्टैंस और बॉन्डिंग इवेंट हैंडलर्स की कन्स्ट्रुक्टर में कॉस्ट।
 
-* **Idiomatic code using Hooks doesn't need the deep component tree nesting** that is prevalent in codebases that use higher-order components, render props, and context. With smaller component trees, React has less work to do.
+* **कोडबेस में प्रचलित है जो हायर-आर्डर कंपोनेंट्स का उपयोग करता है, प्रॉप्स और कॉन्टेक्स्ट प्रस्तुत करने वाले कोड को** हुक्स का यूज़ करते हुए डीप कॉम्पोनेन्ट ट्री नेस्टिंग की आवश्यकता नहीं होती है । छोटे कॉम्पोनेन्ट ट्रीज के साथ, React को कम काम करना पड़ता है।
 
-Traditionally, performance concerns around inline functions in React have been related to how passing new callbacks on each render breaks `shouldComponentUpdate` optimizations in child components. Hooks approach this problem from three sides.
+ट्रडीशनली, रिएक्ट में इनलाइन फ़ंक्शन के आसपास प्रदर्शन संबंधी चिंताओं का संबंध इस बात से रहा है कि प्रत्येक रेंडर पर नए कॉलबैक `shouldComponentUpdate` कैसे पास किए जा रहे हैं। हुक तीन तरफ से इस समस्या का सामना करते हैं।
 
-* The [`useCallback`](/docs/hooks-reference.html#usecallback) Hook lets you keep the same callback reference between re-renders so that `shouldComponentUpdate` continues to work:
+* [`UseCallback`](/docs/hooks-reference.html#usecallback) हुक आपको रीरेंडर्स के बीच एक ही कॉलबैक रिफरेन्स रखने देता है ताकि `shouldComponentUpdate` काम करना जारी रखे:
 
     ```js{2}
     // Will not change unless `a` or `b` changes
@@ -864,15 +865,16 @@ Traditionally, performance concerns around inline functions in React have been r
     }, [a, b]);
     ```
 
-* The [`useMemo`](/docs/hooks-faq.html#how-to-memoize-calculations) Hook makes it easier to control when individual children update, reducing the need for pure components.
+* जब इंडिविजुअल चाइल्ड अपडेट करते हैं [`UseMemo`](/docs/hooks-faq.html#how-to-memoize-calculations) हुक, प्योर कॉम्पोनेन्टस की आवश्यकता को कम करते हैं, इसे नियंत्रित करना आसान बनाता है।
 
-* Finally, the [`useReducer`](/docs/hooks-reference.html#usereducer) Hook reduces the need to pass callbacks deeply, as explained below.
+* अंत में, [`useReducer`](/docs/hooks-reference.html#usereducer) हुक कॉलबैक को डीपली पास करने की आवश्यकता को कम कर देता है, जैसा कि नीचे बताया गया है।Finally, the [`useReducer`] Hook reduces the need to pass callbacks deeply, as explained below.
 
-### How to avoid passing callbacks down? {#how-to-avoid-passing-callbacks-down}
+### कालबैकस को डाउन पास करने से कैसे बचें? {#how-to-avoid-passing-callbacks-down}
 
-We've found that most people don't enjoy manually passing callbacks through every level of a component tree. Even though it is more explicit, it can feel like a lot of "plumbing".
+हमने पाया है कि ज्यादातर लोग कॉम्पोनेन्ट ट्री के प्रत्येक स्तर के माध्यम से कॉलबैक को मैन्युअल रूप से पारित करने का फ़ायदा नहीं लेते हैं। हालांकि यह अधिक स्पष्ट है, इसे "पाइपलाइन" की तरह महसूस कर सकता है।
 
-In large component trees, an alternative we recommend is to pass down a `dispatch` function from [`useReducer`](/docs/hooks-reference.html#usereducer) via context:
+बड़े कंपोनेंट्स ट्री में, हम एक वैकल्पिक विकल्प सुझाते हैं कि [`useReducer`](/docs/hooks-reference.html#usereducer) कॉन्टेक्स्ट के माध्यम से `dispatch` फंक्शन पास करें:
+
 
 ```js{4,5}
 const TodosDispatch = React.createContext(null);
@@ -908,17 +910,17 @@ function DeepChild(props) {
 
 यह रखरखाव के दृष्टिकोण (कॉल फॉरवार्डिंग को रखने की कोई आवश्यकता नहीं) से अधिक सुविधाजनक है, और कॉलबैक समस्या से पूरी तरह से बचाता है। इस तरह से `dispatch` को पास करना डीप अपडेट के लिए रेकमेण्डेड पैटर्न है।
 
-Note that you can still choose whether to pass the application *state* down as props (more explicit) or as context (more convenient for very deep updates). If you use context to pass down the state too, use two different context types -- the `dispatch` context never changes, so components that read it don't need to rerender unless they also need the application state.
+ध्यान दें कि आप अभी भी चुन सकते हैं कि एप्लिकेशन *स्टेट* को प्रॉप्स (अधिक स्पष्ट) या कॉन्टेक्स्ट के रूप में पास करना है या नहीं। यदि आप स्टेट के नीचे से गुजरने के लिए भी कॉन्टेक्स्ट का उपयोग करते हैं, तो दो अलग-अलग कॉन्टेक्स्ट प्रकारों का उपयोग करें - `dispatch` कॉन्टेक्स्ट कभी नहीं बदलता है, इसलिए इसे रीड करने वाले कंपोनेंट्स को तब तक रेंडर करने की आवश्यकता नहीं है जब तक कि उन्हें एप्लिकेशन स्टेट की आवश्यकता न हो।
 
-### How to read an often-changing value from `useCallback`? {#how-to-read-an-often-changing-value-from-usecallback}
+### कालबैक से बार-बार बदलती हुई एक वैल्यू को कैसे रीड करें? {#how-to-read-an-often-changing-value-from-usecallback}
 
->Note
+>ध्यान दें
 >
->We recommend to [pass `dispatch` down in context](#how-to-avoid-passing-callbacks-down) rather than individual callbacks in props. The approach below is only mentioned here for completeness and as an escape hatch.
->
->Also note that this pattern might cause problems in the [concurrent mode](/blog/2018/03/27/update-on-async-rendering.html). We plan to provide more ergonomic alternatives in the future, but the safest solution right now is to always invalidate the callback if some value it depends on changes.
+>हम प्रॉप्स में इंडिविजुअल कॉलबैक के बजाय [कॉन्टेक्स्ट में `dispatch` को पास](#how-to-avoid-passing-callbacks-down) करने की सलाह देते हैं। नीचे का दृष्टिकोण केवल पूर्णता के लिए यहां उल्लिखित है।
 
-In some rare cases you might need to memoize a callback with [`useCallback`](/docs/hooks-reference.html#usecallback) but the memoization doesn't work very well because the inner function has to be re-created too often. If the function you're memoizing is an event handler and isn't used during rendering, you can use [ref as an instance variable](#is-there-something-like-instance-variables), and save the last committed value into it manually:
+>यह भी ध्यान दें कि यह पैटर्न [कंकररेंट मोड](/blog/2018/03/27/update-on-async-rendering.html) में समस्याएं पैदा कर सकता है। हम भविष्य में और अधिक एर्गोनोमिक विकल्प प्रदान करने की योजना बना रहे हैं, लेकिन अभी सबसे सुरक्षित समाधान कॉलबैक को हमेशा अमान्य करना है यदि यह कुछ वैल्यू परिवर्तनों पर निर्भर करता है।
+
+कुछ दुर्लभ मामलों में आपको [`useCallback`](/docs/hooks-reference.html#usecallback) के साथ एक कॉलबैक को याद करने की आवश्यकता हो सकती है, लेकिन मेमोइजेशन बहुत अच्छी तरह से काम नहीं करता है क्योंकि इनर फ़ंक्शन को भी अक्सर बनाना पड़ता है । यदि आप जो फ़ंक्शन याद कर रहे हैं, वह एक इवेंट हैंडलर है और रेंडरिंग के दौरान उपयोग नहीं किया जाता है, तो आप [रेफ को एक इंस्टैंस वेरिएबल के रूप में उपयोग कर सकते हैं](#is-there-something-like-instance-variables), और अंतिम प्रतिबद्ध वैल्यू को मैन्युअल रूप से इसमें सेव कर सकते हैं:
 
 ```js{6,10}
 function Form() {
@@ -984,20 +986,20 @@ function useEventCallback(fn, dependencies) {
 
 ### React एसोसिएट हुक कंपोनेंट्स के साथ कैसे कॉल करता है?  {#how-does-react-associate-hook-calls-with-components}
 
-React keeps track of the currently rendering component. Thanks to the [Rules of Hooks](/docs/hooks-rules.html), we know that Hooks are only called from React components (or custom Hooks -- which are also only called from React components).
+रिएक्ट वर्तमान में रेंडरिंग कॉम्पोनेन्ट का ट्रैक रखता है। [हुक के नियम](/docs/hooks-rules.html) के लिए धन्यवाद, हम जानते हैं कि हुक केवल React कंपोनेंट्स (या कस्टम हुक - जिसे केवल React कंपोनेंट्स से कॉल किया जाता है) से कॉल किया जाता है।
 
-There is an internal list of "memory cells" associated with each component. They're just JavaScript objects where we can put some data. When you call a Hook like `useState()`, it reads the current cell (or initializes it during the first render), and then moves the pointer to the next one. This is how multiple `useState()` calls each get independent local state.
+प्रत्येक कॉम्पोनेन्ट से जुड़ी "मेमोरी सेल्स" की एक इंटरनल सूची है। वे सिर्फ JavaScript ऑब्जेक्ट्स जहां हम कुछ डेटा डाल सकते हैं। जब आप हुक का उपयोग करते हैं जैसे `useState()`, यह वर्तमान सेल रीड करता है (या पहले रेंडर के दौरान इसे इनिशियलाइज़ करता है), और फिर पॉइंटर को अगले पर ले जाता है। ऐसे एक से अधिक  `useState()` कॉल में प्रत्येक को इंडिपेंडेंट लोकल स्टेट मिलता है।
 
-### हुक के लिए पूर्व क्या है? {#what-is-the-prior-art-for-hooks}
+### हुक के लिए पूर्व कला क्या है? {#what-is-the-prior-art-for-hooks}
 
 हुक कई अलग-अलग स्रोतों से विचारों का संश्लेषण करते हैं:
 
-* Our old experiments with functional APIs in the [react-future](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) repository.
-* React community's experiments with render prop APIs, including [Ryan Florence](https://github.com/ryanflorence)'s [Reactions Component](https://github.com/reactions/component).
-* [Dominic Gannaway](https://github.com/trueadm)'s [`adopt` keyword](https://gist.github.com/trueadm/17beb64288e30192f3aa29cad0218067) proposal as a sugar syntax for render props.
-* State variables and state cells in [DisplayScript](http://displayscript.org/introduction.html).
-* [Reducer components](https://reasonml.github.io/reason-react/docs/en/state-actions-reducer.html) in ReasonReact.
-* [Subscriptions](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html) in Rx.
-* [Algebraic effects](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting) in Multicore OCaml.
+* [react-future](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) में एक्सपेरिमेंटल APIs के साथ हमारे पुराने प्रयोग।
+* [Ryan Florence](https://github.com/ryanflorence)'s [Reactions Component](https://github.com/reactions/component) प्रॉप्स API प्रस्तुत करने के साथ रिएक्ट समुदाय के प्रयोग।
+* [Dominic Gannaway](https://github.com/trueadm) का [`adopt` keyword](https://gist.github.com/trueadm/17beb64288e30192f3aa29cad0218067) रेंडर प्रॉप्स के लिए एक शुगर सिंटेक्स प्रस्ताव.
+* [DisplayScript](http://displayscript.org/introduction.html) में स्टेट वेरिएबल और स्टेट सेल.
+* ReasonReact में [Reducer components](https://reasonml.github.io/reason-react/docs/en/state-actions-reducer.html).
+* Rx में [Subscriptions](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html).
+* Multicore OCaml में [Algebraic effects](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting).
 
-[Sebastian Markbåge](https://github.com/sebmarkbage) came up with the original design for Hooks, later refined by [Andrew Clark](https://github.com/acdlite), [Sophie Alpert](https://github.com/sophiebits), [Dominic Gannaway](https://github.com/trueadm), and other members of the React team.
+[Sebastian Markbåge](https://github.com/sebmarkbage) हुक के लिए मूल डिजाइन के साथ आए, बाद में [Andrew Clark](https://github.com/acdlite), [Sophie Alpert](https://github.com/sophiebits), [Dominic Gannaway](https://github.com/trueadm) और रिएक्ट टीम के अन्य सदस्यों द्वारा करेक्ट किया गया।
