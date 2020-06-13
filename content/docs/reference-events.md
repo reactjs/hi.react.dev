@@ -6,13 +6,13 @@ layout: docs
 category: Reference
 ---
 
-This reference guide documents the `SyntheticEvent` wrapper that forms part of React's Event System. See the [Handling Events](/docs/handling-events.html) guide to learn more.
+यह निर्देशिका `SyntheticEvent` आवरण को निर्देशित करता है जो React इवेंट सिस्टम का एक हिस्सा है। अधिक जानने के लिए [Handling Events](/docs/handling-events.html) गाइड देखें।
 
-## Overview {#overview}
+## ओवरव्यू {#overview}
 
-Your event handlers will be passed instances of `SyntheticEvent`, a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event, including `stopPropagation()` and `preventDefault()`, except the events work identically across all browsers.
+आपके ईवेंट हैंडलर को `SyntheticEvent` के उदाहरण के तौर पर, ब्राउज़र के नेटिव ईवेंट के चारों ओर एक क्रॉस-ब्राउज़र रैपर दिया जाएगा। यह ब्राउज़र के नेटिव ईवेंट के समान है, जिसमें `stopPropagation()` और `preventDefault()` शामिल हैं, पर यह इवेंट्स सभी ब्राउज़रों में समान रूप से काम करते हैं।
 
-If you find that you need the underlying browser event for some reason, simply use the `nativeEvent` attribute to get it. Every `SyntheticEvent` object has the following attributes:
+यदि किसी कारण से आप पाते हैं कि आपको अंतर्निहित ब्राउज़र इवेंट की आवश्यकता है, तो इसे प्राप्त करने के लिए `nativeEvent` एट्रिब्यूट का उपयोग करें। प्रत्येक `SyntheticEvent` ऑब्जेक्ट में निम्न विशेषताएँ होती हैं।
 
 ```javascript
 boolean bubbles
@@ -26,20 +26,21 @@ void preventDefault()
 boolean isDefaultPrevented()
 void stopPropagation()
 boolean isPropagationStopped()
+void persist()
 DOMEventTarget target
 number timeStamp
 string type
 ```
 
-> Note:
+> ध्यान दें:
 >
-> As of v0.14, returning `false` from an event handler will no longer stop event propagation. Instead, `e.stopPropagation()` or `e.preventDefault()` should be triggered manually, as appropriate.
+> v0.14 से, किसी इवेंट हैंडलर द्वारा `false` लौटाने पर event propagation नहीं रुकेगा। इसके बजाय, `e.stopPropagation()` या `e.preventDefault()` को ज़रूरत के अनुसार मैन्युअल रूप से इस्तेमाल करना चाहिए।
 
-### Event Pooling {#event-pooling}
+### इवेंट इकट्ठा करना {#event-pooling}
 
-The `SyntheticEvent` is pooled. This means that the `SyntheticEvent` object will be reused and all properties will be nullified after the event callback has been invoked.
-This is for performance reasons.
-As such, you cannot access the event in an asynchronous way.
+`SyntheticEvent` को इकट्ठा किया जाता है। इसका मतलब यह है कि `SyntheticEvent` ऑब्जेक्ट का पुन: उपयोग किया जाएगा और ईवेंट कॉलबैक लागू होने के बाद सभी प्रॉपर्टीज को nullify कर दिया जाता है।
+यह परफॉरमेंस कारणों से है।
+जैसे की, हम ईवेंट को asynchronous तरीके से एक्सेस नहीं कर सकते हैं।
 
 ```javascript
 function onClick(event) {
@@ -60,21 +61,22 @@ function onClick(event) {
 }
 ```
 
-> Note:
+> ध्यान दें:
 >
-> If you want to access the event properties in an asynchronous way, you should call `event.persist()` on the event, which will remove the synthetic event from the pool and allow references to the event to be retained by user code.
+> यदि आप asynchronous तरीके से इवेंट के प्रॉपर्टीज का उपयोग करना चाहते हैं, तो आपको इवेंट पर `event.persist()` को कॉल करना चाहिए, जो पूल से सिंथेटिक इवेंट को हटा देगा और यूजर कोड द्वारा इवेंट के रेफरेन्सेस को बनाये रखेगा।
 
-## Supported Events {#supported-events}
+## समर्थित इवेंट्स {#supported-events}
 
-React normalizes events so that they have consistent properties across different browsers.
+React नोर्मलिज़ेस इवेंट्स, ताकि उनके विभिन्न ब्राउज़रों में सुसंगत गुण हों।
 
-The event handlers below are triggered by an event in the bubbling phase. To register an event handler for the capture phase, append `Capture` to the event name; for example, instead of using `onClick`, you would use `onClickCapture` to handle the click event in the capture phase.
+नीचे दिए गए इवेंट हैंडलर्स को bubbling फेज में एक इवेंट द्वारा ट्रिगर किया गया है। कैप्चर फेज में कोई ईवेंट हैंडलर रजिस्टर करने के लिए, ईवेंट नाम में `Capture` जोड़ें, उदाहरण के लिए, `onClick` का उपयोग करने के बजाय, कैप्चर फेज में click इवेंट को संभालने के लिए `onClickCapture` का उपयोग होता है।
 
 - [Clipboard Events](#clipboard-events)
 - [Composition Events](#composition-events)
 - [Keyboard Events](#keyboard-events)
 - [Focus Events](#focus-events)
 - [Form Events](#form-events)
+- [Generic Events](#generic-events)
 - [Mouse Events](#mouse-events)
 - [Pointer Events](#pointer-events)
 - [Selection Events](#selection-events)
@@ -89,17 +91,17 @@ The event handlers below are triggered by an event in the bubbling phase. To reg
 
 * * *
 
-## Reference {#reference}
+## संदर्भ {#reference}
 
-### Clipboard Events {#clipboard-events}
+### क्लिपबोर्ड इवेंट्स {#clipboard-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onCopy onCut onPaste
 ```
 
-Properties:
+प्रॉपर्टीज:
 
 ```javascript
 DOMDataTransfer clipboardData
@@ -107,15 +109,15 @@ DOMDataTransfer clipboardData
 
 * * *
 
-### Composition Events {#composition-events}
+### कम्पोजीशन इवेंट्स {#composition-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onCompositionEnd onCompositionStart onCompositionUpdate
 ```
 
-Properties:
+प्रॉपर्टीज:
 
 ```javascript
 string data
@@ -124,15 +126,15 @@ string data
 
 * * *
 
-### Keyboard Events {#keyboard-events}
+### कीबोर्ड इवेंट्स {#keyboard-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onKeyDown onKeyPress onKeyUp
 ```
 
-Properties:
+प्रॉपर्टीज:
 
 ```javascript
 boolean altKey
@@ -149,21 +151,21 @@ boolean shiftKey
 number which
 ```
 
-The `key` property can take any of the values documented in the [DOM Level 3 Events spec](https://www.w3.org/TR/uievents-key/#named-key-attribute-values).
+`key` प्रॉपर्टी, [DOM Level 3 Events spec](https://www.w3.org/TR/uievents-key/#named-key-attribute-values) में प्रलेखित किसी भी वैल्यू को ले सकती है।
 
 * * *
 
-### Focus Events {#focus-events}
+### फोकस इवेंट्स {#focus-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onFocus onBlur
 ```
 
-These focus events work on all elements in the React DOM, not just form elements.
+ये फ़ोकस इवेंट React DOM में सभी एलिमेंट्स पर काम करते हैं, न कि केवल फार्म एलिमेंट्स पर।
 
-Properties:
+प्रॉपर्टीज:
 
 ```javascript
 DOMEventTarget relatedTarget
@@ -171,21 +173,28 @@ DOMEventTarget relatedTarget
 
 * * *
 
-### Form Events {#form-events}
+### फार्म इवेंट्स {#form-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
-onChange onInput onInvalid onSubmit
+onChange onInput onInvalid onReset onSubmit 
 ```
 
-For more information about the onChange event, see [Forms](/docs/forms.html).
+onChange ईवेंट के बारे में अधिक जानकारी के लिए [फॉर्म्स](/docs/forms.html) देखें।
 
-* * *
 
-### Mouse Events {#mouse-events}
+### सामान्य इवेंट्स {#generic-events}
 
-Event names:
+इवेंट्स के नाम:
+
+```
+onError onLoad
+```
+
+### माउस इवेंट्स {#mouse-events}
+
+इवेंट्स के नाम:
 
 ```
 onClick onContextMenu onDoubleClick onDrag onDragEnd onDragEnter onDragExit
@@ -193,9 +202,9 @@ onDragLeave onDragOver onDragStart onDrop onMouseDown onMouseEnter onMouseLeave
 onMouseMove onMouseOut onMouseOver onMouseUp
 ```
 
-The `onMouseEnter` and `onMouseLeave` events propagate from the element being left to the one being entered instead of ordinary bubbling and do not have a capture phase.
+`onMouseEnter` और `onMouseLeave` इवेंट्स, साधारण बब्बलीन्ग के बजाय एलिमेंट के छोड़े जाने से दर्ज किये जाने पर प्रचारित होते हैं और इनमें कैप्चर फेज नहीं होता है।
 
-Properties:
+प्रॉपर्टीज:
 
 ```javascript
 boolean altKey
@@ -216,20 +225,20 @@ boolean shiftKey
 
 * * *
 
-### Pointer Events {#pointer-events}
+### पॉइंटर इवेंट्स {#pointer-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onPointerDown onPointerMove onPointerUp onPointerCancel onGotPointerCapture
 onLostPointerCapture onPointerEnter onPointerLeave onPointerOver onPointerOut
 ```
 
-The `onPointerEnter` and `onPointerLeave` events propagate from the element being left to the one being entered instead of ordinary bubbling and do not have a capture phase.
+`onMouseEnter` और `onMouseLeave` इवेंट्स, साधारण बब्बलीन्ग के बजाय एलिमेंट के छोड़े जाने से दर्ज किये जाने पर प्रचारित होते हैं और इनमें कैप्चर फेज नहीं होता है।
 
-Properties:
+प्रॉपर्टीज:
 
-As defined in the [W3 spec](https://www.w3.org/TR/pointerevents/), pointer events extend [Mouse Events](#mouse-events) with the following properties:
+जैसा कि [W3 विनिर्देश](https://www.w3.org/TR/pointerevents/) में परिभाषित किया गया है, पॉइंटर इवेंट्स निम्नलिखित गुणों के साथ [माउस इवेंट्स](#mouse-events) का विस्तार करते हैं:
 
 ```javascript
 number pointerId
@@ -244,17 +253,17 @@ string pointerType
 boolean isPrimary
 ```
 
-A note on cross-browser support:
+क्रॉस-ब्राउज़र समर्थन पर एक नोट:
 
-Pointer events are not yet supported in every browser (at the time of writing this article, supported browsers include: Chrome, Firefox, Edge, and Internet Explorer). React deliberately does not polyfill support for other browsers because a standard-conform polyfill would significantly increase the bundle size of `react-dom`.
+पॉइंटर ईवेंट्स अभी तक हर ब्राउज़र में सपोर्टेड नहीं हैं (इस लेख को लिखने के समय, सपोर्टेड ब्राउज़र में Chrome, Firefox, Edge और Internet Explorer शामिल हैं। `react-dom` के बंडल आकार में काफी वृद्धि न हो इसलिए React जानबूझकर अन्य ब्राउज़रों के लिए पॉलीफिल समर्थन नहीं करता।
 
-If your application requires pointer events, we recommend adding a third party pointer event polyfill.
+यदि आपके एप्लिकेशन को पॉइंटर इवेंट्स की आवश्यकता है, तो हम थर्ड पार्टी पॉइंटर इवेंट पॉलीफिल जोड़ने की सलाह देते हैं।
 
 * * *
 
-### Selection Events {#selection-events}
+### चयन इवेंट्स {#selection-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onSelect
@@ -262,15 +271,15 @@ onSelect
 
 * * *
 
-### Touch Events {#touch-events}
+### टच इवेंट्स {#touch-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onTouchCancel onTouchEnd onTouchMove onTouchStart
 ```
 
-Properties:
+प्रॉपर्टीज:
 
 ```javascript
 boolean altKey
@@ -285,15 +294,15 @@ DOMTouchList touches
 
 * * *
 
-### UI Events {#ui-events}
+### UI इवेंट्स {#ui-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onScroll
 ```
 
-Properties:
+प्रॉपर्टीज:
 
 ```javascript
 number detail
@@ -302,15 +311,15 @@ DOMAbstractView view
 
 * * *
 
-### Wheel Events {#wheel-events}
+### व्हील इवेंट्स {#wheel-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onWheel
 ```
 
-Properties:
+प्रॉपर्टीज:
 
 ```javascript
 number deltaMode
@@ -321,9 +330,9 @@ number deltaZ
 
 * * *
 
-### Media Events {#media-events}
+### मीडिया इवेंट्स {#media-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onAbort onCanPlay onCanPlayThrough onDurationChange onEmptied onEncrypted
@@ -334,9 +343,9 @@ onTimeUpdate onVolumeChange onWaiting
 
 * * *
 
-### Image Events {#image-events}
+### इमेज इवेंट्स {#image-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onLoad onError
@@ -344,15 +353,15 @@ onLoad onError
 
 * * *
 
-### Animation Events {#animation-events}
+### एनीमेशन इवेंट्स {#animation-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onAnimationStart onAnimationEnd onAnimationIteration
 ```
 
-Properties:
+प्रॉपर्टीज:
 
 ```javascript
 string animationName
@@ -362,15 +371,15 @@ float elapsedTime
 
 * * *
 
-### Transition Events {#transition-events}
+### ट्रांज़िशन इवेंट्स {#transition-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onTransitionEnd
 ```
 
-Properties:
+प्रॉपर्टीज:
 
 ```javascript
 string propertyName
@@ -380,9 +389,9 @@ float elapsedTime
 
 * * *
 
-### Other Events {#other-events}
+### अन्य इवेंट्स {#other-events}
 
-Event names:
+इवेंट्स के नाम:
 
 ```
 onToggle
