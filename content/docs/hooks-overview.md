@@ -229,7 +229,11 @@ function FriendListItem(props) {
 }
 ```
 
+<<<<<<< HEAD
 इन कौम्पोनॅन्टस की स्टेट पूरी तरह से स्वतंत्र है। Hooks *स्टेट फुल लॉजिक* का फिर से उपयोग करने का एक तरीका है, न कि state का। वास्तव में, एक Hook करने के लिए प्रत्येक *कॉल* में एक पूरी तरह से अलग state है -- आप वही कस्टम Hook एक ही कौम्पोनॅन्ट में दो बार उपयोग कर सकते है।
+=======
+The state of each component is completely independent. Hooks are a way to reuse *stateful logic*, not state itself. In fact, each *call* to a Hook has a completely isolated state -- so you can even use the same custom Hook twice in one component.
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 कस्टम Hooks एक विशेषता से ज़्यादा एक कन्वेंशन है। यदि किसी फ़ंक्शन का नाम "`use`" से शुरू होता है और इसे अन्य Hooks कॉल करते है, तो हम कहते है कि यह एक कस्टम Hook है। हमारे लिंटर प्लगइन `useSomething` नामकरण कन्वेंशन का उपयोग करके कोड में बग ढूंढने में मदद करता है।
 
