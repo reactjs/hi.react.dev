@@ -1,27 +1,27 @@
 ---
 id: test-utils
-title: Test Utilities
+title: परीक्षण उपयोगिताएँ
 permalink: docs/test-utils.html
 layout: docs
 category: Reference
 ---
 
-**Importing**
+**इम्पॉर्टिंग**
 
 ```javascript
 import ReactTestUtils from 'react-dom/test-utils'; // ES6
-var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
+var ReactTestUtils = require('react-dom/test-utils'); // ES5, npm के द्वारा
 ```
 
-## Overview {#overview}
+## ओवरव्यू {#overview}
 
-`ReactTestUtils` makes it easy to test React components in the testing framework of your choice. At Facebook we use [Jest](https://facebook.github.io/jest/) for painless JavaScript testing. Learn how to get started with Jest through the Jest website's [React Tutorial](https://jestjs.io/docs/tutorial-react).
+`ReactTestUtils` आपकी पसंद के परीक्षण फ्रेमवर्क में React कौम्पोनॅन्ट का परीक्षण करना आसान बनाता है। Facebook में हम पीड़ारहित जावास्क्रिप्ट परीक्षण के लिए [Jest](https://facebook.github.io/jest/) का उपयोग करते हैं। Jest वेबसाइट के [React ट्यूटोरियल](https://jestjs.io/docs/tutorial-react) के माध्यम से Jest के साथ शुरुआत करने का तरीका जान सकते हैं।
 
-> Note:
+> नोट:
 >
-> We recommend using [React Testing Library](https://testing-library.com/react) which is designed to enable and encourage writing tests that use your components as the end users do.
+> हम [React Testing Library](https://testing-library.com/react) का उपयोग करने की सलाह देते हैं। ये लाइब्रेरी इस प्रकार डिज़ाइन की गई है की आप टेस्ट्स उस ही प्रकार लिखें जिस प्रकार उपयोगकर्ता उसे इस्तेमाल करेंगें।
 >
-> Alternatively, Airbnb has released a testing utility called [Enzyme](https://airbnb.io/enzyme/), which makes it easy to assert, manipulate, and traverse your React Components' output.
+> वैकल्पिक रूप से, Airbnb ने [Enzyme](https://airbnb.io/enzyme/) नामक एक परीक्षण उपयोगिता जारी की है, जो आपके React कौम्पोनॅन्ट के आउटपुट को अस्सर्ट, मैनयुपुलेट और ट्रैवर्स करना आसान बनाता है।
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
@@ -40,17 +40,17 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
  - [`renderIntoDocument()`](#renderintodocument)
  - [`Simulate`](#simulate)
 
-## Reference {#reference}
+## संदर्भ {#reference}
 
 ### `act()` {#act}
 
-To prepare a component for assertions, wrap the code rendering it and performing updates inside an `act()` call. This makes your test run closer to how React works in the browser.
+कौम्पोनॅन्ट को पुष्टि के लिए तयार करने के लिए, उसे रेंडर व अपडेट करने वाले कोड को `act()` कॉल के अंदर सम्मिलित करें। यह आपके टेस्ट को ब्राउज़र में React जैसे काम करता है, उसके करीब लाएगा।
 
->Note
+>नोट
 >
->If you use `react-test-renderer`, it also provides an `act` export that behaves the same way.
+ >यदि आप `react-test-renderer` का उपयोग करते हैं, तो यह एक `act` एक्सपोर्ट देता है जो उसी तरह से व्यवहार करता है।
 
-For example, let's say we have this `Counter` component:
+उदाहरण के लिए, अगर हमारे पास यह `Counter` कौम्पोनॅन्ट है:
 
 ```js
 class Counter extends React.Component {
@@ -60,10 +60,10 @@ class Counter extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    document.title = `You clicked ${this.state.count} times`;
+    document.title = `आपने ${this.state.count} बार क्लिक किया`;
   }
   componentDidUpdate() {
-    document.title = `You clicked ${this.state.count} times`;
+    document.title = `आपने ${this.state.count} बार क्लिक किया`;
   }
   handleClick() {
     this.setState(state => ({
@@ -73,9 +73,9 @@ class Counter extends React.Component {
   render() {
     return (
       <div>
-        <p>You clicked {this.state.count} times</p>
+        <p>आपने ${this.state.count} बार क्लिक किया</p>
         <button onClick={this.handleClick}>
-          Click me
+          क्लिक करें
         </button>
       </div>
     );
@@ -83,7 +83,7 @@ class Counter extends React.Component {
 }
 ```
 
-Here is how we can test it:
+हम इसे इस तरह से परख सकते हैं:
 
 ```js{3,20-22,29-31}
 import React from 'react';
@@ -103,28 +103,28 @@ afterEach(() => {
   container = null;
 });
 
-it('can render and update a counter', () => {
+it('काउंटर रेंडर और अपडेट कर सकते हैं', () => {
   // Test first render and componentDidMount
   act(() => {
     ReactDOM.render(<Counter />, container);
   });
   const button = container.querySelector('button');
   const label = container.querySelector('p');
-  expect(label.textContent).toBe('You clicked 0 times');
-  expect(document.title).toBe('You clicked 0 times');
+  expect(label.textContent).toBe('आपने 0 बार क्लिक किया');
+  expect(document.title).toBe('आपने 0 बार क्लिक किया');
 
   // Test second render and componentDidUpdate
   act(() => {
     button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
   });
-  expect(label.textContent).toBe('You clicked 1 times');
-  expect(document.title).toBe('You clicked 1 times');
+  expect(label.textContent).toBe('आपने 1 बार क्लिक किया');
+  expect(document.title).toBe('आपने 1 बार क्लिक किया');
 });
 ```
 
-- Don't forget that dispatching DOM events only works when the DOM container is added to the `document`. You can use a library like [React Testing Library](https://testing-library.com/react) to reduce the boilerplate code.
+- यह मत भूलिए कि DOM इवेंट्स भेजना सिर्फ़ तभी काम करता है जब DOM कंटेनर को `document` में ऐड किया गया हो। आप बॉयलरप्लेट कोड को कम करने के लिए [React Testing Library](https://testing-library.com/react) जैसी लाइब्रेरी का उपयोग कर सकते हैं।
 
-- The [`recipes`](/docs/testing-recipes.html) document contains more details on how `act()` behaves, with examples and usage.
+- [`रेसिपी`](/docs/testing-recipes.html) डॉक्यूमेंट में उदाहरण और उपयोग के साथ `act()` कैसे बर्ताव करता है, इस पर अधिक विवरण है।
 
 * * *
 
@@ -137,11 +137,11 @@ mockComponent(
 )
 ```
 
-Pass a mocked component module to this method to augment it with useful methods that allow it to be used as a dummy React component. Instead of rendering as usual, the component will become a simple `<div>` (or other tag if `mockTagName` is provided) containing any provided children.
+एक प्रतिरूप कौम्पोनॅन्ट बनायें जो एक डमी React कौम्पोनॅन्ट के रूप में उपयोग होगा। सामान्य रूप से रेंडर करने के बजाय, कौम्पोनॅन्ट एक `<div>` (या अन्य टैग यदि `mockTagName` दिया गया है) बन जाएगा जिसके अंदर दिए गए चिल्ड्रन होंगे।
 
-> Note:
+> नोट:
 >
-> `mockComponent()` is a legacy API. We recommend using [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) instead.
+> `mockComponent()` एक लेगसी API है। हम इसके बजाय [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) का उपयोग करने की सलाह देते हैं।
 
 * * *
 
@@ -151,7 +151,7 @@ Pass a mocked component module to this method to augment it with useful methods 
 isElement(element)
 ```
 
-Returns `true` if `element` is any React element.
+`true` रिटर्न करता है यदि `element` कोई React एलिमेंट है।
 
 * * *
 
@@ -164,7 +164,7 @@ isElementOfType(
 )
 ```
 
-Returns `true` if `element` is a React element whose type is of a React `componentClass`.
+`true` रिटर्न करता है यदि `element` एक React एलिमेंट है जिसका टाइप एक React `componentClass` है।
 
 * * *
 
@@ -174,7 +174,7 @@ Returns `true` if `element` is a React element whose type is of a React `compone
 isDOMComponent(instance)
 ```
 
-Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
+`true` रिटर्न करता है यदि `instance` एक DOM कौम्पोनॅन्ट है (जैसे कि `<div>` या `<span>`)।
 
 * * *
 
@@ -184,7 +184,7 @@ Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
 isCompositeComponent(instance)
 ```
 
-Returns `true` if `instance` is a user-defined component, such as a class or a function.
+`true` रिटर्न करता है यदि `instance` एक उपयोगकर्ता-परिभाषित कौम्पोनॅन्ट है, जैसे कि class या फ़ंक्शन।
 
 * * *
 
@@ -197,7 +197,7 @@ isCompositeComponentWithType(
 )
 ```
 
-Returns `true` if `instance` is a component whose type is of a React `componentClass`.
+रिटर्नस `true` यदि `instance` एक कौम्पोनॅन्ट है जिसका प्रकार एक React `componentClass` है।
 
 * * *
 
@@ -210,7 +210,7 @@ findAllInRenderedTree(
 )
 ```
 
-Traverse all components in `tree` and accumulate all components where `test(component)` is `true`. This is not that useful on its own, but it's used as a primitive for other test utils.
+सब कौम्पोनॅन्ट को `tree` में खोजें और उन सभी कौम्पोनॅन्ट को संचित करें जहां `test(component)` `true` है। यह अपने आप में उपयोगी नहीं है, लेकिन इसका उपयोग अन्य परीक्षण मॉड्यूल में किया जाता है।
 
 * * *
 
@@ -223,7 +223,7 @@ scryRenderedDOMComponentsWithClass(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the class name matching `className`.
+रेंडर किए गए ट्री में कौम्पोनॅन्ट के सभी DOM एलिमेंट्स को ढूँढता है जो DOM कौम्पोनॅन्ट हैं और जिनका नाम `className` से मिलता है।
 
 * * *
 
@@ -236,7 +236,7 @@ findRenderedDOMComponentWithClass(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+[`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) के समान, लेकिन एक परिणाम होने की उम्मीद करता है, और एक परिणाम देता है, या एक के अलावा किसी अन्य संख्या के मैच होने पर एक्सेप्शन थ्रो करता है।
 
 * * *
 
@@ -249,7 +249,7 @@ scryRenderedDOMComponentsWithTag(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the tag name matching `tagName`.
+रेंडर किए गए ट्री में कौम्पोनॅन्ट के सभी DOM एलिमेंट्स को ढूँढता है जो DOM कौम्पोनॅन्ट `tagName` नाम के टैग के साथ हैं।
 
 * * *
 
@@ -262,7 +262,7 @@ findRenderedDOMComponentWithTag(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+[`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) के समान, लेकिन वहाँ एक परिणाम होने की उम्मीद करता है, और वह एक परिणाम देता है, या एक के अलावा किसी अन्य संख्या के मैच होने पर एक्सेप्शन थ्रो करता है।
 
 * * *
 
@@ -275,7 +275,7 @@ scryRenderedComponentsWithType(
 )
 ```
 
-Finds all instances of components with type equal to `componentClass`.
+सभी कौम्पोनॅन्ट के इन्सटेंसेस को ढूंढता जो `componentClass` से मिलते हैं।
 
 * * *
 
@@ -288,7 +288,7 @@ findRenderedComponentWithType(
 )
 ```
 
-Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) but expects there to be one result and returns that one result, or throws exception if there is any other number of matches besides one.
+[`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) के जैसे ही, लेकिन वहाँ एक परिणाम होने की उम्मीद करता है और एक परिणाम देता है, या एक के अलावा किसी भी संख्या में मैच होने पर एक्सेप्शन थ्रो करता है।
 
 ***
 
@@ -298,20 +298,19 @@ Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) bu
 renderIntoDocument(element)
 ```
 
-Render a React element into a detached DOM node in the document. **This function requires a DOM.** It is effectively equivalent to:
+React एलिमेंट को दस्तावेज़ के एक अलग DOM नोड में रेंडर करें। **इस फ़ंक्शन के लिए DOM की आवश्यकता है।** यह प्रभावी रूप से इसके बराबर है:
 
 ```js
 const domContainer = document.createElement('div');
 ReactDOM.render(element, domContainer);
 ```
 
-> Note:
+> नोट:
 >
-> You will need to have `window`, `window.document` and `window.document.createElement` globally available **before** you import `React`. Otherwise React will think it can't access the DOM and methods like `setState` won't work.
-
+> आपके द्वारा `React` इम्पोर्ट करने से **पहले** आपको `window`, `window.document` और `window.document.createElement` को ग्लोबल स्तर पर उपलब्ध कराने की आवश्यकता होगी। अन्यथा React को लगेगा कि यह DOM तक नहीं पहुंच सकता है और `setState` जैसे तरीके काम नहीं करेंगे।
 * * *
 
-## Other Utilities {#other-utilities}
+## अन्य उपयोगिताएँ {#other-utilities}
 
 ### `Simulate` {#simulate}
 
@@ -322,11 +321,11 @@ Simulate.{eventName}(
 )
 ```
 
-Simulate an event dispatch on a DOM node with optional `eventData` event data.
+वैकल्पिक `eventData` इवेंट डेटा के साथ एक DOM नोड पर एक इवेंट भेजने का अनुकरण।
 
-`Simulate` has a method for [every event that React understands](/docs/events.html#supported-events).
+`Simulate` के पास [प्रत्येक इवेंट के लिए एक मेथड है जो React समझता है](/docs/events.html#supported-events)।
 
-**Clicking an element**
+**किसी एलिमेंट पर क्लिक करना**
 
 ```javascript
 // <button ref={(node) => this.button = node}>...</button>
@@ -334,7 +333,7 @@ const node = this.button;
 ReactTestUtils.Simulate.click(node);
 ```
 
-**Changing the value of an input field and then pressing ENTER.**
+**इनपुट फ़ील्ड का वैल्यू बदलना और फिर ENTER दबाना।**
 
 ```javascript
 // <input ref={(node) => this.textInput = node} />
@@ -346,6 +345,6 @@ ReactTestUtils.Simulate.keyDown(node, {key: "Enter", keyCode: 13, which: 13});
 
 > Note
 >
-> You will have to provide any event property that you're using in your component (e.g. keyCode, which, etc...) as React is not creating any of these for you.
+> आपके द्वारा अपने कौम्पोनॅन्ट में उपयोग की जा रही कोई भी इवेंट प्रॉपर्टी (जैसे कि keyCode, which, आदि...) आपको रेंडर करनी होगी क्योंकि React आपके लिए इनमें से कोई भी नहीं बना रहा है।
 
 * * *
