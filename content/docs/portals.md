@@ -2,6 +2,8 @@
 id: portals
 title: Portals
 permalink: docs/portals.html
+prev: fragments.html
+next: error-boundaries.html
 ---
 
 Portals चिल्ड्रन को एक ऐसे DOM नोड में रेंडर करने का तरीका प्रदान करते हैं जो पैरेंट कौम्पोनॅन्ट के DOM हायरार्की के बाहर मौजूद हो।
