@@ -53,11 +53,7 @@ class Home extends Component {
           title="React &ndash; युज़र इंटरफ़ेसिज़ के निर्माण के लिए एक जावास्क्रिप्ट लाइब्रेरी"
           canonicalUrl={createCanonicalUrl('/')}
         />
-        <div
-          css={{
-            width: '100%',
-            marginTop: 60, // BLM
-          }}>
+        <div css={{width: '100%'}}>
           <header
             css={{
               backgroundColor: colors.dark,
