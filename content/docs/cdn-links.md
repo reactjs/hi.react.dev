@@ -9,18 +9,22 @@ next: release-channels.html
 React एवं ReactDOM दोनों CDN पर उपलब्ध हैं। 
 
 ```html
-<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 ```
 
 उपरोक्त वर्शन केवल डेवलपमेंट के लिए हैं, एवं प्रोडक्शन के लिए उपयुक्त नहीं हैं। React के minified एवं ऑप्टीमाइज़्ड प्रोडक्शन वर्शन निम्नलिखित लिंक पर उपलब्ध हैं:
 
 ```html
-<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
 ```
 
+<<<<<<< HEAD
 `react` एवं `react-dom` के विशिष्ट वर्शन लोड करने के लिए `16` को वर्शन संख्या द्वारा बदल दें। 
+=======
+To load a specific version of `react` and `react-dom`, replace `17` with the version number.
+>>>>>>> 255497f12fa00d231b5af5d5aa34fa5beffac9e4
 
 ### `crossorigin` एट्रीब्यूट क्यों? {#why-the-crossorigin-attribute}
 
