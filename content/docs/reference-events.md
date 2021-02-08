@@ -10,9 +10,15 @@ category: Reference
 
 ## ओवरव्यू {#overview}
 
+<<<<<<< HEAD
 आपके ईवेंट हैंडलर को `SyntheticEvent` के उदाहरण के तौर पर, ब्राउज़र के नेटिव ईवेंट के चारों ओर एक क्रॉस-ब्राउज़र रैपर दिया जाएगा। यह ब्राउज़र के नेटिव ईवेंट के समान है, जिसमें `stopPropagation()` और `preventDefault()` शामिल हैं, पर यह इवेंट्स सभी ब्राउज़रों में समान रूप से काम करते हैं।
 
 यदि किसी कारण से आप पाते हैं कि आपको अंतर्निहित ब्राउज़र इवेंट की आवश्यकता है, तो इसे प्राप्त करने के लिए `nativeEvent` एट्रिब्यूट का उपयोग करें। प्रत्येक `SyntheticEvent` ऑब्जेक्ट में निम्न विशेषताएँ होती हैं।
+=======
+Your event handlers will be passed instances of `SyntheticEvent`, a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event, including `stopPropagation()` and `preventDefault()`, except the events work identically across all browsers. 
+
+If you find that you need the underlying browser event for some reason, simply use the `nativeEvent` attribute to get it. The synthetic events are different from, and do not map directly to, the browser's native events. For example in `onMouseLeave` `event.nativeEvent` will point to a `mouseout` event. The specific mapping is not part of the public API and may change at any time. Every `SyntheticEvent` object has the following attributes:
+>>>>>>> 35179e85933265cb7a4f5d51c10fbe70deba3787
 
 ```javascript
 boolean bubbles
@@ -34,6 +40,7 @@ string type
 
 > ध्यान दें:
 >
+<<<<<<< HEAD
 > v0.14 से, किसी इवेंट हैंडलर द्वारा `false` लौटाने पर event propagation नहीं रुकेगा। इसके बजाय, `e.stopPropagation()` या `e.preventDefault()` को ज़रूरत के अनुसार मैन्युअल रूप से इस्तेमाल करना चाहिए।
 
 ### इवेंट इकट्ठा करना {#event-pooling}
@@ -60,10 +67,17 @@ function onClick(event) {
   this.setState({eventType: event.type});
 }
 ```
+=======
+> As of v17, `e.persist()` doesn't do anything because the `SyntheticEvent` is no longer [pooled](/docs/legacy-event-pooling.html).
+>>>>>>> 35179e85933265cb7a4f5d51c10fbe70deba3787
 
 > ध्यान दें:
 >
+<<<<<<< HEAD
 > यदि आप asynchronous तरीके से इवेंट के प्रॉपर्टीज का उपयोग करना चाहते हैं, तो आपको इवेंट पर `event.persist()` को कॉल करना चाहिए, जो पूल से सिंथेटिक इवेंट को हटा देगा और यूजर कोड द्वारा इवेंट के रेफरेन्सेस को बनाये रखेगा।
+=======
+> As of v0.14, returning `false` from an event handler will no longer stop event propagation. Instead, `e.stopPropagation()` or `e.preventDefault()` should be triggered manually, as appropriate.
+>>>>>>> 35179e85933265cb7a4f5d51c10fbe70deba3787
 
 ## समर्थित इवेंट्स {#supported-events}
 
@@ -167,8 +181,81 @@ onFocus onBlur
 
 प्रॉपर्टीज:
 
-```javascript
+```js
 DOMEventTarget relatedTarget
+```
+
+#### onFocus {#onfocus}
+
+The `onFocus` event is called when the element (or some element inside of it) receives focus. For example, it's called when the user clicks on a text input.
+
+```javascript
+function Example() {
+  return (
+    <input
+      onFocus={(e) => {
+        console.log('Focused on input');
+      }}
+      placeholder="onFocus is triggered when you click this input."
+    />
+  )
+}
+```
+
+#### onBlur {#onblur}
+
+The `onBlur` event handler is called when focus has left the element (or left some element inside of it). For example, it's called when the user clicks outside of a focused text input.
+
+```javascript
+function Example() {
+  return (
+    <input
+      onBlur={(e) => {
+        console.log('Triggered because this input lost focus');
+      }}
+      placeholder="onBlur is triggered when you click this input and then you click outside of it."
+    />
+  )
+}
+```
+
+#### Detecting Focus Entering and Leaving {#detecting-focus-entering-and-leaving}
+
+You can use the `currentTarget` and `relatedTarget` to differentiate if the focusing or blurring events originated from _outside_ of the parent element. Here is a demo you can copy and paste that shows how to detect focusing a child, focusing the element itself, and focus entering or leaving the whole subtree.
+
+```javascript
+function Example() {
+  return (
+    <div
+      tabIndex={1}
+      onFocus={(e) => {
+        if (e.currentTarget === e.target) {
+          console.log('focused self');
+        } else {
+          console.log('focused child', e.target);
+        }
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // Not triggered when swapping focus between children
+          console.log('focus entered self');
+        }
+      }}
+      onBlur={(e) => {
+        if (e.currentTarget === e.target) {
+          console.log('unfocused self');
+        } else {
+          console.log('unfocused child', e.target);
+        }
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // Not triggered when swapping focus between children
+          console.log('focus left self');
+        }
+      }}
+    >
+      <input id="1" />
+      <input id="2" />
+    </div>
+  );
+}
 ```
 
 * * *
@@ -302,7 +389,15 @@ DOMTouchList touches
 onScroll
 ```
 
+<<<<<<< HEAD
 प्रॉपर्टीज:
+=======
+>Note
+>
+>Starting with React 17, the `onScroll` event **does not bubble** in React. This matches the browser behavior and prevents the confusion when a nested scrollable element fires events on a distant parent.
+
+Properties:
+>>>>>>> 35179e85933265cb7a4f5d51c10fbe70deba3787
 
 ```javascript
 number detail
