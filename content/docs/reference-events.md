@@ -10,15 +10,9 @@ category: Reference
 
 ## ओवरव्यू {#overview}
 
-<<<<<<< HEAD
-आपके ईवेंट हैंडलर को `SyntheticEvent` के उदाहरण के तौर पर, ब्राउज़र के नेटिव ईवेंट के चारों ओर एक क्रॉस-ब्राउज़र रैपर दिया जाएगा। यह ब्राउज़र के नेटिव ईवेंट के समान है, जिसमें `stopPropagation()` और `preventDefault()` शामिल हैं, पर यह इवेंट्स सभी ब्राउज़रों में समान रूप से काम करते हैं।
+आपके ईवेंट हैंडलर को `SyntheticEvent` के उदाहरण के तौर पर, ब्राउज़र के नेटिव ईवेंट के चारों ओर एक क्रॉस-ब्राउज़र रैपर दिया जाएगा। इसका ब्राउज़र के नेटिव ईवेंट के समान इंटरफेस है, जिसमें `stopPropagation()` और `preventDefault()` शामिल हैं, पर यह इवेंट्स सभी ब्राउज़रों में समान रूप से काम करते हैं।
 
-यदि किसी कारण से आप पाते हैं कि आपको अंतर्निहित ब्राउज़र इवेंट की आवश्यकता है, तो इसे प्राप्त करने के लिए `nativeEvent` एट्रिब्यूट का उपयोग करें। प्रत्येक `SyntheticEvent` ऑब्जेक्ट में निम्न विशेषताएँ होती हैं।
-=======
-Your event handlers will be passed instances of `SyntheticEvent`, a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event, including `stopPropagation()` and `preventDefault()`, except the events work identically across all browsers. 
-
-If you find that you need the underlying browser event for some reason, simply use the `nativeEvent` attribute to get it. The synthetic events are different from, and do not map directly to, the browser's native events. For example in `onMouseLeave` `event.nativeEvent` will point to a `mouseout` event. The specific mapping is not part of the public API and may change at any time. Every `SyntheticEvent` object has the following attributes:
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+यदि किसी कारण से आप पाते हैं कि आपको अंतर्निहित ब्राउज़र इवेंट की आवश्यकता है, तो इसे प्राप्त करने के लिए `nativeEvent` एट्रिब्यूट का उपयोग करें। `synthetic` इवेंट्स ब्राउज़र के नेटिव इवेंट्स इस अलग है और वो उससे सीधे मैप नहीं करता।  उद्धरण के लिए `onMouseLeave` `event.nativeEvent` `mouseout` को पॉइंट करेगा। विशिष्ट मैपिंग पब्लिक API का हिस्सा नहीं है और किसी भी समय बदल सकता है। प्रत्येक `SyntheticEvent` ऑब्जेक्ट में निम्न विशेषताएँ होती हैं।
 
 ```javascript
 boolean bubbles
@@ -40,44 +34,11 @@ string type
 
 > ध्यान दें:
 >
-<<<<<<< HEAD
-> v0.14 से, किसी इवेंट हैंडलर द्वारा `false` लौटाने पर event propagation नहीं रुकेगा। इसके बजाय, `e.stopPropagation()` या `e.preventDefault()` को ज़रूरत के अनुसार मैन्युअल रूप से इस्तेमाल करना चाहिए।
-
-### इवेंट इकट्ठा करना {#event-pooling}
-
-`SyntheticEvent` को इकट्ठा किया जाता है। इसका मतलब यह है कि `SyntheticEvent` ऑब्जेक्ट का पुन: उपयोग किया जाएगा और ईवेंट कॉलबैक लागू होने के बाद सभी प्रॉपर्टीज को nullify कर दिया जाता है।
-यह परफॉरमेंस कारणों से है।
-जैसे की, हम ईवेंट को asynchronous तरीके से एक्सेस नहीं कर सकते हैं।
-
-```javascript
-function onClick(event) {
-  console.log(event); // => nullified object.
-  console.log(event.type); // => "click"
-  const eventType = event.type; // => "click"
-
-  setTimeout(function() {
-    console.log(event.type); // => null
-    console.log(eventType); // => "click"
-  }, 0);
-
-  // Won't work. this.state.clickEvent will only contain null values.
-  this.setState({clickEvent: event});
-
-  // You can still export event properties.
-  this.setState({eventType: event.type});
-}
-```
-=======
-> As of v17, `e.persist()` doesn't do anything because the `SyntheticEvent` is no longer [pooled](/docs/legacy-event-pooling.html).
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+> v17 से, `e.persist()` कुछ नहीं करता क्यूंकि `SyntheticEvent` अब [pooled](/docs/legacy-event-pooling.html) नहीं होता।
 
 > ध्यान दें:
 >
-<<<<<<< HEAD
-> यदि आप asynchronous तरीके से इवेंट के प्रॉपर्टीज का उपयोग करना चाहते हैं, तो आपको इवेंट पर `event.persist()` को कॉल करना चाहिए, जो पूल से सिंथेटिक इवेंट को हटा देगा और यूजर कोड द्वारा इवेंट के रेफरेन्सेस को बनाये रखेगा।
-=======
-> As of v0.14, returning `false` from an event handler will no longer stop event propagation. Instead, `e.stopPropagation()` or `e.preventDefault()` should be triggered manually, as appropriate.
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+> v0.14 से, किसी इवेंट हैंडलर द्वारा `false` लौटाने पर event propagation नहीं रुकेगा। इसके बजाय, `e.stopPropagation()` या `e.preventDefault()` को ज़रूरत के अनुसार मैन्युअल रूप से इस्तेमाल करना चाहिए।
 
 ## समर्थित इवेंट्स {#supported-events}
 
@@ -389,15 +350,11 @@ DOMTouchList touches
 onScroll
 ```
 
-<<<<<<< HEAD
-प्रॉपर्टीज:
-=======
->Note
+> ध्यान दें:
 >
->Starting with React 17, the `onScroll` event **does not bubble** in React. This matches the browser behavior and prevents the confusion when a nested scrollable element fires events on a distant parent.
+>React 17 से `onScroll` इवेंट React में **बब्बल नहीं करता है**। जब एक नेस्टेड स्क्रोलेबल एलिमेंट इवेंट को किसी दूर के पैरेंट पर फायर तब यह ब्राउज़र व्यवहार से मेल खाता है और कन्फूज़न को रोकता है।
 
-Properties:
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+प्रॉपर्टीज:
 
 ```javascript
 number detail
