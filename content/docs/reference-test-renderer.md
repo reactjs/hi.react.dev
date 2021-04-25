@@ -297,7 +297,7 @@ TestRenderer.create(
   {
     createNodeMock: (element) => {
       if (element.type === 'input') {
-        // एक फोकस फ़ंक्शन की नकल करें
+        // फोकस फ़ंक्शन की नकल करें
         return {
           focus: () => {
             focused = true;
