@@ -40,7 +40,11 @@ React एक जावास्क्रिप्ट लाइब्रेरी
 
 >ध्यान दें
 >
+<<<<<<< HEAD
 >यदि आपने पिछले कुछ वर्षों में जावास्क्रिप्ट के साथ काम नहीं किया है, तो [इन तीन बिंदुओं](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) को पढ़कर आप पर्याप्त जानकारी प्राप्त कर सकते है।
+=======
+>This guide occasionally uses some newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
+>>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
 
 ## आइये शुरू करें! {#lets-get-started}
 
