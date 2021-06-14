@@ -14,7 +14,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 Whereas a component transforms props into UI, a higher-order component transforms a component into another component.
 
-HOCs are common in third-party React libraries, such as Redux's [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) and Relay's [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html).
+HOCs are common in third-party React libraries, such as Redux's [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) and Relay's [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer).
 
 In this document, we'll discuss why higher-order components are useful, and how to write your own.
 
@@ -320,7 +320,7 @@ Higher-order components come with a few caveats that aren't immediately obvious 
 
 ### Don't Use HOCs Inside the render Method {#dont-use-hocs-inside-the-render-method}
 
-React's diffing algorithm (called reconciliation) uses component identity to determine whether it should update the existing subtree or throw it away and mount a new one. If the component returned from `render` is identical (`===`) to the component from the previous render, React recursively updates the subtree by diffing it with the new one. If they're not equal, the previous subtree is unmounted completely.
+React's diffing algorithm (called [Reconciliation](/docs/reconciliation.html)) uses component identity to determine whether it should update the existing subtree or throw it away and mount a new one. If the component returned from `render` is identical (`===`) to the component from the previous render, React recursively updates the subtree by diffing it with the new one. If they're not equal, the previous subtree is unmounted completely.
 
 Normally, you shouldn't need to think about this. But it matters for HOCs because it means you can't apply a HOC to a component within the render method of a component:
 
