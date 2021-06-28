@@ -207,7 +207,11 @@ ReactDOM.render(
 
 ### Keys सिर्फ़ सिब्लिंग्स के बीच अद्वितीय होनी चाहिए {#keys-must-only-be-unique-among-siblings}
 
+<<<<<<< HEAD
 Arrays के भीतर उपयोग की जाने वाली key उनके सिब्लिंग्स के बीच अद्वितीय होनी चाहिए। हालाँकि उन्हें पूरी तरह से अद्वितीय होने की आवश्यकता नहीं है। हम अलग-अलग arrays के लिए सामान keys का उपयोग कर सकते हैं:
+=======
+Keys used within arrays should be unique among their siblings. However, they don't need to be globally unique. We can use the same keys when we produce two different arrays:
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
