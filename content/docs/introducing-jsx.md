@@ -1,9 +1,9 @@
 ---
-आईडी: परिचय-jsx
-शीर्षक: पेश है JSX
-स्थायी लिंक: डॉक्स/परिचय-jsx.html
-पिछला: hello-world.html
-अगला: रेंडरिंग-elements.html
+id: introducing-jsx
+title: Introducing JSX
+permalink: docs/introducing-jsx.html
+prev: hello-world.html
+next: rendering-elements.html
 ---
 
 इस परिवर्तनीय घोषणा पर विचार करें:
