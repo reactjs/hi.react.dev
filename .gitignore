@@ -4,3 +4,8 @@
 node_modules
 public
 yarn-error.log
+package.json
+package-lock.json
+.gitignore
+package.json
+yarn.lock
