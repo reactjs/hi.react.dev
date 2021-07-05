@@ -530,7 +530,11 @@ class Board extends React.Component {
 
 ### अचल स्थिति होना क्यों महत्वपूर्ण है {#why-immutability-is-important}
 
+<<<<<<< HEAD
 पिछले कोड उदाहरण में, हमने सुझाव दिया कि `.slice()` ऑपरेटर का इस्तेमाल करके `squares` array की कॉपी बनाये और मौजूदा array का संसोधन करने के बजाये नए array का संसोधन करें। अब हम अपरिवर्तनीयता पर चर्चा करेंगे और सीखने के लिए अपरिवर्तनशीलता क्यों महत्वपूर्ण है।
+=======
+In the previous code example, we suggested that you use the `.slice()` method to create a copy of the `squares` array to copy instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 डेटा बदलने के लिए आम तौर पर दो दृष्टिकोण होते हैं। पहला तरीका डेटा के मूल्यों को सीधे बदलकर डेटा को *म्यूटेट* करना है। ददूसरा दृश्टिकोण डाटा को उसके नई कॉपी से बदलने का है जिसमें ज़रूरी परिवर्तन हैं।
 
