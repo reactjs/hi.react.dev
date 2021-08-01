@@ -10,9 +10,9 @@ category: Reference
 
 ## ओवरव्यू {#overview}
 
-आपके ईवेंट हैंडलर को `SyntheticEvent` के उदाहरण के तौर पर, ब्राउज़र के नेटिव ईवेंट के चारों ओर एक क्रॉस-ब्राउज़र रैपर दिया जाएगा। यह ब्राउज़र के नेटिव ईवेंट के समान है, जिसमें `stopPropagation()` और `preventDefault()` शामिल हैं, पर यह इवेंट्स सभी ब्राउज़रों में समान रूप से काम करते हैं।
+आपके ईवेंट हैंडलर को `SyntheticEvent` के उदाहरण के तौर पर, ब्राउज़र के नेटिव ईवेंट के चारों ओर एक क्रॉस-ब्राउज़र रैपर दिया जाएगा। इसका ब्राउज़र के नेटिव ईवेंट के समान इंटरफेस है, जिसमें `stopPropagation()` और `preventDefault()` शामिल हैं, पर यह इवेंट्स सभी ब्राउज़रों में समान रूप से काम करते हैं।
 
-यदि किसी कारण से आप पाते हैं कि आपको अंतर्निहित ब्राउज़र इवेंट की आवश्यकता है, तो इसे प्राप्त करने के लिए `nativeEvent` एट्रिब्यूट का उपयोग करें। प्रत्येक `SyntheticEvent` ऑब्जेक्ट में निम्न विशेषताएँ होती हैं।
+यदि किसी कारण से आप पाते हैं कि आपको अंतर्निहित ब्राउज़र इवेंट की आवश्यकता है, तो इसे प्राप्त करने के लिए `nativeEvent` एट्रिब्यूट का उपयोग करें। `synthetic` इवेंट्स ब्राउज़र के नेटिव इवेंट्स इस अलग है और वो उससे सीधे मैप नहीं करता।  उद्धरण के लिए `onMouseLeave` `event.nativeEvent` `mouseout` को पॉइंट करेगा। विशिष्ट मैपिंग पब्लिक API का हिस्सा नहीं है और किसी भी समय बदल सकता है। प्रत्येक `SyntheticEvent` ऑब्जेक्ट में निम्न विशेषताएँ होती हैं।
 
 ```javascript
 boolean bubbles
@@ -34,36 +34,11 @@ string type
 
 > ध्यान दें:
 >
-> v0.14 से, किसी इवेंट हैंडलर द्वारा `false` लौटाने पर event propagation नहीं रुकेगा। इसके बजाय, `e.stopPropagation()` या `e.preventDefault()` को ज़रूरत के अनुसार मैन्युअल रूप से इस्तेमाल करना चाहिए।
-
-### इवेंट इकट्ठा करना {#event-pooling}
-
-`SyntheticEvent` को इकट्ठा किया जाता है। इसका मतलब यह है कि `SyntheticEvent` ऑब्जेक्ट का पुन: उपयोग किया जाएगा और ईवेंट कॉलबैक लागू होने के बाद सभी प्रॉपर्टीज को nullify कर दिया जाता है।
-यह परफॉरमेंस कारणों से है।
-जैसे की, हम ईवेंट को asynchronous तरीके से एक्सेस नहीं कर सकते हैं।
-
-```javascript
-function onClick(event) {
-  console.log(event); // => nullified object.
-  console.log(event.type); // => "click"
-  const eventType = event.type; // => "click"
-
-  setTimeout(function() {
-    console.log(event.type); // => null
-    console.log(eventType); // => "click"
-  }, 0);
-
-  // Won't work. this.state.clickEvent will only contain null values.
-  this.setState({clickEvent: event});
-
-  // You can still export event properties.
-  this.setState({eventType: event.type});
-}
-```
+> v17 से, `e.persist()` कुछ नहीं करता क्यूंकि `SyntheticEvent` अब [pooled](/docs/legacy-event-pooling.html) नहीं होता।
 
 > ध्यान दें:
 >
-> यदि आप asynchronous तरीके से इवेंट के प्रॉपर्टीज का उपयोग करना चाहते हैं, तो आपको इवेंट पर `event.persist()` को कॉल करना चाहिए, जो पूल से सिंथेटिक इवेंट को हटा देगा और यूजर कोड द्वारा इवेंट के रेफरेन्सेस को बनाये रखेगा।
+> v0.14 से, किसी इवेंट हैंडलर द्वारा `false` लौटाने पर event propagation नहीं रुकेगा। इसके बजाय, `e.stopPropagation()` या `e.preventDefault()` को ज़रूरत के अनुसार मैन्युअल रूप से इस्तेमाल करना चाहिए।
 
 ## समर्थित इवेंट्स {#supported-events}
 
@@ -167,8 +142,81 @@ onFocus onBlur
 
 प्रॉपर्टीज:
 
-```javascript
+```js
 DOMEventTarget relatedTarget
+```
+
+#### onFocus {#onfocus}
+
+The `onFocus` event is called when the element (or some element inside of it) receives focus. For example, it's called when the user clicks on a text input.
+
+```javascript
+function Example() {
+  return (
+    <input
+      onFocus={(e) => {
+        console.log('Focused on input');
+      }}
+      placeholder="onFocus is triggered when you click this input."
+    />
+  )
+}
+```
+
+#### onBlur {#onblur}
+
+The `onBlur` event handler is called when focus has left the element (or left some element inside of it). For example, it's called when the user clicks outside of a focused text input.
+
+```javascript
+function Example() {
+  return (
+    <input
+      onBlur={(e) => {
+        console.log('Triggered because this input lost focus');
+      }}
+      placeholder="onBlur is triggered when you click this input and then you click outside of it."
+    />
+  )
+}
+```
+
+#### Detecting Focus Entering and Leaving {#detecting-focus-entering-and-leaving}
+
+You can use the `currentTarget` and `relatedTarget` to differentiate if the focusing or blurring events originated from _outside_ of the parent element. Here is a demo you can copy and paste that shows how to detect focusing a child, focusing the element itself, and focus entering or leaving the whole subtree.
+
+```javascript
+function Example() {
+  return (
+    <div
+      tabIndex={1}
+      onFocus={(e) => {
+        if (e.currentTarget === e.target) {
+          console.log('focused self');
+        } else {
+          console.log('focused child', e.target);
+        }
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // Not triggered when swapping focus between children
+          console.log('focus entered self');
+        }
+      }}
+      onBlur={(e) => {
+        if (e.currentTarget === e.target) {
+          console.log('unfocused self');
+        } else {
+          console.log('unfocused child', e.target);
+        }
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // Not triggered when swapping focus between children
+          console.log('focus left self');
+        }
+      }}
+    >
+      <input id="1" />
+      <input id="2" />
+    </div>
+  );
+}
 ```
 
 * * *
@@ -301,6 +349,10 @@ DOMTouchList touches
 ```
 onScroll
 ```
+
+> ध्यान दें:
+>
+>React 17 से `onScroll` इवेंट React में **बब्बल नहीं करता है**। जब एक नेस्टेड स्क्रोलेबल एलिमेंट इवेंट को किसी दूर के पैरेंट पर फायर तब यह ब्राउज़र व्यवहार से मेल खाता है और कन्फूज़न को रोकता है।
 
 प्रॉपर्टीज:
 
