@@ -115,11 +115,7 @@ React के दस्तावेज़ मानते है की आपक
 
 आप ट्विटर पर [@reactjs का अकाउंट](https://twitter.com/reactjs) भी फॉलो कर सकते हैं, लेकिन अगर आप हमारा ब्लॉग पढ़ते हैं तो आप कोई ज़रूरी चीज़ नहीं छोड़ेंगे। 
 
-<<<<<<< HEAD
 हर React रिलीज़ अपने ब्लॉग पोस्ट के लायक नहीं होती है लेकिन हर रिलीज़ का पूरा चेंज लोग आपको [`CHANGELOG.md` फाइल जो React की रिपॉजिटरी में है](https://github.com/facebook/react/blob/master/CHANGELOG.md) या [Release](https://github.com/facebook/react/releases) पेज पर मिल जाएगा। 
-=======
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/main/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react/releases) page.
->>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ## वर्ज़न्ड दस्तावेज़ {#versioned-documentation}
 
