@@ -240,7 +240,7 @@ class Square extends React.Component {
 class Square extends React.Component {
   render() {
     return (
-      <button className="square" onClick={function() { alert('click'); }}>
+      <button className="square" onClick={function() { console.log('click'); }}>
         {this.props.value}
       </button>
     );
@@ -248,7 +248,11 @@ class Square extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 - यदि आप अभी Square पर क्लिक करते हैं, तो आपको आपके ब्राउज़र में एक अलर्ट दिखना चाहिए।
+=======
+If you click on a Square now, you should see 'click' in your browser's devtools console.
+>>>>>>> 95e15d063b205007a92c52efb5311f76ad5a0b6c
 
 >ध्यान दें
 >
@@ -258,7 +262,7 @@ class Square extends React.Component {
 >class Square extends React.Component {
 >  render() {
 >    return (
->      <button className="square" onClick={() => alert('click')}>
+>      <button className="square" onClick={() => console.log('click')}>
 >        {this.props.value}
 >      </button>
 >    );
@@ -266,7 +270,11 @@ class Square extends React.Component {
 >}
 >```
 >
+<<<<<<< HEAD
 >ध्यान दें कि `onClick = {() => alert('click')}` के साथ, हम `onClick` props के रूप में *एक फ़ंक्शन* पास कर रहे हैं। यह केवल एक क्लिक के बाद फायर करता है। ऐसे `() =>` लिखना भूल जाना और ऐसे `onClick = {alert('click')}` लिखना एक सामान्य गलती है, और हर बार कौम्पोनॅन्ट के रेंडर करने पर यह अलर्ट दिखायेगा।
+=======
+>Notice how with `onClick={() => console.log('click')}`, we're passing *a function* as the `onClick` prop. React will only call this function after a click. Forgetting `() =>` and writing `onClick={console.log('click')}` is a common mistake, and would fire every time the component re-renders.
+>>>>>>> 95e15d063b205007a92c52efb5311f76ad5a0b6c
 
 अगले चरण के रूप में, हम चाहते हैं की स्क्वैर कौम्पोनॅन्ट याद रखे की वह क्लिक हुआ था, और खुद को "X" मार्क से भर ले। चीजों को "याद रखने" के लिए, कौम्पोनॅन्ट **state** का उपयोग किया जाता है।
 
@@ -285,7 +293,7 @@ class Square extends React.Component {
 
   render() {
     return (
-      <button className="square" onClick={() => alert('click')}>
+      <button className="square" onClick={() => console.log('click')}>
         {this.props.value}
       </button>
     );
