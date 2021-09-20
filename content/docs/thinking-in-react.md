@@ -39,9 +39,9 @@ But how do you know what should be its own component? Use the same techniques fo
 
 Since you're often displaying a JSON data model to a user, you'll find that if your model was built correctly, your UI (and therefore your component structure) will map nicely. That's because UI and data models tend to adhere to the same *information architecture*. Separate your UI into components, where each component matches one piece of your data model.
 
-![Component diagram](../images/blog/thinking-in-react-components.png)
+![Diagram showing nesting of components](../images/blog/thinking-in-react-components.png)
 
-You'll see here that we have five components in our app. We've italicized the data each component represents.
+You'll see here that we have five components in our app. We've italicized the data each component represents. The numbers in the image correspond to the numbers below.
 
   1. **`FilterableProductTable` (orange):** contains the entirety of the example
   2. **`SearchBar` (blue):** receives all *user input*
@@ -84,7 +84,7 @@ To make your UI interactive, you need to be able to trigger changes to your unde
 
 To build your app correctly, you first need to think of the minimal set of mutable state that your app needs. The key here is [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Figure out the absolute minimal representation of the state your application needs and compute everything else you need on-demand. For example, if you're building a TODO list, keep an array of the TODO items around; don't keep a separate state variable for the count. Instead, when you want to render the TODO count, take the length of the TODO items array.
 
-Think of all of the pieces of data in our example application. We have:
+Think of all the pieces of data in our example application. We have:
 
   * The original list of products
   * The search text the user has entered
