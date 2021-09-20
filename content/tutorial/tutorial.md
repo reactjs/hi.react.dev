@@ -16,7 +16,7 @@ redirect_from:
 
 ## ट्यूटोरियल शुरू करने से पहले {#before-we-start-the-tutorial}
 
-हम इस ट्यूटोरियल के दौरान एक छोटा गेम बनाएंगे। **आप इसे छोड़ने के लिए उत्सुक होंगे क्यूंकि आप गेम नहीं बना रहे हैं -- लेकिन इसे एक मौका दें।** ट्यूटोरियल में आपके द्वारा सीखी जाने वाली तकनीकें किसी भी React ऐप्स के निर्माण के लिए मौलिक हैं, और इसमें महारत हासिल करने से आपको React की गहरी समझ मिलेगी।
+हम इस ट्यूटोरियल के दौरान एक छोटा गेम बनाएंगे। **आप इसे छोड़ने के लिए उत्सुक होंगे क्योंकि आप गेम नहीं बना रहे हैं -- लेकिन इसे एक मौका दें।** ट्यूटोरियल में आपके द्वारा सीखी जाने वाली तकनीकें किसी भी React ऐप्स के निर्माण के लिए मौलिक हैं, और इसमें महारत हासिल करने से आपको React की गहरी समझ मिलेगी।
 
 >ध्यान दें
 >
@@ -240,7 +240,7 @@ class Square extends React.Component {
 class Square extends React.Component {
   render() {
     return (
-      <button className="square" onClick={function() { alert('click'); }}>
+      <button className="square" onClick={function() { console.log('click'); }}>
         {this.props.value}
       </button>
     );
@@ -248,7 +248,7 @@ class Square extends React.Component {
 }
 ```
 
-- यदि आप अभी Square पर क्लिक करते हैं, तो आपको आपके ब्राउज़र में एक अलर्ट दिखना चाहिए।
+- यदि आप अभी Square पर क्लिक करते हैं, तो आपको अपने ब्राउज़र के devtools कंसोल में 'click' दिखना चाहिए।
 
 >ध्यान दें
 >
@@ -258,7 +258,7 @@ class Square extends React.Component {
 >class Square extends React.Component {
 >  render() {
 >    return (
->      <button className="square" onClick={() => alert('click')}>
+>      <button className="square" onClick={() => console.log('click')}>
 >        {this.props.value}
 >      </button>
 >    );
@@ -266,7 +266,7 @@ class Square extends React.Component {
 >}
 >```
 >
->ध्यान दें कि `onClick = {() => alert('click')}` के साथ, हम `onClick` props के रूप में *एक फ़ंक्शन* पास कर रहे हैं। यह केवल एक क्लिक के बाद फायर करता है। ऐसे `() =>` लिखना भूल जाना और ऐसे `onClick = {alert('click')}` लिखना एक सामान्य गलती है, और हर बार कौम्पोनॅन्ट के रेंडर करने पर यह अलर्ट दिखायेगा।
+>ध्यान दें कि `onClick = {() => console.log('click')}` के साथ, हम `onClick` props के रूप में *एक फ़ंक्शन* पास कर रहे हैं। यह केवल एक क्लिक के बाद फायर करता है। ऐसे `() =>` लिखना भूल जाना और ऐसे `onClick = {console.log('click')}` लिखना एक सामान्य गलती है, और हर बार कौम्पोनॅन्ट के render होने पर ये एग्ज़िक्युट हो जाएगा।
 
 अगले चरण के रूप में, हम चाहते हैं की स्क्वैर कौम्पोनॅन्ट याद रखे की वह क्लिक हुआ था, और खुद को "X" मार्क से भर ले। चीजों को "याद रखने" के लिए, कौम्पोनॅन्ट **state** का उपयोग किया जाता है।
 
@@ -285,7 +285,7 @@ class Square extends React.Component {
 
   render() {
     return (
-      <button className="square" onClick={() => alert('click')}>
+      <button className="square" onClick={() => console.log('click')}>
         {this.props.value}
       </button>
     );
