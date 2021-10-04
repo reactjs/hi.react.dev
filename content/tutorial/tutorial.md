@@ -457,11 +457,19 @@ class Square extends React.Component {
 
 जब एक स्क्वायर पर क्लिक किया जाता है, तो Board द्वारा प्रदान किया गया `onClick` फ़ंक्शन कॉल होता है। यहां बताया गया है कि यह कैसे हासिल किया जाता है:
 
+<<<<<<< HEAD
 1. बिल्ट-इन DOM के कौम्पोनॅन्ट का onClick prop React को क्लिक इवेंट लिंस्टेनेर सेट करने को कहता है।
 2. जब बटन पर क्लिक किया जाता है, तो React `onClick` ईवेंट हैंडलर को कॉल करेगा जिसे Square के `render()` मेथड में परिभाषित किया गया है।
 3. यह ईवेंट हैंडलर `this.props.onClick()` को कॉल करता है। Board द्वारा Square के `onClick` prop को निर्दिष्ट किया गया था।
 4. चूँकि Board ने `onClick = {() => this.handleClick (i)}` को Square में दिया, Square ने क्लिक करने पर `this.handleClick(i)` को कॉल किया।
 5. हमने अभी तक `handleClick()` मेथड को परिभाषित नहीं किया है, इसलिए हमारा कोड क्रैश हो गया है। यदि आप अभी एक स्क्वायर क्लिक करते हैं, तो आपको एक लाल एरर स्क्रीन दिखनी चाहिए, जिसमें ये एरर "this.handleClick is not a function"  दिखेगा।
+=======
+1. The `onClick` prop on the built-in DOM `<button>` component tells React to set up a click event listener.
+2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method.
+3. This event handler calls `this.props.onClick()`. The Square's `onClick` prop was specified by the Board.
+4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls the Board's `handleClick(i)` when clicked.
+5. We have not defined the `handleClick()` method yet, so our code crashes. If you click a square now, you should see a red error screen saying something like "this.handleClick is not a function".
+>>>>>>> 23d03a854ba21aeea0a03a0bd5185e0def9237d6
 
 >ध्यान दें
 >
