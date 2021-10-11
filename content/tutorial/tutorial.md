@@ -1052,7 +1052,13 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[अभी तक का पूरा कोड देखें](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
+<<<<<<< HEAD
 टिक-टैक्-टो के खेल के इतिहास में प्रत्येक चाल के लिए, हम एक सूची आइटम `<li>` बनाएँगे जिसमे एक बटन `<button>` होगा। बटन में एक  `onClick` हैंडलर होगा, जो कि `this.jumpTo()` नामक एक मेथड कॉल करेगा। हमने अभी तक `jumpTo()` मेथड नहीं बनाया है। अभी के लिए, हमें खेल में हुई सारी चालें दिखेगी और एक ऐसी चेतावनी डेवलपर कंसोल में दिखनी चाहिए:
+=======
+As we iterate through `history` array, `step` variable refers to the current `history` element value, and `move` refers to the current `history` element index. We only interested in `move` here, hence `step` is not getting assigned to anything.
+
+For each move in the tic-tac-toe game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 >  चेतावनी:
 >  एक array या iterator में प्रत्येक चाइल्ड के पास एक अद्वितीय "कुंजी" प्रोप होना चाहिए। "Game" के रेंडर मेथड की जाँच करें।
