@@ -1,14 +1,14 @@
 ---
 id: react-without-jsx
-title: React Without JSX
+title: JSX के बिना React
 permalink: docs/react-without-jsx.html
 ---
 
-JSX is not a requirement for using React. Using React without JSX is especially convenient when you don't want to set up compilation in your build environment.
+React का उपयोग करने के लिए JSX की आवश्यकता नहीं है। JSX के बिना React का उपयोग करना विशेष रूप से तब सुविधाजनक होता है जब आप अपने बील्ड परिवेश मे कंपाइलेशन को स्थापित नहीं करना चाहते हैं।
 
-Each JSX element is just syntactic sugar for calling `React.createElement(component, props, ...children)`. So, anything you can do with JSX can also be done with just plain JavaScript.
+प्रत्येक JSX एलिमेंट `React.createElement(component, props, ...children)` को कॉल करने के लिए मात्र सुंदर लिखने का तरीक़ा है। अतः, आप JSX से जो कुछ भी कर सकते हैं, वही सब सामान्य जावास्क्रिप्ट से भी किया जा सकता है।
 
-For example, this code written with JSX:
+उदाहरण के लिए, यह कोड JSX के साथ लिखा गया है:
 
 ```js
 class Hello extends React.Component {
@@ -23,7 +23,7 @@ ReactDOM.render(
 );
 ```
 
-can be compiled to this code that does not use JSX:
+उपरोक्त कोड को बिना JSX के नीचे दिए गए तरीक़े से भी लिखा जा सकता है।
 
 ```js
 class Hello extends React.Component {
@@ -38,11 +38,11 @@ ReactDOM.render(
 );
 ```
 
-If you're curious to see more examples of how JSX is converted to JavaScript, you can try out [the online Babel compiler](babel://jsx-simple-example).
+यदि आप अधिक उदाहरण देखने के लिए उत्सुक हैं कि JSX को जावास्क्रिप्ट में कैसे परिवर्तित किया जाता है, तो आप [ऑनलाइन बाबेल कंपाइलर](babel://jsx-simple-example) आज़मा सकते हैं।
 
-The component can either be provided as a string, as a subclass of `React.Component`, or a plain function.
+कोंपोनेंट या एक स्ट्रिंग के रूप में या `React.Component` के उपवर्ग (सब-क्लास) के रूप में या फिर एक सादे फ़ंक्शन के रूप में प्रदान किया जा सकता है।
 
-If you get tired of typing `React.createElement` so much, one common pattern is to assign a shorthand:
+यदि आप `React.createElement` टाइप करते-करते थक जाते हैं, तो एक सामान्य तारिका शॉर्टहैंड बनाना है:
 
 ```js
 const e = React.createElement;
@@ -53,7 +53,6 @@ ReactDOM.render(
 );
 ```
 
-If you use this shorthand form for `React.createElement`, it can be almost as convenient to use React without JSX.
+यदि आप `React.createElement` के लिए इस शॉर्टहैंड फॉर्म का उपयोग करते हैं, तो JSX के बिना React का उपयोग करना लगभग सुविधाजनक हो सकता है।
 
-Alternatively, you can refer to community projects such as [`react-hyperscript`](https://github.com/mlmorg/react-hyperscript) and [`hyperscript-helpers`](https://github.com/ohanhi/hyperscript-helpers) which offer a terser syntax.
-
+वैकल्पिक रूप से, आप [`रीएक्ट-हाइपरस्क्रिप्ट`](https://github.com/mlmorg/react-hyperscript) और [`हाइपरस्क्रिप्ट-हेल्पर्स`](https://github.com/ohanhi/hyperscript-helpers) जैसी सामुदायिक परियोजनाओं को भी देख सकते हैं, जो एक संक्षिप्त वाक्य रचना प्रदान करती हैं।
