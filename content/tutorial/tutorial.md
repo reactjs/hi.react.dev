@@ -1052,11 +1052,7 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[अभी तक का पूरा कोड देखें](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
-<<<<<<< HEAD
-हम जब `history` array, को आईट्रेट करते हैं, तब `step` वेरिएबल करंट `history` एलिमेंट की वैल्यू को रेफेर करता है और मूव करंट हिस्ट्री एलिमेंट के इंडेक्स को रेफेर करता ह। हम अभी हमें यहाँ पर सिर्फ `move` में रुचि है, इसलिए `step` को कुछ भी असाइन नहीं किया जा रहा है।
-=======
-As we iterate through `history` array, `step` variable refers to the current `history` element value, and `move` refers to the current `history` element index. We are only interested in `move` here, hence `step` is not getting assigned to anything.
->>>>>>> 17ad2cbc71f4c1fcc3f3f9ae528bfd292a9fced7
+हम जब `history` array, को आईट्रेट करते हैं, तब `step` वेरिएबल करंट `history` एलिमेंट की वैल्यू को रेफेर करता है और `move` करंट हिस्ट्री एलिमेंट के इंडेक्स को रेफेर करता है। अभी हमें यहाँ पर सिर्फ `move` में रुचि है, इसलिए `step` को कुछ भी असाइन नहीं किया जा रहा है।
 
 टिक-टैक्-टो के खेल के इतिहास में प्रत्येक चाल के लिए, हम एक सूची आइटम `<li>` बनाएँगे जिसमे एक बटन `<button>` होगा। बटन में एक  `onClick` हैंडलर होगा, जो कि `this.jumpTo()` नामक एक मेथड कॉल करेगा। हमने अभी तक `jumpTo()` मेथड नहीं बनाया है। अभी के लिए, हमें खेल में हुई सारी चालें दिखेगी और एक ऐसी चेतावनी डेवलपर कंसोल में दिखनी चाहिए:
 
@@ -1159,13 +1155,9 @@ class Game extends React.Component {
   }
 ```
 
-<<<<<<< HEAD
-हम Game के `handleClick` मेथड में कुछ बदलाव करेंगें जो स्क्वायर पर क्लिक करने से execute होता है।
-=======
-Notice in `jumpTo` method, we haven't updated `history` property of the state. That is because state updates are merged or in more simple words React will update only the properties mentioned in `setState` method leaving the remaining state as that is. For more info **[see the documentation](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
+ध्यान दें `jumpTo` मेथड में, हमनें `history` प्रॉपर्टी को अपडेट नहीं किया है। वो इसलिए की, state के अपडेट्स मर्ज हो जाएन्गे या आसान भाषा में React सिर्फ उन प्रॉपर्टीज को अपडेट करेगा जो `setState` मेथड में दिए गए हैं और बाकि सब को ऐसे ही छोड़ देग।  ज़्यादा जानकारी के लिए **[ये डॉक्यूमेंटेशन को देखे।](/docs/state-and-lifecycle.html#state-updates-are-merged)**
 
-We will now make a few changes to the Game's `handleClick` method which fires when you click on a square.
->>>>>>> 17ad2cbc71f4c1fcc3f3f9ae528bfd292a9fced7
+हम Game के `handleClick` मेथड में कुछ बदलाव करेंगें जो स्क्वायर पर क्लिक करने से execute होता है।
 
 हमारे द्वारा जोड़ा गया `stepNumber` state अब उपयोगकर्ता को प्रदर्शित की गई चाल को दर्शाता है। एक नई चाल चलने के बाद, हमें `stepNumber: history.length` को `this.setState` के आर्गुमेंट में ऐड करके `stepNumber` को  अपडेट करना है। यह सुनिश्चित करता है कि हम एक नए कदम के बाद फिर से वही चाल दिखाने में फंस न जाएं।
 
