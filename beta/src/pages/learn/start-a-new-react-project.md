@@ -1,33 +1,33 @@
 ---
-title: Start a New React Project
+शीर्षक: एक नया React शुरू करें
 ---
 
 <Intro>
 
-If you're learning React or considering adding it to an existing project, you can get started quickly by [adding React to any HTML page with script tags](/learn/add-react-to-a-website). If your project will need many components and many files, it might be time to consider the options below!
+यदि आप React सीख रहे हैं या इसे किसी मौजूदा प्रोजेक्ट में जोड़ने पर विचार कर रहे हैं, तो आप [स्क्रिप्ट टैग के साथ किसी भी एचटीएमएल पेज पर रिएक्ट जोड़कर](/learn/add-react-to-a-website) शुरू कर सकते हैं। यदि आपकी परियोजना को कई घटकों और कई फाइलों की आवश्यकता होगी, तो यह नीचे दिए गए विकल्पों पर विचार करने का समय हो सकता है!
 
 </Intro>
 
-## Choose your own adventure {/*choose-your-own-adventure*/}
+## अपना खुद का रोमांच चुनें {/*अपना खुद का रोमांच चुनें*/}
 
-React is a library that lets you organize UI code by breaking it apart into pieces called components. React doesn't take care of routing or data management. For these features, you'll want to use third-party libraries or write your own solutions. This means there are several ways to start a new React project:
+React एक library है जो आपको यूआई कोड को घटकों नामक टुकड़ों में तोड़कर व्यवस्थित करने देता है। React रूटिंग या डेटा प्रबंधन का ध्यान नहीं रखता है। इन सुविधाओं के लिए, आप थर्ड-पार्टी लाइब्रेरी का उपयोग करना चाहेंगे या अपने स्वयं के समाधान लिखना चाहेंगे। इसका मतलब है कि एक नया React प्रोजेक्ट शुरू करने के कई तरीके हैं:
 
-* Start with a **minimal set up with just a toolchain,** adding features to your project as necessary.
-* Start with an **opinionated framework** with common functionality already built in.
+* केवल एक टूलचेन के साथ **न्यूनतम सेट अप के साथ प्रारंभ करें,** आवश्यकतानुसार अपने प्रोजेक्ट में सुविधाएँ जोड़ें।
+* पहले से निर्मित सामान्य कार्यक्षमता के साथ **विचारित ढांचे** के साथ प्रारंभ करें।
 
-Whether you're just getting started, looking to build something big, or want to set up your own toolchain, this guide will set you on the right path.
+चाहे आप अभी शुरुआत कर रहे हैं, कुछ बड़ा बनाना चाहते हैं, या अपनी खुद की टूलचेन स्थापित करना चाहते हैं, यह मार्गदर्शिका आपको सही रास्ते पर ले जाएगी।
 
-## Getting started with a React toolchain {/*getting-started-with-a-react-toolchain*/}
+## React टूलचेन के साथ शुरुआत करना {/*आरंभ करना-के साथ-साथ-प्रतिक्रिया-टूलचेन*/}
 
-If you're just getting started with React, we recommend [Create React App](https://create-react-app.dev/), the most popular way to try out React's features and a great way to build a new single-page, client-side application. Create React App is an unopinionated toolchain configured just for React. Toolchains help with things like:
+यदि आप React के साथ अभी शुरुआत कर रहे हैं, तो हम अनुशंसा करते हैं [Create React App](https://create-react-app.dev/), React की विशेषताओं को आज़माने का सबसे लोकप्रिय तरीका और एक नया सिंगल-पेज, क्लाइंट-साइड एप्लिकेशन बनाने का एक शानदार तरीका । Create React App सिर्फ React के लिए कॉन्फ़िगर किया गया एक अप्रकाशित टूलचैन है। टूलचेन इस तरह की चीजों में मदद करते हैं:
 
-* Scaling to many files and components
-* Using third-party libraries from npm
-* Detecting common mistakes early
-* Live-editing CSS and JS in development
-* Optimizing the output for production
+* कई फाइलों और घटकों के लिए स्केलिंग
+* npm . से थर्ड-पार्टी लाइब्रेरी का उपयोग करना
+* सामान्य गलतियों का जल्द पता लगाना
+* विकास में CSS और JS का लाइव संपादन
+* उत्पादन के लिए उत्पादन का अनुकूलन
 
-You can get started building with Create React App with one line of code in your terminal! (**Be sure you have [Node.js](https://nodejs.org/) installed!**)
+आप अपने टर्मिनल में कोड की एक पंक्ति के साथ Create React App के साथ निर्माण शुरू कर सकते हैं! (**सुनिश्चित करें कि आपने [Node.js](https://nodejs.org/) इंस्टॉल किया हुआ है!**)
 
 <TerminalBlock>
 
@@ -35,7 +35,7 @@ npx create-react-app my-app
 
 </TerminalBlock>
 
-Now you can run your app with:
+अब आप अपना ऐप इसके साथ चला सकते हैं:
 
 <TerminalBlock>
 
@@ -44,37 +44,37 @@ npm start
 
 </TerminalBlock>
 
-For more information, [check out the official guide](https://create-react-app.dev/docs/getting-started).
+अधिक जानकारी के लिए, [आधिकारिक गाइड देखें](https://create-react-app.dev/docs/getting-started)।
 
-> Create React App doesn't handle backend logic or databases; it just creates a frontend build pipeline. This means you can use it with any backend you want. But if you're looking for more features like routing and server-side logic, read on!
+>  Create React App बनाएं बैकएंड लॉजिक या डेटाबेस को हैंडल नहीं करता है; यह सिर्फ एक फ्रंटएंड बिल्ड पाइपलाइन बनाता है। इसका मतलब है कि आप इसे अपने इच्छित किसी भी बैकएंड के साथ उपयोग कर सकते हैं। लेकिन अगर आप रूटिंग और सर्वर-साइड लॉजिक जैसी अधिक सुविधाओं की तलाश कर रहे हैं, तो पढ़ें!
 
-### Other options {/*other-options*/}
+### अन्य विकल्प {/*अन्य विकल्प*/}
 
-Create React App is great to get started working with React, but if you'd like an even lighter toolchain, you might try one of these other popular toolchains:
+Create React App रिएक्ट के साथ काम शुरू करने का अच्छा तरीका है , लेकिन अगर आप एक हल्का टूलचेन चाहते हैं, तो आप इन अन्य लोकप्रिय टूलचेन में से किसी एक को आजमा सकते हैं:
 
 * [Vite](https://vitejs.dev/guide/)
 * [Parcel](https://parceljs.org/)
 * [Snowpack](https://www.snowpack.dev/tutorials/react)
 
-## Building with React and a framework {/*building-with-react-and-a-framework*/}
+## React और एक फ्रेमवर्क के साथ बिल्डिंग {/*बिल्डिंग-विद-रिएक्शन-एंड-ए-फ्रेमवर्क*/}
 
-If you're looking to start a bigger, production-ready project, [Next.js](https://nextjs.org/) is a great place to start. Next.js is a popular, lightweight framework for static and server‑rendered applications built with React. It comes pre-packaged with features like routing, styling, and server-side rendering, getting your project up and running quickly. 
+अगर आप एक बड़ा, उत्पादन के लिए तैयार प्रोजेक्ट शुरू करना चाहते हैं, तो [Next.js](https://nextjs.org/) शुरू करने के लिए एक बढ़िया जगह है। Next.js रिएक्ट के साथ निर्मित स्थैतिक और सर्वर-रेंडर अनुप्रयोगों के लिए एक लोकप्रिय, हल्का ढांचा है। यह रूटिंग, स्टाइलिंग और सर्वर-साइड रेंडरिंग जैसी सुविधाओं के साथ प्री-पैकेज्ड आता है, जिससे आपका प्रोजेक्ट तैयार होता है और तेज़ी से चलता है।
 
 [Get started building with Next.js](https://nextjs.org/docs/getting-started) with the official guide.
 
-### Other options {/*other-options-1*/}
+### अन्य विकल्प {/*अन्य-विकल्प-1*/}
 
-* [Gatsby](https://www.gatsbyjs.org/) lets you generate static websites with React with GraphQL.
-* [Razzle](https://razzlejs.org/) is a server-rendering framework that doesn't require any configuration, but offers more flexibility than Next.js.
+* [Gatsby](https://www.gatsbyjs.org/) आपको GraphQL के साथ React  के साथ स्थैतिक वेबसाइट बनाने की सुविधा देता है।
+* [Razzle](https://razzlejs.org/) एक सर्वर-रेंडरिंग फ्रेमवर्क है जिसमें किसी कॉन्फ़िगरेशन की आवश्यकता नहीं होती है, लेकिन यह Next.js की तुलना में अधिक फ्लेक्सिबिलिटी प्रदान करता है।
 
-## Custom toolchains {/*custom-toolchains*/}
+## कस्टम टूलचेन {/*कस्टम-टूलचेन*/}
 
-You may prefer to create and configure your own toolchain. A JavaScript build toolchain typically consists of:
+आप अपनी खुद की टूलचेन बनाना और कॉन्फ़िगर करना पसंद कर सकते हैं। एक जावास्क्रिप्ट बिल्ड टूलचेन में आमतौर पर निम्न शामिल होते हैं:
 
-* A **package manager**—lets you install, updated and manage third-party packages. [Yarn](https://yarnpkg.com/) and [npm](https://www.npmjs.com/) are two popular package managers.
-* A **bundler**—lets you write modular code and bundle it together into small packages to optimize load time. [Webpack](https://webpack.js.org/), [Snowpack](https://www.snowpack.dev/), [Parcel](https://parceljs.org/) are several popular bundlers.
-* A **compiler**—lets you write modern JavaScript code that still works in older browsers. [Babel](https://babeljs.io/) is one such example.
+* एक **पैकेज मैनेजर**—आपको थर्ड-पार्टी पैकेज इनस्टॉल, अपडेटेड एंड मैनेज करने देता है। [Yarn](https://yarnpkg.com/) और [npm](https://www.npmjs.com/) दो लोकप्रिय पैकेज मैनेजर हैं।
+* A **बंडलर**—आपको मॉड्यूलर कोड लिखने और लोड समय को अनुकूलित करने के लिए इसे छोटे पैकेजों में एक साथ बंडल करने देता है। [Webpack](https://webpack.js.org/), [Snowpack](https://www.snowpack.dev/), [Parcel](https://parceljs.org/) कई लोकप्रिय बंडलर हैं।
+* ए **कंपाइलर**—आपको आधुनिक जावास्क्रिप्ट कोड लिखने देता है जो अभी भी पुराने ब्राउज़र में काम करता है। [Babel](https://babeljs.io/) ऐसा ही एक उदाहरण है।
 
-In a larger project, you might also want to have a tool to manage multiple packages in a single repository. [Nx](https://nx.dev/react) is an example of such a tool.
+एक बड़े प्रोजेक्ट में, आप एक ही रिपॉजिटरी में कई पैकेजों को प्रबंधित करने के लिए एक टूल भी रखना चाह सकते हैं। [Nx](https://nx.dev/react) ऐसे टूल का एक उदाहरण है।
 
-If you prefer to set up your own JavaScript toolchain from scratch, [check out this guide](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) that re-creates some of the Create React App functionality.
+अगर आप शुरू से ही अपनी खुद की जावास्क्रिप्ट टूलचेन सेट करना पसंद करते हैं, [इस गाइड को देखें](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) जो Create React App की कुछ कार्यक्षमता को फिर से बनाता है।
