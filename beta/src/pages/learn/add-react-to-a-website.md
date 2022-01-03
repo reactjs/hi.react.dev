@@ -120,23 +120,24 @@ ReactDOM.render(
 <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
-## Try React with JSX {/_try-react-with-jsx_/} {/_try-react-with-jsx-try-react-with-jsx_/} {/*try-react-with-jsx-try-react-with-jsx-try-react-with-jsx-try-react-with-jsx*/}
+## JSX के साथ React का प्रयास करें {/*try-react-with-jsx*/}
 
-The examples above rely on features that are natively supported by browsers. This is why **like_button.js** uses a JavaScript function call to tell React what to display:
+ऊपर दिए गए उदाहरण उन विशेषताओं पर निर्भर करते हैं जो मूल रूप से ब्राउज़र द्वारा समर्थित हैं। यही कारण है कि **like_button.js** React को क्या प्रदर्शित करना है, यह बताने के लिए जावास्क्रिप्ट फ़ंक्शन कॉल का उपयोग करता है:
 
 ```js
-return React.createElement('button', {onClick: () => setLiked(true)}, 'Like');
+return React.createElement('button', {onClick: () => setLiked(true)}, 'पसंद करें');
 ```
 
-However, React also offers an option to use [JSX](/learn/writing-markup-with-jsx), an HTML-like JavaScript syntax, instead:
+हालाँकि, React इसके बजाय [JSX],(/learn/writing-markup-with-jsx), एक HTML-जैसे जावास्क्रिप्ट सिंटैक्स का उपयोग करने का विकल्प भी प्रदान करता है:
 
 ```jsx
-return <button onClick={() => setLiked(true)}>Like</button>;
+return <button onClick={() => setLiked(true)}>पसंद करें</button>;
 ```
 
-These two code snippets are equivalent. JSX is popular syntax for describing markup in JavaScript. Many people find it familiar and helpful for writing UI code--both with React and with other libraries. You might see "markup sprinkled throughout your JavaScript" in other projects!
 
-> You can play with transforming HTML markup into JSX using [this online converter](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3).
+ये दो कोड स्निपेट बराबर हैं। JSX जावास्क्रिप्ट में मार्कअप का वर्णन करने के लिए लोकप्रिय सिंटैक्स है। बहुत से लोग इसे UI कोड लिखने के लिए परिचित और सहायक पाते हैं - दोनों रिएक्ट के साथ और अन्य लाइब्रेरी के साथ। आप अन्य परियोजनाओं में "आपके पूरे जावास्क्रिप्ट में छिड़का हुआ मार्कअप" देख सकते हैं!
+
+> आप [इस ऑनलाइन कनवर्टर](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3) का उपयोग करके HTML मार्कअप को JSX में बदलने के साथ खेल सकते हैं।
 
 ### Try JSX {/_try-jsx_/} {/_try-jsx-try-jsx_/} {/*try-jsx-try-jsx-try-jsx-try-jsx*/}
 
