@@ -106,11 +106,11 @@ ReactDOM.render(
 );
 ```
 
-Check out [an example that displays the "Like" button three times and passes some data to it](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)!
+देखें [एक उदाहरण जो "पसंद करें" बटन को तीन बार प्रदर्शित करता है और उसमें कुछ डेटा भेजता है](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)!
 
-### Step 5: Minify JavaScript for production {/_step-5-minify-javascript-for-production_/} {/_step-5-minify-javascript-for-production-step-5-minify-javascript-for-production_/} {/*step-5-minify-javascript-for-production-step-5-minify-javascript-for-production-step-5-minify-javascript-for-production-step-5-minify-javascript-for-production*/}
+### चरण 5: प्रोडक्शन के लिए जावास्क्रिप्ट को छोटा करें {/*step-5-minify-javascript-for-production*/}
 
-Unminified JavaScript can significantly slow down page load times for your users. Before deploying your website to production, it's a good idea to minify its scripts.
+असिंचित जावास्क्रिप्ट आपके उपयोगकर्ताओं के लिए पृष्ठ लोड समय को महत्वपूर्ण रूप से धीमा कर सकता है। अपनी वेबसाइट को प्रोडक्शन में लगाने से पहले, इसकी स्क्रिप्ट को छोटा करना एक अच्छा विचार है।
 
 - **If you don't have a minification step** for your scripts, [here's one way to set it up](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
 - **If you already minify** your application scripts, your site will be production-ready if you ensure that the deployed HTML loads the versions of React ending in `production.min.js` like so:
