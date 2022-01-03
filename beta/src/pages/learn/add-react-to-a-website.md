@@ -207,25 +207,25 @@ JSX प्रीप्रोसेसर को स्थापित करन�
 
 बधाई हो! आपने अभी-अभी अपने प्रोजेक्ट में **प्रोडक्शन के लिए तैयार JSX सेटअप** जोड़ा है।
 
-### Run the JSX Preprocessor {/*run-the-jsx-preprocessor*/}
+### JSX प्रीप्रोसेसर चलाएँ {/*run-the-jsx-preprocessor*/}
 
-You can preprocess JSX so that every time you save a file with JSX in it, the transform will be re-run, converting the JSX file into a new, plain JavaScript file.
+आप JSX को प्रीप्रोसेस कर सकते हैं ताकि हर बार जब आप किसी फ़ाइल को JSX के साथ सहेजते हैं, तो JSX फ़ाइल को एक नई, सादा जावास्क्रिप्ट फ़ाइल में परिवर्तित करते हुए, ट्रांसफ़ॉर्म फिर से चलाया जाएगा।
 
-1. Create a folder called **src**
-2. In your terminal, run this command: `npx babel --watch src --out-dir . --presets react-app/prod ` (Don't wait for it to finish! This command starts an automated watcher for JSX.)
-3. Move your JSX-ified **like_button.js** to the new **src** folder (or create a **like_button.js** containing this [JSX starter code](https://gist.githubusercontent.com/rachelnabors/ffbc9a0e33665a58d4cfdd1676f05453/raw/652003ff54d2dab8a1a1e5cb3bb1e28ff207c1a6/like_button.js))
+1. **src** नाम का फोल्डर बनाएं
+2. अपने टर्मिनल में, यह कमांड चलाएँ: `npx babel --watch src --out-dir । --presets React-app/prod ` (इसके खत्म होने की प्रतीक्षा न करें! यह कमांड JSX के लिए एक स्वचालित वॉचर शुरू करता है।)
+3. अपने JSX-ified **like_button.js** को नए **src** फ़ोल्डर में ले जाएं (या एक **like_button.js** बनाएं जिसमें यह [JSX स्टार्टर कोड] हो (https://gist.githubusercontent.com/ rachelnabors/ffbc9a0e33665a58d4cfdd1676f05453/raw/652003ff54d2dab8a1a1e5cb3bb1e28ff207c1a6/like_button.js))
 
-The watcher will create a preprocessed **like_button.js** with the plain JavaScript code suitable for the browser.
+वाचर ब्राउज़र के लिए उपयुक्त सादे जावास्क्रिप्ट कोड के साथ एक प्रीप्रोसेस्ड **like_button.js** बनाएगा।
 
 <Gotcha>
 
-If you see an error message saying "You have mistakenly installed the `babel` package", you might have missed [the previous step](#add-jsx-to-a-project). Perform it in the same folder, and then try again.
+यदि आपको यह कहते हुए एक त्रुटि संदेश दिखाई देता है कि "आपने गलती से `babel` पैकेज स्थापित कर लिया है", तो आप [पिछला चरण](#add-jsx-to-a-project) चूक गए होंगे। इसे उसी फ़ोल्डर में निष्पादित करें, और फिर पुन: प्रयास करें।
 
 </Gotcha>
 
-As a bonus, this also lets you use modern JavaScript syntax features like classes without worrying about breaking older browsers. The tool we just used is called Babel, and you can learn more about it from [its documentation](https://babeljs.io/docs/en/babel-cli/).
+एक बोनस के रूप में, यह आपको पुराने ब्राउज़रों को तोड़ने की चिंता किए बिना classes जैसी आधुनिक जावास्क्रिप्ट सिंटैक्स सुविधाओं का उपयोग करने देता है। हमारे द्वारा अभी-अभी उपयोग किए गए टूल को babel कहा जाता है, और आप इसके बारे में [इसके दस्तावेज़ीकरण](https://babeljs.io/docs/en/babel-cli/) से अधिक जान सकते हैं।
 
-If you're getting comfortable with build tools and want them to do more for you, [we cover some of the most popular and approachable toolchains here](/learn/start-a-new-react-project).
+यदि आप बिल्ड टूल्स के साथ सहज हो रहे हैं और चाहते हैं कि वे आपके लिए और अधिक करें, [हम यहां कुछ सबसे लोकप्रिय और पहुंचने योग्य टूलचेन को कवर करते हैं](/learn/start-a-new-react-project)।
 
 <DeepDive title="React without JSX">
 
