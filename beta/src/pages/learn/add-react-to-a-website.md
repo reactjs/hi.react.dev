@@ -139,12 +139,12 @@ return <button onClick={() => setLiked(true)}>पसंद करें</button>
 
 > आप [इस ऑनलाइन कनवर्टर](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3) का उपयोग करके HTML मार्कअप को JSX में बदलने के साथ खेल सकते हैं।
 
-### Try JSX {/*try-jsx*/}
+### JSX का प्रयास करें {/*try-jsx*/}
 
-The quickest way to try JSX in your project is to add the Babel compiler to your page's `<head>` along with React and ReactDOM like so:
+अपने प्रोजेक्ट में JSX को आज़माने का सबसे तेज़ तरीका है कि आप अपने पेज के `<head>` में Babel कंपाइलर को React और ReactDom के साथ जोड़ दें:
 
 ```html {6}
-<!-- ... rest of <head> ... -->
+<!-- ... बाकी <head> टैग ... -->
 
 <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
@@ -152,21 +152,21 @@ The quickest way to try JSX in your project is to add the Babel compiler to your
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
 </head>
-<!-- ... rest of <body> ... -->
+<!-- ... बाकी <body> टैग... -->
 ```
 
-Now you can use JSX in any `<script>` tag by adding `type="text/babel"` attribute to it. For instance:
+अब आप किसी भी `<script>` टैग में `type="text/babel"` एट्रिब्यूट जोड़कर JSX का उपयोग कर सकते हैं। उदाहरण के लिए:
 
 ```jsx {1}
 <script type="text/babel">
   ReactDOM.render(
-  <h1>Hello, world!</h1>, document.getElementById('root') );
+  <h1> नमस्ते दुनिया! </h1>, document.getElementById('root') );
 </script>
 ```
 
-To convert **like_button.js** to use JSX:
+**like_button.js** को JSX में बदलने के लिए:
 
-1. In **like_button.js**, replace
+1. **like_button.js** में, बदलें
 
 ```js
 return React.createElement(
@@ -174,25 +174,25 @@ return React.createElement(
   {
     onClick: () => setLiked(true),
   },
-  'Like'
+  'पसंद करें'
 );
 ```
 
 with:
 
 ```jsx
-return <button onClick={() => setLiked(true)}>Like</button>;
+return <button onClick={() => setLiked(true)}>पसंद करें</button>;
 ```
 
-2. In **index.html**, add `type="text/babel"` to the like button's script tag:
+2. **index.html** में, लाइक बटन के script टैग में `type="text/babel"` जोड़ें:
 
 ```html
 <script src="like_button.js" type="text/babel"></script>
 ```
 
-Here is [an example HTML file with JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html) that you can download and play with.
+यहाँ [JSX के साथ एक उदाहरण HTML फ़ाइल](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html) है जिसे आप डाउनलोड कर सकते हैं और उसके साथ खेल सकते हैं।
 
-This approach is fine for learning and creating simple demos. However, it makes your website slow and **isn't suitable for production**. When you're ready to move forward, remove this new `<script>` tag and the `type="text/babel"` attributes you've added. Instead, in the next section you will set up a JSX preprocessor to convert all your `<script>` tags automatically.
+सरल डेमो सीखने और बनाने के लिए यह दृष्टिकोण ठीक है। हालांकि, यह आपकी वेबसाइट को धीमा कर देता है और **प्रोडक्शन के लिए उपयुक्त नहीं है**। जब आप आगे बढ़ने के लिए तैयार हों, तो यह नया `<script>` टैग और आपके द्वारा जोड़ी गई `type="text/babel"` एट्रिब्यूट को हटा दें। इसके बजाय, अगले भाग में आप अपने सभी `<script>` टैग को स्वचालित रूप से बदलने के लिए एक JSX प्रीप्रोसेसर स्थापित करेंगे।
 
 ### Add JSX to a project {/*add-jsx-to-a-project*/}
 
