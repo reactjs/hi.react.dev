@@ -112,16 +112,12 @@ ReactDOM.render(
 
 असिंचित जावास्क्रिप्ट आपके उपयोगकर्ताओं के लिए पृष्ठ लोड समय को महत्वपूर्ण रूप से धीमा कर सकता है। अपनी वेबसाइट को प्रोडक्शन में लगाने से पहले, इसकी स्क्रिप्ट को छोटा करना एक अच्छा विचार है।
 
-- **If you don't have a minification step** for your scripts, [here's one way to set it up](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
-- **If you already minify** your application scripts, your site will be production-ready if you ensure that the deployed HTML loads the versions of React ending in `production.min.js` like so:
+- **यदि आपके पास अपनी स्क्रिप्ट के लिए छोटा करने का चरण नहीं है**, [इसे सेट करने का एक तरीका यहां दिया गया है](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
+- **यदि आप अपनी एप्लिकेशन स्क्रिप्ट को पहले ही छोटा कर देते हैं**, तो आपकी साइट उत्पादन के लिए तैयार हो जाएगी यदि आप सुनिश्चित करते हैं कि तैनात HTML React के संस्करणों को `product.min.js` में समाप्त करता है, जैसे:
 
 ```html
-<script
-  src="https://unpkg.com/react@17/umd/react.production.min.js"
-  crossorigin></script>
-<script
-  src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
-  crossorigin></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 ## Try React with JSX {/_try-react-with-jsx_/} {/_try-react-with-jsx-try-react-with-jsx_/} {/*try-react-with-jsx-try-react-with-jsx-try-react-with-jsx-try-react-with-jsx*/}
