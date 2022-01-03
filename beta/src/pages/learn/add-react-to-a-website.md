@@ -139,7 +139,7 @@ return <button onClick={() => setLiked(true)}>पसंद करें</button>
 
 > आप [इस ऑनलाइन कनवर्टर](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3) का उपयोग करके HTML मार्कअप को JSX में बदलने के साथ खेल सकते हैं।
 
-### Try JSX {/_try-jsx_/} {/_try-jsx-try-jsx_/} {/*try-jsx-try-jsx-try-jsx-try-jsx*/}
+### Try JSX {/*try-jsx*/}
 
 The quickest way to try JSX in your project is to add the Babel compiler to your page's `<head>` along with React and ReactDOM like so:
 
@@ -194,7 +194,7 @@ Here is [an example HTML file with JSX](https://raw.githubusercontent.com/reactj
 
 This approach is fine for learning and creating simple demos. However, it makes your website slow and **isn't suitable for production**. When you're ready to move forward, remove this new `<script>` tag and the `type="text/babel"` attributes you've added. Instead, in the next section you will set up a JSX preprocessor to convert all your `<script>` tags automatically.
 
-### Add JSX to a project {/_add-jsx-to-a-project_/} {/_add-jsx-to-a-project-add-jsx-to-a-project_/} {/*add-jsx-to-a-project-add-jsx-to-a-project-add-jsx-to-a-project-add-jsx-to-a-project*/}
+### Add JSX to a project {/*add-jsx-to-a-project*/}
 
 Adding JSX to a project doesn't require complicated tools like a [bundler](/learn/start-a-new-react-project#custom-toolchains) or a development server. Adding a JSX preprocessor is a lot like adding a CSS preprocessor.
 
@@ -207,7 +207,7 @@ You only need npm to install the JSX preprocessor. You won't need it for anythin
 
 Congratulations! You just added a **production-ready JSX setup** to your project.
 
-### Run the JSX Preprocessor {/_run-the-jsx-preprocessor_/} {/_run-the-jsx-preprocessor-run-the-jsx-preprocessor_/} {/*run-the-jsx-preprocessor-run-the-jsx-preprocessor-run-the-jsx-preprocessor-run-the-jsx-preprocessor*/}
+### Run the JSX Preprocessor {/*run-the-jsx-preprocessor*/}
 
 You can preprocess JSX so that every time you save a file with JSX in it, the transform will be re-run, converting the JSX file into a new, plain JavaScript file.
 
