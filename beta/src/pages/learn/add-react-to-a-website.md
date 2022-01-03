@@ -194,18 +194,18 @@ return <button onClick={() => setLiked(true)}>पसंद करें</button>
 
 सरल डेमो सीखने और बनाने के लिए यह दृष्टिकोण ठीक है। हालांकि, यह आपकी वेबसाइट को धीमा कर देता है और **प्रोडक्शन के लिए उपयुक्त नहीं है**। जब आप आगे बढ़ने के लिए तैयार हों, तो यह नया `<script>` टैग और आपके द्वारा जोड़ी गई `type="text/babel"` एट्रिब्यूट को हटा दें। इसके बजाय, अगले भाग में आप अपने सभी `<script>` टैग को स्वचालित रूप से बदलने के लिए एक JSX प्रीप्रोसेसर स्थापित करेंगे।
 
-### Add JSX to a project {/*add-jsx-to-a-project*/}
+### किसी प्रोजेक्ट में JSX जोड़ें {/*add-jsx-to-a-project*/}
 
-Adding JSX to a project doesn't require complicated tools like a [bundler](/learn/start-a-new-react-project#custom-toolchains) or a development server. Adding a JSX preprocessor is a lot like adding a CSS preprocessor.
+किसी प्रोजेक्ट में JSX को जोड़ने के लिए [बंडलर] (/learn/start-a-new-react-project#custom-toolchains) या एक डेवलपमेंट सर्वर जैसे जटिल टूल की आवश्यकता नहीं होती है। JSX प्रीप्रोसेसर जोड़ना एक CSS प्रीप्रोसेसर जोड़ने जैसा है।
 
-Go to your project folder in the terminal, and paste these two commands (**Be sure you have [Node.js](https://nodejs.org/) installed!**):
+टर्मिनल में अपने प्रोजेक्ट फ़ोल्डर में जाएं, और इन दो आदेशों को पेस्ट करें (**सुनिश्चित करें कि आपने [Node.js](https://nodejs.org/) इंस्टॉल किया हुआ है!**):
 
-1. `npm init -y` (if it fails, [here's a fix](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
+1. `npm init -y` (यदि यह विफल रहता है, [यहाँ एक समाधान है](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
 2. `npm install babel-cli@6 babel-preset-react-app@3`
 
-You only need npm to install the JSX preprocessor. You won't need it for anything else. Both React and the application code can stay as `<script>` tags with no changes.
+JSX प्रीप्रोसेसर को स्थापित करने के लिए आपको केवल npm की आवश्यकता है। आपको किसी और चीज के लिए इसकी आवश्यकता नहीं होगी। React और एप्लिकेशन कोड दोनों बिना किसी बदलाव के `<script>` टैग के रूप में रह सकते हैं।
 
-Congratulations! You just added a **production-ready JSX setup** to your project.
+बधाई हो! आपने अभी-अभी अपने प्रोजेक्ट में **प्रोडक्शन के लिए तैयार JSX सेटअप** जोड़ा है।
 
 ### Run the JSX Preprocessor {/*run-the-jsx-preprocessor*/}
 
