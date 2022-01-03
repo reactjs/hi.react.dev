@@ -91,18 +91,18 @@ ReactDOM.render(React.createElement(LikeButton), domContainer);
 
 आप एक ही HTML पृष्ठ पर कई स्थानों पर एक React कौम्पोनॅन्ट प्रदर्शित करना चाह सकते हैं। यह सबसे उपयोगी है जबकि पृष्ठ के React-संचालित हिस्से एक दूसरे से अलग-थलग हैं। आप कई कंटेनर एलिमेंट के साथ `ReactDOM.render ()` को कई बार कॉल करके ऐसा कर सकते हैं।
 
-1. In **index.html**, add an additional container element `<div id="component-goes-here-too"></div>`.
-2. In **like_button.js**, add an additional `ReactDOM.render()` for the new container element:
+1. **index.html** में, एक अतिरिक्त कंटेनर एलिमेंट जोड़ें `<div id="कौम्पोनॅन्ट-यहाँ-भी-जाएगा"></div>`.
+2. **like_button.js** में, नए कंटेनर एलिमेंट के लिए एक अतिरिक्त `ReactDOM.render ()` जोड़ें:
 
 ```js {6,7,8,9}
 ReactDOM.render(
   React.createElement(LikeButton),
-  document.getElementById('component-goes-here')
+  document.getElementById('कौम्पोनॅन्ट-यहाँ-जाएगा')
 );
 
 ReactDOM.render(
   React.createElement(LikeButton),
-  document.getElementById('component-goes-here-too')
+  document.getElementById('कौम्पोनॅन्ट-यहाँ-भी-जाएगा')
 );
 ```
 
