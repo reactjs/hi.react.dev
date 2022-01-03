@@ -227,50 +227,50 @@ JSX प्रीप्रोसेसर को स्थापित करन�
 
 यदि आप बिल्ड टूल्स के साथ सहज हो रहे हैं और चाहते हैं कि वे आपके लिए और अधिक करें, [हम यहां कुछ सबसे लोकप्रिय और पहुंचने योग्य टूलचेन को कवर करते हैं](/learn/start-a-new-react-project)।
 
-<DeepDive title="React without JSX">
+<DeepDive title="React बिना JSX के">
 
-Originally JSX was introduced to make writing components with React feel as familiar as writing HTML. Since then, the syntax has become widespread. However, there may be instances where you do not want to use or cannot use JSX. You have two options:
+मूल रूप से JSX को React के साथ लेखन कौम्पोनॅन्ट को HTML लिखने के रूप में परिचित बनाने के लिए पेश किया गया था। तब से, वाक्यविन्यास व्यापक हो गया है। हालाँकि, ऐसे उदाहरण हो सकते हैं जहाँ आप JSX का उपयोग नहीं करना चाहते हैं या नहीं कर सकते हैं। आपके पास दो विकल्प हैं:
 
-- Use a JSX alternative like [htm](https://github.com/developit/htm) which doesn't use a compiler—it uses JavaScript's native Tagged Templates.
-- Use [`React.createElement()`](/reference/createelement), which has a special structure explained below.
+- [htm](https://github.com/developit/htm) जैसे JSX विकल्प का उपयोग करें, जो कंपाइलर का उपयोग नहीं करता है—यह जावास्क्रिप्ट के मूल टैग किए गए टेम्प्लेट का उपयोग करता है।
+- [`React.createElement()`](/reference/createelement) का उपयोग करें, जिसकी एक विशेष संरचना नीचे बताई गई है।
 
-With JSX, you would write a component like so:
+JSX के साथ, आप एक कौम्पोनॅन्ट लिखेंगे जैसे::
 
 ```jsx
 function Hello(props) {
-  return <div>Hello {props.toWhat}</div>;
+  return <div>नमस्ते {props.toWhat}</div>;
 }
 
-ReactDOM.render(<Hello toWhat="World" />, document.getElementById('root'));
+ReactDOM.render(<Hello toWhat="दुनिया" />, document.getElementById('root'));
 ```
 
 With `React.createElement()`, you would write it like this:
 
 ```js
 function Hello(props) {
-  return React.createElement('div', null, `Hello ${props.toWhat}`);
+  return React.createElement('div', null, `नमस्ते ${props.toWhat}`);
 }
 
 ReactDOM.render(
-  React.createElement(Hello, {toWhat: 'World'}, null),
+  React.createElement(Hello, {toWhat: 'दुनिया'}, null),
   document.getElementById('root')
 );
 ```
 
-It accepts three arguments: `React.createElement(component, props, children)`. Here's how they work:
+यह तीन तर्कों को स्वीकार करता है: `React.createElement(component, props, children)`। यहां बताया गया है कि वे कैसे काम करते हैं:
 
-1. A **component**, which can be a string representing an HTML element or a function component
-2. An object of any [**props** you want to pass](/learn/passing-props-to-a-component)
-3. An object of any **children** the component might have, such as text strings
+1. एक **component**, जो एक HTML एलिमेंट या एक फ़ंक्शन कौम्पोनॅन्ट का प्रतिनिधित्व करने वाला एक स्ट्रिंग हो सकता है
+2. किसी भी [**props** का एक ऑब्जेक्ट जिसे आप पास करना चाहते हैं](/learn/passing-props-to-a-component)
+3. कौम्पोनॅन्ट में किसी भी **children** का ऑब्जेक्ट हो सकता है, जैसे टेक्स्ट स्ट्रिंग्स
 
-If you get tired of typing `React.createElement()`, one common pattern is to assign a shorthand:
+यदि आप `React.createElement ()` टाइप करते-करते थक गए हैं, तो एक सामान्य पैटर्न शॉर्टहैंड असाइन करना है:
 
 ```js
 const e = React.createElement;
 
-ReactDOM.render(e('div', null, 'Hello World'), document.getElementById('root'));
+ReactDOM.render(e('div', null, 'नमस्ते दुनिया'), document.getElementById('root'));
 ```
 
-If you use this shorthand form for `React.createElement()`, it can be almost as convenient to use React without JSX.
+यदि आप `React.createElement ()` के लिए इस शॉर्टहैंड फॉर्म का उपयोग करते हैं, तो JSX के बिना React का उपयोग करना लगभग उतना ही सुविधाजनक हो सकता है।
 
 </DeepDive>
