@@ -1,16 +1,15 @@
 ---
-title: React डेवलपर उपकरण
+title: React डेवलपर टूल्स
 ---
 
 <Intro>
 
-Use React Developer Tools to inspect React [components](/learn/your-first-component), edit [props](/learn/passing-props-to-a-component) and [state](/learn/state-a-components-memory), and identify performance problems.
-
+React [कंपोनेंट्स](/learn/your-first-component), का निरीक्षण करने के लिए रिएक्ट डेवलपर टूल्स का उपयोग करें, [प्रॉप्स](/learn/passing-props-to-a-component) और [स्टेट](/learn/state-a-components-memory) एडिट करे, और प्रदर्शन समस्याओं की पहचान करें।
 </Intro>
 
-## Browser extension {/*browser-extension*/}
+## ब्राउज़र एक्सटेंशन {/*browser-extension*/}
 
-The easiest way to debug websites built with React is to install the React Developer Tools browser extension. It is available for several popular browsers:
+React के साथ निर्मित वेबसाइटों को डिबग करने का सबसे आसान तरीका रिएक्ट डेवलपर टूल्स ब्राउज़र एक्सटेंशन को स्थापित करना है। यह कई लोकप्रिय ब्राउज़रों के लिए उपलब्ध है:
 
 * [Install for **Chrome**](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 * [Install for **Firefox**](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
