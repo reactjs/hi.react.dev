@@ -57,13 +57,13 @@ yarn global add react-devtools
 npm install -g react-devtools
 ```
 
-Next open the developer tools from the terminal.
+इसके बाद टर्मिनल से डेवलपर टूल खोलें।
 ```bash
 react-devtools
 ```
 
-It should connect to any local React Native app that's running.
+इसे चल रहे किसी भी स्थानीय React Native ऐप से कनेक्ट होना चाहिए।
 
-> Try reloading the app if developer tools doesn't connect after a few seconds.
+> यदि डेवलपर टूल कुछ सेकंड के बाद कनेक्ट नहीं होते हैं, तो ऐप को पुनः लोड करने का प्रयास करें।
 
-[Learn more about debugging React Native.](https://reactnative.dev/docs/debugging)
+[React Native डीबग करने के बारे में और जानें।](https://reactnative.dev/docs/debugging)
