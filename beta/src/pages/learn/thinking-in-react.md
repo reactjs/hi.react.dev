@@ -1,5 +1,5 @@
 ---
-title: Thinking in React
+title: React में सोच
 ---
 
 
