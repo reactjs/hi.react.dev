@@ -41,14 +41,14 @@ react-devtools
     <script src="http://localhost:8097"></script>
 ```
 
-Reload your website in the browser now to view it in developer tools.
+अपनी वेबसाइट को डेवलपर टूल में देखने के लिए उसे अभी ब्राउज़र में पुनः लोड करें।
 
-![React Developer Tools standalone](/images/docs/react-devtools-standalone.png)
+![रिएक्ट डेवलपर टूल्स स्टैंडअलोन](/images/docs/react-devtools-standalone.png)
 
-## Mobile (React Native) {/*mobile-react-native*/}
-React Developer Tools can be used to inspect apps built with [React Native](https://reactnative.dev/) as well.
+## मोबाइल (React Native) {/*mobile-react-native*/}
+रिएक्ट डेवलपर टूल का उपयोग [React Native](https://reactnative.dev/) के साथ निर्मित ऐप्स का निरीक्षण करने के लिए भी किया जा सकता है।
 
-The easiest way to use React Developer Tools is to install it globally:
+रिएक्ट डेवलपर टूल्स का उपयोग करने का सबसे आसान तरीका इसे ग्लोबली इनस्टॉल  करना है:
 ```bash
 # Yarn
 yarn global add react-devtools
