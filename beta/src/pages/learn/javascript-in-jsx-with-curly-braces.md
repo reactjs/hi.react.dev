@@ -1,25 +1,24 @@
 ---
-title: JavaScript in JSX with Curly Braces
+title: घुंघराले ब्रेसिज़ के साथ JSX में JavaScript
 ---
 
 <Intro>
 
-JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to open a window to JavaScript.
-
+JSX आपको तर्क और सामग्री को एक ही स्थान पर प्रस्तुत करते हुए, JavaScript फ़ाइल के अंदर HTML जैसा मार्कअप लिखने देता है। कभी-कभी आप थोड़ा JavaScript तर्क जोड़ना चाहेंगे या उस मार्कअप के अंदर एक गतिशील संपत्ति का संदर्भ देना चाहेंगे। इस स्थिति में, आप JavaScript के लिए एक विंडो खोलने के लिए अपने JSX में घुंघराले ब्रेसिज़ का उपयोग कर सकते हैं।
 </Intro>
 
 <YouWillLearn>
 
-* How to pass strings with quotes
-* How to reference a JavaScript variable inside JSX with curly braces
-* How to call a JavaScript function inside JSX with curly braces
-* How to use a JavaScript object inside JSX with curly braces
+* उद्धरणों के साथ strings कैसे पास करें
+* घुंघराले ब्रेसिज़ के साथ JSX के अंदर एक JavaScript चर का संदर्भ कैसे लें
+* घुंघराले ब्रेसिज़ के साथ JSX के अंदर JavaScript फ़ंक्शन को कैसे कॉल करें
+* घुंघराले ब्रेसिज़ के साथ JSX के अंदर JavaScript ऑब्जेक्ट का उपयोग कैसे करें
 
 </YouWillLearn>
 
-## Passing strings with quotes {/*passing-strings-with-quotes*/}
+## उद्धरणों के साथ strings पास करना {/*उद्धरणों-के-साथ-strings-पास-करना*/}
 
-When you want to pass a string attribute to JSX, you put it in single or double quotes:
+जब आप JSX को एक string विशेषता पास करना चाहते हैं, तो आप इसे सिंगल या डबल कोट्स में डालते हैं:
 
 <Sandpack>
 
@@ -41,9 +40,9 @@ export default function Avatar() {
 
 </Sandpack>
 
-Here, `"https://i.imgur.com/7vQD0fPs.jpg"` and `"Gregorio Y. Zara"` are being passed as strings.
+यहां, `"https://i.imgur.com/7vQD0fPs.jpg"` और `"Gregorio Y. Zara"` को strings के रूप में पास किया जा रहा है।
 
-But what if you want to dynamically specify the `src` or `alt` text? You could **use a value from JavaScript by replacing `"` and `"` with `{` and `}`**:
+लेकिन क्या होगा यदि आप गतिशील रूप से `src` या `alt` टेक्स्ट निर्दिष्ट करना चाहते हैं? आप **`"` और `"` साथ `{` और `}` से बदलकर JavaScript से एक मान का उपयोग** कर सकते हैं:
 
 <Sandpack>
 
@@ -67,11 +66,11 @@ export default function Avatar() {
 
 </Sandpack>
 
-Notice the difference between `className="avatar"`, which specifies an `"avatar"` CSS class name that makes the image round, and `src={avatar}` that reads the value of the JavaScript variable called `avatar`. That's because curly braces let you work with JavaScript right there in your markup!
+क्लासनाम = "अवतार" के बीच अंतर पर ध्यान दें, जो एक "अवतार" CSS वर्ग का नाम निर्दिष्ट करता है जो छवि को गोल बनाता है, और src={अवतार} जो अवतार नामक JavaScript चर के मूल्य को पढ़ता है। ऐसा इसलिए है क्योंकि घुंघराले ब्रेसिज़ आपको अपने मार्कअप में वहीं JavaScript के साथ काम करने देते हैं!
 
-## Using curly braces: A window into the JavaScript world {/*using-curly-braces-a-window-into-the-javascript-world*/}
+## घुंघराले ब्रेसिज़ का उपयोग: JavaScript दुनिया में एक खिड़की {/*उपयोग-घुंघराले-ब्रेसिज़-ए-विंडो-में-javascript-दुनिया*/}
 
-JSX is a special way of writing JavaScript. That means it’s possible to use JavaScript inside it—with curly braces `{ }`. The example below first declares a name for the scientist, `name`, then embeds it with curly braces inside the `<h1>`:
+JSX JavaScript लिखने का एक विशेष तरीका है। इसका मतलब है कि इसके अंदर JavaScript का उपयोग करना संभव है - घुंघराले ब्रेसिज़ के साथ `{ }`। नीचे दिया गया उदाहरण पहले वैज्ञानिक के नाम की घोषणा करता है, `name`, फिर उसे `<h1>` के अंदर घुंघराले ब्रेसिज़ के साथ एम्बेड करता है:
 
 <Sandpack>
 
@@ -86,9 +85,9 @@ export default function TodoList() {
 
 </Sandpack>
 
-Try changing `name`'s value from `'Gregorio Y. Zara'` to `'Hedy Lamarr'`. See how the To Do List title changes?
+'नाम' के मान को `'Gregorio Y. Zara'` से बदलकर `'Hedy Lamarr'` करने का प्रयास करें। देखें कि टू डू लिस्ट का शीर्षक कैसे बदलता है?
 
-Any JavaScript expression will work between curly braces, including function calls like `formatDate()`:
+कोई भी JavaScript अभिव्यक्ति घुंघराले ब्रेसिज़ के बीच काम करेगी, जिसमें फ़ंक्शन कॉल जैसे `formatDate ()` शामिल हैं:
 
 <Sandpack>
 
@@ -111,18 +110,18 @@ export default function TodoList() {
 
 </Sandpack>
 
-### Where to use curly braces {/*where-to-use-curly-braces*/}
+### घुंघराले ब्रेसिज़ का उपयोग कहाँ करें {/*घुंघराले-ब्रेसिज़-का-उपयोग-कहाँ-करें*/}
 
-You can only use curly braces in two ways inside JSX:
+आप JSX के अंदर केवल दो तरीकों से घुंघराले ब्रेसिज़ का उपयोग कर सकते हैं:
 
-1. **As text** directly inside a JSX tag: `<h1>{name}'s To Do List</h1>` works, but `<{tag}>Gregorio Y. Zara's To Do List</{tag}>`  will not.
-2. **As attributes** immediately following the `=` sign: `src={avatar}` will read the `avatar` variable, but `src="{avatar}"` will pass the string `{avatar}`.
+1. **टेक्स्ट के रूप में** सीधे JSX टैग के अंदर: `<h1>{name}'s टू डू लिस्ट</h1>` काम करता है, लेकिन `<{tag}>Gregorio Y. Zara की टू डू लिस्ट</{ टैग}>` नहीं होगा।
+2. **विशेषताओं के रूप में** तुरंत `=` चिह्न के बाद: `src={avatar}` `अवतार` चर को पढ़ेगा, लेकिन `src="{avatar}"` स्ट्रिंग `{अवतार}` को पास करेगा .
 
-## Using "double curlies": CSS and other objects in JSX {/*using-double-curlies-css-and-other-objects-in-jsx*/}
+## "डबल कर्ली" का उपयोग करना: JSX में CSS और अन्य ऑब्जेक्ट {/*उपयोग-डबल-कर्ली-CSS-और-अन्य-वस्तुओं-इन-JSX*/}
 
-In addition to strings, numbers, and other JavaScript expressions, you can even pass objects in JSX. Objects are also denoted with curly braces, like `{ name: "Hedy Lamarr", inventions: 5 }`. Therefore, to pass a JS object in JSX, you must wrap the object in another pair of curly braces: `person={{ name: "Hedy Lamarr", inventions: 5 }}`.
+strings, नंबर्स और अन्य JavaScript एक्सप्रेशंस के अलावा, आप JSX में ऑब्जेक्ट्स को पास भी कर सकते हैं। वस्तुओं को घुंघराले ब्रेसिज़ से भी दर्शाया जाता है, जैसे `{name: "Hedy Lamarr", आविष्कार: 5 }`। इसलिए, JSX में JS ऑब्जेक्ट को पास करने के लिए, आपको ऑब्जेक्ट को घुंघराले ब्रेसिज़ की एक और जोड़ी में लपेटना होगा: `व्यक्ति = {{नाम: "Hedy Lamarr", आविष्कार: 5}}`।
 
-You may see this with inline CSS styles in JSX. React does not require you to use inline styles (CSS classes work great for most cases). But when you need an inline style, you pass an object to the `style` attribute:
+आप इसे JSX में इनलाइन CSS शैलियों के साथ देख सकते हैं। प्रतिक्रिया के लिए आपको इनलाइन शैलियों का उपयोग करने की आवश्यकता नहीं है (CSS कक्षाएं ज्यादातर मामलों के लिए बहुत अच्छा काम करती हैं)। लेकिन जब आपको इनलाइन शैली की आवश्यकता होती है, तो आप ऑब्जेक्ट को `style` विशेषता में पास करते हैं:
 
 <Sandpack>
 
@@ -148,9 +147,9 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 </Sandpack>
 
-Try changing the values of `backgroundColor` and `color`.
+`backgroundColor` और `color` के मानों को बदलने का प्रयास करें।
 
-You can really see the JavaScript object inside the curly braces when you write it like this:
+जब आप इसे इस तरह लिखते हैं तो आप वास्तव में JavaScript ऑब्जेक्ट को घुंघराले ब्रेसिज़ के अंदर देख सकते हैं:
 
 ```js {2-5}
 <ul style={
@@ -161,17 +160,17 @@ You can really see the JavaScript object inside the curly braces when you write 
 }>
 ```
 
-The next time you see `{{` and `}}` in JSX, know that it's nothing more than an object inside the JSX curlies!
+अगली बार जब आप JSX में `{{` और `}}` देखें, तो जान लें कि यह JSX कर्ली के अंदर एक वस्तु से ज्यादा कुछ नहीं है!
 
 <Gotcha>
 
-Inline `style` properties are written in camelCase. For example, HTML `<ul style="background-color: black"`> would be written as `<ul style={{ backgroundColor: 'black' }}>`  in your component.
+इनलाइन `style` गुण कैमलकेस में लिखे गए हैं। उदाहरण के लिए, HTML `<ul style="background-color: black"`> को आपके कंपोनेंट में `<ul style={{ backgroundColor: 'black' }}>` के रूप में लिखा जाएगा।
 
 </Gotcha>
 
-## More fun with JavaScript objects and curly braces {/*more-fun-with-javascript-objects-and-curly-braces*/}
+## JavaScript ऑब्जेक्ट और घुंघराले ब्रेसिज़ के साथ अधिक मज़ा {/*JavaScript-ऑब्जेक्ट-और-घुंघराले-ब्रेसिज़-के-साथ-अधिक-मज़ा*/}
 
-You can move several expressions into one object, and reference them in your JSX inside curly braces:
+आप कई भावों को एक वस्तु में स्थानांतरित कर सकते हैं, और उन्हें अपने JSX में घुंघराले ब्रेसिज़ के अंदर संदर्भित कर सकते हैं:
 
 <Sandpack>
 
@@ -211,7 +210,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-In this example, the `person` JavaScript object contains a `name` string and a `theme` object:
+इस उदाहरण में, `person` JavaScript ऑब्जेक्ट में एक `name` string और एक `theme` ऑब्जेक्ट होता है:
 
 ```js
 const person = {
@@ -223,31 +222,31 @@ const person = {
 };
 ```
 
-The component can use these values from `person` like so:
+घटक इन मानों का उपयोग `person` से कर सकता है जैसे:
 
 ```js
 <div style={person.theme}>
   <h1>{person.name}'s Todos</h1>
 ```
 
-JSX is very minimal as a templating language because it lets you organize data and logic using JavaScript.
+JSX एक टेम्प्लेटिंग भाषा के रूप में बहुत कम है क्योंकि यह आपको JavaScript का उपयोग करके डेटा और तर्क को व्यवस्थित करने देता है।
 
 <Recap>
 
-Now you know almost everything about JSX:
+अब आप JSX के बारे में लगभग सब कुछ जानते हैं:
 
-* JSX attributes inside quotes are passed as strings.
-* Curly braces let you bring JavaScript logic and variables into your markup.
-* They work inside the JSX tag content or immediately after `=` in attributes.
-* `{{` and `}}` is not special syntax: it's a JavaScript object tucked inside JSX curly braces.
+* उद्धरण के अंदर JSX विशेषताएँ तार के रूप में पारित की जाती हैं।
+* घुंघराले ब्रेसिज़ आपको अपने मार्कअप में JavaScript तर्क और चर लाने देते हैं।
+* वे JSX टैग सामग्री के अंदर या विशेषताओं में `=` के तुरंत बाद काम करते हैं।
+* `{{` और `}}` विशेष सिंटैक्स नहीं है: यह एक JavaScript ऑब्जेक्ट है जिसे JSX कर्ली ब्रेसिज़ के अंदर रखा गया है।
 
 </Recap>
 
 <Challenges>
 
-### Fix the mistake {/*fix-the-mistake*/}
+### गलती को सुधारें {/*गलती-को-सुधारें */}
 
-This code crashes with an error saying `Objects are not valid as a React child`:
+यह कोड यह कहते हुए एक त्रुटि के साथ क्रैश हो जाता है कि `ऑब्जेक्ट्स React चाइल्ड के रूप में मान्य नहीं हैं`:
 
 <Sandpack>
 
@@ -287,15 +286,15 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-Can you find the problem?
+क्या आप समस्या का पता लगा सकते हैं?
 
-<Hint>Look for what's inside the curly braces. Are we putting the right thing there?</Hint>
+<Hint>देखें कि घुंघराले ब्रेसिज़ के अंदर क्या है। क्या हम वहां सही चीज डाल रहे हैं?</Hint>
 
 <Solution>
 
-This is happening because this example renders *an object itself* into the markup rather than a string: `<h1>{person}'s Todos</h1>` is trying to render the entire `person` object! Including raw objects as text content throws an error because React doesn't know how you want to display them.
+ऐसा इसलिए हो रहा है क्योंकि यह उदाहरण एक स्ट्रिंग के बजाय मार्कअप में *एक ऑब्जेक्ट ही* रेंडर करता है: `<h1>{person}'s Todos</h1>` पूरे `person` ऑब्जेक्ट को रेंडर करने की कोशिश कर रहा है! कच्ची वस्तुओं को पाठ सामग्री के रूप में शामिल करना एक त्रुटि उत्पन्न करता है क्योंकि React यह नहीं जानता कि आप उन्हें कैसे प्रदर्शित करना चाहते हैं।
 
-To fix it, replace `<h1>{person}'s Todos</h1>` with `<h1>{person.name}'s Todos</h1>`:
+इसे ठीक करने के लिए, `<h1>{person}'s Todos</h1>` को `<h1>{person.name}'s Todos</h1>` से बदलें:
 
 <Sandpack>
 
@@ -337,9 +336,9 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
-### Extract information into an object {/*extract-information-into-an-object*/}
+### किसी वस्तु में जानकारी निकालें {/*extract-information-into-an-object*/}
 
-Extract the image URL into the `person` object.
+छवि URL को `person` ऑब्जेक्ट में निकालें।
 
 <Sandpack>
 
@@ -381,7 +380,7 @@ body > div > div { padding: 20px; }
 
 <Solution>
 
-Move the image URL into a property called `person.imageUrl` and read it from the `<img>` tag using the curlies:
+छवि URL को `person.imageUrl` नामक संपत्ति में ले जाएं और इसे कर्ली का उपयोग करके `<img>` टैग से पढ़ें:
 
 <Sandpack>
 
@@ -426,11 +425,11 @@ body > div > div { padding: 20px; }
 
 ### Write an expression inside JSX curly braces {/*write-an-expression-inside-jsx-curly-braces*/}
 
-In the object below, the full image URL is split into four parts: base URL,  `imageId`, `imageSize`, and file extension.
+नीचे दिए गए ऑब्जेक्ट में, पूर्ण छवि URL को चार भागों में विभाजित किया गया है: आधार URL, `imageId`, `imageSize`, और फ़ाइल एक्सटेंशन।
 
-We want the image URL to combine these attributes together: base URL (always `'https://i.imgur.com/'`), `imageId` (`'7vQD0fP'`), `imageSize` (`'s'`), and file extension (always `'.jpg'`). However, something is wrong with how the `<img>` tag specifies its `src`.
+हम चाहते हैं कि छवि URL इन विशेषताओं को एक साथ जोड़ दे: आधार URL (हमेशा `'https://i.imgur.com/'`), `imageId` (`'7vQD0fP'`), `imageSize` (`'s') `), और फ़ाइल एक्सटेंशन (हमेशा `'.jpg'`)। हालांकि, `<img>` टैग अपने `src` को कैसे निर्दिष्ट करता है, इसमें कुछ गड़बड़ है।
 
-Can you fix it?
+क्या आप इसे ठीक कर सकते हैं?
 
 <Sandpack>
 
@@ -474,15 +473,15 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-To check that your fix worked, try changing the value of `imageSize` to `'b'`. The image should resize after your edit.
+यह जाँचने के लिए कि आपका सुधार काम कर गया है, `imageSize` के मान को `'b'` में बदलने का प्रयास करें। आपके संपादन के बाद छवि का आकार बदलना चाहिए।
 
 <Solution>
 
-You can write it as `src={baseUrl + person.imageId + person.imageSize + '.jpg'}`.
+आप इसे `src={baseUrl person.imageId person.imageSize '.jpg'}` के रूप में लिख सकते हैं।
 
-1. `{` opens the JavaScript expression
-2. `baseUrl + person.imageId + person.imageSize + '.jpg'` produces the correct URL string
-3. `}` closes the JavaScript expression
+1. `{` जावास्क्रिप्ट अभिव्यक्ति खोलता है
+2. `baseUrl person.imageId person.imageSize '.jpg'` सही यूआरएल स्ट्रिंग तैयार करता है
+3. `}` JavaScript व्यंजक को बंद कर देता है
 
 <Sandpack>
 
@@ -525,7 +524,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-You can also move this expression into a separate function like `getImageUrl` below:
+आप इस एक्सप्रेशन को नीचे 'getImageUrl' जैसे एक अलग फ़ंक्शन में भी स्थानांतरित कर सकते हैं:
 
 <Sandpack>
 
@@ -580,7 +579,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-Variables and functions can help you keep the markup simple!
+वेरिएबल और फ़ंक्शन मार्कअप को सरल रखने में आपकी सहायता कर सकते हैं!
 
 </Solution>
 
