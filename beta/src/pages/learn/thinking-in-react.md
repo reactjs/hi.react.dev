@@ -2,27 +2,36 @@
 title: React में सोच
 ---
 
-
 <Intro>
 
 React आपके द्वारा देखे जाने वाले डिज़ाइन और आपके द्वारा बनाए गए ऍप्स के बारे में आपके सोचने के तरीके को बदल सकता है। जहां एक बार आपने जंगल को देखा है, React के साथ काम करने के बाद, आप अलग-अलग पेड़ों की सराहना करेंगे। React डिजाइन सिस्टम और UI states में सोचना आसान बनाता है। इस टुटोरिअल में, हम आपको सर्च होने वाले प्रोडक्ट डाटा टेबल को React के साथ बनाए के तरीके के बारे में गाइड करेंगे।
 
 </Intro>
 
-## मॉकअप के साथ शुरू करें {/*start-with-the-mockup*/}
+## मॉकअप के साथ शुरू करें {/_start-with-the-mockup_/} {/*मॉकअप-के-साथ-शुरू-करें-start-with-the-mockup*/}
 
 कल्पना करें कि आपके पास पहले से ही एक JSON API और एक डिजाइनर से दिया गया मॉकअप है।
 
-JSON  API कुछ डेटा लौटाता है जो इस तरह दिखता है:
+JSON API कुछ डेटा लौटाता है जो इस तरह दिखता है:
 
 ```json
 [
-  { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
-  { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
-  { category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
-  { category: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
-  { category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin" },
-  { category: "Vegetables", price: "$1", stocked: true, name: "Peas" }
+  {"category": "Fruits", "price": "$1", "stocked": true, "name": "Apple"},
+  {"category": "Fruits", "price": "$1", "stocked": true, "name": "Dragonfruit"},
+  {
+    "category": "Fruits",
+    "price": "$2",
+    "stocked": false,
+    "name": "Passionfruit"
+  },
+  {"category": "Vegetables", "price": "$2", "stocked": true, "name": "Spinach"},
+  {
+    "category": "Vegetables",
+    "price": "$4",
+    "stocked": false,
+    "name": "Pumpkin"
+  },
+  {"category": "Vegetables", "price": "$1", "stocked": true, "name": "Peas"}
 ]
 ```
 
@@ -30,19 +39,19 @@ JSON  API कुछ डेटा लौटाता है जो इस तर�
 
 <img src="/images/docs/s_thinking-in-react_ui.png" width="300" style={{margin: '0 auto'}} />
 
-React  में  UI  को लागू करने के लिए, आप आमतौर पर इन्ही पांच स्टेप्स का पालन करेंगे।
+React में UI को लागू करने के लिए, आप आमतौर पर इन्ही पांच स्टेप्स का पालन करेंगे।
 
-## Step 1: एक कुम्पोनेंट पदानुक्रम में UI को तोड़ो {/*step-1-break-the-ui-into-a-component-hierarchy*/}
+## Step 1: एक कुम्पोनेंट पदानुक्रम में UI को तोड़ो {/_step-1-break-the-ui-into-a-component-hierarchy_/} {/*step-1-एक-कुम्पोनेंट-पदानुक्रम-में-ui-को-तोड़ो-step-1-break-the-ui-into-a-component-hierarchy*/}
 
 मॉकअप में प्रत्येक कौम्पोनॅन्ट और सबकौम्पोनॅन्ट के चारों ओर बॉक्स बनाकर शुरू करें और उनका नामकरण करें।
 यदि आप किसी डिज़ाइनर के साथ काम करते हैं, तो हो सकता है कि उन्होंने अपने डिज़ाइन टूल में इन कॉम्पोनेन्टस का नाम पहले ही रख लिया हो। उनके साथ चेक करलें!
 
 आपकी बैकग्राउंड के आधार पर, आप किसी डिज़ाइन को विभिन्न तरीकों से कॉम्पोनेन्टस में बांटने करने के बारे में सोच सकते हैं:
 
-* **Programming**--यदि आपको एक नया फ़ंक्शन या ऑब्जेक्ट बनाना चाहिए तो निर्णय लेने के लिए एक ही तकनीक का उपयोग करें। ऐसी तकनीक है [एकल जिम्मेदारी सिद्धांत](https://en.wikipedia.org/wiki/Single_responsibility_principle), यही है, एक कुम्पोनान्ट आदर्श रूप से केवल एक चीज करनी चाहिए। यदि यह बढ़ रहा है, तो इसे छोटे उप घटकों में विघटित किया जाना चाहिए।
+- **Programming**--यदि आपको एक नया फ़ंक्शन या ऑब्जेक्ट बनाना चाहिए तो निर्णय लेने के लिए एक ही तकनीक का उपयोग करें। ऐसी तकनीक है [एकल जिम्मेदारी सिद्धांत](https://en.wikipedia.org/wiki/Single_responsibility_principle), यही है, एक कुम्पोनान्ट आदर्श रूप से केवल एक चीज करनी चाहिए। यदि यह बढ़ रहा है, तो इसे छोटे उप घटकों में विघटित किया जाना चाहिए।
 
-* **CSS**--विचार करें कि आप किसके लिए क्लास चयनकर्ताओं को बनाते हैं. (हालांकि, कुम्पोनान्ट एस थोड़ा कम बारीक हैं।)
-* **Design**--विचार करें कि आप डिज़ाइन परतों को कैसे व्यवस्थित करेंगे।
+- **CSS**--विचार करें कि आप किसके लिए क्लास चयनकर्ताओं को बनाते हैं. (हालांकि, कुम्पोनान्ट एस थोड़ा कम बारीक हैं।)
+- **Design**--विचार करें कि आप डिज़ाइन परतों को कैसे व्यवस्थित करेंगे।
 
 अगर आपका JSON अच्छी तरह से संरचित है, तो आप अक्सर पाएंगे कि यह स्वाभाविक रूप से आपके UI के कंपोनेंट स्ट्रक्चर के लिए मैप करता है। ऐसा इसलिए है क्योंकि UI और डेटा मॉडल में अक्सर एक ही सूचना वास्तुकला होती है - यानी, एक ही आकार है। अपने UI को घटकों में विभाजित करें, जहां प्रत्येक घटक आपके डेटा मॉडल के एक भाग से मेल खाता हो।
 
@@ -58,7 +67,7 @@ React  में  UI  को लागू करने के लिए, आप 
 2. `SearchBar` (blue) उपयोगकर्ता इनपुट प्राप्त करता है.
 3. `ProductTable` (lavender) उपयोगकर्ता इनपुट के अनुसार सूची को प्रदर्शित और फ़िल्टर करता है.
 4. `ProductCategoryRow` (green) प्रत्येक श्रेणी के लिए एक शीर्षक प्रदर्शित करता है.
-5. `ProductRow`	(yellow) प्रत्येक उत्पाद के लिए एक पंक्ति प्रदर्शित करता है.
+5. `ProductRow` (yellow) प्रत्येक उत्पाद के लिए एक पंक्ति प्रदर्शित करता है.
 
 </CodeDiagram>
 
@@ -68,13 +77,13 @@ React  में  UI  को लागू करने के लिए, आप 
 
 अब जब आपने मॉकअप में कुम्पोनान्ट की पहचान की है, तो उन्हें पदानुक्रम में व्यवस्थित करें। कुम्पोनानेंट जो मॉकअप में एक और कुम्पोनान्ट के भीतर दिखाई देता है पदानुक्रम में एक बच्चे के रूप में प्रकट होना चाहिए:
 
-* `FilterableProductTable`
-    * `SearchBar`
-    * `ProductTable`
-        * `ProductCategoryRow`
-        * `ProductRow`
+- `FilterableProductTable`
+  - `SearchBar`
+  - `ProductTable`
+    - `ProductCategoryRow`
+    - `ProductRow`
 
-## Step 2: Build a static version in React {/*step-2-build-a-static-version-in-react*/}
+## Step 2: Build a static version in React {/_step-2-build-a-static-version-in-react_/} {/*step-2-build-a-static-version-in-react-step-2-build-a-static-version-in-react*/}
 
 अब जब आपके पास आपका कुम्पोनान्ट पदानुक्रम है, तो अब आपके एप्प को लागू करने का समय है। सबसे सरल दृष्टिकोण एक संस्करण बनाना है जो किसी भी अंतःक्रियाशीलता को जोड़ने के बिना अपने डेटा मॉडल से UI प्रस्तुत करता है ... अभी तक! स्थिर संस्करण को पहले बनाना अक्सर आसान होता है और फिर अलग-अलग इंटरएक्टिविटी जोड़ते हैं। एक स्थिर संस्करण का निर्माण करने के लिए बहुत सारे टाइपिंग और कोई सोच की आवश्यकता होती है, लेकिन अंतःक्रियाशीलता को जोड़ने में बहुत सी सोचने की आवश्यकता होती है और बहुत सारी टाइपिंग की आवश्यकता होती है।
 
@@ -85,21 +94,20 @@ React  में  UI  को लागू करने के लिए, आप 
 <Sandpack>
 
 ```jsx App.js
-function ProductCategoryRow({ category }) {
+function ProductCategoryRow({category}) {
   return (
     <tr>
-      <th colSpan="2">
-        {category}
-      </th>
+      <th colSpan="2">{category}</th>
     </tr>
   );
 }
 
-function ProductRow({ product }) {
-  const name = product.stocked ? product.name :
-    <span style={{ color: 'red' }}>
-      {product.name}
-    </span>;
+function ProductRow({product}) {
+  const name = product.stocked ? (
+    product.name
+  ) : (
+    <span style={{color: 'red'}}>{product.name}</span>
+  );
 
   return (
     <tr>
@@ -109,7 +117,7 @@ function ProductRow({ product }) {
   );
 }
 
-function ProductTable({ products }) {
+function ProductTable({products}) {
   const rows = [];
   let lastCategory = null;
 
@@ -118,14 +126,11 @@ function ProductTable({ products }) {
       rows.push(
         <ProductCategoryRow
           category={product.category}
-          key={product.category} />
+          key={product.category}
+        />
       );
     }
-    rows.push(
-      <ProductRow
-        product={product}
-        key={product.name} />
-    );
+    rows.push(<ProductRow product={product} key={product.name} />);
     lastCategory = product.category;
   });
 
@@ -147,15 +152,13 @@ function SearchBar() {
     <form>
       <input type="text" placeholder="Search..." />
       <label>
-        <input type="checkbox" />
-        {' '}
-        Only show products in stock
+        <input type="checkbox" /> Only show products in stock
       </label>
     </form>
   );
 }
 
-function FilterableProductTable({ products }) {
+function FilterableProductTable({products}) {
   return (
     <div>
       <SearchBar />
@@ -165,12 +168,12 @@ function FilterableProductTable({ products }) {
 }
 
 const PRODUCTS = [
-  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
-  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
-  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
-  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
-  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
-  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+  {category: 'Fruits', price: '$1', stocked: true, name: 'Apple'},
+  {category: 'Fruits', price: '$1', stocked: true, name: 'Dragonfruit'},
+  {category: 'Fruits', price: '$2', stocked: false, name: 'Passionfruit'},
+  {category: 'Vegetables', price: '$2', stocked: true, name: 'Spinach'},
+  {category: 'Vegetables', price: '$4', stocked: false, name: 'Pumpkin'},
+  {category: 'Vegetables', price: '$1', stocked: true, name: 'Peas'},
 ];
 
 export default function App() {
@@ -180,7 +183,7 @@ export default function App() {
 
 ```css
 body {
-  padding: 5px
+  padding: 5px;
 }
 label {
   display: block;
@@ -198,101 +201,99 @@ td {
 
 </Sandpack>
 
-**Don't fret if this code example looks intimidating!** In this guide, we're focusing on concepts rather than code. Make sure to bookmark [Describing the UI](/learn/describing-the-ui) which will help you fill in the gaps and make sense of this code.
+**अगर यह कोड उदाहरण डरावना दिखता है तो झल्लाहट मत करो!** इस गाइड में, हम कोड की बजाय अवधारणाओं पर ध्यान केंद्रित कर रहे हैं। बुकमार्क करना सुनिश्चित करें [UI का वर्णन](/learn/describing-the-ui) जो आपको अंतराल में भरने और इस कोड को समझने में मदद करेगा।
 
-After building your कौम्पोनॅन्टs, you'll have a library of reusable कौम्पोनॅन्टs that render your data model. Because this is a static app, the कौम्पोनॅन्टs will only return JSX. The कौम्पोनॅन्ट at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. This is called _one-way data flow_ because the data flows down from the top-level कौम्पोनॅन्ट to the ones at the bottom of the tree.
+अपने घटकों के निर्माण के बाद, आपके पास पुन: प्रयोज्य घटकों की एक पुस्तकालय होगी जो आपके डेटा मॉडल को प्रस्तुत करते हैं। चूंकि यह एक स्थिर ऐप है, घटक केवल जेएसएक्स वापस कर देंगे। पदानुक्रम के शीर्ष पर घटक (`FilterableProductTable`) c इसे _ऑन-वे डेटा फ्लो_ कहा जाता है क्योंकि डेटा पेड़ के निचले हिस्से में शीर्ष-स्तरीय घटक से नीचे बहती है।
 
 <Gotcha>
 
-At this point, you should not be using any state values. That’s for the next step!
-
+इस बिंदु पर, आपको किसी भी राज्य मूल्यों का उपयोग नहीं करना चाहिए।यह अगले कदम के लिए है!
 </Gotcha>
 
-## Step 3: Find the minimal but complete representation of UI state {/*step-3-find-the-minimal-but-complete-representation-of-ui-state*/}
+## Step 3: UI राज्य का न्यूनतम लेकिन पूर्ण प्रतिनिधित्व खोजें {/_step-3-find-the-minimal-but-complete-representation-of-ui-state_/} {/*step-3-ui-राज्य-का-न्यूनतम-लेकिन-पूर्ण-प्रतिनिधित्व-खोजें-step-3-find-the-minimal-but-complete-representation-of-ui-state*/}
 
-To make the UI interactive, you need to let users change your underlying data model. You will use *state* for this.
+UI इंटरैक्टिव बनाने के लिए, आपको उपयोगकर्ताओं को अपने अंतर्निहित डेटा मॉडल को बदलने की आवश्यकता है। आप इसके लिए _ राज्य _ का उपयोग करेंगे।
 
-Think of state as the minimal set of changing data that your app needs to remember. The most important principle for structuring state is to keep it [DRY (Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)). Figure out the absolute minimal representation of the state your application needs and compute everything else on-demand. For example, if you're building a shopping list, you can store the items as an array in state. If you want to also display the number of items in the list, don't store the number of items as another state value--instead, read the length of your array.
+राज्य के बारे में सोचें कि आपके ऐप को याद रखने वाले डेटा के न्यूनतम सेट के रूप में सोचें। राज्य की संरचना के लिए सबसे महत्वपूर्ण सिद्धांत इसे रखना है[DRY (Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)). अपने आवेदन की जरूरतों के पूर्ण न्यूनतम प्रतिनिधित्व को समझें और मांग पर बाकी सबकुछ की गणना करें। उदाहरण के लिए, यदि आप खरीदारी सूची बना रहे हैं, तो आप वस्तुओं को राज्य में एक सरणी के रूप में स्टोर कर सकते हैं। यदि आप सूची में वस्तुओं की संख्या भी प्रदर्शित करना चाहते हैं, तो वस्तुओं की संख्या को किसी अन्य राज्य मूल्य के रूप में संग्रहीत न करें - इसके बजाय, अपनी सरणी की लंबाई पढ़ें।
 
-Now think of all of the pieces of data in this example application:
+अब इस उदाहरण में डेटा के सभी टुकड़ों के बारे में सोचें आवेदन:
 
-1. The original list of products
-2. The search text the user has entered
-3. The value of the checkbox
-4. The filtered list of products
+1. उत्पादों की मूल सूची
+2. उपयोगकर्ता द्वारा दर्ज किया गया खोज पाठ
+3. चेकबॉक्स का मान
+4. उत्पादों की फ़िल्टर सूची
 
-Which of these are state? Identify the ones that are not:
+इनमें से कौन सा राज्य है?उन लोगों की पहचान करें जो नहीं हैं:
 
-* Does it **remain unchanged** over time? If so, it isn't state.
-* Is it **passed in from a parent** via props? If so, it isn't state.
-* **Can you compute it** based on existing state or props in your कौम्पोनॅन्ट? If so, it *definitely* isn't state!
 
-What's left is probably state.
+- क्या यह ** समय के साथ अपरिवर्तित ** रहता है?यदि हां, तो यह राज्य नहीं है।
+- क्या यह ** एक माता-पिता से ** प्रोप के माध्यम से पारित किया गया है?यदि हां, तो यह राज्य नहीं है।
+- ** क्या आप इसकी गणना कर सकते हैं ** मौजूदा राज्य या प्रोप के आधार पर आपके कपम्पोनेंट में?यदि हां, तो यह _निश्चित रूप से_ राज्य नहीं है!
 
-Let's go through them one by one again:
+क्या बचा है शायद राज्य है।
 
-1. The original list of products is **passed in as props, so it's not state**. 
-2. The search text seems to be state since it changes over time and can't be computed from anything.
-3. The value of the checkbox seems to be state since it changes over time and can't be computed from anything.
-4. The filtered list of products **isn't state because it can be computed** by taking the original list of products and filtering it according to the search text and value of the checkbox.
+आइए उनसे एक-एक करके फिर से जाएं:
 
-This means only the search text and the value of the checkbox are state! Nicely done!
+1. उत्पादों की मूल सूची ** प्रोप के रूप में पारित है, इसलिए यह राज्य ** नहीं है।
+2. खोज पाठ राज्य प्रतीत होता है क्योंकि यह समय के साथ बदलता है और किसी भी चीज़ से गणना नहीं की जा सकती है।
+3. चेकबॉक्स का मान राज्य प्रतीत होता है क्योंकि यह समय के साथ बदलता है और किसी भी चीज़ से गणना नहीं की जा सकती है।
+4. उत्पादों की फ़िल्टर सूची ** राज्य नहीं है क्योंकि इसे उत्पादों की मूल सूची लेकर और चेकबॉक्स के मूल्य के अनुसार इसे फ़िल्टर करके गणना की जा सकती है।
 
+इसका मतलब केवल खोज पाठ और चेकबॉक्स का मान राज्य है!अच्छी तरह से किया!
 <DeepDive title="Props vs State">
 
-There are two types of "model" data in React: props and state. The two are very different:
+प्रतिक्रिया में दो प्रकार के "मॉडल" डेटा हैं: प्रोप और राज्य। दोनों बहुत अलग हैं:
 
-* [**Props** are like arguments you pass](/learn/passing-props-to-a-कौम्पोनॅन्ट) to a function. They let a parent कौम्पोनॅन्ट pass data to a child कौम्पोनॅन्ट and customize its appearance. For example, a `Form` can pass a `color` prop to a `Button`.
-* [**State** is like a कौम्पोनॅन्ट’s memory.](/learn/state-a-कौम्पोनॅन्टs-memory) It lets a कौम्पोनॅन्ट keep track of some information and change it in response to interactions. For example, a `Button` might keep track of `isHovered` state.
+- [** प्रोप ** आपके द्वारा पास किए गए तर्कों की तरह हैं](/learn/passing-props-to-a-component) to a function.उन्होंने एक मूल घटक को एक बाल घटक को डेटा पास करने और इसकी उपस्थिति को अनुकूलित करने दिया। उदाहरण के लिए, एक 'फॉर्म' एक 'रंग' प्रोप को 'बटन' पास कर सकता है।
+- [** राज्य ** एक कुम्पोनान्ट की स्मृति की तरह है।](/learn/state-a-components-memory) यह एक कुम्पोनानेंट को कुछ जानकारी का ट्रैक रखने देता है और इंटरैक्शन के जवाब में इसे बदल देता है। उदाहरण के लिए, एक 'बटन' `Ishovered` राज्य का ट्रैक रख सकता है।
 
-Props and state are different, but they work together. A parent कौम्पोनॅन्ट will often keep some information in state (so that it can change it), and *pass it down* to child कौम्पोनॅन्टs as their props. It's okay if the difference still feels fuzzy on the first read. It takes a bit of practice for it to really stick!
+प्रोप और राज्य अलग हैं, लेकिन वे एक साथ काम करते हैं।एक माता-पिता कुम्पोनानेंट अक्सर राज्य में कुछ जानकारी रखेगा (ताकि यह इसे बदल सके), और इसे अपने प्रोप के रूप में बाल घटकों के लिए नीचे_पास करें। यह ठीक है अगर अंतर अभी भी पहले पढ़ने पर अस्पष्ट महसूस करता है।वास्तव में छड़ी के लिए यह थोड़ा अभ्यास करता है!
 
 </DeepDive>
 
-## Step 4: Identify where your state should live {/*step-4-identify-where-your-state-should-live*/}
+## Step 4: Identify where your state should live {/_step-4-identify-where-your-state-should-live_/} {/*step-4-identify-where-your-state-should-live-step-4-identify-where-your-state-should-live*/}
 
-After identifying your app’s minimal state data, you need to identify which कौम्पोनॅन्ट is responsible for changing this state, or *owns* the state. Remember: React uses one-way data flow, passing data down the कौम्पोनॅन्ट hierarchy from parent to child कौम्पोनॅन्ट. It may not be immediately clear which कौम्पोनॅन्ट should own what state. This can be challenging if you’re new to this concept, but you can figure it out by following these steps!
+After identifying your app’s minimal state data, you need to identify which कौम्पोनॅन्ट is responsible for changing this state, or _owns_ the state. Remember: React uses one-way data flow, passing data down the कौम्पोनॅन्ट hierarchy from parent to child कौम्पोनॅन्ट. It may not be immediately clear which कौम्पोनॅन्ट should own what state. This can be challenging if you’re new to this concept, but you can figure it out by following these steps!
 
 For each piece of state in your application:
 
-1. Identify *every* कौम्पोनॅन्ट that renders something based on that state.
+1. Identify _every_ कौम्पोनॅन्ट that renders something based on that state.
 2. Find their closest common parent कौम्पोनॅन्ट--a कौम्पोनॅन्ट above them all in the hierarchy.
 3. Decide where the state should live:
-    1. Often, you can put the state directly into their common parent.
-    2. You can also put the state into some कौम्पोनॅन्ट above their common parent.
-    3. If you can't find a कौम्पोनॅन्ट where it makes sense to own the state, create a new कौम्पोनॅन्ट solely for holding the state and add it somewhere in the hierarchy above the common parent कौम्पोनॅन्ट.
+   1. Often, you can put the state directly into their common parent.
+   2. You can also put the state into some कौम्पोनॅन्ट above their common parent.
+   3. If you can't find a कौम्पोनॅन्ट where it makes sense to own the state, create a new कौम्पोनॅन्ट solely for holding the state and add it somewhere in the hierarchy above the common parent कौम्पोनॅन्ट.
 
 In the previous step, you found two pieces of state in this application: the search input text, and the value of the checkbox. In this example, they always appear together, so it is easier to think of them as a single piece of state.
 
 Now let's run through our strategy for this state:
 
 1. **Identify कौम्पोनॅन्टs that use state:**
-    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value). 
-    * `SearchBar` needs to display that state (search text and checkbox value).
+   - `ProductTable` needs to filter the product list based on that state (search text and checkbox value).
+   - `SearchBar` needs to display that state (search text and checkbox value).
 1. **Find their common parent:** The first parent कौम्पोनॅन्ट both कौम्पोनॅन्टs share is `FilterableProductTable`.
-2. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
+1. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
 
-So the state values will live in `FilterableProductTable`. 
+So the state values will live in `FilterableProductTable`.
 
 Add state to the कौम्पोनॅन्ट with the [`useState()` Hook](/reference/usestate). Hooks let you "hook into" a कौम्पोनॅन्ट's [render cycle](/learn/render-and-commit). Add two state variables at the top of `FilterableProductTable` and specify the initial state of your application:
 
 ```js
 function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState('');
-  const [inStockOnly, setInStockOnly] = useState(false);  
+  const [inStockOnly, setInStockOnly] = useState(false);
 ```
 
 Then, pass `filterText` and `inStockOnly` to `ProductTable` and `SearchBar` as props:
 
 ```js
 <div>
-  <SearchBar 
-    filterText={filterText} 
-    inStockOnly={inStockOnly} />
-  <ProductTable 
+  <SearchBar filterText={filterText} inStockOnly={inStockOnly} />
+  <ProductTable
     products={products}
     filterText={filterText}
-    inStockOnly={inStockOnly} />
+    inStockOnly={inStockOnly}
+  />
 </div>
 ```
 
@@ -301,40 +302,38 @@ You can start seeing how your application will behave. Edit the `filterText` ini
 <Sandpack>
 
 ```jsx App.js
-import { useState } from 'react';
+import {useState} from 'react';
 
-function FilterableProductTable({ products }) {
+function FilterableProductTable({products}) {
   const [filterText, setFilterText] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
-        inStockOnly={inStockOnly} />
-      <ProductTable 
+      <SearchBar filterText={filterText} inStockOnly={inStockOnly} />
+      <ProductTable
         products={products}
         filterText={filterText}
-        inStockOnly={inStockOnly} />
+        inStockOnly={inStockOnly}
+      />
     </div>
   );
 }
 
-function ProductCategoryRow({ category }) {
+function ProductCategoryRow({category}) {
   return (
     <tr>
-      <th colSpan="2">
-        {category}
-      </th>
+      <th colSpan="2">{category}</th>
     </tr>
   );
 }
 
-function ProductRow({ product }) {
-  const name = product.stocked ? product.name :
-    <span style={{ color: 'red' }}>
-      {product.name}
-    </span>;
+function ProductRow({product}) {
+  const name = product.stocked ? (
+    product.name
+  ) : (
+    <span style={{color: 'red'}}>{product.name}</span>
+  );
 
   return (
     <tr>
@@ -344,16 +343,12 @@ function ProductRow({ product }) {
   );
 }
 
-function ProductTable({ products, filterText, inStockOnly }) {
+function ProductTable({products, filterText, inStockOnly}) {
   const rows = [];
   let lastCategory = null;
 
   products.forEach((product) => {
-    if (
-      product.name.toLowerCase().indexOf(
-        filterText.toLowerCase()
-      ) === -1
-    ) {
+    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
       return;
     }
     if (inStockOnly && !product.stocked) {
@@ -363,14 +358,11 @@ function ProductTable({ products, filterText, inStockOnly }) {
       rows.push(
         <ProductCategoryRow
           category={product.category}
-          key={product.category} />
+          key={product.category}
+        />
       );
     }
-    rows.push(
-      <ProductRow
-        product={product}
-        key={product.name} />
-    );
+    rows.push(<ProductRow product={product} key={product.name} />);
     lastCategory = product.category;
   });
 
@@ -387,31 +379,25 @@ function ProductTable({ products, filterText, inStockOnly }) {
   );
 }
 
-function SearchBar({ filterText, inStockOnly }) {
+function SearchBar({filterText, inStockOnly}) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} 
-        placeholder="Search..."/>
+      <input type="text" value={filterText} placeholder="Search..." />
       <label>
-        <input 
-          type="checkbox" 
-          checked={inStockOnly} />
-        {' '}
-        Only show products in stock
+        <input type="checkbox" checked={inStockOnly} /> Only show products in
+        stock
       </label>
     </form>
   );
 }
 
 const PRODUCTS = [
-  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
-  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
-  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
-  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
-  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
-  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+  {category: 'Fruits', price: '$1', stocked: true, name: 'Apple'},
+  {category: 'Fruits', price: '$1', stocked: true, name: 'Dragonfruit'},
+  {category: 'Fruits', price: '$2', stocked: false, name: 'Passionfruit'},
+  {category: 'Vegetables', price: '$2', stocked: true, name: 'Spinach'},
+  {category: 'Vegetables', price: '$4', stocked: false, name: 'Pumpkin'},
+  {category: 'Vegetables', price: '$1', stocked: true, name: 'Peas'},
 ];
 
 export default function App() {
@@ -421,7 +407,7 @@ export default function App() {
 
 ```css
 body {
-  padding: 5px
+  padding: 5px;
 }
 label {
   display: block;
@@ -444,18 +430,17 @@ In the sandbox above, `ProductTable` and `SearchBar` read the `filterText` and `
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} 
+      <input
+        type="text"
+        value={filterText}
         placeholder="Search..."/>
 ```
 
-
 Refer to the [Managing State](/learn/managing-state) to dive deeper into how React uses state and how you can organize your app with it.
 
-## Step 5: Add inverse data flow {/*step-5-add-inverse-data-flow*/}
+## Step 5: Add inverse data flow {/_step-5-add-inverse-data-flow_/} {/*step-5-add-inverse-data-flow-step-5-add-inverse-data-flow*/}
 
-Currently your app renders correctly with props and state flowing down the hierarchy. But to change the state according to user input, you will need to support data flowing the other way: the form कौम्पोनॅन्टs deep in the hierarchy need to update the state in `FilterableProductTable`. 
+Currently your app renders correctly with props and state flowing down the hierarchy. But to change the state according to user input, you will need to support data flowing the other way: the form कौम्पोनॅन्टs deep in the hierarchy need to update the state in `FilterableProductTable`.
 
 React makes this data flow explicit, but it requires a little more typing than two-way data binding. If you try to type or check the box in the example above, you'll see that React ignores your input. This is intentional. By writing `<input value={filterText} />`, you've set the `value` prop of the `input` to always be equal to the `filterText` state passed in from `FilterableProductTable`. Since `filterText` state is never set, the input never changes.
 
@@ -468,8 +453,8 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
+      <SearchBar
+        filterText={filterText}
         inStockOnly={inStockOnly}
         onFilterTextChange={setFilterText}
         onInStockOnlyChange={setInStockOnly} />
@@ -478,11 +463,12 @@ function FilterableProductTable({ products }) {
 Inside the `SearchBar`, you will add the `onChange` event handlers and set the parent state from them:
 
 ```js {5}
-<input 
-  type="text" 
-  value={filterText} 
-  placeholder="Search..." 
-  onChange={(e) => onFilterTextChange(e.target.value)} />
+<input
+  type="text"
+  value={filterText}
+  placeholder="Search..."
+  onChange={(e) => onFilterTextChange(e.target.value)}
+/>
 ```
 
 Now the application fully works!
@@ -490,42 +476,43 @@ Now the application fully works!
 <Sandpack>
 
 ```jsx App.js
-import { useState } from 'react';
+import {useState} from 'react';
 
-function FilterableProductTable({ products }) {
+function FilterableProductTable({products}) {
   const [filterText, setFilterText] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
-        inStockOnly={inStockOnly} 
-        onFilterTextChange={setFilterText} 
-        onInStockOnlyChange={setInStockOnly} />
-      <ProductTable 
-        products={products} 
+      <SearchBar
         filterText={filterText}
-        inStockOnly={inStockOnly} />
+        inStockOnly={inStockOnly}
+        onFilterTextChange={setFilterText}
+        onInStockOnlyChange={setInStockOnly}
+      />
+      <ProductTable
+        products={products}
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+      />
     </div>
   );
 }
 
-function ProductCategoryRow({ category }) {
+function ProductCategoryRow({category}) {
   return (
     <tr>
-      <th colSpan="2">
-        {category}
-      </th>
+      <th colSpan="2">{category}</th>
     </tr>
   );
 }
 
-function ProductRow({ product }) {
-  const name = product.stocked ? product.name :
-    <span style={{ color: 'red' }}>
-      {product.name}
-    </span>;
+function ProductRow({product}) {
+  const name = product.stocked ? (
+    product.name
+  ) : (
+    <span style={{color: 'red'}}>{product.name}</span>
+  );
 
   return (
     <tr>
@@ -535,16 +522,12 @@ function ProductRow({ product }) {
   );
 }
 
-function ProductTable({ products, filterText, inStockOnly }) {
+function ProductTable({products, filterText, inStockOnly}) {
   const rows = [];
   let lastCategory = null;
 
   products.forEach((product) => {
-    if (
-      product.name.toLowerCase().indexOf(
-        filterText.toLowerCase()
-      ) === -1
-    ) {
+    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
       return;
     }
     if (inStockOnly && !product.stocked) {
@@ -554,14 +537,11 @@ function ProductTable({ products, filterText, inStockOnly }) {
       rows.push(
         <ProductCategoryRow
           category={product.category}
-          key={product.category} />
+          key={product.category}
+        />
       );
     }
-    rows.push(
-      <ProductRow
-        product={product}
-        key={product.name} />
-    );
+    rows.push(<ProductRow product={product} key={product.name} />);
     lastCategory = product.category;
   });
 
@@ -582,20 +562,22 @@ function SearchBar({
   filterText,
   inStockOnly,
   onFilterTextChange,
-  onInStockOnlyChange
+  onInStockOnlyChange,
 }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} placeholder="Search..." 
-        onChange={(e) => onFilterTextChange(e.target.value)} />
+      <input
+        type="text"
+        value={filterText}
+        placeholder="Search..."
+        onChange={(e) => onFilterTextChange(e.target.value)}
+      />
       <label>
-        <input 
-          type="checkbox" 
-          checked={inStockOnly} 
-          onChange={(e) => onInStockOnlyChange(e.target.checked)} />
-        {' '}
+        <input
+          type="checkbox"
+          checked={inStockOnly}
+          onChange={(e) => onInStockOnlyChange(e.target.checked)}
+        />{' '}
         Only show products in stock
       </label>
     </form>
@@ -603,12 +585,12 @@ function SearchBar({
 }
 
 const PRODUCTS = [
-  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
-  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
-  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
-  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
-  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
-  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+  {category: 'Fruits', price: '$1', stocked: true, name: 'Apple'},
+  {category: 'Fruits', price: '$1', stocked: true, name: 'Dragonfruit'},
+  {category: 'Fruits', price: '$2', stocked: false, name: 'Passionfruit'},
+  {category: 'Vegetables', price: '$2', stocked: true, name: 'Spinach'},
+  {category: 'Vegetables', price: '$4', stocked: false, name: 'Pumpkin'},
+  {category: 'Vegetables', price: '$1', stocked: true, name: 'Peas'},
 ];
 
 export default function App() {
@@ -618,7 +600,7 @@ export default function App() {
 
 ```css
 body {
-  padding: 5px
+  padding: 5px;
 }
 label {
   display: block;
@@ -637,6 +619,6 @@ td {
 
 You can learn all about handling events and updating state in the [Adding Interactivity](/learn/adding-interactivity) section.
 
-## Where to go from here {/*where-to-go-from-here*/}
+## Where to go from here {/_where-to-go-from-here_/} {/*where-to-go-from-here-where-to-go-from-here*/}
 
 This was a very brief introduction to how to think about building कौम्पोनॅन्टs and applications with React. You can [start a React project](/learn/installation) right now or [dive deeper on all the syntax](/learn/describing-the-ui) used in this ट्यूटोरियल.
