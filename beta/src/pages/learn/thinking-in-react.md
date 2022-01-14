@@ -244,47 +244,47 @@ UI इंटरैक्टिव बनाने के लिए, आपको
 
 प्रतिक्रिया में दो प्रकार के "मॉडल" डेटा हैं: प्रोप और राज्य। दोनों बहुत अलग हैं:
 
-- [** प्रोप ** आपके द्वारा पास किए गए तर्कों की तरह हैं](/learn/passing-props-to-a-component) to a function.उन्होंने एक मूल घटक को एक बाल घटक को डेटा पास करने और इसकी उपस्थिति को अनुकूलित करने दिया। उदाहरण के लिए, एक 'फॉर्म' एक 'रंग' प्रोप को 'बटन' पास कर सकता है।
+- [** प्रोप ** आपके द्वारा पास किए गए तर्कों की तरह हैं](/learn/passing-props-to-a-component) एक समारोह के लिए.उन्होंने एक मूल घटक को एक बाल घटक को डेटा पास करने और इसकी उपस्थिति को अनुकूलित करने दिया। उदाहरण के लिए, एक 'फॉर्म' एक 'रंग' प्रोप को 'बटन' पास कर सकता है।
 - [** राज्य ** एक कुम्पोनान्ट की स्मृति की तरह है।](/learn/state-a-components-memory) यह एक कुम्पोनानेंट को कुछ जानकारी का ट्रैक रखने देता है और इंटरैक्शन के जवाब में इसे बदल देता है। उदाहरण के लिए, एक 'बटन' `Ishovered` राज्य का ट्रैक रख सकता है।
 
 प्रोप और राज्य अलग हैं, लेकिन वे एक साथ काम करते हैं।एक माता-पिता कुम्पोनानेंट अक्सर राज्य में कुछ जानकारी रखेगा (ताकि यह इसे बदल सके), और इसे अपने प्रोप के रूप में बाल घटकों के लिए नीचे_पास करें। यह ठीक है अगर अंतर अभी भी पहले पढ़ने पर अस्पष्ट महसूस करता है।वास्तव में छड़ी के लिए यह थोड़ा अभ्यास करता है!
 
 </DeepDive>
 
-## Step 4: Identify where your state should live {/_step-4-identify-where-your-state-should-live_/} {/*step-4-identify-where-your-state-should-live-step-4-identify-where-your-state-should-live*/}
+## Step 4: पहचानें कि आपके राज्य को कहाँ रहना चाहिए {/_step-4-identify-where-your-state-should-live_/} {/*step-4-identify-where-your-state-should-live-step-4-identify-where-your-state-should-live*/}
 
-After identifying your app’s minimal state data, you need to identify which कौम्पोनॅन्ट is responsible for changing this state, or _owns_ the state. Remember: React uses one-way data flow, passing data down the कौम्पोनॅन्ट hierarchy from parent to child कौम्पोनॅन्ट. It may not be immediately clear which कौम्पोनॅन्ट should own what state. This can be challenging if you’re new to this concept, but you can figure it out by following these steps!
+अपने ऐप के न्यूनतम राज्य डेटा की पहचान करने के बाद, आपको यह पहचानने की आवश्यकता है कि इस राज्य को बदलने के लिए कौन सा कुम्पोनान्ट जिम्मेदार है, या _OWNS_ राज्य. Remember: प्रतिक्रिया एक-तरफा डेटा प्रवाह का उपयोग करती है, जो माता-पिता से बाल घटक तक घटक पदानुक्रम के नीचे डेटा पारित करती है। यह तुरंत स्पष्ट नहीं हो सकता है कि कौन सा कंड्पोनेंट का मालिक होना चाहिए। यदि आप इस अवधारणा के लिए नए हैं तो यह चुनौतीपूर्ण हो सकता है, लेकिन आप इन चरणों का पालन करके इसे समझ सकते हैं!
 
-For each piece of state in your application:
+आपके आवेदन में राज्य के प्रत्येक टुकड़े के लिए:
+1. _हर_ घटक की पहचान करें जो उस राज्य के आधार पर कुछ प्रस्तुत करता है।
+2. उनके निकटतम सामान्य मूल घटक को खोजें- पदानुक्रम में उन सभी के ऊपर एक घटक।
+3. तय करें कि राज्य को कहाँ रहना चाहिए:
 
-1. Identify _every_ कौम्पोनॅन्ट that renders something based on that state.
-2. Find their closest common parent कौम्पोनॅन्ट--a कौम्पोनॅन्ट above them all in the hierarchy.
-3. Decide where the state should live:
-   1. Often, you can put the state directly into their common parent.
-   2. You can also put the state into some कौम्पोनॅन्ट above their common parent.
-   3. If you can't find a कौम्पोनॅन्ट where it makes sense to own the state, create a new कौम्पोनॅन्ट solely for holding the state and add it somewhere in the hierarchy above the common parent कौम्पोनॅन्ट.
+   1. अक्सर, आप राज्य को सीधे उनके सामान्य माता-पिता में डाल सकते हैं।
+   2. आप राज्य को उनके सामान्य माता-पिता के ऊपर कुछ घटक में भी डाल सकते हैं।
+   3. यदि आपको कोई ऐसा घटक नहीं मिल रहा है, जहां राज्य का स्वामित्व होना समझ में आता है, तो केवल राज्य को धारण करने के लिए एक नया घटक बनाएं और इसे सामान्य मूल घटक के ऊपर पदानुक्रम में कहीं जोड़ें।
 
-In the previous step, you found two pieces of state in this application: the search input text, and the value of the checkbox. In this example, they always appear together, so it is easier to think of them as a single piece of state.
+पिछले चरण में, आपको इस एप्लिकेशन में दो राज्य मिले: खोज इनपुट टेक्स्ट, और चेकबॉक्स का मान। इस उदाहरण में, वे हमेशा एक साथ दिखाई देते हैं, इसलिए उन्हें राज्य के एक टुकड़े के रूप में सोचना आसान है।
 
-Now let's run through our strategy for this state:
+आइए अब इस राज्य के लिए अपनी रणनीति पर चलते हैं:
 
-1. **Identify कौम्पोनॅन्टs that use state:**
-   - `ProductTable` needs to filter the product list based on that state (search text and checkbox value).
-   - `SearchBar` needs to display that state (search text and checkbox value).
-1. **Find their common parent:** The first parent कौम्पोनॅन्ट both कौम्पोनॅन्टs share is `FilterableProductTable`.
-1. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
+1. राज्य का उपयोग करने वाले घटकों की पहचान करें:
+   - `ProductTable` उस स्थिति (खोज टेक्स्ट और चेकबॉक्स मान) के आधार पर उत्पाद सूची को फ़िल्टर करने की आवश्यकता है।
+   - `SearchBar` उस स्थिति को प्रदर्शित करने की आवश्यकता है (खोज पाठ और चेकबॉक्स मान)।
+2. उनके सामान्य पैरेंट का पता लगाएं: पहला पैरेंट कंपोनेंट दोनों कंपोनेंट शेयर करते हैं `FilterableProductTable।`
 
-So the state values will live in `FilterableProductTable`.
+3. तय करें कि राज्य कहाँ रहता है : हम फ़िल्टर टेक्स्ट और चेक किए गए राज्य मानों को में रखेंगे `FilterableProductTable।`
 
-Add state to the कौम्पोनॅन्ट with the [`useState()` Hook](/reference/usestate). Hooks let you "hook into" a कौम्पोनॅन्ट's [render cycle](/learn/render-and-commit). Add two state variables at the top of `FilterableProductTable` and specify the initial state of your application:
+तो राज्य के मूल्यों में रहेंगे `FilterableProductTable।`
 
+[`useState()` Hook](/reference/usestate) के साथ घटक में राज्य जोड़ें । हुक आपको एक घटक के [रेंडर चक्र](/learn/render-and-commit) में "हुक इन" करने देता है । के शीर्ष पर दो राज्य चर जोड़ें FilterableProductTableऔर अपने आवेदन की प्रारंभिक स्थिति निर्दिष्ट करें:
 ```js
 function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
 ```
 
-Then, pass `filterText` and `inStockOnly` to `ProductTable` and `SearchBar` as props:
+फिर, पास `filterText` और `inStockOnly` को `ProductTable` और `SearchBar` प्रॉप्स के रूप में:
 
 ```js
 <div>
@@ -297,7 +297,7 @@ Then, pass `filterText` and `inStockOnly` to `ProductTable` and `SearchBar` as p
 </div>
 ```
 
-You can start seeing how your application will behave. Edit the `filterText` initial value from `useState('')` to `useState('fruit')` in the sandbox code below. You'll see both the search input text and the table update:
+आप यह देखना शुरू कर सकते हैं कि आपका आवेदन कैसा व्यवहार करेगा। नीचे दिए गए सैंडबॉक्स कोड में `filterText` से आरंभिक मान संपादित करें । आपको खोज इनपुट टेक्स्ट और तालिका अपडेट दोनों दिखाई देंगे:`useState('')``useState('fruit')`
 
 <Sandpack>
 
@@ -424,7 +424,7 @@ td {
 
 </Sandpack>
 
-In the sandbox above, `ProductTable` and `SearchBar` read the `filterText` and `inStockOnly` props to render the table, the input, and the checkbox. For example, here is how `SearchBar` populates the input value:
+उपरोक्त सैंडबॉक्स में, `ProductTable` और तालिका, इनपुट और चेकबॉक्स को रेंडर करने के लिए और प्रॉप्स `SearchBar` पढ़ें । उदाहरण के लिए, यहां बताया गया है कि इनपुट मान कैसे पॉप्युलेट करता है:`filterTextinStockOnlySearchBar`
 
 ```js {1,6}
 function SearchBar({ filterText, inStockOnly }) {
@@ -436,15 +436,16 @@ function SearchBar({ filterText, inStockOnly }) {
         placeholder="Search..."/>
 ```
 
-Refer to the [Managing State](/learn/managing-state) to dive deeper into how React uses state and how you can organize your app with it.
 
-## Step 5: Add inverse data flow {/_step-5-add-inverse-data-flow_/} {/*step-5-add-inverse-data-flow-step-5-add-inverse-data-flow*/}
+रिएक्ट राज्य का उपयोग कैसे करता है और आप इसके साथ अपने ऐप को कैसे व्यवस्थित कर सकते हैं, इस बारे में गहराई से जानने के लिए [प्रबंध राज्य](/learn/managing-state)का संदर्भ लें ।
+## Step 5: उलटा डेटा प्रवाह जोड़ें {/_step-5-add-inverse-data-flow_/} {/*step-5-add-inverse-data-flow-step-5-add-inverse-data-flow*/}
 
-Currently your app renders correctly with props and state flowing down the hierarchy. But to change the state according to user input, you will need to support data flowing the other way: the form कौम्पोनॅन्टs deep in the hierarchy need to update the state in `FilterableProductTable`.
+वर्तमान में आपका ऐप पदानुक्रम से नीचे की ओर बहने वाले प्रॉप्स और स्थिति के साथ सही ढंग से प्रस्तुत करता है। लेकिन उपयोगकर्ता इनपुट के अनुसार राज्य को बदलने के लिए, आपको दूसरे तरीके से बहने वाले डेटा का समर्थन करने की आवश्यकता होगी: पदानुक्रम में गहरे रूप के घटकों को राज्य में अद्यतन करने की आवश्यकता है `FilterableProductTable` ।
 
-React makes this data flow explicit, but it requires a little more typing than two-way data binding. If you try to type or check the box in the example above, you'll see that React ignores your input. This is intentional. By writing `<input value={filterText} />`, you've set the `value` prop of the `input` to always be equal to the `filterText` state passed in from `FilterableProductTable`. Since `filterText` state is never set, the input never changes.
+प्रतिक्रिया इस डेटा प्रवाह को स्पष्ट करती है, लेकिन इसे दो-तरफा डेटा बाध्यकारी की तुलना में थोड़ा और टाइपिंग की आवश्यकता होती है। यदि आप उपरोक्त उदाहरण में बॉक्स को टाइप या चेक करने का प्रयास करते हैं, तो आप देखेंगे कि प्रतिक्रिया आपके इनपुट को अनदेखा करती है। यह जानबूझकर है. `<input value={filterText} />` लिखकर, आप `input` के `value` प्रोप को हमेशा `FilterableProductTable ` से पारित `filterText` स्थिति के बराबर होने के लिए सेट करते हैं।चूंकि `filterText` राज्य कभी सेट नहीं होता है, इसलिए इनपुट कभी नहीं बदलता है।
 
-You want to make it so whenever the user changes the form inputs, the state updates to reflect those changes. The state is owned by `FilterableProductTable`, so only it can call `setFilterText` and `setInStockOnly`. To let `SearchBar` update the `FilterableProductTable`'s state, you need to pass these functions down to `SearchBar`:
+
+आप इसे बनाना चाहते हैं ताकि जब भी उपयोगकर्ता फॉर्म इनपुट बदलता है, तो राज्य उन परिवर्तनों को प्रतिबिंबित करने के लिए अद्यतन करता है। राज्य के स्वामित्व में है `FilterableProductTable`, इसलिए केवल यह कॉल कर सकता है `setFilterText` और `setInStockOnly।` की स्थिति को `SearchBar` अपडेट करने देने के लिए `FilterableProductTable`, आपको इन कार्यों को नीचे पास करने की आवश्यकता है `SearchBar`:
 
 ```js {2,3,10,11}
 function FilterableProductTable({ products }) {
@@ -460,8 +461,7 @@ function FilterableProductTable({ products }) {
         onInStockOnlyChange={setInStockOnly} />
 ```
 
-Inside the `SearchBar`, you will add the `onChange` event handlers and set the parent state from them:
-
+`searchbar` के अंदर, आप `onchange` इवेंट हैंडलर जोड़ देंगे और उनसे मूल राज्य सेट करेंगे:
 ```js {5}
 <input
   type="text"
@@ -471,7 +471,7 @@ Inside the `SearchBar`, you will add the `onChange` event handlers and set the p
 />
 ```
 
-Now the application fully works!
+अब आवेदन पूरी तरह से काम करता है!
 
 <Sandpack>
 
@@ -617,8 +617,8 @@ td {
 
 </Sandpack>
 
-You can learn all about handling events and updating state in the [Adding Interactivity](/learn/adding-interactivity) section.
+आप घटनाओं को संभालने और राज्य को अद्यतन करने के बारे में सब कुछ सीख सकते हैं [अंतःक्रियाशीलता जोड़ना](/learn/adding-interactivity) अनुभाग.
 
-## Where to go from here {/_where-to-go-from-here_/} {/*where-to-go-from-here-where-to-go-from-here*/}
+## यहाँ से कहाँ जाएं {/_where-to-go-from-here_/} {/*where-to-go-from-here-where-to-go-from-here*/}
 
-This was a very brief introduction to how to think about building कौम्पोनॅन्टs and applications with React. You can [start a React project](/learn/installation) right now or [dive deeper on all the syntax](/learn/describing-the-ui) used in this ट्यूटोरियल.
+रिएक्ट के साथ घटकों और अनुप्रयोगों के निर्माण के बारे में सोचने के लिए यह एक बहुत ही संक्षिप्त परिचय था। आप इस ट्यूटोरियल में [एक प्रतिक्रिया परियोजना शुरू करें](/learn/installation) या [सभी वाक्यविन्यास पर गहराई से गोता लगाएँ](/learn/describing-the-ui) इसमें उपयोग किया जाता है ट्यूटोरियल.
