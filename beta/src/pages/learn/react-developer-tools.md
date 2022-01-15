@@ -1,27 +1,26 @@
 ---
-title: React Developer Tools
+title: React डेवलपर टूल्स
 ---
 
 <Intro>
 
-Use React Developer Tools to inspect React [components](/learn/your-first-component), edit [props](/learn/passing-props-to-a-component) and [state](/learn/state-a-components-memory), and identify performance problems.
-
+React [कौम्पोनॅन्ट](/learn/your-first-component), का निरीक्षण करने के लिए React डेवलपर टूल्स का उपयोग करेंं, [props](/learn/passing-props-to-a-component) और [state](/learn/state-a-components-memory) एडिट करेंं, और परफॉरमेंस समस्याओं की पहचान करेंं।
 </Intro>
 
-## Browser extension {/*browser-extension*/}
+## ब्राउज़र एक्सटेंशन {/*browser-extension*/}
 
-The easiest way to debug websites built with React is to install the React Developer Tools browser extension. It is available for several popular browsers:
+React के साथ बनी वेबसाइटों को डिबग करने का सबसे आसान तरीका React Developer Tools ब्राउज़र एक्सटेंशन को इनस्टॉल करना है। यह कई लोकप्रिय ब्राउज़रों के लिए उपलब्ध है:
 
-* [Install for **Chrome**](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-* [Install for **Firefox**](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
-* [Install for **Edge**](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
+* [**Chrome** के लिए इनस्टॉल करेंं](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+* [**Firefox** के लिए इनस्टॉल करेंं](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
+* [**Edge** के लिए इनस्टॉल करेंं](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
 
-Now, if you visit a website **built with React**, you will see the _Components_ and _Profiler_ panels.
+अब, यदि आप **React से बनी** वेबसाइट पर जाते हैं, तो आपको _Components_ और _Profiler_ पैनल दिखाई देंगे।
 
-![React Developer Tools extension](/images/docs/react-devtools-extension.png)
+![React डेवलपर टूल्स एक्सटेंशन](/images/docs/react-devtools-extension.png)
 
-### Safari and other browsers {/*safari-and-other-browsers*/}
-For other browsers (for example, Safari), install the [`react-devtools`](https://www.npmjs.com/package/react-devtools) npm package:
+### Safari और अन्य ब्राउज़र {/*safari-and-other-browsers*/}
+अन्य ब्राउज़रों के लिए (उदाहरण के लिए, Safari), [`react-devtools`](https://www.npmjs.com/package/react-devtools) npm पैकेज इंस्टॉल करेंं:
 ```bash
 # Yarn
 yarn global add react-devtools
@@ -30,26 +29,26 @@ yarn global add react-devtools
 npm install -g react-devtools
 ```
 
-Next open the developer tools from the terminal:
+इसके बाद टर्मिनल से डेवलपर टूल खोलें:
 ```bash
 react-devtools
 ```
 
-Then connect your website by adding the following `<script>` tag to the beginning of your website's `<head>`:
+फिर अपनी वेबसाइट के `<head>` की शुरुआत में निम्न `<script>` टैग ऐड करके अपनी वेबसाइट कनेक्ट करेंं:
 ```html {3}
 <html>
   <head>
     <script src="http://localhost:8097"></script>
 ```
 
-Reload your website in the browser now to view it in developer tools.
+अपनी वेबसाइट को डेवलपर टूल में देखने के लिए उसे अभी ब्राउज़र में रीलोड करेंं।
 
-![React Developer Tools standalone](/images/docs/react-devtools-standalone.png)
+![React डेवलपर टूल्स स्टैंडअलोन](/images/docs/react-devtools-standalone.png)
 
-## Mobile (React Native) {/*mobile-react-native*/}
-React Developer Tools can be used to inspect apps built with [React Native](https://reactnative.dev/) as well.
+## मोबाइल (React Native) {/*mobile-react-native*/}
+React डेवलपर टूल का उपयोग [React Native](https://reactnative.dev/) के साथ बनी ऐप्स का निरीक्षण करने के लिए भी किया जा सकता है।
 
-The easiest way to use React Developer Tools is to install it globally:
+React डेवलपर टूल्स का उपयोग करने का सबसे आसान तरीका इसे ग्लोबली इनस्टॉल  करना है:
 ```bash
 # Yarn
 yarn global add react-devtools
@@ -58,13 +57,13 @@ yarn global add react-devtools
 npm install -g react-devtools
 ```
 
-Next open the developer tools from the terminal.
+इसके बाद टर्मिनल से डेवलपर टूल खोलें।
 ```bash
 react-devtools
 ```
 
-It should connect to any local React Native app that's running.
+इसे चल रहे किसी भी लोकल React Native ऐप से कनेक्ट होना चाहिए।
 
-> Try reloading the app if developer tools doesn't connect after a few seconds.
+> यदि डेवलपर टूल कुछ सेकंड के बाद कनेक्ट नहीं होते हैं, तो ऐप को रीलोड करने का प्रयास करेंं।
 
-[Learn more about debugging React Native.](https://reactnative.dev/docs/debugging)
+[React Native डीबग करने के बारे में और जानें।](https://reactnative.dev/docs/debugging)
