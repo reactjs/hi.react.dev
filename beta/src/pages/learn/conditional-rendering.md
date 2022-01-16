@@ -115,7 +115,7 @@ if (isPacked) {
 return <li className="item">{name}</li>;
 ```
 
-यदि `isPacked` true है, तो कौम्पोनॅन्ट कुछ भी नहीं लौटाएगा, `null`। नहीं तो, यह JSX को रेंडर करने के लिए रिटर्न कर देगा।
+यदि `isPacked` true है, तो कौम्पोनॅन्ट कुछ भी नहीं रेतुर्नगा, `null`। नहीं तो, यह JSX को रेंडर करने के लिए रिटर्न कर देगा।
 
 <Sandpack>
 
@@ -179,7 +179,7 @@ return <li className="item">{name}</li>;
 
 हालांकि यह डुप्लीकेशन हानिकारक नहीं है, लेकिन यह आपके कोड को मेन्टेन करना कठिन बना सकता है। क्या होगा यदि आप `className` को बदलना चाहते हैं? आपको इसे अपने कोड में दो स्थानों पर करना होगा! ऐसी स्थिति में, आप अपने कोड को और अधिक [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) बनाने के लिए कंडीशनल रूप से थोड़ा JSX शामिल कर सकते हैं।
 
-### Conditional (ternary) operator (`? :`) {/*conditional-ternary-operator--*/}
+### कंडीशनल (टेरनरी) ऑपरेटर (`? :`) {/*conditional-ternary-operator--*/}
 
 कंडीशनल एक्सप्रेशन लिखने के लिए JavaScript में एक कॉम्पैक्ट सिंटैक्स है - [कंडीशनल ऑपरेटर](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) या "टर्नरी ऑपरेटर।"
 
@@ -257,9 +257,9 @@ export default function PackingList() {
 
 यह तरीका साधारण परिस्थितियों के लिए अच्छी तरह से काम करती है, लेकिन इसे मॉडरेशन में उपयोग करें। यदि आपके कौम्पोनॅन्ट बहुत अधिक नेस्टेड कंडीशनल मार्कअप के साथ कीच-पिच हो जाते हैं, तो चीजों को साफ करने के लिए चाइल्ड कौम्पोनॅन्टस को निकालने पर विचार करें। React में, मार्कअप आपके कोड का एक हिस्सा है, इसलिए आप काम्प्लेक्स एक्सप्रेशंस को व्यवस्थित करने के लिए वेरिएबल और फ़ंक्शन जैसे टूल का उपयोग कर सकते हैं।
 
-### Logical AND operator (`&&`) {/*logical-and-operator-*/}
+### लॉजिकल और ऑपरेटर  (`&&`)  {/*logical-and-operator-*/}
 
-Another common shortcut you'll encounter is the [JavaScript logical AND (`&&`) operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#:~:text=The%20logical%20AND%20(%20%26%26%20)%20operator,it%20returns%20a%20Boolean%20value.). Inside React components, it often comes up when you want to render some JSX when the condition is true, **or render nothing otherwise.** With `&&`, you could conditionally render the checkmark only if `isPacked` is `true`:
+एक और आम शॉर्टकट जो आपको मिलेगा वह है [JavaScript लॉजिकल एंड (`&&`) कंट्रोलर](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#:~:text=The%20logical%20AND%20(%20%26%26%20)%20operator,it%20returns%20a%20Boolean%20value.)। React कंपोनेंट्स के अंदर, यह अक्सर तब सामने आता है जब आप स्थिति के सही होने पर कुछ JSX को रेंडर करना चाहते हैं, **या अन्यथा कुछ भी रेंडर नहीं करना चाहते हैं।** `&&` के साथ, आप कंडिशनली रूप से चेकमार्क तभी रेंडर कर सकते हैं जब `isPacked` `true` हो:
 
 ```js
 return (
@@ -269,9 +269,9 @@ return (
 );
 ```
 
-You can read this as *“if `isPacked`, then (`&&`) render the checkmark, otherwise, render nothing.”*
+आप इसे इस रूप में पढ़ सकते हैं *“यदि `isPacked` है, तो (`&&`) चेकमार्क रेंडर करें, अन्यथा, कुछ भी रेंडर न करें।"*
 
-Here it is in action:
+यहाँ यह क्रिया में है:
 
 <Sandpack>
 
@@ -309,30 +309,29 @@ export default function PackingList() {
 
 </Sandpack>
 
-A [JavaScript && expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND) returns the value of its right side (in our case, the checkmark) if the left side (our condition) is `true`. But if the condition is `false`, the whole expression becomes `false`. React considers `false` as a "hole" in the JSX tree, just like `null` or `undefined`, and doesn't render anything in its place.
-
+एक [JavaScript && एक्सप्रेशन](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND) इसके दाईं ओर का वैल्यू देता है (हमारे केस में, चेकमार्क) यदि बाईं ओर (हमारी कंडीशन) `true` है। लेकिन अगर कंडीशन `false` है, तो पूरी एक्सप्रेशन `false` हो जाती है। React JSX ट्री में `true` को "होल" के रूप में मानता है, ठीक `null` या `undefined` की तरह, और इसके स्थान पर कुछ भी रेंडर नहीं करता है।
 
 <Gotcha>
 
-**Don't put numbers on the left side of `&&`.**
+**`&&` के बाईं ओर नंबर न लगाएं।**
 
-To test the condition, JavaScript converts the left side to a boolean automatically. However, if the left side is `0`, then the whole expression gets that value (`0`), and React will happily render `0` rather than nothing.
+कंडीशन का परीक्षण करने के लिए, JavaScript स्वचालित रूप से बाईं ओर को बूलियन में परिवर्तित कर देता है। हालाँकि, यदि बाईं ओर `0` है, तो संपूर्ण एक्सप्रेशन को वह वैल्यू (`0`) प्राप्त होता है, और React खुशी से `0` को रेंडर करेगी, न कि कुछ भी नहीं।
 
-For example, a common mistake is to write code like `messageCount && <p>New messages</p>`. It's easy to assume that it renders nothing when `messageCount` is `0`, but it really renders the `0` itself!
+उदाहरण के लिए, एक सामान्य गलती `messageCount && <p>New messages</p>` जैसा कोड लिखना है। यह मान लेना आसान है कि `messageCount` `0` होने पर यह कुछ भी रेंडर नहीं करता है, लेकिन यह वास्तव में `0` को ही रेंडर करता है!
 
-To fix it, make the left side a boolean: `messageCount > 0 && <p>New messages</p>`.
+इसे ठीक करने के लिए, बाईं ओर एक बूलियन बनाएं: `messageCount > 0 && <p>New messages</p>`।
 
 </Gotcha>
 
-### Conditionally assigning JSX to a variable {/*conditionally-assigning-jsx-to-a-variable*/}
+### कंडीशनली एक वैरिएबल को JSX असाइन कर रहा है {/*conditionally-assigning-jsx-to-a-variable*/}
 
-When the shortcuts get in the way of writing plain code, try using an `if` statement and a variable. You can reassign variables defined with [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), so start by providing the default content you want to display, the name:
+जब शॉर्टकट सादा कोड लिखने के रास्ते में आ जाते हैं, तो एक `if` स्टेटमेंट और एक वेरिएबल का उपयोग करने का प्रयास करें। आप [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) के साथ डिफाइंड वेरिएबल्स को फिर से असाइन कर सकते हैं, इसलिए डिफ़ॉल्ट कंटेंट प्रदान करके शुरु करें जिसे आप डिस्प्ले करना चाहते हैं , नाम:
 
 ```js
 let itemContent = name;
 ```
 
-Use an `if` statement to reassign a JSX expression to `itemContent` if `isPacked` is `true`:
+यदि `isPacked` `true` है, तो JSX एक्सप्रेशन को `itemContent` पर फिर से असाइन करने के लिए `if` स्टेटमेंट का उपयोग करें:
 
 ```js
 if (isPacked) {
@@ -340,7 +339,7 @@ if (isPacked) {
 }
 ```
 
-[Curly braces open the "window into JavaScript".](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world) Embed the variable with curly braces in the returned JSX tree, nesting the previously calculated expression inside of JSX:
+[कर्ली ब्रेसिज़ खोलते हैं "विंडो इन JavaScript"।](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world)लौटाए गए JSX ट्री में कर्ली ब्रेसिज़ वाले वेरिएबल को एम्बेड करें, JSX के अंदर पहले से कॅल्क्युलेटेड एक्सप्रेशन को नेस्ट करें:
 
 ```js
 <li className="item">
@@ -348,7 +347,7 @@ if (isPacked) {
 </li>
 ```
 
-This style is the most verbose, but it's also the most flexible. Here it is in action:
+यह शैली सबसे अधिक क्रियात्मक है, लेकिन यह सबसे लचीली भी है। यहाँ यह क्रिया में है:
 
 <Sandpack>
 
@@ -390,7 +389,7 @@ export default function PackingList() {
 
 </Sandpack>
 
-Like before, this works not only for text, but for arbitrary JSX too:
+पहले की तरह, यह न केवल टेक्स्ट के लिए, बल्कि मनमाने JSX के लिए भी काम करता है:
 
 <Sandpack>
 
@@ -436,16 +435,16 @@ export default function PackingList() {
 
 </Sandpack>
 
-If you're not familiar with JavaScript, this variety of styles might seem overwhelming at first. However, learning them will help you read and write any JavaScript code -- and not just React components! Pick the one you prefer for a start, and then consult this reference again if you forget how the other ones work.
+यदि आप JavaScript से परिचित नहीं हैं, तो इस तरह की शैलियाँ पहली बार में भारी लग सकती हैं। हालांकि, उन्हें सीखने से आपको किसी भी JavaScript कोड को पढ़ने और लिखने में मदद मिलेगी - न कि केवल React कौम्पोनॅन्ट! शुरुआत के लिए आप जो पसंद करते हैं उसे चुनें, और फिर इस संदर्भ को फिर से देखें यदि आप भूल जाते हैं कि दूसरे कैसे काम करते हैं।
 
 <Recap>
 
-* In React, you control branching logic with JavaScript.
-* You can return a JSX expression conditionally with an `if` statement.
-* You can conditionally save some JSX to a variable and then include it inside other JSX by using the curly braces.
-* In JSX, `{cond ? <A /> : <B />}` means *"if `cond`, render `<A />`, otherwise `<B />`"*.
-* In JSX, `{cond && <A />}` means *"if `cond`, render `<A />`, otherwise nothing"*.
-* The shortcuts are common, but you don't have to use them if you prefer plain `if`.
+* React में, आप JavaScript के साथ ब्रांचिंग लॉजिक को नियंत्रित करते हैं।
+* आप एक `if` स्टेटमेंट के साथ कंडिशनली रूप से JSX एक्सप्रेशन रेतुर्न कर सकते हैं।
+* आप कंडिशनली रूप से कुछ JSX को एक वेरिएबल में सेव कर सकते है और फिर कर्ली ब्रेसिज़ का उपयोग करके इसे अन्य JSX के अंदर शामिल कर सकते हैं।
+* JSX में, `{cond ? <A /> : <B />}` का अर्थ है *"यदि `cond` है, तो `<A />` रेंडर करें, अन्यथा `<B />`"*।
+* JSX में, `{cond && <A />}` का अर्थ है *"यदि `cond`, `<A />` रेंडर करें, अन्यथा कुछ भी नहीं"*।
+* शॉर्टकट सामान्य हैं, लेकिन यदि आप सादा `if` पसंद करते हैं तो आपको उनका उपयोग करने की आवश्यकता नहीं है।
 
 </Recap>
 
