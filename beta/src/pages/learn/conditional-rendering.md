@@ -452,9 +452,9 @@ export default function PackingList() {
 
 <Challenges>
 
-### Show an icon for incomplete items with `? :` {/*show-an-icon-for-incomplete-items-with--*/}
+### अधूरे आइटम के लिए `? :` के साथ एक आइकन दिखाएं {/*show-an-icon-for-incomplete-items-with--*/}
 
-Use the conditional operator (`cond ? a : b`) to render a ❌ if `isPacked` isn’t `true`.
+एक ❌ रेंडर करने के लिए कंडीशनल ऑपरेटर (`cond ? a : b`) का इस्तेमाल करें अगर `isPacked` `true` नहीं है।
 
 <Sandpack>
 
@@ -532,15 +532,15 @@ export default function PackingList() {
 
 </Solution>
 
-### Show the item importance with `&&` {/*show-the-item-importance-with-*/}
+### आइटम का इम्पोर्टेंस `&&` के साथ दिखाएं {/*show-the-item-importance-with-*/}
 
-In this example, each `Item` receives a numerical `importance` prop. Use the `&&` operator to render "_(Importance: X)_" in italics, but only for items that have non-zero difficulty. Your item list should end up looking like this:
+इस उदाहरण में, प्रत्येक `Item` को एक संख्यात्मक `importance` prop प्राप्त होता है। इटैलिक में "_(Importance: X)_" रेंडर करने के लिए `&&` ऑपरेटर का उपयोग करें, लेकिन केवल उन आइटम्स के लिए जिनमें गैर-शून्य कठिनाई है। आपकी आइटम सूची इस तरह दिखनी चाहिए:
 
 * Space suit _(Importance: 9)_
 * Helmet with a golden leaf
 * Photo of Tam _(Importance: 6)_
 
-Don't forget to add a space between the two labels!
+दो लेबलों के बीच एक स्पेस जोड़ना न भूलें!
 
 <Sandpack>
 
@@ -580,7 +580,7 @@ export default function PackingList() {
 
 <Solution>
 
-This should do the trick:
+यह काम कर जाना चाहिए:
 
 <Sandpack>
 
@@ -622,15 +622,15 @@ export default function PackingList() {
 
 </Sandpack>
 
-Note that you must write `importance > 0 && ...` rather than `importance && ...` so that if the `importance` is `0`, `0` isn't rendered as the result!
+ध्यान दें कि आपको `importance && ...` के बजाय `importance > 0 && ...` लिखना होगा ताकि अगर `importance` `0` हो, तो `0` परिणाम के रूप में रेंडर नहीं हो!
 
-In this solution, two separate conditions are used to insert a space between then name and the importance label. Alternatively, you could use a fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
+इस समाधान में, नाम और इम्पोर्टेंस लेबल के बीच एक स्पेस डालने के लिए दो अलग-अलग कंडीशंस का उपयोग किया गया है। वैकल्पिक रूप से, आप एक प्रमुख स्पेस के साथ एक फ्रेगमेंट का उपयोग कर सकते हैं: `importance > 0 && <> <i>...</i></>` या `<i>` के अंदर तुरंत एक स्पेस जोड़ें: `importance > 0 && <i> ...</i>`।
 
 </Solution>
 
-### Refactor a series of `? :` to `if` and variables {/*refactor-a-series-of---to-if-and-variables*/}
+### रिफैक्टर करे एक सीरीज `? :` से `if` और वेरिएबल्स  {/*refactor-a-series-of---to-if-and-variables*/}
 
-This `Drink` component uses a series of `? :` conditions to show different information depending on whether the `name` prop is `"tea"` or `"coffee"`. The problem is that the information about each drink is spread across multiple conditions. Refactor this code to use a single `if` statement instead of three `? :` conditions.
+यह `Drink` कौम्पोनॅन्ट `? :` कंडीशंस की एक सीरीज का उपयोग करता है `name` prop `"tea"` या `"coffee"` के आधार पर अलग-अलग जानकारी दिखाने क लिए। समस्या यह है कि प्रत्येक ड्रिंक के बारे में जानकारी कई कंडीशंस में फैली हुई है। तीन `? :` कंडीशंस के बजाय एक `if` स्टेटमेंट का उपयोग करने के लिए इस कोड को दोबारा रिफैक्टर करे।
 
 <Sandpack>
 
@@ -663,11 +663,11 @@ export default function DrinkList() {
 
 </Sandpack>
 
-Once you've refactored the code to use `if`, do you have further ideas on how to simplify it?
+एक बार जब आप `if` का उपयोग कर क कोड को रिफैक्टर कर लेते हैं, तो क्या आपके पास इसे सरल बनाने के बारे में और विचार हैं?
 
 <Solution>
 
-There are multiple ways you could go about this, but here is one starting point:
+इसके बारे में आप कई तरीके अपना सकते हैं, लेकिन यहां एक प्रारंभिक बिंदु है:
 
 <Sandpack>
 
@@ -710,9 +710,9 @@ export default function DrinkList() {
 
 </Sandpack>
 
-Here the information about each drink is grouped together instead of being spread across multiple conditions. This makes it easier to add more drinks in the future.
+यहां प्रत्येक ड्रिंक के बारे में जानकारी को कई स्थितियों में फैलाने के बजाय एक साथ समूहीकृत किया जाता है। इससे भविष्य में और ड्रिंक जोड़ना आसान हो जाता है।
 
-Another solution would be to remove the condition altogether by moving the information into objects:
+एक अन्य उपाय यह होगा कि जानकारी को ऑब्जेक्ट्स में स्थानांतरित करके कंडीशन को पूरी तरह से हटा दिया जाए:
 
 <Sandpack>
 
