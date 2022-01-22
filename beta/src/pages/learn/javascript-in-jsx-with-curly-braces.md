@@ -66,7 +66,7 @@ export default function Avatar() {
 
 </Sandpack>
 
-`className = "avatar"` के बीच अंतर पर ध्यान दें, जो एक `"avatar"` CSS वर्ग का नाम निर्दिष्ट करता है जो इमज को गोल बनाता है, और `src={avatar}` जो `avatar` नामक JavaScript चर के मूल्य को पढ़ता है। ऐसा इसलिए है क्योंकि कर्ली ब्रेसेस आपको अपने मार्कअप में वहीं JavaScript के साथ काम करने देते हैं!
+`className="avatar"` के बीच अंतर पर ध्यान दें, `"avatar"` एक CSS क्लास के नाम को दर्शाता है जो इमेज को गोल बनाता है, और `src={avatar}` जो `avatar` नामक JavaScript वेरिएबल की वैल्यू को रीड करता है। ऐसा इसलिए है क्योंकि कर्ली ब्रेसेस आपको अपने मार्कअप में वहीं JavaScript के साथ काम करने देते हैं!
 
 ## कर्ली ब्रेसेस का उपयोग: JavaScript वर्ल्ड में जाने का एक रास्ता {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
