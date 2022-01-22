@@ -4,7 +4,7 @@ title: कंडीशनल  रेंडरिंग
 
 <Intro>
 
-आपके कौम्पोनॅन्ट को अक्सर अलग-अलग स्थितियों के आधार पर अलग-अलग चीजें डिस्प्ले करने की आवश्यकता होगी। React में, आप JSX को किसी कंडीशन के साथ JavaScript सिंटेक्स जैसे की `if` स्टेटमेंट्स, `&&`, एंड `?:` ऑपरेटर्स को इस्तेमाल करके रेंडर कर सकते है।
+आपके कौम्पोनॅन्ट को अक्सर अलग-अलग कंडीशंस के आधार पर अलग-अलग चीजें डिस्प्ले करने की आवश्यकता होगी। React में, आप JSX को किसी कंडीशन के साथ JavaScript सिंटेक्स जैसे की `if` स्टेटमेंट्स, `&&`, एंड `?:` ऑपरेटर्स को इस्तेमाल करके रेंडर कर सकते है।
 
 </Intro>
 
@@ -102,11 +102,11 @@ export default function PackingList() {
 
 किसी भी केस में जो रिटर्न आता है उसे बदलने का प्रयास करें, और देखें कि परिणाम कैसे बदलता है!
 
-ध्यान दें कि आप JavaScript के `if` और `return` स्टेटमेंट के साथ ब्रांचिंग लॉजिक कैसे बना रहे हैं। React में, कण्ट्रोल फ्लो  (जैसे की कंडीशंस) को JavaScript से नियंत्रित किया जाता है।
+ध्यान दें कि आप JavaScript के `if` और `return` स्टेटमेंट के साथ ब्रांचिंग लॉजिक कैसे बना रहे हैं। React में, कण्ट्रोल फ्लो  (जैसे की कंडीशंस) को JavaScript से कण्ट्रोल किया जाता है।
 
 ### `null` के साथ कंडीशन के आधार पर कुछ कुछ नहीं रिटर्न करना {/*conditionally-returning-nothing-with-null*/}
 
-कुछ स्थितियों में, आप कुछ भी रेंडर नहीं करना चाहेंगे। उदाहरण के लिए, मान लें कि आप पैक्ड आइटम बिल्कुल नहीं दिखाना चाहते हैं। लेकिन एक कौम्पोनॅन्ट को तो कुछ न कुछ रिटर्न करना होग। इस केस में, आप `null` रिटर्न कर सकते हैं:
+कुछ कंडीशंस में, आप कुछ भी रेंडर नहीं करना चाहेंगे। उदाहरण के लिए, मान लें कि आप पैक्ड आइटम बिल्कुल नहीं दिखाना चाहते हैं। लेकिन एक कौम्पोनॅन्ट को तो कुछ न कुछ रिटर्न करना होग। इस केस में, आप `null` रिटर्न कर सकते हैं:
 
 ```js
 if (isPacked) {
@@ -115,7 +115,7 @@ if (isPacked) {
 return <li className="item">{name}</li>;
 ```
 
-यदि `isPacked` true है, तो कौम्पोनॅन्ट कुछ भी नहीं लौटाएगा, `null`। नहीं तो, यह JSX को रेंडर करने के लिए रिटर्न कर देगा।
+यदि `isPacked` true है, तो कौम्पोनॅन्ट कुछ भी नहीं रिटर्न करेगा, `null`। नहीं तो, यह JSX को रेंडर करने के लिए रिटर्न कर देगा।
 
 <Sandpack>
 
@@ -156,7 +156,7 @@ export default function PackingList() {
 
 ## कंडीशन के आधार पर JSX को इंक्लूड करें {/*conditionally-including-jsx*/}
 
-पिछले उदाहरण में, आपने नियंत्रित किया था कि कौन सा (यदि कोई हो!) JSX ट्री कौम्पोनॅन्ट से लौटाया जाएगा। आपने पहले ही रेंडर आउटपुट में कुछ डुप्लीकेशन देखा होगा:
+पिछले उदाहरण में, आपने कण्ट्रोल किया था कि कौन सा (यदि कोई हो!) JSX ट्री कौम्पोनॅन्ट से लौटाया जाएगा। आपने पहले ही रेंडर आउटपुट में कुछ डुप्लीकेशन देखा होगा:
 
 ```js
 <li className="item">{name} ✔</li>
@@ -179,7 +179,7 @@ return <li className="item">{name}</li>;
 
 हालांकि यह डुप्लीकेशन हानिकारक नहीं है, लेकिन यह आपके कोड को मेन्टेन करना कठिन बना सकता है। क्या होगा यदि आप `className` को बदलना चाहते हैं? आपको इसे अपने कोड में दो स्थानों पर करना होगा! ऐसी स्थिति में, आप अपने कोड को और अधिक [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) बनाने के लिए कंडीशनल रूप से थोड़ा JSX शामिल कर सकते हैं।
 
-### Conditional (ternary) operator (`? :`) {/*conditional-ternary-operator--*/}
+### कंडीशनल (टरनरी) ऑपरेटर (`? :`) {/*conditional-ternary-operator--*/}
 
 कंडीशनल एक्सप्रेशन लिखने के लिए JavaScript में एक कॉम्पैक्ट सिंटैक्स है - [कंडीशनल ऑपरेटर](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) या "टर्नरी ऑपरेटर।"
 
@@ -255,11 +255,11 @@ export default function PackingList() {
 
 </Sandpack>
 
-यह तरीका साधारण परिस्थितियों के लिए अच्छी तरह से काम करती है, लेकिन इसे मॉडरेशन में उपयोग करें। यदि आपके कौम्पोनॅन्ट बहुत अधिक नेस्टेड कंडीशनल मार्कअप के साथ कीच-पिच हो जाते हैं, तो चीजों को साफ करने के लिए चाइल्ड कौम्पोनॅन्टस को निकालने पर विचार करें। React में, मार्कअप आपके कोड का एक हिस्सा है, इसलिए आप काम्प्लेक्स एक्सप्रेशंस को व्यवस्थित करने के लिए वेरिएबल और फ़ंक्शन जैसे टूल का उपयोग कर सकते हैं।
+यह तरीका साधारण परिकंडीशंस के लिए अच्छी तरह से काम करती है, लेकिन इसे मॉडरेशन में उपयोग करें। यदि आपके कौम्पोनॅन्ट बहुत अधिक नेस्टेड कंडीशनल मार्कअप के साथ कीच-पिच हो जाते हैं, तो चीजों को साफ करने के लिए चाइल्ड कौम्पोनॅन्टस को निकालने पर विचार करें। React में, मार्कअप आपके कोड का एक हिस्सा है, इसलिए आप काम्प्लेक्स एक्सप्रेशंस को व्यवस्थित करने के लिए वेरिएबल और फ़ंक्शन जैसे टूल का उपयोग कर सकते हैं।
 
-### Logical AND operator (`&&`) {/*logical-and-operator-*/}
+### लॉजिकल AND ऑपरेटर  (`&&`)  {/*logical-and-operator-*/}
 
-Another common shortcut you'll encounter is the [JavaScript logical AND (`&&`) operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#:~:text=The%20logical%20AND%20(%20%26%26%20)%20operator,it%20returns%20a%20Boolean%20value.). Inside React components, it often comes up when you want to render some JSX when the condition is true, **or render nothing otherwise.** With `&&`, you could conditionally render the checkmark only if `isPacked` is `true`:
+एक और आम शॉर्टकट जो आपको मिलेगा वह है [JavaScript लॉजिकल AND (`&&`) ऑपरेटर](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#:~:text=The%20logical%20AND%20(%20%26%26%20)%20operator,it%20returns%20a%20Boolean%20value.)। React कौम्पोनॅन्टस के अंदर, यह अक्सर तब सामने आता है जब आप कंडीशन के true होने पर कुछ JSX को रेंडर करना चाहते हैं, **या अन्यथा कुछ भी रेंडर नहीं करना चाहते हैं।** `&&` के साथ, आप कंडिशनल रूप से चेकमार्क तभी रेंडर कर सकते हैं जब `isPacked` `true` हो:
 
 ```js
 return (
@@ -269,9 +269,9 @@ return (
 );
 ```
 
-You can read this as *“if `isPacked`, then (`&&`) render the checkmark, otherwise, render nothing.”*
+आप इसे इस रूप में पढ़ सकते हैं *“यदि `isPacked` है, तो (`&&`) चेकमार्क रेंडर करे, अन्यथा, कुछ भी रेंडर न करे।"*
 
-Here it is in action:
+यहाँ यह इस्तेमाल में है:
 
 <Sandpack>
 
@@ -309,30 +309,29 @@ export default function PackingList() {
 
 </Sandpack>
 
-A [JavaScript && expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND) returns the value of its right side (in our case, the checkmark) if the left side (our condition) is `true`. But if the condition is `false`, the whole expression becomes `false`. React considers `false` as a "hole" in the JSX tree, just like `null` or `undefined`, and doesn't render anything in its place.
-
+एक [JavaScript && एक्सप्रेशन](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND) इसके दाईं ओर का वैल्यू रिटर्न करता है (हमारे केस में, चेकमार्क) यदि बाईं ओर (हमारी कंडीशन) `true` है। लेकिन अगर कंडीशन `false` है, तो पूरी एक्सप्रेशन `false` हो जाती है। React JSX ट्री में `true` को "होल" के रूप में मानता है, ठीक `null` या `undefined` की तरह, और इसके स्थान पर कुछ भी रेंडर नहीं करता है।
 
 <Gotcha>
 
-**Don't put numbers on the left side of `&&`.**
+**`&&` के बाईं ओर नंबर न लगाएं।**
 
-To test the condition, JavaScript converts the left side to a boolean automatically. However, if the left side is `0`, then the whole expression gets that value (`0`), and React will happily render `0` rather than nothing.
+कंडीशन को टेस्ट करने के लिए, JavaScript ऑटोमेटिकली बाईं ओर को बूलियन में परिवर्तित कर देता है। हालाँकि, यदि बाईं ओर `0` है, तो संपूर्ण एक्सप्रेशन को वह वैल्यू (`0`) प्राप्त होता है, और React खुशी से `0` को रेंडर कर देगा, न कि कुछ भी नहीं।
 
-For example, a common mistake is to write code like `messageCount && <p>New messages</p>`. It's easy to assume that it renders nothing when `messageCount` is `0`, but it really renders the `0` itself!
+उदाहरण के लिए, एक सामान्य गलती `messageCount && <p>New messages</p>` जैसा कोड लिखना है। यह मान लेना आसान है कि `messageCount` `0` होने पर कुछ भी रेंडर नहीं करता है, लेकिन यह वास्तव में `0` को ही रेंडर करता है!
 
-To fix it, make the left side a boolean: `messageCount > 0 && <p>New messages</p>`.
+इसे ठीक करने के लिए, बाईं ओर एक बूलियन बनाएं: `messageCount > 0 && <p>New messages</p>`।
 
 </Gotcha>
 
-### Conditionally assigning JSX to a variable {/*conditionally-assigning-jsx-to-a-variable*/}
+### कंडीशनली एक वैरिएबल को JSX असाइन करना {/*conditionally-assigning-jsx-to-a-variable*/}
 
-When the shortcuts get in the way of writing plain code, try using an `if` statement and a variable. You can reassign variables defined with [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), so start by providing the default content you want to display, the name:
+जब शॉर्टकट प्लेन कोड लिखने के रास्ते में आ जाते हैं, तो एक `if` स्टेटमेंट और एक वेरिएबल का उपयोग करके देखें। आप [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) के साथ डिफाइंड वेरिएबल्स को फिर से असाइन कर सकते हैं, इसलिए डिफ़ॉल्ट कंटेंट देके करके शुरु करें जिसे आप डिस्प्ले करना चाहते हैं , नाम:
 
 ```js
 let itemContent = name;
 ```
 
-Use an `if` statement to reassign a JSX expression to `itemContent` if `isPacked` is `true`:
+यदि `isPacked` `true` है, तो JSX एक्सप्रेशन को `itemContent` पर फिर से असाइन करने के लिए `if` स्टेटमेंट का उपयोग करें:
 
 ```js
 if (isPacked) {
@@ -340,7 +339,7 @@ if (isPacked) {
 }
 ```
 
-[Curly braces open the "window into JavaScript".](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world) Embed the variable with curly braces in the returned JSX tree, nesting the previously calculated expression inside of JSX:
+[कर्ली ब्रेसिज़ "जावास्क्रिप्ट के लिए एक रास्ता" खोलते है।](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world) लौटाए गए JSX ट्री में कर्ली ब्रेसिज़ वाले वेरिएबल को एम्बेड करें, JSX के अंदर पहले से कैलकुलेट की हुई एक्सप्रेशन को नेस्ट करें:
 
 ```js
 <li className="item">
@@ -348,7 +347,7 @@ if (isPacked) {
 </li>
 ```
 
-This style is the most verbose, but it's also the most flexible. Here it is in action:
+यह तरीका सबसे अधिक वर्बोस है, लेकिन यह सबसे फ्लैक्सीबल भी है। यहाँ यह इस्तेमाल में है:
 
 <Sandpack>
 
@@ -390,7 +389,7 @@ export default function PackingList() {
 
 </Sandpack>
 
-Like before, this works not only for text, but for arbitrary JSX too:
+पहले की तरह, यह न केवल टेक्स्ट के लिए, बल्कि मनमाने JSX के लिए भी काम करता है:
 
 <Sandpack>
 
@@ -436,16 +435,16 @@ export default function PackingList() {
 
 </Sandpack>
 
-If you're not familiar with JavaScript, this variety of styles might seem overwhelming at first. However, learning them will help you read and write any JavaScript code -- and not just React components! Pick the one you prefer for a start, and then consult this reference again if you forget how the other ones work.
+यदि आप JavaScript से परिचित नहीं हैं, तो इस तरह की तरीके पहली बार में भारी लग सकती हैं। हालांकि, उन्हें सीखने से आपको किसी भी JavaScript कोड को पढ़ने और लिखने में मदद मिलेगी - न कि केवल React कौम्पोनॅन्ट! शुरुआत के लिए आप जो पसंद करते हैं उसे चुनें, और अगर आप भूल जाते हैं कि दूसरे कैसे काम करते हैं तो इस रिफरेन्स को फिर से देखें।
 
 <Recap>
 
-* In React, you control branching logic with JavaScript.
-* You can return a JSX expression conditionally with an `if` statement.
-* You can conditionally save some JSX to a variable and then include it inside other JSX by using the curly braces.
-* In JSX, `{cond ? <A /> : <B />}` means *"if `cond`, render `<A />`, otherwise `<B />`"*.
-* In JSX, `{cond && <A />}` means *"if `cond`, render `<A />`, otherwise nothing"*.
-* The shortcuts are common, but you don't have to use them if you prefer plain `if`.
+* React में, आप JavaScript के साथ ब्रांचिंग लॉजिक को कण्ट्रोल करते हैं।
+* आप एक `if` स्टेटमेंट के साथ कंडिशनल रूप से JSX एक्सप्रेशन रिटर्न कर सकते हैं।
+* आप कंडिशनल रूप से कुछ JSX को एक वेरिएबल में सेव कर सकते है और फिर कर्ली ब्रेसिज़ का उपयोग करके इसे अन्य JSX में शामिल कर सकते हैं।
+* JSX में, `{cond ? <A /> : <B />}` का अर्थ है *"यदि `cond` है, तो `<A />` रेंडर करें, अन्यथा `<B />`"*।
+* JSX में, `{cond && <A />}` का अर्थ है *"यदि `cond`, `<A />` रेंडर करें, अन्यथा कुछ भी नहीं"*।
+* शॉर्टकट सामान्य हैं, लेकिन यदि आप प्लेन `if` पसंद करते हैं तो आपको उनका उपयोग करने की आवश्यकता नहीं है।
 
 </Recap>
 
@@ -453,9 +452,9 @@ If you're not familiar with JavaScript, this variety of styles might seem overwh
 
 <Challenges>
 
-### Show an icon for incomplete items with `? :` {/*show-an-icon-for-incomplete-items-with--*/}
+### अधूरे आइटम के लिए `? :` के साथ एक आइकन दिखाएं {/*show-an-icon-for-incomplete-items-with--*/}
 
-Use the conditional operator (`cond ? a : b`) to render a ❌ if `isPacked` isn’t `true`.
+अगर `isPacked` `true` नहीं है तो एक ❌ रेंडर करने के लिए कंडीशनल ऑपरेटर (`cond ? a : b`) का इस्तेमाल करें।
 
 <Sandpack>
 
@@ -533,15 +532,15 @@ export default function PackingList() {
 
 </Solution>
 
-### Show the item importance with `&&` {/*show-the-item-importance-with-*/}
+### आइटम की अहमियत `&&` के साथ दिखाएं {/*show-the-item-importance-with-*/}
 
-In this example, each `Item` receives a numerical `importance` prop. Use the `&&` operator to render "_(Importance: X)_" in italics, but only for items that have non-zero difficulty. Your item list should end up looking like this:
+इस उदाहरण में, प्रत्येक `Item` को एक संख्यात्मक `importance` prop मिलता है। इटैलिक में "_(Importance: X)_" रेंडर करने के लिए `&&` ऑपरेटर का उपयोग करें, लेकिन केवल उन आइटम्स के लिए जिनमें गैर-शून्य कठिनाई है। आपकी आइटम सूची इस तरह दिखनी चाहिए:
 
 * Space suit _(Importance: 9)_
 * Helmet with a golden leaf
 * Photo of Tam _(Importance: 6)_
 
-Don't forget to add a space between the two labels!
+दो लेबल्स के बीच एक स्पेस जोड़ना न भूलें!
 
 <Sandpack>
 
@@ -581,7 +580,7 @@ export default function PackingList() {
 
 <Solution>
 
-This should do the trick:
+यह काम कर जाना चाहिए:
 
 <Sandpack>
 
@@ -623,15 +622,15 @@ export default function PackingList() {
 
 </Sandpack>
 
-Note that you must write `importance > 0 && ...` rather than `importance && ...` so that if the `importance` is `0`, `0` isn't rendered as the result!
+ध्यान दें कि आपको `importance && ...` के बजाय `importance > 0 && ...` लिखना होगा ताकि अगर `importance` `0` हो, तो `0` परिणाम के रूप में रेंडर नहीं हो!
 
-In this solution, two separate conditions are used to insert a space between then name and the importance label. Alternatively, you could use a fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
+इस समाधान में, नाम और importance लेबल के बीच एक स्पेस डालने के लिए दो अलग-अलग कंडीशंस का उपयोग किया गया है। इसके अलावा, आप एक प्रमुख स्पेस के साथ एक फ्रेगमेंट का उपयोग भी कर सकते हैं: `importance > 0 && <> <i>...</i></>` या `<i>` के अंदर शुरुआत में ही एक स्पेस जोड़ें: `importance > 0 && <i> ...</i>`।
 
 </Solution>
 
-### Refactor a series of `? :` to `if` and variables {/*refactor-a-series-of---to-if-and-variables*/}
+### रिफैक्टर करे एक सीरीज `? :` से `if` और वेरिएबल्स  {/*refactor-a-series-of---to-if-and-variables*/}
 
-This `Drink` component uses a series of `? :` conditions to show different information depending on whether the `name` prop is `"tea"` or `"coffee"`. The problem is that the information about each drink is spread across multiple conditions. Refactor this code to use a single `if` statement instead of three `? :` conditions.
+यह `Drink` कौम्पोनॅन्ट `? :` कंडीशंस की एक सीरीज का उपयोग करता है `name` prop `"tea"` या `"coffee"` के आधार पर अलग-अलग जानकारी दिखाने क लिए। समस्या यह है कि प्रत्येक ड्रिंक के बारे में जानकारी कई कंडीशंस में फैली हुई है। तीन `? :` कंडीशंस के बजाय एक `if` स्टेटमेंट का उपयोग करने के लिए इस कोड को दोबारा रिफैक्टर करे।
 
 <Sandpack>
 
@@ -664,11 +663,11 @@ export default function DrinkList() {
 
 </Sandpack>
 
-Once you've refactored the code to use `if`, do you have further ideas on how to simplify it?
+एक बार जब आप `if` का उपयोग कर क कोड को रिफैक्टर कर लेते हैं, तो क्या आपके पास इसे सरल बनाने के बारे में और विचार हैं?
 
 <Solution>
 
-There are multiple ways you could go about this, but here is one starting point:
+इसके बारे में आप कई तरीके अपना सकते हैं, लेकिन यहां एक प्रारंभिक बिंदु है:
 
 <Sandpack>
 
@@ -711,9 +710,9 @@ export default function DrinkList() {
 
 </Sandpack>
 
-Here the information about each drink is grouped together instead of being spread across multiple conditions. This makes it easier to add more drinks in the future.
+यहां प्रत्येक ड्रिंक के बारे में जानकारी को कई कंडीशंस में फैलाने के बजाय एक साथ ग्रुप किया जाता है। इससे भविष्य में और ड्रिंक ऐड करना आसान हो जाता है।
 
-Another solution would be to remove the condition altogether by moving the information into objects:
+एक अन्य उपाय यह होगा कि जानकारी को ऑब्जेक्ट्स में मूव करके कंडीशन को पूरी तरह से हटा दिया जाए:
 
 <Sandpack>
 
