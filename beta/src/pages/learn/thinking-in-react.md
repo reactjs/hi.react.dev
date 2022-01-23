@@ -82,7 +82,7 @@ React में UI को लागू करने के लिए, आप आ
 <Sandpack>
 
 ```jsx App.js
-function ProductCategoryRow({category}) {
+function ProductCategoryRow({ category }) {
   return (
     <tr>
       <th colSpan="2">
