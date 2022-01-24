@@ -534,11 +534,7 @@ export default function PackingList() {
 
 ### आइटम की अहमियत `&&` के साथ दिखाएं {/*show-the-item-importance-with-*/}
 
-<<<<<<< HEAD
 इस उदाहरण में, प्रत्येक `Item` को एक संख्यात्मक `importance` prop मिलता है। इटैलिक में "_(Importance: X)_" रेंडर करने के लिए `&&` ऑपरेटर का उपयोग करें, लेकिन केवल उन आइटम्स के लिए जिनमें गैर-शून्य कठिनाई है। आपकी आइटम सूची इस तरह दिखनी चाहिए:
-=======
-In this example, each `Item` receives a numerical `importance` prop. Use the `&&` operator to render "_(Importance: X)_" in italics, but only for items that have non-zero importance. Your item list should end up looking like this:
->>>>>>> 69bd27a3d558d6633e4f0adc61ecb8bb3d5f2edf
 
 * Space suit _(Importance: 9)_
 * Helmet with a golden leaf
