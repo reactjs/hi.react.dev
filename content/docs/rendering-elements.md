@@ -38,7 +38,7 @@ React के उपयोग से बने ज़्यादातर ऐप
 
 `embed:rendering-elements/render-an-element.js`
 
-[](codepen://rendering-elements/render-an-element)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/ZpvBNJ?editors=1010)**
 
 ये "Hello world" को पेज पर दर्शाता है।
 
@@ -52,7 +52,7 @@ React एलिमेंट्स [अचल](https://en.wikipedia.org/wiki/Immu
 
 `embed:rendering-elements/update-rendered-element.js`
 
-[](codepen://rendering-elements/update-rendered-element)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
 ये [`ReactDOM.render()`](/docs/react-dom.html#render) को प्रत्येक सेकंड [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback से कॉल करता है।
 
@@ -66,7 +66,11 @@ React एलिमेंट्स [अचल](https://en.wikipedia.org/wiki/Immu
 
 React, DOM एलिमेंट्स और उसके चिल्डरेंस की तुलना उसके पहले की अवस्था से करता है और केवल उन्ही चीज़ों में परिवर्तन करता जिससे की DOM अपने चाहे state में आ जाए। 
 
+<<<<<<< HEAD
 आप ब्राउज़र टूलस की सहायता से [अंतिम उदाहरण](codepen://rendering-elements/update-rendered-element) का निरीक्षण करके सत्यापित कर सकते हैं:
+=======
+You can verify by inspecting the [last example](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) with the browser tools:
+>>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 

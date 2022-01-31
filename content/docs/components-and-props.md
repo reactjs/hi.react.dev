@@ -75,7 +75,7 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://components-and-props/rendering-a-component)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
 
 चलिए देख़ते है इस उदाहरण में क्या होता है:
 
@@ -117,7 +117,7 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://components-and-props/composing-components)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
 
 आम तौर पर, नए React ऍप्स के अंदर एक अकेला `App` कॉम्पोनेन्ट सबसे ऊपर होता है| हालाँकि, अगर आप React को एक मौजूदा ऐप में इंटेग्रेट करते है, आप बेहद छोटी चीज़ो के रेंडर्स से शुरुवात कर सकते हैं जैसे `Button` और धीरे-धीरे दृश्य पदानुक्रम के नीचे से ऊपर तक जा सकते है|
 
@@ -151,7 +151,7 @@ function Comment(props) {
 }
 ```
 
-[](codepen://components-and-props/extracting-components)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/VKQwEo?editors=1010)**
 
 यह `author` (एक ऑब्जेक्ट), `text` (एक string), और `date` (एक date) को props के द्वारा स्वीकार करता है, और सोशल मीडिया वेबसाइट पर एक टिप्पणी का वर्णन करता है|
 
@@ -231,7 +231,7 @@ function Comment(props) {
 }
 ```
 
-[](codepen://components-and-props/extracting-components-continued)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/rrJNJY?editors=1010)**
 
 कौम्पोनॅन्टस निकालने के लिए पहली बार में असंतोषजनक काम लग सकता है, लेकिन पुन: प्रयोज्य कौम्पोनॅन्टस का एक पैलेट होना बड़े ऐप्स बनाने में सहायता करता है| यह एक अच्छी आदत है की अगर आपके UI के पार्ट कई बार इस्तेमाल किये गए हो (`Button`, `Panel`, `Avatar`), या अपने आप में काफी जटिल हो (`App`, `FeedStory`, `Comment`), तब इन परिस्तियों में यह पुन: प्रयोज्य कौम्पोनॅन्ट में निकाले जाने के लिए एक अच्छा उम्मीदवार होगा|
 
