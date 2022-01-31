@@ -8,7 +8,7 @@ prev: introducing-jsx.html
 next: components-and-props.html
 ---
 
-एलिमेंट्स रिएक्ट ऐप्स के सबसे छोटे बिल्डिंग ब्लॉक हैं।
+एलिमेंट्स React ऐप्स के सबसे छोटे बिल्डिंग ब्लॉक हैं।
 
 एक एलिमेंट वर्णन करता है कि आप स्क्रीन पर क्या देखना चाहते हैं:      
 
@@ -66,11 +66,7 @@ React एलिमेंट्स [अचल](https://en.wikipedia.org/wiki/Immu
 
 React, DOM एलिमेंट्स और उसके चिल्डरेंस की तुलना उसके पहले की अवस्था से करता है और केवल उन्ही चीज़ों में परिवर्तन करता जिससे की DOM अपने चाहे state में आ जाए। 
 
-<<<<<<< HEAD
 आप ब्राउज़र टूलस की सहायता से [अंतिम उदाहरण](codepen://rendering-elements/update-rendered-element) का निरीक्षण करके सत्यापित कर सकते हैं:
-=======
-You can verify by inspecting the [last example](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) with the browser tools:
->>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
