@@ -229,8 +229,13 @@ JSX प्रीप्रोसेसर को सेटअप करने क
 
 कोर रूप से JSX को React के कौम्पोनॅन्ट लिखने को HTML लिखने के रूप में परिचित बनाने के लिए पेश किया गया था। तब से, वाक्यविन्यास व्यापक हो गया है। हालाँकि, ऐसे उदाहरण हो सकते हैं जहाँ आप JSX का उपयोग नहीं करना चाहते हैं या नहीं कर सकते हैं। आपके पास दो ऑप्शन हैं:
 
+<<<<<<< HEAD
 - [htm](https://github.com/developit/htm) जैसे JSX अल्टरनेटिव का उपयोग करें, जो कंपाइलर का उपयोग नहीं करता है—यह जावास्क्रिप्ट के नेटिव टैग किए गए टेम्प्लेट का उपयोग करता है।
 - [`React.createElement()`](/reference/createelement) का उपयोग करें, जिसकी एक विशेष स्ट्रक्चर नीचे बताया गया है।
+=======
+- Use a JSX alternative like [htm](https://github.com/developit/htm) which doesn't use a compiler—it uses JavaScript's native Tagged Templates.
+- Use [`React.createElement()`](/apis/createelement), which has a special structure explained below.
+>>>>>>> 20f0fe280f3c122df7541256b983c46e21e33b20
 
 JSX के साथ, आप एक कौम्पोनॅन्ट लिखेंगे जैसे:
 
