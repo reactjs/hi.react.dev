@@ -195,13 +195,13 @@ td {
 
 </Sandpack>
 
-**अगर यह कोड उदाहरण डरावना दिखता है तो झल्लाहट मत करो!** इस गाइड में, हम कोड की बजाय अवधारणाओं पर ध्यान केंद्रित कर रहे हैं। बुकमार्क करना सुनिश्चित करें [UI का वर्णन](/learn/describing-the-ui) जो आपको अंतराल में भरने और इस कोड को समझने में मदद करेगा।
+**यदि यह कोड उदाहरण डराने वाला लगता है तो परेशान न हों!** इस गाइड में, हम कोड के बजाय कॉन्सेप्ट्स पर ध्यान केंद्रित कर रहे हैं। [UI का वर्णन](/learn/describing-the-ui) को बुकमार्क करना सुनिश्चित करें जो आपको गैप्स को फिल करने और इस कोड को समझने में मदद करेगा।
 
-अपने कौम्पोनॅन्ट के निर्माण के बाद, आपके पास पुन: प्रयोज्य कौम्पोनॅन्ट की एक पुस्तकालय होगी जो आपके डेटा मॉडल को प्रस्तुत करते हैं। चूंकि यह एक स्थिर ऐप है, कौम्पोनॅन्ट केवल जेएसएक्स वापस कर देंगे। पदानुक्रम के शीर्ष पर कौम्पोनॅन्ट (`FilterableProductTable`) इसे *ऑन-वे डेटा फ्लो* कहा जाता है क्योंकि डेटा पेड़ के निचले हिस्से में शीर्ष-स्तरीय कौम्पोनॅन्ट से नीचे बहती है।
+अपने कौम्पोनॅन्ट के निर्माण के बाद, आपके पास रीयूज़एबल कौम्पोनॅन्ट की एक लाइब्रेरी होगी जो आपके डेटा मॉडल को रेंडर करेगी। चूंकि यह एक स्टैटिक ऐप है, कौम्पोनॅन्ट केवल JSX रिटर्न करेंगे। हायरार्की में सबसे ऊपर वाले कौम्पोनॅन्ट (`FilterableProductTable`) आपके डाटा मॉडल को prop की तरह लेगा। इसे *वन-वे डेटा फ्लो* कहा जाता है क्योंकि डाटा टॉप-लेवल के कौम्पोनॅन्ट से ट्री के सबसे निचे वाले कौम्पोनॅन्ट तक फ्लो करता है।
 
 <Gotcha>
   
-इस बिंदु पर, आपको किसी भी state मूल्यों का उपयोग नहीं करना चाहिए।यह अगले कदम के लिए है!
+इस समय, आपको किसी भी state की वैल्यूज कर इस्तेमाल नहीं करना चाहिए। वो अगले कदम के लिए है!
 
 </Gotcha>
 
@@ -306,12 +306,13 @@ function FilterableProductTable({products}) {
 
   return (
     <div>
-      <SearchBar filterText={filterText} inStockOnly={inStockOnly} />
+      <SearchBar 
+        filterText={filterText} 
+        inStockOnly={inStockOnly} />
       <ProductTable
         products={products}
         filterText={filterText}
-        inStockOnly={inStockOnly}
-      />
+        inStockOnly={inStockOnly} />
     </div>
   );
 }
@@ -319,17 +320,18 @@ function FilterableProductTable({products}) {
 function ProductCategoryRow({category}) {
   return (
     <tr>
-      <th colSpan="2">{category}</th>
+      <th colSpan="2">
+        {category}
+      </th>
     </tr>
   );
 }
 
 function ProductRow({product}) {
-  const name = product.stocked ? (
-    product.name
-  ) : (
-    <span style={{color: 'red'}}>{product.name}</span>
-  );
+  const name = product.stocked ? product.name :
+    <span style={{ color: 'red' }}>
+      {product.name}
+    </span>;
 
   return (
     <tr>
@@ -339,12 +341,16 @@ function ProductRow({product}) {
   );
 }
 
-function ProductTable({products, filterText, inStockOnly}) {
+function ProductTable({ products, filterText, inStockOnly }) {
   const rows = [];
   let lastCategory = null;
 
   products.forEach((product) => {
-    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+    if (
+      product.name.toLowerCase().indexOf(
+        filterText.toLowerCase()
+      ) === -1
+    ) {
       return;
     }
     if (inStockOnly && !product.stocked) {
@@ -354,11 +360,14 @@ function ProductTable({products, filterText, inStockOnly}) {
       rows.push(
         <ProductCategoryRow
           category={product.category}
-          key={product.category}
-        />
+          key={product.category} />
       );
     }
-    rows.push(<ProductRow product={product} key={product.name} />);
+    rows.push(
+      <ProductRow
+        product={product}
+        key={product.name} />
+    );
     lastCategory = product.category;
   });
 
@@ -375,25 +384,31 @@ function ProductTable({products, filterText, inStockOnly}) {
   );
 }
 
-function SearchBar({filterText, inStockOnly}) {
+function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input type="text" value={filterText} placeholder="Search..." />
+      <input 
+        type="text" 
+        value={filterText} 
+        placeholder="Search..."/>
       <label>
-        <input type="checkbox" checked={inStockOnly} /> Only show products in
-        stock
+        <input 
+          type="checkbox" 
+          checked={inStockOnly} />
+        {' '}
+        Only show products in stock
       </label>
     </form>
   );
 }
 
 const PRODUCTS = [
-  {category: 'Fruits', price: '$1', stocked: true, name: 'Apple'},
-  {category: 'Fruits', price: '$1', stocked: true, name: 'Dragonfruit'},
-  {category: 'Fruits', price: '$2', stocked: false, name: 'Passionfruit'},
-  {category: 'Vegetables', price: '$2', stocked: true, name: 'Spinach'},
-  {category: 'Vegetables', price: '$4', stocked: false, name: 'Pumpkin'},
-  {category: 'Vegetables', price: '$1', stocked: true, name: 'Peas'},
+  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
+  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
+  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
+  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
+  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
+  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
 ];
 
 export default function App() {
@@ -426,9 +441,9 @@ td {
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input
-        type="text"
-        value={filterText}
+      <input 
+        type="text" 
+        value={filterText} 
         placeholder="Search..."/>
 ```
 
@@ -451,8 +466,8 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar
-        filterText={filterText}
+      <SearchBar 
+        filterText={filterText} 
         inStockOnly={inStockOnly}
         onFilterTextChange={setFilterText}
         onInStockOnlyChange={setInStockOnly} />
@@ -460,12 +475,11 @@ function FilterableProductTable({ products }) {
 
 `searchbar` के अंदर, आप `onchange` इवेंट हैंडलर जोड़ देंगे और उनसे मूल state सेट करेंगे:
 ```js {5}
-<input
-  type="text"
-  value={filterText}
-  placeholder="Search..."
-  onChange={(e) => onFilterTextChange(e.target.value)}
-/>
+<input 
+  type="text" 
+  value={filterText} 
+  placeholder="Search..." 
+  onChange={(e) => onFilterTextChange(e.target.value)} />
 ```
 
 अब आवेदन पूरी तरह से काम करता है!
@@ -473,43 +487,42 @@ function FilterableProductTable({ products }) {
 <Sandpack>
 
 ```jsx App.js
-import {useState} from 'react';
+import { useState } from 'react';
 
-function FilterableProductTable({products}) {
+function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
 
   return (
     <div>
-      <SearchBar
+      <SearchBar 
+        filterText={filterText} 
+        inStockOnly={inStockOnly} 
+        onFilterTextChange={setFilterText} 
+        onInStockOnlyChange={setInStockOnly} />
+      <ProductTable 
+        products={products} 
         filterText={filterText}
-        inStockOnly={inStockOnly}
-        onFilterTextChange={setFilterText}
-        onInStockOnlyChange={setInStockOnly}
-      />
-      <ProductTable
-        products={products}
-        filterText={filterText}
-        inStockOnly={inStockOnly}
-      />
+        inStockOnly={inStockOnly} />
     </div>
   );
 }
 
-function ProductCategoryRow({category}) {
+function ProductCategoryRow({ category }) {
   return (
     <tr>
-      <th colSpan="2">{category}</th>
+      <th colSpan="2">
+        {category}
+      </th>
     </tr>
   );
 }
 
-function ProductRow({product}) {
-  const name = product.stocked ? (
-    product.name
-  ) : (
-    <span style={{color: 'red'}}>{product.name}</span>
-  );
+function ProductRow({ product }) {
+  const name = product.stocked ? product.name :
+    <span style={{ color: 'red' }}>
+      {product.name}
+    </span>;
 
   return (
     <tr>
@@ -519,12 +532,16 @@ function ProductRow({product}) {
   );
 }
 
-function ProductTable({products, filterText, inStockOnly}) {
+function ProductTable({ products, filterText, inStockOnly }) {
   const rows = [];
   let lastCategory = null;
 
   products.forEach((product) => {
-    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+    if (
+      product.name.toLowerCase().indexOf(
+        filterText.toLowerCase()
+      ) === -1
+    ) {
       return;
     }
     if (inStockOnly && !product.stocked) {
@@ -534,11 +551,14 @@ function ProductTable({products, filterText, inStockOnly}) {
       rows.push(
         <ProductCategoryRow
           category={product.category}
-          key={product.category}
-        />
+          key={product.category} />
       );
     }
-    rows.push(<ProductRow product={product} key={product.name} />);
+    rows.push(
+      <ProductRow
+        product={product}
+        key={product.name} />
+    );
     lastCategory = product.category;
   });
 
@@ -559,22 +579,20 @@ function SearchBar({
   filterText,
   inStockOnly,
   onFilterTextChange,
-  onInStockOnlyChange,
+  onInStockOnlyChange
 }) {
   return (
     <form>
-      <input
-        type="text"
-        value={filterText}
-        placeholder="Search..."
-        onChange={(e) => onFilterTextChange(e.target.value)}
-      />
+      <input 
+        type="text" 
+        value={filterText} placeholder="Search..." 
+        onChange={(e) => onFilterTextChange(e.target.value)} />
       <label>
-        <input
-          type="checkbox"
-          checked={inStockOnly}
-          onChange={(e) => onInStockOnlyChange(e.target.checked)}
-        />{' '}
+        <input 
+          type="checkbox" 
+          checked={inStockOnly} 
+          onChange={(e) => onInStockOnlyChange(e.target.checked)} />
+        {' '}
         Only show products in stock
       </label>
     </form>
@@ -582,12 +600,12 @@ function SearchBar({
 }
 
 const PRODUCTS = [
-  {category: 'Fruits', price: '$1', stocked: true, name: 'Apple'},
-  {category: 'Fruits', price: '$1', stocked: true, name: 'Dragonfruit'},
-  {category: 'Fruits', price: '$2', stocked: false, name: 'Passionfruit'},
-  {category: 'Vegetables', price: '$2', stocked: true, name: 'Spinach'},
-  {category: 'Vegetables', price: '$4', stocked: false, name: 'Pumpkin'},
-  {category: 'Vegetables', price: '$1', stocked: true, name: 'Peas'},
+  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
+  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
+  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
+  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
+  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
+  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
 ];
 
 export default function App() {
