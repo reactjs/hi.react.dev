@@ -423,11 +423,12 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
-### JSX कर्ली ब्रेसेस के अंदर एक अभिव्यक्ति लिखें {/*write-an-expression-inside-jsx-curly-braces*/}
+### JSX कर्ली ब्रेसेस के अंदर एक एक्सप्रेशन लिखें {/*write-an-expression-inside-jsx-curly-braces*/}
 
-नीचे दिए गए ऑब्जेक्ट में, पूर्ण छवि URL को चार भागों में विभाजित किया गया है: आधार URL, `imageId`, `imageSize`, और फ़ाइल एक्सटेंशन।
+नीचे दिए गए ऑब्जेक्ट में, पूरी इमेज URL को चार भागों में बांटा गया है: आधार URL, `imageId`, `imageSize`, और फ़ाइल एक्सटेंशन।
 
-हम चाहते हैं कि छवि URL इन एट्रिब्यूटओं को एक साथ जोड़ दे: आधार URL (हमेशा `'https://i.imgur.com/'`), `imageId` (`'7vQD0fP'`), `imageSize` (`'s') `), और फ़ाइल एक्सटेंशन (हमेशा `'.jpg'`)। हालांकि, `<img>` टैग अपने `src` को कैसे निर्दिष्ट करता है, इसमें कुछ गड़बड़ है।
+हम चाहते हैं कि इमेज URL इन एट्रिब्यूटओं को एक साथ जोड़ दे: आधार URL (हमेशा `'https://i.imgur.com/'`), `imageId` (`'7vQD0fP'`), `imageSize` (`'s'`), और फ़ाइल एक्सटेंशन (हमेशा `'.jpg'`)। हालांकि, `<img>` टैग अपने `src` को कैसे निर्दिष्ट करता है, इसमें कुछ गड़बड़ है।
+
 
 क्या आप इसे ठीक कर सकते हैं?
 
@@ -479,9 +480,9 @@ body > div > div { padding: 20px; }
 
 आप इसे `src={baseUrl person.imageId person.imageSize '.jpg'}` के रूप में लिख सकते हैं।
 
-1. `{` जावास्क्रिप्ट अभिव्यक्ति खोलता है
-2. `baseUrl person.imageId person.imageSize '.jpg'` सही यूआरएल स्ट्रिंग तैयार करता है
-3. `}` JavaScript व्यंजक को बंद कर देता है
+1. `{` जावास्क्रिप्ट एक्सप्रेशन ओपन करता है
+2. `baseUrl person.imageId person.imageSize '.jpg'` सही URL स्ट्रिंग प्रोडूयस करता है
+3. `}` JavaScript एक्सप्रेशन को बंद कर देता है
 
 <Sandpack>
 
@@ -524,7 +525,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-आप इस एक्सप्रेशन को नीचे 'getImageUrl' जैसे एक अलग फ़ंक्शन में भी स्थानांतरित कर सकते हैं:
+आप इस एक्सप्रेशन को नीचे `getImageUrl` जैसे एक अलग फ़ंक्शन में भी अलग कर सकते हैं:
 
 <Sandpack>
 
