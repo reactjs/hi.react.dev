@@ -8,7 +8,7 @@ prev: introducing-jsx.html
 next: components-and-props.html
 ---
 
-एलिमेंट्स रिएक्ट ऐप्स के सबसे छोटे बिल्डिंग ब्लॉक हैं।
+एलिमेंट्स React ऐप्स के सबसे छोटे बिल्डिंग ब्लॉक हैं।
 
 एक एलिमेंट वर्णन करता है कि आप स्क्रीन पर क्या देखना चाहते हैं:      
 
@@ -38,7 +38,7 @@ React के उपयोग से बने ज़्यादातर ऐप
 
 `embed:rendering-elements/render-an-element.js`
 
-[](codepen://rendering-elements/render-an-element)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/ZpvBNJ?editors=1010)**
 
 ये "Hello world" को पेज पर दर्शाता है।
 
@@ -52,7 +52,7 @@ React एलिमेंट्स [अचल](https://en.wikipedia.org/wiki/Immu
 
 `embed:rendering-elements/update-rendered-element.js`
 
-[](codepen://rendering-elements/update-rendered-element)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
 ये [`ReactDOM.render()`](/docs/react-dom.html#render) को प्रत्येक सेकंड [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback से कॉल करता है।
 
