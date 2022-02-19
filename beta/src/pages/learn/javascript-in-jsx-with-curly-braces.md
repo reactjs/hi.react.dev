@@ -163,8 +163,8 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 अगली बार जब आप JSX में `{{` and `}}` देखें, तो जान लें कि यह JSX कर्लीस के अंदर एक ऑब्जेक्ट से ज्यादा कुछ नहीं है!
 
 <Gotcha>
-  
-इनलाइन `style` प्रॉपर्टीज कैमलकेस में लिखे गए हैं। उदाहरण के लिए, HTML `<ul style="background-color: black"`> को आपके कौम्पोनॅन्ट में `<ul style={{ backgroundColor: 'black' }}>` के रूप में लिखा जाएगा।
+
+इनलाइन `style` प्रॉपर्टीज कैमलकेस में लिखे गए हैं। उदाहरण के लिए, HTML `<ul style="background-color: black">` को आपके कौम्पोनॅन्ट में `<ul style={{ backgroundColor: 'black' }}>` के रूप में लिखा जाएगा।
 
 </Gotcha>
 
