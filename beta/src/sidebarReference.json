@@ -16,13 +16,10 @@
               "path": "/apis/usestate"
             },
             {
-<<<<<<< HEAD
-=======
               "title": "useContext()",
               "path": "/apis/usecontext"
             },
             {
->>>>>>> 6bd09fe682e18ccd7747fcd7798fa8fb4d3edc42
               "title": "useRef()",
               "path": "/apis/useref"
             }
