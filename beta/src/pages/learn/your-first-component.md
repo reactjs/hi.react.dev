@@ -53,9 +53,9 @@ HTML टैग्स की तरह ही, आप संपूर्ण प�
 
 जैसे-जैसे आपकी परियोजना बढ़ती है, आप देखेंगे कि आपके कई डिज़ाइन आपके द्वारा पहले से लिखे गए कौम्पोनॅन्ट का पुन: उपयोग करके, आपके विकास को गति देकर बनाए जा सकते हैं। ऊपर दी गई हमारी सामग्री तालिका `<TableOfContents />` के साथ किसी भी स्क्रीन पर जोड़ी जा सकती है! आप React ओपन सोर्स समुदाय जैसे [Chakra UI](https://chakra-ui.com/) और [Material UI](https://material-ui.com/) द्वारा साझा किए गए हजारों कौम्पोनॅन्ट के साथ अपनी परियोजना को शुरू भी कर सकते हैं।
 
-## Defining a component {/* defining-a-component */}
+## एक कौम्पोनॅन्ट को परिभाषित करना {/* defining-a-component */}
 
-Traditionally when creating web pages, web developers marked up their content and then added interaction by sprinkling on some JavaScript. This worked great when interaction was a nice-to-have on the web. Now it is expected for many sites and all apps. React puts interactivity first while still using the same technology: **a React component is a JavaScript function that you can _sprinkle with markup_**. Here's what that looks like (you can edit the example below):
+परंपरागत रूप से वेब पेज बनाते समय, वेब डेवलपर्स ने अपनी सामग्री को चिह्नित किया और फिर कुछ जावास्क्रिप्ट पर छिड़क कर बातचीत को जोड़ा। यह तब बहुत अच्छा काम करता था जब वेब पर बातचीत एक अच्छी सुविधा थी। अब यह कई साइटों और सभी ऐप्स के लिए अपेक्षित है। एक ही तकनीक का उपयोग करते हुए React पहले अन्तरक्रियाशीलता रखता है: **एक React कौम्पोनॅन्ट एक जावास्क्रिप्ट फ़ंक्शन है जिसे आप _मार्कअप के साथ छिड़क सकते हैं_**। यह कैसा दिखता है (आप नीचे दिए गए उदाहरण को संपादित कर सकते हैं):
 
 <Sandpack>
 
@@ -73,33 +73,33 @@ img {
 
 </Sandpack>
 
-And here's how to build a component:
+यहाँ एक कौम्पोनॅन्ट बनाने का तरीका बताया गया है:
 
-### Step 1: Export the component {/* step-1-export-the-component */}
+### Step 1: कौम्पोनॅन्ट निर्यात करें {/* step-1-export-the-component */}
 
-The `export default` prefix is a [standard JavaScript syntax](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) (not specific to React). It lets you mark the main function in a file so that you can later import it from other files. (More on importing in [Importing and Exporting Components](/learn/importing-and-exporting-components)!)
+`export default` उपसर्ग एक [standard JavaScript syntax](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) है (React के लिए विशिष्ट नहीं)। यह आपको फ़ाइल में मुख्य फ़ंक्शन को चिह्नित करने देता है ताकि आप बाद में इसे अन्य फ़ाइलों से आयात कर सकें। ([Importing and Exporting Components](/learn/importing-and-exporting-components) में आयात करने पर अधिक!)
 
-### Step 2: Define the function {/* step-2-define-the-function */}
+### Step 2: फ़ंक्शन को परिभाषित करें {/* step-2-define-the-function */}
 
-With `function Profile() { }` you define a JavaScript function with the name `Profile`.
+`function Profile() { }` के साथ आप `Profile` नाम से एक जावास्क्रिप्ट फ़ंक्शन को परिभाषित करते हैं।
 
 <Gotcha>
 
-React components are regular JavaScript functions, but **their names must start with a capital letter** or they won't work!
+React कौम्पोनॅन्ट नियमित जावास्क्रिप्ट फ़ंक्शन हैं, लेकिन **उनके नाम बड़े अक्षर से शुरू होने चाहिए** या वे काम नहीं करेंगे!
 
 </Gotcha>
 
-### Step 3: Add markup {/* step-3-add-markup */}
+### Step 3: मार्कअप जोड़ें {/* step-3-add-markup */}
 
-The component returns an `<img />` tag with `src` and `alt` attributes. `<img />` is written like HTML, but it is actually JavaScript under the hood! This syntax is called [JSX](/learn/writing-markup-with-jsx), and it lets you embed markup inside JavaScript.
+कौम्पोनॅन्ट `src` और `alt` विशेषताओं के साथ एक `<img />` टैग देता है। `<img />` HTML की तरह लिखा गया है, लेकिन वास्तव में यह जावास्क्रिप्ट है! इस सिंटैक्स को [JSX](/learn/writing-markup-with-jsx) कहा जाता है, और यह आपको जावास्क्रिप्ट के अंदर मार्कअप एम्बेड करने देता है।
 
-Return statements can be written all on one line, as in this component:
+रिटर्न स्टेटमेंट सभी को एक लाइन पर लिखा जा सकता है, जैसा कि इस कौम्पोनॅन्ट में है:
 
 ```js
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```
 
-But if your markup isn't all on the same line as the `return` keyword, you must wrap it in a pair of parentheses like this:
+लेकिन अगर आपका मार्कअप `return` कीवर्ड की तरह एक ही लाइन पर नहीं है, तो आपको इसे इस तरह के कोष्ठकों की एक जोड़ी में लपेटना होगा:
 
 ```js
 return (
@@ -111,7 +111,7 @@ return (
 
 <Gotcha>
 
-Without parentheses, any code on the lines after `return` [will be ignored](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)!
+कोष्ठक के बिना, `return` के बाद लाइनों पर कोई भी कोड [will be ignored](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)!
 
 </Gotcha>
 
