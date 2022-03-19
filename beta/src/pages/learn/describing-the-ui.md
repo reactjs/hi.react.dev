@@ -233,9 +233,9 @@ Read **[JavaScript in JSX with Curly Braces](/learn/javascript-in-jsx-with-curly
 
 </LearnMore>
 
-## Passing props to a component {/*passing-props-to-a-component*/}
+## कम्पोनन्ट में props पास करना {/*passing-props-to-a-component*/}
 
-React components use *props* to communicate with each other. Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, functions, and even JSX!
+React कंपोनेन्टस एक दूसरे से संवाद करने के लिए *props* का इस्तेमाल करते हैं। प्रत्येक पेरन्ट कम्पोनन्ट अपने चाइल्ड कम्पोनन्ट को props देकर कुछ जानकारी दे सकता है। Props आपको HTML अत्तरीबूटेस की याद दिला सकते हैं, पर आप उन्मे JavaScript की वैल्यू भी डाल सकते हैं, जिसमें ऑब्जेक्ट, एरेज़, फ़ंक्शन और यहां तक ​​​​कि JSX भी शामिल है!
 
 <Sandpack>
 
@@ -310,7 +310,7 @@ export function getImageUrl(person, size = 's') {
 
 <LearnMore path="/learn/passing-props-to-a-component">
 
-Read **[Passing Props to a Component](/learn/passing-props-to-a-component)** to learn how to pass and read props.
+props पास और रीड करने का तरीका जानने के लिए **[Passing Props to a Component](/learn/passing-props-to-a-component)** पढ़ें।
 
 </LearnMore>
 
