@@ -1155,21 +1155,13 @@ class Game extends React.Component {
   }
 ```
 
-<<<<<<< HEAD
 ध्यान दें `jumpTo` मेथड में, हमनें `history` प्रॉपर्टी को अपडेट नहीं किया है। वो इसलिए की, state के अपडेट्स मर्ज हो जाएन्गे या आसान भाषा में React सिर्फ उन प्रॉपर्टीज को अपडेट करेगा जो `setState` मेथड में दिए गए हैं और बाकि सब को ऐसे ही छोड़ देग।  ज़्यादा जानकारी के लिए **[ये डॉक्यूमेंटेशन को देखे।](/docs/state-and-lifecycle.html#state-updates-are-merged)**
-=======
-Notice in `jumpTo` method, we haven't updated `history` property of the state. That is because state updates are merged or in more simple words React will update only the properties mentioned in `setState` method leaving the remaining state as is. For more info **[see the documentation](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
->>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 हम Game के `handleClick` मेथड में कुछ बदलाव करेंगें जो स्क्वायर पर क्लिक करने से execute होता है।
 
 हमारे द्वारा जोड़ा गया `stepNumber` state अब उपयोगकर्ता को प्रदर्शित की गई चाल को दर्शाता है। एक नई चाल चलने के बाद, हमें `stepNumber: history.length` को `this.setState` के आर्गुमेंट में ऐड करके `stepNumber` को  अपडेट करना है। यह सुनिश्चित करता है कि हम एक नए कदम के बाद फिर से वही चाल दिखाने में फंस न जाएं।
 
-<<<<<<< HEAD
 हम हिस्ट्री `this.state.history` से रीड करने को `this.state.history.slice(0, this.state.stepNumber + 1)` से रीड करने में बदल देंगे। इससे ये पक्का हो जाएगा की अगर हम "गेम में पीछे" जाके एक नयी चाल चलते हैं तो "बाद" की चली हुई सारी चालें हिस्ट्री से हट जाएगी जोकि अब गलत हो गयी है।
-=======
-We will also replace reading `this.state.history` with `this.state.history.slice(0, this.state.stepNumber + 1)`. This ensures that if we "go back in time" and then make a new move from that point, we throw away all the "future" history that would now be incorrect.
->>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 ```javascript{2,13}
   handleClick(i) {
