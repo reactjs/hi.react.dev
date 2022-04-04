@@ -34,7 +34,7 @@ const element = <h1>Hello, world</h1>;
 
 React के उपयोग से बने ज़्यादातर ऐप्लिकेशन में एक ही रूट DOM नोड होता है। परंतु यदि आप React को किसी पहले से बने हुए app में उपयोग करना चाहते है तो आप कितने भी अलग अलग रूट DOM नोड बना सकते है।
 
-एक React एलिमेंट्स को DOM नोड में दर्शाने के लिए, आपको इन दोनो को [`ReactDOM.render()`](/docs/react-dom.html#render) में भेजना पड़ेगा:
+To render a React element, first pass the DOM element to [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot), then pass the React element to `root.render()`:
 
 `embed:rendering-elements/render-an-element.js`
 
@@ -46,7 +46,7 @@ React के उपयोग से बने ज़्यादातर ऐप
 
 React एलिमेंट्स [अचल](https://en.wikipedia.org/wiki/Immutable_object) होते है। एक बार एलेमेंट के बनने के बाद, आप उसके चिल्ड्रन या ऐट्रिब्यूट्स में परिवर्तन नहीं कर सकते। एक एलेमेंट एक चलचित्र के एक दृश्य के समान है, ये UI को एक निश्चित समय के लिए दर्शाता है।
 
-हमारे अब तक के ज्ञान के अनुसार, UI में परिवर्तन करने का एक ही तरीक़ा है। इसके लिए हमें एक नया एलेमेंट बना कर उसे [`ReactDOM.render()`](/docs/react-dom.html#render) को भेजना पड़ेगा।
+With our knowledge so far, the only way to update the UI is to create a new element, and pass it to `root.render()`.
 
 इस टिकिंग घड़ी उदाहरण पर विचार करें:
 
@@ -54,11 +54,11 @@ React एलिमेंट्स [अचल](https://en.wikipedia.org/wiki/Immu
 
 **[Try it on CodePen](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
-ये [`ReactDOM.render()`](/docs/react-dom.html#render) को प्रत्येक सेकंड [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback से कॉल करता है।
+It calls [`root.render()`](/docs/react-dom.html#render) every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
 
 >**ध्यान दें:**
 >
->व्यवहार में, ज़्यादातर React ऍप्स [`ReactDOM.render()`](/docs/react-dom.html#render) को एक ही बार कॉल करते है। अगले भाग में हम ये सीखेंगे कि कैसे इस तरह के कोड को [stateful components](/docs/state-and-lifecycle.html) में एन्काप्सुलेट करते है।
+>In practice, most React apps only call `root.render()` once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
 >
 >हम अनुशंसा करते हैं कि आप विषयों को छोड़ें नहीं क्योंकि वे एक-दूसरे पर निर्माण करते हैं।
 
