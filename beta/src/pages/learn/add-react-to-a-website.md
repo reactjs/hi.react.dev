@@ -100,7 +100,6 @@ const root1 = ReactDOM.createRoot(
 );
 root1.render(React.createElement(LikeButton));
 
-<<<<<<< HEAD
 const root2 = ReactDOM.createRoot(
   document.getElementById('कौम्पोनॅन्ट-यहाँ-भी-जाएगा')
 );
