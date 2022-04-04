@@ -68,34 +68,19 @@ function Welcome(props) {
   return <h1>नमस्ते, {props.name}</h1>;
 }
 
-<<<<<<< HEAD
 const element = <Welcome name="नेहा" />;
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
-=======
-const element = <Welcome name="Sara" />;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(element);
->>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
 ```
 
 **[Try it on CodePen](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
 
 चलिए देख़ते है इस उदाहरण में क्या होता है:
 
-<<<<<<< HEAD
-1. हम `<Welcome name="नेहा" />` के द्वारा `ReactDOM.render()` को call karte है|
-2. React `Welcome` कौम्पोनॅन्ट को `name: 'नेहा'}` के साथ props के रूप मे call करती है|
-3. हमारा `Welcome` कौम्पोनॅन्ट परिणाम के तौर पर `<h1>नमस्ते, नेहा</h1>` एलिमेंट वापस लौटाता करता है|
-4. React DOM कुशलता पूर्वक DOM को `<h1>नमस्ते, नेहा</h1>` से अपडेट करता है|
-=======
-1. We call `root.render()` with the `<Welcome name="Sara" />` element.
-2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
-3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
-4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
->>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
+1. हम `<Welcome name="नेहा" />` एलिमेंट के साथ `root.render()` को कॉल करते है।
+2. React `Welcome` कौम्पोनॅन्ट को `{name: 'नेहा'}` के साथ props के रूप मे कॉल करता है।
+3. हमारा `Welcome` कौम्पोनॅन्ट परिणाम के तौर पर `<h1>नमस्ते, नेहा</h1>` एलिमेंट वापस लौटाता है।
+4. React DOM कुशलता पूर्वक DOM को `<h1>नमस्ते, नेहा</h1>` से अपडेट करता है।
 
 >**ध्यान दें:** कौम्पोनॅन्टस के नाम की शुरुवात हमेशा कैपिटल लेटर से होनी चाहिए|
 >
