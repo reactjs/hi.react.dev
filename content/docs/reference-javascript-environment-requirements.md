@@ -6,14 +6,22 @@ category: Reference
 permalink: docs/javascript-environment-requirements.html
 ---
 
+<<<<<<< HEAD
 React 16 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) और [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) कलेक्शन टाइप पर निर्भर करता है। यदि आप पुराने ब्राउज़र्स और उपकरणों का समर्थन करते हैं, जो अभी तक ये टाइप नेटिवली प्रदान नहीं कर सकते हैं (जैसे IE < 11) या जिनके पास नॉन-कम्प्लाइअन्ट कार्यान्वयन हैं (उदाहरण IE 11), तो अपने बंडल किए गए एप्लिकेशन में एक वैश्विक polyfill शामिल करें, जैसे कि [core-js](https://github.com/zloirock/core-js)।
 
 पुराने ब्राउज़र्स का समर्थन करने के लिए core-js का उपयोग करके React 16 के लिए एक polyfilled एनवायरनमेंट ऐसा दिखेगा:
+=======
+React 18 supports all modern browsers (Edge, Firefox, Chrome, Safari, etc).
 
-```js
-import 'core-js/es/map';
-import 'core-js/es/set';
+If you support older browsers and devices such as Internet Explorer which do not provide modern browser features natively or have non-compliant implementations, consider including a global polyfill in your bundled application.
+>>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
 
+Here is a list of the modern features React 18 uses:
+- [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [`Symbol`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+- [`Object.assign`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+
+<<<<<<< HEAD
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -29,3 +37,6 @@ React `requestAnimationFrame` पर भी निर्भर करती ह�
 ```js
 import 'raf/polyfill';
 ```
+=======
+The correct polyfill for these features depend on your environment. For many users, you can configure your [Browserlist](https://github.com/browserslist/browserslist) settings. For others, you may need to import polyfills like [`core-js`](https://github.com/zloirock/core-js) directly.
+>>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
