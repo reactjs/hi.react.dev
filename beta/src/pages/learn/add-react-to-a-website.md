@@ -30,15 +30,9 @@ React को शुरू से ही धीरे-धीरे अपना�
 
 HTML पेज में, क्लोजिंग `</body>` टैग से ठीक पहले, निम्न फ़ाइलों के लिए तीन `<script>` टैग ऐड करें:
 
-<<<<<<< HEAD
 - [**react.development.js**](https://unpkg.com/react@17/umd/react.development.js) React के कोर को लोड करता है
 - [**react-dom.development.js**](https://unpkg.com/react-dom@17/umd/react-dom.development.js) React को HTML एलिमेंट्स [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model) को रेंडर करने देता है।
 - **like_button.js** वह जगह है जहाँ आप स्टेप 3 में अपना कौम्पोनॅन्ट लिखेंगे!
-=======
-- [**react.development.js**](https://unpkg.com/react@18/umd/react.development.js) loads the core of React
-- [**react-dom.development.js**](https://unpkg.com/react-dom@18/umd/react-dom.development.js) lets React render HTML elements to the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model).
-- **like_button.js** is where you'll write your component in step 3!
->>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
 
 <Gotcha>
 
@@ -47,15 +41,9 @@ HTML पेज में, क्लोजिंग `</body>` टैग से �
 </Gotcha>
 
 ```html
-<<<<<<< HEAD
   <!-- पेज का अंत -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-=======
-  <!-- end of the page -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
->>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
   <script src="like_button.js"></script>
 </body>
 ```
@@ -86,20 +74,12 @@ function LikeButton() {
 
 ### स्टेप 4: पेज पर अपना React कौम्पोनॅन्ट ऐड करें {/*step-4-add-your-react-component-to-the-page*/}
 
-<<<<<<< HEAD
 अंत में, **like_button.js** के नीचे दो पंक्तियाँ ऐड करें। कोड की ये दो पंक्तियाँ पहले स्टेप में आपके द्वारा अपने HTML में ऐड किये गए `<div>` को ढूंढती हैं और फिर उसके अंदर "Like" बटन React कौम्पोनॅन्ट को डिस्प्ले करती हैं।
 
 ```js
 const domContainer = document.getElementById('कौम्पोनॅन्ट-यहाँ-जाएगा');
 ReactDOM.render(React.createElement(LikeButton), domContainer);
-=======
-Lastly, add three lines to the bottom of **like_button.js**. These three lines of code find the `<div>` you added to your HTML in the first step, create a React app with it, and then display the "Like" button React component inside of it.
-
-```js
-const domContainer = document.getElementById('component-goes-here');
-const root = ReactDOM.createRoot(domContainer);
 root.render(React.createElement(LikeButton));
->>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
 ```
 
 **बधाई हो! आपने अभी-अभी अपनी वेबसाइट पर अपना पहला React कौम्पोनॅन्ट रेंडर किया है!**
@@ -109,35 +89,20 @@ root.render(React.createElement(LikeButton));
 
 #### आप कौम्पोनॅन्ट का पुन: उपयोग कर सकते हैं! {/*you-can-reuse-components*/}
 
-<<<<<<< HEAD
 आप एक ही HTML पेज पर कई स्थानों पर एक React कौम्पोनॅन्ट को डिस्प्ले करना चाह सकते हैं। यह सबसे उपयोगी है जबकि पेज के React-संचालित हिस्से एक दूसरे से अलग-थलग हैं। आप कई कंटेनर एलिमेंट के साथ `ReactDOM.render()` को कई बार कॉल करके ऐसा कर सकते हैं।
-=======
-You might want to display a React component in multiple places on the same HTML page. This is most useful while React-powered parts of the page are isolated from each other. You can do this by calling `ReactDOM.createRoot()` multiple times with multiple container elements.
->>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
 
 1. **index.html** में, एक और कंटेनर एलिमेंट ऐड करें `<div id="कौम्पोनॅन्ट-यहाँ-भी-जाएगा"></div>`.
 2. **like_button.js** में, नए कंटेनर एलिमेंट के लिए एक और `ReactDOM.render()` ऐड करें:
 
 ```js {6,7,8,9}
-<<<<<<< HEAD
-ReactDOM.render(
-  React.createElement(LikeButton),
-  document.getElementById('कौम्पोनॅन्ट-यहाँ-जाएगा')
-=======
 const root1 = ReactDOM.createRoot(
-  document.getElementById('component-goes-here')
->>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
+  document.getElementById('कौम्पोनॅन्ट-यहाँ-जाएगा')
 );
 root1.render(React.createElement(LikeButton));
 
 <<<<<<< HEAD
-ReactDOM.render(
-  React.createElement(LikeButton),
-  document.getElementById('कौम्पोनॅन्ट-यहाँ-भी-जाएगा')
-=======
 const root2 = ReactDOM.createRoot(
-  document.getElementById('component-goes-here-too')
->>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
+  document.getElementById('कौम्पोनॅन्ट-यहाँ-भी-जाएगा')
 );
 root2.render(React.createElement(LikeButton));
 ```
