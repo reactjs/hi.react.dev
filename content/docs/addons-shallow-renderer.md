@@ -59,7 +59,7 @@ expect(result.props.children).toEqual([
 
 आप जिस कौम्पोनॅन्ट का परीक्षण कर रहे हैं, shallowRenderer को आप उसे रेंडर करने के एक "स्थान" की तरह सोच सकते हैं, और इससे आप कौम्पोनॅन्ट के आउटपुट को निकाल सकते हैं।
 
-`shallowRenderer.render()` [`ReactDOM.render()`](/docs/react-dom.html#render) के समान ही है लेकिन इसे DOM की आवश्यकता नहीं है और यह केवल एक स्तर गहराई तक ही रेंडर करता है। इसका मतलब आप कौम्पोनॅन्टस का परिक्षण उनके children के लागू होने के तरीके से अलग रखकर कर सकते हैं।
+`shallowRenderer.render()` [`root.render()`](/docs/react-dom-client.html#createroot) के समान ही है लेकिन इसे DOM की आवश्यकता नहीं है और यह केवल एक स्तर गहराई तक ही रेंडर करता है। इसका मतलब आप कौम्पोनॅन्टस का परिक्षण उनके children के लागू होने के तरीके से अलग रखकर कर सकते हैं।
 
 ### `shallowRenderer.getRenderOutput()` {#shallowrenderergetrenderoutput}
 

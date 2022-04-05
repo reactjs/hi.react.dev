@@ -69,20 +69,18 @@ function Welcome(props) {
 }
 
 const element = <Welcome name="नेहा" />;
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(element);
 ```
 
 **[Try it on CodePen](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
 
 चलिए देख़ते है इस उदाहरण में क्या होता है:
 
-1. हम `<Welcome name="नेहा" />` के द्वारा `ReactDOM.render()` को call karte है|
-2. React `Welcome` कौम्पोनॅन्ट को `name: 'नेहा'}` के साथ props के रूप मे call करती है|
-3. हमारा `Welcome` कौम्पोनॅन्ट परिणाम के तौर पर `<h1>नमस्ते, नेहा</h1>` एलिमेंट वापस लौटाता करता है|
-4. React DOM कुशलता पूर्वक DOM को `<h1>नमस्ते, नेहा</h1>` से अपडेट करता है|
+1. हम `<Welcome name="नेहा" />` एलिमेंट के साथ `root.render()` को कॉल करते है।
+2. React `Welcome` कौम्पोनॅन्ट को `{name: 'नेहा'}` के साथ props के रूप मे कॉल करता है।
+3. हमारा `Welcome` कौम्पोनॅन्ट परिणाम के तौर पर `<h1>नमस्ते, नेहा</h1>` एलिमेंट वापस लौटाता है।
+4. React DOM कुशलता पूर्वक DOM को `<h1>नमस्ते, नेहा</h1>` से अपडेट करता है।
 
 >**ध्यान दें:** कौम्पोनॅन्टस के नाम की शुरुवात हमेशा कैपिटल लेटर से होनी चाहिए|
 >
@@ -110,11 +108,6 @@ function App() {
     </div>
   );
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 ```
 
 **[Try it on CodePen](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
