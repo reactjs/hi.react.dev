@@ -20,11 +20,39 @@ JSX जावास्क्रिप्ट के लिए एक सिंट
 
 वेब को HTML, CSS और जावास्क्रिप्ट पर बनाया गया है। कई वर्षों तक, वेब डेवलपर्स ने HTML में कंटेंट, CSS में डिज़ाइन और जावास्क्रिप्ट में लॉजिक अक्सर अलग-अलग फाइलों में रखा! कंटेंट को HTML के अंदर चिह्नित किया गया था जबकि पेज का लॉजिक जावास्क्रिप्ट में अलग से रहता था:
 
-![HTML और जावास्क्रिप्ट अलग-अलग फाइलों में रहते हैं](/images/docs/illustrations/i_html_js.svg)
+<DiagramGroup>
+
+<Diagram name="writing_jsx_html" height={237} width={325} alt="HTML markup with purple background and a div with two child tags: p and form. ">
+
+HTML
+
+</Diagram>
+
+<Diagram name="writing_jsx_js" height={237} width={325} alt="Three JavaScript handlers with yellow background: onSubmit, onLogin, and onClick.">
+
+JavaScript
+
+</Diagram>
+
+</DiagramGroup>
 
 लेकिन जैसे-जैसे वेब अधिक इंटरैक्टिव होता गया, लॉजिक कंटेंट को अधिकाधिक निर्धारित करता गया। जावास्क्रिप्ट HTML का इन्चार्ज था! यही कारण है कि **React में, रेंडरिंग लॉजिक और मार्कअप एक ही स्थान पर एक साथ रहते हैं—कौम्पोनॅन्टस!**
 
-![मार्कअप के साथ छिड़का हुआ जावास्क्रिप्ट फ़ंक्शन](/images/docs/illustrations/i_jsx.svg)
+<DiagramGroup>
+
+<Diagram name="writing_jsx_sidebar" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Sidebar which calls the function isLoggedIn, highlighted in yellow. Nested inside the function highlighted in purple is the p tag from before, and a Form tag referencing the component shown in the next diagram.">
+
+Sidebar.js
+
+</Diagram>
+
+<Diagram name="writing_jsx_form" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Form containing two handlers onClick and onSubmit highlighted in yellow. Following the handlers is HTML highlighted in purple. The HTML contains a form element with a nested input element, each with an onClick prop.">
+
+Form.js
+
+</Diagram>
+
+</DiagramGroup>
 
 एक बटन के रेंडरिंग लॉजिक और मार्कअप को एक साथ रखने से यह सुनिश्चित होता है कि वे प्रत्येक संपादन पर एक दूसरे के साथ तालमेल बिठाते रहें। इसके विपरीत, जो डिटेल्स असंबंधित हैं, जैसे कि बटन का मार्कअप और साइडबार का मार्कअप, एक दूसरे से अलग हो जाते हैं, जिससे उनमें से किसी एक को अपने आप बदलना सुरक्षित हो जाता है।
 

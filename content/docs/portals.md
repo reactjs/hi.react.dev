@@ -144,7 +144,8 @@ function Child() {
   );
 }
 
-ReactDOM.render(<Parent />, appRoot);
+const root = ReactDOM.createRoot(appRoot);
+root.render(<Parent />);
 ```
 
 [**इसे CodePen पर आजमाएं**](https://codepen.io/gaearon/pen/jGBWpE)
