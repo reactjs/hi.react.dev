@@ -79,6 +79,7 @@ function LikeButton() {
 ```js
 const domContainer = document.getElementById('कौम्पोनॅन्ट-यहाँ-जाएगा');
 ReactDOM.render(React.createElement(LikeButton), domContainer);
+root.render(React.createElement(LikeButton));
 ```
 
 **बधाई हो! आपने अभी-अभी अपनी वेबसाइट पर अपना पहला React कौम्पोनॅन्ट रेंडर किया है!**
@@ -94,15 +95,15 @@ ReactDOM.render(React.createElement(LikeButton), domContainer);
 2. **like_button.js** में, नए कंटेनर एलिमेंट के लिए एक और `ReactDOM.render()` ऐड करें:
 
 ```js {6,7,8,9}
-ReactDOM.render(
-  React.createElement(LikeButton),
+const root1 = ReactDOM.createRoot(
   document.getElementById('कौम्पोनॅन्ट-यहाँ-जाएगा')
 );
+root1.render(React.createElement(LikeButton));
 
-ReactDOM.render(
-  React.createElement(LikeButton),
+const root2 = ReactDOM.createRoot(
   document.getElementById('कौम्पोनॅन्ट-यहाँ-भी-जाएगा')
 );
+root2.render(React.createElement(LikeButton));
 ```
 
 देखें [एक उदाहरण जो "Like" बटन को तीन बार को डिस्प्ले करता है और उसमें कुछ डेटा भेजता है](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)!
@@ -115,8 +116,8 @@ ReactDOM.render(
 - **यदि आप अपनी एप्लिकेशन स्क्रिप्ट को पहले ही छोटा कर चुके हैं**, तो आपकी साइट प्रोडक्शन के लिए तैयार हो जाएगी यदि आप सुनिश्चित करते हैं कि डेप्लॉयड HTML React के संस्करणों को `product.min.js` में समाप्त करता है, जैसे:
 
 ```html
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 ## JSX के साथ React का प्रयास करें {/*try-react-with-jsx*/}
@@ -135,7 +136,7 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 
 बहुत से लोग इसे React के साथ और अन्य लाइब्रेरी के साथ UI कोड लिखने के लिए परिचित और सहायक पाते हैं। आप अन्य प्रोजेक्ट्स में "आपके पूरे जावास्क्रिप्ट में फैला हुआ मार्कअप" देख सकते हैं!
 
-> आप [इस ऑनलाइन कनवर्टर](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3) का उपयोग करके HTML मार्कअप को JSX में बदलने के साथ खेल सकते हैं।
+> आप [इस ऑनलाइन कनवर्टर](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.17) का उपयोग करके HTML मार्कअप को JSX में बदलने के साथ खेल सकते हैं।
 
 ### JSX का प्रयास करें {/*try-jsx*/}
 
@@ -144,8 +145,8 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 ```html {6}
 <!-- ... बाकी का <head> टैग ... -->
 
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
@@ -157,8 +158,8 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 
 ```jsx {1}
 <script type="text/babel">
-  ReactDOM.render(
-  <h1>Hello, world!</h1>, document.getElementById('root') );
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<h1>Hello, world!</h1>);
 </script>
 ```
 
