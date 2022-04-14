@@ -115,9 +115,9 @@ return (
 
 </Gotcha>
 
-## Using a component {/* using-a-component */}
+## एक कौम्पोनॅन्ट का उपयोग करना {/* using-a-component */}
 
-Now that you've defined your `Profile` component, you can nest it inside other components. For example, you can export a `Gallery` component that uses multiple `Profile` components:
+अब जब आपने अपना `Profile` कौम्पोनॅन्ट परिभाषित कर लिया है, तो आप इसे अन्य कौम्पोनॅन्ट के अंदर घोंसला बना सकते हैं। उदाहरण के लिए, आप एक `Gallery` कौम्पोनॅन्ट निर्यात कर सकते हैं जो एकाधिक `Profile` कौम्पोनॅन्ट का उपयोग करता है:
 
 <Sandpack>
 
@@ -147,14 +147,14 @@ img {
 
 </Sandpack>
 
-### What the browser sees {/* what-the-browser-sees */}
+### ब्राउज़र क्या देखता है {/* what-the-browser-sees */}
 
-Notice the difference in casing:
+आवरण में अंतर पर ध्यान दें:
 
-- `<section>` is lowercase, so React knows we refer to an HTML tag.
-- `<Profile />` starts with a capital `P`, so React knows that we want to use our component called `Profile`.
+- `<section>` लोअरकेस है, इसलिए React जानता है कि हम एक HTML टैग को संदर्भित करते हैं।
+- `<Profile />` पूंजी `P` से शुरू होता है, इसलिए React जानता है कि हम `Profile` नामक हमारे कौम्पोनॅन्ट का उपयोग करना चाहते हैं।
 
-And `Profile` contains even more HTML: `<img />`. In the end, this is what the browser sees:
+और `Profile` में और भी अधिक HTML शामिल हैं: `<img />`। अंत में, ब्राउज़र यही देखता है:
 
 ```html
 <section>
@@ -165,42 +165,42 @@ And `Profile` contains even more HTML: `<img />`. In the end, this is what the b
 </section>
 ```
 
-### Nesting and organizing components {/* nesting-and-organizing-components */}
+### कौम्पोनॅन्ट को घोंसला बनाना और व्यवस्थित करना {/* nesting-and-organizing-components */}
 
-Components are regular JavaScript functions, so you can keep multiple components in the same file. This is convenient when components are relatively small or tightly related to each other. If this file gets crowded, you can always move `Profile` to a separate file. You will learn how to do this shortly on the [page about imports](/learn/importing-and-exporting-components).
+कौम्पोनॅन्ट नियमित जावास्क्रिप्ट फ़ंक्शन हैं, इसलिए आप एक ही फ़ाइल में कई कौम्पोनॅन्ट को रख सकते हैं। यह तब सुविधाजनक होता है जब कौम्पोनॅन्ट अपेक्षाकृत छोटे होते हैं या एक दूसरे से कसकर जुड़े होते हैं। यदि इस फ़ाइल में भीड़ हो जाती है, तो आप हमेशा `Profile` को एक अलग फ़ाइल में ले जा सकते हैं। आप इसे जल्दी ही [page about imports](/learn/importing-and-exporting-components) पर सीखेंगे।
 
-Because the `Profile` components are rendered inside `Gallery`—even several times!—we can say that `Gallery` is a **parent component,** rendering each `Profile` as a "child". This is part of the magic of React: you can define a component once, and then use it in as many places and as many times as you like.
+चूंकि `Profile` कौम्पोनॅन्ट `Gallery` के अंदर प्रस्तुत किए जाते हैं—यहां तक कि कई बार!—हम कह सकते हैं कि `Gallery` एक **मूल कौम्पोनॅन्ट है,** प्रत्येक `Profile` को "बच्चे" के रूप में प्रस्तुत करता है। यह React के जादू का हिस्सा है: आप एक कौम्पोनॅन्ट को एक बार परिभाषित कर सकते हैं, और फिर इसे कई जगहों पर और जितनी बार चाहें उपयोग कर सकते हैं।
 
 <DeepDive title="Components All the Way Down">
 
-Your React application begins at a "root" component. Usually, it is created automatically when you start a new project. For example, if you use [CodeSandbox](https://codesandbox.io/) or [Create React App](https://create-react-app.dev/), the root component is defined in `src/App.js`. If you use the framework [Next.js](https://nextjs.org/), the root component is defined in `pages/index.js`. In these examples, you've been exporting root components.
+आपका React एप्लिकेशन "रूट" कौम्पोनॅन्ट से शुरू होता है। आमतौर पर, जब आप कोई नया प्रोजेक्ट शुरू करते हैं तो यह अपने आप बन जाता है। उदाहरण के लिए, अगर आप [CodeSandbox](https://codesandbox.io/) या [Create React App](https://create-react-app.dev/) का इस्तेमाल करते हैं, तो रूट कौम्पोनॅन्ट को `src/App.js` में परिभाषित किया गया है। अगर आप [Next.js](https://nextjs.org/) फ्रेमवर्क का इस्तेमाल करते हैं, तो रूट कौम्पोनॅन्ट `page/index.js` में परिभाषित होता है। इन उदाहरणों में, आप मूल कौम्पोनॅन्ट का निर्यात कर रहे हैं।
 
-Most React apps use components all the way down. This means that you won't only use components for reusable pieces like buttons, but also for larger pieces like sidebars, lists, and ultimately, complete pages! Components are a handy way to organize UI code and markup, even if some of them are only used once.
+अधिकांश React ऐप्स सभी तरह से कौम्पोनॅन्ट का उपयोग करते हैं। इसका मतलब है कि आप न केवल बटन जैसे पुन: प्रयोज्य टुकड़ों के लिए कौम्पोनॅन्ट का उपयोग करेंगे, बल्कि साइडबार, सूचियों और अंततः पूर्ण पृष्ठों जैसे बड़े टुकड़ों के लिए भी! कौम्पोनॅन्ट UI कोड और मार्कअप को व्यवस्थित करने का एक आसान तरीका है, भले ही उनमें से कुछ का उपयोग केवल एक बार किया गया हो।
 
-Frameworks like Next.js take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they _also_ generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
+Next.js जैसे फ्रेमवर्क इसे एक कदम आगे ले जाते हैं। एक खाली HTML फ़ाइल का उपयोग करने और जावास्क्रिप्ट के साथ पेज को प्रबंधित करने के लिए React को "टेक ओवर" करने देने के बजाय, वे आपके React कौम्पोनॅन्ट से स्वचालित रूप से HTML उत्पन्न करते हैं। यह आपके ऐप को जावास्क्रिप्ट कोड लोड होने से पहले कुछ सामग्री दिखाने की अनुमति देता है।
 
-Still, many websites only use React to [add "sprinkles of interactivity"](/learn/add-react-to-a-website). They have many root components instead of a single one for the entire page. You can use as much—or as little—React as you need.
+फिर भी, कई वेबसाइटें केवल React का उपयोग करती हैं [add "sprinkles of interactivity"](/learn/add-react-to-a-website)। उनके पास पूरे पृष्ठ के लिए एक के बजाय कई मूल कौम्पोनॅन्ट हैं। आप जितना चाहें उतना उपयोग कर सकते हैं - या जितना कम - React दें।
 
 </DeepDive>
 
 <Recap>
 
-You've just gotten your first taste of React! Let's recap some key points.
+आपने अभी-अभी React का अपना पहला स्वाद प्राप्त किया है! आइए कुछ प्रमुख बिंदुओं का पुनर्कथन करें।
 
-- React lets you create components, **reusable UI elements for your app.**
-- In a React app, every piece of UI is a component.
-- React components are regular JavaScript functions except:
+- React आपको कौम्पोनॅन्ट बनाने देता है, **आपके ऐप के लिए पुन: प्रयोज्य UI तत्व।**
+- React ऐप में, UI का हर टुकड़ा एक कौम्पोनॅन्ट है।
+- React कौम्पोनॅन्ट नियमित जावास्क्रिप्ट कार्य हैं सिवाय:
 
-  1. Their names always begin with a capital letter.
-  2. They return JSX markup.
+  1. उनके नाम हमेशा बड़े अक्षर से शुरू होते हैं।
+  2. वे JSX मार्कअप लौटाते हैं।
 
 </Recap>
 
 <Challenges>
 
-### Export the component {/* export-the-component */}
+### कौम्पोनॅन्ट निर्यात करें {/* export-the-component */}
 
-This sandbox doesn't work because the root component is not exported:
+यह sandbox काम नहीं करता क्योंकि मूल कौम्पोनॅन्ट निर्यात नहीं किया जाता है:
 
 <Sandpack>
 
@@ -218,11 +218,11 @@ img {
 
 </Sandpack>
 
-Try to fix it yourself before looking at the solution!
+समाधान देखने से पहले इसे स्वयं ठीक करने का प्रयास करें!
 
 <Solution>
 
-Add `export default` before the function definition like so:
+फ़ंक्शन परिभाषा से पहले `export default` जोड़ें जैसे:
 
 <Sandpack>
 
@@ -240,17 +240,17 @@ img {
 
 </Sandpack>
 
-You might be wondering why writing `export` alone is not enough to fix this example. You can learn the difference between `export` and `export default` in [Importing and Exporting Components](/learn/importing-and-exporting-components).
+आप सोच रहे होंगे कि इस उदाहरण को ठीक करने के लिए केवल `export` लिखना ही पर्याप्त क्यों नहीं है। आप [Importing and Exporting Components](/learn/importing-and-exporting-components) में `export` और `export default` के बीच अंतर जान सकते हैं।
 
 </Solution>
 
-### Fix the return statement {/* fix-the-return-statement */}
+### रिटर्न स्टेटमेंट को ठीक करें {/* fix-the-return-statement */}
 
-Something isn't right about this `return` statement. Can you fix it?
+इस `return` स्टेटमेंट में कुछ गलत है। क्या तुम इसे ठीक कर सकते हो?
 
 <Hint>
 
-You may get an "Unexpected token" error while trying to fix this. In that case, check the that semicolon appears _after_ the closing parenthesis. Leaving a semicolon inside `return ( )` will cause an error.
+इसे ठीक करने का प्रयास करते समय आपको "Unexpected token" त्रुटि मिल सकती है। उस स्थिति में, जांचें कि अर्धविराम _after_ समापन कोष्ठक प्रकट होता है। `return ( )` के अंदर अर्धविराम छोड़ने से एक त्रुटि होगी।
 
 </Hint>
 
@@ -273,7 +273,7 @@ img {
 
 <Solution>
 
-You can fix this component by moving the return statement to one line like so:
+आप रिटर्न स्टेटमेंट को एक लाइन में ले जाकर इस कंपोनेंट को ठीक कर सकते हैं:
 
 <Sandpack>
 
@@ -291,7 +291,7 @@ img {
 
 </Sandpack>
 
-Or by wrapping the returned JSX markup in parentheses that open right after `return`:
+या लौटाए गए JSX मार्कअप को कोष्ठक में लपेटकर जो `return` के ठीक बाद खुलता है:
 
 <Sandpack>
 
