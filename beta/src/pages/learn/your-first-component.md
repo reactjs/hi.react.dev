@@ -273,7 +273,7 @@ img {
 
 <Solution>
 
-आप रिटर्न स्टेटमेंट को एक लाइन में ले जाकर इस कंपोनेंट को ठीक कर सकते हैं:
+आप रिटर्न स्टेटमेंट को एक लाइन में ले जाकर इस कौम्पोनॅन्ट को ठीक कर सकते हैं:
 
 <Sandpack>
 
@@ -311,9 +311,9 @@ img {
 
 </Solution>
 
-### Spot the mistake {/* spot-the-mistake */}
+### गलती का पता लगाएं {/* spot-the-mistake */}
 
-Something's wrong with how the `Profile` component is declared and used. Can you spot the mistake? (Try to remember how React distinguishes components from the regular HTML tags!)
+'Profile' कौम्पोनॅन्ट को कैसे घोषित और उपयोग किया जाता है, इसमें कुछ गड़बड़ है। क्या आप गलती का पता लगा सकते हैं? (याद रखने की कोशिश करें कि कैसे React नियमित HTML टैग से कौम्पोनॅन्ट को अलग करता है!)
 
 <Sandpack>
 
@@ -345,9 +345,9 @@ img {
 
 <Solution>
 
-React component names must start with a capital letter.
+React कौम्पोनॅन्ट नाम बड़े अक्षर से शुरू होने चाहिए।
 
-Change `function profile()` to `function Profile()`, and then change every `<profile />` to `<Profile />`:
+`function profile ()` को `function Profile ()` में बदलें, और फिर प्रत्येक `<profile />` को `<Profile />` में बदलें:
 
 <Sandpack>
 
@@ -378,9 +378,9 @@ img {
 
 </Solution>
 
-### Your own component {/* your-own-component */}
+### आपका अपना कौम्पोनॅन्ट {/* your-own-component */}
 
-Write a component from scratch. You can give it any valid name and return any markup. If you're out of ideas, you can write a `Congratulations` component thats shows `<h1>Good job!</h1>`. Don't forget to export it!
+Scratch से एक कौम्पोनॅन्ट लिखें। आप इसे कोई भी मान्य नाम दे सकते हैं और कोई मार्कअप वापस कर सकते हैं। यदि आपके पास विचार नहीं हैं, तो आप एक `Congratulations` कौम्पोनॅन्ट लिख सकते हैं जो `<h1>Good job!</h1>` दिखाता है। इसे निर्यात करना न भूलें!
 
 <Sandpack>
 
