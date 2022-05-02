@@ -9,14 +9,8 @@ next: introducing-jsx.html
 React का सबसे छोटा उदाहरण ऐसा दिखता है:
 
 ```jsx
-<<<<<<< HEAD
-ReactDOM
-  .createRoot(document.getElementById('root'))
-  .render(<h1>नमस्ते, दुनिया!</h1>);
-=======
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<h1>Hello, world!</h1>);
->>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 ```
 
 यह पृष्ठ के शीर्षक पर "नमस्ते, दुनिया! दिखाएगा।
