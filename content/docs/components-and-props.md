@@ -63,13 +63,17 @@ const element = <Welcome name="नेहा" />;
 
 उदाहरण के लिए, यह कोड पेज पर रेंडर करता है "नमस्ते, नेहा":
 
-```js{1,5}
+```js{1,6}
 function Welcome(props) {
   return <h1>नमस्ते, {props.name}</h1>;
 }
 
+<<<<<<< HEAD
 const element = <Welcome name="नेहा" />;
+=======
+>>>>>>> 5f3a9756e00e256735a5f52df19b403d8fdd3a9d
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const element = <Welcome name="Sara" />;
 root.render(element);
 ```
 
