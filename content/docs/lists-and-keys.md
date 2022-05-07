@@ -33,13 +33,10 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-हम पुरे `listItems` array को `<ul>` एलिमेंट में शामिल करके इसे [DOM में रेंडर करते हैं](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
+फिर, हम पुरे `listItems` array को `<ul>` एलिमेंट में शामिल कर सकते हैं:
 
 ```javascript{2}
-ReactDOM.render(
-  <ul>{listItems}</ul>,
-  document.getElementById('root')
-);
+<ul>{listItems}</ul>
 ```
 
 [**इसे CodePen पर आज़माएँ**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
@@ -64,10 +61,8 @@ function NumberList(props) {
 }
 
 const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<NumberList numbers={numbers} />);
 ```
 
 जब आप यह कोड चलाते हैं, तो आपको एक चेतावनी दी जाती है कि लिस्ट आइटम के लिए एक key प्रदान की जानी चाहिए। "key" एक विशेष स्ट्रिंग एट्रिब्यूट है जिसे आपको एलिमेंटस की सूची बनाते समय शामिल करने की आवश्यकता होती है। हम अगले भाग में चर्चा करेंगे कि यह महत्वपूर्ण क्यों है।
@@ -86,12 +81,6 @@ function NumberList(props) {
     <ul>{listItems}</ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**इसे CodePen पर आज़माएँ**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
@@ -165,12 +154,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 **उदाहरण: key का सही उपयोग**
@@ -193,12 +176,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**इसे CodePen पर आज़माएँ**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
@@ -207,7 +184,7 @@ ReactDOM.render(
 
 ### Keys सिर्फ़ सिब्लिंग्स के बीच अद्वितीय होनी चाहिए {#keys-must-only-be-unique-among-siblings}
 
-Arrays के भीतर उपयोग की जाने वाली key उनके सिब्लिंग्स के बीच अद्वितीय होनी चाहिए। हालाँकि उन्हें पूरी तरह से अद्वितीय होने की आवश्यकता नहीं है। हम अलग-अलग arrays के लिए सामान keys का उपयोग कर सकते हैं:
+Arrays के भीतर उपयोग की जाने वाली key उनके सिब्लिंग्स के बीच अद्वितीय होनी चाहिए। हालाँकि उन्हें पूरी तरह से अद्वितीय होने की आवश्यकता नहीं है। जब हम दो अलग-अलग arrays बनाते हैं तो हम एक ही key का उपयोग कर सकते हैं:
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
@@ -239,10 +216,9 @@ const posts = [
   {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
   {id: 2, title: 'Installation', content: 'You can install React from npm.'}
 ];
-ReactDOM.render(
-  <Blog posts={posts} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Blog posts={posts} />);
 ```
 
 [**इसे CodePen पर आज़माएँ**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)

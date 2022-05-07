@@ -150,7 +150,7 @@ function Example() {
 
 ```js{3,20-22,29-31}
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 import Counter from './Counter';
 
@@ -169,7 +169,7 @@ afterEach(() => {
 it('can render and update a counter', () => {
   // Test first render and effect
   act(() => {
-    ReactDOM.render(<Counter />, container);
+    ReactDOM.createRoot(container).render(<Counter />);
   });
   const button = container.querySelector('button');
   const label = container.querySelector('p');
@@ -1902,8 +1902,9 @@ function DeepChild(props) {
 ### कालबैक से बार-बार बदलती हुई एक वैल्यू को कैसे रीड करें? {#how-to-read-an-often-changing-value-from-usecallback}
 
 >ध्यान दें
->
+
 >हम props में इंडिविजुअल कॉलबैक के बजाय [कॉन्टेक्स्ट में `dispatch` को पास](#how-to-avoid-passing-callbacks-down) करने की सलाह देते हैं। नीचे का दृष्टिकोण केवल पूर्णता के लिए यहां उल्लिखित है।
+
 
 >यह भी ध्यान दें कि यह पैटर्न [कंकररेंट मोड](/blog/2018/03/27/update-on-async-rendering.html) में समस्याएं पैदा कर सकता है। हम भविष्य में और अधिक एर्गोनोमिक विकल्प प्रदान करने की योजना बना रहे हैं, लेकिन अभी सबसे सुरक्षित समाधान कॉलबैक को हमेशा अमान्य करना है यदि यह कुछ वैल्यू परिवर्तनों पर निर्भर करता है।
 

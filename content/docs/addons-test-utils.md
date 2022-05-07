@@ -21,7 +21,8 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5, npm के द्�
 >
 > हम [React Testing Library](https://testing-library.com/react) का उपयोग करने की सलाह देते हैं। ये लाइब्रेरी इस प्रकार डिज़ाइन की गई है की आप टेस्ट्स उस ही प्रकार लिखें जिस प्रकार उपयोगकर्ता उसे इस्तेमाल करेंगें।
 >
-> वैकल्पिक रूप से, Airbnb ने [Enzyme](https://airbnb.io/enzyme/) नामक एक परीक्षण उपयोगिता जारी की है, जो आपके React कौम्पोनॅन्ट के आउटपुट को अस्सर्ट, मैनयुपुलेट और ट्रैवर्स करना आसान बनाता है।
+> React वर्शन <=16 के लिए, [Enzyme](https://airbnb.io/enzyme/) लाइब्रेरी React कौम्पोनॅन्टस के आउटपुट का अस्सेर्ट करना, बदलना और ट्रैवर्स करना आसान करती है।
+> 
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
@@ -87,7 +88,7 @@ class Counter extends React.Component {
 
 ```js{3,20-22,29-31}
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 import Counter from './Counter';
 
@@ -106,7 +107,7 @@ afterEach(() => {
 it('काउंटर रेंडर और अपडेट कर सकते हैं', () => {
   // Test first render and componentDidMount
   act(() => {
-    ReactDOM.render(<Counter />, container);
+    ReactDOM.createRoot(container).render(<Counter />);
   });
   const button = container.querySelector('button');
   const label = container.querySelector('p');
@@ -302,7 +303,7 @@ React एलिमेंट को दस्तावेज़ के एक अ
 
 ```js
 const domContainer = document.createElement('div');
-ReactDOM.render(element, domContainer);
+ReactDOM.createRoot(domContainer).render(element);
 ```
 
 > नोट:

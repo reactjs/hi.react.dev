@@ -50,13 +50,17 @@ class Home extends Component {
     return (
       <Layout location={location}>
         <TitleAndMetaTags
-          title="React &ndash; युज़र इंटरफ़ेसिज़ के निर्माण के लिए एक जावास्क्रिप्ट लाइब्रेरी"
+          title="React &ndash; A JavaScript library for building user interfaces"
           canonicalUrl={createCanonicalUrl('/')}
         />
         <div
           css={{
             width: '100%',
-            marginTop: 60, // BLM
+            marginTop: 'var(--banner-height-normal)',
+
+            [media.lessThan('small')]: {
+              marginTop: 'var(--banner-height-small)',
+            },
           }}>
           <header
             css={{
@@ -137,7 +141,7 @@ class Home extends Component {
                         fontSize: 30,
                       },
                     }}>
-                    युज़र इंटरफ़ेसिज़ के निर्माण के लिए एक जावास्क्रिप्ट लाइब्रेरी
+                    A JavaScript library for building user interfaces
                   </p>
                   <Flex
                     valign="center"
@@ -155,12 +159,12 @@ class Home extends Component {
                       <ButtonLink
                         to="/docs/getting-started.html"
                         type="primary">
-                        शुरू करे
+                        Get Started
                       </ButtonLink>
                     </CtaItem>
                     <CtaItem>
                       <ButtonLink to="/tutorial/tutorial.html" type="secondary">
-                        ट्यूटोरियल लें
+                        Take the Tutorial
                       </ButtonLink>
                     </CtaItem>
                   </Flex>
@@ -298,12 +302,12 @@ class Home extends Component {
                 }}>
                 <CtaItem>
                   <ButtonLink to="/docs/getting-started.html" type="primary">
-                    शुरू करे
+                    Get Started
                   </ButtonLink>
                 </CtaItem>
                 <CtaItem>
                   <ButtonLink to="/tutorial/tutorial.html" type="secondary">
-                    ट्यूटोरियल लें
+                    Take the Tutorial
                   </ButtonLink>
                 </CtaItem>
               </Flex>
