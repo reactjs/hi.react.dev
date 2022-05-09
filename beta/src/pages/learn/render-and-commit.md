@@ -19,15 +19,9 @@ title: रेंडर और कमिट
 
 कल्पना कीजिए कि आपके कौम्पोनॅन्टस रसोई में रसोइया हैं, सामग्री से स्वादिष्ट व्यंजन इकट्ठा करते हैं। ऐसे में, React वेटर है जो ग्राहकों से उनके रिक्वेस्ट्स लेता है और उन्हें उनके ऑर्डर्स लाके देता है। UI से रिक्वेस्ट करने और उसे सर्व करने की इस प्रोसेस के तीन स्टेप्स हैं
 
-<<<<<<< HEAD
-1. **ट्रिग्गरिंग** रेंडर (रसोईघर में अतिथि का ऑर्डर्स पहुंचाना)
-2. **रेंडरिंग** कौम्पोनॅन्ट (रसोई से ऑर्डर लेनाा)
-3. **कमिटिंग** DOM पर (टेबल पर ऑर्डर देना)
-=======
-1. **Triggering** a render (delivering the guest's order to the kitchen)
-2. **Rendering** the component (preparing the order in the kitchen)
-3. **Committing** to the DOM (placing the order on the table)
->>>>>>> 26a870e1c6e232062b760d37620d85802750e985
+1. **ट्रिगरिंग** एक रेंडर (रसोई में मेहमान का ऑर्डर डिलीवर करना)
+2. **रेंडरिंग** कौम्पोनॅन्ट (रसोई में ऑर्डर तैयार करना)
+3. **कमिटिंग** DOM में (टेबल पर ऑर्डर देना)
 
 <IllustrationBlock sequential>
   <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
