@@ -5,19 +5,16 @@ title: React डेवलपर टूल्स
 <Intro>
 
 React [कौम्पोनॅन्ट](/learn/your-first-component), का निरीक्षण करने के लिए React डेवलपर टूल्स का उपयोग करेंं, [props](/learn/passing-props-to-a-component) और [state](/learn/state-a-components-memory) एडिट करेंं, और परफॉरमेंस समस्याओं की पहचान करेंं।
+  
 </Intro>
 
-<<<<<<< HEAD
-## ब्राउज़र एक्सटेंशन {/*browser-extension*/}
-=======
 <YouWillLearn>
 
-* How to install React Developer Tools
+* React डेवलपर टूल कैसे इनस्टॉल करें
 
 </YouWillLearn>
 
-## Browser extension {/*browser-extension*/}
->>>>>>> 26a870e1c6e232062b760d37620d85802750e985
+## ब्राउज़र एक्सटेंशन {/*browser-extension*/}
 
 React के साथ बनी वेबसाइटों को डिबग करने का सबसे आसान तरीका React Developer Tools ब्राउज़र एक्सटेंशन को इनस्टॉल करना है। यह कई लोकप्रिय ब्राउज़रों के लिए उपलब्ध है:
 
