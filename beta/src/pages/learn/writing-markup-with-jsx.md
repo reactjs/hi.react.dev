@@ -4,7 +4,7 @@ title: JSX के साथ मार्कअप लिखना
 
 <Intro>
 
-JSX जावास्क्रिप्ट के लिए एक सिंटैक्स एक्सटेंशन है जो आपको जावास्क्रिप्ट फ़ाइल के अंदर HTML जैसा मार्कअप लिखने देता है। यद्यपि कौम्पोनॅन्ट्स को लिखने के अन्य तरीके हैं, अधिकांश React डेवलपर्स JSX की संक्षिप्तता को पसंद करते हैं, और अधिकांश कोडबेस इसका उपयोग करते हैं।
+*JSX* जावास्क्रिप्ट के लिए एक सिंटैक्स एक्सटेंशन है जो आपको जावास्क्रिप्ट फ़ाइल के अंदर HTML जैसा मार्कअप लिखने देता है। यद्यपि कौम्पोनॅन्ट्स को लिखने के अन्य तरीके हैं, अधिकांश React डेवलपर्स JSX की संक्षिप्तता को पसंद करते हैं, और अधिकांश कोडबेस इसका उपयोग करते हैं।
 
 </Intro>
 
@@ -42,13 +42,13 @@ JavaScript
 
 <Diagram name="writing_jsx_sidebar" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Sidebar which calls the function isLoggedIn, highlighted in yellow. Nested inside the function highlighted in purple is the p tag from before, and a Form tag referencing the component shown in the next diagram.">
 
-Sidebar.js
+`Sidebar.js` React component
 
 </Diagram>
 
 <Diagram name="writing_jsx_form" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Form containing two handlers onClick and onSubmit highlighted in yellow. Following the handlers is HTML highlighted in purple. The HTML contains a form element with a nested input element, each with an onClick prop.">
 
-Form.js
+`Form.js` React component
 
 </Diagram>
 
