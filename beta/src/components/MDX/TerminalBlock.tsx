@@ -52,7 +52,8 @@ function TerminalBlock({level = 'info', children}: TerminalBlockProps) {
       <div className="bg-gray-90 dark:bg-gray-60 w-full rounded-t-lg">
         <div className="text-primary-dark dark:text-primary-dark flex text-sm px-4 py-0.5 relative justify-between">
           <div>
-            <IconTerminal className="inline-flex mr-2 self-center" /> Terminal
+            <IconTerminal className="inline-flex mr-2 self-center" />
+            टर्मिनल
           </div>
           <div>
             <button
@@ -62,7 +63,7 @@ function TerminalBlock({level = 'info', children}: TerminalBlockProps) {
                 setCopied(true);
               }}>
               <IconCopy className="inline-flex mr-2 self-center" />{' '}
-              {copied ? 'Copied' : 'Copy'}
+              {copied ? 'कॉपी किया जा चूका है !' : 'कॉपी'}
             </button>
           </div>
         </div>
