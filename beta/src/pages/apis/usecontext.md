@@ -6,6 +6,8 @@ title: useContext
 
 `useContext` is a React Hook that lets you read and subscribe to [context](/learn/passing-data-deeply-with-context) from your component.
 
+`useContext` एक React Hook है जो आपको आपके component से context padh kar
+
 ```js
 const value = useContext(SomeContext)
 ```
@@ -29,21 +31,27 @@ const value = useContext(SomeContext)
 ## Usage {/*usage*/}
 
 
-### Passing data deeply into the tree {/*passing-data-deeply-into-the-tree*/}
+### _data_ ko tree ki gahrai tak pass karna {/*passing-data-deeply-into-the-tree*/}
 
 Call `useContext` at the top level of your component to read and subscribe to [context](/learn/passing-data-deeply-with-context).
+
+[context](/learn/passing-data-deeply-with-context) ko padhne aur subscribe karne ke liye, `useContext` ko component ke sabse upari level pe bulaaye.
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { useContext } from 'react';
 
 function Button() {
   const theme = useContext(ThemeContext);
-  // ... 
+  // ...
 ```
 
 `useContext` returns the <CodeStep step={2}>context value</CodeStep> for the <CodeStep step={1}>context</CodeStep> you passed. To determine the context value, React searches the component tree and finds **the closest context provider above** for that particular context.
 
+`useContext` aapke dwaara pass kiya gaya <CodeStep step={1}>context</CodeStep> ka <CodeStep step={2}>context value</CodeStep> return karta hai. Context value ko determine karne ke liye, React component tree me kisi bhi context ke liye **sabse nasdeek context provider** ko doondhtha hai.
+
 To pass context to a `Button`, wrap it or one of its parent components into the corresponding context provider:
+
+`Button` me context pass karne ke liye, hum usse ya usske parent component ko uske tadanusaar context provider me wrap karte hai.
 
 ```js [[1, 3, "ThemeContext"], [2, 3, "\"dark\""], [1, 5, "ThemeContext"]]
 function MyPage() {
@@ -61,9 +69,13 @@ function Form() {
 
 It doesn't matter how many layers of components there are between the provider and the `Button`. When a `Button` *anywhere* inside of `Form` calls `useContext(ThemeContext)`, it will receive `"dark"` as the value.
 
+isse koi farak nahi padta ki provider aur `Button` ke pich me kitne layers hai. Jab `Form` ke andar kahi bhi koi `Button` `useContext(ThemeContext)` ko bulaata hai, usse value ki roop pr  `"dark"` milega.
+
 <Gotcha>
 
 `useContext()` always looks for the closest provider *above* the component that calls it. It searches upwards and **does not** consider providers in the component from which you're calling `useContext()`.
+
+`useContext()` hamesha sabse nasdeek provider apne bulaane waale component ke upar doondtha hai. Ye hamesha upar ki aur doondtha hai aur jis componenet se `useContext()` bula rahe ho uske context provider ko consider **nahi karta**.
 
 </Gotcha>
 
@@ -154,8 +166,11 @@ function Button({ children }) {
 ---
 
 ### Updating data passed via context {/*updating-data-passed-via-context*/}
+### Context dwaara pass kiya gaya data ko update karna {/*updating-data-passed-via-context*/}
 
 Often, you'll want the context to change over time. To update context, you need to combine it with [state](/apis/usestate). Declare a state variable in the parent component, and pass the current state down as the <CodeStep step={2}>context value</CodeStep> to the provider.
+
+Akhsar aap chahenge ki context samay ke saath badle. Context update karne ke liye, aap ko usse [state](/apis/usestate) ke saath jodna hoga. parent component me state variable declare kar, aur current state ko <CodeStep step={2}>context value</CodeStep> ke roop me niche provider ko pass kare.
 
 ```js {2} [[1, 4, "ThemeContext"], [2, 4, "theme"], [1, 11, "ThemeContext"]]
 function MyPage() {
@@ -823,7 +838,7 @@ export default function AddTask({ onAddTask }) {
           type: 'added',
           id: nextId++,
           text: text,
-        }); 
+        });
       }}>Add</button>
     </>
   );
@@ -1270,7 +1285,7 @@ export const LevelContext = createContext(0);
 
 You can pass any values via context, including objects and functions.
 
-```js [[2, 10, "{ currentUser, login }"]] 
+```js [[2, 10, "{ currentUser, login }"]]
 function MyApp() {
   const [currentUser, setCurrentUser] = useState(null);
 

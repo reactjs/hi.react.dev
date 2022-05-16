@@ -150,6 +150,8 @@ Yh [importing and exporting components](/learn/importing-and-exporting-component
 
 Call `createContext` outside of any components to create a context.
 
+context banane ke liye `createContext` ko kisi bhi कौम्पोनॅन्ट ke bahar _call_ kare.
+
 ```js
 import { createContext } from 'react';
 
@@ -160,20 +162,31 @@ const ThemeContext = createContext('light');
 
 * `defaultValue`: The value that you want the context to have when there is no matching context provider in the tree above the component that reads context. If you don't have any meaningful default value, specify `null`. The default value is meant as a "last resort" fallback. It is static and never changes over time.
 
+* `defaultValue`: Vo _value_ jo aap chahte hai ki context ke pass ho jab context padne waala _component_ ke upar tree me koi bhi _matching context provider_ nahi hai. Yadi aap ke pas koi sarthak _default value_ nahi hai, to `null` _specify_ ki jiye. _Default value_ ek _"last resort" fallback_ hai. Iska roop _static_ hai aur samay ke saath iska _value_ nahi badalta.
+
 #### Returns {/*returns*/}
 
 `createContext` returns a context object.
 
+`createContext` ek _context object_ return karta hai.
+
 **The context object itself does not hold any information.** It represents _which_ context other components can read or provide. Typically, you will use [`SomeContext.Provider`](#provider) in components above to specify the context value, and call [`useContext(SomeContext)`](/apis/usecontext) in components below to read it. The context object has a few properties:
+
+**_context object_ apne aap me koi bhi information nahi rakta.**Yh _represent_ karta hai _kaunsa (italics)_ context baaki _components_ padh ya pradaan kr sakta hai. आम तौर पर aap _components_ me _context value_ specify karne ke liye, [`SomeContext.Provider`](#provider) ka istemaal karte hai aur usse padne ke liye uske niche ke components me [`useContext(SomeContext)`] ko bulaate hai.
 
 * `SomeContext.Provider` lets you provide the context value to components.
 * `SomeContext.Consumer` is an alternative and rarely used way to read the context value.
+
+* `SomeContext.Provider` aapko components ko _context value_ pradhaan karne deta hai.
+* `SomeContext.Consumer` se bhi aap _context value_ padh sakte hai leki yh ek vikalp hai aur kabhi-kabhar istemaal kiya ja tha hai.
 
 ---
 
 ### `SomeContext.Provider` {/*provider*/}
 
 Wrap your components into a context provider to specify the value of this context for all components inside:
+
+components ko ek _context provider_ me wrap kar, saare andar ke components ko context ka value _specify_ karta hai.
 
 ```js
 function App() {
@@ -191,11 +204,14 @@ function App() {
 
 * `value`: The value that you want to pass to all the components reading this context inside this provider, no matter how deep. The context value can be of any type. A component calling [`useContext(SomeContext)`](/apis/usecontext) inside of the provider receives the `value` of the innermost corresponding context provider above it.
 
+* `value`: Wo value jo aap saare context padhne waale components me pass karna chahte ho chaahe wo component kitna bhi gahra ho. yh _context value_ kisi bhi _type_ ka ho sakta hai.
 ---
 
 ### `SomeContext.Consumer` {/*consumer*/}
 
 Before `useContext` existed, there was an older way to read context:
+
+`useContext` ke pehle, context padhne ka purana tarika:
 
 ```js
 function Button() {
@@ -212,6 +228,8 @@ function Button() {
 
 Although this older way still works, but **newly written code should read context with [`useContext()`](/apis/usecontext) instead:**
 
+Halanki yh tareeka ab bhi kaam karta hai, lekin **haal me likhe gaye code ko [`useContext()`](/apis/usecontext)ki madad se context padna chahiye:**
+
 ```js
 function Button() {
   // ✅ Recommended way
@@ -224,20 +242,25 @@ function Button() {
 
 * `children`: A function. React will call the function you pass with the current context value determined by the same algorithm as [`useContext()`](/apis/usecontext) does, and render the result you return from this function. React will also re-run this function and update the UI whenever the context passed from the parent components have changed.
 
+* `children`: ek function hai. React us function ko bulaayga jo aapne pass kiya hai वर्तमान _context values_ ke saath. Yh context values us algorithm dwaara tay kiya jaa tha hai jo [`useContext()`](/apis/usecontext) istemaal karta hai. Function se return kiya gaya result React dwara render kiya jata hai. Jab bhi parent component se bheja gaya context badalta hai, React is function ko phir se bula kar UI update karta hai.
+
 ---
 
 ## Troubleshooting {/*troubleshooting*/}
 
-### I can't find a way to change the context value {/*i-cant-find-a-way-to-change-the-context-value*/}
-
-
+### Mujhse context values nahi badal rahe {/*i-cant-find-a-way-to-change-the-context-value*/}
 Code like this specifies the *default* context value:
 
+*default* context value ko specify karne ke liye, aise code karo:
 ```js
 const ThemeContext = createContext('light');
 ```
 
 This value never changes. React only uses this value as a fallback if it can't find a matching provider above.
 
+yh value kabhi badlega nahi. Jab koi matching provider nahi milega to React isse ek fallback value ki tarah istemaal karega.
+
 To make context change over time, [add state and wrap components in a context provider](/apis/usecontext#updating-data-passed-via-context).
+
+Context ko samay ke saath badalne ke liye, [state aur wrap components ko ek context provider me add kijiye](/apis/usecontext#updating-data-passed-via-context).
 
