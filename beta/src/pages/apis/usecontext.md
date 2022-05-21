@@ -6,7 +6,7 @@ title: useContext
 
 `useContext` is a React Hook that lets you read and subscribe to [context](/learn/passing-data-deeply-with-context) from your component.
 
-`useContext` एक React Hook है जो आपको आपके component से context padh kar
+`useContext` एक React Hook है जो आपको आपके component से context padh कर
 
 ```js
 const value = useContext(SomeContext)
@@ -47,7 +47,7 @@ function Button() {
 
 `useContext` returns the <CodeStep step={2}>context value</CodeStep> for the <CodeStep step={1}>context</CodeStep> you passed. To determine the context value, React searches the component tree and finds **the closest context provider above** for that particular context.
 
-`useContext` aapke dwaara pass kiya gaya <CodeStep step={1}>context</CodeStep> ka <CodeStep step={2}>context value</CodeStep> return karta hai. Context value ko determine karne ke liye, React component tree me kisi bhi context ke liye **sabse nasdeek context provider** ko doondhtha hai.
+`useContext` आपके dwaara pass kiya gaya <CodeStep step={1}>context</CodeStep> ka <CodeStep step={2}>context value</CodeStep> return karta hai. Context value ko determine karne ke liye, React component tree me kisi bhi context ke liye **sabse nasdeek context provider** ko doondhtha hai.
 
 To pass context to a `Button`, wrap it or one of its parent components into the corresponding context provider:
 
@@ -170,7 +170,7 @@ function Button({ children }) {
 
 Often, you'll want the context to change over time. To update context, you need to combine it with [state](/apis/usestate). Declare a state variable in the parent component, and pass the current state down as the <CodeStep step={2}>context value</CodeStep> to the provider.
 
-Akhsar aap chahenge ki context samay ke saath badle. Context update karne ke liye, aap ko usse [state](/apis/usestate) ke saath jodna hoga. parent component me state variable declare kar, aur current state ko <CodeStep step={2}>context value</CodeStep> ke roop me niche provider ko pass kare.
+Akhsar aap chahenge ki context samay ke saath badle. Context update karne ke liye, aap ko usse [state](/apis/usestate) ke saath jodna hoga. parent component me state variable declare कर, aur current state ko <CodeStep step={2}>context value</CodeStep> ke roop me niche provider ko pass kare.
 
 ```js {2} [[1, 4, "ThemeContext"], [2, 4, "theme"], [1, 11, "ThemeContext"]]
 function MyPage() {
@@ -190,11 +190,16 @@ function MyPage() {
 
 Now any `Button` inside of the provider will receive the current `theme` value. If you call `setTheme` to update the `theme` value that you pass to the provider, all `Button` components will re-render with the new `'light'` value.
 
-<Recipes titleText="Examples of updating context" titleId="examples-basic">
+Kisi bhi `Button` ke andar ke provider ko abhi ka `theme` value milega. Agar aap `setTheme` ko bulaate hai `theme` ka value update karne ke liye jo aap provider ko pass karte hai, to saare `Button` ke components re-render honge naye `light` value ke saath.
+
+<Recipes titleText="Examples of updating context / Context update karne ke udharan" titleId="examples-basic">
 
 ### Updating a value via context {/*updating-a-value-via-context*/}
+### Context dwaara value ko update karna {/*updating-a-value-via-context*/}
 
 In this example, the `MyApp` component holds a state variable which is then passed to the `ThemeContext` provider. Checking the "Dark mode" checkbox updates the state. Changing the provided value re-renders all the components using that context.
+
+Is udhaaran me `MyApp` component me ek state variable hai jo `ThemeContext` provider me pass kiya jata hai. "Dark mode" checkbox ko check karne se state update hota hai. diye gaye value ko badalne se uss context ko USE karke saare components re-render hote hai.
 
 <Sandpack>
 
@@ -294,11 +299,16 @@ function Button({ children }) {
 
 Note that `value="dark"` passes the `"dark"` string, but `value={theme}` passes the value of the JavaScript `theme` variable with [JSX curly braces](/learn/javascript-in-jsx-with-curly-braces). Curly braces also let you pass context values that aren't strings.
 
+Dhyaan dijiye ki `value="dark"` `"dark"` string ko pass karta hai lekin `value={theme}` JavaScipt ka `theme` variable ka value pass karta hai [JSX curly braces](/learn/javascript-in-jsx-with-curly-braces) ke saath. Curly braces aapko wo context value pass karne dete hai jo strings nahi hai.
+
 <Solution />
 
 ### Updating an object via context {/*updating-an-object-via-context*/}
+### Context dwaara object ko update karna {/*updating-an-object-via-context*/}
 
 In this example, there is a `currentUser` state variable which holds an object. You combine `{ currentUser, setCurrentUser }` into a single object and pass it down through the context inside the `value={}`. This lets any component below, such as `LoginButton`, read both `currentUser` and `setCurrentUser`, and then call `setCurrentUser` when needed.
+
+Is udhaaran me ek `currentUser` state variable jisme ek object hai. aap `{ currentUser, setCurrentUser }` ko ek single object me combine कर usse context pass karte hai `value={}` ke andar. Ye koi bhi nichli component jaise `LoginButton`, dono `currentUser` aur `setCurrentUser` ko padte hai, aur phir zaroorat ke anusaar `setCurrentUser` ko bulaate hai.
 
 <Sandpack>
 
@@ -389,8 +399,11 @@ label {
 <Solution />
 
 ### Multiple contexts {/*multiple-contexts*/}
+### Multiple contexts {/*multiple-contexts*/}
 
 In this example, there are two independent contexts. `ThemeContext` provides the current theme, which is a string, while `CurrentUserContext` holds the object representing the current user.
+
+Is udhaaran me do independent context hai. `ThemeContext` abhi ka theme deta hai string ke roop me, jabki `CurrentUserContext` ek object hold karta hai jo current user ko represent karta hai.
 
 <Sandpack>
 
@@ -556,8 +569,11 @@ label {
 <Solution />
 
 ### Extracting providers to a component {/*extracting-providers-to-a-component*/}
+### Extracting providers to a component {/*extracting-providers-to-a-component*/}
 
 As your app grows, it is expected that you'll have a "pyramid" of contexts closer to the root of your app. There is nothing wrong with that. However, if you dislike the nesting aesthetically, you can extract the providers into a single component. In this example, `MyProviders` hides the "plumbing" and renders the children passed to it inside the necessary providers. Note that the `theme` and `setTheme` state is needed in `MyApp` itself, so `MyApp` still owns that piece of the state.
+
+Jaise आपका app grow karta hai, ye umeed hoti hai ki app ke root ke nasdeek context ka "pyramid" hoga. Isme kuch galata nahi hai. Lekin agar aapko nesting saundarya ki drishti se pasand nahi, aap ek hi component me providers ko extract कर sakte hai. Is udhaaran me, `MyProviders`"plumbing" ko chupatha hai and saare children jo apne zaroorat ke providers ke andar pass kiye gaye hai usse render karta hai. Dhyaan rakha ki `theme` aur `setTheme` state ki zaroorat `MyApp` me hi hai, to `MyApp` ab bhi us state ka maalik hai.
 
 <Sandpack>
 
@@ -731,10 +747,14 @@ label {
 <Solution />
 
 ### Scaling up with context and a reducer {/*scaling-up-with-context-and-a-reducer*/}
+### Reducer aur context ke saath scale karna {/*scaling-up-with-context-and-a-reducer*/}
 
 In larger apps, it is common to combine context with a [reducer](/apis/usereducer) to extract the logic related to some state out of components. In this example, all the "wiring" is hidden in the `TasksContext.js`, which contains a reducer and two separate contexts.
 
+Bade apps me ye samaanya baath hai ki context ko [reducer](/apis/usereducer) ke saath combine karna taaki components se logic extract कर sake jo kisi state se संबंधित hai.
+
 Read a [full walkthrough](/learn/scaling-up-with-reducer-and-context) of this example.
+Is udhaaran ka [pura walkthrough](/learn/scaling-up-with-reducer-and-context) padhiye.
 
 <Sandpack>
 
@@ -943,22 +963,27 @@ ul, li { margin: 0; padding: 0; }
 ### Specifying a fallback default value {/*specifying-a-fallback-default-value*/}
 
 If React can't find any providers of that particular <CodeStep step={1}>context</CodeStep> in the parent tree, the context value returned by `useContext()` will be equal to the <CodeStep step={3}>default value</CodeStep> that you specified when you [created that context](/api/createcontext):
+Agar React us विशिष्ट (particular) <CodeStep step={1}>context</CodeStep> ka providers parent tree me naa doondh paye, to `useContext()` dwaara return kiya gaya context value [context banate samay](/api/createcontext) rakhe gaye <CodeStep step={3}>default value</CodeStep> ke samaan hoga:
 
 ```js [[1, 1, "ThemeContext"], [3, 1, "null"]]
 const ThemeContext = createContext(null);
 ```
 
 The default value **never changes**. If you want to update context, use it with state as [described above](#updating-data-passed-via-context).
+Default value kabhi **badalta nahi hai**. Agar aapko context update karna hai to usse state ke saath [aise use kare](#updating-data-passed-via-context).
 
 Often, instead of `null`, there is some more meaningful value you can use as a default, for example:
+Akhsar `null` ki jagah aur bhi saarthak value hai jo aap default ke roop me istemaal कर sakte hai, udhaaran:
 
 ```js [[1, 1, "ThemeContext"], [3, 1, "light"]]
 const ThemeContext = createContext('light');
 ```
 
 This way, if you accidentally render some component without a corresponding provider, it won't break. This also helps your components work well in a test environment without setting up a lot of providers in the tests.
+is tarah, agar app galati se koi component bina provider ke render karte hai, to wo tootega nahi. Ye आपके components ko sahi se test environment kaam karne deta hai test me adhik providers ko set up kiye bagair.
 
 In the example below, the "Toggle theme" button is always light because it's **outside any theme context provider** and the default context theme value is `'light'`. Try editing the default theme to be `'dark'`.
+Niche diye gaye udhaaran me, "Toggle theme" button hamesha /light/ rehta hai kyunki ye **kisi bhi context provider ke bahar hai** aur default context me theme value `'light'` hai. Default theme ko `'dark'` edit karne ki koshish kare.
 
 <Sandpack>
 
@@ -1056,8 +1081,10 @@ function Button({ children, onClick }) {
 ---
 
 ### Overriding context for a part of the tree {/*overriding-context-for-a-part-of-the-tree*/}
+### Tree ke hissa ke liye context override karna {/*overriding-context-for-a-part-of-the-tree*/}
 
 You can override the context for a part of the tree by wrapping that part in a provider with a different value.
+Aap tree ke kisi bhi hisse ka context override कर sakte hai us hisse ko ek provider me wrap karke jiska dusra value hai.
 
 ```js {3,5}
 <ThemeContext.Provider value="dark">
@@ -1070,12 +1097,14 @@ You can override the context for a part of the tree by wrapping that part in a p
 ```
 
 You can nest and override providers as many times as you need.
+aap providers ko nest aur override जितनी बार आपको आवश्यकता हो कर sakte ho.
 
-<Recipes title="Examples of overriding context">
+<Recipes title="Examples of overriding context/ Context ko override karne ke udhaaran">
 
 ### Overriding a theme {/*overriding-a-theme*/}
 
 Here, the button *inside* the `Footer` receives a different context value (`"light"`) than the buttons outside (`"dark"`).
+yaha, `Footer` ke *andar* jo button hai usse bahar ke buttons (`"dark"`) se alag context value(`"light"`) milta hai.
 
 <Sandpack>
 
@@ -1183,7 +1212,10 @@ footer {
 
 You can "accumulate" information when you nest context providers. In this example, the `Section` component keeps track of the `LevelContext` which specifies the depth of the section nesting. It reads the `LevelContext` from the parent section, and provides the `LevelContext` number increased by one to its children. As a result, the `Heading` component can automatically decide which of the `<h1>`, `<h2>`, `<h3>`, ..., tags to use based on how many `Section` components it is nested inside of.
 
+Jab aap context providers ko nest karte hai, aap information ko "जमा" कर sakte ho. Is udhaaran me, `Section` component `LevelContext` pe nazar rakhta hai jo vishesh roop se section nesting ki gahrai kahta hai.Yah parent section se `LevelContext` ko padhta hai aur `LevelContext` ko ek se badhake apne baccho ko deta hai. नतीजतन, `Heading` component खुद ब खुद fesla le sakta hai ki `<h1>`, `<h2>`, `<h3>`, ..., me se kaunsa tegs istemaal karna hai aur kitne `Section` components ke andar nested hai.
+
 Read a [detailed walkthrough](/learn/passing-data-deeply-with-context) of this example.
+Is udhaaran ka [विस्तृत walkthrough](/learn/passing-data-deeply-with-context) padhiye.
 
 <Sandpack>
 
@@ -1282,8 +1314,10 @@ export const LevelContext = createContext(0);
 ---
 
 ### Optimizing re-renders when passing objects and functions {/*optimizing-re-renders-when-passing-objects-and-functions*/}
+### Re-render ko optimize karna jab objects aur functions pass kiye jaate hai. {/*optimizing-re-renders-when-passing-objects-and-functions*/}
 
 You can pass any values via context, including objects and functions.
+Context dwaara aap koi bhi value pass कर sakte hai, objects aur functions समेत.
 
 ```js [[2, 10, "{ currentUser, login }"]]
 function MyApp() {
@@ -1304,7 +1338,12 @@ function MyApp() {
 
 Here, the <CodeStep step={2}>context value</CodeStep> is a JavaScript object with two properties, one of which is a function. Whenever `MyApp` re-renders (for example, on a route update), this will be a *different* object pointing at a *different* function, so React will also have to re-render all components deep in the tree that call `useContext(AuthContext)`.
 
+yaha pe, <CodeStep step={2}>context value</CodeStep> ek JavaScript object hai jiske do गुण hai, jisme se ek function hai. Jab bhi `MyApp` re-render hota hai (udhaaran me, kisi route ka update hona), ye ek *alag* object hoga jo *alag* function ko point karta hai. To React ko tree ke gahrai me saare components jo `useContext(AuthContext)` bulaate hai unhe re-render karna hoga.
+
 In smaller apps, this is not a problem. However, there is no need to re-render them if the underlying data, like `currentUser`, has not changed. To help React take advantage of that fact, you may wrap the `login` function with [`useCallback`](/apis/usecallback) and wrap the object creation into [`useMemo`](/apis/usememo). This is a performance optimization:
+
+Chotte apps me ye ek problem nahi hai. Lekin, jab koi आधारभूत data, jaise `currentUser`, ka value badla nahi to usse re-render karne ki zaroorat nahi hai. React ko uska fayda utane me madad karne ke liye, aap `login` function ko [`useCallback`](/apis/usecallback) ke saaath wrap कर sakte hai aur object creation [`useMemo`](/apis/usememo) ke saath. Ye ek performance optimization:
+
 
 ```js {1,6-9,11-14}
 import { useCallback, useMemo } from 'react';
@@ -1332,6 +1371,8 @@ function MyApp() {
 
 The `login` function does not use any information from the render scope, so you can specify an empty array of dependencies. The `contextValue` object consists of `currentUser` and `login`, so it needs to list both as dependencies. As a result of this change, the components calling `useContext(AuthProvider)` won't need to re-render unless `currentUser` changes. Read more about [skipping re-renders with memoization](TODO).
 
+`login` function render scope ka koi bhi information use nahi karta, to aap dependencies ki ek khali array उल्लिखित कर sakte hai. `contextValue` `currentUser` aur `login` se bana hua hai, to usse dono ko dependencies ke roop me सूचीt karna hoga. Is change ke नतीजतन, `useContext(AuthProvider)`ko bulaane waale components ko tab tak re-render nahi karna hoga jab tak `currentUser` nahi badalta. [memoization ke saath re-renders ko skip karna](TODO) ke baare me padhiye.
+
 ---
 
 ## Reference {/*reference*/}
@@ -1339,6 +1380,8 @@ The `login` function does not use any information from the render scope, so you 
 ### `useContext(SomeContext)` {/*usecontext*/}
 
 Call `useContext` at the top level of your component to read and subscribe to [context](/learn/passing-data-deeply-with-context).
+
+[context](/learn/passing-data-deeply-with-context) ko padne aur subscribe karne ke liye, `useContext` ko sabse uupri level pe bulaaye.
 
 ```js
 import { useContext } from 'react';
@@ -1349,39 +1392,65 @@ function MyComponent() {
 ```
 
 [See more examples above.](#examples-basic)
+[Aur udhaaran ke liye, uupar dekhiye](#examples-basic)
 
 #### Parameters {/*parameters*/}
 
 * `SomeContext`: The context that you've previously created with [`createContext`](/api/createcontext). The context itself does not hold the information, it only represents the kind of information you can provide or read from components.
 
+* `SomeContext`: Vaha context jo aapne pehle [`createContext`](/api/createcontext) ke saath banaaya tha. Apne aap me context me koi information nahi hai, wo sirf represent karta hai information ka kind jo component se padh ya de sakte ho.
+
 #### Returns {/*returns*/}
 
 `useContext` returns the context value for the calling component. It is determined as the `value` passed to the closest `SomeContext.Provider` above the calling component in the tree. If there is no such provider, then the returned value will be the `defaultValue` you have passed to [`createContext`](/api/createcontext) for that context. The returned value is always up-to-date. React automatically re-renders components that read some context if it changes.
 
+`useContext` bulaane waale component ko context value return karta hai. Tree me bulaane waale component ke sabse nasdeek `SomeContext.Provider` me pass kiya gaya `value` ko determine kiya jaata hai.
+
 #### Caveats {/*caveats*/}
 
 * `useContext()` call in a component is not affected by providers returned from the *same* component. The corresponding `<Context.Provider>` **needs to be *above*** the component doing the `useContext()` call.
+
+* kisi bhi component me `useContext()` ka call *ussi* component ke providers se affected nahi hai. Uske corresponding me `<Context.Provider>` ko `useContext()` bulaane waale component ke ***upar* hona hi chaiye**.
+
 * React **automatically re-renders** all the children that use a particular context starting from the provider that receives a different `value`. The previous and the next values are compared with the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. Skipping re-renders with [`memo`](/apis/memo) does not prevent the children receiving fresh context values from above.
+
+* React saare bacche ko **auto matically re-render karta hai** jo particular context ka istemaal karte hai us provider se shuru karta hai jisse `value` ka alag value milta hai. Pehle ka aur agla value ko [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) ke saath compare kiya jaata hai.
+
 * If your build system produces duplicates modules in the output (which can happen if you use symlinks), this can break context. Passing something via context only works if `SomeContext` that you use to provide context and `SomeContext` that you use to read it are ***exactly* the same object**, as determined by a `===` comparison.
+
+* Agar आपका build system duplicate module output me produce karta hai (agar symlinks karte ho to ho sakta hai), ye context tod sakta hai. Context dwaara pass karna sirf tab kaam karta hai jab आपके dwaare use kiya gaya `SomeContext` provide karne ke liye aur `SomeContext` padne ke liye ***exactly* ek hi object ke hai** jo `===` comparison se determine kiya jaa tha hai.
 
 ---
 
 ## Troubleshooting {/*troubleshooting*/}
+## Troubleshooting {/*troubleshooting*/}
 
 ### My component doesn't see the value from my provider {/*my-component-doesnt-see-the-value-from-my-provider*/}
+### Mera component ko provider ka value nahi dikh raha {/*my-component-doesnt-see-the-value-from-my-provider*/}
 
 There are a few common ways that this can happen:
+Ye bahut kam aur aam tarike hai jisse ye ho sakta hai:
 
 1. You're rendering `<SomeContext.Provider>` in the same component (or below) as where you're calling `useContext()`. Move `<SomeContext.Provider>` *above and outside* the component calling `useContext()`.
+
+1. Aap `<SomeContext.Provider>` ko usi (ya uske niche) component me render कर rahe hai jaha aap `useContext()` ko bula rahe hai. `<SomeConterx.Provider>` ko `useContext()` ko bulaane waale component ke *upar aur bahar* move kijiye.
+
 2. You may have forgotten to wrap your component with `<SomeContext.Provider>`, or you might have put it in a different part of the tree than you thought. Check whether the hierarchy is right using [React DevTools](/learn/react-developer-tools).
+
+2.Aap apne component `<SomeContext.Provider>` ke saath wrap karna bhul gaye honge ya phir tree ke kisi aur hisse me rakha hoga. [React DevTools](/learn/react-developer-tools) ke sahyod se check kare yadi आपका hierarchy sahi hai.
+
 3. You might be running into some build issue with your tooling that causes `SomeContext` as seen from the providing component and `SomeContext` as seen by the reading component to be two different objects. This can happen if you use symlinks, for example. You can verify this by assigning them to globals like `window.SomeContext1` and `window.SomeContext2` and then checking whether `window.SomeContext1 === window.SomeContext2` in the console. If they're not the same, you need to fix that issue on the build tool level.
 
-### I am always getting `undefined` from my context although the default value is different {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
+3. Aap apne tooling ke saath kisi build issue ko encounter कर rahe honge jiske कारण `SomeContext` dene waale component aur padne waale component ko alag-alag objects dikh rahe honge. udhaaran ke liye, ye symlinks use karne se ho sakta hai. Veriy karne ke liye, aap unhe globals assign kariye jaise `window.SomeContext1` and `window.SomeContext2` aur phir console me check kariye yadi `window.SomeContext1 === window.SomeContext2`. Yadi vaha dono same nahi hai to aapko yh issue build tool level pe fix karna hoga.
 
+### I am always getting `undefined` from my context although the default value is different {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
+### Mujhe mere context se hamesha `undefined` mil raha hai jabki default value alag hai {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
 You might have a provider without a `value` in the tree:
+आपके tree me ek provider hoga jiska `value` nahi hai.
 
 ```js {1,2}
 // 🚩 Doesn't work: no value prop
+// 🚩 Kaam nahi karta: value prop nahi hai
 <ThemeContext.Provider>
    <Button />
 </ThemeContext.Provider>
@@ -1389,10 +1458,14 @@ You might have a provider without a `value` in the tree:
 
 If you forget to specify `value`, it's like passing `value={undefined}`.
 
+Agar aap `value` ko spasht roop se nahi pass karte to `value={undefined}` ko pass karne ke bara bar hua.
+
 You may have also mistakingly used a different prop name by mistake:
+Aap ne galti se koi aur prop name ka istemaal kiya hoga.
 
 ```js {1,2}
 // 🚩 Doesn't work: prop should be called "value"
+// 🚩 Kaam nahi karta: prop ka naam "value" hona chahiye
 <ThemeContext.Provider theme={theme}>
    <Button />
 </ThemeContext.Provider>
@@ -1400,11 +1473,16 @@ You may have also mistakingly used a different prop name by mistake:
 
 In both of these cases you should see a warning from React in the console. To fix them, call the prop `value`:
 
+In dono case me aapko console me React se ek warning milna chahiye. Isse fix karne ke liye, `value` prop ko bulaaye:
+
 ```js {1,2}
 // ✅ Passing the value prop
+// ✅ Value prop ko pass karna
 <ThemeContext.Provider value={theme}>
    <Button />
 </ThemeContext.Provider>
 ```
 
 Note that the [default value from your `createContext(defaultValue)` call](#specifying-a-fallback-default-value) is only used **if there is no matching provider above at all.** If there is a `<SomeContext.Provider value={undefined}>` component somewhere in the parent tree, the component calling `useContext(SomeContext)` *will* receive `undefined` as the context value.
+
+Dhyaan rakhe ki [आपके `createContext(defaultValue)` call ki default value](#specifying-a-fallback-default-value) tab hi use hoti hai jab **upar koi bhi matching provider nahi hai.** Agar parent tree me kahi pe koi `<SomeContext.Provider value={undefined}>` component hai to `useContext(SomeContext)` ko bulaane waala component context value `undefined` *hi* milega.

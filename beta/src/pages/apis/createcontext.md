@@ -46,7 +46,7 @@ const AuthContext = createContext(null);
 
 `createContext` returns a <CodeStep step={1}>context object</CodeStep>. Components can read context by passing it to [`useContext()`](/apis/usecontext):
 
-`createContext` ek <CodeStep step={1}>context object</CodeStep> _return_ karta hai. कौम्पोनॅन्ट context ko  [`useContext()`](/apis/usecontext) me pass kar padh sakte hai:
+`createContext` ek <CodeStep step={1}>context object</CodeStep> _return_ karta hai. कौम्पोनॅन्ट context ko  [`useContext()`](/apis/usecontext) me pass कर padh sakte hai:
 
 ```js [[1, 2, "ThemeContext"], [1, 7, "AuthContext"]]
 function Button() {
@@ -99,7 +99,7 @@ Ab `Page` कौम्पोनॅन्ट aur uske andar jitne bhi कौम�
 
 Often, components in different files will need access to the same context. This is why it's common to declare contexts in a separate file. Then you can use the [`export` statement](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) to make context available for other files:
 
-Akhsar, alag-alag _files_ me rakhe gaye कौम्पोनॅन्टs ko ek hi context _access_ karne ki zaroorat hai. Isiliye saare context ko ek alag _file_ me _declare_ karna ek sadaran baat hai. Phir, [`export` statement](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) ka istemaal kar, context ko saare _files_ me _available_ kar sakte ho:
+Akhsar, alag-alag _files_ me rakhe gaye कौम्पोनॅन्टs ko ek hi context _access_ karne ki zaroorat hai. Isiliye saare context ko ek alag _file_ me _declare_ karna ek sadaran baat hai. Phir, [`export` statement](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) ka istemaal कर, context ko saare _files_ me _available_ कर sakte ho:
 
 ```js {4-5}
 // Contexts.js
@@ -111,7 +111,7 @@ export const AuthContext = createContext(null);
 
 Components declared in other files can then use the [`import`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import) statement to read or provide this context:
 
-Baaki _files_ me declare kiya gaya कौम्पोनॅन्टs ab is context ko [`import`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import) statement ko istemaal kar padh ya de sakte hai
+Baaki _files_ me declare kiya gaya कौम्पोनॅन्टs ab is context ko [`import`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import) statement ko istemaal कर padh ya de sakte hai
 ```js {2}
 // Button.js
 import { ThemeContext } from './Contexts.js';
@@ -186,7 +186,7 @@ const ThemeContext = createContext('light');
 
 Wrap your components into a context provider to specify the value of this context for all components inside:
 
-components ko ek _context provider_ me wrap kar, saare andar ke components ko context ka value _specify_ karta hai.
+components ko ek _context provider_ me wrap कर, saare andar ke components ko context ka value _specify_ karta hai.
 
 ```js
 function App() {
@@ -242,10 +242,11 @@ function Button() {
 
 * `children`: A function. React will call the function you pass with the current context value determined by the same algorithm as [`useContext()`](/apis/usecontext) does, and render the result you return from this function. React will also re-run this function and update the UI whenever the context passed from the parent components have changed.
 
-* `children`: ek function hai. React us function ko bulaayga jo aapne pass kiya hai वर्तमान _context values_ ke saath. Yh context values us algorithm dwaara tay kiya jaa tha hai jo [`useContext()`](/apis/usecontext) istemaal karta hai. Function se return kiya gaya result React dwara render kiya jata hai. Jab bhi parent component se bheja gaya context badalta hai, React is function ko phir se bula kar UI update karta hai.
+* `children`: ek function hai. React us function ko bulaayga jo aapne pass kiya hai वर्तमान _context values_ ke saath. Yh context values us algorithm dwaara tay kiya jaa tha hai jo [`useContext()`](/apis/usecontext) istemaal karta hai. Function se return kiya gaya result React dwara render kiya jata hai. Jab bhi parent component se bheja gaya context badalta hai, React is function ko phir se bula कर UI update karta hai.
 
 ---
 
+## Troubleshooting {/*troubleshooting*/}
 ## Troubleshooting {/*troubleshooting*/}
 
 ### Mujhse context values nahi badal rahe {/*i-cant-find-a-way-to-change-the-context-value*/}

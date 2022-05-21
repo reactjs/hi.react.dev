@@ -6,14 +6,14 @@ title: React APIs
 
 The React package contains all the APIs necessary to define and use [components](/learn/your-first-component).
 
-React package me saare zaroori API hai jisse aap [components](/learn/your-first-component) ko डिफाइन aur istemaal kar sakte ho.
+React package me saare zaroori API hai jisse aap [components](/learn/your-first-component) ko डिफाइन aur istemaal कर sakte ho.
 </Intro>
 
 ## इंस्टालेशन {/*इंस्टालेशन*/}
 
 It is available as [`react`](https://www.npmjs.com/package/react) on npm. You can also [add React to the page as a `<script>` tag](/learn/add-react-to-a-website).
 
-yh [`react`](https://www.npmjs.com/package/react) ke roop me npm pr उपलब्ध hai. Aap [ React ko `<script>` teg dwara page pe add kar sakte hai.](/learn/add-react-to-a-website)
+yh [`react`](https://www.npmjs.com/package/react) ke roop me npm pr उपलब्ध hai. Aap [ React ko `<script>` teg dwara page pe add कर sakte hai.](/learn/add-react-to-a-website)
 <PackageImport>
 
 <TerminalBlock>
