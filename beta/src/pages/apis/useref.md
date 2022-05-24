@@ -464,7 +464,7 @@ button { display: block; margin-bottom: 20px; }
 
 Sometimes, you may want to let the parent component manipulate the DOM inside of your component. For example, maybe you're writing a `MyInput` component, but you want the parent to be able to focus the input (which the parent has no access to). You can use a combination of `useRef` to hold the input and [`forwardRef`](/apis/forwardref) to expose it to the parent component. Read a [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) here.
 
-Kabhi kabhi, aapko parent component ko apne component ke andar manipulate karne dena chahte ho. Udhaaran me, aap shayd `MyInput` component likh rahe ho lekin aap chahte hai ki parent component input ko focus kar paaye (kjiska parent ka koi access nahi hai).
+Kabhi kabhi, aapko parent component ko apne component ke andar manipulate karne dena chahte ho. Udhaaran me, aap shayd `MyInput` component likh rahe ho lekin aap chahte hai ki parent component input ko focus kar paaye (kjiska parent ka koi access nahi hai). Aap `useRef` ko input hold karne ke liye hold kar sakte ho aur [`forwardRef`](/apis/forwardref) ko usse parent component ko expose karne ke liye use kar sakte ho. [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) ke liye yaha padhiye.
 
 <Sandpack>
 
@@ -502,8 +502,10 @@ export default function Form() {
 ---
 
 ### Avoiding recreating the ref contents {/*avoiding-recreating-the-ref-contents*/}
+### ref contents phir create karna avoid kare {/*avoiding-recreating-the-ref-contents*/}
 
 React saves the initial ref value once and ignores it on the next renders.
+React initial ref value ek baar save kar leta hai aur agle render me ignore karta hai.
 
 ```js
 function Video() {
@@ -513,7 +515,10 @@ function Video() {
 
 Although the result of `new VideoPlayer()` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating expensive objects.
 
+Halanki `new VideoPlayer()` ka result sirf initial render ke samay use hota hai, aap phir yh function har render me bulaate ho. Yh mehenge objects banane ke liye wasteful hai.
+
 To solve it, you may initialize the ref like this instead:
+Isse sudhaar ne ke liye, aap ref ko is tarah initialize kar sakte hai:
 
 ```js
 function Video() {
@@ -526,9 +531,12 @@ function Video() {
 
 Normally, writing or reading `ref.current` during render is not allowed. However, it's fine in this case because the result is always the same, and the condition only executes during initialization so it's fully predictable.
 
-<DeepDive title="How to avoid null checks when initializing useRef later">
+Normally, `ref.current` ko render karte samay padhna ya likhna allowed nahi hai. However, is case me thik hai kyunki result hamesha ek hi hai aur vh condition sirf initialization ke dauran execute hota hai to woh fully predictable hai.
+
+<DeepDive title="How to avoid null checks when initializing useRef later / useRef ko baad me initialie karne par null check kaise avoid kare">
 
 If you use a type checker and don't want to always check for `null`, you can try a pattern like this instead:
+Yadi aap type checker ka istemaal karte hai aur hamesha `null` ke liye nahi check karna chahte to aap kuch aisa pattern try kar sakte hai:
 
 ```js
 function Video() {
@@ -547,6 +555,7 @@ function Video() {
 ```
 
 Here, the `playerRef` itself is nullable. However, you should be able to convince your type checker that there is no case in which `getPlayer()` returns `null`. Then use `getPlayer()` in your event handlers.
+yaha pe `playerRef` apne aap me nullable hai. Lekin aapko apne typ checker ko convince karna aana chahiye ki aise koi case nahi hai jaha `getPlayer()` `null` return karta hai. Phir event handlers me `getPlayer()` use kar lena.
 
 </DeepDive>
 
@@ -557,6 +566,7 @@ Here, the `playerRef` itself is nullable. However, you should be able to convinc
 ### `useRef(initialValue)` {/*useref*/}
 
 Call `useRef` at the top level of your component to declare a [ref](/learn/referencing-values-with-refs).
+[ref](/learn/referencing-values-with-refs) declare karne ke liye apne component ke sabse upari level me `useRef` ko bulaaye.
 
 ```js
 import { useRef } from 'react';
@@ -568,18 +578,25 @@ function MyComponent() {
 ```
 
 See examples of [referencing values](#examples-value) and [DOM manipulation](#examples-dom).
+[referencing values](#examples-value) and [DOM manipulation](#examples-dom) ke udharan dekhiye.
 
 #### Parameters {/*parameters*/}
 
 * `initialValue`: The value you want the ref object's `current` property to be initially. It can be a value of any type. This argument is ignored after the initial render.
 
+* `initialValue`: Vh value jiska aap ref object ka `current` property ko initially chahte ho. Yh value kisi bhi type ka ho sakta hai. Initial render ke baad ye argument ignore hota hai.
+
 #### Returns {/*returns*/}
 
 `useRef` returns an object with a single property:
+`useRef` single property ke saath ek object return karta hai
 
 * `current`: Initially, it's set to the `initialValue` you have passed. You can later set it to something else. If you pass the ref object to React as a `ref` attribute to a JSX node, React will set its `current` property.
 
+* `current`: initially, ise aapke dwaara pass kiya gaya `initialValue` pe set kiya jaata hai. Aap ise baad me koi aur value pe bhi set kar sakte ho. Agar aap ref object ko React me `ref` attribute ke roop me pass karte ho, to React uska `current` property set karega.
+
 On the next renders, `useRef` will return the same object.
+Agle render se, `useRef` ek hi object return karega.
 
 #### Caveats {/*caveats*/}
 
@@ -588,13 +605,19 @@ On the next renders, `useRef` will return the same object.
 * Do not write _or read_ `ref.current` during rendering, except for [initialization](#avoiding-recreating-the-ref-contents). This makes your component's behavior unpredictable.
 * In Strict Mode, React will **call your component function twice** in order to [help you find accidental impurities](#my-initializer-or-updater-function-runs-twice). This is development-only behavior and does not affect production. This means that each ref object will be created twice, and one of the versions will be discarded. If your component function is pure (as it should be), this should not affect the logic of your component.
 
+* Aap `ref.current` property ko mutate kar sakte ho. Unlike stae, ye mutable hai. Lekin agar render me use hone waale oobject ko hold karta hai, to aapko wo object mutate nahi karna chahiye.
+* Jab aap `ref.current` property ko badalte hai, React aapke component ko re-render nahi karta. React ko changes ka pata nahi hota kyunki ref ek plain JavaScript object hai.
+* render karte samay, `ref.current` ko _padhna_ ya likhna mat sivaay [initialization](#avoiding-recreating-the-ref-contents) ke, Isse aapka component ka vyavaar unpredictable ho jaata hai.
+
 ---
 
 ## Troubleshooting {/*troubleshooting*/}
 
 ### I can't get a ref to a custom component {/*i-cant-get-a-ref-to-a-custom-component*/}
+### Mujhe ek custom component ke liye ref nahi mil raha {/*i-cant-get-a-ref-to-a-custom-component*/}
 
 If you try to pass a `ref` to your own component like this:
+Agar aap ek `ref` ko apne component ko aise pass kare:
 
 ```js
 const inputRef = useRef(null);
@@ -603,6 +626,7 @@ return <MyInput ref={inputRef} />
 ```
 
 You might get an error in the console:
+To aapko console me ek error mil sakta hai:
 
 <ConsoleBlock level="error">
 
@@ -611,8 +635,10 @@ Warning: Function components cannot be given refs. Attempts to access this ref w
 </ConsoleBlock>
 
 By default, your own components don't expose refs to the DOM nodes inside them.
+By default, aapke components unke andar ke DOM nodes ko ref expose nahi karte.
 
 To fix this, find the component that you want to get a ref to:
+isse sudhaar ne ke liye, uss component ko ddondo jiske liye aap ek ref chahte ho:
 
 ```js
 export default function MyInput({ value, onChange }) {
@@ -626,6 +652,7 @@ export default function MyInput({ value, onChange }) {
 ```
 
 And then wrap it in [`forwardRef`](/apis/forwardref) like this:
+Aur phir usse is tarah [`forwardRef`](/apis/forwardref) me wrap kare:
 
 ```js {3,8}
 import { forwardRef } from 'react';
@@ -644,5 +671,7 @@ export default MyInput;
 ```
 
 Then the parent component can get a ref to it.
+Phir uss tak parent component ko ref mil sakta hai.
 
 Read more about [accessing another component's DOM nodes](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes).
+[dusre component ke DOM nodes ko access](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) karne ke baare me aur padhiye.

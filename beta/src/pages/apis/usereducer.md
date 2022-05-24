@@ -694,7 +694,7 @@ ul, li { margin: 0; padding: 0; }
 ---
 
 ### Avoiding recreating the initial state {/*avoiding-recreating-the-initial-state*/}
-### Initial state ko phir recreate karna avoid kijiye {/*avoiding-recreating-the-initial-state*/}
+### Initial state ko phir recreate karna avoid karna {/*avoiding-recreating-the-initial-state*/}
 
 React saves the initial state once and ignores it on the next renders.
 React initial state ko ek baar save karta hai aur agle render me usse ignore karta hai.
