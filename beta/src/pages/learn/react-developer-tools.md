@@ -5,7 +5,14 @@ title: React डेवलपर टूल्स
 <Intro>
 
 React [कौम्पोनॅन्ट](/learn/your-first-component), का निरीक्षण करने के लिए React डेवलपर टूल्स का उपयोग करेंं, [props](/learn/passing-props-to-a-component) और [state](/learn/state-a-components-memory) एडिट करेंं, और परफॉरमेंस समस्याओं की पहचान करेंं।
+  
 </Intro>
+
+<YouWillLearn>
+
+* React डेवलपर टूल कैसे इनस्टॉल करें
+
+</YouWillLearn>
 
 ## ब्राउज़र एक्सटेंशन {/*browser-extension*/}
 
