@@ -77,4 +77,4 @@ Create React App, React के साथ काम शुरू करने क
 
 एक बड़े प्रोजेक्ट में, आप एक ही रिपॉजिटरी में कई पैकेजों को प्रबंधित करने के लिए एक टूल भी रखना चाह सकते हैं। [Nx](https://nx.dev/react) ऐसे टूल का एक उदाहरण है।
 
-अगर आप शुरू से ही अपनी खुद की जावास्क्रिप्ट टूलचेन सेट करना पसंद करते हैं, [इस गाइड को देखें](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) जो Create React App की कुछ कार्यक्षमता को फिर से बनाता है।
+अगर आप शुरू से ही अपनी खुद की JavaScript टूलचेन सेट करना पसंद करते हैं, [इस गाइड को देखें](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) जो Create React App की कुछ कार्यक्षमता को फिर से बनाता है।
