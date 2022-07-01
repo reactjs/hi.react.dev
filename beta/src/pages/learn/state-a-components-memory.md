@@ -1,10 +1,10 @@
 ---
-title: "State: A Component's Memory"
+title: "State: एक कौम्पोनॅन्ट की मेमोरी (यहाँ पे मेमोरी याने कंप्यूटर की मेमोरी)"
 ---
 
 <Intro>
 
-Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" should put a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state*.
+किसी क्रिया के परिणामस्वरूप कौम्पोनॅन्ट को अक्सर स्क्रीन पर जो कुछ भी है उसे बदलने की आवश्यकता होती है. फॉर्म में लिखते समय इनपुट फील्ड में बदलाव दिखना चाहिए, नेक्स्ट बटन दबाने से करौसाल ( कई चित्रो का एक ऐसा कंटेनर जिसमे एक वक्त पर एक चित्र ही नजर आऐ ) में दिखने वाला चित्र  बदलना चाहिए, प्रोडक्ट पे "खरीदो" इस बटन पे दबाने से वह प्रोडक्ट शॉपिंग कार्ट में आना चाहिए. कौम्पोनॅन्ट को चीजों को "याद रखना" चाहिए: वर्त्तमान में इनपुट की वैल्यू, वर्त्तमान में चित्र, वर्त्तमान में कार्ट की हालात. React में, इस प्रकार की कौम्पोनॅन्ट-विशिष्ट मेमोरी को *State* कहा जाता है.
 
 </Intro>
 
