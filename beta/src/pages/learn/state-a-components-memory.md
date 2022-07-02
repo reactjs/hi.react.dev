@@ -1,25 +1,25 @@
 ---
-title: "State: एक कौम्पोनॅन्ट की मेमोरी (यहाँ पे मेमोरी याने कंप्यूटर की मेमोरी)"
+शीर्षक: "State: एक कौम्पोनॅन्ट की मेमोरी"
 ---
 
 <Intro>
 
-किसी क्रिया के परिणामस्वरूप कौम्पोनॅन्ट को अक्सर स्क्रीन पर जो कुछ भी है उसे बदलने की आवश्यकता होती है. फॉर्म में लिखते समय इनपुट फील्ड में बदलाव दिखना चाहिए, नेक्स्ट बटन दबाने से करौसाल ( कई चित्रो का एक ऐसा कंटेनर जिसमे एक वक्त पर एक चित्र ही नजर आऐ ) में दिखने वाला चित्र  बदलना चाहिए, प्रोडक्ट पे "खरीदो" इस बटन पे दबाने से वह प्रोडक्ट शॉपिंग कार्ट में आना चाहिए. कौम्पोनॅन्ट को चीजों को "याद रखना" चाहिए: वर्त्तमान में इनपुट की वैल्यू, वर्त्तमान में चित्र, वर्त्तमान में कार्ट की हालात. React में, इस प्रकार की कौम्पोनॅन्ट-विशिष्ट मेमोरी को *State* कहा जाता है.
+किसी क्रिया के परिणामस्वरूप कौम्पोनॅन्ट को अक्सर स्क्रीन पर जो कुछ भी है उसे बदलने की आवश्यकता होती है. फॉर्म में लिखते समय इनपुट फील्ड में बदलाव दिखना चाहिए, नेक्स्ट बटन दबाने से करौसाल ( कई चित्रो का एक ऐसा कंटेनर जिसमे एक वक्त पर एक चित्र ही नजर आऐ ) में दिखने वाला चित्र बदलना चाहिए, प्रोडक्ट पे "खरीदो" इस बटन पे दबाने से वह प्रोडक्ट शॉपिंग कार्ट में आना चाहिए. कौम्पोनॅन्ट को चीजों को "याद रखना" चाहिए: वर्त्तमान में इनपुट की वैल्यू, वर्त्तमान में चित्र, वर्त्तमान में कार्ट की हालात. React में, इस प्रकार की कौम्पोनॅन्ट-विशिष्ट मेमोरी को *State* कहा जाता है.
 
 </Intro>
 
 <YouWillLearn>
 
-* How to add a state variable with the [`useState`](/apis/usestate) Hook
-* What pair of values the `useState` Hook returns
-* How to add more than one state variable
-* Why state is called local
+* state वेरिएबल को ['useState'] (/apis/usestate) hook(हुक) के साथ कैसे जोड़े
+* हुक, values(मूल्यों) की क्या जोड़ी वापस करता हे
+* एक से अधिक स्टेट वेरिएबल कैसे जोड़ें
+* state को स्थानीय (local) क्यों कहा जाता है
 
 </YouWillLearn>
 
-## When a regular variable isn’t enough {/*when-a-regular-variable-isnt-enough*/}
+## जब एक सामान्य वेरिएबल पर्याप्त नहीं है {/*जब एक सामान्य वेरिएबल पर्याप्त नहीं है*/}
 
-Here's a component that renders a sculpture image. Clicking the "Next" button should show the next sculpture by changing the `index` to `1`, then `2`, and so on. However, this **won't work** (you can try it!):
+यहाँ एक कौम्पोनॅन्ट है जो एक मूर्तिकला छवि प्रस्तुत करता है। "अगला" बटन पर क्लिक करने से `इंडेक्स` को `1`, फिर `2`, और इसी तरह बदलकर अगली मूर्तिकला दिखाई देनी चाहिए। हालांकि, यह **काम नहीं करेगा**(आप इसे आज़मा सकते हैं!):
 
 <Sandpack>
 
@@ -151,17 +151,17 @@ button {
 
 </Sandpack>
 
-The `handleClick()` event handler is updating a local variable, `index`. But two things prevent that change from being visible:
+`handleClick()` इवेंट हैंडलर एक स्थानीय वैरिएबल, `इंडेक्स` को अपडेट कर रहा है। लेकिन दो चीजें उस बदलाव को दिखने से रोकती हैं
 
-1. **Local variables don't persist between renders.** When React renders this component a second time, it renders it from scratch—it doesn't consider any changes to the local variables.
-2. **Changes to local variables won't trigger renders.** React doesn't realize it needs to render the component again with the new data.
+1. **स्थानीय वैरिएबल रेंडरर्स के बीच बने नहीं रहते हैं** जब React इस घटक को दूसरी बार प्रस्तुत करता है, यह इसे नए सिरे से प्रस्तुत करता है—यह स्थानीय वैरिएबल में किसी भी परिवर्तन पर विचार नहीं करता है।
+2. **स्थानीय वैरिएबल में बदलाव करने से रेंडर ट्रिगर नहीं होंगे.** रिएक्ट को एहसास नहीं होता है कि उसे नए डेटा के साथ कौम्पोनॅन्ट को फिर से प्रस्तुत करने की आवश्यकता है।
 
-To update a component with new data, two things need to happen:
+किसी कौम्पोनॅन्ट को नए डेटा से अपडेट करने के लिए, दो चीज़ें होनी चाहिए:
 
-1. **Retain** the data between renders.
-2. **Trigger** React to render the component with new data (re-rendering).
+1. रेंडरर्स के बीच डेटा को **बनाए रखें**।
+2. कौम्पोनॅन्ट को नए डेटा (पुनः प्रतिपादन) के साथ प्रस्तुत करने के लिए React को **प्रेरित करे**।
 
-The [`useState`](/apis/usestate) Hook provides those two things:
+यह दोनों चीज़े हुक [`useState`](/apis/usestate) प्रदान करता है::
 
 1. A **state variable** to retain the data between renders.
 2. A **state setter function** to update the variable and trigger React to render the component again.
