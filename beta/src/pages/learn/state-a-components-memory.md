@@ -4,7 +4,7 @@
 
 <Intro>
 
-किसी क्रिया के परिणामस्वरूप कौम्पोनॅन्ट को अक्सर स्क्रीन पर जो कुछ भी है उसे बदलने की आवश्यकता होती है. फॉर्म में लिखते समय इनपुट फील्ड में बदलाव दिखना चाहिए, नेक्स्ट बटन दबाने से करौसाल ( कई चित्रो का एक ऐसा कंटेनर जिसमे एक वक्त पर एक चित्र ही नजर आऐ ) में दिखने वाला चित्र बदलना चाहिए, प्रोडक्ट पे "खरीदो" इस बटन पे दबाने से वह प्रोडक्ट शॉपिंग कार्ट में आना चाहिए. कौम्पोनॅन्ट को चीजों को "याद रखना" चाहिए: वर्त्तमान में इनपुट की वैल्यू, वर्त्तमान में चित्र, वर्त्तमान में कार्ट की हालात. React में, इस प्रकार की कौम्पोनॅन्ट-विशिष्ट मेमोरी को *State* कहा जाता है.
+किसी क्रिया के परिणामस्वरूप कौम्पोनॅन्ट को अक्सर स्क्रीन पर जो कुछ भी है उसे बदलने की आवश्यकता होती है। फॉर्म में लिखते समय इनपुट फील्ड में बदलाव दिखना चाहिए, नेक्स्ट बटन दबाने से करौसाल ( कई चित्रो का एक ऐसा कंटेनर जिसमे एक वक्त पर एक चित्र ही नजर आऐ ) में दिखने वाला चित्र बदलना चाहिए, प्रोडक्ट पे "खरीदो" इस बटन पे दबाने से वह प्रोडक्ट शॉपिंग कार्ट में आना चाहिए। कौम्पोनॅन्ट को चीजों को "याद रखना" चाहिए: वर्त्तमान में इनपुट की वैल्यू, वर्त्तमान में चित्र, वर्त्तमान में कार्ट की हालात। React में, इस प्रकार की कौम्पोनॅन्ट-विशिष्ट मेमोरी को *State* कहा जाता है।
 
 </Intro>
 
@@ -161,36 +161,36 @@ button {
 1. रेंडरर्स के बीच डेटा को **बनाए रखें**।
 2. कौम्पोनॅन्ट को नए डेटा (पुनः प्रतिपादन) के साथ प्रस्तुत करने के लिए React को **प्रेरित करे**।
 
-यह दोनों चीज़े हुक [`useState`](/apis/usestate) प्रदान करता है::
+यह दोनों चीज़े हुक [`useState`](/apis/usestate) की सहायता से की जा सकती है::
 
-1. A **state variable** to retain the data between renders.
-2. A **state setter function** to update the variable and trigger React to render the component again.
+1. एक **state वैरिएबल** रेंडरर्स के बीच डेटा को बनाए रखे।
+2. एक **state setter function(सेटर-कार्य)** वैरिएबल अद्यतन करने के लिए और कौम्पोनॅन्ट को फिर से प्रस्तुत करने के लिए react को प्रेरित करें।
 
-## Adding a state variable {/*adding-a-state-variable*/}
+## एक state वैरिएबल जोड़ना {/*adding-a-state-variable*/}
 
-To add a state variable, import `useState` from React at the top of the file:
+एक state वैरिएबल जोड़ने के लिए, आयात करे `useState` react मॉड्यूल से, फ़ाइल के शीर्ष पर:
 
 ```js
 import { useState } from 'react';
 ```
 
-Then, replace this line:
+फिर, इस लाइन को बदलें:
 
 ```js
 let index = 0;
 ```
 
-with
+इस लाइन के साथ
 
 ```js
 const [index, setIndex] = useState(0);
 ````
 
-`index` is a state variable and `setIndex` is the setter function.
+`index` एक state वैरिएबल है और `setIndex` एक सेटर फ़ंक्शन है (सेटर-कार्य).
 
-> The `[` and `]` syntax here is called [array destructuring](/learn/a-javascript-refresher#array-destructuring) and it lets you read values from an array. The array returned by `useState` always has exactly two items.
+> यहाँ पर  `[` और `]` सिंटेक्स को [array destructuring (डिस्ट्रक्टरिंग)](/learn/a-javascript-refresher#array-destructuring) कहा जाता हे और यह आपको array की वैल्यू पढ़ने देता है। `useState` द्वारा लौटाया गया array हमेशा सिर्फ दो आइटम्स देता हे। 
 
-This is how they work together in `handleClick()`:
+इस तरह वे `handleClick()` में एक साथ काम करते हैं :
 
 ```js
 function handleClick() {
@@ -198,7 +198,7 @@ function handleClick() {
 }
 ```
 
-Now clicking the "Next" button switches the current sculpture:
+अब "अगला" बटन पर क्लिक करने से वर्तमान मूर्तिकला बदल जाती है:
 
 <Sandpack>
 
