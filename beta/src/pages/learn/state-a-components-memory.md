@@ -198,7 +198,7 @@ function handleClick() {
 }
 ```
 
-अब "अगला" बटन पर क्लिक करने से वर्तमान मूर्तिकला बदल जाती है:
+अब "Next" बटन पर क्लिक करने से वर्तमान मूर्तिकला बदल जाती है:
 
 <Sandpack>
 
@@ -333,15 +333,15 @@ button {
 
 ### Meet your first Hook {/*meet-your-first-hook*/}
 
-In React, `useState`, as well as any other function starting with "`use`," is called a Hook.
+React में , `useState`, साथ ही साथ "`use`," से शुरू होने वाला कोई अन्य प्रत्येक फ़ंक्शन हुक कहा जाता है |
 
-*Hooks* are special functions that are only available while React is [rendering](/learn/render-and-commit#step-1-trigger-a-render) (which we'll get into in more detail on the next page). They let you "hook into" different React features.
+*हुक* विशेष फ़ंक्शन हैं जो केवल react के [रेंडरिंग](/learn/render-and-commit#step-1-trigger-a-render) (which we'll get into in more detail on the next page)  के दौरान उपलब्ध हैं | वे आपको विभिन्न रिएक्ट सुविधाओं में "हुक इन" करने देते हैं।
 
-State is just one of those features, but you will meet the other Hooks later.
+State उन विशेषताओं में से एक है, लेकिन आप दूसरे हुक से बाद में मिलेंगे.
 
 <Gotcha>
 
-**Hooks—functions starting with `use`—can only be called at the top level of your components or [your own Hooks](/learn/reusing-logic-with-custom-hooks).** You can't call Hooks inside conditions, loops, or other nested functions. Hooks are functions, but it's helpful to think of them as unconditional declarations about your component's needs. You "use" React features at the top of your component similar to how you "import" modules at the top of your file.
+**`use`से शुरू होने वाले हुक फ़ंक्शंस केवल कॉम्पोनेंट्स या [आपके अपने हुक](/learn/reusing-logic-with-custom-hooks) के ऊपरी लेवल में बुलाए जा सकते हे। ** आप हुक को स्थितियों (conditions), लूपों, या अन्य नेस्टेड फ़ंक्शंस के अंदर कॉल नहीं कर सकते। हुक फ़ंक्शंस हैं, लेकिन उनको आपके कॉम्पोनेंट्स की जरूरतों के बारे में बिना शर्त घोषणाएं के जैसे समझिये । जिस प्रकार से आप अपनी फाइल की शुरुआत में मॉडल्स आयात करते हे, उसी प्रकार से आप react के विशेषताओं का उपयोग फाइल के शुरुवात में कर सकते है। 
 
 </Gotcha>
 
