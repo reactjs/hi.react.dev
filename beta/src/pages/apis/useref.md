@@ -5,7 +5,7 @@ title: useRef
 <Intro>
 
 `useRef` is a React Hook that lets you reference a value that's not needed for rendering.
-`useRef` ek React Hook hai jo aapko value reference karne deta hai jo rendering ke liye istemaal nahi hota.
+`useRef` एक रीऐक्ट हुक है जो आपको वैल्यू reference करने देता है जो रेंडरिंग के लिए इस्तेमाल नही होता.
 
 ```js
 const ref = useRef(initialValue)
@@ -28,10 +28,10 @@ const ref = useRef(initialValue)
 ## Usage {/*usage*/}
 
 ### Referencing a value with a ref {/*referencing-a-value-with-a-ref*/}
-### ref ke saath value reference karna {/*referencing-a-value-with-a-ref*/}
+### ref के साथ वैल्यू reference करना {/*referencing-a-value-with-a-ref*/}
 
 Call `useRef` at the top level of your component to declare one or more [refs](/learn/referencing-values-with-refs).
-ek ya ek se zyaada [ref](/learn/referencing-values-with-refs) declare karne ke liye `useRef` ko apne component ke sabse upar waale level pe bulaaye.
+एक या एक से ज़्यादा [ref](/learn/referencing-values-with-refs) डिक्लेर करने के लिए `useRef` को अपने कौम्पोनॅन्ट के सबसे उपर वाले स्तर पर बुलाए.
 
 ```js [[1, 4, "intervalRef"], [3, 4, "0"]]
 import { useRef } from 'react';
@@ -42,13 +42,13 @@ function Stopwatch() {
 ```
 
 `useRef` returns a <CodeStep step={1}>ref object</CodeStep> with a single <CodeStep step={2}>`current` property</CodeStep> initially set to the <CodeStep step={3}>initial value</CodeStep> you provided.
-`useRef` single <CodeStep step={2}>`current` property</CodeStep> ke saath <CodeStep step={1}>ref object</CodeStep> ko return karta hai jisse initially aapke dwaara diya gaya <CodeStep step={3}>initial value</CodeStep> ke saath set hai.
+`useRef` single <CodeStep step={2}>`current` property</CodeStep> के सात <CodeStep step={1}>ref object</CodeStep> को return करता है जिससे initially आपके द्वारा दिया गया <CodeStep step={3}>initial वैल्यू</CodeStep> के सात set है.
 
 On the next renders, `useRef` will return the same object. You can change its `current` property to store information and read it later. This might remind you of [state](/apis/usestate), but there is an important difference.
-Agle render me, `useRef` vhi object return karega. Aap uska `current`property ko change kar sakte ho jisse aap information ko store kar baad me padh sakte ho. Ye aapko [state](/apis/usestate) ka yaad dila sakta hai lekin dono me ik mahtapoorn antar hai.
+अगले रेंडर में, `useRef`वही ऑब्जेक्ट वापस करेगा. आप उसका `current`property को बदल सकते हो जिससे आप जानकारी को स्टोर कर बाद में पढ़ सकते हो. यह आपको [state](/apis/usestate) का याद दिला सकता है लेकिन दोनो में एक महत्वपूर्ण अंतर है.
 
-**Changing a ref does not trigger a re-render.** This means refs are perfect for storing information that doesn't affect the visual output of your component. For example, if you need to store an [interval ID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) and retrieve it later, you can put it in a ref. To update the value inside the ref, you need to manually change its <CodeStep step={2}>`current` property</CodeStep>:
-**ref badalne se re-render trigger nahi hota.** iska arth hai ki visual output ko bina affect kiye information store karne ke liye ref perfect hai. Udhaaran me, agar aapko [interval ID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) ko store karna ho aur baad me retrieve karna ho to aap usse ref me rakh sakte hai. ref ke andar ke value ko update karne ke liye, aapko <CodeStep step={2}>`current` property</CodeStep> ko manually change karna hoga:
+**Changing a ref does not trigger a री-render.** This means refs are perfect for storing information that doesn't affect the visual output of your component. For example, if you need to store an [interval ID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) and retrieve it later, you can put it in a ref. To update the value inside the ref, you need to manually change its <CodeStep step={2}>`current` property</CodeStep>:
+**ref बदलने से री-रेंडर trigger नही होता.** इसका अर्थ है कि visual output को बिना प्रभावित किये जानकारी स्टोर करने के लिए ref perfect है. उदाहरण में, अगर आपको [interval ID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) को store करना हो और बाद में retrieve करना हो to आप उसे ref me रख सकते है. ref के अंदर के वैल्यू को अप्डेट करने के लिए, आपको <CodeStep step={2}>`current` property</CodeStep> को manually change करना होगा:
 
 ```js [[2, 5, "intervalRef.current"]]
 function handleStartClick() {
@@ -60,7 +60,7 @@ function handleStartClick() {
 ```
 
 Later, you can read that interval ID from the ref so that you can call [clear that interval](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval):
-Baad me aap vh interval ID ko ref se padh sakte ho taaki aap [vh interval clear](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) kar sakte hai:
+बाद me आप vh interval ID को ref से पढ सकते हो taaki आप [vh interval clear](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) कर सकते है:
 
 ```js [[2, 2, "intervalRef.current"]]
 function handleStopClick() {
@@ -70,25 +70,25 @@ function handleStopClick() {
 ```
 
 By using a ref, you ensure that:
-ref use karke aap ensure karte hai ki:
+ref use karke आप ensure करते है कि:
 
-- You can **store information** between re-renders. (Unlike regular variables, which reset on every render.)
-- Changing it **does not trigger a re-render**. (Unlike state variables, which trigger a re-render.)
+- You can **store information** between री-renders. (Unlike regular variables, which reset on every render.)
+- Changing it **does not trigger a री-render**. (Unlike state variables, which trigger a री-render.)
 - The **information is local** to each copy of your component. (Unlike the variables outside, which are shared.)
 
-- Aap re-renders ke beech me **information store kar sakte ho**. (Yh regular variable jaise nahi hai jo har render me reset hote hai).
-- badalne se **re-render trigger nahi hota**. (yh state variables jaisa nahi hai jo re-render trigger karte hai.)
-- har component ke copy ka **information local hai**. (Yh bahar ke variables jaise nahi hai jo nature me shared hai.)
+- आप री-renders के बीच में **information store कर सकते हो**. (यह regular वेरिएबल जैसे नही है जो हर रेंडर में reset होते है).
+- बदलने से **री-रेंडर trigger नहीं होता**. (यह state वेरिएबलs jaisa नही है जो री-रेंडर trigger करते है.)
+- हर कौम्पोनॅन्ट के copy का **information local है**. (यह bahar के वेरिएबलस जैसे नहीं है जो प्रकृति में साझा किया गया है.)
 
-Changing a ref does not trigger a re-render, so refs are not appropriate for storing information that you want to display on the screen. Use state for that instead. Read more about [choosing between `useRef` and `useState`](/learn/referencing-values-with-refs#differences-between-refs-and-state).
-ref ka re-render na trigger karne ke kaaran, ref screen pe display karne ke liye information ko store karne ke liye sahi nahi hai. uske liye, state ka prayog kijiye. [`useRef` aur `useState` ke beech chonne ](/learn/referencing-values-with-refs#differences-between-refs-and-state) ke baare me aur padhe.
+Changing a ref does not trigger a री-render, so refs are not appropriate for storing information that you want to display on the screen. Use state for that instead. Read more about [choosing between `useRef` and `useState`](/learn/referencing-values-with-refs#differences-between-refs-and-state).
+ref का री-रेंडर न आरम्भ करने के कारण, ref screen पर प्रदर्शित करने के लिए जानकारी को संग्रहित करने के लिए सही नहीं है. उसके लिए, state का प्रयोग कीजिए. [`useRef` और `useState` के beech chonne ](/learn/referencing-values-with-refs#differences-between-refs-and-state) के बारे में और पढ़े.
 
-<Recipes titleText="Examples of referencing a value with useRef / useRef ke saath value reference karne ka udhaaran" titleId="examples-value">
+<Recipes titleText="Examples of referencing a value with useRef / useRef के सात वैल्यू reference करने का उधारण" titleId="examples-value">
 
 ### Click counter {/*click-counter*/}
 
 This component uses a ref to keep track of how many times the button was clicked. Note that it's okay to use a ref instead of state here because the click count is only read and written in an event handler.
-yh component ref ka istemaal karta hai track karne ke liye ki kitne baar button dabaya gaya hai. Dhyaan rakhe ki yaha pe state ki jagah ref use karna thik hai kyunki ye sirf event handler dwaara padha aur likha jaa sakta hai.
+यह कौम्पोनॅन्ट ref का इस्तेमाल करता है ट्रैक करने के लिए कि कितने बार बटन दबाया गया है. अंदर रखे कि यहाँ पर state की जगह ref यूज़ करना ठीक है क्योंकि यह सिर्फ event handler द्वारा पढ़ा और लिखा जा सकता है.
 
 <Sandpack>
 
@@ -113,8 +113,8 @@ export default function Counter() {
 
 </Sandpack>
 
-If you show `{ref.current}` in the JSX, the number won't update on click. This is because setting `ref.current` does not trigger a re-render. Information that's used for rendering should be state instead.
-Agar aap `{ref.current}` JSX me show kare to, vh number click hone pe update nahi hoga. Aisa isiliye hai kyunki `ref.current` set karne se re-render trigger nahi hota. Render karte samay use kiye jaane waala information ko state me store karna chahiye.
+If you show `{ref.current}` in the JSX, the number won't update on click. This is because setting `ref.current` does not trigger a री-render. Information that's used for rendering should be state instead.
+अगर आप `{ref.current}` JSX में प्रदर्शित करे तो, वह संख्या क्लिक होने पर अप्डेट नहीं होगा. ऐसा इसीलिए है क्योंकि `ref.current` set करने से री-रेंडर आरम्भ नहीं होता. रेंडर करते समय यूज़ किये जाने वाली जानकारी को state में संग्रहित करना चाहिए.
 
 <Solution />
 
@@ -122,7 +122,7 @@ Agar aap `{ref.current}` JSX me show kare to, vh number click hone pe update nah
 
 This example uses a combination of state and refs. Both `startTime` and `now` are state variables because they are used for rendering. But we also need to hold an [interval ID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) so that we can stop the interval on button press. Since the interval ID is not used for rendering, it's appropriate to keep it in a ref, and manually update it.
 
-yh udhaaran state aur ref ka combination istemaal karta hai. `startTime` aur `now` state variables hai kyunki dono rendering ke liye use hote hai. Lekin hume [interval ID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) ko bhi hold karna hoga taaki hum interval ko button press pe rokh sake. Kyunki interval ID render hote samay use nahi hota, usse ref me rakhna appropriate hai aur manually update karte hai.
+यह उदाहरण state और ref का combination इस्तेमाल करता है. `startTime` और `now` state वेरीअबल्ज़ है क्योंकि दोनों रेंडरिंग के लिए इस्तेमाल होते है. लेकिन हमें [interval ID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) को भी होल्ड करना होगा ताकि हम interval को button press पर रोक सके. क्योंकि interval ID रेंडर होते समय यूज़ नहीं होता, उसे ref में रखना उचित है और manually अप्डेट करते है.
 
 <Sandpack>
 
@@ -176,35 +176,35 @@ export default function Stopwatch() {
 <Gotcha>
 
 **Do not write _or read_ `ref.current` during rendering.**
-**render karte samay `ref.current` ko likh _ya padh_ na le.**
+**रेंडर करते समय `ref.current` को likh _ya padh_ na le.**
 
 React expects that the body of your component [behaves like a pure function](/learn/keeping-components-pure):
-React expect karta hai ki aapke component ka body [ek shudh function ke tarah behave kare](/learn/keeping-components-pure):
+रीऐक्ट अपेक्षा करता है कि आपके कौम्पोनॅन्ट का निकाय [एक शुद्ध फ़ंक्शन के तरह व्यवहार करे](/learn/keeping-components-pure):
 
 - If the inputs ([props](/learn/passing-props-to-a-component), [state](/learn/state-a-components-memory), and [context](/learn/passing-data-deeply-with-context)) are the same, it should return exactly the same JSX.
 - Calling it in a different order or with different arguments should not affect the results of other calls.
 
-- Agar inputs ([props](/learn/passing-props-to-a-component), [state](/learn/state-a-components-memory), aur [context](/learn/passing-data-deeply-with-context)) ek hi hai, to usse exactly same JSX return karna hoga.
-- Alag order me ya alag arguments me bulaane se baaki caals ke results ko affect nahi karna chahiye.
+- अगर inputs ([props](/learn/passing-props-to-a-component), [state](/learn/state-a-components-memory), और [context](/learn/passing-data-deeply-with-context)) एक ही है,तो उसे पूरी तरह से वही JSX वापस करना होगा.
+- अलग ऑर्डर में या अलग तर्क में बुलाने से बाकी कॉल्ज़ के परिणाम को प्रभावित नहीं करना चाहिए.
 
 Reading or writing a ref **during rendering** breaks these expectations.
-**render karte samay** ref ko padhna ya likhna un expectations ko tod deta hai.
+**रेंडर करते समय** ref को पढ़ना या लिखना उन अपेक्षाओं को तोड़ देता है.
 
 ```js {3-4,6-7}
 function MyComponent() {
   // ...
   // 🚩 Don't write a ref during rendering
-  // 🚩 render karte samay ref ko na likhe.
+  // 🚩 रेंडर करते समय ref को ना लिखे.
   myRef.current = 123;
   // ...
   // 🚩 Don't read a ref during rendering
-  // 🚩 render karte samay ref no n padhe
+  // 🚩 रेंडर करते समय ref no न पढ़ें
   return <h1>{myOtherRef.current}</h1>;
 }
 ```
 
 You can read or write refs **from event handlers or effects instead**.
-Aap **event handlers se ya effects instead** se refs padh ya likh sakte hai.
+आप **event handlers से या effects instead** से refs पढ या लिख सकते है.
 
 ```js {4-5,9-10}
 function MyComponent() {
@@ -223,7 +223,7 @@ function MyComponent() {
 ```
 
 If you *have to* read [or write](/apis/usestate#storing-information-from-previous-renders) something during rendering, [use state](/apis/usestate) instead.
-Agar aapko render karte samay kuch padhna ya [likhna](/apis/usestate#storing-information-from-previous-renders) *hi hai* to aap [state](/apis/usestate) ka prayog kare.
+अगर आपको रेंडर करते समय कुछ पढ़ना या [लिखना](/apis/usestate#storing-information-from-previous-renders) *ही है* तो आप [state](/apis/usestate) का प्रयोग करे.
 
 When you break these rules, your component might still work, but most of the newer features we're adding to React will rely on these expectations. Read more about [keeping your components pure](/learn/keeping-components-pure#where-you-can-cause-side-effects).
 
@@ -232,14 +232,14 @@ When you break these rules, your component might still work, but most of the new
 ---
 
 ### Manipulating the DOM with a ref {/*manipulating-the-dom-with-a-ref*/}
-### ref ke saath DOM ko manipulate karna {/*manipulating-the-dom-with-a-ref*/}
+### ref के साथ DOM को हेर-फेर करना {/*manipulating-the-dom-with-a-ref*/}
 
 It's particularly common to use a ref to manipulate the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API). React has bulit-in support for this.
 
-ref ko [DOM](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API) manipulate karne ke liye prayog karna ek aam si baat hai. React me iske liye built-in support hai.
+ref को [DOM](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API) हेर-फेर करने के लिए प्रयोग करना एक आम सी बात है. रीऐक्ट में इसके लिए built-in support है.
 
 First, declare a <CodeStep step={1}>ref object</CodeStep> with an <CodeStep step={3}>initial value</CodeStep> of `null`:
-Pehle, `null` <CodeStep step={3}>initial value</CodeStep> ke saath ek <CodeStep step={1}>ref object</CodeStep> declare kijiye:
+पहले, `null` <CodeStep step={3}>initial वैल्यू</CodeStep> के साथ एक <CodeStep step={1}>ref object</CodeStep> डिक्लेर कीजिए:
 
 ```js [[1, 4, "inputRef"], [3, 4, "null"]]
 import { useRef } from 'react';
@@ -250,7 +250,7 @@ function MyComponent() {
 ```
 
 Then pass your ref object as the `ref` attribute to the JSX of the DOM node you want to manipulate:
-Phir apne ref object ko `ref` attribute ke roop me us DOM node ke JSX me bheje jisse aap manipulate karna chahte ho:
+फ़िर अपने ref object को `ref` एट्रिब्यूट के रूप में उस DOM node के JSX में भेजे जिससे आप हेर-फेर करना चाहते हो:
 
 ```js [[1, 2, "inputRef"]]
   // ...
@@ -258,7 +258,7 @@ Phir apne ref object ko `ref` attribute ke roop me us DOM node ke JSX me bheje j
 ```
 
 After React creates the DOM node and puts it on the screen, React will set the <CodeStep step={2}>`current` property</CodeStep> of your ref object to that DOM node. Now you can access the `<input>`'s DOM node and call methods like [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus):
-DOM node banane ke aur screen pe rakhne ke baad, React DOM node ke ref object ka <CodeStep step={2}>`current` property</CodeStep> set karega. Ab aap `<input>` ka DOM node acces kar sakte hai aur [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) jaise methods bula sakte hai:
+DOM node बनाने के और screen पर रखने के बाद, React DOM node के ref object का <CodeStep step={2}>`current` property</CodeStep> सेट करेगा. अब आप `<input>` का DOM node ऐक्सेस कर सकते है और [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) जैसे तरीक़े से बुला सकते है:
 
 ```js [[2, 2, "inputRef.current"]]
   function handleClick() {
@@ -267,18 +267,18 @@ DOM node banane ke aur screen pe rakhne ke baad, React DOM node ke ref object ka
 ```
 
 React will set the `current` property back to `null` when the node is removed from the screen.
-Jab screen se node hataaya jaata hai, React `current` property ko phir `null` set kardega.
+जब screen से node हटाया जाता है, React `current` property को फ़िर `null` सेट कर देगा.
 
 Read more about [manipulating the DOM with refs](/learn/manipulating-the-dom-with-refs).
-[DOM ko ref ke saath manipulate](/learn/manipulating-the-dom-with-refs) karne ke baare me aur padhiye.
+[DOM को ref के साथ manipulate](/learn/manipulating-the-dom-with-refs) करने के बारे में और पढ़िए.
 
-<Recipes titleText="Examples of manipulating the DOM with useRef / DOM ko useRef ke saath manipulate karne ke udhaaran" titleId="examples-dom">
+<Recipes titleText="Examples of manipulating the DOM with useRef / DOM को useRef के सात manipulate करने के उधारण" titleId="examples-dom">
 
 ### Focusing a text input {/*focusing-a-text-input*/}
-### text input pe focus karna {/*focusing-a-text-input*/}
+### टेक्स्ट इनपुट पर केंद्रित करना {/*focusing-a-text-input*/}
 
 In this example, clicking the button will focus the input:
-is udhaaran me button click karne se input focus hoga:
+इस उदाहरण में बटन क्लिक करने से इनपुट फ़ोकस होगा:
 
 <Sandpack>
 
@@ -308,11 +308,11 @@ export default function Form() {
 <Solution />
 
 ### Scrolling an image into view {/*scrolling-an-image-into-view*/}
-### image ko view me scrollkarna {/*scrolling-an-image-into-view*/}
+### image को व्यू me scrollkarna {/*scrolling-an-image-into-view*/}
 
 In this example, clicking the button will scroll an image into view. It uses a ref to the list DOM node, and then calls DOM [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) API to find the image we want to scroll to.
 
-is udhaaran me, button dabane se image view me scroll ho jayega. yh ref ko istemaal kar DOM node list karta hai aur phir DOM[`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) API ko bulaata hai jis image tak scroll karna hai us image ko doondhne ke liye.
+इस उदाहरण में, बटन दबाने से इमिज व्यू में स्क्रोल हो जाएगा. यह ref को इस्तेमाल कर DOM node लिस्ट करता है और फ़िर DOM[`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) API को बुलाता है जिस image तक स्क्रोल करना है उस इमेज को ढूँढने के लिए.
 
 <Sandpack>
 
@@ -404,11 +404,11 @@ li {
 <Solution />
 
 ### Playing and pausing a video {/*playing-and-pausing-a-video*/}
-### video ko pause aur play karna {/*playing-and-pausing-a-video*/}
+### video को pause और play करना {/*playing-and-pausing-a-video*/}
 
 This example uses a ref to call [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) and [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) on a `<video>` DOM node.
 
-yh udhaaran ref ka istemaal karta hai `<video>` DOM node pr [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) aur [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) bulaane ke liye
+यह उदाहरण ref का इस्तेमाल करता है `<video>` DOM node पर [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) और [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) बुलाने के लिए
 
 <Sandpack>
 
@@ -460,11 +460,11 @@ button { display: block; margin-bottom: 20px; }
 <Solution />
 
 ### Exposing a ref to your own component {/*exposing-a-ref-to-your-own-component*/}
-### Aapke component pr ref expose karna {/*exposing-a-ref-to-your-own-component*/}
+### आपके कौम्पोनॅन्ट पर ref expose करना {/*exposing-a-ref-to-your-own-component*/}
 
 Sometimes, you may want to let the parent component manipulate the DOM inside of your component. For example, maybe you're writing a `MyInput` component, but you want the parent to be able to focus the input (which the parent has no access to). You can use a combination of `useRef` to hold the input and [`forwardRef`](/apis/forwardref) to expose it to the parent component. Read a [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) here.
 
-Kabhi kabhi, aapko parent component ko apne component ke andar manipulate karne dena chahte ho. Udhaaran me, aap shayd `MyInput` component likh rahe ho lekin aap chahte hai ki parent component input ko focus kar paaye (kjiska parent ka koi access nahi hai). Aap `useRef` ko input hold karne ke liye hold kar sakte ho aur [`forwardRef`](/apis/forwardref) ko usse parent component ko expose karne ke liye use kar sakte ho. [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) ke liye yaha padhiye.
+कभी कभी, आपको पैरेंट कौम्पोनॅन्ट को अपने कौम्पोनॅन्ट के अंदर हेर-फेर करने देना चाहते हो. उदाहरण में, आप शायद `MyInput` कौम्पोनॅन्ट लिख रहे हो लेकिन आप चाहते है कि पैरेंट कौम्पोनॅन्ट इनपुट को फ़ोकस कर पाए (जिसके पैरेंट का कोई ऐक्सेस नहीं है). आप `useRef` को input hold करने के लिए hold कर सकते हो और [`forwardRef`](/apis/forwardref) को उसे पैरेंट कौम्पोनॅन्ट को expose करने के लिए इस्तेमाल कर सकते हो. [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) के लिए यहाँ पढ़िए.
 
 <Sandpack>
 
@@ -502,10 +502,10 @@ export default function Form() {
 ---
 
 ### Avoiding recreating the ref contents {/*avoiding-recreating-the-ref-contents*/}
-### ref contents phir create karna avoid kare {/*avoiding-recreating-the-ref-contents*/}
+### ref contents फ़िर create करना avoid करे {/*avoiding-recreating-the-ref-contents*/}
 
 React saves the initial ref value once and ignores it on the next renders.
-React initial ref value ek baar save kar leta hai aur agle render me ignore karta hai.
+React initial ref वैल्यू एक बार सहेज कर लेता है और अगले रेंडर में इग्नोर करता है.
 
 ```js
 function Video() {
@@ -515,10 +515,10 @@ function Video() {
 
 Although the result of `new VideoPlayer()` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating expensive objects.
 
-Halanki `new VideoPlayer()` ka result sirf initial render ke samay use hota hai, aap phir yh function har render me bulaate ho. Yh mehenge objects banane ke liye wasteful hai.
+हालाँकि `new VideoPlayer()` का परिणाम सिर्फ initial रेंडर के समय इस्तेमाल होता है, आप फ़िर यह फ़ंक्शन हर रेंडर में बुलाते हो. यह महँगे आब्जेक्ट्स बनाने के लिए अपव्ययी है.
 
 To solve it, you may initialize the ref like this instead:
-Isse sudhaar ne ke liye, aap ref ko is tarah initialize kar sakte hai:
+इसे सुधारने के लिए, आप ref को इस तरह इनिशलायज़ कर सकते है:
 
 ```js
 function Video() {
@@ -531,12 +531,12 @@ function Video() {
 
 Normally, writing or reading `ref.current` during render is not allowed. However, it's fine in this case because the result is always the same, and the condition only executes during initialization so it's fully predictable.
 
-Normally, `ref.current` ko render karte samay padhna ya likhna allowed nahi hai. However, is case me thik hai kyunki result hamesha ek hi hai aur vh condition sirf initialization ke dauran execute hota hai to woh fully predictable hai.
+सामन्यत:, `ref.current` को रेंडर करते समय पढने या लिखने की अनुमति नहीं है. हालाँकि, इस केस में ठीक है क्योंकि परिणाम हमेशा एक ही है और वह कंडिशन सिर्फ इनिशयलिसशन के दौरान एक्सेक्यूट होता है तो वो पूरी तरह से पूर्वकथनीय है.
 
-<DeepDive title="How to avoid null checks when initializing useRef later / useRef ko baad me initialie karne par null check kaise avoid kare">
+<DeepDive title="How to avoid null checks when initializing useRef later / useRef को बाद me initialie करने पर null check केसै avoid करे">
 
 If you use a type checker and don't want to always check for `null`, you can try a pattern like this instead:
-Yadi aap type checker ka istemaal karte hai aur hamesha `null` ke liye nahi check karna chahte to aap kuch aisa pattern try kar sakte hai:
+यदि आप type checker का इस्तेमाल करते है और हमेशा `null` के लिए नहीं जाँच करना चाहते तो आप कुछ ऐसा प्रतिरूप की कोशिश कर सकते है:
 
 ```js
 function Video() {
@@ -555,7 +555,7 @@ function Video() {
 ```
 
 Here, the `playerRef` itself is nullable. However, you should be able to convince your type checker that there is no case in which `getPlayer()` returns `null`. Then use `getPlayer()` in your event handlers.
-yaha pe `playerRef` apne aap me nullable hai. Lekin aapko apne typ checker ko convince karna aana chahiye ki aise koi case nahi hai jaha `getPlayer()` `null` return karta hai. Phir event handlers me `getPlayer()` use kar lena.
+यहा पे `playerRef` अपने आप me nullable है. लेकिन आपको अपने typ checker को यक़ीन करवाना आना चाहिए कि सिर्फ कोई केस नहीं है जहाँ `getPlayer()` `null` रिटर्न करता है. फ़िर event handlers में `getPlayer()` यूज़ कर लेना.
 
 </DeepDive>
 
@@ -566,7 +566,7 @@ yaha pe `playerRef` apne aap me nullable hai. Lekin aapko apne typ checker ko co
 ### `useRef(initialValue)` {/*useref*/}
 
 Call `useRef` at the top level of your component to declare a [ref](/learn/referencing-values-with-refs).
-[ref](/learn/referencing-values-with-refs) declare karne ke liye apne component ke sabse upari level me `useRef` ko bulaaye.
+[ref](/learn/referencing-values-with-refs) डिक्लेर करने के लिए अपने कौम्पोनॅन्ट के सबसे उपरी स्तर में `useRef` को बुलाए.
 
 ```js
 import { useRef } from 'react';
@@ -578,46 +578,46 @@ function MyComponent() {
 ```
 
 See examples of [referencing values](#examples-value) and [DOM manipulation](#examples-dom).
-[referencing values](#examples-value) and [DOM manipulation](#examples-dom) ke udharan dekhiye.
+[referencing वैल्यूs](#examples-value) and [DOM manipulation](#examples-dom) के udharan dekhiye.
 
 #### Parameters {/*parameters*/}
 
 * `initialValue`: The value you want the ref object's `current` property to be initially. It can be a value of any type. This argument is ignored after the initial render.
 
-* `initialValue`: Vh value jiska aap ref object ka `current` property ko initially chahte ho. Yh value kisi bhi type ka ho sakta hai. Initial render ke baad ye argument ignore hota hai.
+* `initialValue`: वह वैल्यू जिसका आप ref object का `current` property को इनिशली चाहते हो. यह वैल्यू किसी भी type का हो सकता है. इनिशल रेंडर के बाद यह तर्क इग्नोर होता है.
 
 #### Returns {/*returns*/}
 
 `useRef` returns an object with a single property:
-`useRef` single property ke saath ek object return karta hai
+`useRef` single property के साथ एक ऑब्जेक्ट रिटर्न करता है
 
 * `current`: Initially, it's set to the `initialValue` you have passed. You can later set it to something else. If you pass the ref object to React as a `ref` attribute to a JSX node, React will set its `current` property.
 
-* `current`: initially, ise aapke dwaara pass kiya gaya `initialValue` pe set kiya jaata hai. Aap ise baad me koi aur value pe bhi set kar sakte ho. Agar aap ref object ko React me `ref` attribute ke roop me pass karte ho, to React uska `current` property set karega.
+* `current`: initially, इसे आपके द्वारा पास किया गया `initialValue` पर सेट किया जाता है. आप इसे बाद में कोई और वैल्यू पर भी सेट कर सकते हो. अगर आप ref object को रीऐक्ट में `ref` एट्रिब्यूट के रूप में पास करते हो, तो रीऐक्ट उसका `current` प्रॉपर्टी सेट करेगा.
 
 On the next renders, `useRef` will return the same object.
-Agle render se, `useRef` ek hi object return karega.
+अगले रेंडर से, `useRef` एक ही ऑब्जेक्ट रिटर्न करेगा.
 
 #### Caveats {/*caveats*/}
 
 * You can mutate the `ref.current` property. Unlike state, it is mutable. However, if it holds an object that is used for rendering (for example, a piece of your state), then you shouldn't mutate that object.
-* When you change the `ref.current` property, React does not re-render your component. React is not aware of when you change it because a ref is a plain JavaScript object.
+* When you change the `ref.current` property, React does not री-render your component. React is not aware of when you change it because a ref is a plain JavaScript object.
 * Do not write _or read_ `ref.current` during rendering, except for [initialization](#avoiding-recreating-the-ref-contents). This makes your component's behavior unpredictable.
 * In Strict Mode, React will **call your component function twice** in order to [help you find accidental impurities](#my-initializer-or-updater-function-runs-twice). This is development-only behavior and does not affect production. This means that each ref object will be created twice, and one of the versions will be discarded. If your component function is pure (as it should be), this should not affect the logic of your component.
 
-* Aap `ref.current` property ko mutate kar sakte ho. Unlike stae, ye mutable hai. Lekin agar render me use hone waale oobject ko hold karta hai, to aapko wo object mutate nahi karna chahiye.
-* Jab aap `ref.current` property ko badalte hai, React aapke component ko re-render nahi karta. React ko changes ka pata nahi hota kyunki ref ek plain JavaScript object hai.
-* render karte samay, `ref.current` ko _padhna_ ya likhna mat sivaay [initialization](#avoiding-recreating-the-ref-contents) ke, Isse aapka component ka vyavaar unpredictable ho jaata hai.
+* आप `ref.current` प्रॉपर्टी को रूपांतरित कर सकते हो. Unlike state, यह परिवर्तनशील है. लेकिन अगर रेंडर में इस्तेमाल होने वाले ऑब्जेक्ट को होल्ड करता है, तो आपको वह ऑब्जेक्ट परिवर्तित नहीं करना चाहिए.
+* जब आप `ref.current` प्रॉपर्टी को बदलते है, रीऐक्ट आपके कौम्पोनॅन्ट को री-रेंडर नही करता. रीऐक्ट को बदलावों का पता नहीं होता क्योंकि ref एक साधारण जावास्क्रिप्ट ऑब्जेक्ट है.
+* रेंडर करते समय, `ref.current` को _पढ़ना_ या लिखना मत सिवाय [initialization](#avoiding-recreating-the-ref-contents) के, इससे आपका कौम्पोनॅन्ट का व्यवहार अप्रत्याशित हो जाता है.
 
 ---
 
 ## Troubleshooting {/*troubleshooting*/}
 
 ### I can't get a ref to a custom component {/*i-cant-get-a-ref-to-a-custom-component*/}
-### Mujhe ek custom component ke liye ref nahi mil raha {/*i-cant-get-a-ref-to-a-custom-component*/}
+### मुझे एक custom कौम्पोनॅन्ट के लिए ref नहीं मिल रहा {/*i-cant-get-a-ref-to-a-custom-component*/}
 
 If you try to pass a `ref` to your own component like this:
-Agar aap ek `ref` ko apne component ko aise pass kare:
+अगर आप एक `ref` को अपने कौम्पोनॅन्ट को सिर्फ पास करे:
 
 ```js
 const inputRef = useRef(null);
@@ -626,7 +626,7 @@ return <MyInput ref={inputRef} />
 ```
 
 You might get an error in the console:
-To aapko console me ek error mil sakta hai:
+तो आपको console में एक एरर मिल सकता है:
 
 <ConsoleBlock level="error">
 
@@ -635,10 +635,10 @@ Warning: Function components cannot be given refs. Attempts to access this ref w
 </ConsoleBlock>
 
 By default, your own components don't expose refs to the DOM nodes inside them.
-By default, aapke components unke andar ke DOM nodes ko ref expose nahi karte.
+By default, आपके components unke अंदर के DOM nodes को ref expose नही करते.
 
 To fix this, find the component that you want to get a ref to:
-isse sudhaar ne ke liye, uss component ko ddondo jiske liye aap ek ref chahte ho:
+इससे सुधारने के लिए, उस कौम्पोनॅन्ट को ढूँढो जिसके लिए आप एक ref चाहते हो:
 
 ```js
 export default function MyInput({ value, onChange }) {
@@ -652,7 +652,7 @@ export default function MyInput({ value, onChange }) {
 ```
 
 And then wrap it in [`forwardRef`](/apis/forwardref) like this:
-Aur phir usse is tarah [`forwardRef`](/apis/forwardref) me wrap kare:
+और फ़िर उसे इस तरह [`forwardRef`](/apis/forwardref)में रैप करे:
 
 ```js {3,8}
 import { forwardRef } from 'react';
@@ -671,7 +671,7 @@ export default MyInput;
 ```
 
 Then the parent component can get a ref to it.
-Phir uss tak parent component ko ref mil sakta hai.
+फ़िर उस तक पैरेंट कौम्पोनॅन्ट को ref मिल सकता है.
 
 Read more about [accessing another component's DOM nodes](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes).
-[dusre component ke DOM nodes ko access](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) karne ke baare me aur padhiye.
+[dusre कौम्पोनॅन्ट के DOM nodes को access](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) करने के बारे में और पढ़िए.
