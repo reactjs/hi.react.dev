@@ -1,52 +1,52 @@
 ---
-title: Updating Arrays in State
+title: State  में Arrays को अपडेट करना
 ---
 
 <Intro>
 
-Arrays are mutable in JavaScript, but you should treat as immutable when you store them in state. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array.
+जावास्क्रिप्ट में arrays म्यूटेबल होते हे परंतु आपको state में स्टोर करने के लिए अपरिवर्तनीय रूप में मानना होगा ।  जैसे कि आपको कोई भी state में स्टोर किया गया array कि अपडेट करना है तो आपको एक नए array  बनाना होगा ( या पुराने array की नक़ल करना ) और फिर उस नए array की सेट स्टेट(set  state) का उपयोग करना होगा |
 
 </Intro>
 
 <YouWillLearn>
 
-- How to add, remove, or change items in an array in React state
-- How to update an object inside of an array
-- How to make array copying less repetitive with Immer
+- React state में array में कैसे आइटम को जोडें, हटाएं, या बदलें   
+- Array के अंदर एक ऑब्जेक्ट की अपडेट  कैसे करें
+- Array को कम बार Immer के साथ नक़ल करें 
 
 </YouWillLearn>
 
-## Updating arrays without mutation {/*updating-arrays-without-mutation*/}
+## Arrays को म्युटेशन के बिना अपडेट करना {/*updating-arrays-without-mutation*/}
 
-In JavaScript, arrays are just another kind of object. [Like with objects](/learn/updating-objects-in-state), **you should treat arrays in React state as read-only**. This means that you shouldn't reassign items inside an array like `arr[0] = 'bird'`, and you also shouldn't use methods that mutate the array, such as `push()` and `pop()`.
+जावास्क्रिप्ट में Arrays सिर्फ एक दूसरी तरह की ऑब्जेक है [जैसे ऑब्जेक्ट्स के साथ] (/learn/updating-objects-in-state), **आपको react state में Arrays को सिर्फ पड़ना जैसे व्यवहार करना चाहिए** ।  इसका मतलब है कि आपको Array के अंदर जो भी सामान है जैसे `arr [0] = ‘bird’` को फिर से देना नहीं चाहिए ।  ऊपर से आपको `push()` और `pop()`  जैसे फंक्शन्स को Array  कि परिवर्तन में उपयोग नहीं करना चाहिए ।  
 
-Instead, every time you want to update an array, you'll want to pass a *new* array to your state setting function. To do that, you can create a new array from the original array in your state by calling its non-mutating methods like `filter()` and `map()`. Then you can set your state to the resulting new array.
+बदले में आप जब भी Array का अपडेट करते है तभी आपको एक *नए* Array को state setting फंक्शन से करना होगा ।  इस के लिए आपको `filter()` और `map()` जैसे अपरिवर्तनीय फंक्शन्स द्वाराअसली array से नए array बनाना होगा ।  फिर आप अपने state को array के अनुसार सेट कर लेना है ।
 
-Here is a reference table of common array operations. When dealing with arrays inside React state, you will need to avoid the methods in the left column, and instead prefer the methods in the right column:
+यहाँ पर समान array ऑपरेशन्स क एक संतर्भ तालिका है ।  जब भी आप react state में arrays को डील करते हैं तब आपको बाएँ ओर के कॉलम के मेथड्स को टालना चाहिए ।  उसके बदले में आप दाएं ओर के कॉलम को चुनना चाहिए :
 
-|         | avoid (mutates the array) | prefer (returns a new array) |
+|         | टालिए (array का म्यूटेट करेगा ) | चुनना (नए array की वापसी ) |
 |---------|----------------|-------------------|
-| adding    | `push`, `unshift` | `concat`, `[...arr]` spread syntax ([example](#adding-to-an-array))|
-| removing | `pop`, `shift`, `splice` | `filter`, `slice` ([example](#removing-from-an-array))
-|replacing| `splice`, `arr[i] = ...` assignment | `map` ([example](#replacing-items-in-an-array))          |
-|sorting| `reverse`, `sort` | copy the array first ([example](#making-other-changes-to-an-array)) |
+| जोड़ना    | `push`, `unshift` | `concat`, `[...arr]` spread syntax ([example](#adding-to-an-array))|
+| हटाना | `pop`, `shift`, `splice` | `filter`, `slice` ([example](#removing-from-an-array))
+|	बदलना | `splice`, `arr[i] = ...` assignment | `map` ([example](#replacing-items-in-an-array))          |
+|सॉर्टिंग| `reverse`, `sort` | copy the array first ([example](#making-other-changes-to-an-array)) |
 
-Alternatively, you can [use Immer](#write-concise-update-logic-with-immer) which lets you use methods from both columns.
+बदले आप [Immer को उपयोग करके](#write-concise-update-logic-with-immer) दोनों कॉलम से मेथड्स का उपयोग कर सकते हैं । 
 
 <Gotcha>
 
-Unfortunately, [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) and [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) are named similarly but are very different:
+अभाग्य से , [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) and [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) दोनों का एक जैसा ही नाम है लेकिन दोनों अलग अलग है :
 
-* `slice` lets you copy an array or a part of it.
-* `splice` **mutates** the array (to insert or delete items).
+* `slice` आपको एक array या array की एक हिस्सा को नक़ल करने की अनुमती दें |
+* `splice` array की **म्यूटेट** करें [ आइटम्स की प्रवेश या हटाने के लिए ]
 
-In React, you will be using `slice` (no `p`!) a lot more often because you don't want to mutate objects or arrays in state. [Updating Objects](/learn/updating-objects-in-state) explains what mutation is and why it's not recommended for state.
+React में आप `slice` (no `p`!) को ज्यादातर प्रयोग करेंगे क्योंकि आप array in state में ऑब्जेक्ट्स को म्यूटेट नहीं करना चाहेंगे । [ऑब्जेक्ट्स का अपडेट करें](/learn/updating-objects-in-state) हमें यह बताता है कि म्युटेशन क्या हैं और क्यों इसका शिफारिश state में नहीं होता है। 
 
 </Gotcha>
 
-### Adding to an array {/*adding-to-an-array*/}
+### Array में जोड़ना {/*adding-to-an-array*/}
 
-`push()` will mutate an array, which you don't want:
+`push()` array को म्यूटेट करेगा जो आपको नहीं चाहिए :
 
 <Sandpack>
 
@@ -89,18 +89,18 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-Instead, create a *new* array which contains the existing items *and* a new item at the end. There are multiple ways to do this, but the easiest one is to use the `...` [array spread](a-javascript-refresher#array-spread) syntax:
+बदले में आपको एक *नए* array को बनाना होगा जिसमें मौजूत ऑब्जेक्ट्स के *साथ साथ* अंत में नया आइटम भी हो ।  इसे करने के लिए  कई नियम है लेकिन सबसे आसान नियम है `...` [array spread](a-javascript-refresher#array-spread) syntax:
 
 ```js
-setArtists( // Replace the state
-  [ // with a new array
-    ...artists, // that contains all the old items
-    { id: nextId++, name: name } // and one new item at the end
+setArtists( // state की स्थान में लाना 
+  [ // एक नए array के साथ
+    ...artists, // जो सभी पुराने वस्तुओं को रखें 
+    { id: nextId++, name: name } // और अंत में एक नया आइटम जोड़ें
   ]
 );
 ```
 
-Now it works correctly:
+अब यह सही क्रम में काम करता है :
 
 <Sandpack>
 
@@ -143,20 +143,20 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-The array spread syntax also lets you prepend an item by placing it *before* the original `...artists`:
+Array spread सिंटेक्स आपको एक वस्तु को बदलने या असल वस्तु `...artists` के *पहले* रखने में मदद करता है :
 
 ```js
 setArtists([
   { id: nextId++, name: name },
-  ...artists // Put old items at the end
+  ...artists // पुराने वस्तुओं को अंत में रखें
 ]);
 ```
 
-In this way, spread can do the job of both `push()` by adding to the end of an array and `unshift()` by adding to the beginning of an array. Try it in the sandbox above!
+इस नियम से spread एक array के अंत में जोड़कर `push()` और एक array की शुरुआत में जोड़कर `unshift()` दोनों का काम कर सकता है । इसे sandbox पर आज़माएँ !
 
-### Removing from an array {/*removing-from-an-array*/}
+### Array से हटाने के लिए {/*removing-from-an-array*/}
 
-The easiest way to remove an item from an array is to *filter it out*. In other words, you will produce a new array that will not contain that item. To do this, use the `filter` method, for example:
+एक वस्तु को array से हटाने का आसान तरीका है *filter  it  out* । दूसरे शब्दों में कहें तो आपको एक नया array बनाना होगा जिसमें वह वस्तु नहीं होगी ।  इसे करने के लिए आपको `filter` मेथड का प्रयोग करना होगा, उदहारण के रूप में :
 
 <Sandpack>
 
@@ -200,7 +200,7 @@ export default function List() {
 
 </Sandpack>
 
-Click the "Delete" button a few times, and look at its click handler.
+कुछ बार "Delete" बटन को क्लिक करें और फिर उसकी क्लिक हैंडलर को देखे । 
 
 ```js
 setArtists(
@@ -208,13 +208,13 @@ setArtists(
 );
 ```
 
-Here, `artists.filter(a => a.id !== artist.id)` means "create an array that consists of those `artists` whose IDs are different from `artist.id`." In other words, each artist's "Delete" button will filter _that_ artist out of the array, and then request a re-render with the resulting array. Note that `filter` does not modify the original array.
+यहाँ `artists.filter(a => a.id !== artist.id)` का मतलब है एक array को बनाएँ जिसमें उस `artists ` ID हों जो `artist.id` से पूरी तरह से अलग हों । बदलें में हर एक artist का delete  बटन उस artist को array से filter करने का काम करेगा और बाद में resulting array से re-render करने का निवेदन करें।  ध्यान रखें कि filter असली array में कोई भी बदलाव नहीं करेगा ।.
 
-### Transforming an array {/*transforming-an-array*/}
+### एक array को बदलना  {/*transforming-an-array*/}
 
-If you want to change some or all items of the array, you can use `map()` to create a **new** array. The function you will pass to `map` can decide what to do with each item, based on its data or its index (or both).
+अगर आप array के सभी या कुछ आइटम्स को बदलना चाहते हैं तो आप `map()` का इस्तेमाल करके एक **नया** array बना सकते हैं । जो भी फंक्शन आप `map` से पास करेंगे, वह डेटा या इंडेक्स या दोनों के आधार पर तय करेंगे कि उस आइटम का क्या करें ।
 
-In this example, an array holds coordinates of two circles and a square. When you press the button, it moves only the circles down by 100 pixels. It does this by producing a new array of data using `map()`:
+इस उदाहरण में एक array दो सर्कल और चतुरंग कि कोऑर्डिनटस को रखता है । जब आप बटन दबाएंगे तब वह सर्कल्स को १०० pixels में निचे के तरफ से हिलायेगा । वह यह `map()` का इस्तेमाल करके डेटा का नय array बनाता है : 
 
 <Sandpack>
 
@@ -278,11 +278,11 @@ body { height: 300px; }
 
 </Sandpack>
 
-### Replacing items in an array {/*replacing-items-in-an-array*/}
+###  Array में आइटम्स को बदलना  {/*replacing-items-in-an-array*/}
 
-It is particularly common to want to replace one or more items in an array. Assignments like `arr[0] = 'bird'` are mutating the original array, so instead you'll want to use `map` for this as well.
+सामान्य रूप से, एक ऐरे में एक या एक से ज़्यादा आइटम्स को बदलना चाहेंगे ।  `arr[0] = 'bird'` जैसे असाइनमेंट्स असली array में परिवर्तन लाएंगे ।  इसलिए आपको `map` का इस्तेमाल करना उचित रहेगा ।
 
-To replace an item, create a new array with `map`. Inside your `map` call, you will receive the item index as the second argument. Use it to decide whether to return the original item (the first argument) or something else:
+ आइटम को बदलने के लिए `map` से नए array बनाएँ । आपके `map` काल के अंदर आप item index को दूसरे तर्क के रूप में प्राप्त करेंगे ।  इसका उपयोग यह तय करने के लिए करें कि असली item (पहला तर्क) या कुछ और वापस करना है या नहीं:
 
 <Sandpack>
 
