@@ -345,15 +345,15 @@ State उन विशेषताओं में से एक है, ले�
 
 </Gotcha>
 
-### Anatomy of `useState` {/*anatomy-of-usestate*/}
+### `useState` का विश्लेषण{/*anatomy-of-usestate*/}
 
-When you call [`useState`](/apis/usestate), you are telling React that you want this component to remember something:
+जब आप [`useState`](/apis/usestate) को पुकारते हैं, आप React को बता रहे हैं कि आप चाहते हैं कि यह कौम्पोनॅन्ट कुछ याद रखे:
 
 ```js
 const [index, setIndex] = useState(0);
 ```
 
-In this case, you want React to remember `index`.
+इस मामले में, आप चाहते हैं कि React `index` को याद रखे। 
 
 > The convention is to name this pair like `const [something, setSomething]`. You could name it anything you like, but conventions make things easier to understand across projects.
 
