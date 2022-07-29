@@ -355,9 +355,9 @@ const [index, setIndex] = useState(0);
 
 इस मामले में, आप चाहते हैं कि React `index` को याद रखे। 
 
-> The convention is to name this pair like `const [something, setSomething]`. You could name it anything you like, but conventions make things easier to understand across projects.
+> पारंपरिक तरह से आप इस जोड़ी को ऐसे लिखेंगे : `const [something, setSomething]`. वैसे तो आप जो चाहे वो नाम इसे दे सकते हे, लेकिन पारंपरिक तरीके से लिखने पर, आपका कोड बाकि लोगो को भी आसानी से समझता हे। 
 
-The only argument to `useState` is the **initial value** of your state variable. In this example, the `index`'s initial value is set to `0` with `useState(0)`. 
+`useState` केवल एक ही आर्गुमेंट लेता है और वह है **आरंभिक वैल्यू** आपके state वेरिएबल का। इस उदाहरण में, `index` की प्रारंभिक वैल्यू है `0` क्युकी `useState(0)` लिखा गया हे. 
 
 Every time your component renders, `useState` gives you an array containing two values:
 
