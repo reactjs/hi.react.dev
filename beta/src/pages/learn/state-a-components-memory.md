@@ -357,27 +357,27 @@ const [index, setIndex] = useState(0);
 
 > पारंपरिक तरह से आप इस जोड़ी को ऐसे लिखेंगे : `const [something, setSomething]`. वैसे तो आप जो चाहे वो नाम इसे दे सकते हे, लेकिन पारंपरिक तरीके से लिखने पर, आपका कोड बाकि लोगो को भी आसानी से समझता हे। 
 
-`useState` केवल एक ही आर्गुमेंट लेता है और वह है **आरंभिक वैल्यू** आपके state वेरिएबल का। इस उदाहरण में, `index` की प्रारंभिक वैल्यू है `0` क्युकी `useState(0)` लिखा गया हे. 
+`useState` केवल एक ही आर्गुमेंट लेता है और वह है **प्रारंभिक वैल्यू** आपके state वेरिएबल का। इस उदाहरण में, `index` की प्रारंभिक वैल्यू है `0` क्युकी `useState(0)` लिखा गया हे. 
 
-Every time your component renders, `useState` gives you an array containing two values:
+जब भी आपका कौम्पोनॅन्ट प्रस्तुत होता हे, , `useState` आपको एक array देता है जिसमें दो वैल्यूस होते हैं:
 
-1. The **state variable** (`index`) with the value you stored.
-2. The **state setter function** (`setIndex`) which can update the state variable and trigger React to render the component again.
+1. एक **state वेरिएबल** (`index`) आपके द्वारा संग्रहीत वैल्यू के साथ।
+2. एक **state setter फंक्शन** (`setIndex`) जो state वेरिएबल की वैल्यू बदल सकता है और कौम्पोनॅन्ट को फिर से रेंडर करने के लिए react को ट्रिगर कर सकता है।
 
-Here's how that happens in action:
+देखिये यह कैसे होता है :
 
 ```js
 const [index, setIndex] = useState(0);
 ```
 
-1. **Your component renders the first time.** Because you passed `0` to `useState` as the initial value for `index`, it will return `[0, setIndex]`. React remembers `0` is the latest state value.
-2. **You update the state.** When a user clicks the button, it calls `setIndex(index + 1)`. `index` is `0`, so it's `setIndex(1)`. This tells React to remember `index` is `1` now and triggers another render.
-3. **Your component's second render.** React still sees `useState(0)`, but because React *remembers* that you set `index` to `1`, it returns `[1, setIndex]` instead.
-4. And so on!
+1. **आपका कौम्पोनॅन्ट पहली बार रेंडर होता है.** क्युकी आपने `useState` को `0` वैल्यू `index` की प्रारंभिक वैल्यू के तौर पर दी थीं, वह `[0, setIndex]` रिटर्न करेगा। React `0` को नवीनतम state वैल्यू के तौर पर याद रखेगा। 
+2. **आप state को अपडेट करें।** जब कोई उपयोगकर्ता बटन पर क्लिक करता है, यह कॉल करता है : `setIndex(index + 1)`. `index` अभी `0` है ।, तो `setIndex(1)` हो जायेगा । यह react को याद रखने के लिए कहता है कि `index` अब `1` है और एक और रेंडर ट्रिगर करता है।
+3. **आपके कौम्पोनॅन्ट का दूसरा रेंडर.** react अभी भी देखता है `useState(0)`, लेकिन क्योंकि react को *याद है* की आपने `index` को `1` सेट किया था , वह `[1, setIndex]` रिटर्न करता है। 
+4. और इसी तरह आगे भी होता रहता है!
 
-## Giving a component multiple state variables {/*giving-a-component-multiple-state-variables*/}
+## एक कौम्पोनॅन्ट को कई state वेरिएबल देना {/*giving-a-component-multiple-state-variables*/}
 
-You can have as many state variables of as many types as you like in one component. This component has two state variables, a number `index` and a boolean `showMore` that's toggled when you click "Show details":
+आपके पास एक कौम्पोनॅन्ट में जितने चाहें उतने प्रकार के state वेरिएबल हो सकते हैं। इस कौम्पोनॅन्ट में दो state वेरिएबल हैं, एक number वेरिएबल : `index` और एक boolean : `showMore` जिसकी वैल्यू तब बदलती है जब आप "Show details" को क्लिक करते है : 
 
 <Sandpack>
 
@@ -516,7 +516,7 @@ button {
 
 </Sandpack>
 
-It is a good idea to have multiple state variables if their state is unrelated, like `index` and `showMore` in this example. But if you find that you often change two state variables together, it might be better to combine them into a single one. For example, if you have a form with many fields, it's more convenient to have a single state variable that holds an object than state variable per field. [Choosing the State Structure](/learn/choosing-the-state-structure) has more tips on this.
+यदि state असंबंधित है, तो कई state वेरिएबल होना एक अच्छा विचार है, जैसे इस उदाहरण में `index` और `showMore` । लेकिन अगर आप पाते हैं कि आप अक्सर दो state वेरिएबल एक साथ बदलते हैं, it might be better to combine them into a single one. For example, if you have a form with many fields, it's more convenient to have a single state variable that holds an object than state variable per field. [Choosing the State Structure](/learn/choosing-the-state-structure) has more tips on this.
 
 <DeepDive title="How does React know which state to return?">
 
