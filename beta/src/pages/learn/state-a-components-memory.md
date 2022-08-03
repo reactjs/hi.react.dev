@@ -516,17 +516,17 @@ button {
 
 </Sandpack>
 
-यदि state असंबंधित है, तो कई state वेरिएबल होना एक अच्छा विचार है, जैसे इस उदाहरण में `index` और `showMore` । लेकिन अगर आप पाते हैं कि आप अक्सर दो state वेरिएबल एक साथ बदलते हैं, it might be better to combine them into a single one. For example, if you have a form with many fields, it's more convenient to have a single state variable that holds an object than state variable per field. [Choosing the State Structure](/learn/choosing-the-state-structure) has more tips on this.
+यदि state असंबंधित है, तो कई state वेरिएबल होना एक अच्छा विचार है, जैसे इस उदाहरण में `index` और `showMore`। लेकिन अगर आप पाते हैं कि आप अक्सर दो state वेरिएबल एक साथ बदलते हैं तो  उन्हें एक में जोड़ना बेहतर हो सकता है । उदाहरण के लिए, यदि आपके पास कई क्षेत्रों (fields) के साथ एक फॉर्म है, तो हर क्षेत्र (field) के लिए अलग state वेरिएबल रखने से बेहतर होगा की आप एक state वेरिएबल रखे जो एक ऑब्जेक्ट है  । इसके बारे में अधिक जानकारी के लिए यहां जाएं : [Choosing the State Structure](/learn/choosing-the-state-structure) ।
 
 <DeepDive title="How does React know which state to return?">
 
-You might have noticed that the `useState` call does not receive any information about *which* state variable it refers to. There is no "identifier" that is passed to `useState`, so how does it know which of the state variables to return? Does it rely on some magic like parsing your functions? The answer is no.
+आपने देखा होगा कि `useState` कॉल को *किस* स्टेट वेरिएबल के बारे में कोई जानकारी प्राप्त नहीं होती है। कोई "पहचानकर्ता" नहीं है जो `useState` को पास किया जाता है, तो उसे कैसे पता चलता है कि किस state वेरिएबल को वापस करना है? क्या यह आपके फ़ंक्शन को पार्स करने जैसे किसी जादू पर निर्भर करता है? जी नहीं। 
 
-Instead, to enable their concise syntax, Hooks **rely on a stable call order on every render of the same component**. This works well in practice because if you follow the rule above ("only call Hooks at the top level"), Hooks will always be called in the same order. Additionally, a [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) catches most mistakes.
+इसके बजाय, उनके संक्षिप्त सिंटैक्स को सक्षम करने के लिए, Hooks ** एक ही कौम्पोनॅन्ट के प्रत्येक रेंडर पर स्थिर कॉल ऑर्डर पर भरोसा करते है।** अगर आप ऊपर दिए गए नियम का पालन करते हैं ("नियम : केवल शीर्ष स्तर पर हुक को कॉल करें (only call Hooks at the top level)"), तो यह अक्सर अच्छा काम करता है । Hooks को हमेशा उसी क्रम में बुलाया जाएगा। और, एक [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) बाकीके गलतियाँ पकड़ता है ।
 
-Internally, React holds an array of state pairs for every component. It also maintains the current pair index, which is set to `0` before rendering. Each time you call `useState`, React gives you the next state pair and increments the index. You can read more about this mechanism in [React Hooks: Not Magic, Just Arrays](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e).
+आंतरिक रूप से, react प्रत्येक कौम्पोनॅन्ट के लिए state जोड़े की एक array रखता है। यह वर्तमान जोड़ी सूचकांक (current pair index) को भी बनाए रखता है, जो रेंडर करने से पहले `0` पर सेट है। हर बार जब आप `useState` कॉल करते हैं , React आपको अगला स्टेट जोड़ा देता है और इंडेक्स की वृद्धि करता है। आप इस तंत्र के बारे में अधिक पढ़ सकते हैं : [React Hooks: Not Magic, Just Arrays](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e).
 
-This example **doesn't use React** but it gives you an idea of how `useState` works internally:
+यह उदाहरण **React का उपयोग नहीं करता है**, लेकिन यह आपको समझाता है कि `useState` आंतरिक रूप से कैसे काम करता है:
 
 <Sandpack>
 
@@ -718,7 +718,7 @@ button { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-You don't have to understand it to use React, but you might find this a helpful mental model.
+रिएक्ट का उपयोग करने के लिए आपको इसे समझने की आवश्यकता नहीं है, लेकिन आपको यह एक उपयोगी साबित हो सकता है।
 
 </DeepDive>
 
