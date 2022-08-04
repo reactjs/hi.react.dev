@@ -1437,15 +1437,15 @@ export default function FeedbackForm() {
 
 ध्यान दें कि कैसे अगर आपने दूसरे `useState` कॉल को `if` के बाद स्थानांतरित करने का प्रयास किया तो यह काम नहीं करेगा। 
 
-सामान्य तौर पर, इस प्रकार की गलतियों को पकड़ा जाता है [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) linter rule के द्वारा।. यदि आप अपने मशीन पर कोड करते वक्त यह error नहीं देखते हैं तो आपको इसे अपने बिल्ड टूलिंग कॉन्फ़िगरेशन में सेट अप करने की आवश्यकता है।
+सामान्य तौर पर, इस प्रकार की गलतियों को पकड़ा जाता है [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) linter rule के द्वारा।. यदि आप अपने मशीन पर कोड करते वक्त यह error नहीं देखते हैं तो आपको इसे अपने बिल्ड टूलिंग कॉन्फ़िगरेशन (build tooling conifiguration) में सेट अप करने की आवश्यकता है।
 
 </Solution>
 
 ### Remove unnecessary state {/*remove-unnecessary-state*/}
 
-When the button is clicked, this example should ask for the user's name and then display an alert greeting them. You tried to use state to keep the name, but for some reason it always shows "Hello, !".
+जब बटन क्लिक किया जाता है, इस उदाहरण में उपयोगकर्ता का नाम पूछना चाहिए और फिर उन्हें अभिवादन करते हुए एक अलर्ट प्रदर्शित करना चाहिए। आपने नाम रखने के लिए state का उपयोग करने की कोशिश की, लेकिन किसी कारण से यह हमेशा "Hello, !" दिखाता है।
 
-To fix this code, remove the unnecessary state variable. (We will discuss about [why this didn't work](/learn/troubleshooting-state-updates#setting-state-does-not-update-variables) later.)
+इस कोड को ठीक करने के लिए, अनावश्यक state वेरिएबल को हटा दें। (We will discuss about [why this didn't work](/learn/troubleshooting-state-updates#setting-state-does-not-update-variables) later.)
 
 Can you explain why this state variable was unnecessary?
 
