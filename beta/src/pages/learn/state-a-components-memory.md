@@ -1441,13 +1441,13 @@ export default function FeedbackForm() {
 
 </Solution>
 
-### Remove unnecessary state {/*remove-unnecessary-state*/}
+### अनावश्यक state हटाएं {/*remove-unnecessary-state*/}
 
-जब बटन क्लिक किया जाता है, इस उदाहरण में उपयोगकर्ता का नाम पूछना चाहिए और फिर उन्हें अभिवादन करते हुए एक अलर्ट प्रदर्शित करना चाहिए। आपने नाम रखने के लिए state का उपयोग करने की कोशिश की, लेकिन किसी कारण से यह हमेशा "Hello, !" दिखाता है।
+इस उदाहरण में, जब बटन क्लिक किया जाता है तो उपयोगकर्ता का नाम पूछना चाहिए और फिर उन्हें अभिवादन करते हुए एक अलर्ट प्रदर्शित करना चाहिए। आपने नाम रखने के लिए state का उपयोग करने की कोशिश की, लेकिन किसी कारण से यह हमेशा "Hello, !" दिखाता है।
 
-इस कोड को ठीक करने के लिए, अनावश्यक state वेरिएबल को हटा दें। (We will discuss about [why this didn't work](/learn/troubleshooting-state-updates#setting-state-does-not-update-variables) later.)
+इस कोड को ठीक करने के लिए, अनावश्यक state वेरिएबल को हटा दें। (हम इस बारे में [यह काम क्यों नहीं करता](/learn/troubleshooting-state-updates#setting-state-does-not-update-variables) बाद में चर्चा करेंगे। )
 
-Can you explain why this state variable was unnecessary?
+क्या आप बता सकते हैं कि यह state वेरिएबल अनावश्यक क्यों था?
 
 <Sandpack>
 
@@ -1474,7 +1474,7 @@ export default function FeedbackForm() {
 
 <Solution>
 
-Here is a fixed version that uses a regular `name` variable declared in the function that needs it:
+यहां एक निश्चित संस्करण है जो उस फ़ंक्शन में घोषित एक नियमित `name` वेरिएबल का उपयोग करता है जिसे इसकी आवश्यकता होती है:
 
 <Sandpack>
 
@@ -1497,7 +1497,7 @@ export default function FeedbackForm() {
 
 </Sandpack>
 
-A state variable is only necessary to keep information between re-renders of a component. Within a single event handler, a regular variable will do fine. Don't introduce state variables when a regular variable works well.
+एक state वेरिएबल केवल एक घटक के री-रेंडर करने के बीच जानकारी रखने के लिए आवश्यक है। एकल event handler के भीतर, एक सामान्य वेरिएबल ठीक रहेगा। जब एक सामान्य वेरिएबल अच्छी तरह से काम करता है, तो state वेरिएबल की कोई आवश्यकता नहीं है।
 
 </Solution>
 
