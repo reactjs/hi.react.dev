@@ -718,15 +718,15 @@ button { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-रिएक्ट का उपयोग करने के लिए आपको इसे समझने की आवश्यकता नहीं है, लेकिन आपको यह एक उपयोगी साबित हो सकता है।
+react का उपयोग करने के लिए आपको इसे समझने की आवश्यकता नहीं है, लेकिन आपको यह उपयोगी साबित हो सकता है।
 
 </DeepDive>
 
-## State is isolated and private {/*state-is-isolated-and-private*/}
+## State अलग और निजी है {/*state-is-isolated-and-private*/}
 
-State is local to a component instance on the screen. In other words, **if you render the same component twice, each copy will have completely isolated state!** Changing one of them will not affect the other.
+हर कौम्पोनॅन्ट के उदाहरण के लिए state स्थानीय है, याने हर कौम्पोनॅन्ट के उदाहरण का state अलग अलग है और सिर्फ उसी कौम्पोनॅन्ट के उदाहरण तक उपलब्ध है। दूसरे शब्दों में, **यदि आप एक ही कौम्पोनॅन्ट को दो बार रेंडर करते हैं, तो प्रत्येक प्रति में पूरी तरह से अलग state होगी!** उनमें से एक को बदलने से दूसरे पर कोई प्रभाव नहीं पड़ेगा।
 
-In this example, the `Gallery` component from earlier is rendered twice with no changes to its logic. Try clicking the buttons inside each of the galleries. Notice that their state is independent:
+इस उदाहरण में, पहले के `Gallery` कौम्पोनॅन्ट को इसके तर्क में बिना किसी बदलाव के दो बार प्रस्तुत किया गया है। प्रत्येक Gallery के अंदर बटन क्लिक करने का प्रयास करें। ध्यान दें कि उनका state स्वतंत्र है:
 
 <Sandpack>
 
@@ -885,22 +885,22 @@ button {
 
 </Sandpack>
 
-This is what makes state different from regular variables that you might declare at the top of your module. State is not tied to a particular function call or a place in the code, but it's "local" to the specific place on the screen. You rendered two `<Gallery />` components, so their state is stored separately.
+आप स्टेट वेरिएबल्स को अपने मॉड्यूल के शीर्ष पर घोषित कर सकते हैं, यही बात स्टेट वेरिएबल को आम वेरिएबल से विपरीत करती है। state किसी विशेष फ़ंक्शन कॉल या कोड में स्थान से बंधा नहीं है, किंतु यह स्क्रीन पर विशिष्ट स्थान पर "स्थानीय" है। आपने दो `<Gallery />` कौम्पोनॅन्ट को रेंडर किया, इसलिए उनका state अलग से संग्रहीत किया जाता है।
 
-Also notice how the `Page` component doesn't "know" anything about the `Gallery` state or even whether it has any. Unlike props, **state is fully private to the component declaring it**. The parent component can't change it. This lets you add state to any component or remove it without impacting the rest of the components.
+यह भी देखें कि कैसे `Page` घटक `Gallery` के state के बारे में कुछ भी नहीं "जानता", उसे तोह यह भी नहीं पता की state अस्तित्व में है। props के विपरीत, **state इसे घोषित करने वाले कौम्पोनॅन्ट के लिए पूरी तरह से निजी है**। मूल कौम्पोनॅन्ट (parent component) state को बदल नहीं सकता है। इससे आप किसी भी कौम्पोनॅन्ट में state जोड़ सकते हैं या बाकी कौम्पोनॅन्ट को प्रभावित किए बिना उसे हटा सकते हैं।
 
-What if you wanted both galleries to keep their states in sync? The right way to do it in React is to *remove* state from child components and add it to their closest shared parent. The next few pages will focus on organizing state of a single component, but we will return to this topic in [Sharing State Between Components](/learn/sharing-state-between-components).
+क्या होगा यदि आप चाहते हैं कि दोनों galleries अपने state में तालमेल बनाए रखें? React में इसे करने का सही तरीका यह है कि चाइल्ड कौम्पोनॅन्ट से state *निकालें* और इसे अपने निकटतम साझा मूल कौम्पोनॅन्ट (parent component) में जोड़ें। अगले कुछ पृष्ठ एकाकी घटक की state को व्यवस्थित करने पर ध्यान केंद्रित करेंगे, लेकिन हम इस विषय पर वापस आएंगे : [ विभिन्न कौम्पोनॅन्ट के बीच state साझा करना](/learn/sharing-state-between-components).
 
 <Recap>
 
-* Use a state variable when a component needs to "remember" some information between renders.
-* State variables are declared by calling the `useState` Hook.
-* Hooks are special functions that start with `use`. They let you "hook into" React features like state.
-* Hooks might remind you of imports: they need to be called unconditionally. Calling Hooks, including `useState`, is only valid at the top level of a component or another Hook.
-* The `useState` Hook returns a pair of values: the current state and the function to update it.
-* You can have more than one state variable. Internally, React matches them up by their order.
-* State is private to the component. If you render it in two places, each copy gets its own state.
-
+* जब किसी कौम्पोनॅन्ट को रेंडरर्स के बीच कुछ जानकारी "याद" रखने की आवश्यकता हो, तो state वेरिएबल का उपयोग करें।
+* स्टेट वेरिएबल को `useState` हुक पुकारकर घोषित किया जाता है।
+* हुक विशेष फंक्शन हैं जो `use` से शुरू होते हैं। वे आपको state जैसी react सुविधाओं को "हुक इन" करने देते हैं।
+* हुक आपको आयात (imports) की याद दिला सकते हैं: उन्हें बिना शर्त बुलाया जाना चाहिए। कहुक्स को बुलाना, जिसमें `useState` शामिल है, केवल एक घटक या किसी अन्य हुक के शीर्ष स्तर पर मान्य है।
+* `useState` हुक वैल्यूज की एक जोड़ी देता है: वर्तमान state और इसे अद्यतन करने के लिए फंक्शन।
+* आपके पास एक से अधिक state वेरिएबल हो सकते हैं। आंतरिक रूप से, React उनके क्रम से उनका मिलन करता है।
+* State कौम्पोनॅन्ट के लिए निजी है। यदि आप इसे दो स्थानों पर रेंडर करते हैं, तो प्रत्येक प्रति का अपना state होता है।
+  
 </Recap>
 
 
@@ -909,9 +909,9 @@ What if you wanted both galleries to keep their states in sync? The right way to
 
 ### Complete the gallery {/*complete-the-gallery*/}
 
-When you press "Next" on the last sculpture, the code crashes. Fix the logic to prevent the crash. You may do this by adding extra logic to event handler or by disabling the button when the action is not possible.
+जब आप अंतिम मूर्तिकला पर "next" बटन दबाते हैं, तो कोड क्रैश हो जाता है (काम करना बंद कर देता है)। इस क्रैश को रोकने के लिए तर्क को ठीक करें। आप ईवेंट हैंडलर में अतिरिक्त तर्क जोड़कर ऐसा कर सकते हैं या कार्रवाई संभव नहीं होने पर बटन को अक्षम करके।
 
-After fixing the crash, add a "Previous" button that shows the previous sculpture. It shouldn't crash on the first sculpture.
+इस क्रैश को ठीक करने के बाद, एक "Previous" बटन जोड़ें जो पिछली मूर्तिकला दिखाता है। यह पहली मूर्तिकला पर क्रैश नहीं होना चाहिए।
 
 <Sandpack>
 
@@ -1052,8 +1052,8 @@ img { width: 120px; height: 120px; }
 </Sandpack>
 
 <Solution>
-
-This adds a guarding condition inside both event handlers and disables the buttons when needed:
+  
+यह दोनों ईवेंट हैंडलर के अंदर एक सुरक्षा स्थिति जोड़ता है और जरूरत पड़ने पर बटन को निष्क्रिय कर देता है:
 
 <Sandpack>
 
@@ -1213,13 +1213,13 @@ img { width: 120px; height: 120px; }
 
 </Sandpack>
 
-Notice how `hasPrev` and `hasNext` are used *both* for the returned JSX and inside the event handlers! This handy pattern works because event handler functions ["close over"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) any variables declared while rendering.
+ध्यान दें कि कैसे लौटाए गए JSX और ईवेंट हैंडलर, *दोनों* के अंदर, `hasPrev` और `hasNext` का उपयोग किया जाता है! यह आसान पैटर्न काम करता है क्योंकि ईवेंट हैंडलर कार्य करता है ["close over"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) रेंडर करते समय घोषित किसी भी वेरिएबल के लिए।
 
 </Solution>
 
-### Fix stuck form inputs {/*fix-stuck-form-inputs*/}
+### अटके हुए फॉर्म इनपुट को ठीक करें {/*fix-stuck-form-inputs*/}
 
-When you type into the input fields, nothing appears. It's like the input values are "stuck" with empty strings. The `value` of the first `<input>` is set to always match the `firstName` variable, and the `value` for the second `<input>` is set to always match the `lastName` variable. This is correct. Both inputs have `onChange` event handlers, which try to update the variables based on the latest user input (`e.target.value`). However, the variables don't seem to "remember" their values between re-renders. Fix this by using state variables instead.
+जब आप इनपुट फ़ील्ड में टाइप करते हैं, तो कुछ भी प्रकट नहीं होता है। यह ऐसा है जैसे इनपुट वैल्यूज खाली strings के साथ "अटक" गए हैं। पहले `<input>` का `वैल्यू` हमेशा `firstName` वेरिएबल से मेल खाने के लिए बाध्य है, और दूसरे `<इनपुट>` के लिए `वैल्यू` हमेशा `lastName` वैरिएबल से मेल खाने के लिए बाध्य है। यह सही है। दोनों इनपुट में `onChange` इवेंट हैंडलर हैं, जो उपयोगकर्ता के नवीनतम इनपुट के आधार पर वेरिएबलो को अद्यतन करने का प्रयास करते हैं (`e.target.value`). हालांकि, वेरिएबल री-रेंडर के बीच अपने वैल्यूज को "याद" नहीं कर पाता। इसके बजाय राज्य चर का उपयोग करके इसे ठीक करें।
 
 <Sandpack>
 
@@ -1268,7 +1268,7 @@ h1 { margin-top: 10px; }
 
 <Solution>
 
-First, import `useState` from React. Then replace `firstName` and `lastName` with state variables declared by calling `useState`. Finally, replace every `firstName = ...` assignment with `setFirstName(...)`, and do the same for `lastName`. Don't forget to update `handleReset` too so that the reset button works.
+सबसे पहले, React से `useState` आयात करें। Then replace `firstName` and `lastName` with state variables declared by calling `useState`. Finally, replace every `firstName = ...` assignment with `setFirstName(...)`, and do the same for `lastName`. Don't forget to update `handleReset` too so that the reset button works.
 
 <Sandpack>
 
