@@ -1268,7 +1268,7 @@ h1 { margin-top: 10px; }
 
 <Solution>
 
-सबसे पहले, React से `useState` आयात करें। Then replace `firstName` and `lastName` with state variables declared by calling `useState`. Finally, replace every `firstName = ...` assignment with `setFirstName(...)`, and do the same for `lastName`. Don't forget to update `handleReset` too so that the reset button works.
+सबसे पहले, React से `useState` आयात करें। फिर `useState` की मदत से `firstName` और `lastName` नामक नए state वेरिएबल्स बनाए और पुराने `firstName` और `lastName` को हटाइये।  अंततः , प्रत्येक `firstName = ...` असाइनमेंट को `setFirstName(...)` से बदलें, और `lastName` के लिए भी ऐसा ही करें। 'handleReset' को भी अपडेट करना न भूलें ताकि रीसेट बटन काम करे।
 
 <Sandpack>
 
@@ -1319,13 +1319,13 @@ h1 { margin-top: 10px; }
 
 </Solution>
 
-### Fix a crash {/*fix-a-crash*/}
+### क्रैश ठीक करें {/*fix-a-crash*/}
 
-Here is a small form that is supposed to let the user leave some feedback. When the feedback is submitted, it's supposed to display a thank-you message. However, it crashes with an error message saying "Rendered fewer hooks than expected". Can you spot the mistake and fix it?
+यहां एक छोटा फॉर्म है जो उपयोगकर्ता को प्रतिपुष्टि देने देता है। प्रतिपुष्टि प्रदान करने पर, उसने एक धन्यवाद सन्देश प्रदर्शित करना अपेक्षित है। हालांकि, यह एक त्रुटि संदेश कह कर क्रैश हो जाता है "Rendered fewer hooks than expected"। क्या आप गलती का पता लगा सकते हैं और उसे ठीक कर सकते हैं?
 
 <Hint>
 
-Are there any limitations on _where_ Hooks may be called? Does this component break any rules?
+हुक को _कहाँ_ (किस जगह) बुलाने पर क्या कोई पाबंदी है? क्या यह कौम्पोनॅन्ट कोई नियम तोड़ रहा है?
 
 </Hint>
 
@@ -1363,7 +1363,7 @@ export default function FeedbackForm() {
 
 <Solution>
 
-Hooks can only be called at the top level of the component function. Here, the first `isSent` definition follows this rule, but the `message` definition is nested in a condition. Move it out of the condition to fix the issue:
+हुक को केवल कौम्पोनॅन्ट फ़ंक्शन के शीर्ष स्तर पर बुलाया जा सकता है। यहाँ, पहली `isSent` परिभाषा इस नियम का पालन करती है, लेकिन `message` परिभाषा एक condition के भीतर है (nested within a condition)। समस्या को ठीक करने के लिए इसे condition से बाहर ले जाएं:
 
 <Sandpack>
 
@@ -1398,9 +1398,9 @@ export default function FeedbackForm() {
 
 </Sandpack>
 
-Remember, Hooks must be called unconditionally and always in the same order!
+याद रखें, हुक को बिना शर्त (unconditionally) और हमेशा उसी क्रम में बुलाया जाना चाहिए!
 
-You could also remove the unnecessary `else` branch to reduce the nesting. However, it's still important that all calls to Hooks happen *before* the first `return`.
+आप नेस्टिंग को कम करने के लिए अनावश्यक `else` शाखा को भी हटा सकते हैं। हालांकि, यह अभी भी महत्वपूर्ण है कि Hooks के सभी कॉल्स `return` से *पहले* हो। 
 
 <Sandpack>
 
@@ -1435,9 +1435,9 @@ export default function FeedbackForm() {
 
 </Sandpack>
 
-Try moving the second `useState` call after the `if` condition and notice how this breaks it again.
+ध्यान दें कि कैसे अगर आपने दूसरे `useState` कॉल को `if` के बाद स्थानांतरित करने का प्रयास किया तो यह काम नहीं करेगा। 
 
-In general, these types of mistakes are caught by the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) linter rule. If you don't see an error when you try the faulty code locally, you need to set it up in your build tooling configuration.
+सामान्य तौर पर, इस प्रकार की गलतियों को पकड़ा जाता है [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) linter rule के द्वारा।. यदि आप अपने मशीन पर कोड करते वक्त यह error नहीं देखते हैं तो आपको इसे अपने बिल्ड टूलिंग कॉन्फ़िगरेशन में सेट अप करने की आवश्यकता है।
 
 </Solution>
 
