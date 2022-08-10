@@ -1,24 +1,24 @@
 ---
-title: Rendering Lists
+title: Rendering लिस्ट
 ---
 
 <Intro>
 
-You will often want to display multiple similar components from a collection of data. You can use the [JavaScript array methods](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array#) to manipulate an array of data. On this page, you'll use [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) and [`map()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map) with React to filter and transform your array of data into an array of components.
+आप अक्सर डेटा के संग्रह से कई समान घटकों को प्रदर्शित करना चाहेंगे। आप डेटा की एक अरे  में हेरफेर करने के लिए [JavaScript array methods](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array#) का उपयोग कर सकते हैं। इस पेज पर, आप रिएक्ट के साथ [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) और [`map()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map) का उपयोग करेंगे और अपने डेटा की अरे  को घटकों की एक अरे  में बदल देंगे।
 
 </Intro>
 
 <YouWillLearn>
 
-* How to render components from an array using JavaScript's `map()`
-* How to render only specific components using JavaScript's `filter()`
-* When and why to use React keys
+* JavaScript के `map()` का उपयोग करके किसी अरे  से घटकों को कैसे प्रस्तुत किया जाए
+* JavaScript के `filter()` का उपयोग करके केवल विशिष्ट घटकों को कैसे प्रस्तुत करें
+* React कीज़  का उपयोग कब और क्यों करें
 
 </YouWillLearn>
 
-## Rendering data from arrays {/*rendering-data-from-arrays*/}
+## अरे से डेटा Rendering करना {/*rendering-data-from-arrays*/}
 
-Say that you have a list of content.
+मान लें कि आपके पास लिस्ट की एक सूची है।
 
 ```js
 <ul>
@@ -30,11 +30,12 @@ Say that you have a list of content.
 </ul>
 ```
 
-The only difference among those list items is their contents, their data. You will often need to show several instances of the same component using different data when building interfaces: from lists of comments to galleries of profile images. In these situations, you can store that data in JavaScript objects and arrays and use methods like [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) and [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to render lists of components from them.
+उन लिस्ट  में एकमात्र अंतर उनकी लिस्ट , उनका डेटा है। इंटरफेस बनाते समय आपको अक्सर अलग-अलग डेटा का उपयोग करके एक ही घटक के कई उदाहरण दिखाने की आवश्यकता होगी: टिप्पणियों की लिस्ट से लेकर प्रोफ़ाइल इमेजिस की गैलरी तक। इन स्थितियों में, आप उस डेटा को JavaScript ऑब्जेक्ट और सरणियों में संग्रहीत कर सकते हैं और उनसे घटकों की लिस्ट प्रस्तुत करने के लिए [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) और [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) जैसी विधियों का उपयोग कर सकते हैं।
 
-Here’s a short example of how to generate a list of items from an array:
 
-1. **Move** the data into an array:
+किसी अरे से आइटम्स की लिस्ट कैसे जेनरेट करें, इसका एक संक्षिप्त उदाहरण यहां दिया गया है:
+
+1. डेटा को एक अरे में **Move** करें:
 
 ```js
 const people = [
@@ -46,19 +47,19 @@ const people = [
 ];
 ```
 
-2. **Map** the `people` members into a new array of JSX nodes, `listItems`:
+2. **Map** `लोगों` के सदस्यों को JSX नोड्स की एक नई अरे में, `listItems`:
 
 ```js
 const listItems = people.map(person => <li>{person}</li>);
 ```
 
-3. **Return** `listItems` from your component wrapped in a `<ul>`:
+3. **return** `listItems` आपके घटक से `<ul>` में लिपटे हुए हैं:
 
 ```js
 return <ul>{listItems}</ul>;
 ```
 
-Here is the result:
+यहाँ परिणाम है:
 
 <Sandpack>
 
@@ -71,7 +72,7 @@ const people = [
   'Subrahmanyan Chandrasekhar: astrophysicist'
 ];
 
-export default function List() {
+export default function list() {
   const listItems = people.map(person =>
     <li>{person}</li>
   );
@@ -85,9 +86,9 @@ li { margin-bottom: 10px; }
 
 </Sandpack>
 
-## Filtering arrays of items {/*filtering-arrays-of-items*/}
+## वस्तुओं की फ़िल्टरिंग अरे {/*filtering-arrays-of-items*/}
 
-This data can be structured even more.
+इस डेटा को और भी संरचित किया जा सकता है।
 
 ```js
 const people = [{
@@ -111,11 +112,11 @@ const people = [{
 }];
 ```
 
-Let's say you want a way to only show people whose profession is `'chemist'`. You can use JavaScript's `filter()` method to return just those people. This method takes an array of items, passes them through a “test” (a function that returns `true` or `false`), and returns a new array of only those items that passed the test (returned `true`).
+मान लीजिए कि आप केवल उन लोगों को दिखाने का तरीका चाहते हैं जिनका पेशा `'chemist'` है। आप केवल उन लोगों को वापस करने के लिए JavaScript की `filter()` विधि का उपयोग कर सकते हैं। यह विधि वस्तुओं की एक अरे लेती है, उन्हें "test" (एक फ़ंक्शन जो `true` या `false` लौटाता है) के माध्यम से पास करता है, और केवल उन वस्तुओं की एक नई अरे देता है जो परीक्षण पास करते हैं (लौटा `True`)।
 
-You only want the items where `profession` is `'chemist'`. The "test" function for this looks like `(person) => person.profession === 'chemist'`. Here's how to put it together:
+आप केवल वही आइटम चाहते हैं जहां `'profession'` `'chemist'` है। इसके लिए "test" फंक्शन `(person) => व्यक्ति। पेशा === `'chemist'` जैसा दिखता है। यहां बताया गया है कि इसे एक साथ कैसे रखा जाए:
 
-1. **Create** a new array of just “chemist” people, `chemists`, by calling `filter()` on the `people` filtering by `person.profession === 'chemist'`:
+1. **Create** केवल “chemist” लोगों की एक नई अरे, `chemists`, `person.profession === 'chemist'` द्वारा फ़िल्टर करने वाले `लोगों` पर `filter()` को कॉल करके:
 
 ```js
 const chemists = people.filter(person =>
@@ -123,7 +124,7 @@ const chemists = people.filter(person =>
 );
 ```
 
-2. Now **map** over `chemists`:
+2. अब  **map** `chemists` के ऊपर
 
 ```js {1,13}
 const listItems = chemists.map(person =>
@@ -141,7 +142,7 @@ const listItems = chemists.map(person =>
 );
 ```
 
-3. Lastly, **return** the `listItems` from your component:
+3. अंत में, अपने घटक से **return** `listItems`:
 
 ```js
 return <ul>{listItems}</ul>;
@@ -153,7 +154,7 @@ return <ul>{listItems}</ul>;
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
-export default function List() {
+export default function list() {
   const chemists = people.filter(person =>
     person.profession === 'chemist'
   );
@@ -234,7 +235,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Gotcha>
 
-Arrow functions implicitly return the expression right after `=>`, so you didn't need a `return` statement:
+एरो फ़ंक्शन स्पष्ट रूप से `=>` के ठीक बाद अभिव्यक्ति लौटाते हैं, इसलिए आपको `return` कथन की आवश्यकता नहीं थी:
 
 ```js
 const listItems = chemists.map(person =>
@@ -242,7 +243,7 @@ const listItems = chemists.map(person =>
 );
 ```
 
-However, **you must write `return` explicitly if your `=>` is followed by a `{` curly brace!**
+हालांकि, **यदि आपके `=>` के बाद `{` कर्ली ब्रेस!**
 
 ```js
 const listItems = chemists.map(person => { // Curly brace
@@ -254,13 +255,13 @@ Arrow functions containing `=> {` are said to have a ["block body"](https://deve
 
 </Gotcha>
 
-## Keeping list items in order with `key` {/*keeping-list-items-in-order-with-key*/}
+## Keeping लिस्ट items in order with `key` {/*keeping-लिस्ट-items-in-order-with-key*/}
 
 If you open any of the sandboxes above in a new tab, you'll see an error in the console:
 
 <ConsoleBlock level="error">
 
-Warning: Each child in a list should have a unique "key" prop.
+Warning: Each child in a लिस्ट should have a unique "key" prop.
 
 </ConsoleBlock>
 
@@ -286,7 +287,7 @@ Rather than generating keys on the fly, you should include them in your data:
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
-export default function List() {
+export default function लिस्ट() {
   const listItems = people.map(person =>
     <li key={person.id}>
       <img
@@ -362,7 +363,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 </Sandpack>
 
-<DeepDive title="Displaying several DOM nodes for each list item">
+<DeepDive title="Displaying several DOM nodes for each लिस्ट item">
 
 What do you do when each item needs to render not one, but several DOM nodes?
 
@@ -381,7 +382,7 @@ const listItems = people.map(person =>
 );
 ```
 
-Fragments disappear from the DOM, so this will produce a flat list of `<h1>`, `<p>`, `<h1>`, `<p>`, and so on.
+Fragments disappear from the DOM, so this will produce a flat लिस्ट of `<h1>`, `<p>`, `<h1>`, `<p>`, and so on.
 
 </DeepDive>
 
@@ -407,7 +408,7 @@ File names in a folder and JSX keys in an array serve a similar purpose. They le
 
 You might be tempted to use an item's index in the array as its key. In fact, that's what React will use if you don't specify a `key` at all. But the order in which you render items will change over time if an item is inserted, deleted, or if the array gets reordered. Index as a key often leads to subtle and confusing bugs.
 
-Similarly, do not generate keys on the fly, e.g. with `key={Math.random()}`. This will cause keys to never match up between renders, leading to all your components and DOM being recreated every time. Not only is this slow, but it will also lose any user input inside the list items. Instead, use a stable ID based on the data.
+Similarly, do not generate keys on the fly, e.g. with `key={Math.random()}`. This will cause keys to never match up between renders, leading to all your components and DOM being recreated every time. Not only is this slow, but it will also lose any user input inside the लिस्ट items. Instead, use a stable ID based on the data.
 
 Note that your components won't receive `key` as a prop. It's only used as a hint by React itself. If your component needs an ID, you have to pass it as a separate prop: `<Profile key={id} userId={id} />`.
 
@@ -428,11 +429,11 @@ On this page you learned:
 
 <Challenges>
 
-### Splitting a list in two {/*splitting-a-list-in-two*/}
+### Splitting a लिस्ट in two {/*splitting-a-लिस्ट-in-two*/}
 
-This example shows a list of all people.
+This example shows a लिस्ट of all people.
 
-Change it to show two separate lists one after another: **Chemists** and **Everyone Else**. Like previously, you can determine whether a person is a chemist by checking if `person.profession === 'chemist'`.
+Change it to show two separate लिस्टs one after another: **Chemists** and **Everyone Else**. Like previously, you can determine whether a person is a chemist by checking if `person.profession === 'chemist'`.
 
 <Sandpack>
 
@@ -440,7 +441,7 @@ Change it to show two separate lists one after another: **Chemists** and **Every
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
-export default function List() {
+export default function लिस्ट() {
   const listItems = people.map(person =>
     <li key={person.id}>
       <img
@@ -531,7 +532,7 @@ You could use `filter()` twice, creating two separate arrays, and then `map` ove
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
-export default function List() {
+export default function लिस्ट() {
   const chemists = people.filter(person =>
     person.profession === 'chemist'
   );
@@ -638,7 +639,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 In this solution, the `map` calls are placed directly inline into the parent `<ul>` elements, but you could introduce variables for them if you find that more readable.
 
-There is still a bit duplication between the rendered lists. You can go further and extract the repetitive parts into a `<ListSection>` component:
+There is still a bit duplication between the rendered लिस्टs. You can go further and extract the repetitive parts into a `<लिस्टSection>` component:
 
 <Sandpack>
 
@@ -646,7 +647,7 @@ There is still a bit duplication between the rendered lists. You can go further 
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
-function ListSection({ title, people }) {
+function लिस्टSection({ title, people }) {
   return (
     <>
       <h2>{title}</h2>
@@ -669,7 +670,7 @@ function ListSection({ title, people }) {
   );
 }
 
-export default function List() {
+export default function लिस्ट() {
   const chemists = people.filter(person =>
     person.profession === 'chemist'
   );
@@ -679,11 +680,11 @@ export default function List() {
   return (
     <article>
       <h1>Scientists</h1>
-      <ListSection
+      <लिस्टSection
         title="Chemists"
         people={chemists}
       />
-      <ListSection
+      <लिस्टSection
         title="Everyone Else"
         people={everyoneElse}
       />
@@ -770,7 +771,7 @@ people.forEach(person => {
   }
 });
 
-function ListSection({ title, people }) {
+function लिस्टSection({ title, people }) {
   return (
     <>
       <h2>{title}</h2>
@@ -793,15 +794,15 @@ function ListSection({ title, people }) {
   );
 }
 
-export default function List() {
+export default function लिस्ट() {
   return (
     <article>
       <h1>Scientists</h1>
-      <ListSection
+      <लिस्टSection
         title="Chemists"
         people={chemists}
       />
-      <ListSection
+      <लिस्टSection
         title="Everyone Else"
         people={everyoneElse}
       />
@@ -870,9 +871,9 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 </Solution>
 
-### Nested lists in one component {/*nested-lists-in-one-component*/}
+### Nested लिस्टs in one component {/*nested-लिस्टs-in-one-component*/}
 
-Make a list of recipes from this array! For each recipe in the array, display its title as an `<h2>` and list its ingredients in a `<ul>`.
+Make a लिस्ट of recipes from this array! For each recipe in the array, display its title as an `<h2>` and लिस्ट its ingredients in a `<ul>`.
 
 <Hint>
 
@@ -885,7 +886,7 @@ This will require nesting two different `map` calls.
 ```js App.js
 import { recipes } from './data.js';
 
-export default function RecipeList() {
+export default function Recipeलिस्ट() {
   return (
     <div>
       <h1>Recipes</h1>
@@ -921,7 +922,7 @@ Here is one way you could go about it:
 ```js App.js
 import { recipes } from './data.js';
 
-export default function RecipeList() {
+export default function Recipeलिस्ट() {
   return (
     <div>
       <h1>Recipes</h1>
@@ -960,20 +961,20 @@ export const recipes = [{
 
 </Sandpack>
 
-Each of the `recipes` already includes an `id` field, so that's what the outer loop uses for its `key`. There is no ID you could use to loop over ingredients. However, it's reasonable to assume that the same ingredient won't be listed twice within the same recipe, so its name can serve as a `key`. Alternatively, you could change the data structure to add IDs, or use index as a `key` (with the caveat that you can't safely reorder ingredients).
+Each of the `recipes` already includes an `id` field, so that's what the outer loop uses for its `key`. There is no ID you could use to loop over ingredients. However, it's reasonable to assume that the same ingredient won't be लिस्टed twice within the same recipe, so its name can serve as a `key`. Alternatively, you could change the data structure to add IDs, or use index as a `key` (with the caveat that you can't safely reorder ingredients).
 
 </Solution>
 
-### Extracting a list item component {/*extracting-a-list-item-component*/}
+### Extracting a लिस्ट item component {/*extracting-a-लिस्ट-item-component*/}
 
-This `RecipeList` component contains two nested `map` calls. To simplify it, extract a `Recipe` component from it which will accept `id`, `name`, and `ingredients` props. Where do you place the outer `key` and why?
+This `Recipeलिस्ट` component contains two nested `map` calls. To simplify it, extract a `Recipe` component from it which will accept `id`, `name`, and `ingredients` props. Where do you place the outer `key` and why?
 
 <Sandpack>
 
 ```js App.js
 import { recipes } from './data.js';
 
-export default function RecipeList() {
+export default function Recipeलिस्ट() {
   return (
     <div>
       <h1>Recipes</h1>
@@ -1036,7 +1037,7 @@ function Recipe({ id, name, ingredients }) {
   );
 }
 
-export default function RecipeList() {
+export default function Recipeलिस्ट() {
   return (
     <div>
       <h1>Recipes</h1>
@@ -1072,7 +1073,7 @@ Here, `<Recipe {...recipe} key={recipe.id} />` is a syntax shortcut saying "pass
 
 </Solution>
 
-### List with a separator {/*list-with-a-separator*/}
+### लिस्ट with a separator {/*लिस्ट-with-a-separator*/}
 
 This example renders a famous haiku by Katsushika Hokusai, with each line wrapped in a `<p>` tag. Your job is to insert an `<hr />` separator between each paragraph. Your resulting structure should look like this:
 
