@@ -1,51 +1,51 @@
 ---
-title: Updating Objects in State
+title: स्टेट में ऑब्जेक्ट्स को अपडेट करना
 ---
 
 <Intro>
 
-State can hold any kind of JavaScript value, including objects. But you shouldn't change objects that you hold in the React state directly. Instead, when you want to update an object, you need to create a new one (or make a copy of an existing one), and then set the state to use that copy.
+स्टेट कोई भी जावास्क्रिप्ट वैल्यू स्टोर करसकती है, ऑब्जेक्ट समेत। लेकिन आपको कभी भी  ऑब्जेक्ट्स को बदलना नहीं चैयाह जो आप React स्टेट में होल्ड करते है। उसके बजाए आपको जब भी  ऑब्जेक्ट को अपडेट करना हो या तो आप  एक नया ऑब्जेक्ट बनाये  या उसी की एक  कॉपी बनाये   और फिर स्टेट को सेट करदे उस कॉपी का उपयोग करने के लिये। 
 
 </Intro>
 
 <YouWillLearn>
 
-- How to correctly update an object in React state
-- How to update a nested object without mutating it
-- What immutability is, and how not to break it
-- How to make object copying less repetitive with Immer
+- React में सही से ऑब्जेक्ट को कैसे अपडेट करे
+- बिना बदले कैसे नेस्टेड ऑब्जेक्ट को अपडेट करे 
+- इम्म्यूटेबलिटी  क्या होती है और कैसे उसे न तोड़े 
+- Immer की मदद से एक जैसे ऑब्जेक्टस को बार-बार कम कैसे बनाये
 
 </YouWillLearn>
 
-## What's a mutation? {/*whats-a-mutation*/}
+## म्युटेशन क्या होती है ?  {/*whats-a-mutation*/}
 
-You can store any kind of JavaScript value in state.
+आप स्टेट में कोई भी जावास्क्रिप्ट वैल्यू स्टोर करसकते है 
 
 ```js
 const [x, setX] = useState(0);
 ```
 
-So far you've been working with numbers, strings, and booleans. These kinds of JavaScript values are "immutable," meaning unchangeable or "read-only." You can trigger a re-render to _replace_ a value:
+अभी तक आप नंबर्स, स्ट्रिंग्स, और बूलियन के साथ काम कर रहे थे। ऐसी जावास्क्रिप्ट वैल्यूज " इम्म्यूटेबल " होती है,  मतलब जो कभी बदल न सके या " रीड-ओनली " हो। आप रीरेंदर ट्रिगर करसकते है वैल्यू को _ब्दलने_ के लिया।
 
 ```js
 setX(5);
 ```
 
-The `x` state changed from `0` to `5`, but the _number `0` itself_ did not change. It's not possible to make any changes to the built-in primitive values like numbers, strings, and booleans in JavaScript.
+स्टेट `x`   `0` से  `5` तक बदली है,  लेकिन _नंबर `0` खुद_  बदला नहीं है। जावास्क्रिप्ट में ये मुमकिन नहीं है की बिल्ट-इन प्रिमिटिव वैल्यूज जैसे की नंबर्स, स्टिंग्स, और बूलियन बदल सके। 
 
-Now consider an object in state:
+अब विचार कीजिये एक ऑब्जेक्ट स्टेट में है:
 
 ```js
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-Technically, it is possible to change the contents of _the object itself_. **This is called a mutation:**
+तकनीकी ओर से यह मुमकिन है की _खुदी ऑब्जेक्ट_ के कंटेंट को चेंज करसके।  **यही म्युटेशन कहलाता है:**
 
 ```js
 position.x = 5;
 ```
 
-However, although objects in React state are technically mutable, you should treat them **as if** they were immutable--like numbers, booleans, and strings. Instead of mutating them, you should always replace them.
+हलाक, जबकि React स्टेट में ऑब्जेक्ट्स तकनीकी रूप से मुटेबल होते है, आपको उनके साथ ऐसे व्यवहार करना चैयाह **जैसे वो** इम्म्यूटेबल हो नंबर्स, बूलियनस, और स्ट्रिंग्स की तरह। उनको म्यूटेट करने की बजाए, आपको हमेशा उनको ररिप्लेस करना चैयाह।  
 
 ## Treat state as read-only {/*treat-state-as-read-only*/}
 
