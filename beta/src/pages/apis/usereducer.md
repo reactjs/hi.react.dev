@@ -4,8 +4,6 @@ title: useReducer
 
 <Intro>
 
-`useReducer` is a React Hook that lets you add a [reducer](/learn/extracting-state-logic-into-a-reducer) to your component.
-
 `useReducer` एक React Hook है जो आपको अपने कौम्पोनॅन्ट में एक [रेडूसर](/learn/extracting-state-logic-into-a-reducer) ऐड करने देता है.
 
 ```js
@@ -14,9 +12,9 @@ const [state, dispatch] = useReducer(reducer, initialArg, init)
 
 </Intro>
 
-- [Usage](#usage)
-  - [Adding a reducer to a component](#adding-a-reducer-to-a-component)
-  - [Writing the reducer function](#writing-the-reducer-function)
+- [यूसेज](#usage)
+  - [कौम्पोनॅन्ट में एक रेडूसर ऐड करना](#adding-a-reducer-to-a-component)
+  - [रेडूसर फ़ंक्शन लिखना](#writing-the-reducer-function)
   - [Avoiding recreating the initial state](#avoiding-recreating-the-initial-state)
 - [Reference](#reference)
   - [`useReducer(reducer, initialArg, init?)`](#usereducer)
@@ -33,10 +31,7 @@ const [state, dispatch] = useReducer(reducer, initialArg, init)
 
 ## यूसेज {/*usage*/}
 
-### Adding a reducer to a component {/*adding-a-reducer-to-a-component*/}
 ### कौम्पोनॅन्ट में एक रेडूसर ऐड करना {/*adding-a-reducer-to-a-component*/}
-
-Call `useReducer` at the top level of your component to manage state with a [reducer](/learn/extracting-state-logic-into-a-reducer).
 
 State को [रेडूसर](/learn/extracting-state-logic-into-a-reducer) के साथ प्रबंधित करने के लिए, अपने कौम्पोनॅन्ट के सबसे उपरी स्तर में `useReducer` को बुलाए.
 
@@ -51,16 +46,10 @@ function MyComponent() {
   const [state, dispatch] = useReducer(reducer, { age: 42 });
   // ...
 ```
-
-`useReducer` returns an array with exactly two items:
 `useReducer` एक अरे रिटर्न करता है जिसमे पूरी तरह से दो आइटम हैं:
 
-1. The <CodeStep step={1}>current state</CodeStep> of this state variable, initially set to the <CodeStep step={3}>initial state</CodeStep> you provided.
 1. इस state वेरिएबल का <CodeStep step={1}>करेंट state</CodeStep> जो शुरू में आपके द्वारा दिए गए <CodeStep step={3}>initial state</CodeStep> पर सेट है.
-2. The <CodeStep step={2}>`dispatch` function</CodeStep> that lets you change it in response to interaction.
 2. एक <CodeStep step={2}>`dispatch` function</CodeStep> जो आपको इंटरैक्शन के रेस्पॉन्स में बदलने देता है.
-
-To update what's on the screen, call <CodeStep step={2}>`dispatch`</CodeStep> with an object representing what the user did, called an *action*:
 
 स्क्रीन अप्डेट करने के लिए, <CodeStep step={2}>`dispatch`</CodeStep> को बुलाए *ऐक्शन*, एक ऐसा ऑब्जेक्ट जो रेप्रेज़ेंट करता है कि यूज़र ने क्या किया:
 
@@ -69,8 +58,6 @@ function handleClick() {
   dispatch({ type: 'incremented_age' });
 }
 ```
-
-React will pass the current state and the action to your <CodeStep step={4}>reducer function</CodeStep>. Your reducer will calculate and return the next state. React will स्टोर that next state, render your component with it, and update the UI.
 
 आपके <CodeStep step={4}>रेडूसर फ़ंक्शन</CodeStep> में React अभी का state और ऐक्शन पास करेगा. आपका रेडूसर अगले state को कैल्क्युलेट कर उसे रिटर्न करेगा. React उस state को स्टोर करेगा, कौम्पोनॅन्ट को उसके साथ रेंडर कर UI को अप्डेट करेगा.
 
@@ -110,16 +97,12 @@ button { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-`useReducer` is very similar to [`useState`](/apis/usestate), but it lets you move the state update logic from event handlers into a single function outside of your component. Read more about [choosing between `useState` and `useReducer`](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer).
-
-`useReducer` और [`useState`](/apis/usestate) ज़्यादातर एक जैसे ही है लेकिन `useReducer` आपको event handlers से state अप्डेट लॉजिक एक सिंगल फ़ंक्शन में कौम्पोनॅन्ट के बाहर ले जाने देता है. [choosing between `useState` and `useReducer`](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer) के बारे me और padhiye.
+`useReducer` और [`useState`](/apis/usestate) ज़्यादातर एक जैसे ही है लेकिन `useReducer` आपको event handlers से state अप्डेट लॉजिक एक सिंगल फ़ंक्शन में कौम्पोनॅन्ट के बाहर ले जाने देता है. [choosing between `useState` and `useReducer`](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer) के बारे me और पढ़िए.
 
 ---
 
-### Writing the reducer function {/*writing-the-reducer-function*/}
 ### रेडूसर फ़ंक्शन लिखना {/*writing-the-reducer-function*/}
 
-A reducer function is declared like this:
 किसी भी रेडूसर फ़ंक्शन सिर्फ डिक्लेर किया जाता है:
 
 ```js
@@ -127,8 +110,6 @@ function reducer(state, action) {
   // ...
 }
 ```
-
-Then you need to fill in the code that will calculate and return the next state. By convention, it is common to write it as a [`switch` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch). For each `case` in the `switch`, you need to calculate and return some next state.
 
 फ़िर आपको वह कोड लिखना होगा जो अगले state को कैल्क्युलेट कर रिटर्न करेगा. परम्परागत तरीक़े से, इससे [`switch` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) के रूप में लिखना एक आम बात है. `switch` में आपको हर `case` के लिए अगला state कैल्क्युलेट करके रिटर्न करना होगा.
 
@@ -152,8 +133,6 @@ function reducer(state, action) {
 }
 ```
 
-Actions can have any shape. By convention, it's common to pass objects with a `type` property identifying the action. It should include the minimal necessary information that the reducer needs to compute the next state.
-
 ऐक्शंज़ का कोई भी आकार हो सकता है, परम्परागत रूप से, आब्जेक्ट्स को `type` प्रॉपर्टी (जो ऐक्शन को आयडेंटिफ़ाई करता है) के साथ पास किया जाता है. उसमें कम से कम और ज़रूरी जानकारी होनी चाहिए जिससे रेडूसर अगला state computer कर सके.
 ```js {5,9-12}
 function Form() {
@@ -172,36 +151,31 @@ function Form() {
   // ...
 ```
 
-The action type names are local to your component. [Each action describes a single interaction, even if that leads to multiple changes in data](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well). The shape of the state is arbitrary, but usually it'll be an object or an array.
-
 ऐक्शन के प्रकार नाम आपके कौम्पोनॅन्ट के लोकल होते है. [हर एक ऐक्शन एक इंटरैक्शन वर्णित करता है, चाहे अगर उसमें के सारे डेटा परिवर्तित होगा](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well). State का आकार मनमाना होता है, लेकिन आम तौर पर एक ऑब्जेक्ट होगा या फ़िर एक array होगा.
 
-Read [extracting state logic into a reducer](/learn/extracting-state-logic-into-a-reducer) to learn more.
 और जानने के लिए, [reducer me state logic extract करने ](/learn/extracting-state-logic-into-a-reducer) के बारे में पढ़िए.
 
 <Gotcha>
 
-State is read-only. Don't modify any objects or arrays in state:
-State को आप सिर्फ पढ़ सकते है i.e. read-only. State के अंदर के आब्जेक्ट्स या arrays को संशोधित ना करे:
+State को आप सिर्फ पढ़ सकते है अर्थात read-only. State के अंदर के आब्जेक्ट्स या arrays को संशोधित ना करे:
 
 ```js {4,5}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // 🚩 Don't mutate an object in state like this:
+      // 🚩 state में ऑब्जेक्ट्स को ऐसे मूतते न करे :
       state.age = state.age + 1;
       return state;
     }
 ```
 
-Instead, always return new objects from your reducer:
 बदले में, हमेशा अपने रेडूसर से नए आब्जेक्ट्स रिटर्न करना:
 
 ```js {4-8}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // ✅ Instead, return a new object
+      // ✅ बदले में, नए आब्जेक्ट्स रिटर्न करे
       return {
         ...state,
         age: state.age + 1
@@ -209,16 +183,14 @@ function reducer(state, action) {
     }
 ```
 
-Read [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) to learn more.
 और जानने के लिए, [updating arrays in state](/learn/updating-arrays-in-state) और [updating objects in state](/learn/updating-objects-in-state) के बारे में पढ़िए.
 
 </Gotcha>
 
-<Recipes titleText="Basic useReducer examples / useReducer के मूल उदाहरण" titleId="examples-basic">
+<Recipes titleText="useReducer के मूल उदाहरण" titleId="examples-basic">
 
 ### Form (object) {/*form-object*/}
 
-In this example, the reducer manages a state object with two fields: `name` and `age`.
 इस उदाहरण में, रेडूसर एक state को प्रबंधित कर रहा है जिसके दो विस्तार है: `name` और `age`.
 
 <Sandpack>
@@ -285,7 +257,6 @@ button { display: block; margin-top: 10px; }
 
 ### Todo list (array) {/*todo-list-array*/}
 
-In this example, the reducer manages an array of tasks. The array needs to be updated [without mutation](/learn/updating-arrays-in-state).
 इस उदाहरण में, रेडूसर टास्क के array को प्रबंधित कर रहा है. [बिना mutation](/learn/updating-arrays-in-state) के array को अप्डेट करना होगा.
 
 <Sandpack>
@@ -477,10 +448,8 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution />
 
-### Writing concise update logic with Immer {/*writing-concise-update-logic-with-immer*/}
 ### Immer के साथ संक्षिप्त अप्डेट लॉजिक लिखना {/*writing-concise-update-logic-with-immer*/}
 
-If updating arrays and objects without mutation feels tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer#useimmerreducer) to reduce repetitive code. Immer lets you write concise code as if you were mutating objects, but under the hood it performs immutable updates:
 यदि बिना परिवर्तन के array या आब्जेक्ट्स को अप्डेट करना है तो आप एक library जैसे [Immer](https://github.com/immerjs/use-immer#useimmerreducer) को दोहराए जाने वाले कोड कम करने के लिए इस्तेमाल कर सकते है. Immer आपको सिर्फ कोड लिखने देता है जैसे आप कोड परिवर्तित कर रहे हो लेकिन हुड के नीचे यह अपरिवर्तनीय अप्डेट पर्फ़ॉर्म करता है:
 
 <Sandpack>
@@ -693,10 +662,8 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Avoiding recreating the initial state {/*avoiding-recreating-the-initial-state*/}
 ### Initial state को पुनः सृष्ट करने से बचना {/*avoiding-recreating-the-initial-state*/}
 
-React saves the initial state once and ignores it on the next renders.
 React initial state को एक बार सहेज कर रखता है और अगले रेंडर में उसे नज़रंदाज़ करता है.
 
 ```js
@@ -709,11 +676,8 @@ function TodoList({ username }) {
   // ...
 ```
 
-Although the result of `createInitialState(username)` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating large arrays or performing expensive calculations.
+हालाँकि `createInitialState(username)` का परिणाम सिर्फ शुरूआती रेंडर के लिए इस्तेमाल किया जाता है, आप इस फ़ंक्शन फ़िर भी हर रेंडर पे  बुलाते है. अगर महंगे कैल्क्युलेशंज़ कर रहे है या बड़े बड़े arrays बना रहे है यह अपव्ययी हो सकता है.
 
-हालाँकि `createInitialState(username)` का परिणाम सिर्फ शुरूआती रेंडर के लिए इस्तेमाल किया जाता है, आप इस फ़ंक्शन फ़िर भी हर रेंडर पे bulaate है. अगर महंगे कैल्क्युलेशंज़ कर रहे है या बड़े बड़े arrays बना रहे है यह अपव्ययी हो सकता है.
-
-To solve this, you may **pass it as an _initializer_ function** to `useReducer` as the third argument instead:
 इससे हल करने के लिए, आप उसे `useReducer` में तीसरे वितर्क के स्थान पर **_इनिशिलीयसेर_ फ़ंक्शन के रूप में पास कर सकते है**.
 
 ```js {6}
@@ -726,20 +690,13 @@ function TodoList({ username }) {
   // ...
 ```
 
-Notice that you’re passing `createInitialState`, which is the *function itself*, and not `createInitialState()`, which is the result of calling it. This way, the initial state does not get री-created after initialization.
-
 अंदर दीजिए कि आप `createInitialState` पास कर रहे है जो *फ़ंक्शन खुद* है लेकिन `createIntialState()` नहीं, जो कि फ़ंक्शन को बुलाने पर मिलनेवाला परिणाम है. इस तरीक़े से शुरुआती state इनिशलिज़ेशन के बाद री-क्रीएट नहीं होता.
-
-In the above example, `createInitialState` takes a `username` argument. If your initializer doesn't need any information to compute the initial state, you may pass `null` as the second argument to `useReducer`.
 
 उपर दिए गए उदाहरण में, `createIntialState` एक तर्क लेता है, `username`. अगर आपका इनिशीयलिसेर को initial state को कम्प्यूट करने के लिए किसी भी जानकारी की ज़रूरत नहीं है, तो आप `useReducer` के दूसरे तर्क के स्थान पर `null` पास कर सकते है.
 
-<Recipes titleText="The difference between passing an initializer and passing the initial state directly / initializer pass करना और initial state pass करने me अंतर" titleId="examples-initializer">
+<Recipes titleText="इनिशीयलिसेर पास करना और initial state पास करने में अंतर" titleId="examples-initializer">
 
-### Passing the initializer function {/*passing-the-initializer-function*/}
-### Intializer फ़ंक्शन पास करना {/*passing-the-initializer-function*/}
-
-This example passes the initializer function, so the `createInitialState` function only runs during initialization. It does not run when component री-रेंडर्ज़, such as when you type into the input.
+### इनिशीयलिसेर फ़ंक्शन पास करना {/*passing-the-initializer-function*/}
 
 इस उदाहरण में इनिशीयलिसेर फ़ंक्शन पास किया जाता है,तो `createInitialState` फ़ंक्शन सिर्फ प्रारम्भ के दौरान चलता है. कौम्पोनॅन्ट री-रेंडर होने पर, जैसे इनपुट में टाइप करने पर, यह फ़ंक्शन नहीं चलता.
 <Sandpack>
@@ -826,12 +783,10 @@ export default function TodoList({ username }) {
 
 <Solution />
 
-### Passing the initial state directly {/*passing-the-initial-state-directly*/}
-### intial state directly pass करना {/*passing-the-initial-state-directly*/}
+### intial state को सीधे पास करना {/*passing-the-initial-state-directly*/}
 
-This example **does not** pass the initializer function, so the `createInitialState` function runs on every render, such as when you type into the input. There is no observable difference in behavior, but this code is less efficient.
+इस उदाहरण में इनिशलीयसेर फ़ंक्शन **नहीं** पास किया जाता,तो `createInitialState` फ़ंक्शन हर रेंडर पर चलता है, जैसे जब अब इनपुट में टाइप करते हैं. व्यवहारिक रूप से देखने पर कोई अंतर नही है लेकिन इस कोड की क्षमता कम हो जाती है.
 
-इस उदाहरण में इनिशलीयसेर फ़ंक्शन **नहीं**पास किया जाता,तो `createInitialState` फ़ंक्शन हर रेंडर पर चलता है, जैसे जब अब इनपुट में टाइप करते हैं. व्यवहारिक रूप से देखने पर कोई अंतर नही है लेकिन इस कोड की क्षमता कम हो जाती है.
 <Sandpack>
 
 ```js App.js hidden
@@ -919,11 +874,10 @@ export default function TodoList({ username }) {
 
 ---
 
-## Reference {/*reference*/}
+## संदर्भ {/*reference*/}
 
 ### `useReducer(reducer, initialArg, init?)` {/*usereducer*/}
 
-Call `useReducer` at the top level of your component to manage its state with a [reducer](/learn/extracting-state-logic-into-a-reducer).
 किसी भी कौम्पोनॅन्ट के स्टेट को [रेडूसर](/learn/extracting-state-logic-into-a-reducer) के सहयोग के साथ प्रबंधित करने के लिए अपने कौम्पोनॅन्ट की सबसे उपरी स्तर पर `useReducer` को बुलाए.
 
 ```js
@@ -938,41 +892,30 @@ function MyComponent() {
   // ...
 ```
 
-[See more examples above.](#examples-basic)
 [और उधारण के लिए उपर dekhiye.](#examples-basic)
 
-#### Parameters {/*parameters*/}
+#### पैरामीटर्ज़ {/*parameters*/}
 
-* `reducer`: The reducer function that specifies how the state gets updated. It must be pure, should take the state and action as arguments, and should return the next state. State and action can be of any types.
-* `initialArg`: The value from which the initial state is calculated. It can be a value of any type. How the initial state is calculated from it depends on the next `init` argument.
-* **optional** `init`: The initializer function that specifies how the initial state is calculated. If it's not specified, the initial state is set to `initialArg`. Otherwise, the initial state is set to the result of calling `init(initialArg)`.
+* **optional** `init`: इनिशीयलिसेर फ़ंक्शन स्पष्ट करता है कि इनिशल state कैसे कैलकुलेट करते हैं| initial state को `init(initialArg)` को बुलाने पर मिलने वाला रिजल्ट पर सेट करते है और यदि यह स्पष्ट नहीं है तो `initialArg` पर सेट करते हैं|
 
 * `reducer`: रेडूसर फ़ंक्शन यह स्पष्ट करता है कि state कैसे अप्डेट होता है. इससे शुद्ध होना चाहिए, स्टेट और ऐक्शन को तर्क के रूप में लेना चाहिए और अगला state रिटर्न करना चाहिए. स्टेट और ऐक्शन किसी भी टाइप के हो सकते है.
 * `initalArg`: वह वैल्यू जिससे इनिशल state कैल्क्युलेट किया जाता है. इनिशल state को कैल्क्युलेट करने का तरीक़ा इसके अगले वाले तर्क, `init` पर निर्भर करता है.
-#### Returns {/*returns*/}
 
-`useReducer` returns an array with exactly two values:
+#### रिटर्न्स {/*returns*/}
+
 `useReducer` एक array रिटर्न करता है जिसमे इग्ज़ैक्ट्ली दो वैल्यू है:
-
-1. The current state. During the first render, it's set to `init(initialArg)` or `initialArg` (if there's no `init`).
-2. The [`dispatch` function](#dispatch) that lets you update the state to a different value and trigger a री-render.
 
 1. अभी का state. पहली रेंडर के दौरान, इससे `init(initialArg)` या फ़िर `initalArg` (अगर `init`) पर सेट किया जाता है.
 2. [`dispatch` फ़ंक्शन ](#dispatch) जो आपको state को एक अलग वैल्यू के साथ अप्डेट करने और री-रेंडर चालू करने देता है.
 
-#### Caveats {/*caveats*/}
-
-* `useReducer` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* In Strict Mode, React will **call your reducer and initializer twice** in order to [help you find accidental impurities](#my-initializer-or-updater-function-runs-twice). This is development-only behavior and does not affect production. If your reducer and initializer are pure (as they should be), this should not affect the logic of your component. The result from one of the calls is ignored.
+#### चेतावनियां {/*caveats*/}
 
 * `useReducer` एक hook है,तो आप उसे सिर्फ **कौम्पोनॅन्ट के सबसे उपर वाले स्तर** पर बुला सकते है या अपने Hooks में बुला सकते हो. इससे लूप्स और कंडिशंज़ के अंदर नहीं बुला सकते. अगर उसकी ज़रूरत है तो एक नया कौम्पोनॅन्ट इक्स्ट्रैक्ट करे और उसमें state मूव करना होगा.
-* Strict मोड में,ऐक्सिडेंटल इम्प्युरिटीज ढूँढने के लिए रीऐक्ट **आपके रेडूसर और इनिशलिसेर को दो बार** बुलाता है
+* Strict मोड में,ऐक्सिडेंटल इम्प्युरिटीज ढूँढने के लिए रीऐक्ट **आपके रेडूसर और इनिशलिसेर को दो बार** बुलाता है ताकि [आपको आकस्मिक अशुध्दि मिल जाय|](#my-initializer-or-updater-function-runs-twice)
 
 ---
 
-### `dispatch` functions {/*dispatch*/}
-
-The `dispatch` function returned by `useReducer` lets you update the state to a different value and trigger a री-रेंडर. You need to pass the action as the only argument to the `dispatch` function:
+### `dispatch` फंक्शन्स {/*dispatch*/}
 
 `ueReducer` द्वारा वापस किया गया `dispatch` फ़ंक्शन आपको state को एक अलग वैल्यू के साथ अप्डेट और री-रेंडर चालू करने देता है. `dispatch` फ़ंक्शन में आपको तर्क के रूप में सिर्फ ऐक्शन को पास करना होगा:
 
@@ -984,32 +927,23 @@ function handleClick() {
   // ...
 ```
 
-React will set the next state to the result of calling the `reducer` फ़ंक्शन you've provided with the current `state` and the action you've passed to `dispatch`.
-
 `रेडूसर`फ़ंक्शन में आपके द्वारा दिया गया अभी का `state` और `dispatch` में पास किये गए ऐक्शन के परिणाम से रीऐक्ट अगला state सेट करेगा.
 
-#### Parameters {/*dispatch-parameters*/}
-
-* `action`: The action performed by the user. It can be a value of any type. By convention, an action is usually an object with a `type` property identifying it and, optionally, other properties with additional information.
+#### परामीटेर {/*dispatch-parameters*/}
 
 * `action`: वह ऐक्शन जो यूज़र द्वारा किया गया हो. यह किसी भी प्रकार का मूल्य हो सकता है. परम्परागत रूप से, एक ऐक्शन सामान्य रूप से एक ऑब्जेक्ट है जिसका `type` प्रॉपर्टी है पहचान करने के लिए और,वैकल्पिक तौर पर, और भी विशेषताएँ हैं जिसमे अतिरिक्त जानकारी है.
 
-#### Returns {/*dispatch-returns*/}
+#### रिटर्न्स {/*dispatch-returns*/}
 
-`dispatch` functions do not have a return value.
 `dispatch` फ़ंक्शन का कोई रिटर्न वैल्यू नहीं होता.
 
-#### Caveats {/*setstate-caveats*/}
-
-* The `dispatch` function **only updates the state variable for the *next* render**. If you read the state variable after calling the `dispatch` function, [you will still get the old value](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) that was on the screen before your call.
-
-* If the new value you provide is identical to the current `state`, as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison, React will **skip री-rendering the component and its children.** This is an optimization. React may still need to call your component before ignoring the result, but it shouldn't affect your code.
-
-* React [batches state updates](/learn/queueing-a-series-of-state-updates). It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple री-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`](/apis/flushsync).
+#### चेतावनियां {/*setstate-caveats*/}
 
 * `dispatch` फ़ंक्शन ***अगले* रेंडर के लिए सिर्फ state वेरिएबल को अप्डेट करता है**. अगर आप `dispatch` फ़ंक्शन बुलाने के बाद state वेरिएबल को पढ़ते है,तो [आपको अभी भी puraana वैल्यू मिलेगा](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) जो call के पहले screen पे था.
 
 * अगर [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) के द्वारा निर्धारित किया जाता है कि दिया गया naya वैल्यू अभी के `state` के समकक्ष है तो रीऐक्ट **us कौम्पोनॅन्ट को और उसके बच्चों का री-रेंडरिंग skip कर देगा**. यह एक optimization है. result ignore करने के पहले React को आपके कौम्पोनॅन्ट को बुलाने की ज़रूरत पढ़ सकती है लेकिन इससे आपका कोड प्रभावित नहीं होना चाहिए.
+
+* React [batches state updates](/learn/queueing-a-series-of-state-updates). It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple री-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`](/apis/flushsync).
 
 ---
 

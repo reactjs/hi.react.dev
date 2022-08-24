@@ -17,7 +17,7 @@ const value = useContext(SomeContext)
   - [Context द्वारा पास किया गया डेटा को अप्डेट करना](#updating-data-passed-via-context)
   - [फ़ॉलबैक डिफ़ॉल्ट वैल्यू को स्पेसिफ़ाई करना](#specifying-a-fallback-default-value)
   - [ट्री के हिस्से के लिए context ओवरराइड करना](#overriding-context-for-a-part-of-the-tree)
-  - [री-रेंडर को ऑप्टिमायज़ करना जब ऑब्जेक्ट और फ़ंक्शन पास किये जाते है](#optimizing-री-renders-when-passing-objects-and-functions)
+  - [री-रेंडर को ऑप्टिमायज़ करना जब ऑब्जेक्ट और फ़ंक्शन पास किये जाते है](#optimizing-re-renders-when-passing-objects-and-functions)
 - [संदर्भ](#reference)
   - [`useContext(SomeContext)`](#usecontext)
 - [ट्रबल्शूटिंग](#troubleshooting)
@@ -927,12 +927,12 @@ ul, li { margin: 0; padding: 0; }
 
 ### फ़ॉलबैक डिफ़ॉल्ट वैल्यू को स्पेसिफ़ाई करना {/*specifying-a-fallback-default-value*/}
 
-अगर React उस विशिष्ट <CodeStep step={1}>context</CodeStep> का प्रोवाइडर पैरेंट ट्री मे ना ढूँढ पाए, to `useContext()` द्वारा रिटर्न किया गया context वैल्यू [context बनाते समय](/api/createcontext) रखे गए <CodeStep step={3}>डिफ़ॉल्ट वैल्यू</CodeStep> के समान होगा:
+अगर React उस विशिष्ट <CodeStep step={1}>context</CodeStep> का प्रोवाइडर पैरेंट ट्री मे ना ढूँढ पाए, तो `useContext()` द्वारा रिटर्न किया गया context वैल्यू [context बनाते समय](/api/createcontext) रखे गए <CodeStep step={3}>डिफ़ॉल्ट वैल्यू</CodeStep> के समान होगा:
 
 ```js [[1, 1, "ThemeContext"], [3, 1, "null"]]
 const ThemeContext = createContext(null);
 ```
-डिफ़ॉल्ट वैल्यू कभी **बदलता नही है**. अगर आपको context अप्डेट करना है to उसे state के साथ [सिर्फ यूज़ करे](#updating-data-passed-via-context)|
+डिफ़ॉल्ट वैल्यू कभी **बदलता नही है**. अगर आपको context अप्डेट करना है तो उसे state के साथ [सिर्फ यूज़ करे](#updating-data-passed-via-context)|
 
 अक्सर `null` की जगह और भी सार्थक वैल्यू है जो आप डिफ़ॉल्टके रूप मे इस्तेमाल कर सकते है, उदाहरण:
 
@@ -1264,7 +1264,7 @@ export const LevelContext = createContext(0);
 
 ---
 
-### री-रेंडर को ऑप्टिमायज़ करना जब ऑब्जेक्ट और फ़ंक्शन पास किये जाते है {/*optimizing-री-renders-when-passing-objects-and-functions*/}
+### री-रेंडर को ऑप्टिमायज़ करना जब ऑब्जेक्ट और फ़ंक्शन पास किये जाते है {/*optimizing-re-renders-when-passing-objects-and-functions*/}
 
 Context द्वारा आप कोई भी वैल्यू पास कर सकते है, ऑब्जेक्ट और फ़ंक्शन समेत|
 
@@ -1339,21 +1339,13 @@ function MyComponent() {
 
 #### Returns {/*returns*/}
 
-`useContext` returns the context value for the calling component. It is determined as the `value` passed to the closest `SomeContext.Provider` above the calling component in the tree. If there is no such provider, then the returned value will be the `defaultValue` you have passed to [`createContext`](/api/createcontext) for that context. The returned value is always up-to-date. React automatically री-renders components that read some context if it changes.
-
-`useContext` बुलाने वाले कौम्पोनॅन्ट को context वैल्यू रिटर्न करता है. ट्री मे बुलाने वाले कौम्पोनॅन्ट के सबसे नज़दीक `SomeContext.Provider` मे पास किया गया `value` को निर्धारित किया जाता है.
+`useContext` बुलाने वाले कौम्पोनॅन्ट को context वैल्यू रिटर्न करता है. ट्री मे बुलाने वाले कौम्पोनॅन्ट के सबसे नज़दीक `SomeContext.Provider` मे पास किया गया `value` को निर्धारित किया जाता है. यदि ऐसा कोई प्रोवाइडर नहीं है  तो उस context के [`createContext`](/api/createcontext) में पास किया गया `defaultValue` रिटर्न होगा| रिटर्न किया गया वैल्यू हमेशा up-to-date है. React अपने आप से सारे कौम्पोनॅन्ट अपडेट करता है अगर वो बदल जाता है.
 
 #### चेतावनी {/*caveats*/}
 
-* `useContext()` call in a component is not affected by providers returned from the *same* component. The corresponding `<Context.Provider>` **needs to be *above*** the component doing the `useContext()` call.
-
 * किसी भी कौम्पोनॅन्ट मे `useContext()` का कॉल *उसी* कौम्पोनॅन्ट के प्रोवाइडरस से प्रभावित नही है. उसके कॉरेस्पॉंडिंग मे `<Context.Provider>` को `useContext()` बुलाने वाले कौम्पोनॅन्ट के ***उपर* होना ही चाहिए।**.
 
-* React **automatically री-renders** all the children that use a particular context starting from the provider that receives a different `value`. The previous and the next values are compared with the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. Skipping री-renders with [`memo`](/apis/memo) does not prevent the children receiving fresh context values from above.
-
-* React सारे बच्चे को **auto matically री-रेंडर करता है** जो पर्टिक्युलर context का इस्तेमाल करते है उस प्रोवाइडर से शुरू करता है जिससे `value` का अलग वैल्यू मिलता है. पहले का और अगला वैल्यू को [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) के साथ तुलना की जाती है.
-
-* If your build system produces duplicates modules in the output (which can happen if you use symlinks), this can break context. Passing something via context only works if `SomeContext` that you use to provide context and `SomeContext` that you use to read it are ***exactly* the same object**, as determined by a `===` comparison.
+* React सारे बच्चे को **अपने आप री-रेंडर करता है** जो पर्टिक्युलर context का इस्तेमाल करते है उस प्रोवाइडर से शुरू करता है जिससे `value` का अलग वैल्यू मिलता है. पहले का और अगला वैल्यू को [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) के साथ तुलना की जाती है. री-रेंडर्स को [`memo`](/apis/memo) के साथ स्किप करने से बच्चो को ऊपर से नए context वैल्यू मिलने से नहीं रोकता|
 
 * अगर आपका बिल्ड सिस्टम आउट्पुट में डूप्लिकेट मोडयूल मे प्रडूस करता है (अगर symlinks इस्तेमाल करते हो तो हो सकता है), यह context तोड़ सकता है. Context द्वारा पास करना सिर्फ टैब काम करता है जब आपके द्वारा उपयोग किया गया `SomeContext` प्रोवाइड करने के लिए और `SomeContext` पढ़ने के लिए ***इग्ज़ैक्ट्ली* एक ही ऑब्जेक्ट के है** जो `===` तुलना से निर्धारित किया जाता है.
 
@@ -1363,60 +1355,43 @@ function MyComponent() {
 
 ### मेरा कौम्पोनॅन्ट को प्रोवाइडर का वैल्यू नही दिख रहा {/*my-component-doesnt-see-the-value-from-my-provider*/}
 
-There are a few common ways that this can happen:
 यह बहुत कम और आम तरीक़े है जिससे यह हो सकता है:
-
-1. You're rendering `<SomeContext.Provider>` in the same component (or below) as where you're calling `useContext()`. Move `<SomeContext.Provider>` *above and outside* the component calling `useContext()`.
 
 1. आप `<SomeContext.Provider>` को usi (या उसके नीचे) कौम्पोनॅन्ट मे रेंडर कर रहे है जहाँ आप `useContext()` को बुला रहे है. `<SomeConterx.Provider>` को `useContext()` को बुलाने वाले कौम्पोनॅन्ट के *उपर और बाहर * मूव कीजिए.
 
-2. You may have forgotten to wrap your component with `<SomeContext.Provider>`, or you might have put it in a different part of the tree than you thought. Check whether the hierarchy is right using [React DevTools](/learn/react-developer-tools).
-
 2.आप अपने कौम्पोनॅन्ट `<SomeContext.Provider>` के साथ रैप करना भूल गए होंगे या फ़िर ट्री के किसी और हिस्से मे रखा होगा. [React DevTools](/learn/react-developer-tools) के सहयोग से जाँच करे यदि आपकी पदानुक्रम सही है.
-
-3. You might be running into some build issue with your tooling that causes `SomeContext` as seen from the providing component and `SomeContext` as seen by the reading component to be two different objects. This can happen if you use symlinks, for example. You can verify this by assigning them to globals like `window.SomeContext1` and `window.SomeContext2` and then checking whether `window.SomeContext1 === window.SomeContext2` in the console. If they're not the same, you need to fix that issue on the build tool level.
 
 3. आप अपने टूलिंग के साथ किसी बिल्ड इशू को एंकाउंटर कर रहे होंगे जिसके कारण `SomeContext` देने वाले कौम्पोनॅन्ट और पढ़ने वाले कौम्पोनॅन्ट को अलग-अलग आब्जेक्ट्स दिख रहे होंगे. उदाहरण के लिए, यह symlinks उसे करने से हो सकता है. वेरिफ़ाई करने के लिए, आप उन्हें ग्लोबलस असाइन करिए जैसे `window.SomeContext1` and `window.SomeContext2` और फ़िर कान्सोल मे चेक करिए यदि `window.SomeContext1 === window.SomeContext2`. यदि वहाँ दोनो समान नही है तो आपको यह इशू बिल्ड टूल लेवल पर फ़िक्स करना होगा.
 
 ### मुझे मेरे context से हमेशा `undefined` मिल रहा है जबकि डिफ़ॉल्ट वैल्यू अलग है {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
-You might have a provider without a `value` in the tree:
+
 आपके tree मे एक प्रोवाइडर होगा जिसका `value` नही है.
 
 ```js {1,2}
-// 🚩 Doesn't work: no value prop
 // 🚩 काम नही करता: वैल्यू prop नही है
 <ThemeContext.Provider>
    <Button />
 </ThemeContext.Provider>
 ```
 
-If you forget to specify `value`, it's like passing `value={undefined}`.
+अगर आप `value` को स्पष्ट रूप से नही पास करते तो `value={undefined}` को पास करने के बराबर हुआ.
 
-अगर आप `value` को स्पष्ट रूप से नही पास करते to `value={undefined}` को पास करने के बराबर हुआ.
-
-You may have also mistakingly used a different prop name by mistake:
 आपने गलती से कोई और prop नेम का इस्तेमाल किया होगा.
 
 ```js {1,2}
-// 🚩 Doesn't work: prop should be called "value"
 // 🚩 काम नही करता: prop का नाम "value" होना चाहिए
 <ThemeContext.Provider theme={theme}>
    <Button />
 </ThemeContext.Provider>
 ```
 
-In both of these cases you should see a warning from React in the console. To fix them, call the prop `value`:
-
 इन दोनो केस मे आपको कान्सोल मे React से एक चेतावनी मिलनी चाहिए. इसे फ़िक्स करने के लिए, `value` prop को बुलाए:
 
 ```js {1,2}
-// ✅ Passing the value prop
 // ✅ वैल्यू prop को पास करना
 <ThemeContext.Provider value={theme}>
    <Button />
 </ThemeContext.Provider>
 ```
 
-Note that the [default value from your `createContext(defaultValue)` call](#specifying-a-fallback-default-value) is only used **if there is no matching provider above at all.** If there is a `<SomeContext.Provider value={undefined}>` component somewhere in the parent tree, the component calling `useContext(SomeContext)` *will* receive `undefined` as the context value.
-
-अंदर रखे कि [आपके `createContext(defaultValue)`कॉल की डिफ़ॉल्ट वैल्यू](#specifying-a-fallback-default-value) तब ही यूज़ होती है जब **उपर कोई भी मैचिंग प्रोवाइडर नही है.** अगर पैरेंट ट्री मे कहीं पर कोई `<SomeContext.Provider value={undefined}>` कौम्पोनॅन्ट है to `useContext(SomeContext)` को बुलाने वाला कौम्पोनॅन्ट context वैल्यू `undefined` *ही* मिलेगा.
+अंदर रखे कि [आपके `createContext(defaultValue)`कॉल की डिफ़ॉल्ट वैल्यू](#specifying-a-fallback-default-value) तब ही यूज़ होती है जब **उपर कोई भी मैचिंग प्रोवाइडर नही है.** अगर पैरेंट ट्री मे कहीं पर कोई `<SomeContext.Provider value={undefined}>` कौम्पोनॅन्ट है तो `useContext(SomeContext)` को बुलाने वाला कौम्पोनॅन्ट context वैल्यू `undefined` *ही* मिलेगा|
