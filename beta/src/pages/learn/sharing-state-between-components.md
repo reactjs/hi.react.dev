@@ -15,11 +15,11 @@ title: कौम्पोनॅन्ट्स के बीच state शेय�
 
 </YouWillLearn>
 
-## लिफ्टिंग state अप, उदाहरण के माध्यम से {/* lifting-state-up-by-example */}
+## लिफ्टिंग state अप, उदाहरण के माध्यम से {/*lifting-state-up-by-example*/}
 
 इस उदाहरण में एक पैरेंट `Accordion` कोम्पोनेंट दो विभिन्न `Panel`s को रेंडर करता है:
 
-- `Accordion`
+* `Accordion`
   - `Panel`
   - `Panel`
 
@@ -30,9 +30,9 @@ title: कौम्पोनॅन्ट्स के बीच state शेय�
 <Sandpack>
 
 ```js
-import {useState} from 'react';
+import { useState } from 'react';
 
-function Panel({title, children}) {
+function Panel({ title, children }) {
   const [isActive, setIsActive] = useState(false);
   return (
     <section className="panel">
@@ -40,7 +40,9 @@ function Panel({title, children}) {
       {isActive ? (
         <p>{children}</p>
       ) : (
-        <button onClick={() => setIsActive(true)}>Show</button>
+        <button onClick={() => setIsActive(true)}>
+          Show
+        </button>
       )}
     </section>
   );
@@ -51,15 +53,10 @@ export default function Accordion() {
     <>
       <h2>Almaty, Kazakhstan</h2>
       <Panel title="About">
-        With a population of about 2 million, Almaty is Kazakhstan's largest
-        city. From 1929 to 1997, it was its capital city.
+        With a population of about 2 million, Almaty is Kazakhstan's largest city. From 1929 to 1997, it was its capital city.
       </Panel>
       <Panel title="Etymology">
-        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for
-        "apple" and is often translated as "full of apples". In fact, the region
-        surrounding Almaty is thought to be the ancestral home of the apple, and
-        the wild <i lang="la">Malus sieversii</i> is considered a likely
-        candidate for the ancestor of the modern domestic apple.
+       The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
       </Panel>
     </>
   );
@@ -67,10 +64,7 @@ export default function Accordion() {
 ```
 
 ```css
-h3,
-p {
-  margin: 5px 0px;
-}
+h3, p { margin: 5px 0px; }
 .panel {
   padding: 10px;
   border: 1px solid #aaa;
@@ -107,7 +101,7 @@ p {
 
 ऐसा करने से `Accordion` कौम्पोनॅन्ट दोनों `Panel`s को संचालित कर पायेगा और एक समय में उनमें से एक ही expand होगा।
 
-### चरण १: चाइल्ड कौम्पोनॅन्ट में से state निकालना {/* step-1-remove-state-from-the-child-components */}
+### चरण १: चाइल्ड कौम्पोनॅन्ट में से state निकालना {/*step-1-remove-state-from-the-child-components*/}
 
 आप `Panel` के `isActive` का कण्ट्रोल उसके पैरेंट कौम्पोनॅन्ट को देंगे। इसका मतलब है कि पैरेंट कौम्पोनॅन्ट `isActive` को `Panel` तक एक prop की तरह पास करेगा। आप `Panel` कौम्पोनॅन्ट से **यह लाइन हटाने** से शुरुआत कर सकते हैं:
 
@@ -123,11 +117,11 @@ function Panel({ title, children, isActive }) {
 
 अब `Panel` का पैरेंट कौम्पोनॅन्ट `isActive` को [prop की तरह पास कर](/learn/passing-props-to-a-component) के _नियंत्रित_ कर पायेगा। ठीक इसके विपरीत, अब `Panel` कौम्पोनॅन्ट का `isActive` की वैल्यू पर कोई _नियंत्रित नहीं_ रह जायेगा--ये अब पैरेंट कौम्पोनॅन्ट पर निर्भर है!
 
-### चरण २: कॉमन पैरेंट कौम्पोनॅन्ट से हार्ड कोडेड डाटा को पास करना {/* step-2-pass-hardcoded-data-from-the-common-parent */}
+### चरण २: कॉमन पैरेंट कौम्पोनॅन्ट से हार्ड कोडेड डाटा को पास करना {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
 
 अब state को लिफ्ट अप करने के लिए आपको उस निकटतम कॉमन पैरेंट कौम्पोनॅन्ट का पता लगाना है, जो उन _दोनों_ चाइल्ड कौम्पोनॅन्ट का पैरेंट है जिन्हें आप संचालित करना चाहते हैं:
 
-- `Accordion` _(निकटतम कॉमन पैरेंट)_
+* `Accordion` _(निकटतम कॉमन पैरेंट)_
   - `Panel`
   - `Panel`
 
@@ -136,35 +130,32 @@ function Panel({ title, children, isActive }) {
 <Sandpack>
 
 ```js
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Accordion() {
   return (
     <>
       <h2>Almaty, Kazakhstan</h2>
       <Panel title="About" isActive={true}>
-        With a population of about 2 million, Almaty is Kazakhstan's largest
-        city. From 1929 to 1997, it was its capital city.
+        With a population of about 2 million, Almaty is Kazakhstan's largest city. From 1929 to 1997, it was its capital city.
       </Panel>
       <Panel title="Etymology" isActive={true}>
-        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for
-        "apple" and is often translated as "full of apples". In fact, the region
-        surrounding Almaty is thought to be the ancestral home of the apple, and
-        the wild <i lang="la">Malus sieversii</i> is considered a likely
-        candidate for the ancestor of the modern domestic apple.
+        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
       </Panel>
     </>
   );
 }
 
-function Panel({title, children, isActive}) {
+function Panel({ title, children, isActive }) {
   return (
     <section className="panel">
       <h3>{title}</h3>
       {isActive ? (
         <p>{children}</p>
       ) : (
-        <button onClick={() => setIsActive(true)}>Show</button>
+        <button onClick={() => setIsActive(true)}>
+          Show
+        </button>
       )}
     </section>
   );
@@ -172,10 +163,7 @@ function Panel({title, children, isActive}) {
 ```
 
 ```css
-h3,
-p {
-  margin: 5px 0px;
-}
+h3, p { margin: 5px 0px; }
 .panel {
   padding: 10px;
   border: 1px solid #aaa;
@@ -186,7 +174,7 @@ p {
 
 अब `Accordion` कौम्पोनॅन्ट के हार्ड कोडेड `isActive` वैल्यूज को एडिट करें और स्क्रीन पर उसका रिजल्ट देखें।
 
-### चरण ३: कॉमन पैरेंट में state को जोड़ना {/* step-3-add-state-to-the-common-parent */}
+### चरण ३: कॉमन पैरेंट में state को जोड़ना {/*step-3-add-state-to-the-common-parent*/}
 
 State को लिफ्ट अप करते समय, कई बार उस state में हम क्या स्टोर कर रहे हैं, उसका नेचर बदल सकता है।
 
@@ -202,10 +190,16 @@ const [activeIndex, setActiveIndex] = useState(0);
 
 ```js
 <>
-  <Panel isActive={activeIndex === 0} onShow={() => setActiveIndex(0)}>
+  <Panel
+    isActive={activeIndex === 0}
+    onShow={() => setActiveIndex(0)}
+  >
     ...
   </Panel>
-  <Panel isActive={activeIndex === 1} onShow={() => setActiveIndex(1)}>
+  <Panel
+    isActive={activeIndex === 1}
+    onShow={() => setActiveIndex(1)}
+  >
     ...
   </Panel>
 </>
@@ -216,7 +210,7 @@ const [activeIndex, setActiveIndex] = useState(0);
 <Sandpack>
 
 ```js
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Accordion() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -226,39 +220,44 @@ export default function Accordion() {
       <Panel
         title="About"
         isActive={activeIndex === 0}
-        onShow={() => setActiveIndex(0)}>
-        With a population of about 2 million, Almaty is Kazakhstan's largest
-        city. From 1929 to 1997, it was its capital city.
+        onShow={() => setActiveIndex(0)}
+      >
+        With a population of about 2 million, Almaty is Kazakhstan's largest city. From 1929 to 1997, it was its capital city.
       </Panel>
       <Panel
         title="Etymology"
         isActive={activeIndex === 1}
-        onShow={() => setActiveIndex(1)}>
-        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for
-        "apple" and is often translated as "full of apples". In fact, the region
-        surrounding Almaty is thought to be the ancestral home of the apple, and
-        the wild <i lang="la">Malus sieversii</i> is considered a likely
-        candidate for the ancestor of the modern domestic apple.
+        onShow={() => setActiveIndex(1)}
+      >
+        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
       </Panel>
     </>
   );
 }
 
-function Panel({title, children, isActive, onShow}) {
+function Panel({
+  title,
+  children,
+  isActive,
+  onShow
+}) {
   return (
     <section className="panel">
       <h3>{title}</h3>
-      {isActive ? <p>{children}</p> : <button onClick={onShow}>Show</button>}
+      {isActive ? (
+        <p>{children}</p>
+      ) : (
+        <button onClick={onShow}>
+          Show
+        </button>
+      )}
     </section>
   );
 }
 ```
 
 ```css
-h3,
-p {
-  margin: 5px 0px;
-}
+h3, p { margin: 5px 0px; }
 .panel {
   padding: 10px;
   border: 1px solid #aaa;
@@ -299,7 +298,7 @@ p {
 
 </DeepDive>
 
-## हर state के लिए एक ही सोर्स ऑफ़ truth {/* a-single-source-of-truth-for-each-state */}
+## हर state के लिए एक ही सोर्स ऑफ़ truth {/*a-single-source-of-truth-for-each-state*/}
 
 React एप्लीकेशन में, कई कौम्पोनॅन्ट का अपना एक state होगा। Inputs की तरह के कुछ state अपने Leaf कौम्पोनॅन्ट के नजदीक "रह" सकते हैं (Tree के बॉटम में रहने वाले कौम्पोनॅन्ट्स)। कुछ state एप्प के टॉप पर "रह" सकते हैं। उदाहरण के लिए कुछ client-side routing लाइब्रेरीज implement करते समय उनके करंट state को React state में स्टोर किया जाता है और फिर props की मदद से पास किया जाता है!
 
@@ -311,16 +310,16 @@ React एप्लीकेशन में, कई कौम्पोनॅन�
 
 <Recap>
 
-- यदि आप दो कंपोनेंट्स के बीच तालमेल करना चाहते हैं, तब उनकी state को उनके कॉमन पैरेंट पर मूव करें।
-- फिर इनफार्मेशन को कॉमन पैरेंट में से props की मदद से पास करें।
-- अंत में event-handler को पास-डाउन करें जिस से चिल्ड्रेन अपने पैरेंट state बदल सकें।
-- Iबेहतर होगा यदि कंपोनेंट्स को "कंट्रोल्ड"(props द्वारा ड्रिवन) या "अन-कंट्रोल्ड" (state द्वारा ड्रिवन) मानें।
+* यदि आप दो कंपोनेंट्स के बीच तालमेल करना चाहते हैं, तब उनकी state को उनके कॉमन पैरेंट पर मूव करें।
+* फिर इनफार्मेशन को कॉमन पैरेंट में से props की मदद से पास करें।
+* अंत में event-handler को पास-डाउन करें जिस से चिल्ड्रेन अपने पैरेंट state बदल सकें।
+* Iबेहतर होगा यदि कंपोनेंट्स को "कंट्रोल्ड"(props द्वारा ड्रिवन) या "अन-कंट्रोल्ड" (state द्वारा ड्रिवन) मानें।
 
 </Recap>
 
 <Challenges>
 
-### सिंक किये हुए इनपुट {/* synced-inputs */}
+### सिंक किये हुए इनपुट {/*synced-inputs*/}
 
 ये दो इनपुट इंडिपेंडेंट हैं। इन्हें सिंक में रखने की कोशिश करें: एक इनपुट को एडिट करने पर दूसरा इनपुट उसकी टेक्स्ट से अपडेट होना चाहिए, और फिर vice versa।
 
@@ -333,7 +332,7 @@ React एप्लीकेशन में, कई कौम्पोनॅन�
 <Sandpack>
 
 ```js
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function SyncedInputs() {
   return (
@@ -344,7 +343,7 @@ export default function SyncedInputs() {
   );
 }
 
-function Input({label}) {
+function Input({ label }) {
   const [text, setText] = useState('');
 
   function handleChange(e) {
@@ -353,19 +352,20 @@ function Input({label}) {
 
   return (
     <label>
-      {label} <input value={text} onChange={handleChange} />
+      {label}
+      {' '}
+      <input
+        value={text}
+        onChange={handleChange}
+      />
     </label>
   );
 }
 ```
 
 ```css
-input {
-  margin: 5px;
-}
-label {
-  display: block;
-}
+input { margin: 5px; }
+label { display: block; }
 ```
 
 </Sandpack>
@@ -377,7 +377,7 @@ label {
 <Sandpack>
 
 ```js
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function SyncedInputs() {
   const [text, setText] = useState('');
@@ -388,35 +388,44 @@ export default function SyncedInputs() {
 
   return (
     <>
-      <Input label="First input" value={text} onChange={handleChange} />
-      <Input label="Second input" value={text} onChange={handleChange} />
+      <Input
+        label="First input"
+        value={text}
+        onChange={handleChange}
+      />
+      <Input
+        label="Second input"
+        value={text}
+        onChange={handleChange}
+      />
     </>
   );
 }
 
-function Input({label, value, onChange}) {
+function Input({ label, value, onChange }) {
   return (
     <label>
-      {label} <input value={value} onChange={onChange} />
+      {label}
+      {' '}
+      <input
+        value={value}
+        onChange={onChange}
+      />
     </label>
   );
 }
 ```
 
 ```css
-input {
-  margin: 5px;
-}
-label {
-  display: block;
-}
+input { margin: 5px; }
+label { display: block; }
 ```
 
 </Sandpack>
 
 </Solution>
 
-### लिस्ट फ़िल्टर करना {/* filtering-a-list */}
+### लिस्ट फ़िल्टर करना {/*filtering-a-list*/}
 
 इस उदाहरण में, `SearchBar` की अपनी एक `query` state है, जो टेक्स्ट इनपुट को नियंत्रित करती है। इसका पैरेंट `FilterableList` कौम्पोनॅन्ट `List` ऑफ़ आइटम डिस्प्ले करता है, पर सर्च query को अकाउंट में नहीं लेता है।
 
@@ -433,8 +442,8 @@ label {
 <Sandpack>
 
 ```js
-import {useState} from 'react';
-import {foods, filterItems} from './data.js';
+import { useState } from 'react';
+import { foods, filterItems } from './data.js';
 
 export default function FilterableList() {
   return (
@@ -455,15 +464,19 @@ function SearchBar() {
 
   return (
     <label>
-      Search: <input value={query} onChange={handleChange} />
+      Search:{' '}
+      <input
+        value={query}
+        onChange={handleChange}
+      />
     </label>
   );
 }
 
-function List({items}) {
+function List({ items }) {
   return (
-    <table>
-      {items.map((food) => (
+    <table> 
+      {items.map(food => (
         <tr key={food.id}>
           <td>{food.name}</td>
           <td>{food.description}</td>
@@ -477,43 +490,34 @@ function List({items}) {
 ```js data.js
 export function filterItems(items, query) {
   query = query.toLowerCase();
-  return items.filter((item) =>
-    item.name.split(' ').some((word) => word.toLowerCase().startsWith(query))
+  return items.filter(item =>
+    item.name.split(' ').some(word =>
+      word.toLowerCase().startsWith(query)
+    )
   );
 }
 
-export const foods = [
-  {
-    id: 0,
-    name: 'Sushi',
-    description:
-      'Sushi is a traditional Japanese dish of prepared vinegared rice',
-  },
-  {
-    id: 1,
-    name: 'Dal',
-    description:
-      'The most common way of preparing dal is in the form of a soup to which onions, tomatoes and various spices may be added',
-  },
-  {
-    id: 2,
-    name: 'Pierogi',
-    description:
-      'Pierogi are filled dumplings made by wrapping unleavened dough around a savoury or sweet filling and cooking in boiling water',
-  },
-  {
-    id: 3,
-    name: 'Shish kebab',
-    description:
-      'Shish kebab is a popular meal of skewered and grilled cubes of meat.',
-  },
-  {
-    id: 4,
-    name: 'Dim sum',
-    description:
-      'Dim sum is a large range of small dishes that Cantonese people traditionally enjoy in restaurants for breakfast and lunch',
-  },
-];
+export const foods = [{
+  id: 0,
+  name: 'Sushi',
+  description: 'Sushi is a traditional Japanese dish of prepared vinegared rice'
+}, {
+  id: 1,
+  name: 'Dal',
+  description: 'The most common way of preparing dal is in the form of a soup to which onions, tomatoes and various spices may be added'
+}, {
+  id: 2,
+  name: 'Pierogi',
+  description: 'Pierogi are filled dumplings made by wrapping unleavened dough around a savoury or sweet filling and cooking in boiling water'
+}, {
+  id: 3,
+  name: 'Shish kebab',
+  description: 'Shish kebab is a popular meal of skewered and grilled cubes of meat.'
+}, {
+  id: 4,
+  name: 'Dim sum',
+  description: 'Dim sum is a large range of small dishes that Cantonese people traditionally enjoy in restaurants for breakfast and lunch'
+}];
 ```
 
 </Sandpack>
@@ -525,8 +529,8 @@ export const foods = [
 <Sandpack>
 
 ```js
-import {useState} from 'react';
-import {foods, filterItems} from './data.js';
+import { useState } from 'react';
+import { foods, filterItems } from './data.js';
 
 export default function FilterableList() {
   const [query, setQuery] = useState('');
@@ -538,25 +542,32 @@ export default function FilterableList() {
 
   return (
     <>
-      <SearchBar query={query} onChange={handleChange} />
+      <SearchBar
+        query={query}
+        onChange={handleChange}
+      />
       <hr />
       <List items={results} />
     </>
   );
 }
 
-function SearchBar({query, onChange}) {
+function SearchBar({ query, onChange }) {
   return (
     <label>
-      Search: <input value={query} onChange={onChange} />
+      Search:{' '}
+      <input
+        value={query}
+        onChange={onChange}
+      />
     </label>
   );
 }
 
-function List({items}) {
+function List({ items }) {
   return (
-    <table>
-      {items.map((food) => (
+    <table> 
+      {items.map(food => (
         <tr key={food.id}>
           <td>{food.name}</td>
           <td>{food.description}</td>
@@ -570,43 +581,34 @@ function List({items}) {
 ```js data.js
 export function filterItems(items, query) {
   query = query.toLowerCase();
-  return items.filter((item) =>
-    item.name.split(' ').some((word) => word.toLowerCase().startsWith(query))
+  return items.filter(item =>
+    item.name.split(' ').some(word =>
+      word.toLowerCase().startsWith(query)
+    )
   );
 }
 
-export const foods = [
-  {
-    id: 0,
-    name: 'Sushi',
-    description:
-      'Sushi is a traditional Japanese dish of prepared vinegared rice',
-  },
-  {
-    id: 1,
-    name: 'Dal',
-    description:
-      'The most common way of preparing dal is in the form of a soup to which onions, tomatoes and various spices may be added',
-  },
-  {
-    id: 2,
-    name: 'Pierogi',
-    description:
-      'Pierogi are filled dumplings made by wrapping unleavened dough around a savoury or sweet filling and cooking in boiling water',
-  },
-  {
-    id: 3,
-    name: 'Shish kebab',
-    description:
-      'Shish kebab is a popular meal of skewered and grilled cubes of meat.',
-  },
-  {
-    id: 4,
-    name: 'Dim sum',
-    description:
-      'Dim sum is a large range of small dishes that Cantonese people traditionally enjoy in restaurants for breakfast and lunch',
-  },
-];
+export const foods = [{
+  id: 0,
+  name: 'Sushi',
+  description: 'Sushi is a traditional Japanese dish of prepared vinegared rice'
+}, {
+  id: 1,
+  name: 'Dal',
+  description: 'The most common way of preparing dal is in the form of a soup to which onions, tomatoes and various spices may be added'
+}, {
+  id: 2,
+  name: 'Pierogi',
+  description: 'Pierogi are filled dumplings made by wrapping unleavened dough around a savoury or sweet filling and cooking in boiling water'
+}, {
+  id: 3,
+  name: 'Shish kebab',
+  description: 'Shish kebab is a popular meal of skewered and grilled cubes of meat.'
+}, {
+  id: 4,
+  name: 'Dim sum',
+  description: 'Dim sum is a large range of small dishes that Cantonese people traditionally enjoy in restaurants for breakfast and lunch'
+}];
 ```
 
 </Sandpack>
