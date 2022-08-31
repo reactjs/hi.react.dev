@@ -47,11 +47,11 @@ position.x = 5;
 
 हलाक, जबकि React स्टेट में ऑब्जेक्ट्स तकनीकी रूप से मुटेबल होते है, आपको उनके साथ ऐसे व्यवहार करना चैयाह **जैसे वो** इम्म्यूटेबल हो नंबर्स, बूलियनस, और स्ट्रिंग्स की तरह। उनको म्यूटेट करने की बजाए, आपको हमेशा उनको ररिप्लेस करना चैयाह।  
 
-## Treat state as read-only {/*treat-state-as-read-only*/}
+## स्टेट का रीड -ओनली व्यवहार करना  {/*treat-state-as-read-only*/}
 
-In other words, you should **treat any JavaScript object that you put into state as read-only.**
+दुसरे शब्दों में, आपको **स्टेट में मौजूद जावास्क्रिप्ट ऑब्जेक्ट के साथ हमेशा रीड-ओनली व्यवहार करना चैयाह**
 
-This example holds an object in state to represent the current pointer position. The red dot is supposed to move when you touch or move the cursor over the preview area. But the dot stays in the initial position:
+दिए गए  उदाहरण में, स्टेट में मोजूद ऑब्जेक्ट वर्तमान में  पॉइंटर का स्थान बता रहा है। मौजूद लाल बिंदु पर कर्सर टच या प्रीव्यू करने पे अपना स्थान बदलना छियाह। परन्तु बिंदु अपने स्थान पे ही रहती है:
 
 <Sandpack>
 
