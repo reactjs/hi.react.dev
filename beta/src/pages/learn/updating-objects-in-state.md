@@ -47,7 +47,7 @@ position.x = 5;
 
 हलाक, जबकि React स्टेट में ऑब्जेक्ट्स तकनीकी रूप से मुटेबल होते है, आपको उनके साथ ऐसे व्यवहार करना चैयाह **जैसे वो** इम्म्यूटेबल हो नंबर्स, बूलियनस, और स्ट्रिंग्स की तरह। उनको म्यूटेट करने की बजाए, आपको हमेशा उनको ररिप्लेस करना चैयाह।  
 
-## स्टेट का रीड -ओनली व्यवहार करना  {/*treat-state-as-read-only*/}
+## स्टेट का रीड-ओनली व्यवहार करना  {/*treat-state-as-read-only*/}
 
 दुसरे शब्दों में, आपको **स्टेट में मौजूद जावास्क्रिप्ट ऑब्जेक्ट के साथ हमेशा रीड-ओनली व्यवहार करना चैयाह**
 
@@ -94,7 +94,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-The problem is with this bit of code.
+दिकत इस दिए गए कोड में है। 
 
 ```js
 onPointerMove={e => {
@@ -103,9 +103,9 @@ onPointerMove={e => {
 }}
 ```
 
-This code modifies the object assigned to `position` from [the previous render](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time). But without using the state setting function, React has no idea that object has changed. So React does not do anything in response. It's like trying to change the order after you've already eaten the meal. While mutating state can work in some cases, we don't recommend it. You should treat the state value you have access to in a render as read-only.
+दिया गया कोड शंशोदित करता है सोपे गए उस `स्थान` पे ऑब्जेक्ट को [पिछली रेंडर](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) से। परन्तु बिना स्टेट सेटिंग फंक्शन का उपयोग करे, React को कोई अंदाज़ा नहीं है की ऑब्जेक्ट में परिवर्तन आये है। इसलिए React कुछ जवाब नहीं देता। उद्धरण के लिए आप भोजन करने के बाद भोजन का गढ़ बदल रहे है। हालाँकि कुछ मामलो में स्टेट को म्यूटेट  करना काम करता है। परन्तु असा करना हम सुझाव नहीं देते। आपको हमेशा स्टेट में उपलब्ध वैल्यू को मौजूद रेंडर में हमेशा रीड-ओनली व्यवहार करना चैयाह।  
 
-To actually [trigger a re-render](/learn/state-as-a-snapshot#setting-state-triggers-renders) in this case, **create a *new* object and pass it to the state setting function:**
+वास्तव में [रे-रेंडर ट्रिगर](/learn/state-as-a-snapshot#setting-state-triggers-renders) करने के लिया , **एक *नया* ऑब्जेक्ट सर्जन करे और स्टेट सेटिंग फंक्शन में पास करदे:**
 
 ```js
 onPointerMove={e => {
