@@ -168,14 +168,13 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <DeepDive title="Local mutation is fine">
 
-Code like this is a problem because it modifies an *existing* object in state:
+इस तरह का कोड एक समस्या है क्योंकि यह स्टेट में *मौजूदा* ऑब्जेक्ट को संशोधित करता है:
 
 ```js
 position.x = e.clientX;
 position.y = e.clientY;
 ```
-
-But code like this is **absolutely fine** because you're mutating a fresh object you have *just created*:
+लेकिन इस तरह का कोड *बिल्कुल ठीक* है क्योंकि आप एक ताजा ऑब्जेक् को बदल रहे हैं जिसे आपने *अभी बनाया है*:
 
 ```js
 const nextPosition = {};
@@ -184,7 +183,7 @@ nextPosition.y = e.clientY;
 setPosition(nextPosition);
 ````
 
-In fact, it is completely equivalent to writing this:
+वास्तव में, यह पूरी तरह से इसे लिखने के बराबर है:
 
 ```js
 setPosition({
@@ -193,7 +192,7 @@ setPosition({
 });
 ```
 
-Mutation is only a problem when you change *existing* objects that are already in state. Mutating an object you've just created is okay because *no other code references it yet.* Changing it isn't going to accidentally impact something that depends on it. This is called a "local mutation." You can even do local mutation [while rendering](/learn/keeping-components-pure#local-mutation-your-components-little-secret). Very convenient and completely okay!
+म्युटेशन  केवल एक समस्या है जब आप *मौजूदा* ऑब्जेक्ट् को बदलते हैं जो पहले से ही स्टेट  में हैं। आपके द्वारा अभी-अभी बनाई गई ऑब्जेक्ट  को बदलना ठीक है क्योंकि *अभी तक कोई अन्य कोड इसका संदर्भ नहीं देता है।* इसे बदलने से गलती से उस पर निर्भर किसी चीज़ पर प्रभाव नहीं पड़ेगा। इसे "स्थानीय उत्परिवर्तन" कहा जाता है। आप स्थानीय उत्परिवर्तन भी कर सकते हैं [प्रतिपादन करते समय](/learn/keeping-components-pure#local-mutation-your-components-little-secret) बहुत सुविधाजनक और पूरी तरह से ठीक! 
 
 </DeepDive>  
 
