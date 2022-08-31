@@ -116,12 +116,12 @@ onPointerMove={e => {
 }}
 ```
 
-With `setPosition`, you're telling React:
+`सेट पोजीशन` के द्वारा, आप React को बता रहे है:
 
-* Replace `position` with this new object
-* And render this component again
+* `पोजीशन` को बदले नए बने ऑब्जेक्ट्स से 
+* इस कॉम्पोनेन्ट को दोबारा रेंडर करे 
 
-Notice how the red dot now follows your pointer when you touch or hover over the preview area:
+नोटिस करिये कैसे लाल बिंदु पालन कर रहा है पॉइंटर का जब अप्प टच या होवर करते है प्रीव्यू पर:
 
 <Sandpack>
 
