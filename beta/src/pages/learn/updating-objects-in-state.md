@@ -642,9 +642,10 @@ let obj3 = {
 
 </DeepDive>  
 
-### Write concise update logic with Immer {/*write-concise-update-logic-with-immer*/}
+### Immer के साथ संक्षिप्त अद्यतन तर्क लिखें {/*write-concise-update-logic-with-immer*/}
 
-If your state is deeply nested, you might want to consider [flattening it](/learn/choosing-the-state-structure#avoid-deeply-nested-state). But, if you don't want to change your state structure, you might prefer a shortcut to nested spreads. [Immer](https://github.com/immerjs/use-immer) is a popular library that lets you write using the convenient but mutating syntax and takes care of producing the copies for you. With Immer, the code you write looks like you are "breaking the rules" and mutating an object:
+
+यदि आपका स्टेट  गहरा नेस्टेड  है, तो आप [इसे समतल करना](/learn/choosing-the-state-structure#avoid-deeply-nested-state) पर विचार करना चाहेंगे। लेकिन, यदि आप अपनी स्टेट  संरचना को बदलना नहीं चाहते हैं, तो आप नेस्टेड स्प्रेड के लिए एक शॉर्टकट पसंद कर सकते हैं। [इमर](https://github.com/immerjs/use-immer) एक लोकप्रिय लाइब्रेरी  है जो आपको सुविधाजनक लेकिन परिवर्तनशील सिंटैक्स का उपयोग करके लिखने देता है और आपके लिए प्रतियां तैयार करने का ख्याल रखता है। Immer के साथ, आपके द्वारा लिखा गया कोड ऐसा लगता है जैसे आप "नियम तोड़ रहे हैं" और किसी वस्तु को बदल रहे हैं:
 
 ```js
 updatePerson(draft => {
@@ -652,21 +653,20 @@ updatePerson(draft => {
 });
 ```
 
-But unlike a regular mutation, it doesn't overwrite the past state!
+लेकिन एक नियमित उत्परिवर्तन के विपरीत, यह पिछली स्थिति को अधिलेखित नहीं करता है!
 
 <DeepDive title="How does Immer work?">
 
-The `draft` provided by Immer is a special type of object, called a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), that "records" what you do with it. This is why you can mutate it freely as much as you like! Under the hood, Immer figures out which parts of the `draft` have been changed, and produces a completely new object that contains your edits.
-
+Immer द्वारा प्रदान किया गया `ड्राफ़्ट` एक विशेष प्रकार की ऑब्जेक्ट  है, जिसे [प्रॉक्सी](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) कहा जाता है, जो "रिकॉर्ड करता है" "आप इसके साथ क्या करते हैं। यही कारण है कि आप इसे जितना चाहें उतना स्वतंत्र रूप से बदल सकते हैं! हुड के तहत, Immer यह पता लगाता है कि `ड्राफ़्ट` के किन हिस्सों को बदल दिया गया है, और एक पूरी तरह से नया ऑब्जेक्ट तैयार करता है जिसमें आपके संपादन शामिल हैं।
 </DeepDive>
 
-To try Immer:
+इमर को आजमाने के लिए:
 
-1. Add `use-immer` to your `package.json` as a dependency
-2. Run `npm install`
-3. Then replace `import { useState } from 'react'` with `import { useImmer } from 'use-immer'`
+1. डिपेंडेंसी  के रूप में अपने `package.json` में `use-immer` जोड़ें
+2. रन `एनपीएम इंस्टॉल
+3. फिर `import {useState} को 'react' से बदलकर `import {useImmer} से 'use-immer'` से बदलें
 
-Here is the above example converted to Immer:
+यहाँ उदाहरण Immer में परिवर्तित किया गया है:
 
 <Sandpack>
 
@@ -779,31 +779,30 @@ img { width: 200px; height: 200px; }
 
 </Sandpack>
 
-Notice how much more concise the event handlers have become. You can mix and match `useState` and `useImmer` in a single component as much as you like. Immer is a great way to keep the update handlers concise, especially if there's nesting in your state, and copying objects leads to repetitive code.
+ध्यान दें कि ईवेंट हैंडलर कितने अधिक संक्षिप्त हो गए हैं। आप जितना चाहें उतना एक ही कॉम्पोनेन्ट  में `useState` और `useImmer` को मिला सकते हैं। इमर अपडेट हैंडलर को संक्षिप्त रखने का एक शानदार तरीका है, खासकर यदि आपके स्टेट  में नेस्टिंग  है, और ऑब्जेक्ट  की प्रतिलिपि बनाने से दोहराव कोड होता है।
 
 <DeepDive title="Why is mutating state not recommended in React?">
 
-There are a few reasons:
+कुछ कारण हैं:
 
-* **Debugging:** If you use `console.log` and don't mutate state, your past logs won't get clobbered by the more recent state changes. So you can clearly see how state has changed between renders.
-* **Optimizations:** Common React [optimization strategies](/learn/skipping-unchanged-trees) rely on skipping work if previous props or state are the same as the next ones. If you never mutate state, it is very fast to check whether there were any changes. If `prevObj === obj`, you can be sure that nothing could have changed inside of it.
-* **New Features:** The new React features we're building rely on state being [treated like a snapshot](/learn/state-as-a-snapshot). If you're mutating past versions of state, that may prevent you from using the new features.
-* **Requirement Changes:** Some application features, like implementing Undo/Redo, showing a history of changes, or letting the user reset a form to earlier values, are easier to do when nothing is mutated. This is because you can keep past copies of state in memory, and reuse them when appropriate. If you start with a mutative approach, features like this can be difficult to add later on.
-* **Simpler Implementation:** Because React does not rely on mutation, it does not need to do anything special with your objects. It does not need to hijack their properties, always wrap them into Proxies, or do other work at initialization as many "reactive" solutions do. This is also why React lets you put any object into state--no matter how large--without additional performance or correctness pitfalls.
+* **डिबगिंग:** यदि आप `console.log` का उपयोग करते हैं और स्टेट  को परिवर्तित नहीं करते हैं, तो आपके पिछले लॉग हाल के स्टेट  परिवर्तनों से प्रभावित नहीं होंगे। तो आप स्पष्ट रूप से देख सकते हैं कि रेंडरर्स के बीच सताते  कैसे बदल गया है।
+* **ऑप्टिमिजाशंस:** कॉमन रिएक्ट [ऑप्टिमाइज़ेशन स्ट्रेटेजी](/learn/skipping-unchanged-trees) लंघन कार्य पर भरोसा करते हैं यदि पिछले प्रॉप्स या स्टेट अगले वाले के समान हैं। यदि आप कभी भी स्टेट  को उत्परिवर्तित नहीं करते हैं, तो यह जांचना बहुत तेज़ है कि क्या कोई परिवर्तन हुआ है। यदि `prevObj === obj` है, तो आप सुनिश्चित हो सकते हैं कि इसके अंदर कुछ भी नहीं बदला होगा।
+* **नए विशेषताएँ:** हम जो नई रिएक्ट सुविधाएँ बना रहे हैं, वे राज्य के [स्नैपशॉट की तरह व्यवहार](/learn/state-as-a-snapshot) पर निर्भर हैं। यदि आप राज्य के पिछले संस्करणों को बदल रहे हैं, तो यह आपको नई सुविधाओं का उपयोग करने से रोक सकता है।
+* **आवश्यकता परिवर्तन:** कुछ एप्लिकेशन सुविधाएं, जैसे पूर्ववत करें/फिर से करें को लागू करना, परिवर्तनों का इतिहास दिखाना, या उपयोगकर्ता को किसी फ़ॉर्म को पहले के मानों पर रीसेट करने देना, तब करना आसान होता है जब कुछ भी उत्परिवर्तित नहीं होता है। ऐसा इसलिए है क्योंकि आप स्टेट  की पिछली प्रतियों को स्मृति में रख सकते हैं, और उपयुक्त होने पर उनका पुन: उपयोग कर सकते हैं। यदि आप एक परिवर्तनशील दृष्टिकोण से शुरू करते हैं, तो इस तरह की सुविधाओं को बाद में जोड़ना मुश्किल हो सकता है।
+* **सरल कार्यान्वयन:** क्योंकि React  म्यूटेशन पर निर्भर नहीं है, इसलिए इसे आपकी वस्तुओं के साथ कुछ खास करने की आवश्यकता नहीं है। इसे अपनी संपत्तियों को हाईजैक करने की आवश्यकता नहीं है, हमेशा उन्हें प्रॉक्सी में लपेटें, या प्रारंभ में अन्य कार्य करें जैसा कि कई "प्रतिक्रियाशील" समाधान करते हैं। यही कारण है कि React  आपको किसी भी वस्तु को राज्य में रखने देता है - चाहे वह कितना भी बड़ा हो - बिना अतिरिक्त प्रदर्शन या शुद्धता के नुकसान के।
 
-In practice, you can often "get away" with mutating state in React, but we strongly advise you not to do that so that you can use new React features developed with this approach in mind. Future contributors and perhaps even your future self will thank you!
-
+व्यवहार में, आप अक्सर React  में उत्परिवर्तित अवस्था के साथ "दूर हो सकते हैं", लेकिन हम आपको दृढ़ता से सलाह देते हैं कि आप ऐसा न करें ताकि आप इस दृष्टिकोण को ध्यान में रखते हुए विकसित नई React  सुविधाओं का उपयोग कर सकें। भविष्य के योगदानकर्ता और शायद आपका भविष्य स्वयं भी आपको धन्यवाद देगा!
 </DeepDive>
 
 <Recap>
 
-* Treat all state in React as immutable.
-* When you store objects in state, mutating them will not trigger renders and will change the state in previous render "snapshots."
-* Instead of mutating an object, create a *new* version of it, and trigger a re-render by setting state to it.
-* You can use the `{...obj, something: 'newValue'}` object spread syntax to create copies of objects.
-* Spread syntax is shallow: it only copies one level deep.
-* To update a nested object, you need to create copies all the way up from the place you're updating.
-* To reduce repetitive copying code, use Immer.
+* Recat में सभी स्टेट  को अपरिवर्तनीय मानें।
+* जब आप ऑब्जेक्ट  को स्टेट  में संग्रहीत करते हैं, तो उन्हें उत्परिवर्तित करने से रेंडर ट्रिगर नहीं होंगे और पिछले रेंडर "स्नैपशॉट्स" में स्थिति बदल जाएगी।
+* किसी ऑब्जेक्ट को बदलने के बजाय, उसका एक *नया* संस्करण बनाएं, और उस पर स्थिति सेट करके एक री-रेंडर को ट्रिगर करें।
+* आप ऑब्जेक्ट  की प्रतियां बनाने के लिए `{...obj, कुछ: 'newValue'}` ऑब्जेक्ट स्प्रेड सिंटैक्स का उपयोग कर सकते हैं।
+* स्प्रेड सिंटैक्स उथला है: यह केवल एक स्तर को गहराई से कॉपी करता है।
+* नेस्टेड ऑब्जेक्ट को अपडेट करने के लिए, आपको उस जगह से ऊपर तक कॉपी बनानी होगी, जहां आप अपडेट कर रहे हैं।
+* दोहराए जाने वाले प्रतिलिपि कोड को कम करने के लिए, Immer का उपयोग करें।
 
 </Recap>
 
