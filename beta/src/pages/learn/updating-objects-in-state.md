@@ -439,9 +439,9 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </DeepDive>
 
-## Updating a nested object {/*updating-a-nested-object*/}
+## नेस्टेड ऑब्जेक्ट को अपडेट करना {/*updating-a-nested-object*/}
 
-Consider a nested object structure like this:
+इस तरह एक नेस्टेड ऑब्जेक्ट  संरचना पर विचार करें:
 
 ```js
 const [person, setPerson] = useState({
@@ -454,13 +454,13 @@ const [person, setPerson] = useState({
 });
 ```
 
-If you wanted to update `person.artwork.city`, it's clear how to do it with mutation:
+यदि आप `person.artwork.city` को अपडेट करना चाहते हैं, तो यह स्पष्ट है कि इसे उत्परिवर्तन के साथ कैसे किया जाए:
 
 ```js
 person.artwork.city = 'New Delhi';
 ```
 
-But in React, you treat state as immutable! In order to change `city`, you would first need to produce the new `artwork` object (pre-populated with data from the previous one), and then produce the new `person` object which points at the new `artwork`:
+लेकिन React  में, आप ऑब्जेक्ट  को अपरिवर्तनीय मानते हैं! `शहर` को बदलने के लिए, आपको पहले नई `कलाकृति` ऑब्जेक्ट  (पिछले एक से डेटा के साथ पूर्व-आबादी) का उत्पादन करना होगा, और फिर नई `व्यक्ति` ऑब्जेक्ट  का उत्पादन करना होगा जो नई `कलाकृति` पर इंगित करता है:
 
 ```js
 const nextArtwork = { ...person.artwork, city: 'New Delhi' };
@@ -468,7 +468,7 @@ const nextPerson = { ...person, artwork: nextArtwork };
 setPerson(nextPerson);
 ```
 
-Or, written as a single function call:
+या, एकल फ़ंक्शन कॉल के रूप में लिखा गया है:
 
 ```js
 setPerson({
@@ -480,7 +480,7 @@ setPerson({
 });
 ```
 
-This gets a bit wordy, but it works fine for many cases:
+यह थोड़ा चिंताजनक है, लेकिन यह कई मामलों में ठीक काम करता है:
 
 <Sandpack>
 
@@ -590,7 +590,7 @@ img { width: 200px; height: 200px; }
 
 <DeepDive title="Objects are not really nested">
 
-An object like this appears "nested" in code:
+इस तरह का  ऑब्जेक्ट  कोड में "नेस्टेड" दिखाई देता  है:
 
 ```js
 let obj = {
@@ -603,7 +603,7 @@ let obj = {
 };
 ```
 
-However, "nesting" is an inaccurate way to think about how objects behave. When the code executes, there is no such thing as a "nested" object. You are really looking at two different objects:
+हालांकि, "नेस्टिंग " ऑब्जेक्ट्स  के व्यवहार के बारे में सोचने का एक गलत तरीका है। जब कोड निष्पादित होता है, तो "नेस्टेड" ऑब्जेक्ट जैसी कोई चीज़ नहीं होती है। आप वास्तव में दो अलग-अलग ऑब्जेक्ट  को देख रहे हैं:
 
 ```js
 let obj1 = {
@@ -618,7 +618,7 @@ let obj2 = {
 };
 ```
 
-The `obj1` object is not "inside" `obj2`. For example, `obj3` could "point" at `obj1` too:
+`obj1` ऑब्जेक्ट "अंदर" `obj2` नहीं है। उदाहरण के लिए, `obj3` `obj1` पर भी "बिंदु" कर सकता है:
 
 ```js
 let obj1 = {
@@ -638,7 +638,7 @@ let obj3 = {
 };
 ```
 
-If you were to mutate `obj3.artwork.city`, it would affect both `obj2.artwork.city` and `obj1.city`. This is because `obj3.artwork`, `obj2.artwork`, and `obj1` are the same object. This is difficult to see when you think of objects as "nested". Instead, they are separate objects "pointing" at each other with properties.
+अगर आप `obj3.artwork.city` को बदलते हैं, तो यह `obj2.artwork.city` और `obj1.city` दोनों को प्रभावित करेगा। ऐसा इसलिए है क्योंकि `obj3.artwork`, `obj2.artwork`, और `obj1` एक ही ऑब्जेक्ट  हैं। यह देखना मुश्किल है कि आप ऑब्जेक्ट्स  को "नेस्टेड" के रूप में कब सोचते हैं। इसके बजाय, वे अलग-अलग ऑब्जेक्ट  हैं जो गुणों के साथ एक दूसरे पर "इंगित" करती हैं।
 
 </DeepDive>  
 
