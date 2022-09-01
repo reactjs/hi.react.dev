@@ -961,15 +961,15 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 ### उत्परिवर्तन खोजें और ठीक करें {/*find-and-fix-the-mutation*/}
 
-There is a draggable box on a static background. You can change the box's color using the select input.
+स्टैटिक बैकग्राउंड पर ड्रैग करने योग्य बॉक्स होता है। आप चुनिंदा इनपुट का उपयोग करके बॉक्स का रंग बदल सकते हैं।
 
-But there is a bug. If you move the box first, and then change its color, the background (which isn't supposed to move!) will "jump" to the box position. But this should not happen: the `Background`'s `position` prop is set to `initialPosition`, which is `{ x: 0, y: 0 }`. Why is the background moving after the color change?
+लेकिन एक बग है। यदि आप पहले बॉक्स को घुमाते हैं, और फिर उसका रंग बदलते हैं, तो बैकग्राउंड (जिसे हिलना नहीं चाहिए!) बॉक्स की स्थिति में "कूद" जाएगा। लेकिन ऐसा नहीं होना चाहिए: 'बैकग्राउंड' का 'पोजिशन' प्रोप 'आरंभिक स्थिति' पर सेट है, जो कि '{x: 0, y: 0}' है। रंग बदलने के बाद बैकग्राउंड क्यों हिल रहा है?
 
-Find the bug and fix it.
+बग ढूंढें और इसे ठीक करें।
 
 <Hint>
 
-If something unexpected changes, there is a mutation. Find the mutation in `App.js` and fix it.
+यदि कुछ अनपेक्षित परिवर्तन होता है, तो एक म्युटेशन  होता है। `App.js` में उत्परिवर्तन खोजें और इसे ठीक करें।
 
 </Hint>
 
@@ -1119,9 +1119,9 @@ select { margin-bottom: 10px; }
 
 <Solution>
 
-The problem was in the mutation inside `handleMove`. It mutated `shape.position`, but that's the same object that `initialPosition` points at. This is why both the shape and the background move. (It's a mutation, so the change doesn't reflect on the screen until an unrelated update--the color change--triggers a re-render.)
+समस्या `हैंडलमोव` के अंदर उत्परिवर्तन में थी। इसने `shape.position` को बदल दिया, लेकिन यह वही ऑब्जेक्ट  है जिस पर `initialPosition` इंगित करता है। यही कारण है कि आकार और बैकग्राउंड  दोनों चलते हैं। (यह एक उत्परिवर्तन है, इसलिए परिवर्तन एक असंबंधित अद्यतन तक स्क्रीन पर प्रतिबिंबित नहीं होता है - रंग परिवर्तन - एक पुन: प्रस्तुत करना ट्रिगर करता है।)
 
-The fix is to remove the mutation from `handleMove`, and use the spread syntax to copy the shape. Note that `+=` is a mutation, so you need to rewrite it to use a regular `+` operation.
+फिक्स म्यूटेशन को `हैंडलमोव` से हटाना है, और आकृति को कॉपी करने के लिए स्प्रेड सिंटैक्स का उपयोग करना है। ध्यान दें कि `+=` एक उत्परिवर्तन है, इसलिए आपको नियमित `+` ऑपरेशन का उपयोग करने के लिए इसे फिर से लिखना होगा।
 
 <Sandpack>
 
@@ -1274,9 +1274,9 @@ select { margin-bottom: 10px; }
 
 </Solution>
 
-### Update an object with Immer {/*update-an-object-with-immer*/}
+### Immer के साथ किसी ऑब्जेक्ट को अपडेट करें {/*update-an-object-with-immer*/}
 
-This is the same buggy example as in the previous challenge. This time, fix the mutation by using Immer. For your convenience, `useImmer` is already imported, so you need to change the `shape` state variable to use it.
+पिछली चुनौती की तरह यह वही buggy  उदाहरण है। इस बार, इमर का उपयोग करके उत्परिवर्तन को ठीक करें। आपकी सुविधा के लिए, `useImmer` पहले से ही आयात किया जा चुका है, इसलिए इसका उपयोग करने के लिए आपको `आकार` स्थिति चर को बदलना होगा।
 
 <Sandpack>
 
@@ -1443,7 +1443,7 @@ select { margin-bottom: 10px; }
 
 <Solution>
 
-This is the solution rewritten with Immer. Notice how the event handlers are written in a mutating fashion, but the bug does not occur. This is because under the hood, Immer never mutates the existing objects.
+यह इमर के साथ फिर से लिखा गया समाधान है। ध्यान दें कि कैसे ईवेंट हैंडलर एक परिवर्तनशील तरीके से लिखे जाते हैं, लेकिन बग नहीं होता है। ऐसा इसलिए है क्योंकि हुड के निचे , इमर मौजूदा ऑब्जेक्ट्स  को कभी भी उत्परिवर्तित नहीं करता है।
 
 <Sandpack>
 
