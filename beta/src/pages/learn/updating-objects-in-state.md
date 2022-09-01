@@ -810,11 +810,11 @@ img { width: 200px; height: 200px; }
 
 <Challenges>
 
-### Fix incorrect state updates {/*fix-incorrect-state-updates*/}
+### गलत स्थिति अपडेट को ठीक करें {/*fix-incorrect-state-updates*/}
 
-This form has a few bugs. Click the button that increases the score a few times. Notice that it does not increase. Then edit the first name, and notice that the score has suddenly "caught up" with your changes. Finally, edit the last name, and notice that the score has disappeared completely.
+इस फॉर्म में कुछ बग हैं। उस बटन पर क्लिक करें जो स्कोर को कुछ गुना बढ़ा देता है। ध्यान दें कि यह नहीं बढ़ता है। फिर पहले नाम को संपादित करें, और ध्यान दें कि आपके परिवर्तनों के साथ स्कोर अचानक "पकड़ गया" है। अंत में, अंतिम नाम संपादित करें, और ध्यान दें कि स्कोर पूरी तरह से गायब हो गया है।
 
-Your task is to fix all of these bugs. As you fix them, explain why each of them happens.
+आपका काम इन सभी बगों को ठीक करना है। जैसे ही आप उन्हें ठीक करते हैं, समझाएं कि उनमें से प्रत्येक क्यों होता है।
 
 <Sandpack>
 
@@ -882,7 +882,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 <Solution>
 
-Here is a version with both bugs fixed:
+यहाँ एक संस्करण है जिसमें दोनों बग फिक्स हैं:
 
 <Sandpack>
 
@@ -952,13 +952,14 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-The problem with `handlePlusClick` was that it mutated the `player` object. As a result, React did not know that there's a reason to re-render, and did not update the score on the screen. This is why, when you edited the first name, the state got updated, triggering a re-render which _also_ updated the score on the screen.
+`हैंडलप्लसक्लिक` के साथ समस्या यह थी कि इसने `प्लेयर` ऑब्जेक्ट को बदल दिया। नतीजतन, रिएक्ट को यह नहीं पता था कि फिर से रेरेन्दर  करने का एक कारण है, और स्क्रीन पर स्कोर को अपडेट नहीं किया। यही कारण है कि, जब आपने पहले नाम को संपादित किया, तो राज्य अपडेट हो गया, एक री-रेंडर को ट्रिगर किया जिसने स्क्रीन पर स्कोर को अपडेट किया।
 
-The problem with `handleLastNameChange` was that it did not copy the existing `...player` fields into the new object. This is why the score got lost after you edited the last name.
+
+`हैंडललास्टनाम चेंज` के साथ समस्या यह थी कि इसने मौजूदा `...प्लेयर` फ़ील्ड को नए ऑब्जेक्ट में कॉपी नहीं किया। यही कारण है कि आपके द्वारा अंतिम नाम संपादित करने के बाद स्कोर खो गया है।
 
 </Solution>
 
-### Find and fix the mutation {/*find-and-fix-the-mutation*/}
+### उत्परिवर्तन खोजें और ठीक करें {/*find-and-fix-the-mutation*/}
 
 There is a draggable box on a static background. You can change the box's color using the select input.
 
