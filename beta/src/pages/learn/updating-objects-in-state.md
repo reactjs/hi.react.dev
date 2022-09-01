@@ -196,11 +196,11 @@ setPosition({
 
 </DeepDive>  
 
-## Copying objects with the spread syntax {/*copying-objects-with-the-spread-syntax*/}
+## स्प्रेड सिंटैक्स के साथ ऑब्जेक्ट्स  की प्रतिलिपि बनाना {/*copying-objects-with-the-spread-syntax*/}
 
-In the previous example, the `position` object is always created fresh from the current cursor position. But often, you will want to include *existing* data as a part of the new object you're creating. For example, you may want to update *only one* field in a form, but keep the previous values for all other fields.
+पिछले उदाहरण में, `स्थिति` ऑब्जेक्ट  हमेशा वर्तमान कर्सर स्थिति से ताजा बनाई जाती है। लेकिन अक्सर, आप अपने द्वारा बनाई जा रही नई ऑब्जेक्ट  के हिस्से के रूप में *मौजूदा* डेटा शामिल करना चाहेंगे। उदाहरण के लिए, आप किसी प्रपत्र में *केवल एक* फ़ील्ड को अपडेट करना चाह सकते हैं, लेकिन अन्य सभी फ़ील्ड के लिए पिछले मान रख सकते हैं।
 
-These input fields don't work because the `onChange` handlers mutate the state:
+ये इनपुट फ़ील्ड काम नहीं करते क्योंकि `ऑन चेंज` हैंडलर स्टेट  को बदलते हैं:
 
 <Sandpack>
 
@@ -266,13 +266,12 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-For example, this line mutates the state from a past render:
-
+उदाहरण के लिए, यह लाइन स्टेट  को पिछले रेंडर से बदल देती है:
 ```js
 person.firstName = e.target.value;
 ```
 
-The reliable way to get the behavior you're looking for is to create a new object and pass it to `setPerson`. But here, you want to also **copy the existing data into it** because only one of the fields has changed:
+आप जिस व्यवहार की तलाश कर रहे हैं उसे प्राप्त करने का विश्वसनीय तरीका एक नई ऑब्जेक्ट  बनाना और उसे 'सेटपर्सन' को पास करना है। लेकिन यहां, आप **मौजूदा डेटा को इसमें कॉपी करना चाहते हैं** क्योंकि केवल एक फ़ील्ड बदल गई है:
 
 ```js
 setPerson({
@@ -282,7 +281,7 @@ setPerson({
 });
 ```
 
-You can use the `...` [object spread](a-javascript-refresher#object-spread) syntax so that you don't need to copy every property separately.
+आप `...` [ऑब्जेक्ट स्प्रेड](a-javascript-refresher#object-spread) सिंटैक्स का उपयोग कर सकते हैं ताकि आपको प्रत्येक प्रॉपर्टी को अलग से कॉपी करने की आवश्यकता न पड़े।
 
 ```js
 setPerson({
@@ -291,9 +290,9 @@ setPerson({
 });
 ```
 
-Now the form works! 
+अब फॉर्म काम करता है!
 
-Notice how you didn't declare a separate state variable for each input field. For large forms, keeping all data grouped in an object is very convenient--as long as you update it correctly!
+ध्यान दें कि आपने प्रत्येक इनपुट फ़ील्ड के लिए एक अलग स्टेट वैल्यू  घोषित नहीं किया। बड़े रूपों के लिए, सभी डेटा को किसी ऑब्जेक्ट में समूहीकृत रखना बहुत सुविधाजनक है--जब तक आप इसे सही तरीके से अपडेट करते हैं!
 
 <Sandpack>
 
@@ -368,11 +367,11 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-Note that the `...` spread syntax is "shallow"--it only copies things one level deep. This makes it fast, but it also means that if you want to update a nested property, you'll have to use it more than once. 
+ध्यान दें कि `...` स्प्रेड सिंटैक्स "उथला" है - यह केवल चीजों को एक स्तर की गहराई तक कॉपी करता है। यह इसे तेज़ बनाता है, लेकिन इसका मतलब यह भी है कि यदि आप किसी नेस्टेड प्रॉपर्टी को अपडेट करना चाहते हैं, तो आपको इसे एक से अधिक बार उपयोग करना होगा।
 
 <DeepDive title="Using a single event handler for multiple fields">
 
-You can also use the `[` and `]` braces inside your object definition to specify a property with dynamic name. Here is the same example, but with a single event handler instead of three different ones:
+आप डायनामिक नाम वाली किसी प्रॉपर्टी को निर्दिष्ट करने के लिए अपनी ऑब्जेक्ट परिभाषा के अंदर `[` और `]` ब्रेसिज़ का भी उपयोग कर सकते हैं। यहां एक ही उदाहरण है, लेकिन तीन अलग-अलग लोगों के बजाय एक ही ईवेंट हैंडलर के साथ:
 
 <Sandpack>
 
@@ -436,7 +435,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-Here, `e.target.name` refers to the `name` property given to the `<input>` DOM element.
+यहां, `e.target.name` का मतलब `नाम` प्रॉपर्टी  है जो `<input>` DOM तत्व को दी गई है।
 
 </DeepDive>
 
