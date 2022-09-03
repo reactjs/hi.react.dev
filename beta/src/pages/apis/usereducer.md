@@ -12,24 +12,24 @@ const [state, dispatch] = useReducer(reducer, initialArg, init)
 
 </Intro>
 
-- [यूसेज](#usage)
+- [प्रयोग](#usage)
   - [कौम्पोनॅन्ट में एक रेडूसर ऐड करना](#adding-a-reducer-to-a-component)
   - [रेडूसर फ़ंक्शन लिखना](#writing-the-reducer-function)
-  - [Avoiding recreating the initial state](#avoiding-recreating-the-initial-state)
-- [Reference](#reference)
+  - [पहले की state को पुनः सृष्ट करने से बचना](#avoiding-recreating-the-initial-state)
+- [संदर्भ](#reference)
   - [`useReducer(reducer, initialArg, init?)`](#usereducer)
   - [`dispatch` functions](#dispatch)
-- [Troubleshooting](#troubleshooting)
-  - [I've dispatched an action, but logging gives me the old state value](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value)
-  - [I've dispatched an action, but the screen doesn't update](#ive-dispatched-an-action-but-the-screen-doesnt-update)
-  - [A part of my reducer state becomes undefined after dispatching](#a-part-of-my-reducer-state-becomes-undefined-after-dispatching)
-  - [My entire reducer state becomes undefined after dispatching](#my-entire-reducer-state-becomes-undefined-after-dispatching)
-  - [I'm getting an error: "Too many री-renders"](#im-getting-an-error-too-many-री-renders)
-  - [My reducer or initializer function runs twice](#my-reducer-or-initializer-function-runs-twice)
+- [ ट्रबलशूटिंग](#troubleshooting)
+  - [मैंने एक्शन डिस्पैच किया है लेकिन मुझे अभी भी पुराने state कि वैल्यू मिल रही है](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value)
+  - [मैंने एक्शन डिस्पैच किया है लेकिन स्क्रीन अपडेट नही हो रहा](#ive-dispatched-an-action-but-the-screen-doesnt-update)
+  - [प्रेषण करने के बाद मेरे रेडूसर state का एक हिस्सा अपरिभाषित हो जाता है](#a-part-of-my-reducer-state-becomes-undefined-after-dispatching)
+  - [मेरा संपूर्ण रेडसर state डिस्पैच के बाद अन्डेफिनेड हो जाता है](#my-entire-reducer-state-becomes-undefined-after-dispatching)
+  - ["Too many re-renders" का एरर मिल रहा है](#im-getting-an-error-too-many-री-renders)
+  - [मेरा रेडसर या एनिटिअलिज़ेर फ़ंक्शन दो बार चलता है](#my-reducer-or-initializer-function-runs-twice)
 
 ---
 
-## यूसेज {/*usage*/}
+## प्रयोग {/*usage*/}
 
 ### कौम्पोनॅन्ट में एक रेडूसर ऐड करना {/*adding-a-reducer-to-a-component*/}
 
@@ -662,9 +662,9 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Initial state को पुनः सृष्ट करने से बचना {/*avoiding-recreating-the-initial-state*/}
+### पहले की state को पुनः सृष्ट करने से बचना {/*avoiding-recreating-the-initial-state*/}
 
-React initial state को एक बार सहेज कर रखता है और अगले रेंडर में उसे नज़रंदाज़ करता है.
+React पहले की state को एक बार सहेज कर रखता है और अगले रेंडर में उसे नज़रंदाज़ करता है.
 
 ```js
 function createInitialState(username) {
@@ -783,7 +783,7 @@ export default function TodoList({ username }) {
 
 <Solution />
 
-### intial state को सीधे पास करना {/*passing-the-initial-state-directly*/}
+### पहले की state को सीधे पास करना {/*passing-the-initial-state-directly*/}
 
 इस उदाहरण में इनिशलीयसेर फ़ंक्शन **नहीं** पास किया जाता,तो `createInitialState` फ़ंक्शन हर रेंडर पर चलता है, जैसे जब अब इनपुट में टाइप करते हैं. व्यवहारिक रूप से देखने पर कोई अंतर नही है लेकिन इस कोड की क्षमता कम हो जाती है.
 
@@ -939,20 +939,18 @@ function handleClick() {
 
 #### चेतावनियां {/*setstate-caveats*/}
 
-* `dispatch` फ़ंक्शन ***अगले* रेंडर के लिए सिर्फ state वेरिएबल को अप्डेट करता है**. अगर आप `dispatch` फ़ंक्शन बुलाने के बाद state वेरिएबल को पढ़ते है,तो [आपको अभी भी puraana वैल्यू मिलेगा](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) जो call के पहले screen पे था.
+* `dispatch` फ़ंक्शन ***अगले* रेंडर के लिए सिर्फ state वेरिएबल को अप्डेट करता है**. अगर आप `dispatch` फ़ंक्शन बुलाने के बाद state वेरिएबल को पढ़ते है,तो [आपको अभी भी पुराना वैल्यू मिलेगा](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) जो कॉल के पहले स्क्रीन पे था.
 
-* अगर [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) के द्वारा निर्धारित किया जाता है कि दिया गया naya वैल्यू अभी के `state` के समकक्ष है तो रीऐक्ट **us कौम्पोनॅन्ट को और उसके बच्चों का री-रेंडरिंग skip कर देगा**. यह एक optimization है. result ignore करने के पहले React को आपके कौम्पोनॅन्ट को बुलाने की ज़रूरत पढ़ सकती है लेकिन इससे आपका कोड प्रभावित नहीं होना चाहिए.
+* अगर [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) के द्वारा निर्धारित किया जाता है कि दिया गया नया वैल्यू अभी के `state` के समकक्ष है तो रीऐक्ट **उस कौम्पोनॅन्ट को और उसके बच्चों का री-रेंडरिंग स्किप कर देगा**. यह एक ऑप्टिमाइजेशन है. रिजल्ट ignore करने के पहले React को आपके कौम्पोनॅन्ट को बुलाने की ज़रूरत पढ़ सकती है लेकिन इससे आपका कोड प्रभावित नहीं होना चाहिए.
 
-* React [batches state updates](/learn/queueing-a-series-of-state-updates). It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple री-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`](/apis/flushsync).
+* React [state अपडेट को बैच करता है](/learn/queueing-a-series-of-state-updates). **सारे इवेंट हैंडलर्स चलने के बाद** और सारे `set` फंक्शन्स बुलाने के बाद React   स्क्रीन अपडेट करता है. यह एक ही event के दौरान मल्टीप्ल री-रेंडर को रोकता है|किसी दुर्लभ मामले में यदि आपको React को पहले स्क्रीन अपडेट करने के लिए फाॅर्स करना होगा, उदहारण में आपको DOM एक्सेस करना हो, तो आप [`flushSync`](/apis/flushsync) का इस्तेमाल कर सकते हैं|
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+##  ट्रबलशूटिंग {/*troubleshooting*/}
 
-### I've dispatched an action, but logging gives me the old state value {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
-### Maine action dispatch किया है लेकिन mujhe अभी भी puraane state कि वैल्यू मिल rahi है {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
+### मैंने एक्शन डिस्पैच किया है लेकिन मुझे अभी भी पुराने state कि वैल्यू मिल रही है {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
 
-Calling the `dispatch` function **does not change state in the running code**:
 `dispatch` फ़ंक्शन बुलाने से **चलते कोड का state नहीं बदलता**:
 
 ```js {4,5,8}
@@ -967,13 +965,9 @@ function handleClick() {
   }, 5000);
 }
 ```
-
-This is because [states behaves like a snapshot](/learn/state-as-a-snapshot). Updating state requests another render with the new state value, but does not affect the `state` JavaScript variable in your already-running event handler.
-
 यह ऐसा है क्योंकि [state snapshot कि तरह काम करता है](/learn/state-as-a-snapshot). State अप्डेट करने से नए state वैल्यू के साथ रेंडर करने का अनुरोध होता है, लेकिन आपके पहले से ही चल रहे event handler में `state` जावास्क्रिप्ट वेरिएबल को प्रभावित नहीं करता.
 
-If you need to guess the next state value, you can calculate it manually by calling the reducer yourself:
-अगर आपको अगला state वैल्यू का अनुमान लगाना हो तो मैन्यूअल रूप से आप उसकी manually गणना कर सकते हो रेडूसर बुलाकर:
+अगर आपको अगला state वैल्यू का अनुमान लगाना हो तो मैन्यूअल रूप से आप उसकी मैन्युअल गणना कर सकते हो रेडूसर बुलाकर:
 
 ```js
 const action = { type: 'incremented_age' };
@@ -986,10 +980,7 @@ console.log(nextState); // { age: 43 }
 
 ---
 
-### I've dispatched an action, but the screen doesn't update {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
-### Maine action dispatch किया है लेकिन screen update नही हो रहा {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
-
-React will **ignore your update if the next state is equal to the previous state,** as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. This usually happens when you change an object or an array in state directly:
+### मैंने एक्शन डिस्पैच किया है लेकिन स्क्रीन अपडेट नही हो रहा {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
 
 React आपके **update ignore कर देगा अगर आपका अगला state आपके पहले के state के samaan है**, यह [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison के द्वारा निर्धारित किया जाता है. यह सामान्यत: तब होता है जब आप किसी state में ऑब्जेक्ट या array को सीधे परिवर्तित करते हो:
 
@@ -997,12 +988,12 @@ React आपके **update ignore कर देगा अगर आपका �
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // 🚩 Wrong: mutating existing object
+      // 🚩 गलत: मौजूदा को म्यूटेट कर रहे हो
       state.age++;
       return state;
     }
     case 'changed_name': {
-      // 🚩 Wrong: mutating existing object
+      // 🚩 गलत: मौजूदा को म्यूटेट कर रहे हो
       state.name = action.nextName;
       return state;
     }
@@ -1011,22 +1002,20 @@ function reducer(state, action) {
 }
 ```
 
-You mutated an existing `state` object and returned it, so React ignored the update. To fix this, you need to ensure that you're always [_replacing_ objects and arrays in state instead of _mutating_ them](#updating-objects-and-arrays-in-state):
-
 आपने एक मौजूदा `state` ऑब्जेक्ट को परिवर्तित कर वापिस किया तो रीऐक्ट ने अप्डेट इग्नोर कर दिया. इसे हल करने के लिए, आपको सुनिश्चित करना होगा कि आप हमेशा [state me objects और arrays को _बदल_ कर रहे हो ना कि परिवर्तित करना](#updating-objects-and-arrays-in-state):
 
 ```js {4-8,11-15}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // ✅ Correct: creating a new object
+      // ✅ सही: नया ऑब्जेक्ट बना रहे हो
       return {
         ...state,
         age: state.age + 1
       };
     }
     case 'changed_name': {
-      // ✅ Correct: creating a new object
+      // ✅ सही: नया ऑब्जेक्ट बना रहे हो
       return {
         ...state,
         name: action.nextName
@@ -1039,32 +1028,26 @@ function reducer(state, action) {
 
 ---
 
-### A part of my reducer state becomes undefined after dispatching {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
 ### प्रेषण करने के बाद मेरे रेडूसर state का एक हिस्सा अपरिभाषित हो जाता है {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
 
-Make sure that every `case` branch **copies all of the existing fields** when returning the new state:
-अंदर रखे कि हर `case` का शाखा नया state वापिस करते समय **सारे मौजूदा fields को प्रतिलिपित करे**.
+अंदर रखे कि हर `case` का शाखा नया state वापिस करते समय **सारे मौजूदा फ़ील्ड्स को प्रतिलिपित करे**.
 ```js {5}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
       return {
-        ...state, // Don't forget this!
+        ...state, // इससे मत भूलिए!
         age: state.age + 1
       };
     }
     // ...
 ```
 
-Without `...state` above, the returned next state would only contain the `age` field and nothing else.
 उपर, `...state` के बिना वापिस किये गए नए state में `age` field के अलावा और कुछ नहीं होगा.
 
 ---
 
-### My entire reducer state becomes undefined after dispatching {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
-### Mera संपूर्ण reducer state dispatch के बाद undefined हो जाता है {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
-
-If your state unexpectedly becomes `undefined`, you're likely forgetting to `return` state in one of the cases, or your action type doesn't match any of the `case` statements. To find why, throw an error outside the `switch`:
+### मेरा संपूर्ण रेडसर state डिस्पैच के बाद अन्डेफिनेड हो जाता है {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
 
 यदि आपका state अप्रत्याशित रूप से `undefined` बन जाता है,तो संभावित है कि आप किसी एक केस में `return` state को भूल रहे हैं, या फ़िर आपका action type किसी भी `case` स्टेट्मेंट से मेल नहीं खाता. `switch` के बाहर एरर फेंकने से आपको कारण पता चल जाएगा:
 
@@ -1082,53 +1065,41 @@ function reducer(state, action) {
 }
 ```
 
-You can also use a static type checker like TypeScript to catch such mistakes.
 इन ग़लतियों को पकड़ने के लिए, आप TypeScript जैसे स्थिर type checker को भी इस्तेमाल कर सकते है
 
 ---
+### "Too many re-renders" का एरर मिल रहा है {/*im-getting-an-error-too-many-री-renders*/}
 
-### I'm getting an error: "Too many री-renders" {/*im-getting-an-error-too-many-री-renders*/}
-### "Too many री-renders" का error मिल रहा है {/*im-getting-an-error-too-many-री-renders*/}
-
-You might get an error that says: `Too many री-renders. React limits the number of renders to prevent an infinite loop.` Typically, this means that you're unconditionally dispatching an action *during render*, so your component enters a loop: render, dispatch (which causes a render), render, dispatch (which causes a render), and so on. Very often, this is caused by a mistake in specifying an event handler:
-
-आपको एक error मिल सकता है जो कहे: `Too many री-renders. React limits the number of renders to prevent an infinite loop.`. आम तौर पर इसका मतलब यह है कि आप *रेंडर करते समय* आप बिना शर्त के action को प्रेषित कर रहे है, इससे आपका कौम्पोनॅन्ट लूप में चला जाता है: रेंडर, dispatch (जिसके कारण रेंडर होता है), रेंडर, dispatch (जिसके कारण रेंडर होता है), और आदि.
+आपको एक error मिल सकता है जो कहे: `Too many री-renders. React limits the number of renders to prevent an infinite loop.`. आम तौर पर इसका मतलब यह है कि आप *रेंडर करते समय* आप बिना शर्त के action को प्रेषित कर रहे है, इससे आपका कौम्पोनॅन्ट लूप में चला जाता है: रेंडर, dispatch (जिसके कारण रेंडर होता है), रेंडर, dispatch (जिसके कारण रेंडर होता है), और आदि. अख्सर यह event हैंडलर स्पेसिफाय करने में गलती होने से होता है:
 
 ```js {1-2}
-// 🚩 Wrong: calls the handler during render
+// 🚩 गलत: रेंडर करते समय हैंडलर को बुलाता है
 return <button onClick={handleClick()}>Click me</button>
 
-// ✅ Correct: passes down the event handler
+// ✅ सही: event हैंडलर में पास करता है
 return <button onClick={handleClick}>Click me</button>
 
-// ✅ Correct: passes down an inline function
+// ✅ सही: इनलाइन फंक्शन में पास करता है
 return <button onClick={(e) => handleClick(e)}>Click me</button>
 ```
-
-If you can't find the cause of this error, click on the arrow next to the error in the console and look through the JavaScript stack to find the specific `dispatch` function call responsible for the error.
 
 यदि आपको इस एरर का कारण नहीं पता चलता तो कोंसोल में एरर के बग़ल में ऐरो क्लिक करे और जावास्क्रिप्ट स्टेक में देखना कि इस्स एरर के लिए कौनसा `dispatch` फ़ंक्शन का बुलावा जिम्मेदार है.
 
 ---
 
-### My reducer or initializer function runs twice {/*my-reducer-or-initializer-function-runs-twice*/}
-### Mera reducer या initializer फ़ंक्शन do बार चलता है {/*my-reducer-or-initializer-function-runs-twice*/}
+### मेरा रेडसर या एनिटिअलिज़ेर फ़ंक्शन दो बार चलता है {/*my-reducer-or-initializer-function-runs-twice*/}
 
-In [Strict Mode](/apis/strictmode), React will call your reducer and initializer functions twice. This shouldn't break your code.
 [Strict Mode](/apis/strictmode)में, React आपके रेडूसर और इनिशलिसेर फ़ंक्शन को दो बार बुलाएगा. इससे आपके कोड को कोई नुक़सान नहीं होना चाहिए.
-
-This **development-only** behavior helps you [keep components pure](/learn/keeping-components-pure). React uses the result of one of the calls, and ignores the result of the other call. As long as your component, initializer, and reducer functions are pure, this shouldn't affect your logic. However, if they are accidentally impure, this helps you notice the mistakes and fix it.
 
 यह **development-only** व्यवहार [आपके components शुद्ध रखने](/learn/keeping-components-pure)में सहयोग करता है. React किसी भी बुलावे के परिणाम का उपयोग करता है और दूसरे बुलावे का परिणाम नज़रंदाज़ कर देता है. जब तक आपका कौम्पोनॅन्ट, इनिशलिसेर, और रेंडर फ़ंक्शन शुद्धहै, इससे आपके लॉजिक पर कोई प्रभाव नहीं पड़ना चाहिए.
 
-For example, this impure reducer function mutates an array in state:
 उदाहरण में,इस अशुद्ध रेडूसर फ़ंक्शन state में एक अरे को परिवर्तित करता है:
 
 ```js {4-6}
 function reducer(state, action) {
   switch (action.type) {
     case 'added_todo': {
-      // 🚩 Mistake: mutating state
+      // 🚩 गलती: state मूतयेत हो रहा है
       state.todos.push({ id: nextId++, text: action.text });
       return state;
     }
@@ -1137,15 +1108,13 @@ function reducer(state, action) {
 }
 ```
 
-Because React calls your reducer function twice, you'll see the todo was added twice, so you'll know that there is a mistake. In this example, you can fix the mistake by [replacing the array instead of mutating it](#updating-objects-and-arrays-in-state):
-
 क्योंकि रीऐक्ट रेडूसर फ़ंक्शन को दो बार बुलाता है, आपको तो दो बार जोड़ा दिखेगा,तो आपको पता लगेगा कि गलती हुई है.इस उदाहरण में, आप यह गलती को सुधारने के लिए [अरे को परिवर्तित करने की जगह प्रतिस्थापित करोगे](#updating-objects-and-arrays-in-state):
 
 ```js {4-11}
 function reducer(state, action) {
   switch (action.type) {
     case 'added_todo': {
-      // ✅ Correct: replacing with new state
+      // ✅ सही: नया state के साथ बदलना
       return {
         ...state,
         todos: [
@@ -1159,10 +1128,6 @@ function reducer(state, action) {
 }
 ```
 
-Now that this reducer function is pure, calling it an extra time doesn't make a difference in behavior. This is why React calling it twice helps you find mistakes. **Only component, initializer, and reducer functions need to be pure.** Event handlers don't need to be pure, so React will never call your event handlers twice.
-
-अब जब यह रेडूसर फ़ंक्शन शुद्ध है, इसे एक और बार बुलाने से व्यवहार में कोई अंतर नही दिखता. इसलिए रीऐक्ट इससे दो बार बुलाने से आपको ग़लतियाँ ढूँढने में आसानी होती है. **सिर्फ कौम्पोनॅन्ट, इनिशलिसेर, और रेडूसर फ़ंक्शन को शुद्ध होना चाहिए.** Event handlers जो शुद्ध होने की आवश्यकता नहीं है तो रीऐक्ट आपके event handlers को कभी भी दो बार नहीं बुलाएगा.
-
-Read [keeping components pure](/learn/keeping-components-pure) to learn more.
+अब जब यह रेडूसर फ़ंक्शन शुद्ध है, इसे एक और बार बुलाने से व्यवहार में कोई अंतर नही दिखता. इसलिए रीऐक्ट इससे दो बार बुलाने से आपको ग़लतियाँ ढूँढने में आसानी होती है. **सिर्फ कौम्पोनॅन्ट, इनिशलिसेर, और रेडूसर फ़ंक्शन को शुद्ध होना चाहिए.** Event हैंडलर्स जो शुद्ध होने की आवश्यकता नहीं है तो रीऐक्ट आपके event हैंडलर्स को कभी भी दो बार नहीं बुलाएगा.
 
 और जानने के लिए, [components शुद्ध रखने के बारे](/learn/keeping-components-pure) पढ़िए.

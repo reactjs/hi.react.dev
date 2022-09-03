@@ -4,7 +4,6 @@ title: useRef
 
 <Intro>
 
-`useRef` is a React Hook that lets you reference a value that's not needed for rendering.
 `useRef` एक रीऐक्ट हुक है जो आपको वैल्यू reference करने देता है जो रेंडरिंग के लिए इस्तेमाल नही होता.
 
 ```js
@@ -13,7 +12,7 @@ const ref = useRef(initialValue)
 
 </Intro>
 
-- [Usage](#usage)
+- [प्रयोग](#usage)
   - [Referencing a value with a ref](#referencing-a-value-with-a-ref)
   - [Manipulating the DOM with a ref](#manipulating-the-dom-with-a-ref)
   - [Exposing a ref from your component](#exposing-a-ref-from-your-component)
@@ -25,7 +24,7 @@ const ref = useRef(initialValue)
 
 ---
 
-## Usage {/*usage*/}
+## प्रयोग {/*usage*/}
 
 ### Referencing a value with a ref {/*referencing-a-value-with-a-ref*/}
 ### ref के साथ वैल्यू reference करना {/*referencing-a-value-with-a-ref*/}
