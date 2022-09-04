@@ -8,7 +8,7 @@ React package मे सारे ज़रूरी API है जिससे 
 
 ## इंस्टालेशन {/*installation*/}
 
-यह [`react`](https://www.npmjs.com/package/react) के रूप मे npm पर उपलब्ध है. आप [ React को `<script>` टैग द्वारा ओवरव्यू पे ऐड कर सकते है|](/learn/add-react-to-a-website)
+यह [`react`](https://www.npmjs.com/package/react) के रूप मे npm पर उपलब्ध है| आप [ React को `<script>` टैग द्वारा ओवरव्यू पे ऐड कर सकते है|](/learn/add-react-to-a-website)
 <PackageImport>
 
 <TerminalBlock>
