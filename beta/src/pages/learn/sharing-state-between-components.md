@@ -174,19 +174,19 @@ h3, p { margin: 5px 0px; }
 
 अब `Accordion` कौम्पोनॅन्ट के हार्ड कोडेड `isActive` वैल्यूज को एडिट करें और स्क्रीन पर उसका रिजल्ट देखें।
 
-### चरण ३: कॉमन पैरेंट में state को जोड़ना {/*step-3-add-state-to-the-common-parent*/}
+### स्टेप 3 : कॉमन पैरेंट में state को ऐड करना {/*step-3-add-state-to-the-common-parent*/}
 
 State को लिफ्ट अप करते समय, कई बार उस state में हम क्या स्टोर कर रहे हैं, उसका नेचर बदल सकता है।
 
-ऐसे में एक समय पर सिर्फ एक ही panel एक्टिव रहना चाहिए। इसका मतलब है की `Accordion` कॉमन पैरेंट कौम्पोनॅन्ट को यह ट्रैक करते रहना होगा की _कौन सा_ panel एक्टिव है। सो `boolean` वैल्यू के बजाये , वो state वेरिएबल के लिए, एक नंबर को एक्टिव `Panel` के इंडेक्स की तरह इस्तेमाल कर सकता है:
+ऐसे में एक समय पर सिर्फ एक ही पैनल एक्टिव रहना चाहिए। इसका मतलब है की `Accordion` कॉमन पैरेंट कौम्पोनॅन्ट को यह ट्रैक करते रहना होगा की *कौन सा* पैनल एक्टिव है। `boolean` वैल्यू के बजाये , वो state वेरिएबल के लिए, एक नंबर को एक्टिव `Panel` के इंडेक्स की तरह इस्तेमाल कर सकता है:
 
 ```js
 const [activeIndex, setActiveIndex] = useState(0);
 ```
 
-जब `activeIndex` `0` हो तो पहला panel एक्टिव है, और अगर ये `1` हो तो दूसरा।
+जब `activeIndex` `0` हो तो पहला पैनल एक्टिव है, और अगर ये `1` हो तो दूसरा।
 
-किसी भी Panel में "Show" का बटन दबाने पर `Accordion` में active index बदल जाना चाहिए। एक `Panel` सीधे ही `activeIndex` state सेट नहीं कर सकता क्योंकि वह `Accordion` के अन्दर डिफाइन किया गया है। `Accordion` कौम्पोनॅन्ट को साफ तौर पर `Panel` कौम्पोनॅन्ट को अपनी state बदलने की _इजाज़त_ देनी होगी, जिसके लिए उसे [event-handler को prop की तरह पास कराना होगा](/learn/responding-to-events#passing-event-handlers-as-props):
+किसी भी `Panel` में "Show" का बटन दबाने पर `Accordion` में active index बदल जाना चाहिए। एक `Panel` सीधे ही `activeIndex` state सेट नहीं कर सकता क्योंकि वह `Accordion` के अन्दर डिफाइन किया गया है। `Accordion` कौम्पोनॅन्ट को साफ तौर पर `Panel` कौम्पोनॅन्ट को अपनी state बदलने की *इजाज़त* देनी होगी, जिसके लिए उसे [event-handler को prop की तरह पास कराना होगा](/learn/responding-to-events#passing-event-handlers-as-props):
 
 ```js
 <>
