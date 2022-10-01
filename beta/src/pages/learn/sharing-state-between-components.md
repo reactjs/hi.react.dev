@@ -222,7 +222,7 @@ export default function Accordion() {
         isActive={activeIndex === 0}
         onShow={() => setActiveIndex(0)}
       >
-        २० लाख की आबादी के साथ, अलमाती कज़ख़िस्तान का सबसे बड़ा शहर है। 1929 से 1997 तक, वह उसकी राजधानी थी।
+        20 लाख की आबादी के साथ, अलमाती कज़ख़िस्तान का सबसे बड़ा शहर है। 1929 से 1997 तक, वह उसकी राजधानी थी।
       </Panel>
       <Panel
         title="Etymology"
