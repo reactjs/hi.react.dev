@@ -186,9 +186,9 @@ let index = 0;
 const [index, setIndex] = useState(0);
 ````
 
-`index` एक state वैरिएबल है और `setIndex` एक सेटर फ़ंक्शन है (सेटर-कार्य).
+`index` एक state वैरिएबल है और `setIndex` एक सेटर फ़ंक्शन है।
 
-> यहाँ पर  `[` और `]` सिंटेक्स को [array destructuring (डिस्ट्रक्टरिंग)](/learn/a-javascript-refresher#array-destructuring) कहा जाता हे और यह आपको array की वैल्यू पढ़ने देता है। `useState` द्वारा लौटाया गया array हमेशा सिर्फ दो आइटम्स देता हे। 
+> यहाँ पर  `[` और `]` सिंटेक्स को [ऐरे डेस्ट्रक्टरिंग](/learn/a-javascript-refresher#array-destructuring) कहा जाता हे और यह आपको array की वैल्यू पढ़ने देता है। `useState` द्वारा रिटर्न किये गए array हमेशा दो आइटम्स होते है। 
 
 इस तरह वे `handleClick()` में एक साथ काम करते हैं :
 
@@ -198,7 +198,7 @@ function handleClick() {
 }
 ```
 
-अब "Next" बटन पर क्लिक करने से वर्तमान मूर्तिकला बदल जाती है:
+अब "Next" बटन पर क्लिक करने से करंट स्कल्पचर बदल जाती है:
 
 <Sandpack>
 
