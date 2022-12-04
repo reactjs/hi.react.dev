@@ -128,8 +128,8 @@ return (
 function Profile() {
   return (
     <img 
-         src="https://i.imgur.com/MK3eW3As.jpg" 
-         alt="Katherine Johnson" 
+      src="https://i.imgur.com/MK3eW3As.jpg" 
+      alt="Katherine Johnson" 
     />;
   )
 }
@@ -147,9 +147,7 @@ export default function Gallery() {
 ```
 
 ```css
-img {
-  margin: 0 10px 10px 0; height: 90px;
-}
+img { margin: 0 10px 10px 0; height: 90px; }
 ```
 
 </Sandpack>
