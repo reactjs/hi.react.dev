@@ -1,24 +1,24 @@
 ---
-title: Your First Component
+title: आपका पहला कौम्पोनॅन्ट
 ---
 
 <Intro>
 
-*Components* are one of the core concepts of React. They are the foundation upon which you build user interfaces (UI), which makes them the perfect place to start your React journey!
+*कौम्पोनॅन्टस* React की मुख्य अवधारणाओं में से एक हैं। वे नींव हैं जिस पर आप यूजर इंटरफेस (UI) का निर्माण करते हैं, जो उन्हें आपकी React यात्रा शुरू करने के लिए एक आदर्श स्थान बनाता है!
 
 </Intro>
 
 <YouWillLearn>
 
-* What a component is
-* What role components play in a React application
-* How to write your first React component
+* एक कौम्पोनॅन्ट क्या है
+* React एप्लिकेशन में कौम्पोनॅन्ट क्या भूमिका निभाते हैं
+* अपना पहला React कौम्पोनॅन्ट कैसे लिखें
 
 </YouWillLearn>
 
-## Components: UI building blocks {/*components-ui-building-blocks*/}
+## कौम्पोनॅन्ट: UI बिल्डिंग ब्लॉक्स {/*components-ui-building-blocks*/}
 
-On the Web, HTML lets us create rich structured documents with its built-in set of tags like `<h1>` and `<li>`:
+Web पर, HTML हमें `<h1>` और `<li>` जैसे टैग के अंतर्निहित सेट के साथ रिच स्ट्रक्चर्ड डाक्यूमेंट्स बनाने देता है:
 
 ```html
 <article>
@@ -31,11 +31,11 @@ On the Web, HTML lets us create rich structured documents with its built-in set 
 </article>
 ```
 
-This markup represents this article `<article>`, its heading `<h1>`, and an (abbreviated) table of contents as an ordered list `<ol>`. Markup like this, combined with CSS for style, and JavaScript for interactivity, lies behind every sidebar, avatar, modal, dropdown—every piece of UI you see on the Web.
+यह मार्कअप इस आर्टिकल `<article>`, इसके शीर्षक `<h1>`, और एक (संक्षिप्त) टेबल ऑफ़ कंटेंट्सा को एक ऑर्डर्ड लिस्टी `<ol>` के रूप में दर्शाता है। इस तरह का मार्कअप, स्टाइल के लिए CSS के साथ मिला के, और जावास्क्रिप्ट इंटरएक्टिविटी के लिए, प्रत्येक साइडबार, अवतार, मोडल, ड्रॉपडाउन के पीछे रहता है — UI का हर टुकड़ा जो आप Web पर देखते हैं।
 
-React lets you combine your markup, CSS, and JavaScript into custom "components," **reusable UI elements for your app.** The table of contents code you saw above could be turned into a `<TableOfContents />` component you could render on every page. Under the hood, it still uses the same HTML tags like `<article>`, `<h1>`, etc.
+React आपको अपने मार्कअप, CSS और जावास्क्रिप्ट को कस्टम "कौम्पोनॅन्ट," **आपके एप्प के लिए री-यूज़ब्ले UI एलिमेंट्स** में संयोजित करने देता है। ऊपर देखी गई टेबल ऑफ़ कंटेंट्स कोड को `<TableOfContents />` कौम्पोनॅन्ट में बदल दिया जा सकता है जो आप हर पेज पर रेंडर कर सकते हैं। अंडर हुड, यह अभी भी HTML टैग जैसे `<article>`, `<h1>`, आदि का उपयोग करता है।
 
-Just like with HTML tags, you can compose, order and nest components to design whole pages. For example, the documentation page you're reading is made out of React components:
+HTML टैग्स की तरह ही, आप संपूर्ण पेज को डिज़ाइन करने के लिए कौम्पोनॅन्ट को कंपोज़, ऑर्डर और नेस्ट कर सकते हैं। उदाहरण के लिए, आप जिस डॉक्यूमेंटेशन पेज को पढ़ रहे हैं वह React कौम्पोनॅन्ट से बना है:
 
 ```js
 <PageLayout>
@@ -51,11 +51,11 @@ Just like with HTML tags, you can compose, order and nest components to design w
 </PageLayout>
 ```
 
-As your project grows, you will notice that many of your designs can be composed by reusing components you already wrote, speeding up your development. Our table of contents above could be added to any screen with `<TableOfContents />`! You can even jumpstart your project with the thousands of components shared by the React open source community like [Chakra UI](https://chakra-ui.com/) and [Material UI](https://material-ui.com/).
+जैसे-जैसे आपका प्रोजेक्ट बढ़ताी है, आप देखेंगे कि आपके कई डिज़ाइन आपके द्वारा पहले से लिखे गए कौम्पोनॅन्ट का पुन: उपयोग करके, आपके डेवलपमेंट की गति को बढ़ाते हैं। ऊपर दिए गए हमारे टेबल ऑफ़ कंटेंट्स `<TableOfContents />` के साथ किसी भी स्क्रीन पर ऐड किया जा सकता है! आप React ओपन सोर्स कम्युनिटी जैसे [Chakra UI](https://chakra-ui.com/) और [Material UI](https://material-ui.com/) द्वारा शेयर किए गए हजारों कौम्पोनॅन्ट के साथ अपने प्रोजेक्टा को एक शुरुआत दे सकते हैं।
 
-## Defining a component {/*defining-a-component*/}
+## एक कौम्पोनॅन्ट को डिफाइन करना {/*defining-a-component*/}
 
-Traditionally when creating web pages, web developers marked up their content and then added interaction by sprinkling on some JavaScript. This worked great when interaction was a nice-to-have on the web. Now it is expected for many sites and all apps. React puts interactivity first while still using the same technology: **a React component is a JavaScript function that you can _sprinkle with markup_**. Here's what that looks like (you can edit the example below):
+परंपरागत रूप से वेब पेज बनाते समय, वेब डेवलपर्स अपने कंटेंट को मार्कअप करते हैंा और फिर कुछ जावास्क्रिप्ट पर ऐड करके इंटरेक्शन ऐड करते हैं। यह तब बहुत अच्छा काम करता था जब वेब पर इंटरेक्शन एक अच्छी सुविधा थी। अब यह कई साइटों और सभी ऐप्स के लिए एक्सपेक्टेड है। React एक ही टेक्नोलॉजी का इस्तेमाल करते हुए इंटरएक्टिविटी को पहले रखता है: **एक React कौम्पोनॅन्ट एक जावास्क्रिप्ट फ़ंक्शन है जिसे आप _मार्कअप के साथ स्प्रिंकल सकते हैं_**। यह ऐसा दिखता है (आप नीचे दिए गए उदाहरण को एडिट कर सकते हैं):
 
 <Sandpack>
 
@@ -66,7 +66,7 @@ export default function Profile() {
       src="https://i.imgur.com/MK3eW3Am.jpg"
       alt="Katherine Johnson"
     />
-  )
+  );
 }
 ```
 
@@ -76,33 +76,33 @@ img { height: 200px; }
 
 </Sandpack>
 
-And here's how to build a component:
+ और यहाँ एक कौम्पोनॅन्ट बनाने का तरीका बताया गया है:
 
-### Step 1: Export the component {/*step-1-export-the-component*/}
+### Step 1: कौम्पोनॅन्ट एक्सपोर्ट करें {/*step-1-export-the-component*/}
 
-The `export default` prefix is a [standard JavaScript syntax](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) (not specific to React). It lets you mark the main function in a file so that you can later import it from other files. (More on importing in [Importing and Exporting Components](/learn/importing-and-exporting-components)!)
+`export default` प्रीफिक्स एक [स्टैण्डर्ड जावास्क्रिप्ट सिंटेक्स](https://developer.mozilla.org/docs/web/javascript/reference/statements/export) है (React के लिए स्पेसिफिक नहीं)। यह आपको फ़ाइल में मैन फ़ंक्शन को मार्क करने देता है ताकि आप बाद में इसे अन्य फ़ाइलों से इम्पोर्ट कर सकें। ([इम्पॉर्टिंग एंड एक्सपोर्टिंग कौम्पोनॅन्टस](/learn/importing-and-exporting-components) में इम्पॉर्टिंग के बारे में और अधिक जानें!)
 
-### Step 2: Define the function {/*step-2-define-the-function*/}
+### Step 2: फ़ंक्शन को डिफाइन करें {/*step-2-define-the-function*/}
 
-With `function Profile() { }` you define a JavaScript function with the name `Profile`.
+`function Profile() { }` के साथ आप `Profile` नाम से एक जावास्क्रिप्ट फ़ंक्शन को डिफाइन करते हैं।
 
 <Gotcha>
 
-React components are regular JavaScript functions, but **their names must start with a capital letter** or they won't work!
+React कौम्पोनॅन्ट नियमित जावास्क्रिप्ट फ़ंक्शन हैं, लेकिन **उनके नाम बड़े अक्षर से शुरू होने चाहिए** नहीं तो वे काम नहीं करेंगे!
 
 </Gotcha>
 
-### Step 3: Add markup {/*step-3-add-markup*/}
+### Step 3: मार्कअप ऐड करें {/*step-3-add-markup*/}
 
-The component returns an `<img />` tag with `src` and `alt` attributes. `<img />` is written like HTML, but it is actually JavaScript under the hood! This syntax is called [JSX](/learn/writing-markup-with-jsx), and it lets you embed markup inside JavaScript.
+कौम्पोनॅन्ट `src` और `alt` ऐट्रिब्यूट्स के साथ एक `<img />` रिटर्न करता है। `<img />` HTML की तरह लिखा गया है, लेकिन वास्तव में यह जावास्क्रिप्ट है! इस सिंटैक्स को [JSX](/learn/writing-markup-with-jsx) कहा जाता है, और यह आपको जावास्क्रिप्ट के अंदर मार्कअप एम्बेड करने देता है।
 
-Return statements can be written all on one line, as in this component:
+रिटर्न स्टेटमेंट सभी को एक लाइन पर लिखा जा सकता है, जैसा कि इस कौम्पोनॅन्ट में है:
 
 ```js
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```
 
-But if your markup isn't all on the same line as the `return` keyword, you must wrap it in a pair of parentheses like this:
+लेकिन अगर आपका मार्कअप `return` कीवर्ड की तरह एक ही लाइन पर नहीं है, तो आपको इसे इस तरह के ब्रैकेट्स की एक जोड़ी में लपेटना होगा:
 
 ```js
 return (
@@ -114,22 +114,22 @@ return (
 
 <Gotcha>
 
-Without parentheses, any code on the lines after `return` [will be ignored](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)!
+ब्रैकेट के बिना, `return` के बाद लाइनों पर लिखा कोई भी कोड [इग्नोर हो जाएगा](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)!
 
 </Gotcha>
 
-## Using a component {/*using-a-component*/}
+## एक कौम्पोनॅन्ट का उपयोग करना {/*using-a-component*/}
 
-Now that you've defined your `Profile` component, you can nest it inside other components. For example, you can export a `Gallery` component that uses multiple `Profile` components:
+अब जब आपने अपना `Profile` कौम्पोनॅन्ट डिफाइन कर लिया है, तो आप इसे अन्य कौम्पोनॅन्ट के अंदर इस्तेमाला सकते हैं। उदाहरण के लिए, आप एक `Gallery` कौम्पोनॅन्ट एक्सपोर्ट कर सकते हैं जो एक से ज़्यादा `Profile` कौम्पोनॅन्ट का उपयोग करता है:
 
 <Sandpack>
 
 ```js
 function Profile() {
   return (
-    <img
-      src="https://i.imgur.com/MK3eW3As.jpg"
-      alt="Katherine Johnson"
+    <img 
+      src="https://i.imgur.com/MK3eW3As.jpg" 
+      alt="Katherine Johnson" 
     />
   );
 }
@@ -152,14 +152,14 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-### What the browser sees {/*what-the-browser-sees*/}
+### ब्राउज़र क्या देखता है {/*what-the-browser-sees*/}
 
-Notice the difference in casing:
+केसिंग में अंतर पर ध्यान दें:
 
-* `<section>` is lowercase, so React knows we refer to an HTML tag.
-* `<Profile />` starts with a capital `P`, so React knows that we want to use our component called `Profile`.
+* `<section>` लोअरकेस है, इसलिए React जानता है कि हम एक HTML टैग को रेफेर कर रहे हैं।
+* `<Profile />` कैपिटल `P` से शुरू होता है, इसलिए React जानता है कि हम `Profile` नामक हमारे कौम्पोनॅन्ट का उपयोग करना चाहते हैं।
 
-And `Profile` contains even more HTML: `<img />`. In the end, this is what the browser sees:
+और `Profile` में और भी अधिक HTML शामिल हैं: `<img />`। अंत में, ब्राउज़र यही देखता है:
 
 ```html
 <section>
@@ -170,53 +170,51 @@ And `Profile` contains even more HTML: `<img />`. In the end, this is what the b
 </section>
 ```
 
-### Nesting and organizing components {/*nesting-and-organizing-components*/}
+### कौम्पोनॅन्टस को नेस्टेड और व्यवस्थित बनाना {/*nesting-and-organizing-components*/}
 
-Components are regular JavaScript functions, so you can keep multiple components in the same file. This is convenient when components are relatively small or tightly related to each other. If this file gets crowded, you can always move `Profile` to a separate file. You will learn how to do this shortly on the [page about imports](/learn/importing-and-exporting-components).
+कौम्पोनॅन्ट नार्मल जावास्क्रिप्ट फ़ंक्शन हैं, इसलिए आप एक ही फ़ाइल में कई कौम्पोनॅन्टस को रख सकते हैं। यह तब सुविधाजनक होता है जब कौम्पोनॅन्टस रिलेटिव्ली छोटे होते हैं या एक दूसरे से टाइटली जुड़े होते हैं। यदि यह फ़ाइल क्राउडेड हो जाती है, तो आप हमेशा `Profile` को एक अलग फ़ाइल में ले जा सकते हैं। आप इसे जल्दी ही [इम्पोर्ट्स के बारे में पेज](/learn/importing-and-exporting-components) पर सीखेंगे।
 
-Because the `Profile` components are rendered inside `Gallery`—even several times!—we can say that `Gallery` is a **parent component,** rendering each `Profile` as a "child". This is part of the magic of React: you can define a component once, and then use it in as many places and as many times as you like.
+चूंकि `Profile` कौम्पोनॅन्टस `Gallery` के अंदर रेंडर किए जाते हैं—यहां तक कि कई बार!—हम कह सकते हैं कि `Gallery` एक **पैरेंट कौम्पोनॅन्ट है,** प्रत्येक `Profile` को "चाइल्ड" के रूप में रेंडर करता है। यह React के जादू का हिस्सा है: आप एक कौम्पोनॅन्ट को एक बार डिफाइन कर सकते हैं, और फिर इसे कई जगहों पर और जितनी बार चाहें उपयोग कर सकते हैं।
 
 <DeepDive title="Components All the Way Down">
 
-Your React application begins at a "root" component. Usually, it is created automatically when you start a new project. For example, if you use [CodeSandbox](https://codesandbox.io/) or [Create React App](https://create-react-app.dev/), the root component is defined in `src/App.js`. If you use the framework [Next.js](https://nextjs.org/), the root component is defined in `pages/index.js`. In these examples, you've been exporting root components.
+आपकी React एप्लिकेशन "रूट" कौम्पोनॅन्ट से शुरू होती है। आमतौर पर, जब आप कोई नया प्रोजेक्ट शुरू करते हैं तो यह अपने आप बन जाता है। उदाहरण के लिए, अगर आप [CodeSandbox](https://codesandbox.io/) या [Create React App](https://create-react-app.dev/) का इस्तेमाल करते हैं, तो रूट कौम्पोनॅन्ट को `src/App.js` में डिफाइन होगा। अगर आप [Next.js](https://nextjs.org/) फ्रेमवर्क का इस्तेमाल करते हैं, तो रूट कौम्पोनॅन्ट `page/index.js` में डिफाइन होता है। इन उदाहरणों में, आप रुट कौम्पोनॅन्टस का एक्सपोर्ट कर रहे हैं।
 
-Most React apps use components all the way down. This means that you won't only use components for reusable pieces like buttons, but also for larger pieces like sidebars, lists, and ultimately, complete pages! Components are a handy way to organize UI code and markup, even if some of them are only used once.
+अधिकांश React ऐप्स सभी तरह से कौम्पोनॅन्ट का उपयोग करते हैं। इसका मतलब है कि आप न केवल बटन जैसे  रीयुज़बल कौम्पोनॅन्टस का उपयोग करेंगे, बल्कि साइडबार, लिस्ट्स और अंततः पूरे पेजेज़ जैसे बड़े पीसेज का भी! कौम्पोनॅन्टस UI कोड और मार्कअप को व्यवस्थित करने का एक आसान तरीका है, भले ही उनमें से कुछ का उपयोग केवल एक बार किया गया हो।
 
-Frameworks like Next.js take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they *also* generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
+Next.js जैसे फ्रेमवर्क इससे एक कदम आगे ले जाते हैं। एक खाली HTML फ़ाइल का उपयोग करने और जावास्क्रिप्ट के साथ पेज को मैनेज करने के लिए React को "टेक ओवर" करने देने के बजाय, वे आपके React कौम्पोनॅन्ट से ऑटोमेटिकली HTML उत्पन्न करता हैं। यह आपके ऐप को जावास्क्रिप्ट कोड लोड होने से पहले कुछ कंटेंट दिखाने देता है।
 
-Still, many websites only use React to [add "sprinkles of interactivity"](/learn/add-react-to-a-website). They have many root components instead of a single one for the entire page. You can use as much—or as little—React as you need.
+फिर भी, कई वेबसाइटें ["स्प्रिंकल्स ऑफ़ इंटरएक्टिविटी" डालने के लिए](/learn/add-react-to-a-website) केवल React का उपयोग करती हैं। उनके पास पूरे पेज के लिए एक के बजाय कई रुट कौम्पोनॅन्टस हैं। आप जितना चाहें उतना - ज़्यादा या कम React - उपयोग कर सकते हैं।
 
 </DeepDive>
 
 <Recap>
 
-You've just gotten your first taste of React! Let's recap some key points.
+आपने अभी-अभी React का अपना पहला स्वाद प्राप्त किया है! आइए कुछ प्रमुख बिंदुओं का रिकैप करें।
 
-* React lets you create components, **reusable UI elements for your app.**
-* In a React app, every piece of UI is a component.
-* React components are regular JavaScript functions except:
+- React आपको कौम्पोनॅन्ट बनाने देता है, **आपके ऐप के लिए री-यूज़ब्ले UI एलिमेंट्स।**
+- React ऐप में, UI का हर टुकड़ा एक कौम्पोनॅन्ट है।
+- React कौम्पोनॅन्ट रेगुलर जावास्क्रिप्ट फंक्शन्स हैं सिवाय:
 
-  1. Their names always begin with a capital letter.
-  2. They return JSX markup.
+  1. उनके नाम हमेशा कैपिटल अक्षर से शुरू होते हैं।
+  2. वे JSX मार्कअप रिटर्न करते हैं।
 
 </Recap>
 
-
-
 <Challenges>
 
-### Export the component {/*export-the-component*/}
+### कौम्पोनॅन्ट एक्सपोर्ट करें {/*export-the-component*/}
 
-This sandbox doesn't work because the root component is not exported:
+यह सैंडबॉक्स काम नहीं करता क्योंकि रुट कौम्पोनॅन्ट एक्सपोर्ट नहीं किया जाता है:
 
 <Sandpack>
 
 ```js
 function Profile() {
   return (
-    <img
-      src="https://i.imgur.com/lICfvbD.jpg"
-      alt="Aklilu Lemma"
+    <img 
+      src="https://i.imgur.com/lICfvbD.jpg" 
+      alt="Aklilu Lemma" 
     />
   );
 }
@@ -228,20 +226,20 @@ img { height: 181px; }
 
 </Sandpack>
 
-Try to fix it yourself before looking at the solution!
+सलूशन देखने से पहले इसे स्वयं ठीक करने का प्रयास करें!
 
 <Solution>
 
-Add `export default` before the function definition like so:
+फ़ंक्शन डेफिनिशन से पहले `export default` ऐड करें जैसे:
 
 <Sandpack>
 
 ```js
 export default function Profile() {
   return (
-    <img
-      src="https://i.imgur.com/lICfvbD.jpg"
-      alt="Aklilu Lemma"
+    <img 
+      src="https://i.imgur.com/lICfvbD.jpg" 
+      alt="Aklilu Lemma" 
     />
   );
 }
@@ -253,20 +251,19 @@ img { height: 181px; }
 
 </Sandpack>
 
-You might be wondering why writing `export` alone is not enough to fix this example. You can learn the difference between `export` and `export default` in [Importing and Exporting Components](/learn/importing-and-exporting-components).
+आप सोच रहे होंगे कि इस उदाहरण को ठीक करने के लिए केवल `export` लिखना ही पर्याप्त क्यों नहीं है। आप [Importing and Exporting Components](/learn/importing-and-exporting-components) में `export` और `export default` के बीच अंतर जान सकते हैं।
 
 </Solution>
 
-### Fix the return statement {/*fix-the-return-statement*/}
+### रिटर्न स्टेटमेंट को ठीक करें {/*fix-the-return-statement*/}
 
-Something isn't right about this `return` statement. Can you fix it?
+इस `return` स्टेटमेंट में कुछ गलत है। क्या आप इसे ठीक कर सकते हैं?
 
 <Hint>
 
-You may get an "Unexpected token" error while trying to fix this. In that case, check the that semicolon appears *after* the closing parenthesis. Leaving a semicolon inside `return ( )` will cause an error.
+इसे ठीक करने का प्रयास करते समय आपको "Unexpected token" एरर मिल सकता है। उस स्थिति में, जांचें कि सेमीकोलन क्लोजिंग परन्थेसिस *के बाद* दीखता है। `return ( )` के अंदर सेमीकोलन छोड़ने से एक एरर आएगा।
 
 </Hint>
-
 
 <Sandpack>
 
@@ -285,7 +282,7 @@ img { height: 180px; }
 
 <Solution>
 
-You can fix this component by moving the return statement to one line like so:
+आप रिटर्न स्टेटमेंट को एक लाइन में ले कर-कर इस कौम्पोनॅन्ट को ठीक कर सकते हैं:
 
 <Sandpack>
 
@@ -301,7 +298,7 @@ img { height: 180px; }
 
 </Sandpack>
 
-Or by wrapping the returned JSX markup in parentheses that open right after `return`:
+या रेतुर्न किये गए JSX मार्कअप को परन्थेसिस में लपेटकर जो `return` के ठीक बाद खुलता है:
 
 <Sandpack>
 
@@ -324,18 +321,18 @@ img { height: 180px; }
 
 </Solution>
 
-### Spot the mistake {/*spot-the-mistake*/}
+### गलती का पता लगाएं {/*spot-the-mistake*/}
 
-Something's wrong with how the `Profile` component is declared and used. Can you spot the mistake? (Try to remember how React distinguishes components from the regular HTML tags!)
+`Profile` कौम्पोनॅन्ट को कैसे डिक्लेअर और उपयोग किया जाता है, इसमें कुछ गड़बड़ है। क्या आप गलती का पता लगा सकते हैं? (याद रखने की कोशिश करें कि कैसे React रेगुलर HTML टैग से कौम्पोनॅन्टस को अलग करता है!)
 
 <Sandpack>
 
 ```js
 function profile() {
   return (
-    <img
-      src="https://i.imgur.com/QIrZWGIs.jpg"
-      alt="Alan L. Hart"
+    <img 
+      src="https://i.imgur.com/QIrZWGIs.jpg" 
+      alt="Alan L. Hart" 
     />
   );
 }
@@ -360,18 +357,18 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Solution>
 
-React component names must start with a capital letter.
+React कौम्पोनॅन्ट नाम कैपिटल अक्षर से शुरू होने चाहिए।
 
-Change `function profile()` to `function Profile()`, and then change every `<profile />` to `<Profile />`:
+`function profile()` को `function Profile()` में बदलें, और फिर हर `<profile />` को `<Profile />` में बदलें:
 
 <Sandpack>
 
 ```js
 function Profile() {
   return (
-    <img
-      src="https://i.imgur.com/QIrZWGIs.jpg"
-      alt="Alan L. Hart"
+    <img 
+      src="https://i.imgur.com/QIrZWGIs.jpg" 
+      alt="Alan L. Hart" 
     />
   );
 }
@@ -396,15 +393,14 @@ img { margin: 0 10px 10px 0; }
 
 </Solution>
 
-### Your own component {/*your-own-component*/}
+### आपका अपना कौम्पोनॅन्ट {/*your-own-component*/}
 
-Write a component from scratch. You can give it any valid name and return any markup. If you're out of ideas, you can write a `Congratulations` component thats shows `<h1>Good job!</h1>`. Don't forget to export it!
+बिलकुल शुरू से एक कौम्पोनॅन्ट लिखें। आप इसे कोई भी वैलिड नाम दे सकते हैं और कोई मार्कअप रिटर्न कर सकते हैं। यदि आपके पास कोई आईडिया नहीं हैं, तो आप एक `Congratulations` कौम्पोनॅन्ट लिख सकते हैं जो `<h1>Good job!</h1>` दिखाता है। इसे एक्सपोर्ट करना न भूलें!
 
 <Sandpack>
 
 ```js
 // Write your component below!
-
 ```
 
 </Sandpack>
