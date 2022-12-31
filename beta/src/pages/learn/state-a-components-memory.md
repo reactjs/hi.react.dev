@@ -168,7 +168,7 @@ button {
 
 ## एक state वैरिएबल ऐड करना {/*adding-a-state-variable*/}
 
-एक state वैरिएबल जोड़ने के लिए, आयात करे `useState` React मॉड्यूल से, फ़ाइल के शीर्ष पर:
+एक state वैरिएबल ऐड करने के लिए, फाइल से सबसे ऊपर useState को React से इम्पोर्ट करें:
 
 ```js
 import { useState } from 'react';
