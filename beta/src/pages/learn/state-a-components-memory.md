@@ -331,9 +331,9 @@ button {
 
 </Sandpack>
 
-### Meet your first Hook {/*meet-your-first-hook*/}
+### अपने पहले हुक से मिलें {/*meet-your-first-hook*/}
 
-React में , `useState`, साथ ही साथ "`use`," से शुरू होने वाला कोई अन्य प्रत्येक फ़ंक्शन हुक कहा जाता है |
+React में, `useState`, या "`use`," से शुरू होने वाला कोई अन्य फ़ंक्शन को हुक कहा जाता है।
 
 *हुक* विशेष फ़ंक्शन हैं जो केवल react के [रेंडरिंग](/learn/render-and-commit#step-1-trigger-a-render) (which we'll get into in more detail on the next page)  के दौरान उपलब्ध हैं | वे आपको विभिन्न React सुविधाओं में "हुक इन" करने देते हैं।
 
