@@ -1,25 +1,25 @@
 ---
-title: "State: A Component's Memory"
+title: "State: एक कौम्पोनॅन्ट की मेमोरी"
 ---
 
 <Intro>
 
-Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" should put a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state*.
+कोई भी इंटरेक्शन होने की वजह स कौम्पोनॅन्ट को अक्सर स्क्रीन पर क्या दिख रहा है उसको बदलना होता है। फॉर्म में टाइप करने पर इनपुट फील्ड अपडेट होने चाहिए, इमेज करौसेल के "next" को क्लिक करने पर करौसेल की इमेज बदलनी चाहिए, "buy" पर क्लिक करने पर एक प्रोडक्ट शॉपिंग कार्ट में ऐड होना चाहिए। कौम्पोनॅन्ट को चीजों को "याद रखना" चाहिए: इनपुट की अभी की वैल्यू, अभी की इमेज, शॉपिंग कार्ट। React में, इस प्रकार की कौम्पोनॅन्ट-स्पेसिफिक मेमोरी को *State* कहा जाता है।
 
 </Intro>
 
 <YouWillLearn>
 
-* How to add a state variable with the [`useState`](/reference/react/useState) Hook
-* What pair of values the `useState` Hook returns
-* How to add more than one state variable
-* Why state is called local
+* state वेरिएबल को [`useState`](/apis/usestate) Hook के साथ कैसे ऐड करें
+* `useState` Hook कोनसे वैल्यूज की पेअर को रिटर्न करता है 
+* एक से अधिक स्टेट वेरिएबल कैसे ऐड करें
+* state को लोकल क्यों कहा जाता है
 
 </YouWillLearn>
 
-## When a regular variable isn’t enough {/*when-a-regular-variable-isnt-enough*/}
+## जब एक सामान्य वेरिएबल पर्याप्त नहीं है {/*when-a-regular-variable-isnt-enough*/}
 
-Here's a component that renders a sculpture image. Clicking the "Next" button should show the next sculpture by changing the `index` to `1`, then `2`, and so on. However, this **won't work** (you can try it!):
+यहाँ एक कौम्पोनॅन्ट है जो एक स्कल्पचर इमेज प्रस्तुत करता है। "Next" बटन पर क्लिक करने से `इंडेक्स` को `1`, फिर `2`, और इसी तरह बदलकर अगली स्कल्पचर इमेज दिखाई देनी चाहिए। हालांकि, यह **काम नहीं करेगा** (आप इसे आज़मा सकते हैं!):
 
 <Sandpack>
 
@@ -151,46 +151,46 @@ button {
 
 </Sandpack>
 
-The `handleClick` event handler is updating a local variable, `index`. But two things prevent that change from being visible:
+`handleClick()` event handler एक लोकल वैरिएबल, `इंडेक्स` को अपडेट कर रहा है। लेकिन दो चीजें उस बदलाव को दिखने से रोकती हैं
 
-1. **Local variables don't persist between renders.** When React renders this component a second time, it renders it from scratch—it doesn't consider any changes to the local variables.
-2. **Changes to local variables won't trigger renders.** React doesn't realize it needs to render the component again with the new data.
+1. **लोकल वैरिएबल रेंडरर्स के बीच बने नहीं रहते हैं** जब React इस कौम्पोनॅन्ट को दूसरी बार रेंडर करता है, यह इसे नए सिरे से रेंडर करता है—यह लोकल वैरिएबल में किसी भी परिवर्तन पर विचार नहीं करता है।
+2. **लोकल वैरिएबल में बदलाव करने से रेंडर ट्रिगर नहीं होंगे.** React को एहसास नहीं होता है कि उसे नए डेटा के साथ कौम्पोनॅन्ट को फिर से रेंडर करने की आवश्यकता है।
 
-To update a component with new data, two things need to happen:
+किसी कौम्पोनॅन्ट को नए डेटा से अपडेट करने के लिए, दो चीज़ें होनी चाहिए:
 
-1. **Retain** the data between renders.
-2. **Trigger** React to render the component with new data (re-rendering).
+1. रेंडरर्स के बीच डेटा को **बनाए रखें**।
+2. कौम्पोनॅन्ट को नए डेटा (री-रेंडरिंग) के साथ रेंडर करने के लिए React को **ट्रिगर करे**।
 
-The [`useState`](/reference/react/useState) Hook provides those two things:
+यह दोनों चीज़े [`useState`](/apis/usestate) हुक की सहायता से की जा सकती है::
 
-1. A **state variable** to retain the data between renders.
-2. A **state setter function** to update the variable and trigger React to render the component again.
+1. एक **state वैरिएबल** रेंडरर्स के बीच डेटा को बनाए रखे।
+2. एक **state setter फंक्शन** वैरिएबल अपडेट करने के लिए और कौम्पोनॅन्ट को फिर से रेंडर करने के लिए React को ट्रिगर करें।
 
-## Adding a state variable {/*adding-a-state-variable*/}
+## एक state वैरिएबल ऐड करना {/*adding-a-state-variable*/}
 
-To add a state variable, import `useState` from React at the top of the file:
+एक state वैरिएबल ऐड करने के लिए, फाइल से सबसे ऊपर useState को React से इम्पोर्ट करें:
 
 ```js
 import { useState } from 'react';
 ```
 
-Then, replace this line:
+फिर, इस लाइन को बदलें:
 
 ```js
 let index = 0;
 ```
 
-with
+इस लाइन के साथ
 
 ```js
 const [index, setIndex] = useState(0);
-```
+````
 
-`index` is a state variable and `setIndex` is the setter function.
+`index` एक state वैरिएबल है और `setIndex` एक सेटर फ़ंक्शन है।
 
-> The `[` and `]` syntax here is called [array destructuring](https://javascript.info/destructuring-assignment) and it lets you read values from an array. The array returned by `useState` always has exactly two items.
+> यहाँ पर  `[` और `]` सिंटेक्स को [ऐरे डेस्ट्रक्टरिंग](/learn/a-javascript-refresher#array-destructuring) कहा जाता हे और यह आपको array की वैल्यू पढ़ने देता है। `useState` द्वारा रिटर्न किये गए array हमेशा दो आइटम्स होते है। 
 
-This is how they work together in `handleClick`:
+इस तरह वे `handleClick()` में एक साथ काम करते हैं :
 
 ```js
 function handleClick() {
@@ -198,7 +198,7 @@ function handleClick() {
 }
 ```
 
-Now clicking the "Next" button switches the current sculpture:
+अब "Next" बटन पर क्लिक करने से करंट स्कल्पचर बदल जाती है:
 
 <Sandpack>
 
@@ -331,57 +331,53 @@ button {
 
 </Sandpack>
 
-### Meet your first Hook {/*meet-your-first-hook*/}
+### अपने पहले हुक से मिलें {/*meet-your-first-hook*/}
 
-In React, `useState`, as well as any other function starting with "`use`", is called a Hook.
+React में, `useState`, या "`use`," से शुरू होने वाला कोई अन्य फ़ंक्शन को हुक कहा जाता है।
 
-*Hooks* are special functions that are only available while React is [rendering](/learn/render-and-commit#step-1-trigger-a-render) (which we'll get into in more detail on the next page). They let you "hook into" different React features.
+*हुक* विशेष फ़ंक्शन हैं जो केवल React के [रेंडरिंग](/learn/render-and-commit#step-1-trigger-a-render) (जिसके बारे में और डिटेल में हम अगले पेज पर जानेंगे)  के दौरान उपलब्ध हैं। वे आपको विभिन्न React फीचर्स में "हुक इन" करने देते हैं।
 
-State is just one of those features, but you will meet the other Hooks later.
+State उन फीचर्स में से एक है, लेकिन आप दूसरे हुक से बाद में मिलेंगे।
 
 <Pitfall>
 
-**Hooks—functions starting with `use`—can only be called at the top level of your components or [your own Hooks.](/learn/reusing-logic-with-custom-hooks)** You can't call Hooks inside conditions, loops, or other nested functions. Hooks are functions, but it's helpful to think of them as unconditional declarations about your component's needs. You "use" React features at the top of your component similar to how you "import" modules at the top of your file.
+**`use` से शुरू होने वाले हुक फ़ंक्शंस केवल कौम्पोनॅन्टस के ऊपरी लेवल या [आपके अपने हुक](/learn/reusing-logic-with-custom-hooks) से कॉल हो सकते हे।** आप हुक को कंडीशंस, लूप्स, या अन्य नेस्टेड फ़ंक्शंस के अंदर कॉल नहीं कर सकते। हुक फ़ंक्शंस हैं, लेकिन उनको आपके कौम्पोनॅन्टस की जरूरतों के बारे में बिना शर्त डेक्लेरेशंस के जैसे समझिये। जिस प्रकार से आप अपनी फाइल की शुरुआत में मॉडल्स "इम्पोर्ट" करते है, उसी प्रकार से आप React के फीचर्स का उपयोग फाइल के शुरुवात में कर सकते है।  
 
 </Pitfall>
 
-### Anatomy of `useState` {/*anatomy-of-usestate*/}
+### `useState` का विश्लेषण {/*anatomy-of-usestate*/}
 
-When you call [`useState`](/reference/react/useState), you are telling React that you want this component to remember something:
-
-```js
-const [index, setIndex] = useState(0);
-```
-
-In this case, you want React to remember `index`.
-
-<Note>
-
-The convention is to name this pair like `const [something, setSomething]`. You could name it anything you like, but conventions make things easier to understand across projects.
-
-</Note>
-
-The only argument to `useState` is the **initial value** of your state variable. In this example, the `index`'s initial value is set to `0` with `useState(0)`. 
-
-Every time your component renders, `useState` gives you an array containing two values:
-
-1. The **state variable** (`index`) with the value you stored.
-2. The **state setter function** (`setIndex`) which can update the state variable and trigger React to render the component again.
-
-Here's how that happens in action:
+जब आप [`useState`](/apis/usestate) को कॉल करते हैं, आप React को बता रहे हैं कि आप चाहते हैं कि यह कौम्पोनॅन्ट कुछ याद रखे:
 
 ```js
 const [index, setIndex] = useState(0);
 ```
 
-1. **Your component renders the first time.** Because you passed `0` to `useState` as the initial value for `index`, it will return `[0, setIndex]`. React remembers `0` is the latest state value.
-2. **You update the state.** When a user clicks the button, it calls `setIndex(index + 1)`. `index` is `0`, so it's `setIndex(1)`. This tells React to remember `index` is `1` now and triggers another render.
-3. **Your component's second render.** React still sees `useState(0)`, but because React *remembers* that you set `index` to `1`, it returns `[1, setIndex]` instead.
-4. And so on!
+इस मामले में, आप चाहते हैं कि React `index` को याद रखे। 
 
-## Giving a component multiple state variables {/*giving-a-component-multiple-state-variables*/}
+> कन्वेंशनल तरीके से आप इस पेअर को ऐसे लिखेंगे : `const [something, setSomething]`। वैसे तो आप जो चाहे वो नाम इसे दे सकते हे, लेकिन पारंपरिक तरीके से लिखने पर, आपका कोड बाकि लोगो को भी आसानी से समझ आता है। 
 
-You can have as many state variables of as many types as you like in one component. This component has two state variables, a number `index` and a boolean `showMore` that's toggled when you click "Show details":
+useState` केवल एक ही आर्गुमेंट लेता है और वह है **इनिशियल वैल्यू** आपके state वेरिएबल का। इस उदाहरण में, `index` की इनिशियल वैल्यू है `0` क्युकी `useState(0)` लिखा गया है। 
+
+जब भी आपका कौम्पोनॅन्ट रेंडर होता है, `useState` आपको एक array देता है जिसमें दो वैल्यूज होते हैं:
+
+1. **state वेरिएबल** (`index`) आपके द्वारा स्टोर की गयी वैल्यू के साथ।
+2. **state सेटर फंक्शन** (`setIndex`) जो state वेरिएबल की वैल्यू बदल सकता है और कौम्पोनॅन्ट को फिर से रेंडर करने के लिए React को ट्रिगर कर सकता है।
+
+देखिये यह कैसे होता है :
+
+```js
+const [index, setIndex] = useState(0);
+```
+
+1. **आपका कौम्पोनॅन्ट पहली बार रेंडर होता है।** क्युकी आपने `useState` को `0` वैल्यू `index` की इनिशियल वैल्यू के तौर पर दी थीं, वह `[0, setIndex]` रिटर्न करेगा। React `0` को नई state वैल्यू के तौर पर याद रखेगा। 
+2. **आप state को अपडेट करें।** जब कोई यूजर, बटन पर क्लिक करता है, यह `setIndex(index + 1)` को कॉल करता है। `index` अभी `0` है, तो `setIndex(1)` हो जायेगा। यह React को याद रखने के लिए कहता है कि `index` अब `1` है और एक और रेंडर ट्रिगर करता है।
+3. **आपके कौम्पोनॅन्ट का दूसरा रेंडर.** React अभी भी देखता है `useState(0)`, लेकिन क्योंकि React को *याद है* की आपने `index` को `1` सेट किया था , वह `[1, setIndex]` रिटर्न करता है। 
+4. और इसी तरह आगे भी होता रहता है!
+
+## एक कौम्पोनॅन्ट को कई state वेरिएबल देना {/*giving-a-component-multiple-state-variables*/}
+
+आपके पास एक कौम्पोनॅन्ट में जितने चाहें उतने प्रकार के state वेरिएबल हो सकते हैं। इस कौम्पोनॅन्ट में दो state वेरिएबल हैं, एक number `index` और एक boolean `showMore` जिसकी वैल्यू तब बदलती है जब आप "Show details" को क्लिक करते है : 
 
 <Sandpack>
 
@@ -520,19 +516,19 @@ button {
 
 </Sandpack>
 
-It is a good idea to have multiple state variables if their state is unrelated, like `index` and `showMore` in this example. But if you find that you often change two state variables together, it might be easier to combine them into one. For example, if you have a form with many fields, it's more convenient to have a single state variable that holds an object than state variable per field. Read [Choosing the State Structure](/learn/choosing-the-state-structure) for more tips.
+यदि state वेरिएबल्स रिलेटेड नहीं है, तो कई state वेरिएबल होना एक अच्छा विचार है, जैसे इस उदाहरण में `index` और `showMore`। लेकिन अगर आप पाते हैं कि आप अक्सर दो state वेरिएबल एक साथ बदलते हैं तो उन्हें एक में करना बेहतर हो सकता है। उदाहरण के लिए, यदि आपके पास कई फ़ील्ड्स के साथ एक फॉर्म है, तो हर फील्ड के लिए अलग state वेरिएबल रखने से बेहतर होगा की आप एक state वेरिएबल रखे जो एक ऑब्जेक्ट है। [State स्ट्रक्चर चुनना](/learn/choosing-the-state-structure) में इसके बारे में और टिप्स है।
 
 <DeepDive>
 
 #### How does React know which state to return? {/*how-does-react-know-which-state-to-return*/}
 
-You might have noticed that the `useState` call does not receive any information about *which* state variable it refers to. There is no "identifier" that is passed to `useState`, so how does it know which of the state variables to return? Does it rely on some magic like parsing your functions? The answer is no.
+आपने देखा होगा कि `useState` कॉल को स्टेट वेरिएबल के बारे में कोई जानकारी नहीं मिलती है। कोई "आइडेंटिफायर" नहीं है जो `useState` को पास किया जाता है, तो उसे कैसे पता चलता है कि किस state वेरिएबल को वापस करना है? क्या यह आपके फ़ंक्शन को पार्स करने जैसे किसी जादू पर निर्भर करता है? इसका जवाब है नहीं। 
 
-Instead, to enable their concise syntax, Hooks **rely on a stable call order on every render of the same component.** This works well in practice because if you follow the rule above ("only call Hooks at the top level"), Hooks will always be called in the same order. Additionally, a [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) catches most mistakes.
+इसके बजाय, उनके संक्षिप्त सिंटैक्स को सक्षम करने के लिए, Hooks ** एक ही कौम्पोनॅन्ट के प्रत्येक रेंडर पर स्थिर कॉल ऑर्डर पर भरोसा करते है।** अगर आप ऊपर दिए गए नियम का पालन करते हैं ("हुक को केवल टॉप लेवल पर करें"), तो यह अक्सर अच्छा काम करता है, Hooks को हमेशा उसी क्रम में बुलाया जाएगा। और, एक [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) बाकी की ज़्यादातर गलतियाँ पकड़ता है।
 
-Internally, React holds an array of state pairs for every component. It also maintains the current pair index, which is set to `0` before rendering. Each time you call `useState`, React gives you the next state pair and increments the index. You can read more about this mechanism in [React Hooks: Not Magic, Just Arrays.](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)
+आंतरिक रूप से, React प्रत्येक कौम्पोनॅन्ट के लिए state एक पेअर का एक array रखता है। यह अभी के पेअर के इंडेक्स को भी बनाए रखता है, जो रेंडर करने से पहले `0` पर सेट है। हर बार जब आप `useState` कॉल करते हैं , React आपको अगला स्टेट पेअर देता है और इंडेक्स को इन्क्रीमेंट करता है। आप इसके के बारे में अधिक [React Hooks: Not Magic, Just Arrays](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e) में पढ़ सकते हैं।
 
-This example **doesn't use React** but it gives you an idea of how `useState` works internally:
+यह उदाहरण **React का उपयोग नहीं करता है**, लेकिन यह आपको समझाता है कि `useState` आंतरिक रूप से कैसे काम करता है:
 
 <Sandpack>
 
@@ -724,15 +720,15 @@ button { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-You don't have to understand it to use React, but you might find this a helpful mental model.
+React का उपयोग करने के लिए आपको इसे समझने की आवश्यकता नहीं है, लेकिन आपको यह उपयोगी साबित हो सकता है।
 
 </DeepDive>
 
-## State is isolated and private {/*state-is-isolated-and-private*/}
+## State अलग और प्राइवेट है {/*state-is-isolated-and-private*/}
 
-State is local to a component instance on the screen. In other words, **if you render the same component twice, each copy will have completely isolated state!** Changing one of them will not affect the other.
+State स्क्रीन पर दिखने वाले कॉम्पोनेन्ट के इंस्टैंस के लिए लोकल है। दूसरे शब्दों में, **यदि आप एक ही कौम्पोनॅन्ट को दो बार रेंडर करते हैं, तो हर कॉपी में पूरी तरह से अलग state होगा!** उनमें से एक को बदलने से दूसरे पर कोई प्रभाव नहीं पड़ेगा।
 
-In this example, the `Gallery` component from earlier is rendered twice with no changes to its logic. Try clicking the buttons inside each of the galleries. Notice that their state is independent:
+इस उदाहरण में, पहले के `Gallery` कौम्पोनॅन्ट को इसके लॉजिक में बिना किसी बदलाव के दो बार रेंडर किया गया है। प्रत्येक Gallery के अंदर बटन क्लिक करने का प्रयास करें। ध्यान दें कि उनका state एक दूसरे से अलग है:
 
 <Sandpack>
 
@@ -891,33 +887,33 @@ button {
 
 </Sandpack>
 
-This is what makes state different from regular variables that you might declare at the top of your module. State is not tied to a particular function call or a place in the code, but it's "local" to the specific place on the screen. You rendered two `<Gallery />` components, so their state is stored separately.
+आप स्टेट वेरिएबल्स को अपने मॉड्यूल के शीर्ष पर घोषित कर सकते हैं, यही बात स्टेट वेरिएबल को आम वेरिएबल से विपरीत करती है। State किसी विशेष फ़ंक्शन कॉल या कोड में स्थान से बंधा नहीं है, किंतु यह स्क्रीन पर स्पेसिफिक स्थान पर "लोकल" है। आपने दो `<Gallery />` कौम्पोनॅन्ट को रेंडर किया, इसलिए उनका state अलग से स्टोर किया जाता है।
 
-Also notice how the `Page` component doesn't "know" anything about the `Gallery` state or even whether it has any. Unlike props, **state is fully private to the component declaring it.** The parent component can't change it. This lets you add state to any component or remove it without impacting the rest of the components.
+यह भी देखें कि कैसे `Page` कौम्पोनॅन्ट `Gallery` के state के बारे में कुछ भी नहीं "जानता", उसे तोह यह भी नहीं पता की `Gallery` कौम्पोनॅन्ट के पास कोई state है। props के विपरीत, **state इसे घोषित करने वाले कौम्पोनॅन्ट के लिए पूरी तरह से प्राइवेट है**। पैरेंट कौम्पोनॅन्ट state को बदल नहीं सकता है। इससे आप किसी भी कौम्पोनॅन्ट में state ऐड कर सकते हैं या बाकी कौम्पोनॅन्ट को प्रभावित किए बिना उसे हटा सकते हैं।
 
-What if you wanted both galleries to keep their states in sync? The right way to do it in React is to *remove* state from child components and add it to their closest shared parent. The next few pages will focus on organizing state of a single component, but we will return to this topic in [Sharing State Between Components.](/learn/sharing-state-between-components)
+यदि आप चाहें कि दोनों galleries अपने state सिंक में रखें तो? React में इसे करने का सही तरीका यह है कि चाइल्ड कौम्पोनॅन्ट से state *निकालें* और इसे दोनों के निकटतम शेयर्ड पैरेंट कौम्पोनॅन्ट में ऐड करें। अगले कुछ पेजेज़ एक कौम्पोनॅन्ट के state को ओर्गनइजे करने पर ध्यान केंद्रित करेंगे, लेकिन हम इस विषय पर [कई कौम्पोनॅन्ट के बीच state शेयर करना](/learn/sharing-state-between-components) में वापस आएंगे।
 
 <Recap>
 
-* Use a state variable when a component needs to "remember" some information between renders.
-* State variables are declared by calling the `useState` Hook.
-* Hooks are special functions that start with `use`. They let you "hook into" React features like state.
-* Hooks might remind you of imports: they need to be called unconditionally. Calling Hooks, including `useState`, is only valid at the top level of a component or another Hook.
-* The `useState` Hook returns a pair of values: the current state and the function to update it.
-* You can have more than one state variable. Internally, React matches them up by their order.
-* State is private to the component. If you render it in two places, each copy gets its own state.
-
+* जब किसी कौम्पोनॅन्ट को रेंडरर्स के बीच कुछ जानकारी "याद" रखने की आवश्यकता हो, तो state वेरिएबल का उपयोग करें।
+* स्टेट वेरिएबल को `useState` हुक कॉलकर कर डिक्लेअर किया जाता है।
+* हुक विशेष फंक्शन हैं जो `use` से शुरू होते हैं। वे आपको state जैसी React के फीचर्स को "हुक इन" करने देते हैं।
+* हुक आपको इम्पोर्ट्स की याद दिला सकते हैं: उन्हें बिना किसी कंडीशन के बुलाया जाना चाहिए। हुक्स को बुलाना, जिसमें `useState` शामिल है, केवल एक कौम्पोनॅन्ट या किसी अन्य हुक के शीर्ष स्तर पर करना सही है।
+* `useState` हुक वैल्यूज की एक जोड़ी देता है: अभी का state और इसे अपडेट करने के लिए फंक्शन।
+* आपके पास एक से अधिक state वेरिएबल हो सकते हैं। आंतरिक रूप से, React उनके क्रम से उनको मैच करता है।
+* State कौम्पोनॅन्ट के लिए प्राइवेट है। यदि आप इसे दो स्थानों पर रेंडर करते हैं, तो हर कॉपी को अपना state मिलता है।
+  
 </Recap>
 
 
 
 <Challenges>
 
-#### Complete the gallery {/*complete-the-gallery*/}
+#### Gallery कम्पलीट करें {/*complete-the-gallery*/}
 
-When you press "Next" on the last sculpture, the code crashes. Fix the logic to prevent the crash. You may do this by adding extra logic to event handler or by disabling the button when the action is not possible.
+जब आप अंतिम स्कल्पचर पर "Next" बटन दबाते हैं, तो कोड क्रैश हो जाता है। इस क्रैश को रोकने के लिए लॉजिक को ठीक करें। आप ईवेंट हैंडलर में एक्स्ट्रा लॉजिक ऐड कर के ऐसा कर सकते हैं या एक्शन पॉसिबल न होने पर बटन को डिसएबल करके।
 
-After fixing the crash, add a "Previous" button that shows the previous sculpture. It shouldn't crash on the first sculpture.
+इस क्रैश को ठीक करने के बाद, एक "Previous" बटन ऐड करें जो पिछला स्कल्पचर दिखाता है। यह पहले स्कल्पचर पर क्रैश नहीं होना चाहिए।
 
 <Sandpack>
 
@@ -1059,7 +1055,7 @@ img { width: 120px; height: 120px; }
 
 <Solution>
 
-This adds a guarding condition inside both event handlers and disables the buttons when needed:
+यह दोनों ईवेंट हैंडलर के अंदर एक गार्डिंग कंडीशन ऐड करता है और जरूरत पड़ने पर बटन को डिसएबल कर देता है:
 
 <Sandpack>
 
@@ -1219,13 +1215,13 @@ img { width: 120px; height: 120px; }
 
 </Sandpack>
 
-Notice how `hasPrev` and `hasNext` are used *both* for the returned JSX and inside the event handlers! This handy pattern works because event handler functions ["close over"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) any variables declared while rendering.
+ध्यान दें कि कैसे लौटाए गए JSX और ईवेंट हैंडलर, *दोनों* के अंदर, `hasPrev` और `hasNext` का उपयोग किया जाता है! यह आसान पैटर्न काम करता है क्योंकि ईवेंट हैंडलर रेंडर करते समय डिक्लेअर किसी भी वेरिएबल के लिए ["close over"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) कार्य करता है।
 
 </Solution>
 
-#### Fix stuck form inputs {/*fix-stuck-form-inputs*/}
+#### अटके हुए फॉर्म इनपुट को ठीक करें {/*fix-stuck-form-inputs*/}
 
-When you type into the input fields, nothing appears. It's like the input values are "stuck" with empty strings. The `value` of the first `<input>` is set to always match the `firstName` variable, and the `value` for the second `<input>` is set to always match the `lastName` variable. This is correct. Both inputs have `onChange` event handlers, which try to update the variables based on the latest user input (`e.target.value`). However, the variables don't seem to "remember" their values between re-renders. Fix this by using state variables instead.
+जब आप इनपुट फ़ील्ड में टाइप करते हैं, तो कुछ भी नहीं दीखता है। यह ऐसा है जैसे इनपुट वैल्यूज खाली strings के साथ "अटक" गए हैं। पहले `<input>` का `वैल्यू` हमेशा `firstName` वेरिएबल से मैच होने के लिए सेट है, और दूसरे `<input>` का `वैल्यू` हमेशा `lastName` वेरिएबल से मैच होने के लिए सेट है। यह सही है। दोनों इनपुट में `onChange` event handler हैं, जो यूज़र के नये इनपुट (`e.target.value`) के आधार पर वेरिएबलो को अपडेट करने का प्रयास करते हैं। हालांकि, वेरिएबल री-रेंडर के बीच अपने वैल्यूज को "याद" नहीं कर पाता। इसके बजाय state वेरिएबल का उपयोग करके इसे ठीक करें।
 
 <Sandpack>
 
@@ -1274,7 +1270,7 @@ h1 { margin-top: 10px; }
 
 <Solution>
 
-First, import `useState` from React. Then replace `firstName` and `lastName` with state variables declared by calling `useState`. Finally, replace every `firstName = ...` assignment with `setFirstName(...)`, and do the same for `lastName`. Don't forget to update `handleReset` too so that the reset button works.
+सबसे पहले, React से `useState` इम्पोर्ट करें। फिर `useState` की मदद से `firstName` और `lastName` को state वेरिएबल्स बदलें। आख़िरकार, प्रत्येक `firstName = ...` असाइनमेंट को `setFirstName(...)` से बदलें, और `lastName` के लिए भी ऐसा ही करें। `handleReset` को भी अपडेट करना न भूलें ताकि रीसेट बटन काम करे।
 
 <Sandpack>
 
@@ -1325,14 +1321,14 @@ h1 { margin-top: 10px; }
 
 </Solution>
 
-#### Fix a crash {/*fix-a-crash*/}
+#### क्रैश ठीक करें {/*fix-a-crash*/}
 
-Here is a small form that is supposed to let the user leave some feedback. When the feedback is submitted, it's supposed to display a thank-you message. However, it crashes with an error message saying "Rendered fewer hooks than expected". Can you spot the mistake and fix it?
+यहां एक छोटा फॉर्म है जो यूज़र को फीडबैक देने देता है। फीडबैक देने पर, एक धन्यवाद सन्देश प्रदर्शित करना अपेक्षित है। हालांकि, यह एक एरर मैसेज दे कर क्रैश हो जाता है "Rendered fewer hooks than expected"। क्या आप गलती का पता लगा कर उसे ठीक कर सकते हैं?
 
 <Hint>
-
-Are there any limitations on _where_ Hooks may be called? Does this component break any rules? Check if there are any comments disabling the linter checks--this is where the bugs often hide!
-
+  
+हुक को _कहाँ_ कॉल करें क्या इस पर कोई पाबंदी है? क्या यह कौम्पोनॅन्ट कोई नियम तोड़ रहा है?
+  
 </Hint>
 
 <Sandpack>
@@ -1345,7 +1341,6 @@ export default function FeedbackForm() {
   if (isSent) {
     return <h1>Thank you!</h1>;
   } else {
-    // eslint-disable-next-line
     const [message, setMessage] = useState('');
     return (
       <form onSubmit={e => {
@@ -1370,9 +1365,7 @@ export default function FeedbackForm() {
 
 <Solution>
 
-Hooks can only be called at the top level of the component function. Here, the first `isSent` definition follows this rule, but the `message` definition is nested in a condition.
-
-Move it out of the condition to fix the issue:
+हुक को केवल कौम्पोनॅन्ट फ़ंक्शन के शीर्ष स्तर पर कॉल किया जा सकता है। यहाँ, पहला `isSent` डेफिनिशन इस नियम का पालन करता है, लेकिन `message` डेफिनिशन एक कंडीशन में नेस्टेड है। समस्या को ठीक करने के लिए इसे कंडीशन से बाहर ले जाएं:
 
 <Sandpack>
 
@@ -1407,10 +1400,9 @@ export default function FeedbackForm() {
 
 </Sandpack>
 
-Remember, Hooks must be called unconditionally and always in the same order!
-
-You could also remove the unnecessary `else` branch to reduce the nesting. However, it's still important that all calls to Hooks happen *before* the first `return`.
-
+याद रखें, हुक्स बिना कंडीशन और हमेशा उसी क्रम में कॉल होने चाहिए!
+आप नेस्टिंग को कम करने के लिए अनावश्यक `else` ब्रांच को भी हटा सकते हैं। हालांकि, यह अभी भी महत्वपूर्ण है कि Hooks के सभी कॉल्स पहले `return` से *पहले* हो। 
+  
 <Sandpack>
 
 ```js
@@ -1443,20 +1435,20 @@ export default function FeedbackForm() {
 ```
 
 </Sandpack>
+  
+ध्यान दें कि कैसे अगर आपने दूसरे `useState` कॉल को `if` के बाद स्थानांतरित करने का प्रयास किया तो यह काम नहीं करेगा। 
 
-Try moving the second `useState` call after the `if` condition and notice how this breaks it again.
-
-If your linter is [configured for React](/learn/editor-setup#linting), you should see a lint error when you make a mistake like this. If you don't see an error when you try the faulty code locally, you need to set up linting for your project. 
+सामान्य तौर पर, इस प्रकार की गलतियों को [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) लिंटर रूल के द्वारा पकड़ा जाता है। यदि आप अपने मशीन पर कोड करते समय यह एरर नहीं देखते हैं तो आपको इसे अपने बिल्ड टूलिंग कॉन्फ़िगरेशन में सेट अप करने की आवश्यकता है।
 
 </Solution>
 
-#### Remove unnecessary state {/*remove-unnecessary-state*/}
+#### अनावश्यक State हटाएं {/*remove-unnecessary-state*/}
 
-When the button is clicked, this example should ask for the user's name and then display an alert greeting them. You tried to use state to keep the name, but for some reason it always shows "Hello, !".
+इस उदाहरण में, जब बटन क्लिक किया जाता है तो यूज़र का नाम पूछना चाहिए और फिर उन्हें अभिवादन करते हुए एक अलर्ट प्रदर्शित करना चाहिए। आपने नाम रखने के लिए state का उपयोग करने की कोशिश की, लेकिन किसी कारण से यह हमेशा "Hello, !" दिखाता है।
 
-To fix this code, remove the unnecessary state variable. (We will discuss about [why this didn't work](/learn/state-as-a-snapshot) later.)
+इस कोड को ठीक करने के लिए, अनावश्यक state वेरिएबल को हटा दें। (हम इस बारे में [यह काम क्यों नहीं करता](/learn/troubleshooting-state-updates#setting-state-does-not-update-variables) बाद में चर्चा करेंगे।)
 
-Can you explain why this state variable was unnecessary?
+क्या आप बता सकते हैं कि यह state वेरिएबल अनावश्यक क्यों था?
 
 <Sandpack>
 
@@ -1482,8 +1474,8 @@ export default function FeedbackForm() {
 </Sandpack>
 
 <Solution>
-
-Here is a fixed version that uses a regular `name` variable declared in the function that needs it:
+  
+यहां एक फिक्स्ड वर्शन है जो उस फ़ंक्शन में डिक्लेअर एक रेगुलर `name` वेरिएबल का उपयोग करता है जिसे इसकी आवश्यकता होती है:
 
 <Sandpack>
 
@@ -1506,7 +1498,7 @@ export default function FeedbackForm() {
 
 </Sandpack>
 
-A state variable is only necessary to keep information between re-renders of a component. Within a single event handler, a regular variable will do fine. Don't introduce state variables when a regular variable works well.
+एक state वेरिएबल केवल एक कौम्पोनॅन्ट के री-रेंडर करने के बीच जानकारी रखने के लिए आवश्यक है। एक सिंगल event handler के भीतर, एक सामान्य वेरिएबल ठीक रहेगा। जब एक सामान्य वेरिएबल अच्छी तरह से काम करता है, तो state वेरिएबल की कोई आवश्यकता नहीं है।
 
 </Solution>
 
