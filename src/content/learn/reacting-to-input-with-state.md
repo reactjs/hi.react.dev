@@ -1,22 +1,22 @@
 ---
-title: Reacting to Input with State
+title: State के साथ इनपुट पर प्रतिक्रिया
 ---
 
 <Intro>
 
-React provides a declarative way to manipulate the UI. Instead of manipulating individual pieces of the UI directly, you describe the different states that your component can be in, and switch between them in response to the user input. This is similar to how designers think about the UI.
+React UI में हेरफेर करने के लिए एक घोषणात्मक तरीका प्रदान करती है। सीधे UI के अलग-अलग टुकड़ों में हेरफेर करने के बजाय, आप उन विभिन्न `state` का वर्णन करते हैं जिनमें आपका कौम्पोनॅन्ट हो सकता है, और उपयोगकर्ता के इनपुट के अनुसार उनके बीच स्विच करें। यह उसी तरह है जैसे डिज़ाइनर UI के बारे में सोचते हैं।
 
 </Intro>
 
 <YouWillLearn>
 
-* How declarative UI programming differs from imperative UI programming
-* How to enumerate the different visual states your component can be in
-* How to trigger the changes between the different visual states from code
+* डिक्लेरेटिव UI प्रोग्रामिंग अनिवार्य UI प्रोग्रामिंग से कैसे अलग है
+* आपके कौम्पोनॅन्ट में हो सकने वाले विभिन्न वर्चुअल state की गणना कैसे करें
+* कोड से विभिन्न विज़ुअल state के बीच परिवर्तनों को कैसे ट्रिगर करें
 
 </YouWillLearn>
 
-## How declarative UI compares to imperative {/*how-declarative-ui-compares-to-imperative*/}
+## कैसे घोषणात्मक UI अनिवार्य UI की तुलना करता है {/*कैसे-घोषणात्मक-ui-अनिवार्य-ui-की-तुलना-करता-है*/}
 
 When you design UI interactions, you probably think about how the UI *changes* in response to user actions. Consider a form that lets the user submit an answer:
 
