@@ -211,7 +211,11 @@ When a child component needs some data from a parent, [pass it by props](/learn/
 
 #### Components all the Way down {/*components-all-the-way-down*/}
 
+<<<<<<< HEAD
 आपकी React एप्लिकेशन "रूट" कौम्पोनॅन्ट से शुरू होती है। आमतौर पर, जब आप कोई नया प्रोजेक्ट शुरू करते हैं तो यह अपने आप बन जाता है। उदाहरण के लिए, अगर आप [CodeSandbox](https://codesandbox.io/) या [Create React App](https://create-react-app.dev/) का इस्तेमाल करते हैं, तो रूट कौम्पोनॅन्ट को `src/App.js` में डिफाइन होगा। अगर आप [Next.js](https://nextjs.org/) फ्रेमवर्क का इस्तेमाल करते हैं, तो रूट कौम्पोनॅन्ट `page/index.js` में डिफाइन होता है। इन उदाहरणों में, आप रुट कौम्पोनॅन्टस का एक्सपोर्ट कर रहे हैं।
+=======
+Your React application begins at a "root" component. Usually, it is created automatically when you start a new project. For example, if you use [CodeSandbox](https://codesandbox.io/) or if you use the framework [Next.js](https://nextjs.org/), the root component is defined in `pages/index.js`. In these examples, you've been exporting root components.
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
 
 अधिकांश React ऐप्स सभी तरह से कौम्पोनॅन्ट का उपयोग करते हैं। इसका मतलब है कि आप न केवल बटन जैसे  रीयुज़बल कौम्पोनॅन्टस का उपयोग करेंगे, बल्कि साइडबार, लिस्ट्स और अंततः पूरे पेजेज़ जैसे बड़े पीसेज का भी! कौम्पोनॅन्टस UI कोड और मार्कअप को व्यवस्थित करने का एक आसान तरीका है, भले ही उनमें से कुछ का उपयोग केवल एक बार किया गया हो।
 
