@@ -15,6 +15,7 @@ title: रेड्यूसर में State Logic निकालना
 
 </YouWillLearn>
 
+
 ## रिड्यूसर (Reducer) के साथ State Logic को संघटित करें {/*consolidate-state-logic-with-a-reducer*/}
 
 जैसे-जैसे आपके Components की जटिलता बढ़ती है, किसी Component की स्थिति को update करने के सभी अलग-अलग तरीकों को एक नज़र में देखना कठिन हो जाता है। उदाहरण के लिए, नीचे दिया गया `TaskApp` component state में `tasks` की एक सरणी (array) रखता है और कार्यों को जोड़ने, हटाने और संपादित (edit) करने के लिए तीन अलग-अलग ईवेंट हैंडलर का उपयोग करता है:
