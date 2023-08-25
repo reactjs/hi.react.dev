@@ -1,62 +1,63 @@
 ---
-title: Editor Setup
+title: एडिटर सेटअप
 ---
 
 <Intro>
 
-A properly configured editor can make code clearer to read and faster to write. It can even help you catch bugs as you write them! If this is your first time setting up an editor or you're looking to tune up your current editor, we have a few recommendations.
+एक ठीक रूप से कॉन्फ़िगर किया गया एडिटर कोड को पढ़ने में स्पष्टता प्रदान कर सकता है और लिखने में अधिक तेज बना सकता है। जब आप कोड लिखते हैं तो यह आपको बग पकड़ने में भी मदद कर सकता है! अगर यह आपके लिए पहली बार है कि आप एक एडिटर सेटअप कर रहे हैं या आप अपने मौजूदा एडिटर को अच्छा बनाना चाहते हैं, तो हमारे पास कुछ सिफारिशें हैं।
 
 </Intro>
 
 <YouWillLearn>
 
-* What the most popular editors are
-* How to format your code automatically
+* सबसे लोकप्रिय एडिटर कौन-कौन से हैं
+* अपने कोड को स्वचालित रूप से फ़ॉर्मेट करने का तरीका
 
 </YouWillLearn>
 
-## Your editor {/*your-editor*/}
+## आपका एडिटर {/*your-editor*/}
 
-[VS Code](https://code.visualstudio.com/) is one of the most popular editors in use today. It has a large marketplace of extensions and integrates well with popular services like GitHub. Most of the features listed below can be added to VS Code as extensions as well, making it highly configurable!
+[VS Code](https://code.visualstudio.com/) आज उपयोग में आने वाले सबसे लोकप्रिय एडिटरों में से एक है। इसके पास एक्सटेंशन का एक बड़ा बाज़ार है और यह GitHub जैसी लोकप्रिय सेवाओं के साथ अच्छी तरह से एकीकृत है। नीचे सूचीबद्ध अधिकांश सुविधाओं को वीएस कोड में एक्सटेंशन के रूप में भी जोड़ा जा सकता है, जिससे यह अत्यधिक विन्यास योग्य हो जाता है!
 
-Other popular text editors used in the React community include:
+React कम्यूनिटी में उपयोग होने वाले अन्य लोकप्रिय पाठ एडिटरों में शामिल हैं:
 
-* [WebStorm](https://www.jetbrains.com/webstorm/) is an integrated development environment designed specifically for JavaScript.
-* [Sublime Text](https://www.sublimetext.com/) has support for JSX and TypeScript, [syntax highlighting](https://stackoverflow.com/a/70960574/458193) and autocomplete built in.
-* [Vim](https://www.vim.org/) is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
+* [WebStorm](https://www.jetbrains.com/webstorm/) एक एकीकृत विकास वातावरण है जो विशेष रूप से Javascript के लिए डिज़ाइन किया गया है।
+* [Sublime Text](https://www.sublimetext.com/) में JSX और TypeScript का समर्थन है, [वाक्य सुचना](https://stackoverflow.com/a/70960574/458193) और स्वचालित पूर्णित स्वरूप सहित है।
+* [Vim](https://www.vim.org/) एक अत्यधिक कॉन्फ़िगर करने योग्य टेक्स्ट एडिटर है जो किसी भी प्रकार के टेक्स्ट को बहुत कुशल बनाने और बदलने के लिए बनाया गया है। इसे अधिकांश UNIX सिस्टम और Apple OS X के साथ "vi" के रूप में शामिल किया गया है।
 
-## Recommended text editor features {/*recommended-text-editor-features*/}
+## सिफारिशित पाठ एडिटर की विशेषताएं {/*recommended-text-editor-features*/}
 
-Some editors come with these features built in, but others might require adding an extension. Check to see what support your editor of choice provides to be sure!
+कुछ संपादक इन सुविधाओं के साथ आते हैं, लेकिन अन्य को एक्सटेंशन जोड़ने की आवश्यकता हो सकती है। यह सुनिश्चित करने के लिए जांचें कि आपकी पसंद का संपादक क्या सहायता प्रदान करता है!
 
-### Linting {/*linting*/}
+### लिंटिंग {/*linting*/}
 
-Code linters find problems in your code as you write, helping you fix them early. [ESLint](https://eslint.org/) is a popular, open source linter for JavaScript. 
+जैसे ही आप लिखते हैं कोड लिंटर आपके कोड में समस्याएं ढूंढते हैं, जिससे आपको उन्हें जल्दी ठीक करने में मदद मिलती है। [ESlint](https://eslint.org/) Javascript के लिए एक लोकप्रिय, खुला स्रोत लिंटर है।
 
-* [Install ESLint with the recommended configuration for React](https://www.npmjs.com/package/eslint-config-react-app) (be sure you have [Node installed!](https://nodejs.org/en/download/current/))
-* [Integrate ESLint in VSCode with the official extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+* [React के लिए सिफारिशित विन्यास के साथ ESLint इंस्टॉल करें](https://www.npmjs.com/package/eslint-config-react-app) (सुनिश्चित करें कि आपके पास [Node इंस्टॉल है!](https://nodejs.org/en/download/current/))
+* [आधिकारिक एक्सटेंशन के साथ VSCode में ESLint को एकीकृत करें](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-**Make sure that you've enabled all the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) rules for your project.** They are essential and catch the most severe bugs early. The recommended [`eslint-config-react-app`](https://www.npmjs.com/package/eslint-config-react-app) preset already includes them.
+**सुनिश्चित करें कि आपने अपने प्रोजेक्ट के लिए सभी [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) नियमों को सक्षम कर दिया है।** वे महत्वपूर्ण होते हैं और सबसे गंभीर बग्स को जल्दी पकड़ते हैं। सिफारिशित [`eslint-config-react-app`](https://www.npmjs.com/package/eslint-config-react-app) प्रीसेट में वे पहले से शामिल हैं।
 
-### Formatting {/*formatting*/}
 
-The last thing you want to do when sharing your code with another contributor is get into an discussion about [tabs vs spaces](https://www.google.com/search?q=tabs+vs+spaces)! Fortunately, [Prettier](https://prettier.io/) will clean up your code by reformatting it to conform to preset, configurable rules. Run Prettier, and all your tabs will be converted to spaces—and your indentation, quotes, etc will also all be changed to conform to the configuration. In the ideal setup, Prettier will run when you save your file, quickly making these edits for you.
+### फ़ॉर्मेटिंग {/*formatting*/}
 
-You can install the [Prettier extension in VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) by following these steps:
+किसी अन्य योगदानकर्ता के साथ अपना कोड साझा करते समय आखिरी चीज जो आप करना चाहते हैं वह है टैब बनाम स्पेस के बारे में चर्चा करना! सौभाग्य से, प्रीटियर आपके कोड को पूर्व निर्धारित, विन्यास योग्य नियमों के अनुरूप पुन: स्वरूपित करके साफ़ कर देगा। प्रीटियर चलाएँ, और आपके सभी टैब रिक्त स्थान में परिवर्तित हो जाएंगे - और आपके इंडेंटेशन, उद्धरण, आदि भी कॉन्फ़िगरेशन के अनुरूप बदल दिए जाएंगे। आदर्श सेटअप में, जब आप अपनी फ़ाइल सहेजेंगे तो प्रीटियर चलेगा, और आपके लिए ये संपादन शीघ्रता से करेगा
 
-1. Launch VS Code
-2. Use Quick Open (press Ctrl/Cmd+P)
-3. Paste in `ext install esbenp.prettier-vscode`
-4. Press Enter
+आप [VSCode में Prettier एक्सटेंशन इंस्टॉल कर सकते हैं](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) इन कदमों का पालन करके:
 
-#### Formatting on save {/*formatting-on-save*/}
+1. VS Code लॉन्च करें
+2. त्वरित खुलें उपयोग करें (Ctrl/Cmd+P दबाएं)
+3. `ext install esbenp.prettier-vscode` पेस्ट करें
+4. Enter दबाएं
 
-Ideally, you should format your code on every save. VS Code has settings for this!
+#### सेव पर फ़ॉर्मेटिंग करना {/*formatting-on-save*/}
 
-1. In VS Code, press `CTRL/CMD + SHIFT + P`.
-2. Type "settings"
-3. Hit Enter
-4. In the search bar, type "format on save"
-5. Be sure the "format on save" option is ticked!
+आदर्श रूप से, आपको प्रत्येक सेव पर अपना कोड फ़ॉर्मेट करना चाहिए। वीएस कोड में इसके लिए सेटिंग्स हैं!
 
-> If your ESLint preset has formatting rules, they may conflict with Prettier. We recommend disabling all formatting rules in your ESLint preset using [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) so that ESLint is *only* used for catching logical mistakes. If you want to enforce that files are formatted before a pull request is merged, use [`prettier --check`](https://prettier.io/docs/en/cli.html#--check) for your continuous integration.
+1. VS Code में, `CTRL/CMD + SHIFT + P` दबाएं।
+2. "settings" टाइप करें
+3. Enter दबाएं
+4. सर्च बार में, "format on save" टाइप करें
+5. सुनिश्चित हो जाएं कि "format on save" विकल्प टिका हुआ है!
+
+> अगर आपके ESLint प्रीसेट में फ़ॉर्मेटिंग करने के नियम हैं, तो वे Prettier के साथ आपत्तिकर हो सकते हैं। हम सिफारिश करते हैं कि आप अपने ESLint प्रीसेट में सभी स्वरूपित करने के नियमों को [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) का उपयोग करके अक्षम कर दें, ताकि ESLint केवल तार्किक गलतियों को पकड़ने के लिए ही उपयोग हो। यदि आप चाहते हैं कि पुल अनुरोध में मर्ज होने से पहले फ़ाइलों को स्वरूपित किया जाए, तो आपके नियमित संघटन के लिए [`prettier --check`](https://prettier.io/docs/en/cli.html#--check) का उपयोग करें।
