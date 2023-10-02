@@ -286,7 +286,11 @@ console.log(ref.current); // 5
 
 ## ref और DOM {/*refs-and-the-dom*/}
 
+<<<<<<< HEAD
 आप ref को किसी भी वैल्यू पर पॉइंट कर सकते हैं। हालांकि, एक ref का सबसे आम काम एक DOM एलिमेंट तक पहुंचने का होता है। उदाहरण के लिए, अगर आप किसी input को प्रोग्रामेटिकली focus करना चाहते है। जब आप JSX में ref एट्रिब्यूट में एक ref को पास करते हैं, जैसे `<div ref={myRef}>`, तो React उस संबंधित DOM एलिमेंट को `myRef.current` में रखता हैं। आप इसके बारे में अधिक जानकारी [Manipulating the DOM with Refs](/learn/manipulating-the-dom-with-refs) में पढ़ सकते हैं।
+=======
+You can point a ref to any value. However, the most common use case for a ref is to access a DOM element. For example, this is handy if you want to focus an input programmatically. When you pass a ref to a `ref` attribute in JSX, like `<div ref={myRef}>`, React will put the corresponding DOM element into `myRef.current`. Once the element is removed from the DOM, React will update `myRef.current` to be `null`. You can read more about this in [Manipulating the DOM with Refs.](/learn/manipulating-the-dom-with-refs)
+>>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
 
 <Recap>
 
