@@ -626,11 +626,7 @@ export default function PackingList() {
 
 ध्यान दें कि आपको `importance && ...` के बजाय `importance > 0 && ...` लिखना होगा ताकि अगर `importance` `0` हो, तो `0` परिणाम के रूप में रेंडर नहीं हो!
 
-<<<<<<< HEAD
-इस समाधान में, name और importance लेबल के बीच एक स्पेस डालने के लिए दो अलग-अलग कंडीशंस का उपयोग किया गया है। इसके अलावा, आप एक प्रमुख स्पेस के साथ एक फ्रेगमेंट का उपयोग भी कर सकते हैं: `importance > 0 && <> <i>...</i></>` या `<i>` के अंदर शुरुआत में ही एक स्पेस ऐड करें: `importance > 0 && <i> ...</i>`।
-=======
-In this solution, two separate conditions are used to insert a space between the name and the importance label. Alternatively, you could use a Fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
->>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
+इस समाधान में, name और importance लेबल के बीच एक स्पेस डालने के लिए दो अलग-अलग कंडीशंस का उपयोग किया गया है। इसके अलावा, आप एक प्रमुख स्पेस के साथ एक Fragment का उपयोग भी कर सकते हैं: `importance > 0 && <> <i>...</i></>` या `<i>` के अंदर शुरुआत में ही एक स्पेस ऐड करें: `importance > 0 && <i> ...</i>`।
 
 </Solution>
 
