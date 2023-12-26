@@ -1,45 +1,44 @@
 ---
-title: Using TypeScript
+title: टाइपस्क्रिप्ट का उपयोग
 re: https://github.com/reactjs/react.dev/issues/5960
 ---
 
 <Intro>
-
-TypeScript is a popular way to add type definitions to JavaScript codebases. Out of the box, TypeScript [supports JSX](/learn/writing-markup-with-jsx) and you can get full React Web support by adding [`@types/react`](https://www.npmjs.com/package/@types/react) and [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) to your project.
-
+टाइपस्क्रिप्ट एक पॉपुलर तरीका है जिससे जावास्क्रिप्ट कोडबेस में टाइप डेफिनीशन जोड़ी जा सकती है। टाइपस्क्रिप्ट [JSX](/learn/writing-markup-with-jsx) को समर्थन करता है, और आप अपनें परियोजना में [`@types/react`](https://www.npmjs.com/package/@types/react) and [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) जोड़कर पूर्ण रिएक्ट वेब समर्थन प्राप्त कर सकते हैं।
 </Intro>
 
 <YouWillLearn>
 
-* [TypeScript with React Components](/learn/typescript#typescript-with-react-components)
-* [Examples of typing with Hooks](/learn/typescript#example-hooks)
-* [Common types from `@types/react`](/learn/typescript/#useful-types)
-* [Further learning locations](/learn/typescript/#further-learning)
+* [टाइपस्क्रिप्ट के साथ रिएक्ट कंपोनेंट्स:](/learn/typescript#typescript-with-react-components)
+* [हुक्स के साथ टाइपिंग के उदाहरण](/learn/typescript#example-hooks)
+* [सामान्य प्रकारें से `@types/react`](/learn/typescript/#useful-types)
+* [और सीखने के स्थान](/learn/typescript/#further-learning)
 
 </YouWillLearn>
 
 ## Installation {/*installation*/}
 
-All [production-grade React frameworks](/learn/start-a-new-react-project#production-grade-react-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
+सभी [प्रोडक्शन-ग्रेड रिएक्ट फ्रेमवर्क्स](/learn/start-a-new-react-project#production-grade-react-frameworks) टाइपस्क्रिप्ट का समर्थन करते हैं। स्थापना के लिए फ्रेमवर्क विशिष्ट गाइड का पालन करें:
+
 
 - [Next.js](https://nextjs.org/docs/pages/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
 - [Gatsby](https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/)
 - [Expo](https://docs.expo.dev/guides/typescript/)
 
-### Adding TypeScript to an existing React project {/*adding-typescript-to-an-existing-react-project*/}
+###  मौजूदा रिएक्ट परियोजना में टाइपस्क्रिप्ट जोड़ना {/*adding-typescript-to-an-existing-react-project*/}
 
-To install the latest version of React's type definitions:
+लेटेस्ट वर्शन की रिएक्ट के टाइप डेफिनीशन्स को स्थापित करने के लिए:
 
 <TerminalBlock>
 npm install @types/react @types/react-dom
 </TerminalBlock>
 
-The following compiler options need to be set in your `tsconfig.json`:
+आपके `tsconfig.json` में निम्नलिखित कंपाइलर विकल्प सेट करने की आवश्यकता है:
 
-1. `dom` must be included in [`lib`](https://www.typescriptlang.org/tsconfig/#lib) (Note: If no `lib` option is specified, `dom` is included by default).
-1. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) must be set to one of the valid options. `preserve` should suffice for most applications.
-  If you're publishing a library, consult the [`jsx` documentation](https://www.typescriptlang.org/tsconfig/#jsx) on what value to choose.
+1. `dom` को [`lib`](https://www.typescriptlang.org/tsconfig/#lib) में शामिल किया जाना चाहिए  (नोट: यदि कोई lib विकल्प निर्दिष्ट नहीं किया गया है, तो dom डिफ़ॉल्ट रूप से शामिल है).
+1. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) को मान्य विकल्पों में से एक पर सेट किया जाना चाहिए। अधिकांश अनुप्रयोगों के लिए, `preserve` काफी होगा।
+  यदि आप एक पुस्तकालय प्रकाशित कर रहे हैं, तो [`jsx` दस्तावेज़](https://www.typescriptlang.org/tsconfig/#jsx) पर आपको कौनसी मान चुननी चाहिए, उस पर परामर्श लें।
 
 ## TypeScript with React Components {/*typescript-with-react-components*/}
 
