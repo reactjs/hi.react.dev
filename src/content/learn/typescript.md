@@ -370,13 +370,13 @@ export default function Form() {
 }
 ```
 
-## Useful Types {/*useful-types*/}
+## उपयोगी टाइप्स {/*useful-types*/}
 
-There is quite an expansive set of types which come from the `@types/react` package, it is worth a read when you feel comfortable with how React and TypeScript interact. You can find them [in React's folder in DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts). We will cover a few of the more common types here.
+`@types/react` पैकेज से एक काफी विस्तारित सेट की गई है जिसमें से कई टाइप्स शामिल हैं, जब आप रिएक्ट और टाइपस्क्रिप्ट के इंटरएक्ट के साथ सहज महसूस करते हैं तो यह पठने लायक है। आप इन्हें [DefinitelyTyped में रिएक्ट के फ़ोल्डर](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts) में पा सकते हैं। यहां हम कुछ अधिक सामान्य टाइप्स कवर करेंगे।
 
-### DOM Events {/*typing-dom-events*/}
+### DOM इवेंट्स {/*typing-dom-events*/}
 
-When working with DOM events in React, the type of the event can often be inferred from the event handler. However, when you want to extract a function to be passed to an event handler, you will need to explicitly set the type of the event.
+रिएक्ट में DOM इवेंट्स के साथ काम करते समय, इवेंट के प्रकार को अक्सर इवेंट हैंडलर से इन्फर किया जा सकता है। हालांकि, जब आप एक फ़ंक्शन को इवेंट हैंडलर को पास करने के लिए एक्सट्रैक्ट करना चाहते हैं, तो आपको इवेंट के प्रकार को स्पष्ट रूप से सेट करना होगा।
 
 <Sandpack>
 
@@ -406,15 +406,15 @@ export default App = AppTSX;
 
 </Sandpack>
 
-There are many types of events provided in the React types - the full list can be found [here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373) which is based on the [most popular events from the DOM](https://developer.mozilla.org/en-US/docs/Web/Events).
+React टाइप्स में कई प्रकार के इवेंट्स हैं - पूरी सूची [यहां](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373) मिल सकती है, जो [DOM से सबसे पॉपुलर इवेंट्स पर आधारित है](https://developer.mozilla.org/en-US/docs/Web/Events)।
 
-When determining the type you are looking for you can first look at the hover information for the event handler you are using, which will show the type of the event.
+आप जिस टाइप को ढूंढ रहे हैं, उसे तय करने के लिए पहले आप जिस इवेंट हैंडलर का उपयोग कर रहे हैं, उसके लिए होवर जानकारी देख सकते हैं, जिसमें इवेंट का प्रकार दिखाया जाएगा।
 
-If you need to use an event that is not included in this list, you can use the `React.SyntheticEvent` type, which is the base type for all events.
+यदि आपको इस सूची में शामिल नहीं किया गया कोई इवेंट चाहिए हो, तो आप `React.SyntheticEvent` टाइप का उपयोग कर सकते हैं, जो सभी इवेंट्स के लिए बेस टाइप है।
 
-### Children {/*typing-children*/}
+### चिल्ड्रेन {/*typing-children*/}
 
-There are two common paths to describing the children of a component. The first is to use the `React.ReactNode` type, which is a union of all the possible types that can be passed as children in JSX:
+किसी कॉम्पोनेंट के बच्चों को वर्णन करने के लिए दो सामान्य पथ हैं। पहला है `React.ReactNode` टाइप का उपयोग करना, जो JSX में बच्चों के रूप में पास किए जा सकने वाले सभी संभावित टाइप्स का यूनियन है:
 
 ```ts
 interface ModalRendererProps {
@@ -423,7 +423,7 @@ interface ModalRendererProps {
 }
 ```
 
-This is a very broad definition of children. The second is to use the `React.ReactElement` type, which is only JSX elements and not JavaScript primitives like strings or numbers:
+यह बच्चों का एक बहुत व्यापक परिभाषा है। दूसरा है `React.ReactElement` टाइप का उपयोग करना, जो केवल JSX एलिमेंट्स हैं और स्ट्रिंग्स या नंबर्स जैसे जावास्क्रिप्ट प्राइमिटिव्स नहीं हैं:
 
 ```ts
 interface ModalRendererProps {
@@ -432,13 +432,13 @@ interface ModalRendererProps {
 }
 ```
 
-Note, that you cannot use TypeScript to describe that the children are a certain type of JSX elements, so you cannot use the type-system to describe a component which only accepts `<li>` children. 
+ध्यान दें कि आप JSX एलिमेंट्स के किसी विशिष्ट प्रकार के होने को वर्णन करने के लिए टाइपस्क्रिप्ट का उपयोग नहीं कर सकते हैं, इसलिए आप टाइप-सिस्टम का उपयोग करके एक कॉम्पोनेंट को वर्णन करने के लिए नहीं कर सकते हैं जो केवल `<li>` बच्चों को स्वीकार करता है। 
 
-You can see all an example of both `React.ReactNode` and `React.ReactElement` with the type-checker in [this TypeScript playground](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA).
+आप [इस TypeScript प्लेग्राउंड](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnS9CFs+NgMoQeC6ADe8nLAglB5TlGx2ISCCByc7CJ6APiHgAA-KAByPgACicXxFYjxRw0Lq5uEdVtq6zq8zHxSmWp7eAlrMySTn1QEZLrU8pWiSjIFfX8hhR6vELBJ8GWbFYFiFDNtVeh4FoA2doKiF0VSM1WJrVCaHCFekih1xLhQAMZoKjWygxK0R7TI6j2WvhoMqxhlZhFk3grVtECybgdHZHvqBq7M3VmEAe05x6CJ2qGbKSLCkRqzSM4d1WZAA) में दोनों `React.ReactNode` और `React.ReactElement` का एक उदाहरण देख सकते हैं।
 
-### Style Props {/*typing-style-props*/}
+### स्टाइल प्रॉप्स {/*typing-style-props*/}
 
-When using inline styles in React, you can use `React.CSSProperties` to describe the object passed to the `style` prop. This type is a union of all the possible CSS properties, and is a good way to ensure you are passing valid CSS properties to the `style` prop, and to get auto-complete in your editor.
+React में इनलाइन स्टाइल का उपयोग करते समय, आप `React.CSSProperties` का उपयोग कर सकते हैं ताकि आप `style` प्रॉप को पास करने वाले ऑब्जेक्ट को वर्णन कर सकें। यह टाइप सभी संभावित CSS प्रॉपर्टीज़ का यूनियन है, और यह एक अच्छा तरीका है सुनिश्चित करने के लिए कि आप `style` प्रॉप को वैध CSS प्रॉपर्टीज़ पास कर रहे हैं, और अपने एडिटर में ऑटो-कम्प्लीट प्राप्त करने के लिए।
 
 ```ts
 interface MyComponentProps {
