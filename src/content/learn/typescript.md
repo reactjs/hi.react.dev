@@ -241,7 +241,7 @@ export default function App() {
 
 ### `useContext` {/*typing-usecontext*/}
 
-[`useContext` Hook](/reference/react/useContext) एक तकनीक है जिससे आप प्रोप्स को कंपोनेंट के माध्यम से पास करने के बिना डेटा को कंपोनेंट ट्री के नीचे पहुँचा सकते हैं। इसका उपयोग एक प्रोवाइडर कंपोनेंट बनाकर और सामान्यत: एक चाइल्ड कंपोनेंट में मूल्य को उपभोग करने के लिए एक हुक बनाकर किया जाता है।
+[`useContext` हुक](/reference/react/useContext) एक तकनीक है जिससे आप प्रोप्स को कंपोनेंट के माध्यम से पास करने के बिना डेटा को कंपोनेंट ट्री के नीचे पहुँचा सकते हैं। इसका उपयोग एक प्रोवाइडर कंपोनेंट बनाकर और सामान्यत: एक चाइल्ड कंपोनेंट में मूल्य को उपभोग करने के लिए एक हुक बनाकर किया जाता है।
 
 कॉन्टेक्स्ट द्वारा प्रदान किए जाने वाले मूल्य का प्रकार `createContext` कॉल को पास किए गए मूल्य से अनुमानित होता है:
 
@@ -349,7 +349,7 @@ const handleClick = useCallback(() => {
 
 टाइपस्क्रिप्ट स्ट्रिक्ट मोड में काम करते समय, `useCallback` में आपको अपने कॉलबैक के पैरामीटर्स के लिए टाइप्स जोड़ना आवश्यक है। यह इसलिए है क्योंकि कॉलबैक के प्रकार को फ़ंक्शन की वापसी मूल्य से इन्फर किया जाता है, और पैरामीटर्स के बिना पूरी तरह से समझा नहीं जा सकता है।
 
-आपके कोड-स्टाइल की पसंद के आधार पर, आप `*EventHandler` फ़ंक्शन्स का उपयोग कर सकते हैं जो इवेंट हैंडलर के लिए टाइप प्रदान करने के लिए React टाइप्स से साथ ही कॉलबैक को परिभाषित करते हैं: 
+आपके कोड-स्टाइल की पसंद के आधार पर, आप `*EventHandler` फ़ंक्शन्स का उपयोग कर सकते हैं जो इवेंट हैंडलर के लिए टाइप प्रदान करने के लिए रिएक्ट टाइप्स से साथ ही कॉलबैक को परिभाषित करते हैं: 
 
 ```ts
 import { useState, useCallback } from 'react';
@@ -406,7 +406,7 @@ export default App = AppTSX;
 
 </Sandpack>
 
-React टाइप्स में कई प्रकार के इवेंट्स हैं - पूरी सूची [यहां](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373) मिल सकती है, जो [DOM से सबसे पॉपुलर इवेंट्स पर आधारित है](https://developer.mozilla.org/en-US/docs/Web/Events)।
+रिएक्ट टाइप्स में कई प्रकार के इवेंट्स हैं - पूरी सूची [यहां](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373) मिल सकती है, जो [DOM से सबसे पॉपुलर इवेंट्स पर आधारित है](https://developer.mozilla.org/en-US/docs/Web/Events)।
 
 आप जिस टाइप को ढूंढ रहे हैं, उसे तय करने के लिए पहले आप जिस इवेंट हैंडलर का उपयोग कर रहे हैं, उसके लिए होवर जानकारी देख सकते हैं, जिसमें इवेंट का प्रकार दिखाया जाएगा।
 
@@ -434,11 +434,11 @@ interface ModalRendererProps {
 
 ध्यान दें कि आप JSX एलिमेंट्स के किसी विशिष्ट प्रकार के होने को वर्णन करने के लिए टाइपस्क्रिप्ट का उपयोग नहीं कर सकते हैं, इसलिए आप टाइप-सिस्टम का उपयोग करके एक कॉम्पोनेंट को वर्णन करने के लिए नहीं कर सकते हैं जो केवल `<li>` बच्चों को स्वीकार करता है। 
 
-आप [इस TypeScript प्लेग्राउंड](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnS9CFs+NgMoQeC6ADe8nLAglB5TlGx2ISCCByc7CJ6APiHgAA-KAByPgACicXxFYjxRw0Lq5uEdVtq6zq8zHxSmWp7eAlrMySTn1QEZLrU8pWiSjIFfX8hhR6vELBJ8GWbFYFiFDNtVeh4FoA2doKiF0VSM1WJrVCaHCFekih1xLhQAMZoKjWygxK0R7TI6j2WvhoMqxhlZhFk3grVtECybgdHZHvqBq7M3VmEAe05x6CJ2qGbKSLCkRqzSM4d1WZAA) में दोनों `React.ReactNode` और `React.ReactElement` का एक उदाहरण देख सकते हैं।
+आप [इस टाइपस्क्रिप्ट प्लेग्राउंड](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnS9CFs+NgMoQeC6ADe8nLAglB5TlGx2ISCCByc7CJ6APiHgAA-KAByPgACicXxFYjxRw0Lq5uEdVtq6zq8zHxSmWp7eAlrMySTn1QEZLrU8pWiSjIFfX8hhR6vELBJ8GWbFYFiFDNtVeh4FoA2doKiF0VSM1WJrVCaHCFekih1xLhQAMZoKjWygxK0R7TI6j2WvhoMqxhlZhFk3grVtECybgdHZHvqBq7M3VmEAe05x6CJ2qGbKSLCkRqzSM4d1WZAA) में दोनों `React.ReactNode` और `React.ReactElement` का एक उदाहरण देख सकते हैं।
 
 ### स्टाइल प्रॉप्स {/*typing-style-props*/}
 
-React में इनलाइन स्टाइल का उपयोग करते समय, आप `React.CSSProperties` का उपयोग कर सकते हैं ताकि आप `style` प्रॉप को पास करने वाले ऑब्जेक्ट को वर्णन कर सकें। यह टाइप सभी संभावित CSS प्रॉपर्टीज़ का यूनियन है, और यह एक अच्छा तरीका है सुनिश्चित करने के लिए कि आप `style` प्रॉप को वैध CSS प्रॉपर्टीज़ पास कर रहे हैं, और अपने एडिटर में ऑटो-कम्प्लीट प्राप्त करने के लिए।
+रिएक्ट में इनलाइन स्टाइल का उपयोग करते समय, आप `React.CSSProperties` का उपयोग कर सकते हैं ताकि आप `style` प्रॉप को पास करने वाले ऑब्जेक्ट को वर्णन कर सकें। यह टाइप सभी संभावित CSS प्रॉपर्टीज़ का यूनियन है, और यह एक अच्छा तरीका है सुनिश्चित करने के लिए कि आप `style` प्रॉप को वैध CSS प्रॉपर्टीज़ पास कर रहे हैं, और अपने एडिटर में ऑटो-कम्प्लीट प्राप्त करने के लिए।
 
 ```ts
 interface MyComponentProps {
@@ -446,17 +446,16 @@ interface MyComponentProps {
 }
 ```
 
-## Further learning {/*further-learning*/}
+## आगे की सीखें {/*further-learning*/}
 
-This guide has covered the basics of using TypeScript with React, but there is a lot more to learn.
-Individual API pages on the docs may contain more in-depth documentation on how to use them with TypeScript.
+यह गाइड टाइपस्क्रिप्ट को रिएक्ट के साथ उपयोग करने के मूल तत्वों को कवर करती है, लेकिन सीखने के लिए और भी बहुत कुछ है। डॉक्स पर व्यक्तिगत API पृष्ठों पर और भी विस्तृत दस्तावेज़ हो सकती हैं कि आप उन्हें टाइपस्क्रिप्ट के साथ कैसे उपयोग कर सकते हैं।
 
-We recommend the following resources:
+हम निम्नलिखित संसाधनों की सिफारिश करते हैं:
 
- - [The TypeScript handbook](https://www.typescriptlang.org/docs/handbook/) is the official documentation for TypeScript, and covers most key language features.
+- [टाइपस्क्रिप्ट हैंडबुक](https://www.typescriptlang.org/docs/handbook/): टाइपस्क्रिप्ट के लिए आधिकारिक दस्तावेज़ है और अधिकांश कुंजीय भाषा सुविधाओं को कवर करता है।
 
- - [The TypeScript release notes](https://devblogs.microsoft.com/typescript/) covers a each new features in-depth.
+- [टाइपस्क्रिप्ट रिलीज़ नोट्स](https://devblogs.microsoft.com/typescript/): हर नई सुविधा को गहराई से कवर करता है।
 
- - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/) is a community-maintained cheatsheet for using TypeScript with React, covering a lot of useful edge cases and providing more breadth than this document.
+- [रिएक्ट टाइपस्क्रिप्ट Cheatsheet](https://react-typescript-cheatsheet.netlify.app/): यह एक समुदाय द्वारा बनाई गई एक cheatsheet है जो रिएक्ट के साथ टाइपस्क्रिप्ट का उपयोग करने के लिए है, जिसमें कई उपयोगी एज केस को कवर किया गया है और इस सापेक्षता को प्रदान करता है जो इस दस्तावेज़ से अधिक है।
 
- - [TypeScript Community Discord](https://discord.com/invite/typescript) is a great place to ask questions and get help with TypeScript and React issues.
+- [टाइपस्क्रिप्ट समुदाय Discord](https://discord.com/invite/typescript): टाइपस्क्रिप्ट और रिएक्ट समस्याओं के साथ सवाल पूछने और मदद प्राप्त करने के लिए एक शानदार स्थान है।
