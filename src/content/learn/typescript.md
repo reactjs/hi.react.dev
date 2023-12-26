@@ -118,32 +118,32 @@ export default App = AppTSX;
 
 </Sandpack>
 
-कंपोनेंट के प्रॉप्स का वर्णन करने वाला टाइप आपकी आवश्यकता के अनुसार इतना सरल या इतना कठिन हो सकता है, हालांकि इन्हें एक `type` या `interface` के साथ विवरणित एक ऑब्जेक्ट टाइप होना चाहिए। आप यहां [Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html) में टाइपस्क्रिप्ट द्वारा ऑब्जेक्ट का विवरण कैसे किया जाता है के बारे में सीख सकते हैं, लेकिन आप एक प्रॉप को कुछ विभिन्न प्रकारों में से एक का विवरण देने के लिए [Union Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) का उपयोग करने और और अधिक उन्नत उपयोग के मामलों के लिए [Creating Types from Types](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) गाइड के लिए भी रुचि रख सकते हैं।
+कंपोनेंट के प्रॉप्स का वर्णन करने वाला टाइप आपकी आवश्यकता के अनुसार इतना सरल या इतना कठिन हो सकता है, हालांकि इन्हें एक `type` या `interface` के साथ विवरणित एक ऑब्जेक्ट टाइप होना चाहिए। आप यहां [ऑब्जेक्ट टाइप्स](https://www.typescriptlang.org/docs/handbook/2/objects.html) में टाइपस्क्रिप्ट द्वारा ऑब्जेक्ट का विवरण कैसे किया जाता है के बारे में सीख सकते हैं, लेकिन आप एक प्रॉप को कुछ विभिन्न प्रकारों में से एक का विवरण देने के लिए [यूनियन टाइप्स](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) का उपयोग करने और और अधिक उन्नत उपयोग के मामलों के लिए [टाइप्स से टाइप्स बनाना](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) गाइड के लिए भी रुचि रख सकते हैं।
 
 
-## Example Hooks {/*example-hooks*/}
+## हुक्स का उदाहरण: {/*example-hooks*/}
 
-The type definitions from `@types/react` include types for the built-in Hooks, so you can use them in your components without any additional setup. They are built to take into account the code you write in your component, so you will get [inferred types](https://www.typescriptlang.org/docs/handbook/type-inference.html) a lot of the time and ideally do not need to handle the minutiae of providing the types. 
+`@types/react` से आने वाले टाइप डेफिनीशन्स में बिल्ट-इन हुक्स के लिए टाइप्स शामिल हैं, इसलिए आप उन्हें अपने कंपोनेंट्स में किसी भी अतिरिक्त सेटअप के बिना उपयोग कर सकते हैं। वे आपके कंपोनेंट में लिखे गए कोड को ध्यान में रखकर बनाए गए हैं, इसलिए आपको बहुत से समय [अनुमानित टाइप्स](https://www.typescriptlang.org/docs/handbook/type-inference.html) मिलेंगे और आपको आशा है कि आपको टाइप्स प्रदान करने के छोटे विवादों का सामना करने की आवश्यकता नहीं होगी। 
 
-However, we can look at a few examples of how to provide types for Hooks.
+हालांकि, हम कुछ हुक्स के लिए टाइप्स प्रदान करने के कुछ उदाहरण देख सकते हैं।
 
 ### `useState` {/*typing-usestate*/}
 
-The [`useState` Hook](/reference/react/useState) will re-use the value passed in as the initial state to determine what the type of the value should be. For example:
+[`useState` हुक](/reference/react/useState) आपको आपके पारिवारिक स्थिति के रूप में पारित मूल स्थिति का पुनर्बच्चन करेगा ताकि वह मूल्य का प्रकार क्या होना चाहिए यह निर्धारित कर सके। उदाहरण के लिए:
 
 ```ts
 // Infer the type as "boolean"
 const [enabled, setEnabled] = useState(false);
 ```
 
-Will assign the type of `boolean` to `enabled`, and `setEnabled` will be a function accepting either a `boolean` argument, or a function that returns a `boolean`. If you want to explicitly provide a type for the state, you can do so by providing a type argument to the `useState` call:
+`enabled` को `boolean` का प्रकार सौंपेगा, और `setEnabled` एक फ़ंक्शन होगा जो या एक `boolean` तर्क स्वीकार करता है, या एक `boolean` वापस करने वाले फ़ंक्शन को। यदि आप रूपयांतरित रूप से राज्य के लिए एक प्रकार प्रदान करना चाहते हैं, तो आप `useState` कॉल को एक प्रकार के तर्क से सही करके ऐसा कर सकते हैं:
 
 ```ts 
 // Explicitly set the type to "boolean"
 const [enabled, setEnabled] = useState<boolean>(false);
 ```
 
-This isn't very useful in this case, but a common case where you may want to provide a type is when you have a union type. For example, `status` here can be one of a few different strings:
+इस मामले में यह बहुत उपयोगी नहीं है, लेकिन एक सामान्य केस जहां आप एक प्रकार प्रदान करना चाह सकते हैं, यह है जब आपके पास एक यूनियन टाइप है। उदाहरण के लिए, यहां `status` कुछ विभिन्न स्ट्रिंग्स में से एक हो सकता है:
 
 ```ts
 type Status = "idle" | "loading" | "success" | "error";
@@ -151,7 +151,7 @@ type Status = "idle" | "loading" | "success" | "error";
 const [status, setStatus] = useState<Status>("idle");
 ```
 
-Or, as recommended in [Principles for structuring state](/learn/choosing-the-state-structure#principles-for-structuring-state), you can group related state as an object and describe the different possibilities via object types:
+या, जैसा कि [राज्य को संरचित करने के लिए सिद्धांत](/learn/choosing-the-state-structure#principles-for-structuring-state) में सिफारिश की गई है, आप संबंधित स्थिति को एक ऑब्जेक्ट के रूप में ग्रुप कर सकते हैं और ऑब्जेक्ट टाइप्स के माध्यम से विभिन्न संभावनाओं का विवरण कर सकते हैं:
 
 ```ts
 type RequestState =
@@ -165,7 +165,7 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 
 ### `useReducer` {/*typing-usereducer*/}
 
-The [`useReducer` Hook](/reference/react/useReducer) is a more complex Hook that takes a reducer function and an initial state. The types for the reducer function are inferred from the initial state. You can optionally provide a type argument to the `useReducer` call to provide a type for the state, but it is often better to set the type on the initial state instead:
+[`useReducer` हुक](/reference/react/useReducer) एक और जटिल हुक है जो एक रीड्यूसर फ़ंक्शन और एक प्रारंभिक स्थिति लेता है। रीड्यूसर फ़ंक्शन के लिए टाइप्स मूल स्थिति से अनुमानित की जाती हैं। आप `useReducer` कॉल के लिए एक प्रकार तर्क प्रदान करने के लिए एक प्रकार तर्क प्रदान कर सकते हैं, लेकिन अक्सर बेहतर होता है कि आप प्रारंभिक स्थिति पर टाइप सेट करें:
 
 <Sandpack>
 
@@ -220,14 +220,14 @@ export default App = AppTSX;
 </Sandpack>
 
 
-We are using TypeScript in a few key places:
+हम टाइपस्क्रिप्ट का उपयोग कुछ कुंजीय स्थानों पर कर रहे हैं:
 
- - `interface State` describes the shape of the reducer's state.
- - `type CounterAction` describes the different actions which can be dispatched to the reducer.
- - `const initialState: State` provides a type for the initial state, and also the type which is used by `useReducer` by default.
- - `stateReducer(state: State, action: CounterAction): State` sets the types for the reducer function's arguments and return value.
+ - `interface State` रीड्यूसर की स्थिति का आकार वर्णन करता है।
+ - `type CounterAction` विभिन्न क्रियाएँ वर्णन करता है जो रीड्यूसर को डिस्पैच की जा सकती हैं।
+- `const initialState: State` प्रारंभिक स्थिति के लिए एक प्रकार प्रदान करता है, और यह उस प्रकार का उपयोग `useReducer` द्वारा डिफ़ॉल्ट रूप से किया जाता है।
+- `stateReducer(state: State, action: CounterAction): State` रीड्यूसर फ़ंक्शन के तर्क और वापसी मूल्य के लिए टाइप्स सेट करता है।
 
-A more explicit alternative to setting the type on `initialState` is to provide a type argument to `useReducer`:
+`initialState` पर टाइप सेट करने का और एक स्पष्ट विकल्प `useReducer` को एक प्रकार तर्क प्रदान करना है:
 
 ```ts
 import { stateReducer, State } from './your-reducer-implementation';
@@ -241,9 +241,9 @@ export default function App() {
 
 ### `useContext` {/*typing-usecontext*/}
 
-The [`useContext` Hook](/reference/react/useContext) is a technique for passing data down the component tree without having to pass props through components. It is used by creating a provider component and often by creating a Hook to consume the value in a child component.
+[`useContext` Hook](/reference/react/useContext) एक तकनीक है जिससे आप प्रोप्स को कंपोनेंट के माध्यम से पास करने के बिना डेटा को कंपोनेंट ट्री के नीचे पहुँचा सकते हैं। इसका उपयोग एक प्रोवाइडर कंपोनेंट बनाकर और सामान्यत: एक चाइल्ड कंपोनेंट में मूल्य को उपभोग करने के लिए एक हुक बनाकर किया जाता है।
 
-The type of the value provided by the context is inferred from the value passed to the `createContext` call:
+कॉन्टेक्स्ट द्वारा प्रदान किए जाने वाले मूल्य का प्रकार `createContext` कॉल को पास किए गए मूल्य से अनुमानित होता है:
 
 <Sandpack>
 
@@ -283,9 +283,9 @@ export default App = AppTSX;
 
 </Sandpack>
 
-This technique works when you have a default value which makes sense - but there are occasionally cases when you do not, and in those cases `null` can feel reasonable as a default value. However, to allow the type-system to understand your code, you need to explicitly set `ContextShape | null` on the `createContext`. 
+यह तकनीक तब कारगर है जब आपके पास एक ऐसा मूल्य है जिसका सांविदानिक रूप से कोई डिफ़ॉल्ट मूल्य है - लेकिन कभी-कभी ऐसे केसेस हो सकते हैं जब ऐसा नहीं है, और उन केसेस में `null` को एक डिफ़ॉल्ट मूल्य के रूप में सही महसूस हो सकता है। हालांकि, अपने कोड को समझने के लिए टाइप-सिस्टम को अनुमति देने के लिए, आपको `createContext` पर `ContextShape | null` को स्पष्ट रूप से सेट करना होगा। 
 
-This causes the issue that you need to eliminate the `| null` in the type for context consumers. Our recommendation is to have the Hook do a runtime check for it's existence and throw an error when not present:
+इससे एक समस्या उत्पन्न होती है कि आपको कॉन्टेक्स्ट कंस्यूमर्स के लिए टाइप में `| null` को हटाना होता है। हमारी सिफारिश है कि हुक इसके मौजूदगी के लिए एक रनटाइम चेक करें और उपस्थित नहीं होने पर एक त्रुटि फेंके:
 
 ```js {5, 16-20}
 import { createContext, useContext, useState, useMemo } from 'react';
@@ -328,7 +328,7 @@ function MyComponent() {
 
 ### `useMemo` {/*typing-usememo*/}
 
-The [`useMemo`](/reference/react/useMemo) Hooks will create/re-access a memorized value from a function call, re-running the function only when dependencies passed as the 2nd parameter are changed. The result of calling the Hook is inferred from the return value from the function in the first parameter. You can be more explicit by providing a type argument to the Hook.
+[`useMemo`](/reference/react/useMemo) हुक्स एक फ़ंक्शन कॉल से एक स्मृति मेमोराइज़्ड मूल्य बनाएगा/पुनर-पहुँचेगा, केवल जब दूसरे पैरामीटर के रूप में पास किए गए डिपेंडेंसीज़ बदले जाएँ। हुक को कॉल करने का परिणाम पहले पैरामीटर में दिए गए फ़ंक्शन से इन्फर किया जाता है। आप हुक को एक प्रकार तर्क प्रदान करके अधिक स्पष्ट हो सकते हैं।
 
 ```ts
 // The type of visibleTodos is inferred from the return value of filterTodos
@@ -338,7 +338,7 @@ const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 
 ### `useCallback` {/*typing-usecallback*/}
 
-The [`useCallback`](/reference/react/useCallback) provide a stable reference to a function as long as the dependencies passed into the second parameter are the same. Like `useMemo`, the function's type is inferred from the return value of the function in the first parameter, and you can be more explicit by providing a type argument to the Hook.
+[`useCallback`](/reference/react/useCallback) दूसरे पैरामीटर में पास किए गए डिपेंडेंसीज़ के समान होते हैं, एक फ़ंक्शन के लिए एक स्थिर संदर्भ प्रदान करता है। `useMemo` की तरह, पहले पैरामीटर में दिए गए फ़ंक्शन के वापसी मूल्य से फ़ंक्शन का प्रकार इन्फर किया जाता है, और आप हुक को एक प्रकार तर्क प्रदान करके अधिक स्पष्ट हो सकते हैं।
 
 
 ```ts
@@ -347,9 +347,9 @@ const handleClick = useCallback(() => {
 }, [todos]);
 ```
 
-When working in TypeScript strict mode `useCallback` requires adding types for the parameters in your callback. This is because the type of the callback is inferred from the return value of the function, and without parameters the type cannot be fully understood.
+टाइपस्क्रिप्ट स्ट्रिक्ट मोड में काम करते समय, `useCallback` में आपको अपने कॉलबैक के पैरामीटर्स के लिए टाइप्स जोड़ना आवश्यक है। यह इसलिए है क्योंकि कॉलबैक के प्रकार को फ़ंक्शन की वापसी मूल्य से इन्फर किया जाता है, और पैरामीटर्स के बिना पूरी तरह से समझा नहीं जा सकता है।
 
-Depending on your code-style preferences, you could use the `*EventHandler` functions from the React types to provide the type for the event handler at the same time as defining the callback: 
+आपके कोड-स्टाइल की पसंद के आधार पर, आप `*EventHandler` फ़ंक्शन्स का उपयोग कर सकते हैं जो इवेंट हैंडलर के लिए टाइप प्रदान करने के लिए React टाइप्स से साथ ही कॉलबैक को परिभाषित करते हैं: 
 
 ```ts
 import { useState, useCallback } from 'react';
