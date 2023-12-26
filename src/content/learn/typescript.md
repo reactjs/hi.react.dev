@@ -40,17 +40,17 @@ npm install @types/react @types/react-dom
 1. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) को मान्य विकल्पों में से एक पर सेट किया जाना चाहिए। अधिकांश अनुप्रयोगों के लिए, `preserve` काफी होगा।
   यदि आप एक पुस्तकालय प्रकाशित कर रहे हैं, तो [`jsx` दस्तावेज़](https://www.typescriptlang.org/tsconfig/#jsx) पर आपको कौनसी मान चुननी चाहिए, उस पर परामर्श लें।
 
-## TypeScript with React Components {/*typescript-with-react-components*/}
+## रिएक्ट कंपोनेंट्स के साथ टाइपस्क्रिप्ट {/*typescript-with-react-components*/}
 
 <Note>
 
-Every file containing JSX must use the `.tsx` file extension. This is a TypeScript-specific extension that tells TypeScript that this file contains JSX.
+जिस भी फ़ाइल में JSX है, उसे `.tsx` फ़ाइल एक्सटेंशन का उपयोग करना चाहिए। यह एक टाइपस्क्रिप्ट-विशिष्ट एक्सटेंशन है जो टाइपस्क्रिप्ट को बताता है कि इस फ़ाइल में JSX है।
 
 </Note>
 
-Writing TypeScript with React is very similar to writing JavaScript with React. The key difference when working with a component is that you can provide types for your component's props. These types can be used for correctness checking and providing inline documentation in editors.
+रिएक्ट के साथ टाइपस्क्रिप्ट लिखना रिएक्ट के साथ जावास्क्रिप्ट लिखने के बहुत मिलता-जुलता है। कंपोनेंट के साथ काम करते समय मुख्य अंतर है कि आप अपने कंपोनेंट के प्रॉप्स के लिए टाइप्स प्रदान कर सकते हैं। इन टाइप्स का उपयोग सहीता जाँच और संपादकों में इनलाइन दस्तावेज़ प्रदान करने के लिए किया जा सकता है।
 
-Taking the [`MyButton` component](/learn#components) from the [Quick Start](/learn) guide, we can add a type describing the `title` for the button:
+[Quick Start](/learn) गाइड से [`MyButton` कंपोनेंट](/learn#components) लेते हैं, हम बटन के लिए `title` का वर्णन करने के लिए एक टाइप जोड़ सकते हैं:
 
 <Sandpack>
 
@@ -79,11 +79,11 @@ export default App = AppTSX;
 
  <Note>
 
-These sandboxes can handle TypeScript code, but they do not run the type-checker. This means you can amend the TypeScript sandboxes to learn, but you won't get any type errors or warnings. To get type-checking, you can use the [TypeScript Playground](https://www.typescriptlang.org/play) or use a more fully-featured online sandbox.
+ ये सैंडबॉक्स टाइपस्क्रिप्ट को हैंडल कर सकते हैं, लेकिन वे टाइप-चेकर को चलाते नहीं हैं। इसका मतलब है कि आप टाइपस्क्रिप्ट सैंडबॉक्स को सीखने के लिए संशोधित कर सकते हैं, लेकिन आपको कोई टाइप त्रुटियाँ या चेतावनियाँ नहीं मिलेंगी। टाइप-चेकिंग प्राप्त करने के लिए, आप [टाइपस्क्रिप्ट Playground](https://www.typescriptlang.org/play) का उपयोग कर सकते हैं या एक और पूरी तरह से विशेषज्ञ ऑनलाइन सैंडबॉक्स का उपयोग कर सकते हैं।
 
 </Note>
 
-This inline syntax is the simplest way to provide types for a component, though once you start to have a few fields to describe it can become unwieldy. Instead, you can use an `interface` or `type` to describe the component's props:
+इस इनलाइन सिंटैक्स से एक कंपोनेंट के लिए टाइप्स प्रदान करने का सबसे सरल तरीका है, हालांकि जब आपको इसे विवरण देने के लिए कुछ फ़ील्ड होने लगते हैं, तो यह अनवान्य हो सकता है। इसके बजाय, आप कंपोनेंट के प्रॉप्स को विवरण देने के लिए एक इंटरफेस या टाइप का उपयोग कर सकते हैं:
 
 <Sandpack>
 
@@ -118,7 +118,7 @@ export default App = AppTSX;
 
 </Sandpack>
 
-The type describing your component's props can be as simple or as complex as you need, though they should be an object type described with either a `type` or `interface`. You can learn about how TypeScript describes objects in [Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html) but you may also be interested in using [Union Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) to describe a prop that can be one of a few different types and the [Creating Types from Types](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) guide for more advanced use cases.
+कंपोनेंट के प्रॉप्स का वर्णन करने वाला टाइप आपकी आवश्यकता के अनुसार इतना सरल या इतना कठिन हो सकता है, हालांकि इन्हें एक `type` या `interface` के साथ विवरणित एक ऑब्जेक्ट टाइप होना चाहिए। आप यहां [Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html) में टाइपस्क्रिप्ट द्वारा ऑब्जेक्ट का विवरण कैसे किया जाता है के बारे में सीख सकते हैं, लेकिन आप एक प्रॉप को कुछ विभिन्न प्रकारों में से एक का विवरण देने के लिए [Union Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) का उपयोग करने और और अधिक उन्नत उपयोग के मामलों के लिए [Creating Types from Types](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) गाइड के लिए भी रुचि रख सकते हैं।
 
 
 ## Example Hooks {/*example-hooks*/}
