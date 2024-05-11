@@ -17,7 +17,7 @@ State वेरिएबल नियमित जावास्क्रिप
 
 </YouWillLearn>
 
-## Setting state triggers renders {/*setting-state-triggers-renders*/}
+## State सेट करने से रेंडर ट्रिगर होता है {/*setting-state-triggers-renders*/}
 
 आप अपने यूजर इंटरफ़ेस को ऐसे समझ सकते हैं जैसे यूजर इवेंट जैसे कि एक क्लिक से रिस्पांस में सीधे चेंज होना। React में यह एस मेंटल मॉडल से थोड़ा अलग काम करता है। पिछले पेज में, आपने देखा कि [state को सेट करने से React से री-रेंडर रिक्वेस्ट होता है](/learn/render-and-commit#step-1-trigger-a-render)। इसका मतलब है इंटरफ़ेस को इवेंट पर रिएक्ट करने के लिए आपको staet को अपडेट करने की ज़रूरत है।
 
@@ -30,9 +30,9 @@ import { useState } from 'react';
 
 export default function Form() {
   const [isSent, setIsSent] = useState(false);
-  const [message, setMessage] = useState('नमस्ते!');
+  const [message, setMessage] = useState('Hi!');
   if (isSent) {
-    return <h1>आपका संदेश पहुंचने की प्रक्रिया जारी है!</h1>
+    return <h1>Your message is on its way!</h1>
   }
   return (
     <form onSubmit={(e) => {
@@ -63,13 +63,13 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 बटन पर क्लिक करने पर निम्नलिखित होता है:
 
-1. `onSubmit` घटना हैंडलर क्रियान्वित होता है।
+1. `onSubmit` इवेंट हैंडलर एक्सीक्यूट होता है।
 2. `setIsSent(true)` द्वारा `isSent` को `true` में सेट किया जाता है और एक नया रेंडर करने की क्रिया शुरू हो जाती है।
 3. React नए `isSent` वैल्यू के आधार पर कौम्पोनॅन्ट को फिर से रेंडर करता है।
 
 चलिए state और रेंडरिंग के बीच का संबंध और विश्लेषण करें।
 
-## Rendering takes a snapshot in time {/*rendering-takes-a-snapshot-in-time*/}
+## रेंडरिंग समय में एक स्नैपशॉट लेता है {/*rendering-takes-a-snapshot-in-time*/}
 
 [रेंडरिंग](/learn/render-and-commit#step-2-react-renders-your-components) का मतलब है कि React आपके कौम्पोनॅन्ट को कॉल करता है, जो एक फ़ंक्शन होता है। आप उस फ़ंक्शन से जो JSX रिटर्न करते हैं, वह उस समय की UI का एक स्नैपशॉट होता है। इसमें props, इवेंट हैंडलर्स और स्थानिक वेरिएबल इत्यादि सभी वैल्यूें, **रेंडर करने के समय के state के अनुसार निर्धारित की गई थीं।**
 
@@ -173,7 +173,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 इसलिए बटन पर फिर से क्लिक करने से काउंटर को `2` पर सेट किया जाएगा, फिर अगले क्लिक पर `3` पर और ऐसी ही प्रक्रिया जारी रहेगी।
 
-## State over time {/*state-over-time*/}
+## समय के दौरान State {/*state-over-time*/}
 
 अच्छा, यह बहुत मजेदार था। कोशिश करें कि इस बटन पर क्लिक करने पर क्या चेतावनी दी जाएगी, इसे अनुमान लगाएँ:
 
@@ -326,7 +326,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <Challenges>
 
-#### Implement a traffic light {/*implement-a-traffic-light*/}
+#### ट्रैफिक लाइट को इम्प्लीमेंट करें {/*implement-a-traffic-light*/}
 
 यहां एक क्रॉसवॉक लाइट कौम्पोनॅन्ट है जो बटन दबाने पर टॉगल होता है:
 
