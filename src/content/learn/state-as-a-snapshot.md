@@ -1,5 +1,5 @@
 ---
-title: State as a Snapshot
+title: State एक स्नैपशॉट की तरह
 ---
 
 <Intro>
