@@ -101,11 +101,11 @@ React tree
 
 </DiagramGroup>
 
-**These are two separate counters because each is rendered at its own position in the tree.** You don't usually have to think about these positions to use React, but it can be useful to understand how it works.
+**ये दो अलग अलग counters है क्योंकि हर एक कॉम्पोनेन्ट tree में अपने स्वतंत्र स्थान पर रेंडर हुआ है |** आम तौर पर आप को इन स्थानो के बारे में सोचने की आवश्यकता नहीं है, परन्तु यह कैसे काम करता है यह समझने के लिए उपयुक्त होगा |
 
-In React, each component on the screen has fully isolated state. For example, if you render two `Counter` components side by side, each of them will get its own, independent, `score` and `hover` states.
+React में, स्क्रीन पर हर एक कॉम्पोनेन्ट का पूरी तरह से अलग state होता है | उदहारण के तौर पर , यदि आप दी counter कॉम्पोनेंट्स एक के बाजु में एक रेंडर करेंगे, तो उनमे से हर एक को अपना स्वतंत्र 'score ' और 'hover ' state  मिलेगा|
 
-Try clicking both counters and notice they don't affect each other:
+दोनों counters को क्लिक करने का प्रयत्न करें और ध्यान दें की वह दोनों एक दूसरे को प्रभावित नहीं करते:
 
 <Sandpack>
 
