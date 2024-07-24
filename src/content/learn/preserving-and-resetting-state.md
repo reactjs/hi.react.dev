@@ -4,25 +4,27 @@ title: Preserving and Resetting State
 
 <Intro> 
 
-State हर एक कॉम्पोनेन्ट के लिए अलग है |. कॉम्पोनेन्ट ui ट्री में कहा है इस आधार पर react state का हिसाब रखता है की कोनसा स्टेट कोनसे कॉम्पोनेन्ट का है | आप पुनश्च रेंडर में  state को कब संरक्षित करना है और कब रिसेट करना नियंत्रित कर सकते है |
+State हर एक कॉम्पोनेन्ट के लिए अलग है |. कॉम्पोनेन्ट ui ट्री में कहा है इस आधार पर react state का हिसाब रखता है की कोनसा स्टेट कोनसे कॉम्पोनेन्ट का है | आप पुनश्च रेंडर में  state को कब संरक्षित करना है और कब रिसेट करना है यह नियंत्रित कर सकते है |
 
 </Intro>
 
 <YouWillLearn>
 
-* When React chooses to preserve or reset the state
-* How to force React to reset component's state
-* How keys and types affect whether the state is preserved
+* react state संरक्षित करना है अथवा रिसेट करना है इसका चयन कब करता है 
+* कैसे react बलपूर्वक कॉम्पोनेन्ट का state रिसेट कर सकता है 
+* state संरक्षित करने में keys और types कैसे प्रभावित करते है 
 
 </YouWillLearn>
 
 ## State is tied to a position in the render tree {/*state-is-tied-to-a-position-in-the-tree*/}
 
 React builds [render trees](learn/understanding-your-ui-as-a-tree#the-render-tree) for the component structure in your UI.
+react आपके उपयोगकर्ता इंटरफ़ेस में कॉम्पोनेन्ट संरचना के लिए (रेंडर ट्रीज)बनाता है |
 
-When you give a component state, you might think the state "lives" inside the component. But the state is actually held inside React. React associates each piece of state it's holding with the correct component by where that component sits in the render tree.
+जब आप एक कॉम्पोनेन्ट को state देते हो , तो आप यह कल्पना कर सकते हो की state कॉम्पोनेन्ट के अंदर 'रहता ' है | परन्तु state वास्तव में react में पकड़ा हुआ होता है react हर एक कॉम्पोनेन्ट को state  का हर एक भाग जो उसने पकड़ा हुआ है , उसे सही कॉम्पोनेन्ट से जोड़ता है की वो कॉम्पोनेन्ट render tree में कहा है 
 
 Here, there is only one `<Counter />` JSX tag, but it's rendered at two different positions:
+यहाँ वास्तव में केवल एक `<Counter />` jsx टैग है, परन्तु वह दो अलग जगह पर रेंडर हुआ है|
 
 <Sandpack>
 
@@ -87,6 +89,7 @@ label {
 </Sandpack>
 
 Here's how these look as a tree:    
+यहां बताया गया है कि ये tree के स्वरुप में कैसे दिखता है |
 
 <DiagramGroup>
 
