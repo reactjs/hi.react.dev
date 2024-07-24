@@ -2,9 +2,9 @@
 title: Preserving and Resetting State
 ---
 
-<Intro>
+<Intro> 
 
-State is isolated between कॉम्पोनेन्ट. React keeps track of which state belongs to which component based on their place in the UI tree. You can control when to preserve state and when to reset it between re-renders.
+State हर एक कॉम्पोनेन्ट के लिए अलग है |. कॉम्पोनेन्ट ui ट्री में कहा है इस आधार पर react state का हिसाब रखता है की कोनसा स्टेट कोनसे कॉम्पोनेन्ट का है | आप पुनश्च रेंडर में  state को कब संरक्षित करना है और कब रिसेट करना नियंत्रित कर सकते है |
 
 </Intro>
 
