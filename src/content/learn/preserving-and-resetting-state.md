@@ -164,7 +164,7 @@ function Counter() {
 </Sandpack>
 
 As you can see, when one counter is updated, only the state for that component is updated:
-
+जैसा की आप देख सकते हैं , जब एक counter अपडेट होता है तो  केवल उसी कॉम्पोनेन्ट की state अपडेट होती है |
 
 <DiagramGroup>
 
@@ -176,8 +176,7 @@ Updating state
 
 </DiagramGroup>
 
-
-React will keep the state around for as long as you render the same component at the same position in the tree. To see this, increment both counters, then remove the second component by unchecking "Render the second counter" checkbox, and then add it back by ticking it again:
+जब तक आप tree में एक कॉम्पोनेन्ट समान स्थान पर रेंडर करते हैं, तब तक React कॉम्पोनेन्ट state को बनाए रखेगा। इसे देखने के लिए, दोनों counter बढ़ाएँ, फिर "Render the second counter" चेकबॉक्स को अनचेक करके दूसरे कॉम्पोनेन्ट को हटा दें, और फिर उसी चेकबॉक्स को पुनः चेक करके वापस जोड़ दें |
 
 <Sandpack>
 
@@ -251,35 +250,36 @@ label {
 
 </Sandpack>
 
-Notice how the moment you stop rendering the second counter, its state disappears completely. That's because when React removes a component, it destroys its state.
+ध्यान दें कि जैसे ही आप दूसरे counter को रेंडर करना बंद करते हैं, उसकी state पूरी तरह से गायब हो जाती है। ऐसा इसलिए है क्योंकि जब react किसी कॉम्पोनेन्ट को हटाता है, तो यह उसकी State को नष्ट कर देता है।
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_remove_component" height={253} width={422} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. The left child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is missing, and in its place is a yellow 'poof' image, highlighting the component being deleted from the tree.">
 
-Deleting a component
+एक कॉम्पोनेन्ट हटाना
 
 </Diagram>
 
 </DiagramGroup>
 
-When you tick "Render the second counter", a second `Counter` and its state are initialized from scratch (`score = 0`) and added to the DOM.
+जब आप "Render the second counter" पर टिक करते हैं, 
+एक दूसरे `Counter` और उसकी state को स्क्रैच (`score = 0`) से आरंभ किया जाता है और DOM में जोड़ा जाता है। 
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_add_component" height={258} width={500} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. The left child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The entire right child node is highlighted in yellow, indicating that it was just added to the tree.">
 
-Adding a component
+एक कॉम्पोनेन्ट जोड़ना
 
 </Diagram>
 
 </DiagramGroup>
 
-**React preserves a component's state for as long as it's being rendered at its position in the UI tree.** If it gets removed, or a different component gets rendered at the same position, React discards its state.
+**रिएक्ट एक कॉम्पोनेन्ट की state को तब तक सुरक्षित रखता है जब तक इसे UI tree में अपनी state में रेंडर किया जा रहा है।** यदि इसे हटा दिया जाता है, या एक अलग कॉम्पोनेन्ट को उसी state में रेंडर किया जाता है, तो react अपनी state को त्याग देता है।
 
 ## Same component at the same position preserves state {/*same-component-at-the-same-position-preserves-state*/}
 
-In this example, there are two different `<Counter />` tags:
+इस उदाहरण में, दो अलग-अलग `<Counter />` टैग हैं:
 
 <Sandpack>
 
@@ -364,24 +364,24 @@ label {
 
 </Sandpack>
 
-When you tick or clear the checkbox, the counter state does not get reset. Whether `isFancy` is `true` or `false`, you always have a `<Counter />` as the first child of the `div` returned from the root `App` component:
+जब आप चेकबॉक्स को टिक या clear करते हैं, तो counter state रीसेट नहीं होती है। चाहे `isFancy` `true` हो या `false`, आपके पास रूट `App` कॉम्पोनेन्ट से लौटाए गए `div` के पहले चाइल्ड नोड के रूप में हमेशा एक `<Counter />` होता है:
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_same_component" height={461} width={600} alt="Diagram with two sections separated by an arrow transitioning between them. Each section contains a layout of components with a parent labeled 'App' containing a state bubble labeled isFancy. This component has one child labeled 'div', which leads to a prop bubble containing isFancy (highlighted in purple) passed down to the only child. The last child is labeled 'Counter' and contains a state bubble with label 'count' and value 3 in both diagrams. In the left section of the diagram, nothing is highlighted and the isFancy parent state value is false. In the right section of the diagram, the isFancy parent state value has changed to true and it is highlighted in yellow, and so is the props bubble below, which has also changed its isFancy value to true.">
 
-Updating the `App` state does not reset the `Counter` because `Counter` stays in the same position
+`App` की स्थिति को अपडेट करने से `Counter` रीसेट नहीं होता क्योंकि `Counter` उसी state में रहता है।
 
 </Diagram>
 
 </DiagramGroup>
 
 
-It's the same component at the same position, so from React's perspective, it's the same counter.
+यह एक ही state में एक ही कॉम्पोनेन्ट है, इसलिए React के दृष्टिकोण से, यह एक ही Counter है।
 
 <Pitfall>
 
-Remember that **it's the position in the UI tree--not in the JSX markup--that matters to React!** This component has two `return` clauses with different `<Counter />` JSX tags inside and outside the `if`:
+इसे याद रखें की **यह यूआई ट्री में state है - JSX मार्कअप में नहीं - जो React के लिए मायने रखती है!** इस कॉम्पोनेन्ट में `if` के अंदर और बाहर अलग-अलग `<Counter />` JSX टैग के साथ दो `return` क्लॉज हैं:
 
 <Sandpack>
 
@@ -479,9 +479,10 @@ label {
 
 </Sandpack>
 
-You might expect the state to reset when you tick checkbox, but it doesn't! This is because **both of these `<Counter />` tags are rendered at the same position.** React doesn't know where you place the conditions in your function. All it "sees" is the tree you return.
+जब आप चेकबॉक्स पर टिक करेंगे तो आप उम्मीद कर सकते हैं कि state रीसेट हो जाएगी, लेकिन ऐसा नहीं होता है! ऐसा इसलिए क्योंकि  **ये दोनों `<Counter />` टैग एक ही state में रेंडर किए गए हैं।** रिएक्ट को यह नहीं पता कि आप अपने function में conditions कहां रखते हैं। यह सब "देखता" वह tree है जिसे आप लौटाते हैं।
 
-In both cases, the `App` component returns a `<div>` with `<Counter />` as a first child. To React, these two counters have the same "address": the first child of the first child of the root. This is how React matches them up between the previous and next renders, regardless of how you structure your logic.
+
+दोनों मामलों में, `App` कॉम्पोनेन्ट पहले child के रूप में `<Counter />` के साथ `<div>` लौटाता है। React के लिए, इन दोनों Counter का एक ही "पता" है: रूट के पहले child का पहला child। इस प्रकार React पिछले और अगले रेंडर के बीच उनका मेल करता है, भले ही आप अपने तर्क की संरचना कैसे भी करते हों।
 
 </Pitfall>
 
