@@ -486,9 +486,9 @@ label {
 
 </Pitfall>
 
-## Different components at the same position reset state {/*different-components-at-the-same-position-reset-state*/}
+## एक ही स्थान में विभिन्न कॉम्पोनेन्ट state को रीसेट करते हैं {/*different-components-at-the-same-position-reset-state*/}
 
-In this example, ticking the checkbox will replace `<Counter>` with a `<p>`:
+इस उदाहरण में, चेकबॉक्स पर टिक करने से `<Counter>` को `<p>` से बदल दिया जाएगा:
 
 <Sandpack>
 
@@ -565,13 +565,13 @@ label {
 
 </Sandpack>
 
-Here, you switch between _different_ component types at the same position. Initially, the first child of the `<div>` contained a `Counter`. But when you swapped in a `p`, React removed the `Counter` from the UI tree and destroyed its state.
+यहां, आप एक ही स्थान में _different_ कॉम्पोनेन्ट प्रकारों के बीच स्विच करते हैं। प्रारंभ में, `<div>` के पहले child में एक `Counter` था। लेकिन जब आपने `p` में स्वैप किया, तो रिएक्ट ने यूआई ट्री से `Counter` को हटा दिया और इसकी state को नष्ट कर दिया। 
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_diff_pt1" height={290} width={753} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child component has now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'p', highlighted in yellow.">
 
-When `Counter` changes to `p`, the `Counter` is deleted and the `p` is added
+जब `Counter` `p` में बदल जाता है, तो `Counter` हटा दिया जाता है और `p` जोड़ा जाता है। 
 
 </Diagram>
 
@@ -581,13 +581,12 @@ When `Counter` changes to `p`, the `Counter` is deleted and the `p` is added
 
 <Diagram name="preserving_state_diff_pt2" height={290} width={753} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'p'. The middle section has the same 'div' parent, but the child component has now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, highlighted in yellow.">
 
-When switching back, the `p` is deleted and the `Counter` is added
+वापस स्विच करने पर, `p` हटा दिया जाता है और `Counter` जोड़ा जाता है। 
 
 </Diagram>
 
 </DiagramGroup>
-
-Also, **when you render a different component in the same position, it resets the state of its entire subtree.** To see how this works, increment the counter and then tick the checkbox:
+साथ ही, **जब आप किसी भिन्न कॉम्पोनेन्ट को एक ही स्थान में प्रस्तुत करते हैं, तो यह उसके संपूर्ण उपवृक्ष की state को रीसेट कर देता है।** यह कैसे काम करता है यह देखने के लिए, काउंटर बढ़ाएं और फिर चेकबॉक्स पर टिक करें:
 
 <Sandpack>
 
@@ -676,13 +675,14 @@ label {
 
 </Sandpack>
 
-The counter state gets reset when you click the checkbox. Although you render a `Counter`, the first child of the `div` changes from a `div` to a `section`. When the child `div` was removed from the DOM, the whole tree below it (including the `Counter` and its state) was destroyed as well.
+जब आप चेकबॉक्स पर क्लिक करते हैं तो काउंटर state रीसेट हो जाती है। यद्यपि आप एक `काउंटर` प्रस्तुत करते हैं, `div` का पहला child `div` से `सेक्शन` में बदल जाता है। जब child `div` को DOM से हटा दिया गया, तो उसके नीचे का पूरा tree (`Counter` और उसकी state सहित) भी नष्ट हो गया। 
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'section', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'div', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
 
-When `section` changes to `div`, the `section` is deleted and the new `div` is added
+
+जब `section` `div` में बदलता है, तो `section` हटा दिया जाता है और नया `div` जोड़ा जाता है 
 
 </Diagram>
 
@@ -692,13 +692,13 @@ When `section` changes to `div`, the `section` is deleted and the new `div` is a
 
 <Diagram name="preserving_state_diff_same_pt2" height={350} width={794} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'div', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 0. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'section', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
 
-When switching back, the `div` is deleted and the new `section` is added
+वापस स्विच करने पर, `div` हटा दिया जाता है और नया `section` जोड़ा जाता है 
 
 </Diagram>
 
 </DiagramGroup>
 
-As a rule of thumb, **if you want to preserve the state between re-renders, the structure of your tree needs to "match up"** from one render to another. If the structure is different, the state gets destroyed because React destroys state when it removes a component from the tree.
+एक सामान्य नियम के रूप में, **यदि आप री-रेंडर के बीच state को संरक्षित करना चाहते हैं, तो आपके पेड़ की संरचना को एक रेंडर से दूसरे रेंडर में "match up" करना होगा**। यदि संरचना भिन्न है, तो state नष्ट हो जाता है क्योंकि जब react tree से एक कॉम्पोनेन्ट को हटाता है तो वह state को नष्ट कर देता है। 
 
 <Pitfall>
 
