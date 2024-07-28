@@ -698,7 +698,7 @@ label {
 
 </DiagramGroup>
 
-एक सामान्य नियम के रूप में, **यदि आप री-रेंडर के बीच state को संरक्षित करना चाहते हैं, तो आपके पेड़ की संरचना को एक रेंडर से दूसरे रेंडर में "match up" करना होगा**। यदि संरचना भिन्न है, तो state नष्ट हो जाता है क्योंकि जब react tree से एक कॉम्पोनेन्ट को हटाता है तो वह state को नष्ट कर देता है। 
+एक सामान्य नियम के रूप में, **यदि आप री-रेंडर के बीच state को संरक्षित करना चाहते हैं, तो आपके tree की संरचना को एक रेंडर से दूसरे रेंडर में "match up" करना होगा**। यदि संरचना भिन्न है, तो state नष्ट हो जाता है क्योंकि जब react tree से एक कॉम्पोनेन्ट को हटाता है तो वह state को नष्ट कर देता है। 
 
 <Pitfall>
 
@@ -738,14 +738,14 @@ export default function MyComponent() {
 
 </Sandpack>
 
-
-Every time you click the button, the input state disappears! This is because a *different* `MyTextField` function is created for every render of `MyComponent`. You're rendering a *different* component in the same position, so React resets all state below. This leads to bugs and performance problems. To avoid this problem, **always declare component functions at the top level, and don't nest their definitions.**
+हर बार जब आप बटन क्लिक करते हैं, तो इनपुट state गायब हो जाती है! ऐसा इसलिए है क्योंकि `MyComponent` के प्रत्येक रेंडर के लिए एक *अलग* `MyTextField` function बनाया जाता है।
+आप एक *अलग* कॉम्पोनेन्ट को एक ही स्थान में प्रस्तुत कर रहे हैं, इसलिए रिएक्ट नीचे दी गई सभी state को रीसेट कर देता है। इससे बग और प्रदर्शन संबंधी समस्याएं उत्पन्न होती हैं। इस समस्या से बचने के लिए, **हमेशा शीर्ष स्तर पर कॉम्पोनेन्ट कार्यों की घोषणा करें, और उनकी परिभाषाओं को घोंसला न बनाएं।** 
 
 </Pitfall>
 
-## Resetting state at the same position {/*resetting-state-at-the-same-position*/}
+## state को उसी स्थान में रीसेट करना {/*resetting-state-at-the-same-position*/}
 
-By default, React preserves state of a component while it stays at the same position. Usually, this is exactly what you want, so it makes sense as the default behavior. But sometimes, you may want to reset a component's state. Consider this app that lets two players keep track of their scores during each turn:
+डिफ़ॉल्ट रूप से, रिएक्ट एक कॉम्पोनेन्ट की state को संरक्षित करता है जबकि वह उसी स्थान में रहता है। आमतौर पर, यह वही है जो आप चाहते हैं, इसलिए यह डिफ़ॉल्ट व्यवहार के रूप में समझ में आता है। लेकिन कभी-कभी, आप किसी कॉम्पोनेन्ट की state को रीसेट करना चाह सकते हैं। इस ऐप पर विचार करें जो दो खिलाड़ियों को प्रत्येक मोड़ के दौरान उनके स्कोर पर नज़र रखने की सुविधा देता है:
 
 <Sandpack>
 
@@ -815,19 +815,20 @@ h1 {
 
 </Sandpack>
 
-Currently, when you change the player, the score is preserved. The two `Counter`s appear in the same position, so React sees them as *the same* `Counter` whose `person` prop has changed.
+वर्तमान में, जब आप खिलाड़ी बदलते हैं, तो स्कोर संरक्षित रहता है। दो `Counter` एक ही स्थान में दिखाई देते हैं, इसलिए रिएक्ट उन्हें *उसी* `Counter` के रूप में देखता है जिसका `person` प्रोप बदल गया है।
 
-But conceptually, in this app they should be two separate counters. They might appear in the same place in the UI, but one is a counter for Taylor, and another is a counter for Sarah.
-
-There are two ways to reset state when switching between them:
-
-1. Render components in different positions
-2. Give each component an explicit identity with `key`
+लेकिन वैचारिक रूप से, इस ऐप में वे दो अलग-अलग काउंटर होने चाहिए। वे यूआई में एक ही स्थान पर दिखाई दे सकते हैं, लेकिन एक Taylor के लिए एक counter है, और दूसरा Sarah के लिए एक counter है।
 
 
-### Option 1: Rendering a component in different positions {/*option-1-rendering-a-component-in-different-positions*/}
+उनके बीच स्विच करते समय state को रीसेट करने के दो तरीके हैं:
 
-If you want these two `Counter`s to be independent, you can render them in two different positions:
+
+1. कॉम्पोनेन्ट को विभिन्न स्थानों में प्रस्तुत करें
+2. प्रत्येक कॉम्पोनेन्ट को `key` के साथ एक स्पष्ट पहचान दें
+
+### विकल्प 1: एक कॉम्पोनेन्ट को विभिन्न स्थानों में प्रस्तुत करना {/*option-1-rendering-a-component-in-different-positions*/}
+
+यदि आप चाहते हैं कि ये दोनों `Counter` स्वतंत्र हों, तो आप उन्हें दो अलग-अलग स्थानों में प्रस्तुत कर सकते हैं:
 
 <Sandpack>
 
@@ -898,14 +899,14 @@ h1 {
 
 </Sandpack>
 
-* Initially, `isPlayerA` is `true`. So the first position contains `Counter` state, and the second one is empty.
-* When you click the "Next player" button the first position clears but the second one now contains a `Counter`.
+* प्रारंभ में, `isPlayerA` `true` है। तो पहला स्थान में `Counter' state है, और दूसरी state खाली है।
+* जब आप "Next player" बटन पर क्लिक करते हैं तो पहला स्थान साफ़ हो जाती है लेकिन दूसरे में अब एक `Counter` होता है।
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_diff_position_p1" height={375} width={504} alt="Diagram with a tree of React components. The parent is labeled 'Scoreboard' with a state bubble labeled isPlayerA with value 'true'. The only child, arranged to the left, is labeled Counter with a state bubble labeled 'count' and value 0. All of the left child is highlighted in yellow, indicating it was added.">
 
-Initial state
+आरंभिक state
 
 </Diagram>
 
@@ -923,17 +924,19 @@ Clicking "next" again
 
 </DiagramGroup>
 
-Each `Counter`'s state gets destroyed each time it's removed from the DOM. This is why they reset every time you click the button.
 
-This solution is convenient when you only have a few independent components rendered in the same place. In this example, you only have two, so it's not a hassle to render both separately in the JSX.
+प्रत्येक `Counter` की state हर बार DOM से हटाए जाने पर नष्ट हो जाती है। यही कारण है कि जब भी आप बटन क्लिक करते हैं तो वे रीसेट हो जाते हैं।
 
-### Option 2: Resetting state with a key {/*option-2-resetting-state-with-a-key*/}
+यह समाधान तब सुविधाजनक होता है जब आपके पास एक ही स्थान पर केवल कुछ स्वतंत्र कॉम्पोनेन्ट प्रस्तुत हों। इस उदाहरण में, आपके पास केवल दो हैं, इसलिए JSX में दोनों को अलग-अलग प्रस्तुत करना कोई परेशानी नहीं है।
 
-There is also another, more generic, way to reset a component's state.
+### विकल्प 2: एक key के साथ state को रीसेट करना {/*option-2-resetting-state-with-a-key*/}
 
-You might have seen `key`s when [rendering lists.](/learn/rendering-lists#keeping-list-items-in-order-with-key) Keys aren't just for lists! You can use keys to make React distinguish between any components. By default, React uses order within the parent ("first counter", "second counter") to discern between components. But keys let you tell React that this is not just a *first* counter, or a *second* counter, but a specific counter--for example, *Taylor's* counter. This way, React will know *Taylor's* counter wherever it appears in the tree!
+किसी कॉम्पोनेन्ट की state को रीसेट करने का एक और, अधिक सामान्य तरीका भी है।
 
-In this example, the two `<Counter />`s don't share state even though they appear in the same place in JSX:
+आपने [सूचियाँ प्रस्तुत करते समय] `key` देखी होगी।(/learn/rendering-lists#keeping-list-items-in-order-with-key) keys केवल सूचियों के लिए नहीं हैं! आप रिएक्ट को किसी भी कॉम्पोनेन्ट के बीच अंतर करने के लिए keys का उपयोग कर सकते हैं। डिफ़ॉल्ट रूप से, रिएक्ट कॉम्पोनेन्ट के बीच अंतर करने के लिए parent ("पहला काउंटर", "दूसरा काउंटर") के भीतर ऑर्डर का उपयोग करता है। 
+लेकिन keys आपको रिएक्ट को यह बताने देती हैं कि यह केवल *पहला* काउंटर, या *दूसरा* काउंटर नहीं है, बल्कि एक विशिष्ट काउंटर है - उदाहरण के लिए, *Taylor* काउंटर। इस तरह, React को tree में जहां भी दिखाई देगा, *Taylor* के काउंटर का पता चल जाएगा!
+
+इस उदाहरण में, दो `<Counter />`की state साझा नहीं करते हैं, भले ही वे JSX में एक ही स्थान पर दिखाई देते हों: 
 
 <Sandpack>
 
@@ -1013,19 +1016,20 @@ Switching between Taylor and Sarah does not preserve the state. This is because 
 )}
 ```
 
-Specifying a `key` tells React to use the `key` itself as part of the position, instead of their order within the parent. This is why, even though you render them in the same place in JSX, React sees them as two different counters, and so they will never share state. Every time a counter appears on the screen, its state is created. Every time it is removed, its state is destroyed. Toggling between them resets their state over and over.
+`key` निर्दिष्ट करना रिएक्ट को मूल स्थान के भीतर उनके आदेश के बजाय, state के हिस्से के रूप में `key` का उपयोग करने के लिए कहता है। यही कारण है कि, भले ही आप उन्हें JSX में एक ही स्थान पर प्रस्तुत करते हैं, रिएक्ट उन्हें दो अलग-अलग काउंटरों के रूप में देखता है, और इसलिए वे कभी भी state साझा नहीं करेंगे। जब भी कोई काउंटर स्क्रीन पर दिखाई देता है, तो उसकी state बन जाती है। हर बार जब इसे हटाया जाता है, तो इसकी state नष्ट हो जाती है। 
+उनके बीच टॉगल करने से उनकी state बार-बार रीसेट हो जाती है।
 
 <Note>
 
-Remember that keys are not globally unique. They only specify the position *within the parent*.
+याद रखें कि keys विश्व स्तर पर अद्वितीय नहीं हैं। वे केवल *parent के भीतर* स्थान निर्दिष्ट करते हैं। 
 
 </Note>
 
-### Resetting a form with a key {/*resetting-a-form-with-a-key*/}
+### एक key के साथ फॉर्म को रीसेट करना {/*resetting-a-form-with-a-key*/}
 
-Resetting state with a key is particularly useful when dealing with forms.
+forms से निपटते समय key के साथ state को रीसेट करना विशेष रूप से उपयोगी होता है। 
 
-In this chat app, the `<Chat>` component contains the text input state:
+इस चैट ऐप में, `<Chat>` कॉम्पोनेन्ट में टेक्स्ट इनपुट state शामिल है: 
 
 <Sandpack>
 
@@ -1120,17 +1124,21 @@ textarea {
 
 </Sandpack>
 
-Try entering something into the input, and then press "Alice" or "Bob" to choose a different recipient. You will notice that the input state is preserved because the `<Chat>` is rendered at the same position in the tree.
+इनपुट में कुछ दर्ज करने का प्रयास करें, और फिर एक अलग प्राप्तकर्ता चुनने के लिए "Alice" या "Bob" दबाएँ। आप देखेंगे कि इनपुट state संरक्षित है क्योंकि `<Chat>` को tree में उसी state में प्रस्तुत किया गया है। 
 
-**In many apps, this may be the desired behavior, but not in a chat app!** You don't want to let the user send a message they already typed to a wrong person due to an accidental click. To fix it, add a `key`:
+
+
+**कई ऐप्स में, यह वांछित व्यवहार हो सकता है, लेकिन चैट ऐप में नहीं!** 
+आप किसी आकस्मिक क्लिक के कारण उपयोगकर्ता को वह संदेश किसी गलत व्यक्ति को भेजने नहीं देना चाहेंगे जो उन्होंने पहले ही टाइप कर दिया है। इसे ठीक करने के लिए, एक `key` जोड़ें: 
 
 ```js
 <Chat key={to.id} contact={to} />
 ```
 
-This ensures that when you select a different recipient, the `Chat` component will be recreated from scratch, including any state in the tree below it. React will also re-create the DOM elements instead of reusing them.
+यह सुनिश्चित करता है कि जब आप एक अलग प्राप्तकर्ता का चयन करते हैं, तो `Chat` कॉम्पोनेन्ट को स्क्रैच से फिर से बनाया जाएगा, जिसमें इसके नीचे के tree में कोई भी state शामिल होगी। 
+रिएक्ट DOM तत्वों का पुन: उपयोग करने के बजाय उन्हें फिर से बनाएगा। 
 
-Now switching the recipient always clears the text field:
+अब प्राप्तकर्ता को स्विच करने से हमेशा टेक्स्ट फ़ील्ड साफ़ हो जाता है:
 
 <Sandpack>
 
@@ -1227,9 +1235,9 @@ textarea {
 
 <DeepDive>
 
-#### Preserving state for removed components {/*preserving-state-for-removed-components*/}
+#### हटाए गए कॉम्पोनेन्ट के लिए state का संरक्षण {/*preserving-state-for-removed-components*/}
 
-In a real chat app, you'd probably want to recover the input state when the user selects the previous recipient again. There are a few ways to keep the state "alive" for a component that's no longer visible:
+एक वास्तविक चैट ऐप में, जब उपयोगकर्ता पिछले प्राप्तकर्ता को फिर से चुनता है तो आप शायद इनपुट state को पुनर्प्राप्त करना चाहेंगे। ऐसे कॉम्पोनेन्ट की state को "जीवित" रखने के कुछ तरीके हैं जो अब दिखाई नहीं देते हैं:
 
 - You could render _all_ chats instead of just the current one, but hide all the others with CSS. The chats would not get removed from the tree, so their local state would be preserved. This solution works great for simple UIs. But it can get very slow if the hidden trees are large and contain a lot of DOM nodes.
 - You could [lift the state up](/learn/sharing-state-between-components) and hold the pending message for each recipient in the parent component. This way, when the child components get removed, it doesn't matter, because it's the parent that keeps the important information. This is the most common solution.
