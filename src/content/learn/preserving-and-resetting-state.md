@@ -1005,8 +1005,7 @@ h1 {
 ```
 
 </Sandpack>
-
-Switching between Taylor and Sarah does not preserve the state. This is because **you gave them different `key`s:**
+Taylor और Sarah के बीच स्विच करने से state सुरक्षित नहीं रहता। ऐसा इसलिए है क्योंकि **आपने उन्हें अलग-अलग `keys` दी हैं:**
 
 ```js
 {isPlayerA ? (
@@ -1239,20 +1238,20 @@ textarea {
 
 एक वास्तविक चैट ऐप में, जब उपयोगकर्ता पिछले प्राप्तकर्ता को फिर से चुनता है तो आप शायद इनपुट state को पुनर्प्राप्त करना चाहेंगे। ऐसे कॉम्पोनेन्ट की state को "जीवित" रखने के कुछ तरीके हैं जो अब दिखाई नहीं देते हैं:
 
-- You could render _all_ chats instead of just the current one, but hide all the others with CSS. The chats would not get removed from the tree, so their local state would be preserved. This solution works great for simple UIs. But it can get very slow if the hidden trees are large and contain a lot of DOM nodes.
-- You could [lift the state up](/learn/sharing-state-between-components) and hold the pending message for each recipient in the parent component. This way, when the child components get removed, it doesn't matter, because it's the parent that keeps the important information. This is the most common solution.
-- You might also use a different source in addition to React state. For example, you probably want a message draft to persist even if the user accidentally closes the page. To implement this, you could have the `Chat` component initialize its state by reading from the [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), and save the drafts there too.
-
-No matter which strategy you pick, a chat _with Alice_ is conceptually distinct from a chat _with Bob_, so it makes sense to give a `key` to the `<Chat>` tree based on the current recipient.
+- आप केवल वर्तमान चैट के बजाय _all_ चैट प्रस्तुत कर सकते हैं, लेकिन CSS के साथ अन्य सभी को छिपा सकते हैं। चैट को tree से नहीं हटाया जाएगा, इसलिए उनकी स्थानीय state संरक्षित रहेगी। यह समाधान सरल UI के लिए बढ़िया काम करता है। लेकिन यदि छिपे हुए tree बड़े हैं और उनमें बहुत सारे DOM नोड हैं तो यह बहुत धीमा हो सकता है। 
+- आप [state को ऊपर उठा सकते हैं](/learn/sharing-state-between-components) और मूल कॉम्पोनेन्ट में प्रत्येक प्राप्तकर्ता के लिए लंबित संदेश को रोक कर रख सकते हैं। इस तरह, जब चाइल्ड कॉम्पोनेन्ट हटा दिए जाते हैं, तो इससे कोई फर्क नहीं पड़ता, क्योंकि यह parent ही हैं जो महत्वपूर्ण जानकारी रखते हैं। यह सबसे आम समाधान है.
+- आप React state के अतिरिक्त किसी भिन्न स्रोत का भी उपयोग कर सकते हैं। उदाहरण के लिए, आप संभवतः चाहते हैं कि संदेश ड्राफ्ट बना रहे, भले ही उपयोगकर्ता गलती से page बंद कर दे। इसे लागू करने के लिए, आप 'Chat' कॉम्पोनेन्ट को [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) से पढ़कर अपनी state आरंभ करवा सकते हैं। और वहां ड्राफ्ट भी सहेजें।
+ 
+इससे कोई फर्क नहीं पड़ता कि आप कौन सी रणनीति चुनते हैं, Alice_ के साथ चैट वैचारिक रूप से Bob_ के साथ चैट से अलग है, इसलिए वर्तमान प्राप्तकर्ता के आधार पर `<Chat>` ट्री को `key' देना समझ में आता है। 
 
 </DeepDive>
 
 <Recap>
 
-- React keeps state for as long as the same component is rendered at the same position.
-- State is not kept in JSX tags. It's associated with the tree position in which you put that JSX.
-- You can force a subtree to reset its state by giving it a different key.
-- Don't nest component definitions, or you'll reset state by accident.
+- React तब तक state बनाए रखता है जब तक एक ही कॉम्पोनेन्ट को एक ही स्थान में प्रस्तुत किया जाता है। 
+- state को JSX टैग में नहीं रखा गया है। यह उस tree की state से जुड़ा है जिसमें आपने उस JSX को रखा है। 
+- आप किसी subtree को एक अलग keys देकर उसकी state को रीसेट करने के लिए बाध्य कर सकते हैं।
+- कॉम्पोनेन्ट परिभाषाओं को घोंसला न बनाएं, अन्यथा आप दुर्घटनावश state रीसेट कर देंगे। 
 
 </Recap>
 
@@ -1260,9 +1259,9 @@ No matter which strategy you pick, a chat _with Alice_ is conceptually distinct 
 
 <Challenges>
 
-#### Fix disappearing input text {/*fix-disappearing-input-text*/}
+#### गायब हो रहे इनपुट टेक्स्ट को ठीक करें {/*fix-disappearing-input-text*/}
 
-This example shows a message when you press the button. However, pressing the button also accidentally resets the input. Why does this happen? Fix it so that pressing the button does not reset the input text.
+जब आप बटन दबाते हैं तो यह उदाहरण एक संदेश दिखाता है। हालाँकि, बटन दबाने से भी गलती से इनपुट रीसेट हो जाता है। ऐसा क्यूँ होता है? इसे ठीक करें ताकि बटन दबाने से इनपुट टेक्स्ट रीसेट न हो। 
 
 <Sandpack>
 
