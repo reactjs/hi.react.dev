@@ -1310,9 +1310,10 @@ textarea { display: block; margin: 10px 0; }
 
 <Solution>
 
-The problem is that `Form` is rendered in different positions. In the `if` branch, it is the second child of the `<div>`, but in the `else` branch, it is the first child. Therefore, the component type in each position changes. The first position changes between holding a `p` and a `Form`, while the second position changes between holding a `Form` and a `button`. React resets the state every time the component type changes.
+समस्या यह है कि `Form` को विभिन्न स्थानों में प्रस्तुत किया जाता है। `if` शाखा में, यह `<div>` का दूसरा child है, लेकिन `else` शाखा में, यह पहला child है। इसलिए, प्रत्येक स्थान में कॉम्पोनेन्ट प्रकार बदलता है। पहला स्थान `p` और `form` को पकड़ने के बीच बदलता है, जबकि दूसरा स्थान `form` और `button` को पकड़ने के बीच बदलता है। हर बार कॉम्पोनेन्ट प्रकार बदलने पर REact state को रीसेट कर देता है। 
 
-The easiest solution is to unify the branches so that `Form` always renders in the same position:
+
+सबसे आसान समाधान शाखाओं को एकजुट करना है ताकि 'Form' हमेशा एक ही स्थान में प्रस्तुत हो: 
 
 <Sandpack>
 
@@ -1357,8 +1358,7 @@ textarea { display: block; margin: 10px 0; }
 
 </Sandpack>
 
-
-Technically, you could also add `null` before `<Form />` in the `else` branch to match the `if` branch structure:
+तकनीकी रूप से, आप `if` शाखा संरचना से match करने के लिए `else` शाखा में `<Form />` से पहले `null` भी जोड़ सकते हैं:
 
 <Sandpack>
 
@@ -1406,19 +1406,21 @@ textarea { display: block; margin: 10px 0; }
 
 </Sandpack>
 
-This way, `Form` is always the second child, so it stays in the same position and keeps its state. But this approach is much less obvious and introduces a risk that someone else will remove that `null`.
+इस तरह, `Form` हमेशा दूसरा child होता है, इसलिए यह उसी स्थान में रहता है और अपनी state बनाए रखता है।
+लेकिन यह दृष्टिकोण बहुत कम स्पष्ट है और यह जोखिम पैदा करता है कि कोई अन्य व्यक्ति उस `null` को हटा देगा।
 
 </Solution>
 
-#### Swap two form fields {/*swap-two-form-fields*/}
+#### दो form fields स्वैप करें {/*swap-two-form-fields*/}
 
-This form lets you enter first and last name. It also has a checkbox controlling which field goes first. When you tick the checkbox, the "Last name" field will appear before the "First name" field.
+यह फॉर्म आपको पहला और उपनाम दर्ज करने की सुविधा देता है। इसमें एक चेकबॉक्स भी है जो नियंत्रित करता है कि कौन सा फ़ील्ड पहले जाएगा। जब आप चेकबॉक्स पर टिक करते हैं, तो "Last name" फ़ील्ड "First name" फ़ील्ड से पहले दिखाई देगी। 
 
-It almost works, but there is a bug. If you fill in the "First name" input and tick the checkbox, the text will stay in the first input (which is now "Last name"). Fix it so that the input text *also* moves when you reverse the order.
+
+यह लगभग काम करता है, लेकिन इसमें एक bug है। यदि आप "First name" इनपुट भरते हैं और चेकबॉक्स पर टिक करते हैं, तो टेक्स्ट पहले इनपुट (जो अब "Last name" है) में रहेगा। इसे ठीक करें ताकि जब आप ऑर्डर उलटें तो इनपुट टेक्स्ट *भी* चले। 
 
 <Hint>
 
-It seems like for these fields, their position within the parent is not enough. Is there some way to tell React how to match up the state between re-renders?
+ऐसा लगता है कि इन fields के लिए, मूल क्षेत्र में उनकी स्थिति पर्याप्त नहीं है। क्या रिएक्ट को यह बताने का कोई तरीका है कि री-रेंडर के बीच की state का match कैसे किया जाए? 
 
 </Hint>
 
@@ -1482,7 +1484,8 @@ label { display: block; margin: 10px 0; }
 
 <Solution>
 
-Give a `key` to both `<Field>` components in both `if` and `else` branches. This tells React how to "match up" the correct state for either `<Field>` even if their order within the parent changes:
+
+`if` और `else` दोनों शाखाओं में `<Field>` दोनों घटकों को `key` दें। यह React को बताता है कि `<Field>` के लिए सही state का "match" कैसे किया जाए, भले ही उनका क्रम parent के भीतर बदल जाए: 
 
 <Sandpack>
 
@@ -1544,11 +1547,12 @@ label { display: block; margin: 10px 0; }
 
 </Solution>
 
-#### Reset a detail form {/*reset-a-detail-form*/}
+#### विवरण form रीसेट करें {/*reset-a-detail-form*/}
 
-This is an editable contact list. You can edit the selected contact's details and then either press "Save" to update it, or "Reset" to undo your changes.
 
-When you select a different contact (for example, Alice), the state updates but the form keeps showing the previous contact's details. Fix it so that the form gets reset when the selected contact changes.
+यह एक संपादन योग्य संपर्क सूची है. आप चयनित संपर्क के विवरण को संपादित कर सकते हैं और फिर इसे अपडेट करने के लिए या तो "Save" दबा सकते हैं, या अपने परिवर्तनों को पूर्ववत करने के लिए "Reset" दबा सकते हैं।
+
+जब आप कोई भिन्न संपर्क चुनते हैं (उदाहरण के लिए, Alice), तो state अपडेट हो जाती है लेकिन form पिछले संपर्क का विवरण दिखाता रहता है। इसे ठीक करें ताकि चयनित संपर्क बदलने पर form रीसेट हो जाए। 
 
 <Sandpack>
 
@@ -1700,7 +1704,7 @@ button {
 
 <Solution>
 
-Give `key={selectedId}` to the `EditContact` component. This way, switching between different contacts will reset the form:
+`EditContact` कॉम्पोनेन्ट को `key={selectedId}` दें। इस तरह, विभिन्न संपर्कों के बीच switch करने से form रीसेट हो जाएगा: 
 
 <Sandpack>
 
@@ -1853,13 +1857,13 @@ button {
 
 </Solution>
 
-#### Clear an image while it's loading {/*clear-an-image-while-its-loading*/}
+#### लोड होते समय छवि साफ़ करें {/*clear-an-image-while-its-loading*/}
 
-When you press "Next", the browser starts loading the next image. However, because it's displayed in the same `<img>` tag, by default you would still see the previous image until the next one loads. This may be undesirable if it's important for the text to always match the image. Change it so that the moment you press "Next", the previous image immediately clears.
+जब आप "Next" दबाते हैं, तो browser अगली छवि लोड करना शुरू कर देता है। हालाँकि, क्योंकि यह उसी `<img>` टैग में प्रदर्शित होता है, डिफ़ॉल्ट रूप से आपको अगली छवि लोड होने तक पिछली छवि दिखाई देगी। यह अवांछनीय हो सकता है यदि पाठ का हमेशा छवि से मेल खाना महत्वपूर्ण हो। इसे बदलें ताकि जैसे ही आप "Next" दबाएँ, पिछली छवि तुरंत साफ़ हो जाए।
 
 <Hint>
 
-Is there a way to tell React to re-create the DOM instead of reusing it?
+क्या रिएक्ट को दोबारा उपयोग करने के बजाय DOM को दोबारा बनाने के लिए कहने का कोई तरीका है? 
 
 </Hint>
 
@@ -1929,7 +1933,7 @@ img { width: 150px; height: 150px; }
 
 <Solution>
 
-You can provide a `key` to the `<img>` tag. When that `key` changes, React will re-create the `<img>` DOM node from scratch. This causes a brief flash when each image loads, so it's not something you'd want to do for every image in your app. But it makes sense if you want to ensure the image always matches the text.
+आप `<img>` टैग के लिए `key` प्रदान कर सकते हैं। जब वह `key` बदलती है, तो रिएक्ट स्क्रैच से `<img>` DOM नोड को फिर से बनाएगा। प्रत्येक छवि लोड होने पर यह एक संक्षिप्त फ्लैश का कारण बनता है, इसलिए यह ऐसा कुछ नहीं है जो आप अपने ऐप में प्रत्येक छवि के लिए करना चाहेंगे। लेकिन यदि आप यह सुनिश्चित करना चाहते हैं कि छवि हमेशा पाठ से मेल खाती है तो यह समझ में आता है। 
 
 <Sandpack>
 
@@ -1997,11 +2001,11 @@ img { width: 150px; height: 150px; }
 
 </Solution>
 
-#### Fix misplaced state in the list {/*fix-misplaced-state-in-the-list*/}
+#### सूची में ग़लत state ठीक करें {/*fix-misplaced-state-in-the-list*/}
 
-In this list, each `Contact` has state that determines whether "Show email" has been pressed for it. Press "Show email" for Alice, and then tick the "Show in reverse order" checkbox. You will notice that it's _Taylor's_ email that is expanded now, but Alice's--which has moved to the bottom--appears collapsed.
+इस सूची में, प्रत्येक `Contact` में एक state होती है जो यह निर्धारित करती है कि इसके लिए "Show email" दबाया गया है या नहीं। Alice के लिए "Show email" दबाएँ, और फिर "Show in reverse order" चेकबॉक्स पर टिक करें। आप देखेंगे कि यह _Taylor_ का ईमेल है जिसे अब विस्तारित किया गया है, लेकिन Alice का - जो नीचे चला गया है - ढह गया प्रतीत होता है। 
 
-Fix it so that the expanded state is associated with each contact, regardless of the chosen ordering.
+इसे ठीक करें ताकि चयनित ऑर्डर की परवाह किए बिना विस्तारित state प्रत्येक संपर्क से संबद्ध हो।
 
 <Sandpack>
 
