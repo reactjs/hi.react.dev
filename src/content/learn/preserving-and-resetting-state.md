@@ -1,10 +1,10 @@
 ---
-title: Preserving and Resetting State
+title: State का संरक्षण और उसे रिसेट करना 
 ---
 
 <Intro> 
 
-State हर एक कॉम्पोनेन्ट के लिए अलग है |. कॉम्पोनेन्ट ui ट्री में कहा है इस आधार पर react state का हिसाब रखता है की कोनसा स्टेट कोनसे कॉम्पोनेन्ट का है | आप पुनश्च रेंडर में  state को कब संरक्षित करना है और कब रिसेट करना है यह नियंत्रित कर सकते है |
+State हर एक कॉम्पोनेन्ट के लिए अलग है | कॉम्पोनेन्ट ui ट्री में कहा है इस आधार पर react state का हिसाब रखता है की कोनसा state कोनसे कॉम्पोनेन्ट का है | आप पुनश्च रेंडर में  state को कब संरक्षित करना है और कब रिसेट करना है यह नियंत्रित कर सकते है |
 
 </Intro>
 
@@ -12,19 +12,17 @@ State हर एक कॉम्पोनेन्ट के लिए अलग
 
 * react state संरक्षित करना है अथवा रिसेट करना है इसका चयन कब करता है 
 * कैसे react बलपूर्वक कॉम्पोनेन्ट का state रिसेट कर सकता है 
-* state संरक्षित करने में keys और types कैसे प्रभावित करते है 
+* state संरक्षित करने को keys और types कैसे प्रभावित करते है 
 
 </YouWillLearn>
 
-## State is tied to a position in the render tree {/*state-is-tied-to-a-position-in-the-tree*/}
+## state रेंडर ट्री में एक स्थान से बंधा हुआ है {/*state-is-tied-to-a-position-in-the-tree*/}
 
-React builds [render trees](learn/understanding-your-ui-as-a-tree#the-render-tree) for the component structure in your UI.
-react आपके उपयोगकर्ता इंटरफ़ेस में कॉम्पोनेन्ट संरचना के लिए (रेंडर ट्रीज)बनाता है |
+react आपके उपयोगकर्ता इंटरफ़ेस में कॉम्पोनेन्ट संरचना के लिए [render trees](learn/understanding-your-ui-as-a-tree#the-render-tree) बनाता है |
 
-जब आप एक कॉम्पोनेन्ट को state देते हो , तो आप यह कल्पना कर सकते हो की state कॉम्पोनेन्ट के अंदर 'रहता ' है | परन्तु state वास्तव में react में पकड़ा हुआ होता है react हर एक कॉम्पोनेन्ट को state  का हर एक भाग जो उसने पकड़ा हुआ है , उसे सही कॉम्पोनेन्ट से जोड़ता है की वो कॉम्पोनेन्ट render tree में कहा है 
+जब आप एक कॉम्पोनेन्ट को state देते हो, तो आप यह कल्पना कर सकते हो की state कॉम्पोनेन्ट के अंदर 'रहता ' है। परन्तु state वास्तव में react में पकड़ा हुआ होता है react हर एक कॉम्पोनेन्ट को state  का हर एक भाग जो उसने पकड़ा हुआ है, उसे इस आधार पर सही कॉम्पोनेन्ट से जोड़ता है की वो कॉम्पोनेन्ट render tree में कहा है।
 
-Here, there is only one `<Counter />` JSX tag, but it's rendered at two different positions:
-यहाँ वास्तव में केवल एक `<Counter />` jsx टैग है, परन्तु वह दो अलग जगह पर रेंडर हुआ है|
+यहाँ वास्तव में केवल एक `<Counter />` jsx टैग है, परन्तु वह दो अलग जगह पर रेंडर हुआ है:
 
 <Sandpack>
 
@@ -87,8 +85,7 @@ label {
 ```
 
 </Sandpack>
-
-Here's how these look as a tree:    
+     
 यहां बताया गया है कि ये tree के स्वरुप में कैसे दिखता है |
 
 <DiagramGroup>
@@ -103,7 +100,7 @@ React tree
 
 **ये दो अलग अलग counters है क्योंकि हर एक कॉम्पोनेन्ट tree में अपने स्वतंत्र स्थान पर रेंडर हुआ है |** आम तौर पर आप को इन स्थानो के बारे में सोचने की आवश्यकता नहीं है, परन्तु यह कैसे काम करता है यह समझने के लिए उपयुक्त होगा |
 
-React में, स्क्रीन पर हर एक कॉम्पोनेन्ट का पूरी तरह से अलग state होता है | उदहारण के तौर पर , यदि आप दी counter कॉम्पोनेंट्स एक के बाजु में एक रेंडर करेंगे, तो उनमे से हर एक को अपना स्वतंत्र 'score ' और 'hover ' state  मिलेगा|
+React में, स्क्रीन पर हर एक कॉम्पोनेन्ट का पूरी तरह से अलग state होता है| उदहारण के तौर पर, यदि आप दो counter कॉम्पोनेंट्स एक के बाजु में एक रेंडर करेंगे, तो उनमे से हर एक को अपना स्वतंत्र 'score' और 'hover' state मिलेगा|
 
 दोनों counters को क्लिक करने का प्रयत्न करें और ध्यान दें की वह दोनों एक दूसरे को प्रभावित नहीं करते:
 
@@ -163,20 +160,19 @@ function Counter() {
 
 </Sandpack>
 
-As you can see, when one counter is updated, only the state for that component is updated:
-जैसा की आप देख सकते हैं , जब एक counter अपडेट होता है तो  केवल उसी कॉम्पोनेन्ट की state अपडेट होती है |
+जैसा की आप देख सकते हैं, जब एक counter अपडेट होता है तो केवल उसी कॉम्पोनेन्ट की state अपडेट होती है:
 
 <DiagramGroup>
 
 <Diagram name="preserving_state_increment" height={248} width={441} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. The left child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is labeled 'Counter' and contains a state bubble labeled 'count' with value 1. The state bubble of the right child is highlighted in yellow to indicate its value has updated.">
 
-Updating state
+State को अपडेट करना
 
 </Diagram>
 
 </DiagramGroup>
 
-जब तक आप tree में एक कॉम्पोनेन्ट समान स्थान पर रेंडर करते हैं, तब तक React कॉम्पोनेन्ट state को बनाए रखेगा। इसे देखने के लिए, दोनों counter बढ़ाएँ, फिर "Render the second counter" चेकबॉक्स को अनचेक करके दूसरे कॉम्पोनेन्ट को हटा दें, और फिर उसी चेकबॉक्स को पुनः चेक करके वापस जोड़ दें |
+जब तक आप tree में एक कॉम्पोनेन्ट समान स्थान पर रेंडर करते हैं, तब तक React कॉम्पोनेन्ट state को बनाए रखेगा। इसे देखने के लिए, दोनों counter बढ़ाएँ, फिर "Render the second counter" चेकबॉक्स को अनचेक करके दूसरे कॉम्पोनेन्ट को हटा दें, और फिर उसी चेकबॉक्स को पुनः चेक करके वापस जोड़ दें। 
 
 <Sandpack>
 
@@ -277,7 +273,7 @@ label {
 
 **रिएक्ट एक कॉम्पोनेन्ट की state को तब तक सुरक्षित रखता है जब तक इसे UI tree में अपनी state में रेंडर किया जा रहा है।** यदि इसे हटा दिया जाता है, या एक अलग कॉम्पोनेन्ट को उसी state में रेंडर किया जाता है, तो react अपनी state को त्याग देता है।
 
-## Same component at the same position preserves state {/*same-component-at-the-same-position-preserves-state*/}
+## समान स्थान में समान कॉम्पोनेन्ट state को सुरक्षित रखता है {/*same-component-at-the-same-position-preserves-state*/}
 
 इस उदाहरण में, दो अलग-अलग `<Counter />` टैग हैं:
 
@@ -745,7 +741,7 @@ export default function MyComponent() {
 
 ## state को उसी स्थान में रीसेट करना {/*resetting-state-at-the-same-position*/}
 
-डिफ़ॉल्ट रूप से, रिएक्ट एक कॉम्पोनेन्ट की state को संरक्षित करता है जबकि वह उसी स्थान में रहता है। आमतौर पर, यह वही है जो आप चाहते हैं, इसलिए यह डिफ़ॉल्ट व्यवहार के रूप में समझ में आता है। लेकिन कभी-कभी, आप किसी कॉम्पोनेन्ट की state को रीसेट करना चाह सकते हैं। इस ऐप पर विचार करें जो दो खिलाड़ियों को प्रत्येक मोड़ के दौरान उनके स्कोर पर नज़र रखने की सुविधा देता है:
+डिफ़ॉल्ट रूप से, रिएक्ट एक कॉम्पोनेन्ट की state को संरक्षित करता है जबकि वह उसी स्थान में रहता है। आमतौर पर, यह वही है जो आप चाहते हैं, इसलिए यह डिफ़ॉल्ट व्यवहार के रूप में समझ में आता है। लेकिन कभी-कभी, आप किसी कॉम्पोनेन्ट की state को रीसेट करना चाह सकते हैं। इस ऐप पर विचार करें जो दो players को प्रत्येक मोड़ के दौरान उनके स्कोर पर नज़र रखने की सुविधा देता है:
 
 <Sandpack>
 
@@ -815,13 +811,11 @@ h1 {
 
 </Sandpack>
 
-वर्तमान में, जब आप खिलाड़ी बदलते हैं, तो स्कोर संरक्षित रहता है। दो `Counter` एक ही स्थान में दिखाई देते हैं, इसलिए रिएक्ट उन्हें *उसी* `Counter` के रूप में देखता है जिसका `person` प्रोप बदल गया है।
+वर्तमान में, जब आप player बदलते हैं, तो स्कोर संरक्षित रहता है। दो `Counter` एक ही स्थान में दिखाई देते हैं, इसलिए रिएक्ट उन्हें *उसी* `Counter` के रूप में देखता है जिसका `person` प्रोप बदल गया है।
 
 लेकिन वैचारिक रूप से, इस ऐप में वे दो अलग-अलग काउंटर होने चाहिए। वे यूआई में एक ही स्थान पर दिखाई दे सकते हैं, लेकिन एक Taylor के लिए एक counter है, और दूसरा Sarah के लिए एक counter है।
 
-
 उनके बीच स्विच करते समय state को रीसेट करने के दो तरीके हैं:
-
 
 1. कॉम्पोनेन्ट को विभिन्न स्थानों में प्रस्तुत करें
 2. प्रत्येक कॉम्पोनेन्ट को `key` के साथ एक स्पष्ट पहचान दें
@@ -912,13 +906,13 @@ h1 {
 
 <Diagram name="preserving_state_diff_position_p2" height={375} width={504} alt="Diagram with a tree of React components. The parent is labeled 'Scoreboard' with a state bubble labeled isPlayerA with value 'false'. The state bubble is highlighted in yellow, indicating that it has changed. The left child is replaced with a yellow 'poof' image indicating that it has been deleted and there is a new child on the right, highlighted in yellow indicating that it was added. The new child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0.">
 
-Clicking "next"
+"next" क्लिक करना
 
 </Diagram>
 
 <Diagram name="preserving_state_diff_position_p3" height={375} width={504} alt="Diagram with a tree of React components. The parent is labeled 'Scoreboard' with a state bubble labeled isPlayerA with value 'true'. The state bubble is highlighted in yellow, indicating that it has changed. There is a new child on the left, highlighted in yellow indicating that it was added. The new child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is replaced with a yellow 'poof' image indicating that it has been deleted.">
 
-Clicking "next" again
+फिर से "next" क्लिक करना
 
 </Diagram>
 
