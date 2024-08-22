@@ -2095,16 +2095,16 @@ button {
 
 <Solution>
 
-The problem is that this example was using index as a `key`:
+समस्या यह है कि यह उदाहरण index को `key` के रूप में उपयोग कर रहा था:
 
 ```js
 {displayedContacts.map((contact, i) =>
   <li key={i}>
 ```
 
-However, you want the state to be associated with _each particular contact_.
+हालाँकि, आप चाहते हैं कि state _each particular contact_ से संबद्ध हो। 
 
-Using the contact ID as a `key` instead fixes the issue:
+इसके बजाय संपर्क ID को `key` के रूप में उपयोग करने से समस्या ठीक हो जाती है:
 
 <Sandpack>
 
@@ -2192,7 +2192,7 @@ button {
 
 </Sandpack>
 
-State is associated with the tree position. A `key` lets you specify a named position instead of relying on order.
+State का सम्बन्ध tree के स्थान से है। एक `key` आपको ऑर्डर पर निर्भर रहने के बजाय एक नामित स्थान निर्दिष्ट करने देती है। 
 
 </Solution>
 
