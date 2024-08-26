@@ -52,11 +52,7 @@ export default function PackingList() {
 
 </Sandpack>
 
-<<<<<<< HEAD
-ध्यान दें कि कुछ `Item` कौम्पोनॅन्ट का `isPacked` prop `false` के बजाय `true` पर सेट है। आप पैक किए गए आइटम में एक चेकमार्क (✔) ऐड करना चाहते हैं यदि `isPacked={true}` है।
-=======
-Notice that some of the `Item` components have their `isPacked` prop set to `true` instead of `false`. You want to add a checkmark (✅) to packed items if `isPacked={true}`.
->>>>>>> 7d50c3ffd4df2dc7903f4e41069653a456a9c223
+ध्यान दें कि कुछ `Item` कौम्पोनॅन्ट का `isPacked` prop `false` के बजाय `true` पर सेट है। आप पैक किए गए आइटम में एक चेकमार्क (✅) ऐड करना चाहते हैं यदि `isPacked={true}` है।
 
 आप इसे [`if`/`else` स्टेटमेंट](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) के रूप में लिख सकते हैं, इस तरह:
 
@@ -206,11 +202,7 @@ return (
 );
 ```
 
-<<<<<<< HEAD
-आप इसे इस प्रकार पढ़ सकते हैं *"यदि `isPacked` true है, तो (`?`) `name +' ✔'` रेंडर करें, नहीं तो (`:`) `name` रेंडर करें।"*)
-=======
-You can read it as *"if `isPacked` is true, then (`?`) render `name + ' ✅'`, otherwise (`:`) render `name`"*.
->>>>>>> 7d50c3ffd4df2dc7903f4e41069653a456a9c223
+आप इसे इस प्रकार पढ़ सकते हैं *"यदि `isPacked` true है, तो (`?`) `name + ' ✅'` रेंडर करें, नहीं तो (`:`) `name` रेंडर करें।"*
 
 <DeepDive>
 
