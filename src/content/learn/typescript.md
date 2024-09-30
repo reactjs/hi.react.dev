@@ -21,7 +21,7 @@ re: https://github.com/reactjs/react.dev/issues/5960
 सभी [प्रोडक्शन-ग्रेड रिएक्ट फ्रेमवर्क्स](/learn/start-a-new-react-project#production-grade-react-frameworks) टाइपस्क्रिप्ट का समर्थन करते हैं। स्थापना के लिए फ्रेमवर्क विशिष्ट गाइड का पालन करें:
 
 
-- [Next.js](https://nextjs.org/docs/pages/building-your-application/configuring/typescript)
+- [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
 - [Gatsby](https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/)
 - [Expo](https://docs.expo.dev/guides/typescript/)
@@ -434,7 +434,7 @@ interface ModalRendererProps {
 
 ध्यान दें कि आप JSX एलिमेंट्स के किसी विशिष्ट प्रकार के होने को वर्णन करने के लिए टाइपस्क्रिप्ट का उपयोग नहीं कर सकते हैं, इसलिए आप टाइप-सिस्टम का उपयोग करके एक कॉम्पोनेंट को वर्णन करने के लिए नहीं कर सकते हैं जो केवल `<li>` बच्चों को स्वीकार करता है। 
 
-आप [इस टाइपस्क्रिप्ट प्लेग्राउंड](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnS9CFs+NgMoQeC6ADe8nLAglB5TlGx2ISCCByc7CJ6APiHgAA-KAByPgACicXxFYjxRw0Lq5uEdVtq6zq8zHxSmWp7eAlrMySTn1QEZLrU8pWiSjIFfX8hhR6vELBJ8GWbFYFiFDNtVeh4FoA2doKiF0VSM1WJrVCaHCFekih1xLhQAMZoKjWygxK0R7TI6j2WvhoMqxhlZhFk3grVtECybgdHZHvqBq7M3VmEAe05x6CJ2qGbKSLCkRqzSM4d1WZAA) में दोनों `React.ReactNode` और `React.ReactElement` का एक उदाहरण देख सकते हैं।
+आप [इस टाइपस्क्रिप्ट प्लेग्राउंड](https://www.typescriptlang.org/play?#code/https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA) में दोनों `React.ReactNode` और `React.ReactElement` का एक उदाहरण देख सकते हैं।
 
 ### स्टाइल प्रॉप्स {/*typing-style-props*/}
 
@@ -454,7 +454,7 @@ interface MyComponentProps {
 
 - [टाइपस्क्रिप्ट हैंडबुक](https://www.typescriptlang.org/docs/handbook/): टाइपस्क्रिप्ट के लिए आधिकारिक दस्तावेज़ है और अधिकांश कुंजीय भाषा सुविधाओं को कवर करता है।
 
-- [टाइपस्क्रिप्ट रिलीज़ नोट्स](https://devblogs.microsoft.com/typescript/): हर नई सुविधा को गहराई से कवर करता है।
+- [टाइपस्क्रिप्ट रिलीज़ नोट्स](https://devblogs.microsoft.com/typescript/) नई फीचर्स को गहराई से कवर करता है।
 
 - [रिएक्ट टाइपस्क्रिप्ट Cheatsheet](https://react-typescript-cheatsheet.netlify.app/): यह एक समुदाय द्वारा बनाई गई एक cheatsheet है जो रिएक्ट के साथ टाइपस्क्रिप्ट का उपयोग करने के लिए है, जिसमें कई उपयोगी एज केस को कवर किया गया है और इस सापेक्षता को प्रदान करता है जो इस दस्तावेज़ से अधिक है।
 
