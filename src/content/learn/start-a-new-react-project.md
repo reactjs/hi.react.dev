@@ -27,7 +27,8 @@ npx create-next-app
 
 यदि आप Next.js में नए हैं, तो [Next.js ट्यूटोरियल देखें।](https://nextjs.org/learn/foundations/about-nextjs)
 
-Next.js का रखरखाव [Vercel](https://vercel.com/) द्वारा किया जाता है। आप किसी भी Node.js या सर्वर रहित होस्टिंग, या अपने स्वयं के सर्वर पर [Next.js ऐप तैनात] (https://nextjs.org/docs/deployment) कर सकते हैं। [पूरी तरह से स्थिर Next.js ऐप्स](https://nextjs.org/docs/advanced-features/static-html-export) को किसी भी स्थिर होस्टिंग पर तैनात किया जा सकता है।
+Next.js [Vercel](https://vercel.com/) द्वारा मेन्टेन किया जाता है। आप किसी भी Node.js या सर्वर रहित होस्टिंग, या अपने स्वयं के सर्वर पर [Next.js ऐप डेप्लॉय] (https://nextjs.org/docs/deployment) कर सकते हैं। [पूरी तरह से स्टैटिक Next.js ऐप्स](https://nextjs.org/docs/advanced-features/static-html-export) को किसी भी स्टैटिक होस्टिंग पर डेप्लॉय किया जा सकता है।
+
 
 ### Remix {/*remix*/}
 
