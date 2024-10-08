@@ -272,25 +272,15 @@ React में दो प्रकार के "मॉडल" डेटा ह
 
 अब आगे चलकर हम उनके लिए अपनी रणनीति का अनुसरण करेंगे:
 
-<<<<<<< HEAD
 1. **स्थिति का उपयोग करने वाले कंपोनेंट की पहचान करें:**
     * `ProductTable` को उस state के आधार पर प्रोडक्ट सूची को फ़िल्टर करने की आवश्यकता है (सर्च टेक्स्ट और चेकबॉक्स के मान)।
     * `SearchBar` को उस state का विवरण दिखाने की आवश्यकता है (सर्च टेक्स्ट और चेकबॉक्स के मान)।
-1. **उनके सामान्य पैरेंट कंपोनेंट का पता लगाएं:** जो पहले पैरेंट कंपोनेंट दोनों कंपोनेंट को साझा करते हैं, वह है `FilterableProductTable`। 
-2. **state को रखने के लिए निर्णय लें:** हम filterText और inStockOnly state मूल्यों को `FilterableProductTable` में रखेंगे।
+2. **उनके सामान्य पैरेंट कंपोनेंट का पता लगाएं:** जो पहले पैरेंट कंपोनेंट दोनों कंपोनेंट को साझा करते हैं, वह है `FilterableProductTable`। 
+3. **state को रखने के लिए निर्णय लें:** हम filterText और inStockOnly state मूल्यों को `FilterableProductTable` में रखेंगे।
 
 इसलिए स्थिति मूल्य `FilterableProductTable` में रहेंगे।
 
 [`useState()` Hook](/reference/react/useState) के साथ कंपोनेंट को state जोड़ें। हुक्स विशेष फ़ंक्शन हैं जो रिएक्ट में "हुक इंटो" करने की अनुमति देते हैं। `FilterableProductTable` के शीर्ष पर दो state चर को जोड़ें और उनके प्रारंभिक state को निर्दिष्ट करें:
-=======
-1. **Identify components that use state:**
-    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value). 
-    * `SearchBar` needs to display that state (search text and checkbox value).
-2. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
-3. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
->>>>>>> 1697ae89a3bbafd76998dd7496754e5358bc1e9a
-
-
 
 ```js
 function FilterableProductTable({ products }) {
