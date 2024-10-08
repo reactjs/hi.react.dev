@@ -379,11 +379,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 #### Using a single event handler for multiple fields {/*using-a-single-event-handler-for-multiple-fields*/}
 
-<<<<<<< HEAD
 आप डायनामिक नाम वाली किसी प्रॉपर्टी को निर्दिष्ट करने के लिए अपने ऑब्जेक्ट डेफिनिशन के अंदर `[` और `]` ब्रेसिज़ का भी उपयोग कर सकते हैं। यहां एक ही उदाहरण है, लेकिन तीन अलग-अलग लोगों के बजाय एक ही ईवेंट हैंडलर के साथ:
-=======
-You can also use the `[` and `]` braces inside your object definition to specify a property with a dynamic name. Here is the same example, but with a single event handler instead of three different ones:
->>>>>>> 1697ae89a3bbafd76998dd7496754e5358bc1e9a
 
 <Sandpack>
 
