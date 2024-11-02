@@ -65,7 +65,7 @@ export function Navigation({
     if (containerRef.current) {
       const el = containerRef.current;
       el.scrollLeft =
-        challengesNavRef.current[scrollPos].current?.offsetLeft || 0;
+        challengesNavRef.current[scrollPos]?.current?.offsetLeft || 0;
     }
   }, [containerRef, challengesNavRef, scrollPos]);
 
