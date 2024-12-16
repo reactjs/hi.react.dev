@@ -52,33 +52,10 @@ react-devtools
 
 ![React डेवलपर टूल्स स्टैंडअलोन](/images/docs/react-devtools-standalone.png)
 
-<<<<<<< HEAD
-## मोबाइल (React Native) {/*mobile-react-native*/}
-React डेवलपर टूल का उपयोग [React Native](https://reactnative.dev/) के साथ बनी ऐप्स का निरीक्षण करने के लिए भी किया जा सकता है।
+## मोबाइल (React Native) {/*mobile-react-native*/}  
 
-React डेवलपर टूल्स का उपयोग करने का सबसे आसान तरीका इसे ग्लोबली इनस्टॉल  करना है:
-```bash
-# Yarn
-yarn global add react-devtools
-=======
-## Mobile (React Native) {/*mobile-react-native*/}
+[React Native](https://reactnative.dev/) से बानी ऍप्स को इंस्पेक्ट करने के लिए, ऍप [React Native DevTools](https://reactnative.dev/docs/debugging/react-native-devtools) का इस्तेमाल कर सकते हैं, इसके साथ डिबग्गर पूरी तरह से React Developer Tools के साथ इंटेग्रटे हो जाता है। सभी फीचर्स ब्राउज़र एक्सटेनव के जैसे ही होते है नेटिव एलिमेंट हाईलाइट करना और सेलेक्ट करना भी।
 
-To inspect apps built with [React Native](https://reactnative.dev/), you can use [React Native DevTools](https://reactnative.dev/docs/debugging/react-native-devtools), the built-in debugger that deeply integrates React Developer Tools. All features work identically to the browser extension, including native element highlighting and selection.
->>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
+[React Native में डिबगिंग के बारे में और जानें।](https://reactnative.dev/docs/debugging)
 
-[Learn more about debugging in React Native.](https://reactnative.dev/docs/debugging)
-
-<<<<<<< HEAD
-इसके बाद टर्मिनल से डेवलपर टूल खोलें।
-```bash
-react-devtools
-```
-
-इसे चल रहे किसी भी लोकल React Native ऐप से कनेक्ट होना चाहिए।
-
-> यदि डेवलपर टूल कुछ सेकंड के बाद कनेक्ट नहीं होते हैं, तो ऐप को रीलोड करने का प्रयास करेंं।
-
-[React Native डीबग करने के बारे में और जानें।](https://reactnative.dev/docs/debugging)
-=======
-> For versions of React Native earlier than 0.76, please use the standalone build of React DevTools by following the [Safari and other browsers](#safari-and-other-browsers) guide above.
->>>>>>> 3b02f828ff2a4f9d2846f077e442b8a405e2eb04
+> React Native के 0.76 से पुराने वर्ज़न्स के लिए, [React DevTools](https://reactnative.dev/docs/debugging/react-native-devtools) का स्टैंडअलोन बिल्ड यूज़ करो। इसके लिए ऊपर दिया गया [Safari और दूसरे ब्रोसेर्स](#safari-and-other-browsers) वाला गाइड फॉलो करो।  
