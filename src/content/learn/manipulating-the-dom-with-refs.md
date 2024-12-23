@@ -193,9 +193,9 @@ li {
 
 <DeepDive>
 
-#### लिस्ट के रेफ्स को मैनेज करने के लिए रेफ कॉलबैक का उपयोग करना {/*how-to-manage-a-list-of-refs-using-a-ref-callback*/}
+#### लिस्ट ऑफ़ रिफ्स को `ref` कॉलबैक का उपयोग करके प्रबंधित करना {/*how-to-manage-a-list-of-refs-using-a-ref-callback*/}
 
-उपरोक्त उदाहरणों में, रेफ्स की संख्या पहले से तय है। हालांकि, कभी-कभी आपको लिस्ट के प्रत्येक आइटम के लिए एक रेफ चाहिए, और आपको नहीं पता होता कि कितने आइटम होंगे। इस प्रकार का कोड **काम नहीं करेगा**:
+उपरोक्त उदाहरणों में, रिफ्स की संख्या पहले से तय होती है। लेकिन कभी-कभी आपको लिस्ट में प्रत्येक आइटम के लिए एक रिफ की ज़रूरत हो सकती है, और आपको पता नहीं होता कि कितने आइटम होंगे। ऐसा कुछ **काम नहीं करेगा**:
 
 ```js
 <ul>
@@ -207,13 +207,13 @@ li {
 </ul>
 ```
 
-यह इसलिए है क्योंकि **Hooks को केवल आपके कंपोनेंट के टॉप-लेवल पर ही कॉल किया जाना चाहिए।** आप `useRef` को किसी लूप, कंडीशन या `map()` कॉल के अंदर कॉल नहीं कर सकते।
+ऐसा इसलिए है क्योंकि **हुक्स को केवल आपके कंपोनेंट के शीर्ष स्तर पर ही कॉल किया जाना चाहिए।** आप `useRef` को किसी लूप, कंडीशन, या `map()` कॉल के अंदर नहीं कॉल कर सकते।
 
-इसका एक तरीका यह है कि उनके पैरेंट एलिमेंट का एक रेफ प्राप्त करें, और फिर DOM मैनिपुलेशन मेथड्स जैसे [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) का उपयोग करके व्यक्तिगत चाइल्ड नोड्स "ढूंढें।" हालांकि, यह तरीका अस्थिर हो सकता है और यदि आपका DOM स्ट्रक्चर बदलता है तो टूट सकता है।
+इस समस्या को हल करने का एक तरीका यह है कि उनके पैरेंट एलिमेंट के लिए एक रिफ लें और फिर DOM मैनिपुलेशन विधियों जैसे [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) का उपयोग करके व्यक्तिगत चाइल्ड नोड्स "खोजें"। लेकिन यह तरीका नाजुक है और आपके DOM स्ट्रक्चर के बदलने पर टूट सकता है।
 
-दूसरा समाधान यह है कि **`ref` एट्रिब्यूट को एक फंक्शन पास करें।** इसे [`ref` callback](/reference/react-dom/components/common#ref-callback) कहा जाता है। React आपके रेफ कॉलबैक को DOM नोड के साथ कॉल करेगा जब रेफ सेट करने का समय होगा, और `null` के साथ जब इसे क्लियर करने का समय होगा। इससे आप अपनी खुद की एक Array या [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) बनाए रख सकते हैं और किसी भी रेफ तक उसके इंडेक्स या किसी प्रकार की ID द्वारा पहुंच सकते हैं।
+एक और समाधान है कि **`ref` एट्रिब्यूट को एक फ़ंक्शन पास करें।** इसे [`ref` कॉलबैक](/reference/react-dom/components/common#ref-callback) कहा जाता है। React आपके रिफ कॉलबैक को DOM नोड के साथ तब कॉल करेगा जब रिफ सेट करना हो, और `null` के साथ जब रिफ को क्लियर करना हो। यह आपको अपनी खुद की [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) या ऐरे बनाए रखने देता है और किसी रिफ तक इसकी इंडेक्स या किसी प्रकार के ID के माध्यम से पहुंचने देता है।
 
-इस उदाहरण में दिखाया गया है कि आप इस दृष्टिकोण का उपयोग करके लंबी लिस्ट में किसी भी नोड तक स्क्रॉल कैसे कर सकते हैं:
+यह उदाहरण दिखाता है कि आप इस तरीके का उपयोग करके किसी लंबी लिस्ट में किसी भी नोड को स्क्रॉल कैसे कर सकते हैं:
 
 <Sandpack>
 
@@ -236,7 +236,7 @@ export default function CatFriends() {
 
   function getMap() {
     if (!itemsRef.current) {
-      // Initialize the Map on first usage.
+      // पहली बार उपयोग पर Map को इनिशियलाइज़ करें।
       itemsRef.current = new Map();
     }
     return itemsRef.current;
@@ -256,11 +256,11 @@ export default function CatFriends() {
               key={cat}
               ref={(node) => {
                 const map = getMap();
-                if (node) {
-                  map.set(cat, node);
-                } else {
+                map.set(cat, node);
+
+                return () => {
                   map.delete(cat);
-                }
+                };
               }}
             >
               <img src={cat} />
@@ -309,59 +309,35 @@ li {
 }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  }
-}
-```
-
 </Sandpack>
 
-इस उदाहरण में, itemsRef एक सिंगल DOM नोड को स्टोर नहीं करता है। इसके बजाय, यह एक Map को स्टोर करता है, जो हर आइटम के ID को उसके संबंधित DOM नोड से जोड़ता है। (Refs किसी भी मान को स्टोर कर सकते हैं!) हर लिस्ट आइटम पर उपयोग किए गए ref callback का काम Map को अपडेट करना है:
+इस उदाहरण में, `itemsRef` एक ही DOM नोड को नहीं रखता है। इसके बजाय, यह एक [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map) रखता है, जो आइटम ID से DOM नोड को मैप करता है। ([Refs किसी भी वैल्यू को रख सकते हैं!](/learn/referencing-values-with-refs)) प्रत्येक लिस्ट आइटम पर [`ref` कॉलबैक](/reference/react-dom/components/common#ref-callback) Map को अपडेट करने का ध्यान रखता है:
 
 ```js
 <li
   key={cat.id}
   ref={node => {
     const map = getMap();
-    if (node) {
-      // Add to the Map
-      map.set(cat, node);
-    } else {
-      // Remove from the Map
-      map.delete(cat);
-    }
-  }}
->
-```
-
-यह आपको बाद में Map से व्यक्तिगत DOM नोड्स को पढ़ने की अनुमति देता है।
-
-<Canary>
-
-यह उदाहरण `ref` कॉलबैक के साथ एक क्लीनअप फ़ंक्शन का उपयोग करके Map को प्रबंधित करने का एक और तरीका दिखाता है।
-
-```js
-<li
-  key={cat.id}
-  ref={node => {
-    const map = getMap();
-    // Add to the Map
+    // Map में जोड़ें
     map.set(cat, node);
 
     return () => {
-      // Remove from the Map
+      // Map से हटाएं
       map.delete(cat);
     };
   }}
 >
 ```
 
-</Canary>
+यह आपको बाद में Map से व्यक्तिगत DOM नोड्स पढ़ने की अनुमति देता है।
+
+<Note>
+
+जब Strict Mode सक्षम होता है, तो डेवेलपमेंट में रिफ कॉलबैक दो बार चलेंगे।
+
+`[Ref]` कॉलबैक को फिर से चलाने से बग कैसे ठीक होते हैं, इसके बारे में अधिक जानें। [यहां पढ़ें](/reference/react/StrictMode#fixing-bugs-found-by-re-running-ref-callbacks-in-development)
+
+</Note>
 
 </DeepDive>
 
