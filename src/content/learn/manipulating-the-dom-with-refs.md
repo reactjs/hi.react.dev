@@ -341,19 +341,38 @@ li {
 
 </DeepDive>
 
-## किसी अन्य कंपोनेंट के DOM नोड्स को एक्सेस करना {/*accessing-another-components-dom-nodes*/}  
+## किसी अन्य कंपोनेंट के DOM नोड्स तक पहुंचना {/*accessing-another-components-dom-nodes*/}
 
-जब आप किसी बिल्ट-इन कंपोनेंट (जैसे `<input />`) पर एक ref लगाते हैं, जो ब्राउज़र में एक एलिमेंट आउटपुट करता है, React उस ref की `current` प्रॉपर्टी को संबंधित DOM नोड (जैसे ब्राउज़र में वास्तविक `<input />`) पर सेट कर देता है।  
+<Pitfall>  
+Refs एक अंतिम उपाय हैं। किसी _दूसरे_ कंपोनेंट के DOM नोड्स को मैन्युअली मैनिपुलेट करना आपके कोड को नाजुक बना सकता है।  
+</Pitfall>
 
-हालांकि, यदि आप अपने **खुद के** कंपोनेंट (जैसे `<MyInput />`) पर ref लगाने का प्रयास करते हैं, तो डिफ़ॉल्ट रूप से आपको `null` मिलेगा। इसे दिखाने के लिए एक उदाहरण नीचे दिया गया है। ध्यान दें कि बटन पर क्लिक करने से इनपुट **फोकस नहीं होता**:  
+आप पैरेंट कंपोनेंट से चाइल्ड कंपोनेंट्स तक refs को [किसी अन्य प्रॉप की तरह](/learn/passing-props-to-a-component) पास कर सकते हैं।
+
+```js {3-4,9}
+import { useRef } from 'react';
+
+function MyInput({ ref }) {
+  return <input ref={ref} />;
+}
+
+function MyForm() {
+  const inputRef = useRef(null);
+  return <MyInput ref={inputRef} />;
+}
+```
+
+ऊपर दिए गए उदाहरण में, एक ref पैरेंट कंपोनेंट `MyForm` में बनाया गया है और चाइल्ड कंपोनेंट `MyInput` को पास किया गया है। `MyInput` फिर इस ref को `<input>` को पास करता है। चूंकि `<input>` एक [बिल्ट-इन कंपोनेंट](/reference/react-dom/components/common) है, React ref की `.current` प्रॉपर्टी को `<input>` DOM एलिमेंट पर सेट करता है।
+
+`MyForm` में बनाया गया `inputRef` अब `MyInput` द्वारा रिटर्न किए गए `<input>` DOM एलिमेंट को पॉइंट करता है। `MyForm` में बनाया गया एक क्लिक हैंडलर `inputRef` को एक्सेस कर सकता है और `<input>` पर फोकस सेट करने के लिए `focus()` को कॉल कर सकता है।
 
 <Sandpack>
 
 ```js
 import { useRef } from 'react';
 
-function MyInput(props) {
-  return <input {...props} />;
+function MyInput({ ref }) {
+  return <input ref={ref} />;
 }
 
 export default function MyForm() {
@@ -367,61 +386,6 @@ export default function MyForm() {
     <>
       <MyInput ref={inputRef} />
       <button onClick={handleClick}>
-        इनपुट पर फ़ोकस करें
-      </button>
-    </>
-  );
-}
-```
-
-</Sandpack>
-
-इस समस्या को समझने में मदद करने के लिए, React कंसोल में एक त्रुटि भी प्रिंट करता है:
-
-<ConsoleBlock level="error">
-
-Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
-
-</ConsoleBlock>
-
-यह इसलिए होता है क्योंकि डिफ़ॉल्ट रूप से React किसी भी कंपोनेंट को अन्य कंपोनेंट्स के DOM नोड्स तक पहुँचने की अनुमति नहीं देता है। न ही यह अपने खुद के बच्चों के DOM नोड्स तक पहुँचने की अनुमति देता है! यह जानबूझकर किया गया है। Refs एक बचाव मार्ग हैं, जिन्हें सावधानी से उपयोग करना चाहिए। किसी अन्य कंपोनेंट के DOM नोड्स को मैन्युअली मैनिपुलेट करना आपके कोड को और भी अधिक नाजुक बना सकता है।
-
-इसके बजाय, जो कंपोनेंट्स अपने DOM नोड्स को उजागर करना चाहते हैं, उन्हें इस व्यवहार को **ऑप्ट इन** करना पड़ता है। एक कंपोनेंट यह निर्दिष्ट कर सकता है कि वह अपना ref अपने किसी बच्चे को "फॉरवर्ड" करता है। इस प्रकार `MyInput` कंपोनेंट `forwardRef` API का उपयोग कर सकता है:  
-
-```js
-const MyInput = forwardRef((props, ref) => {
-  return <input {...props} ref={ref} />;
-});
-```
-
-यह इस प्रकार काम करता है:
-
-1. `<MyInput ref={inputRef} />` React को यह बताता है कि वह संबंधित DOM नोड को `inputRef.current` में रखे। हालांकि, यह `MyInput` कंपोनेंट पर निर्भर करता है कि वह इस प्रक्रिया को स्वीकार करे—डिफ़ॉल्ट रूप से यह ऐसा नहीं करता।
-2. `MyInput` कंपोनेंट को `forwardRef` का उपयोग करके घोषित किया जाता है। **यह इसे `inputRef` को प्राप्त करने के लिए ऑप्ट इन करता है, जो ऊपर दिए गए `ref` के रूप में दूसरा तर्क है**, जिसे `props` के बाद घोषित किया जाता है।
-3. `MyInput` स्वयं प्राप्त किए गए `ref` को `<input>` के अंदर पास करता है।
-
-अब, बटन पर क्लिक करने से इनपुट पर फोकस करना काम करता है:
-
-<Sandpack>
-
-```js
-import { forwardRef, useRef } from 'react';
-
-const MyInput = forwardRef((props, ref) => {
-  return <input {...props} ref={ref} />;
-});
-
-export default function Form() {
-  const inputRef = useRef(null);
-
-  function handleClick() {
-    inputRef.current.focus();
-  }
-
-  return (
-    <>
-      <MyInput ref={inputRef} />
-      <button onClick={handleClick}>
         Focus the input
       </button>
     </>
@@ -431,33 +395,28 @@ export default function Form() {
 
 </Sandpack>
 
-डिज़ाइन सिस्टम्स में, यह एक सामान्य पैटर्न है कि निम्न-स्तरीय कंपोनेंट्स जैसे बटन, इनपुट्स आदि अपने रिफ्स को उनके DOM नोड्स पर फॉरवर्ड करते हैं। दूसरी ओर, उच्च-स्तरीय कंपोनेंट्स जैसे फॉर्म्स, लिस्ट्स या पेज सेक्शंस आमतौर पर अपने DOM नोड्स को एक्सपोज़ नहीं करते हैं ताकि DOM संरचना पर दुर्घटनावश निर्भरता से बचा जा सके।
+<DeepDive>  
 
-<DeepDive>
+#### API के एक सबसेट को एक इम्पेरेटिव हैंडल के साथ एक्सपोज करना {/*exposing-a-subset-of-the-api-with-an-imperative-handle*/}
 
-#### एक इम्पेरैटिव हैंडल के साथ API के एक उपसेट को एक्सपोज़ करना
-
-उपरोक्त उदाहरण में, `MyInput` मूल DOM इनपुट तत्व को एक्सपोज़ करता है। इससे पैरेंट कंपोनेंट को उस पर `focus()` कॉल करने की अनुमति मिलती है। हालांकि, इससे पैरेंट कंपोनेंट को कुछ और करने की भी अनुमति मिलती है—उदाहरण के लिए, इसके CSS स्टाइल्स को बदलना। असामान्य मामलों में, आप एक्सपोज़ की गई कार्यक्षमता को प्रतिबंधित करना चाह सकते हैं। आप ऐसा `useImperativeHandle` के साथ कर सकते हैं:
+ऊपर दिए गए उदाहरण में, `MyInput` को पास किया गया ref ऑरिजिनल DOM इनपुट एलिमेंट तक पास होता है। यह पैरेंट कंपोनेंट को इस पर `focus()` कॉल करने की अनुमति देता है। हालांकि, इससे पैरेंट कंपोनेंट को कुछ और भी करने की अनुमति मिलती है—उदाहरण के लिए, इसकी CSS स्टाइल्स को बदलना।  
+कुछ असामान्य मामलों में, आप एक्सपोज़ की गई कार्यक्षमता को सीमित करना चाह सकते हैं। आप यह [`useImperativeHandle`](/reference/react/useImperativeHandle) का उपयोग करके कर सकते हैं:
 
 <Sandpack>
 
 ```js
-import {
-  forwardRef, 
-  useRef, 
-  useImperativeHandle
-} from 'react';
+import { useRef, useImperativeHandle } from "react";
 
-const MyInput = forwardRef((props, ref) => {
+function MyInput({ ref }) {
   const realInputRef = useRef(null);
   useImperativeHandle(ref, () => ({
-    // Only expose focus and nothing else
+    // केवल focus को एक्सपोज करें और कुछ नहीं
     focus() {
       realInputRef.current.focus();
     },
   }));
-  return <input {...props} ref={realInputRef} />;
-});
+  return <input ref={realInputRef} />;
+};
 
 export default function Form() {
   const inputRef = useRef(null);
@@ -469,9 +428,7 @@ export default function Form() {
   return (
     <>
       <MyInput ref={inputRef} />
-      <button onClick={handleClick}>
-        Focus the input
-      </button>
+      <button onClick={handleClick}>Focus the input</button>
     </>
   );
 }
@@ -479,9 +436,10 @@ export default function Form() {
 
 </Sandpack>
 
-यहाँ, `MyInput` के अंदर `realInputRef` वास्तविक इनपुट DOM नोड को रखता है। हालांकि, `useImperativeHandle` React को निर्देश देता है कि वह पैरेंट कंपोनेंट को एक विशेष वस्तु के रूप में अपने कस्टम रेफ को प्रदान करे। इसलिए `Form` कंपोनेंट के अंदर `inputRef.current` केवल `focus` मेथड रखेगा। इस मामले में, रेफ "हैंडल" DOM नोड नहीं है, बल्कि वह कस्टम ऑब्जेक्ट है जो आप `useImperativeHandle` कॉल के अंदर बनाते हैं।
+यहां, `MyInput` के अंदर `realInputRef` असली इनपुट DOM नोड को होल्ड करता है। हालांकि, [`useImperativeHandle`](/reference/react/useImperativeHandle) React को निर्देश देता है कि वह पैरेंट कंपोनेंट को एक कस्टम ऑब्जेक्ट को रिफ के रूप में प्रोवाइड करे।  
+इसलिए, `Form` कंपोनेंट के अंदर `inputRef.current` केवल `focus` मेथड तक ही पहुंच प्रदान करेगा। इस मामले में, रिफ "हैंडल" DOM नोड नहीं है, बल्कि वह कस्टम ऑब्जेक्ट है जिसे आप [`useImperativeHandle`](/reference/react/useImperativeHandle) कॉल के अंदर बनाते हैं।  
 
-</DeepDive>
+</DeepDive>  
 
 ## जब React रेफ्स को जोड़ता है {/*when-react-attaches-the-refs*/}
 
@@ -591,7 +549,7 @@ export default function TodoList() {
     const newTodo = { id: nextId++, text: text };
     flushSync(() => {
       setText('');
-      setTodos([ ...todos, newTodo]);      
+      setTodos([ ...todos, newTodo]);
     });
     listRef.current.lastChild.scrollIntoView({
       behavior: 'smooth',
