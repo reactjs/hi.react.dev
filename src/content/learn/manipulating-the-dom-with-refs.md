@@ -819,7 +819,7 @@ button { display: block; margin-bottom: 10px; }
 
 </Solution>
 
-#### इमेज कैरोसेल को स्क्रॉल करना
+#### इमेज कैरोसेल को स्क्रॉल करना {/*scrolling-an-image-carousel*/}
 
 इस इमेज कैरोसेल में एक "Next" बटन है जो सक्रिय इमेज को स्विच करता है। जब बटन पर क्लिक किया जाए, तो गैलरी को सक्रिय इमेज की ओर क्षैतिज रूप से स्क्रॉल करें। आपको सक्रिय इमेज के DOM नोड पर [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) कॉल करना होगा:
 
