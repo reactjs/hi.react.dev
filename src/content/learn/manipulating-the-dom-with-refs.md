@@ -589,7 +589,7 @@ for (let i = 0; i < 20; i++) {
 
 </DeepDive>
 
-## DOM मैनिपुलेशन के लिए सर्वोत्तम प्रथाएँ (Best practices for DOM manipulation with refs)
+## DOM मैनिपुलेशन के लिए सर्वोत्तम प्रथाएँ {/*best-practices-for-dom-manipulation-with-refs*/}
 
 Refs एक "escape hatch" हैं। आपको इन्हें केवल तब उपयोग करना चाहिए जब आपको "React से बाहर कदम रखना हो"। इसके सामान्य उदाहरणों में फोकस, स्क्रॉल पोजीशन को मैनेज करना, या उन ब्राउज़र APIs को कॉल करना शामिल है जिन्हें React एक्सपोज़ नहीं करता।
 
@@ -755,7 +755,7 @@ button { display: block; margin-bottom: 20px; }
 
 </Solution>
 
-#### खोज फ़ील्ड को फ़ोकस करें
+#### खोज फ़ील्ड को फ़ोकस करें {/*focus-the-search-field*/}
 
 इस तरह से बनाएं कि "Search" बटन पर क्लिक करने से फ़ोकस फ़ील्ड में चला जाए।
 
