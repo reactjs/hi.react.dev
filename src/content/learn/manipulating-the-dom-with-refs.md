@@ -659,7 +659,7 @@ button {
 
 <Challenges>
 
-#### वीडियो को प्ले और पॉज करें
+#### वीडियो को प्ले और पॉज करें {/*play-and-pause-the-video*/}
 
 इस उदाहरण में, बटन एक राज्य वेरिएबल को टॉगल करता है ताकि यह प्ले और पॉज्ड स्थिति के बीच स्विच कर सके। हालांकि, वीडियो को वास्तव में प्ले या पॉज करने के लिए, केवल राज्य को टॉगल करना पर्याप्त नहीं है। आपको `<video>` के DOM तत्व पर [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) और [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) को भी कॉल करना होगा। इसके लिए इसे एक ref जोड़ें, और बटन को काम करने योग्य बनाएं।
 
