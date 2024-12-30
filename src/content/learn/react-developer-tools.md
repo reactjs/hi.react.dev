@@ -54,7 +54,7 @@ react-devtools
 
 ## मोबाइल (React Native) {/*mobile-react-native*/}  
 
-[React Native](https://reactnative.dev/) से बानी ऍप्स को इंस्पेक्ट करने के लिए, ऍप [React Native DevTools](https://reactnative.dev/docs/debugging/react-native-devtools) का इस्तेमाल कर सकते हैं, इसके साथ डिबग्गर पूरी तरह से React Developer Tools के साथ इंटेग्रटे हो जाता है। सभी फीचर्स ब्राउज़र एक्सटेनव के जैसे ही होते है नेटिव एलिमेंट हाईलाइट करना और सेलेक्ट करना भी।
+[React Native](https://reactnative.dev/) से बानी ऍप्स को इंस्पेक्ट करने के लिए, आप [React Native DevTools](https://reactnative.dev/docs/debugging/react-native-devtools) का इस्तेमाल कर सकते हैं, इसके साथ डिबग्गर पूरी तरह से React Developer Tools के साथ इंटेग्रटे हो जाता है। सभी फीचर्स ब्राउज़र एक्सटेनव के जैसे ही होते है नेटिव एलिमेंट हाईलाइट करना और सेलेक्ट करना भी।
 
 [React Native में डिबगिंग के बारे में और जानें।](https://reactnative.dev/docs/debugging)
 
