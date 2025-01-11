@@ -166,7 +166,7 @@ img { height: 90px }
 </>
 ```
 
-इस खाली टैग को *[React fragment](TODO)* कहा जाता है। React fragments आपको ब्राउज़र HTML ट्री में कोई निशान छोड़े बिना चीजों को ग्रुप करने देते हैं।
+इस खाली टैग को *[React fragment](/reference/react/Fragment)* कहा जाता है। React fragments आपको ब्राउज़र HTML ट्री में कोई निशान छोड़े बिना चीजों को ग्रुप करने देते हैं।
 
 <DeepDive>
 
@@ -211,7 +211,7 @@ JSX जावास्क्रिप्ट में बदल जाता ह
 />
 ```
 
-आप [इन सभी ऐट्रिब्यूट्स को React DOM एलिमेंट्स में पा सकते हैं](TODO). यदि आप एक गलत पाते हैं, तो चिंता न करें React संभावित सुधार के साथ एक संदेश [ब्राउज़र कंसोल](https://developer.mozilla.org/docs/Tools/Browser_Console) पर प्रिंट करेगी।
+आप [इन सभी ऐट्रिब्यूट्स को React DOM एलिमेंट्स में पा सकते हैं](/reference/react-dom/components/common). यदि आप एक गलत पाते हैं, तो चिंता न करें React संभावित सुधार के साथ एक संदेश [ब्राउज़र कंसोल](https://developer.mozilla.org/docs/Tools/Browser_Console) पर प्रिंट करेगी।
 
 <Pitfall>
 
