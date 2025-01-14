@@ -20,16 +20,10 @@ title: किसी मौजूदा प्रोजेक्ट में Rea
 
 यहां बताया गया है कि हम इसे कैसे सेट करने की सलाह देते हैं:
 
-<<<<<<< HEAD
-1. **अपने ऐप के React भाग का निर्माण करें** इनमें से एक का उपयोग करना[React-based frameworks](/learn/start-a-new-react-project).
-2. **निर्दिष्ट करना`/some-app` अपने फ्रेमवर्क के कॉन्फ़िगरेशन में*बेस पथ***  के रूप में (यहां कैसे है: [Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
+1. **अपने ऐप के React भाग का निर्माण करें** इनमें से एक का उपयोग करके [React-based frameworks](/learn/start-a-new-react-project)।
+2. **निर्दिष्ट करना `/some-app` अपने फ्रेमवर्क के कॉन्फ़िगरेशन में *बेस पथ***  के रूप में (यहां कैसे है: [Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/))।
 3. **अपने सर्वर या एक प्रॉक्सी सर्वर को कॉन्फ़िगर करें**ताकि सभी अनुरोधों को `/some-app/` आपके React ऐप द्वारा नियंत्रित किया जाए।
-=======
-1. **Build the React part of your app** using one of the [React-based frameworks](/learn/start-a-new-react-project).
-2. **Specify `/some-app` as the *base path*** in your framework's configuration (here's how: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
-3. **Configure your server or a proxy** so that all requests under `/some-app/` are handled by your React app.
->>>>>>> 9000e6e003854846c4ce5027703b5ce6f81aad80
-
+   
 यह सुनिश्चित करता है कि आपके ऐप का React हिस्सा हो सकता है[सर्वोत्तम प्रथाओं से लाभ](/learn/start-a-new-react-project#can-i-use-react-without-a-framework) उन फ्रेमवर्क में पका हुआ।
 
 कई React-आधारित फ्रेमवर्क full-stack हैं और आपके React ऐप को सर्वर का लाभ उठाते हैं।हालाँकि, आप उसी दृष्टिकोण का उपयोग कर सकते हैं, भले ही आप सर्वर पर जावास्क्रिप्ट नहीं चलाना चाहते हैं या नहीं चाहते हैं।उस स्थिति में, HTML/CSS/JS निर्यात परोसें([`next export` output](https://nextjs.org/docs/advanced-features/static-html-export) Next.js के लिए, GATSBY के लिए डिफ़ॉल्ट) इसके `/some-app/` बजाय।
