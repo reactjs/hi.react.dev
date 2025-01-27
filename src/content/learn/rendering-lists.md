@@ -3,15 +3,15 @@ title: सूचियाँ प्रस्तुत करना
 ---
 
 <Intro>
-आप अक्सर किसी डेटा संग्रह से कई समान कंपोनेंट्स प्रदर्शित करना चाहेंगे। डेटा के array को प्रबंधित करने के लिए आप [JavaScript array methods](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array#) का उपयोग कर सकते हैं। इस पेज पर, आप React के साथ [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) और [`map()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map) का उपयोग करेंगे ताकि अपने डेटा के array को फ़िल्टर और परिवर्तित करके कंपोनेंट्स के array में बदल सकें।
+आप अक्सर किसी डेटा संग्रह से कई समान कौम्पोनॅन्ट्स प्रदर्शित करना चाहेंगे। डेटा के array को प्रबंधित करने के लिए आप [JavaScript array methods](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array#) का उपयोग कर सकते हैं। इस पेज पर, आप React के साथ [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) और [`map()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map) का उपयोग करेंगे ताकि अपने डेटा के array को फ़िल्टर और परिवर्तित करके कौम्पोनॅन्ट्स के array में बदल सकें।
 
 
 </Intro>
 
 <YouWillLearn>
 
-* JavaScript के `map()` का उपयोग करके array से कंपोनेंट्स को कैसे रेंडर करें।
-* JavaScript के  `filter()` का उपयोग करके केवल विशेष कंपोनेंट्स को कैसे रेंडर करें। 
+* JavaScript के `map()` का उपयोग करके array से कौम्पोनॅन्ट्स को कैसे रेंडर करें।
+* JavaScript के  `filter()` का उपयोग करके केवल विशेष कौम्पोनॅन्ट्स को कैसे रेंडर करें। 
 * React keys का उपयोग कब और क्यों करना चाहिए।
 
 </YouWillLearn>
@@ -30,7 +30,7 @@ title: सूचियाँ प्रस्तुत करना
 </ul>
 ```
 
-उन सूची आइटम्स के बीच केवल एक अंतर होता है: उनकी contents, यानी उनका डेटा। जब आप इंटरफेस बना रहे होते हैं, तो अक्सर आपको एक ही कंपोनेंट के कई उदाहरणों को अलग-अलग डेटा के साथ दिखाने की आवश्यकता होती है, जैसे कि टिप्पणियों की सूची या प्रोफ़ाइल images की गैलरी। ऐसे मामलों में, आप उस डेटा को JavaScript ऑब्जेक्ट्स और arrays में संग्रहीत कर सकते हैं और फिर उनमें से कंपोनेंट्स की सूची रेंडर करने के लिए [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  और [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) जैसे तरीकों का उपयोग कर सकते हैं।
+उन सूची आइटम्स के बीच केवल एक अंतर होता है: उनकी contents, यानी उनका डेटा। जब आप इंटरफेस बना रहे होते हैं, तो अक्सर आपको एक ही कौम्पोनॅन्ट के कई उदाहरणों को अलग-अलग डेटा के साथ दिखाने की आवश्यकता होती है, जैसे कि टिप्पणियों की सूची या प्रोफ़ाइल images की गैलरी। ऐसे मामलों में, आप उस डेटा को JavaScript ऑब्जेक्ट्स और arrays में संग्रहीत कर सकते हैं और फिर उनमें से कौम्पोनॅन्ट्स की सूची रेंडर करने के लिए [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  और [`filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) जैसे तरीकों का उपयोग कर सकते हैं।
 
 यहां एक छोटा उदाहरण दिया गया है कि कैसे एक array से आइटम्स की सूची बनाई जा सकती है:
 
@@ -52,7 +52,7 @@ const people = [
 const listItems = people.map(person => <li>{person}</li>);
 ```
 
-3. **Return** अपने कंपोनेंट में `listItems` को `<ul>` में wrapped करें:
+3. **Return** अपने कौम्पोनॅन्ट में `listItems` को `<ul>` में wrapped करें:
 
 ```js
 return <ul>{listItems}</ul>;
@@ -127,7 +127,7 @@ const people = [{
 
 आप केवल उन आइटम्स को चाहते हैं जिनका `profession` `'chemist'` है। इसके लिए "test" function इस प्रकार दिखेगा: `(person) => person.profession === 'chemist'`। इसे एक साथ जोड़ने का तरीका यहां है:
 
-1. एक नई array `chemists` **Create** करें  जो केवल "chemist" वाले लोगों को दिखाती हो, `filter()` method का उपयोग करके `person.profession === 'chemist'`:
+1. एक नई array `chemists` **Create** करें  जो केवल ”chemist” वाले लोगों को दिखाती हो, `people` पर `filter()` कॉल करके इससे `person.profession === 'chemist'` फ़िल्टर करें:
 
 ```js
 const chemists = people.filter(person =>
@@ -153,7 +153,7 @@ const listItems = chemists.map(person =>
 );
 ```
 
-3. अब, अपने कंपोनेंट से `listItems` को **return** करें :
+3. अब, अपने कौम्पोनॅन्ट से `listItems` को **return** करें :
 
 ```js
 return <ul>{listItems}</ul>;
@@ -288,11 +288,7 @@ Warning: Each child in a list should have a unique "key" prop.
 
 </Note>
 
-Keys tell React which array item each component corresponds to, so that it can match them up later. This becomes important if your array items can move (e.g. due to sorting), get inserted, or get deleted. A well-chosen `key` helps React infer what exactly has happened, and make the correct updates to the DOM tree.
-
-Rather than generating keys on the fly, you should include them in your data:
-
-Keys React को यह बताती हैं कि कौन सा array आइटम प्रत्येक कंपोनेंट से संबंधित है, ताकि React बाद में उन्हें मेल कर सके। यह महत्वपूर्ण हो जाता है यदि आपके array आइटम्स को स्थानांतरित (जैसे कि सॉर्टिंग के कारण), जोड़ा, या हटाया जा सकता है। एक अच्छे तरीके से चुनी गई `key` React को यह अनुमान लगाने में मदद करती है कि क्या हुआ है, और DOM वृक्ष में सही अपडेट्स कराती है।
+Keys React को यह बताती हैं कि कौन सा array आइटम प्रत्येक कौम्पोनॅन्ट से संबंधित है, ताकि React बाद में उन्हें मेल कर सके। यह महत्वपूर्ण हो जाता है यदि आपके array आइटम्स को स्थानांतरित (जैसे कि सॉर्टिंग के कारण), जोड़ा, या हटाया जा सकता है। एक अच्छे तरीके से चुनी गई `key` React को यह अनुमान लगाने में मदद करती है कि क्या हुआ है, और DOM वृक्ष में सही अपडेट्स कराती है।
 
 key को तुरंत जनरेट करने के बजाय, आपको उन्हें अपने डेटा में शामिल करना चाहिए।
 
@@ -404,7 +400,7 @@ const listItems = people.map(person =>
 
 </DeepDive>
 
-### अपना `key` कहां से प्राप्त करें {/*where-to-get-your-key*/}
+### अपनी `key` कहां से प्राप्त करें {/*where-to-get-your-key*/}
 
 डेटा के विभिन्न स्रोत विभिन्न प्रकार की keys प्रदान करते हैं:
 
@@ -427,9 +423,9 @@ const listItems = people.map(person =>
 
 आपको किसी आइटम के इंडेक्स को उसकी key के रूप में उपयोग करने का मन हो सकता है। दरअसल, यही React उपयोग करेगा यदि आप `key` को बिल्कुल निर्दिष्ट नहीं करते। लेकिन यदि कोई आइटम डाली जाती है, डिलीट होती है, या यदि array का पुनर्व्यवस्थापन होता है, तो आपके द्वारा रेंडर किए गए आइटम्स का क्रम समय के साथ बदल जाएगा। इंडेक्स को key के रूप में उपयोग करना अक्सर सूक्ष्म और उलझन भरे बग्स का कारण बनता है।
 
-इसी तरह, तुरंत कीज़ उत्पन्न न करें, जैसे कि `key={Math.random()}` के साथ। इससे keys रेंडर के बीच कभी मेल नहीं खाएंगी, जिससे हर बार आपके सभी कंपोनेंट्स और DOM को फिर से बनाना पड़ेगा। यह न केवल धीमा है, बल्कि यह सूची आइटम्स के अंदर किसी भी उपयोगकर्ता इनपुट को भी खो देगा। इसके बजाय, डेटा पर आधारित एक स्थिर ID का उपयोग करें।
+इसी तरह, तुरंत कीज़ उत्पन्न न करें, जैसे कि `key={Math.random()}` के साथ। इससे keys रेंडर के बीच कभी मेल नहीं खाएंगी, जिससे हर बार आपके सभी कौम्पोनॅन्ट्स और DOM को फिर से बनाना पड़ेगा। यह न केवल धीमा है, बल्कि यह सूची आइटम्स के अंदर किसी भी उपयोगकर्ता इनपुट को भी खो देगा। इसके बजाय, डेटा पर आधारित एक स्थिर ID का उपयोग करें।
 
-ध्यान दें कि आपके कंपोनेंट्स को `key` प्रॉप के रूप में प्राप्त नहीं होगी। इसे केवल React खुद द्वारा एक संकेत के रूप में उपयोग किया जाता है। यदि आपके कंपोनेंट को ID की आवश्यकता है, तो आपको इसे एक अलग प्रॉप के रूप में पास करना होगा: `<Profile key={id} userId={id} />`।
+ध्यान दें कि आपके कौम्पोनॅन्ट्स को `key` प्रॉप के रूप में प्राप्त नहीं होगी। इसे केवल React खुद द्वारा एक संकेत के रूप में उपयोग किया जाता है। यदि आपके कौम्पोनॅन्ट को ID की आवश्यकता है, तो आपको इसे एक अलग प्रॉप के रूप में पास करना होगा: `<Profile key={id} userId={id} />`।
 
 </Pitfall>
 
@@ -437,10 +433,10 @@ const listItems = people.map(person =>
 
 इस पृष्ठ पर आपने सीखा:
 
-* कैसे डेटा को कंपोनेंट्स से बाहर ले जाकर डेटा संरचनाओं जैसे arrays और ऑब्जेक्ट्स में रखा जाए।
-* कैसे JavaScript के `map()` का उपयोग करके समान कंपोनेंट्स के सेट बनाए जाएं।
+* कैसे डेटा को कौम्पोनॅन्ट्स से बाहर ले जाकर डेटा संरचनाओं जैसे arrays और ऑब्जेक्ट्स में रखा जाए।
+* कैसे JavaScript के `map()` का उपयोग करके समान कौम्पोनॅन्ट्स के सेट बनाए जाएं।
 * कैसे JavaScript के `filter()` का उपयोग करके फ़िल्टर किए गए आइटम्स के arrays बनाए जाएं।
-* क्यों और कैसे प्रत्येक कंपोनेंट पर `key` सेट किया जाए ताकि React उन्हें ट्रैक कर सके, भले ही उनकी स्थिति या डेटा बदल जाए।
+* क्यों और कैसे प्रत्येक कौम्पोनॅन्ट पर `key` सेट किया जाए ताकि React उन्हें ट्रैक कर सके, भले ही उनकी स्थिति या डेटा बदल जाए।
 
 </Recap>
 
@@ -658,7 +654,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 इस समाधान में, `map` कॉल्स को सीधे पैरेंट `<ul>` elements में इनलाइन रखा गया है, लेकिन यदि आपको इसे अधिक readable लगे, तो आप उनके लिए वेरिएबल्स भी बना सकते हैं।
 
-फिर भी रेंडर की गई सूचियों के बीच कुछ डुप्लिकेशन है। आप आगे बढ़ सकते हैं और पुनरावृत्त भागों को `<ListSection>` कंपोनेंट में निकाल सकते हैं।
+फिर भी रेंडर की गई सूचियों के बीच कुछ डुप्लिकेशन है। आप आगे बढ़ सकते हैं और पुनरावृत्त भागों को `<ListSection>` कौम्पोनॅन्ट में निकाल सकते हैं।
 
 <Sandpack>
 
@@ -769,13 +765,9 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 ```
 
 </Sandpack>
-
-A very attentive reader might notice that with two `filter` calls, we check each person's profession twice. Checking a property is very fast, so in this example it's fine. If your logic was more expensive than that, you could replace the `filter` calls with a loop that manually constructs the arrays and checks each person once.
-
-In fact, if `people` never change, you could move this code out of your component. From React's perspective, all that matters is that you give it an array of JSX nodes in the end. It doesn't care how you produce that array:
 एक बहुत ही सतर्क पाठक यह नोटिस कर सकता है कि दो `filter` कॉल्स के साथ, हम प्रत्येक व्यक्ति के प्रोफेशन की जांच दो बार कर रहे हैं। एक प्रॉपर्टी की जांच करना बहुत तेज़ होता है, इसलिए इस उदाहरण में यह ठीक है। यदि आपकी लॉजिक उससे अधिक महंगी होती, तो आप `filter` कॉल्स को एक लूप से बदल सकते थे जो मैन्युअली arrays बनाता और प्रत्येक व्यक्ति की एक बार जांच करता।
 
-असल में, अगर `people` कभी नहीं बदलते, तो आप इस कोड को अपने कंपोनेंट से बाहर ले जा सकते हैं। React के दृष्टिकोण से, यह महत्वपूर्ण नहीं है कि आप उस array को कैसे उत्पन्न करते हैं, केवल यह मायने रखता है कि आप अंत में उसे JSX नोड्स का array देते हैं।
+असल में, अगर `people` कभी नहीं बदलते, तो आप इस कोड को अपने कौम्पोनॅन्ट से बाहर ले जा सकते हैं। React के दृष्टिकोण से, यह महत्वपूर्ण नहीं है कि आप उस array को कैसे उत्पन्न करते हैं, केवल यह मायने रखता है कि आप अंत में उसे JSX नोड्स का array देते हैं।
 
 <Sandpack>
 
@@ -893,7 +885,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 </Solution>
 
-#### एक कंपोनेंट में नेस्टेड सूचियाँ {/*nested-lists-in-one-component*/}
+#### एक कौम्पोनॅन्ट में नेस्टेड सूचियाँ {/*nested-lists-in-one-component*/}
 इस array से रेसिपी की एक सूची बनाएं! array में प्रत्येक रेसिपी के लिए, उसका नाम `<h2>` के रूप में दिखाएं और उसकी सामग्री को `<ul>` में सूचीबद्ध करें।
 <Hint>
 
@@ -985,9 +977,9 @@ export const recipes = [{
 
 </Solution>
 
-#### एक सूची आइटम कंपोनेंट निकालना {/*extracting-a-list-item-component*/}
+#### एक सूची आइटम कौम्पोनॅन्ट निकालना {/*extracting-a-list-item-component*/}
 
-यह `RecipeList` कंपोनेंट दो नेस्टेड `map` कॉल्स को शामिल करता है। इसे सरल बनाने के लिए, इससे एक `Recipe` कंपोनेंट निकालें जो `id`, `name`, और `ingredients` प्रॉप्स को स्वीकार करेगा। आप बाहरी `key` को कहां रखें और क्यों?
+यह `RecipeList` कौम्पोनॅन्ट दो नेस्टेड `map` कॉल्स को शामिल करता है। इसे सरल बनाने के लिए, इससे एक `Recipe` कौम्पोनॅन्ट निकालें जो `id`, `name`, और `ingredients` प्रॉप्स को स्वीकार करेगा। आप बाहरी `key` को कहां रखें और क्यों?
 
 <Sandpack>
 
@@ -1035,7 +1027,7 @@ export const recipes = [{
 
 <Solution>
 
-आप बाहरी `map` से JSX को कॉपी-पेस्ट करके एक नया `Recipe` कंपोनेंट बना सकते हैं और उस JSX को रिटर्न कर सकते हैं। फिर आप `recipe.name` को `name`, `recipe.id` को `id`, और इसी तरह बदल सकते हैं, और उन्हें प्रॉप्स के रूप में `Recipe` को पास कर सकते हैं।
+आप बाहरी `map` से JSX को कॉपी-पेस्ट करके एक नया `Recipe` कौम्पोनॅन्ट बना सकते हैं और उस JSX को रिटर्न कर सकते हैं। फिर आप `recipe.name` को `name`, `recipe.id` को `id`, और इसी तरह बदल सकते हैं, और उन्हें प्रॉप्स के रूप में `Recipe` को पास कर सकते हैं।
 
 <Sandpack>
 
@@ -1087,9 +1079,9 @@ export const recipes = [{
 
 </Sandpack>
 
-यहाँ, `<Recipe {...recipe} key={recipe.id} />` एक syntax शॉर्टकट है जो यह कहता है "सब कुछ प्रॉपर्टीज़ `recipe` ऑब्जेक्ट की `Recipe` कंपोनेंट को प्रॉप्स के रूप में पास करें"। आप प्रत्येक प्रॉप को स्पष्ट रूप से भी लिख सकते हैं: `<Recipe id={recipe.id} name={recipe.name} ingredients={recipe.ingredients} key={recipe.id} />`।
+यहाँ, `<Recipe {...recipe} key={recipe.id} />` एक syntax शॉर्टकट है जो यह कहता है "सब कुछ प्रॉपर्टीज़ `recipe` ऑब्जेक्ट की `Recipe` कौम्पोनॅन्ट को प्रॉप्स के रूप में पास करें"। आप प्रत्येक प्रॉप को स्पष्ट रूप से भी लिख सकते हैं: `<Recipe id={recipe.id} name={recipe.name} ingredients={recipe.ingredients} key={recipe.id} />`।
 
-**ध्यान दें कि `key` को `<Recipe>` पर ही निर्दिष्ट किया गया है, न कि `Recipe` से रिटर्न होने वाले रूट `<div>` पर।** इसका कारण यह है कि यह `key` सीधे आसपास की array के संदर्भ में आवश्यक है। पहले, आपके पास `<div>` का एक array था, इसलिए प्रत्येक को एक `key` की आवश्यकता थी, लेकिन अब आपके पास `<Recipe>` का एक array है। दूसरे शब्दों में, जब आप एक कंपोनेंट को निकालते हैं, तो यह न भूलें कि `key` को JSX से बाहर छोड़ दें जिसे आप कॉपी और पेस्ट करते हैं।
+**ध्यान दें कि `key` को `<Recipe>` पर ही निर्दिष्ट किया गया है, न कि `Recipe` से रिटर्न होने वाले रूट `<div>` पर।** इसका कारण यह है कि यह `key` सीधे आसपास की array के संदर्भ में आवश्यक है। पहले, आपके पास `<div>` का एक array था, इसलिए प्रत्येक को एक `key` की आवश्यकता थी, लेकिन अब आपके पास `<Recipe>` का एक array है। दूसरे शब्दों में, जब आप एक कौम्पोनॅन्ट को निकालते हैं, तो यह न भूलें कि `key` को JSX से बाहर छोड़ दें जिसे आप कॉपी और पेस्ट करते हैं।
 
 </Solution>
 
@@ -1160,7 +1152,6 @@ hr {
 
 <Solution>
 
-You can write a manual loop, inserting `<hr />` and `<p>...</p>` into the output array as you go:
 आप एक मैनुअल लूप लिख सकते हैं, `<hr />` और `<p>...</p>` को आउटपुट array में डालते हुए:
 
 <Sandpack>
