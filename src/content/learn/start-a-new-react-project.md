@@ -27,6 +27,7 @@ title: एक नया React प्रोजेक्ट शुरू करे
 
 अपनी सेटअप को बदलकर सर्वर पर या बिल्ड समय पर कुछ कोड चलाना बहुत चुनौतीपूर्ण हो सकता है।
 
+<<<<<<< HEAD
 **ये समस्याएँ React तक सीमित नहीं हैं। इसी कारण से Svelte के पास SvelteKit है, Vue के पास Nuxt है.** इन समस्याओं को स्वयं हल करने के लिए, आपको अपने बंडलर को अपने राउटर और डेटा फेचिंग लाइब्रेरी के साथ एकीकृत करना होगा। शुरूआती सेटअप बनाना आसान हो सकता है, लेकिन एक ऐसा ऐप बनाना जो समय के साथ तेजी से लोड हो, इसमें कई सूक्ष्मताएँ शामिल हैं।
 
 आपको ऐप का न्यूनतम कोड भेजने की आवश्यकता होगी, लेकिन इसे एक ही क्लाइंट–सर्वर राउंडट्रिप में और पेज के डेटा के साथ समानांतर में करना होगा।
@@ -39,6 +40,9 @@ title: एक नया React प्रोजेक्ट शुरू करे
 वहीं, कस्टम सेटअप के साथ आप असमर्थित डिपेंडेंसी वर्ज़न पर अटक सकते हैं और अंततः अपना खुद का फ्रेमवर्क बना सकते हैं—जो न तो किसी समुदाय के साथ होगा और न ही अपग्रेड पथ के साथ।
 
 अगर आपके ऐप की कुछ असामान्य आवश्यकताएँ हैं जो इन फ्रेमवर्क द्वारा हल नहीं की जा सकतीं, या आप स्वयं इन समस्याओं को हल करना पसंद करते हैं, तो आप React के साथ अपना कस्टम सेटअप बना सकते हैं। इसके लिए `react` और `react-dom` npm से डाउनलोड करें, और [Vite](https://vitejs.dev/) या [Parcel](https://parceljs.org/), जैसे बंडलर के साथ अपना कस्टम बिल्ड प्रोसेस सेटअप करें। रूटिंग, स्टैटिक जनरेशन, या सर्वर-साइड रेंडरिंग जैसी आवश्यकताओं के लिए ज़रूरत के अनुसार अन्य टूल्स जोड़ें।
+=======
+If your app has unusual constraints not served well by these frameworks, or you prefer to solve these problems yourself, you can roll your own custom setup with React. Grab `react` and `react-dom` from npm, set up your custom build process with a bundler like [Vite](https://vite.dev/) or [Parcel](https://parceljs.org/), and add other tools as you need them for routing, static generation or server-side rendering, and more.
+>>>>>>> 91614a51a1be9078777bc337ba83fc62e606cc14
 
 </DeepDive>
 

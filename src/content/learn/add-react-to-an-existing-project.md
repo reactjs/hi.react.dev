@@ -47,7 +47,13 @@ title: किसी मौजूदा प्रोजेक्ट में Rea
 
 * **यदि आपके ऐप में जावास्क्रिप्ट मॉड्यूल को संकलित करने के लिए मौजूदा सेटअप नहीं है, तो** इसे [VITE](https://vitejs.dev/) के साथ सेट करें। VITE समुदाय [बैकएंड फ्रेमवर्क के साथ कई एकीकरण](https://github.com/vitejs/awesome-vite#integrations-with-backends) को बनाए रखता है, जिसमें Rail, Django और Laravel शामिल हैं।यदि आपका बैकएंड फ्रेमवर्क सूचीबद्ध नहीं है, तो [इस गाइड का पालन करें](https://vitejs.dev/guide/backend-integration.html) मैन्युअल रूप से आपके बैकएंड के साथ VITE बिल्ड को एकीकृत करने के लिए।
 
+<<<<<<< HEAD
 यह जांचने के लिए कि आपका सेटअप काम करता है, इस कमांड को अपने प्रोजेक्ट फ़ोल्डर में चलाएं:
+=======
+* **If your app doesn't have an existing setup for compiling JavaScript modules,** set it up with [Vite](https://vite.dev/). The Vite community maintains [many integrations with backend frameworks](https://github.com/vitejs/awesome-vite#integrations-with-backends), including Rails, Django, and Laravel. If your backend framework is not listed, [follow this guide](https://vite.dev/guide/backend-integration.html) to manually integrate Vite builds with your backend.
+
+To check whether your setup works, run this command in your project folder:
+>>>>>>> 91614a51a1be9078777bc337ba83fc62e606cc14
 
 <TerminalBlock>
 npm install react react-dom
@@ -85,7 +91,11 @@ root.render(<h1>Hello, world</h1>);
 
 <Note>
 
+<<<<<<< HEAD
 पहली बार एक मौजूदा परियोजना में एक मॉड्यूलर जावास्क्रिप्ट वातावरण को एकीकृत करना डराने वाला महसूस कर सकता है, लेकिन यह इसके लायक है!यदि आप अटक जाते हैं, तो हमारे [सामुदायिक संसाधन](/community) या [vite चैट](https://chat.vitejs.dev/) का प्रयास करें।
+=======
+Integrating a modular JavaScript environment into an existing project for the first time can feel intimidating, but it's worth it! If you get stuck, try our [community resources](/community) or the [Vite Chat](https://chat.vite.dev/).
+>>>>>>> 91614a51a1be9078777bc337ba83fc62e606cc14
 
 </Note>
 
