@@ -1,90 +1,89 @@
 ---
-title: Creating a React App
+title: React App बनाने के तरीके
 ---
 
 <Intro>
 
-If you want to build a new app or website with React, we recommend starting with a framework.
+अगर आप नया ऐप या वेबसाइट React के साथ बनाना चाहते हैं, तो हम आपको एक फ्रेमवर्क के साथ शुरू करने की सलाह देते हैं।
 
 </Intro>
 
-## Recommended React frameworks {/*bleeding-edge-react-frameworks*/}
+## Recommended React Frameworks {/*bleeding-edge-react-frameworks*/}
 
-These recommended frameworks support all the features you need to deploy and scale your app in production. They have integrated the latest React features and take advantage of React’s architecture.
+ये recommended frameworks वो सभी फीचर्स सपोर्ट करते हैं जो आपके ऐप को प्रोडक्शन में डिप्लॉय और स्केल करने के लिए जरूरी होते हैं। ये React की आर्किटेक्चर का पूरा फायदा उठाते हैं और React के नए फीचर्स को इंटीग्रेट करते हैं।
 
 <Note>
 
-#### React frameworks do not require a server. {/*react-frameworks-do-not-require-a-server*/}
+#### React frameworks को सर्वर की जरूरत नहीं होती। {/*react-frameworks-do-not-require-a-server*/}
 
-All the frameworks on this page can create single-page apps. Single-page apps can be deployed to a [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) or static hosting service and do not need a server. If you would like to enable features that require a server (like server side rendering), you can opt-in on individual routes without rewriting your app.
+इस पेज पर दिए गए सभी frameworks single-page apps बना सकते हैं। Single-page apps को आप [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) या static hosting service पर डिप्लॉय कर सकते हैं और इन्हें सर्वर की जरूरत नहीं होती। अगर आपको सर्वर साइड रेंडरिंग जैसे फीचर्स चाहिए, तो आप इंडिविजुअल रूट्स पर opt-in कर सकते हैं बिना अपने ऐप को दोबारा लिखे।
 
 </Note>
 
 ### Next.js (App Router) {/*nextjs-app-router*/}
 
-**[Next.js's App Router](https://nextjs.org/docs) is a React framework that takes full advantage of React's architecture to enable full-stack React apps.**
+**[Next.js का App Router](https://nextjs.org/docs) एक React फ्रेमवर्क है जो React की आर्किटेक्चर का पूरा फायदा उठाता है और full-stack React apps बनाने में मदद करता है।**
 
 <TerminalBlock>
 npx create-next-app@latest
 </TerminalBlock>
 
-Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/app/building-your-application/deploying) to any Node.js or serverless hosting, or to your own server. Next.js also supports [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) which doesn't require a server. Vercel additionally provides opt-in paid cloud services.
+Next.js को [Vercel](https://vercel.com/) मेंटेन करता है। आप [Next.js ऐप](https://nextjs.org/docs/app/building-your-application/deploying) को किसी भी Node.js या serverless hosting पर या अपने सर्वर पर डिप्लॉय कर सकते हैं। Next.js [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) भी सपोर्ट करता है, जो सर्वर की जरूरत नहीं होती। Vercel paid क्लाउड सर्विसेज भी प्रोवाइड करता है, जो opt-in होती हैं।
 
 ### React Router (v7) {/*react-router-v7*/}
 
-**[React Router](https://reactrouter.com/start/framework/installation) is the most popular routing library for React and can be paired with Vite to create a full-stack React framework**. It emphasizes standard Web APIs and has several [ready to deploy templates](https://github.com/remix-run/react-router-templates) for various JavaScript runtimes and platforms.
+**[React Router](https://reactrouter.com/start/framework/installation) React की सबसे पॉपुलर राउटिंग लाइब्रेरी है और Vite के साथ यूज़ करके full-stack React फ्रेमवर्क बनाया जा सकता है।** ये स्टैंडर्ड Web APIs पर फोकस करता है और कई [ready-to-deploy templates](https://github.com/remix-run/react-router-templates) देता है जो अलग-अलग JavaScript runtimes और प्लेटफार्म्स के लिए होते हैं।
 
-To create a new React Router framework project, run:
+नया React Router फ्रेमवर्क प्रोजेक्ट बनाने के लिए, ये कमांड रन करें:
 
 <TerminalBlock>
 npx create-react-router@latest
 </TerminalBlock>
 
-React Router is maintained by [Shopify](https://www.shopify.com).
+React Router को [Shopify](https://www.shopify.com) मेंटेन करता है।
 
 ### Expo (for native apps) {/*expo*/}
 
-**[Expo](https://expo.dev/) is a React framework that lets you create universal Android, iOS, and web apps with truly native UIs.** It provides an SDK for [React Native](https://reactnative.dev/) that makes the native parts easier to use. To create a new Expo project, run:
+**[Expo](https://expo.dev/) एक React फ्रेमवर्क है जो आपको यूनिवर्सल Android, iOS, और वेब ऐप्स बनाने की सुविधा देता है, जिनमें असली native UIs होते हैं।** ये React Native का एक SDK प्रोवाइड करता है जो native parts को यूज़ करना आसान बनाता है। नया Expo प्रोजेक्ट बनाने के लिए, ये कमांड रन करें:
 
 <TerminalBlock>
 npx create-expo-app@latest
 </TerminalBlock>
 
-If you're new to Expo, check out the [Expo tutorial](https://docs.expo.dev/tutorial/introduction/).
+अगर आप Expo में नए हैं, तो [Expo ट्यूटोरियल](https://docs.expo.dev/tutorial/introduction/) देखें।
 
-Expo is maintained by [Expo (the company)](https://expo.dev/about). Building apps with Expo is free, and you can submit them to the Google and Apple app stores without restrictions. Expo additionally provides opt-in paid cloud services.
-
+Expo को [Expo (the company)](https://expo.dev/about) मेंटेन करता है। Expo के साथ ऐप्स बनाना फ्री है, और आप उन्हें Google और Apple ऐप स्टोर्स पर बिना किसी रेस्ट्रिक्शन के सबमिट कर सकते हैं। Expo paid क्लाउड सर्विसेज भी प्रोवाइड करता है जो opt-in होती हैं।
 
 ## Other options {/*other-options*/}
 
-There are other up-and-coming frameworks that are working towards our full stack React vision:
+और भी नए फ्रेमवर्क्स हैं जो हमारे full-stack React विज़न की दिशा में काम कर रहे हैं:
 
-- [TanStack Start (Beta)](https://tanstack.com/): TanStack Start is a full-stack React framework powered by TanStack Router. It provides a full-document SSR, streaming, server functions, bundling, and more using tools like Nitro and Vite.
-- [RedwoodJS](https://redwoodjs.com/): Redwood is a full stack React framework with lots of pre-installed packages and configuration that makes it easy to build full-stack web applications.
+- [TanStack Start (Beta)](https://tanstack.com/): TanStack Start एक full-stack React फ्रेमवर्क है जो TanStack Router पर powered है। ये full-document SSR, streaming, server functions, bundling, और ज्यादा प्रोवाइड करता है Nitro और Vite जैसे टूल्स का इस्तेमाल करके।
+- [RedwoodJS](https://redwoodjs.com/): Redwood एक full-stack React फ्रेमवर्क है जिसमें कई pre-installed packages और configuration होते हैं जो full-stack वेब एप्लिकेशन्स बनाना आसान बना देते हैं।
 
 <DeepDive>
 
-#### Which features make up the React team’s full-stack architecture vision? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
+#### कौन से फीचर्स React टीम के Full-Stack आर्किटेक्चर विज़न में शामिल हैं? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
 
-Next.js's App Router bundler fully implements the official [React Server Components specification](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md). This lets you mix build-time, server-only, and interactive components in a single React tree.
+Next.js का App Router bundler official [React Server Components specification](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md) को पूरी तरह से इम्प्लीमेंट करता है। इससे आप build-time, server-only, और interactive components को एक ही React tree में मिक्स कर सकते हैं।
 
-For example, you can write a server-only React component as an `async` function that reads from a database or from a file. Then you can pass data down from it to your interactive components:
+मान लीजिए, आप एक server-only React component लिखते हैं जो एक `async` function के रूप में data या file से पढ़ सकता है। फिर आप इस data को interactive components को पास कर सकते हैं:
 
 ```js
-// This component runs *only* on the server (or during the build).
+// यह component *सिर्फ* सर्वर पर (या build के दौरान) चलेगा।
 async function Talks({ confId }) {
-  // 1. You're on the server, so you can talk to your data layer. API endpoint not required.
+  // 1. आप सर्वर पर हैं, इसलिए आप अपने data layer से बात कर सकते हैं। API endpoint की जरूरत नहीं।
   const talks = await db.Talks.findAll({ confId });
 
-  // 2. Add any amount of rendering logic. It won't make your JavaScript bundle larger.
+  // 2. आप कोई भी rendering logic add कर सकते हैं। ये आपका JavaScript bundle को बड़ा नहीं करेगा।
   const videos = talks.map(talk => talk.video);
 
-  // 3. Pass the data down to the components that will run in the browser.
+  // 3. Data को ऐसे components को पास करें जो ब्राउज़र में चलेंगे।
   return <SearchableVideoList videos={videos} />;
 }
 ```
 
-Next.js's App Router also integrates [data fetching with Suspense](/blog/2022/03/29/react-v18#suspense-in-data-frameworks). This lets you specify a loading state (like a skeleton placeholder) for different parts of your user interface directly in your React tree:
+Next.js का App Router भी [data fetching with Suspense](/blog/2022/03/29/react-v18#suspense-in-data-frameworks) को इंटीग्रेट करता है। इससे आप UI के अलग-अलग हिस्सों के लिए loading state (जैसे skeleton placeholder) सीधे अपने React tree में स्पेसिफाई कर सकते हैं:
 
 ```js
 <Suspense fallback={<TalksLoading />}>
@@ -92,25 +91,25 @@ Next.js's App Router also integrates [data fetching with Suspense](/blog/2022/03
 </Suspense>
 ```
 
-Server Components and Suspense are React features rather than Next.js features. However, adopting them at the framework level requires buy-in and non-trivial implementation work. At the moment, the Next.js App Router is the most complete implementation. The React team is working with bundler developers to make these features easier to implement in the next generation of frameworks.
+Server Components और Suspense React के फीचर्स हैं, ना कि Next.js के। हालांकि, इन्हें फ्रेमवर्क लेवल पर अपनाने के लिए काम करना पड़ता है और यह आसान नहीं होता। फिलहाल, Next.js का App Router सबसे पूरा इम्प्लीमेंटेशन है। React टीम bundler डेवलपर्स के साथ मिलकर काम कर रही है ताकि ये फीचर्स अगले जनरेशन के फ्रेमवर्क्स में आसानी से इम्प्लीमेंट किए जा सकें।
 
 </DeepDive>
 
 <Note>
 
 
-#### Do you recommend Vite? {/*do-you-recommend-vite*/}
+#### क्या आप Vite की सिफारिश करते हैं? {/do-you-recommend-vite/}
 
-We provide several Vite-based recommendations.
+हम कई Vite-based सिफारिशें देते हैं।
 
-React Router v7 is a Vite based framework which allows you to use Vite's fast development server and build tooling with a framework that provides routing and data fetching. Just like the other frameworks we recommend, you can build a SPA with React Router v7.
+React Router v7 एक Vite-based फ्रेमवर्क है जो Vite के फास्ट डेवलपमेंट सर्वर और बिल्ड टूलिंग का इस्तेमाल करता है, और एक ऐसा फ्रेमवर्क प्रोवाइड करता है जो राउटिंग और डाटा फेचिंग करता है। जैसे बाकी फ्रेमवर्क्स हम सुझाते हैं, आप React Router v7 के साथ SPA बना सकते हैं।
 
-We also recommend using Vite when [adding React to an existing project](/learn/add-react-to-an-existing-project), or [building a framework](/learn/building-a-react-framework).
+हम यह भी सिफारिश करते हैं कि आप Vite का उपयोग करें जब [React को एक मौजूदा प्रोजेक्ट में जोड़ें](/learn/add-react-to-an-existing-project), या [फ्रेमवर्क बनाएं](/learn/building-a-react-framework)।
 
-Just like Svelte has Sveltekit, Vue has Nuxt, and Solid has SolidStart, React recommends using a framework that integrates with build tools like Vite for new projects.
+जैसे Svelte के पास Sveltekit है, Vue के पास Nuxt है, और Solid के पास SolidStart है, वैसे React नए प्रोजेक्ट्स के लिए एक फ्रेमवर्क का उपयोग करने की सलाह देता है जो Vite जैसे बिल्ड टूल्स के साथ इंटीग्रेट हो।
 
 </Note>
 
 -----
 
-_If you’re a framework author interested in being included on this page, [please let us know](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+)._
+_अगर आप एक फ्रेमवर्क लेखक हैं और इस पेज पर शामिल होना चाहते हैं, [कृपया हमें बताएं](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+)।_
