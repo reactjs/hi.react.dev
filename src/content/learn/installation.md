@@ -36,36 +36,20 @@ React डॉक्यूमेंटेशन में ज्यादातर
 
 अगर आप नया React ऐप शुरू करना चाहते हैं, तो आप [React ऐप बना सकते हैं](/learn/creating-a-react-app) एक रिकमेंडेड फ्रेमवर्क का इस्तेमाल करके।
 
-<<<<<<< HEAD
 ## React ऐप को स्क्रैच से बनाएं {/*build-a-react-app-from-scratch*/}
 
-अगर कोई फ्रेमवर्क आपके प्रोजेक्ट के लिए सही नहीं है, आप अपना खुद का फ्रेमवर्क बनाना चाहते हैं, या आप सिर्फ React ऐप के बेसिक्स सीखना चाहते हैं, तो आप [React ऐप को स्क्रैच से बना सकते हैं](/learn/build-a-react-app-from-scratch)।
-=======
-## Build a React App from Scratch {/*build-a-react-app-from-scratch*/}
-
-If a framework is not a good fit for your project, you prefer to build your own framework, or you just want to learn the basics of a React app you can [build a React app from scratch](/learn/build-a-react-app-from-scratch).
->>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
+अगर कोई फ्रेमवर्क आपके प्रोजेक्ट के लिए उपयुक्त नहीं है, तो आप अपना खुद का फ्रेमवर्क बनाना पसंद करते हैं, या आप बस React ऐप के मूलभूत बातें सीखना चाहते हैं, तो आ [build a React app from scratch](/learn/build-a-react-app-from-scratch)।
 
 ## पहले से बने प्रोजेक्ट में React जोड़ें {/*add-react-to-an-existing-project*/}
 
 अगर आप अपने पहले से बने ऐप या वेबसाइट में React यूज़ करना चाहते हैं, तो आप [React को पहले से बने प्रोजेक्ट में जोड़ सकते हैं।](/learn/add-react-to-an-existing-project)
 
-<<<<<<< HEAD
 <Note>
 
 #### क्या मुझे Create React App यूज़ करना चाहिए? {/*should-i-use-create-react-app*/}
 
 नहीं। Create React App अब बंद कर दिया गया है। ज्यादा जानकारी के लिए देखें [Sunsetting Create React App](/blog/2025/02/14/sunsetting-create-react-app)।
 
-=======
-
-<Note>
-
-#### Should I use Create React App? {/*should-i-use-create-react-app*/}
-
-No. Create React App has been deprecated. For more information, see [Sunsetting Create React App](/blog/2025/02/14/sunsetting-create-react-app).
-
->>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 </Note>
 
 ## आगे क्या करें? {/*next-steps*/}
