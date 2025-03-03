@@ -646,21 +646,12 @@ button {
 
 <Recap>
 
-<<<<<<< HEAD
-- रिफ़्स एक सामान्य अवधारणा हैं, लेकिन सामान्यत: आप इन्हें DOM तत्वों को रखने के लिए उपयोग करेंगे।
+- रेफ्स एक सामान्य अवधारणा हैं, लेकिन सामान्यत: आप इन्हें DOM तत्वों को रखने के लिए उपयोग करेंगे।
 - आप React को `myRef.current` में एक DOM नोड डालने के लिए `<div ref={myRef}>` का उपयोग करके निर्देशित करते हैं।
 - सामान्यत: आप रिफ़्स का उपयोग गैर-हानिकारक क्रियाओं के लिए करेंगे जैसे कि फोकस करना, स्क्रॉल करना, या DOM तत्वों का मापना।
-- एक कौम्पोनॅन्ट डिफ़ॉल्ट रूप से अपने DOM नोड्स को एक्सपोज़ नहीं करता। आप `forwardRef` का उपयोग करके और दूसरे `ref` तर्क को एक विशिष्ट नोड तक भेजकर DOM नोड को एक्सपोज़ करने का विकल्प चुन सकते हैं।
+- एक कौम्पोनॅन्ट डिफ़ॉल्ट रूप से अपने DOM नोड्स को एक्सपोज़ नहीं करता। आप ref प्रॉप का उपयोग करके एक DOM नोड को प्रदर्शित करने के लिए ऑप्ट-इन कर सकते हैं।
 - React द्वारा प्रबंधित DOM नोड्स को बदलने से बचें।
 - यदि आप React द्वारा प्रबंधित DOM नोड्स को बदलते हैं, तो केवल उन हिस्सों को बदलें जिन्हें React अपडेट करने का कोई कारण नहीं है।
-=======
-- Refs are a generic concept, but most often you'll use them to hold DOM elements.
-- You instruct React to put a DOM node into `myRef.current` by passing `<div ref={myRef}>`.
-- Usually, you will use refs for non-destructive actions like focusing, scrolling, or measuring DOM elements.
-- A component doesn't expose its DOM nodes by default. You can opt into exposing a DOM node by using the `ref` prop.
-- Avoid changing DOM nodes managed by React.
-- If you do modify DOM nodes managed by React, modify parts that React has no reason to update.
->>>>>>> fc29603434ec04621139738f4740caed89d659a7
 
 </Recap>
 
@@ -1059,11 +1050,7 @@ img {
 
 <Hint>
 
-<<<<<<< HEAD
-आपको `forwardRef` की आवश्यकता होगी ताकि आप अपने घटक जैसे `SearchInput` से एक DOM नोड को बाहर एक्सपोज़ कर सकें।
-=======
-You'll need to pass `ref` as a prop to opt into exposing a DOM node from your own component like `SearchInput`.
->>>>>>> fc29603434ec04621139738f4740caed89d659a7
+आपको अपने स्वयं के कंपोनेंट जैसे `SearchInput` से एक DOM नोड को प्रदर्शित करने के लिए `ref` को प्रॉप के रूप में पास करना होगा।
 
 </Hint>
 
