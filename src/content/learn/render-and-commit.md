@@ -84,11 +84,7 @@ export default function Image() {
 
 यह प्रोसेस रिकर्सिव है: यदि अपडेट कौम्पोनॅन्ट किसी अन्य कौम्पोनॅन्ट को रिटर्न करता है, तो React _उस_ कौम्पोनॅन्ट को अगला रेंडर करेगा, और यदि वह कौम्पोनॅन्ट भी कुछ रिटर्न करता है, तो वह _उस_ कौम्पोनॅन्ट को आगे रेंडर करेगा, और इसी तरह आगे के कौम्पोनॅन्टस को रेंडर करते जाएगा। प्रोसेस तब तक जारी रहेगी जब तक कि कोई और नेस्टेड कौम्पोनॅन्ट न हों और React को ठीक से पता हो कि स्क्रीन पर क्या डिस्प्ले किया जाना चाहिए।
 
-<<<<<<< HEAD
 निम्नलिखित उदाहरण में, React कई बार `Gallery()` और `Image()` को कॉल करेगा:
-=======
-In the following example, React will call `Gallery()` and `Image()` several times:
->>>>>>> fc29603434ec04621139738f4740caed89d659a7
 
 <Sandpack>
 
@@ -152,17 +148,10 @@ img { margin: 0 10px 10px 0; }
 
 ## स्टेप 3: React DOM में चेंजेस कमिट करता है {/*step-3-react-commits-changes-to-the-dom*/}
 
-<<<<<<< HEAD
 आपके कौम्पोनॅन्टस को रेंडर करने (कॉल करने) के बाद, React DOM में मॉडिफाई करेगा।
 
-* **प्रारंभिक रेंडर पर,** React स्क्रीन पर बनाए गए सभी DOM नोड्स को डालने के लिए [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild)  DOM API का उपयोग करेगा।
-* **पुन: रेंडर करने के लिए,** React DOM को लेटेस्ट आउटपुट के जैसा करने के लिए कम से कम ज़रूरी ऑपरेशन्स (जो रेंडरिंग करते वक़्त कैलकुलेट होते है!) का इस्तेमाल करेगा।    
-=======
-After rendering (calling) your components, React will modify the DOM.
-
-* **For the initial render,** React will use the [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API to put all the DOM nodes it has created on screen.
-* **For re-renders,** React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
->>>>>>> fc29603434ec04621139738f4740caed89d659a7
+* **प्रारंभिक रेंडर के लिए**, React उन सभी DOM नोड्स को स्क्रीन पर डालने के लिए [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API का उपयोग करेगा, जिन्हें उसने बनाया है।
+* **रेंडर के पुनः रेंडर के लिए**, React न्यूनतम आवश्यक ऑपरेशन्स (जो रेंडर करते समय गणना की जाती हैं!) को लागू करेगा ताकि DOM को नवीनतम रेंडरिंग आउटपुट से मेल खा सके।
 
 **React केवल DOM नोड्स को बदलता है यदि रेंडरर्स के बीच कोई अंतर है।** उदाहरण के लिए, यहां एक कौम्पोनॅन्ट है जो हर सेकेंड में अपने पैरेंट से पास किये गए विभिन्न प्रोप के साथ फिर से रेंडर करता है। ध्यान दें कि आप `<input>` में कुछ टेक्स्ट कैसे जोड़ सकते हैं, इसके `value` को अपडेट कर सकते हैं, लेकिन जब कौम्पोनॅन्ट फिर से रेंडर होता है तो टेक्स्ट गायब नहीं होता है:
 
