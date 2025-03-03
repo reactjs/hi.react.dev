@@ -70,7 +70,7 @@ export default function Image() {
 एक बार कौम्पोनॅन्ट शुरू में रेंडर किया गया है, तो आप  [`set` function](/apis/usestate#setstate) के साथ इसकी state को अपडेट करके आगे के रेंडरर्स को ट्रिगर कर सकते हैं। अपने कौम्पोनॅन्ट की स्टेट को अपडेट करने पर ऑटोमेटिकली एक रेंडर कियु हो जाता है।। (आप उनकी प्यास या भूख की स्थिति के आधार पर, उनके पहले ऑर्डर में डालने के बाद चाय, मिठाई और सभी प्रकार की चीजों को ऑर्डर करने वाले एक रेस्टोरेंट अतिथि के रूप में कल्पना कर सकते हैं।)
 
 <IllustrationBlock sequential>
-  <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. They patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
+  <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. The patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
   <Illustration caption="...triggers..." alt="React returns to the Component Kitchen and tells the Card Chef they need a pink Card." src="/images/docs/illustrations/i_rerender2.png" />
   <Illustration caption="...render!" alt="The Card Chef gives React the pink Card." src="/images/docs/illustrations/i_rerender3.png" />
 </IllustrationBlock>
@@ -84,7 +84,11 @@ export default function Image() {
 
 यह प्रोसेस रिकर्सिव है: यदि अपडेट कौम्पोनॅन्ट किसी अन्य कौम्पोनॅन्ट को रिटर्न करता है, तो React _उस_ कौम्पोनॅन्ट को अगला रेंडर करेगा, और यदि वह कौम्पोनॅन्ट भी कुछ रिटर्न करता है, तो वह _उस_ कौम्पोनॅन्ट को आगे रेंडर करेगा, और इसी तरह आगे के कौम्पोनॅन्टस को रेंडर करते जाएगा। प्रोसेस तब तक जारी रहेगी जब तक कि कोई और नेस्टेड कौम्पोनॅन्ट न हों और React को ठीक से पता हो कि स्क्रीन पर क्या डिस्प्ले किया जाना चाहिए।
 
+<<<<<<< HEAD
 निम्नलिखित उदाहरण में, React कई बार `Gallery()` और `Image()` को कॉल करेगा:
+=======
+In the following example, React will call `Gallery()` and `Image()` several times:
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 <Sandpack>
 
@@ -148,10 +152,17 @@ img { margin: 0 10px 10px 0; }
 
 ## स्टेप 3: React DOM में चेंजेस कमिट करता है {/*step-3-react-commits-changes-to-the-dom*/}
 
+<<<<<<< HEAD
 आपके कौम्पोनॅन्टस को रेंडर करने (कॉल करने) के बाद, React DOM में मॉडिफाई करेगा।
 
 * **प्रारंभिक रेंडर पर,** React स्क्रीन पर बनाए गए सभी DOM नोड्स को डालने के लिए [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild)  DOM API का उपयोग करेगा।
 * **पुन: रेंडर करने के लिए,** React DOM को लेटेस्ट आउटपुट के जैसा करने के लिए कम से कम ज़रूरी ऑपरेशन्स (जो रेंडरिंग करते वक़्त कैलकुलेट होते है!) का इस्तेमाल करेगा।    
+=======
+After rendering (calling) your components, React will modify the DOM.
+
+* **For the initial render,** React will use the [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API to put all the DOM nodes it has created on screen.
+* **For re-renders,** React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 **React केवल DOM नोड्स को बदलता है यदि रेंडरर्स के बीच कोई अंतर है।** उदाहरण के लिए, यहां एक कौम्पोनॅन्ट है जो हर सेकेंड में अपने पैरेंट से पास किये गए विभिन्न प्रोप के साथ फिर से रेंडर करता है। ध्यान दें कि आप `<input>` में कुछ टेक्स्ट कैसे जोड़ सकते हैं, इसके `value` को अपडेट कर सकते हैं, लेकिन जब कौम्पोनॅन्ट फिर से रेंडर होता है तो टेक्स्ट गायब नहीं होता है:
 
