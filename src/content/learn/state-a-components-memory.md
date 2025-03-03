@@ -1444,11 +1444,7 @@ export default function FeedbackForm() {
 
 #### अनावश्यक State हटाएं {/*remove-unnecessary-state*/}
 
-<<<<<<< HEAD
-इस उदाहरण में, जब बटन क्लिक किया जाता है तो यूज़र का नाम पूछना चाहिए और फिर उन्हें अभिवादन करते हुए एक अलर्ट प्रदर्शित करना चाहिए। आपने नाम रखने के लिए state का उपयोग करने की कोशिश की, लेकिन किसी कारण से यह हमेशा "Hello, !" दिखाता है।
-=======
-When the button is clicked, this example should ask for the user's name and then display an alert greeting them. You tried to use state to keep the name, but for some reason the first time it shows "Hello, !", and then "Hello, [name]!" with the previous input every time after.
->>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
+जब बटन पर क्लिक किया जाता है, तो यह उदाहरण उपयोगकर्ता का नाम पूछेगा और फिर एक अलर्ट दिखाएगा जो उनका अभिवादन करेगा। आपने नाम को रखने के लिए राज्य (state) का उपयोग करने की कोशिश की, लेकिन किसी कारण से पहली बार यह “Hello, !” दिखाता है, और फिर हर बार पिछले इनपुट के साथ “Hello, [name]!” दिखाता हैं।
 
 इस कोड को ठीक करने के लिए, अनावश्यक state वेरिएबल को हटा दें। (हम इस बारे में [यह काम क्यों नहीं करता](/learn/troubleshooting-state-updates#setting-state-does-not-update-variables) बाद में चर्चा करेंगे।)
 
