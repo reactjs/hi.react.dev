@@ -70,7 +70,7 @@ export default function Image() {
 एक बार कौम्पोनॅन्ट शुरू में रेंडर किया गया है, तो आप  [`set` function](/apis/usestate#setstate) के साथ इसकी state को अपडेट करके आगे के रेंडरर्स को ट्रिगर कर सकते हैं। अपने कौम्पोनॅन्ट की स्टेट को अपडेट करने पर ऑटोमेटिकली एक रेंडर कियु हो जाता है।। (आप उनकी प्यास या भूख की स्थिति के आधार पर, उनके पहले ऑर्डर में डालने के बाद चाय, मिठाई और सभी प्रकार की चीजों को ऑर्डर करने वाले एक रेस्टोरेंट अतिथि के रूप में कल्पना कर सकते हैं।)
 
 <IllustrationBlock sequential>
-  <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. They patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
+  <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. The patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
   <Illustration caption="...triggers..." alt="React returns to the Component Kitchen and tells the Card Chef they need a pink Card." src="/images/docs/illustrations/i_rerender2.png" />
   <Illustration caption="...render!" alt="The Card Chef gives React the pink Card." src="/images/docs/illustrations/i_rerender3.png" />
 </IllustrationBlock>
@@ -150,8 +150,8 @@ img { margin: 0 10px 10px 0; }
 
 आपके कौम्पोनॅन्टस को रेंडर करने (कॉल करने) के बाद, React DOM में मॉडिफाई करेगा।
 
-* **प्रारंभिक रेंडर पर,** React स्क्रीन पर बनाए गए सभी DOM नोड्स को डालने के लिए [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild)  DOM API का उपयोग करेगा।
-* **पुन: रेंडर करने के लिए,** React DOM को लेटेस्ट आउटपुट के जैसा करने के लिए कम से कम ज़रूरी ऑपरेशन्स (जो रेंडरिंग करते वक़्त कैलकुलेट होते है!) का इस्तेमाल करेगा।    
+* **प्रारंभिक रेंडर के लिए**, React उन सभी DOM नोड्स को स्क्रीन पर डालने के लिए [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API का उपयोग करेगा, जिन्हें उसने बनाया है।
+* **रेंडर के पुनः रेंडर के लिए**, React न्यूनतम आवश्यक ऑपरेशन्स (जो रेंडर करते समय गणना की जाती हैं!) को लागू करेगा ताकि DOM को नवीनतम रेंडरिंग आउटपुट से मेल खा सके।
 
 **React केवल DOM नोड्स को बदलता है यदि रेंडरर्स के बीच कोई अंतर है।** उदाहरण के लिए, यहां एक कौम्पोनॅन्ट है जो हर सेकेंड में अपने पैरेंट से पास किये गए विभिन्न प्रोप के साथ फिर से रेंडर करता है। ध्यान दें कि आप `<input>` में कुछ टेक्स्ट कैसे जोड़ सकते हैं, इसके `value` को अपडेट कर सकते हैं, लेकिन जब कौम्पोनॅन्ट फिर से रेंडर होता है तो टेक्स्ट गायब नहीं होता है:
 
