@@ -1,48 +1,48 @@
 ---
-title: Passing Data Deeply with Context
+title: डेटा को कॉन्टेक्स्ट का उपयोग करके गहराई तक भेजना
 ---
 
 <Intro>
 
-Usually, you will pass information from a parent component to a child component via props. But passing props can become verbose and inconvenient if you have to pass them through many components in the middle, or if many components in your app need the same information. *Context* lets the parent component make some information available to any component in the tree below it—no matter how deep—without passing it explicitly through props.
+आमतौर पर, आप जानकारी को एक पैरेंट कौम्पोनॅन्ट से एक चाइल्ड कौम्पोनॅन्ट तक प्रॉप्स के माध्यम से भेजते हैं। लेकिन प्रॉप्स को भेजना वाचाल और असुविधाजनक बन सकता है यदि आपको उन्हें बीच में कई कॉम्पोनेंट्स से भेजना पड़ता है, या यदि आपके ऐप में कई कॉम्पोनेंट्स को समान जानकारी की आवश्यकता है। *कॉन्टेक्स्ट* पैरेंट कौम्पोनॅन्ट को उसके नीचे के पेड़ में किसी भी कॉन्टेक्स्ट के लिए कुछ जानकारी उपलब्ध कराने देता है - चाहे वह कितना भी गहरा हो - बिना उसे प्रॉप्स के द्वारा स्पष्ट रूप से पास किये।
 
 </Intro>
 
 <YouWillLearn>
 
-- What "prop drilling" is
-- How to replace repetitive prop passing with context
-- Common use cases for context
-- Common alternatives to context
+- "प्रोप ड्रिलिंग" क्या है
+- कॉन्टेक्स्ट के द्वारा प्रोप का बार-बार करना कैसे बदलें
+- कॉन्टेक्स्ट के लिए सामान्य उपयोग
+- कॉन्टेक्स्ट के सामान्य विकल्प
 
 </YouWillLearn>
 
-## The problem with passing props {/*the-problem-with-passing-props*/}
+## प्रॉप्स को पास करने में समस्या {/*the-problem-with-passing-props*/}
 
-[Passing props](/learn/passing-props-to-a-component) is a great way to explicitly pipe data through your UI tree to the components that use it.
+[प्रॉप्स को पास करना](/learn/passing-props-to-a-component) अपने UI ट्री के माध्यम से स्पष्ट रूप से डेटा को उन कॉम्पोनेंट्स को पाइप करने का एक शानदार तरीका है जो इसका उपयोग करते हैं।
 
-But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation called "prop drilling".
+लेकिन प्रॉप्स को पास करना वाचाल और असुविधाजनक बन सकता है जब आपको पेड़ के माध्यम से कुछ प्रोप को गहराई तक पास करने की आवश्यकता होती है, या यदि कई कॉम्पोनेंट्स को एक ही प्रोप की आवश्यकता होती है। निकटतम एंसेस्टर को उन कॉम्पोनेंट्स से दूर किया जा सकता है जिन्हें डेटा की आवश्यकता है, और उतनी ऊँची [स्टेट को उठाना](/learn/sharing-state-between-components) "प्रोप ड्रिलिंग" नामक स्थिति को जन्म दे सकता है।
 
 <DiagramGroup>
 
-<Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in purple. The value flows down to each of the two children, both highlighted in purple." >
+<Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="तीन कॉम्पोनेंट्स के एक पेड़ के साथ आरेख। पैरेंट में बैंगनी रंग में हाइलाइट किए गए मूल्य का प्रतिनिधित्व करने वाला एक बुलबुला है। वैल्यू दोनों में से प्रत्येक के लिए नीचे बह रहा है, दोनों बैंगनी रंग में हाइलाइट किए गए हैं।" >
 
-Lifting state up
+स्टेट को ऊपर उठाना
 
 </Diagram>
-<Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root node contains a bubble representing a value highlighted in purple. The value flows down through the two children, each of which pass the value but do not contain it. The left child passes the value down to two children which are both highlighted purple. The right child of the root passes the value through to one of its two children - the right one, which is highlighted purple. That child passed the value through its single child, which passes it down to both of its two children, which are highlighted purple.">
+<Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="दस नोड्स के एक पेड़ के साथ आरेख, दो चिल्ड्रन या उससे कम के साथ प्रत्येक नोड। रूट नोड में बैंगनी रंग में हाइलाइट किए गए मान का प्रतिनिधित्व करने वाला एक बुलबुला है। मान दो चिल्ड्रन के माध्यम से बह रहा है, जिनमें से प्रत्येक मूल्य पास करता है लेकिन इसमें शामिल नहीं होता है। वामपंथी दो चिल्ड्रन को मूल्य से नीचे ले जाता है जो दोनों पर्पल पर प्रकाश डालते हैं।रूट का सही बच्चा अपने दो चिल्ड्रन में से एक के माध्यम से मूल्य को पारित करता है - दाईं ओर, जो बैंगनी को हाइलाइट किया जाता है।उस बच्चे ने अपने एकल बच्चे के माध्यम से मूल्य पारित किया, जो इसे अपने दोनों दो चिल्ड्रन के लिए नीचे ले जाता है, जो बैंगनी को हाइलाइट किया जाता है।">
 
-Prop drilling
+प्रोप ड्रिलिंग
 
 </Diagram>
 
 </DiagramGroup>
 
-Wouldn't it be great if there were a way to "teleport" data to the components in the tree that need it without passing props? With React's context feature, there is!
+क्या यह बहुत अच्छा नहीं होगा यदि पेड़ में कॉम्पोनेंट्स ko बिना प्रॉप्स के पास किये डेटा "टेलीपोर्ट" करने का एक तरीका होता जिनको उसकी जरुरत है? React के कॉन्टेक्स्ट फ़ीचर के साथ, यह संभव है!
 
-## Context: an alternative to passing props {/*context-an-alternative-to-passing-props*/}
+## कॉन्टेक्स्ट: प्रॉप्स को भेजने का एक विकल्प {/*context-an-alternative-to-passing-props*/}
 
-Context lets a parent component provide data to the entire tree below it. There are many uses for context. Here is one example. Consider this `Heading` component that accepts a `level` for its size:
+कॉन्टेक्स्ट एक पैरेंट कौम्पोनॅन्ट को उसके नीचे पूरे पेड़ को डेटा प्रदान करने देता है। कॉन्टेक्स्ट के कई उपयोग हैं। यहाँ एक उदाहरण है। इस `Heading` कौम्पोनॅन्ट पर विचार करें जो इसके आकार के लिए एक `level` स्वीकार करता है:
 
 <Sandpack>
 
@@ -106,7 +106,7 @@ export default function Heading({ level, children }) {
 
 </Sandpack>
 
-Let's say you want multiple headings within the same `Section` to always have the same size:
+मान लीजिए कि आप एक ही `Section` के भीतर कई शीर्षकों का हमेशा एक ही आकार चाहते हैं:
 
 <Sandpack>
 
@@ -180,7 +180,7 @@ export default function Heading({ level, children }) {
 
 </Sandpack>
 
-Currently, you pass the `level` prop to each `<Heading>` separately:
+वर्तमान में, आप `level` प्रोप को अलग से प्रत्येक `<Heading>` में पास करते हैं:
 
 ```js
 <Section>
@@ -190,7 +190,7 @@ Currently, you pass the `level` prop to each `<Heading>` separately:
 </Section>
 ```
 
-It would be nice if you could pass the `level` prop to the `<Section>` component instead and remove it from the `<Heading>`. This way you could enforce that all headings in the same section have the same size:
+यह अच्छा होगा यदि आप `level` प्रोप को इसके बजाय `<Section>` कौम्पोनॅन्ट में पास कर सकते और इसे `<Heading>` से हटा सकते। इस प्रकार आप यह लागू कर सकते हैं कि एक ही सैक्शन में सभी शीर्षकों का आकार समान है:
 
 ```js
 <Section level={3}>
@@ -200,35 +200,35 @@ It would be nice if you could pass the `level` prop to the `<Section>` component
 </Section>
 ```
 
-But how can the `<Heading>` component know the level of its closest `<Section>`? **That would require some way for a child to "ask" for data from somewhere above in the tree.**
+लेकिन `<Heading>` कौम्पोनॅन्ट अपने निकटतम `<Section>` के स्तर को कैसे जान सकता है? **इसके लिए एक चाइल्ड के लिए पेड़ में कहीं ऊपर से डेटा के लिए "पूछने" के लिए किसी तरह की आवश्यकता होगी।**
 
-You can't do it with props alone. This is where context comes into play. You will do it in three steps:
+आप इसे अकेले प्रॉप्स के साथ नहीं कर सकते। यह वह जगह है जहां कॉन्टेक्स्ट काम आता है। आप इसे तीन स्टेप में करेंगे:
 
-1. **Create** a context. (You can call it `LevelContext`, since it's for the heading level.)
-2. **Use** that context from the component that needs the data. (`Heading` will use `LevelContext`.)
-3. **Provide** that context from the component that specifies the data. (`Section` will provide `LevelContext`.)
+1. कॉन्टेक्स्ट को **बनाएं।**. (आप इसे `LevelContext` बुला सकते हैं, चूंकि यह शीर्षक स्तर के लिए है।)
+2. उस कौम्पोनॅन्ट से उस कॉन्टेक्स्ट का **उपयोग करें** जिसे डेटा की आवश्यकता है। (`Heading` `LevelContext` का प्रयोग करेगा।)
+3. डेटा को निर्दिष्ट करने वाले कौम्पोनॅन्ट से उस कॉन्टेक्स्ट को **प्रदान करें**। (`Section` `LevelContext` को प्रदान करेगा।)
 
-Context lets a parent--even a distant one!--provide some data to the entire tree inside of it.
+कॉन्टेक्स्ट एक पैरेंट--यहां तक ​​कि बहुत दूर वाला भी!--उसके अंदर पूरे पेड़ को कुछ डेटा प्रदान करने देता है।
 
 <DiagramGroup>
 
-<Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in orange which projects down to the two children, each highlighted in orange." >
+<Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="तीन कॉम्पोनेंट्स के एक पेड़ के साथ आरेख। पैरेंट में एक बुलबुला है जो नारंगी में हाइलाइट किए गए एक मूल्य का प्रतिनिधित्व करता है जो दो बच्चों के लिए नीचे प्रोजेक्ट करता है, प्रत्येक को नारंगी में हाइलाइट किया गया है।">
 
-Using context in close children
+करीबी चिल्ड्रन में कॉन्टेक्स्ट का उपयोग करना
 
 </Diagram>
 
-<Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root parent node contains a bubble representing a value highlighted in orange. The value projects down directly to four leaves and one intermediate component in the tree, which are all highlighted in orange. None of the other intermediate components are highlighted.">
+<Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="दस नोड्स के एक पेड़ के साथ आरेख, दो बच्चों या उससे कम के साथ प्रत्येक नोड। रूट पेरेंट नोड में एक बुलबुला होता है जो नारंगी में हाइलाइट किए गए मान का प्रतिनिधित्व करता है। मूल्य सीधे चार पत्तियों और पेड़ में एक मध्यवर्ती कौम्पोनॅन्ट पर प्रोजेक्ट करता है, जो सभी नारंगी में हाइलाइट किए गए हैं। अन्य मध्यवर्ती कॉम्पोनेंट्स में से कोई भी हाइलाइट नहीं किया गया है।">
 
-Using context in distant children
+दूर के चिल्ड्रन में कॉन्टेक्स्ट का उपयोग करना
 
 </Diagram>
 
 </DiagramGroup>
 
-### Step 1: Create the context {/*step-1-create-the-context*/}
+### स्टेप 1: कॉन्टेक्स्ट बनाएं {/*step-1-create-the-context*/}
 
-First, you need to create the context. You'll need to **export it from a file** so that your components can use it:
+सबसे पहले, आपको कॉन्टेक्स्ट बनाने की आवश्यकता है। आपको **इसे एक फ़ाइल से निर्यात** करने की आवश्यकता होगी ताकि आपके कॉम्पोनेंट्स इसका उपयोग कर सकें:
 
 <Sandpack>
 
@@ -308,18 +308,18 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-The only argument to `createContext` is the _default_ value. Here, `1` refers to the biggest heading level, but you could pass any kind of value (even an object). You will see the significance of the default value in the next step.
+`CreateContext` का एकमात्र आर्ग्युमेंट _डिफ़ॉल्ट_ वैल्यू है। यहाँ, `1` सबसे बड़े हेडिंग स्तर को संदर्भित करता है, लेकिन आप किसी भी तरह के मूल्य (यहां तक ​​कि एक ऑब्जेक्ट) को पास कर सकते हैं। आप अगले स्टेप में डिफ़ॉल्ट वैल्यू का महत्व देखेंगे।
 
-### Step 2: Use the context {/*step-2-use-the-context*/}
+### स्टेप 2: कॉन्टेक्स्ट का उपयोग करें {/*step-2-use-the-context*/}
 
-Import the `useContext` Hook from React and your context:
+React के `useContext` hook को और अपने कॉन्टेक्स्ट को आयात करें:
 
 ```js
 import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
 ```
 
-Currently, the `Heading` component reads `level` from props:
+वर्तमान में, `Heading` कौम्पोनॅन्ट प्रॉप्स से `level` प्राप्त करता है:
 
 ```js
 export default function Heading({ level, children }) {
@@ -327,7 +327,7 @@ export default function Heading({ level, children }) {
 }
 ```
 
-Instead, remove the `level` prop and read the value from the context you just imported, `LevelContext`:
+इसके बजाय, `level` प्रोप को हटा दें और आपके द्वारा इम्पोर्ट किए गए कॉन्टेक्स्ट `LevelContext` से वैल्यू रीड करें:
 
 ```js {2}
 export default function Heading({ children }) {
@@ -336,9 +336,9 @@ export default function Heading({ children }) {
 }
 ```
 
-`useContext` is a Hook. Just like `useState` and `useReducer`, you can only call a Hook immediately inside a React component (not inside loops or conditions). **`useContext` tells React that the `Heading` component wants to read the `LevelContext`.**
+`useContext` एक Hook है। `useState` और` useReducer` की तरह ही, आप एक React कौम्पोनॅन्ट के अंदर एक Hook को तुरंत ही कॉल कर सकते हैं (loops या conditions के अंदर नहीं)। **`useContext` React को बताता है कि `Heading` कौम्पोनॅन्ट `LevelContext` को पढ़ना चाहता है।**
 
-Now that the `Heading` component doesn't have a `level` prop, you don't need to pass the level prop to `Heading` in your JSX like this anymore:
+अब जब `Heading` कौम्पोनॅन्ट में `level` प्रोप नहीं है, तो आपको अपने JSX में `Heading` को level प्रोप को इस प्रकार से अब पास करने की आवश्यकता नहीं है:
 
 ```js
 <Section>
@@ -348,7 +348,7 @@ Now that the `Heading` component doesn't have a `level` prop, you don't need to 
 </Section>
 ```
 
-Update the JSX so that it's the `Section` that receives it instead:
+JSX को अपडेट करें ताकि यह इसके बजाय अब `Section` हो जो इसे प्राप्त करे:
 
 ```jsx
 <Section level={4}>
@@ -358,7 +358,7 @@ Update the JSX so that it's the `Section` that receives it instead:
 </Section>
 ```
 
-As a reminder, this is the markup that you were trying to get working:
+एक अनुस्मारक के रूप में, यह मार्कअप है जिसे आप सही काम करने की कोशिश करा रहे थे:
 
 <Sandpack>
 
@@ -442,13 +442,13 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-Notice this example doesn't quite work, yet! All the headings have the same size because **even though you're *using* the context, you have not *provided* it yet.** React doesn't know where to get it!
+ध्यान दें कि यह उदाहरण अब भी काफी काम नहीं करता है! सभी शीर्षकों का एक ही आकार है क्योंकि **भले ही आप *कॉन्टेक्स्ट* का उपयोग कर रहे हैं, आपने इसे अभी तक *प्रदान* नहीं किया है।** react को पता नहीं है कि इसे कहां से प्राप्त करना है!
 
-If you don't provide the context, React will use the default value you've specified in the previous step. In this example, you specified `1` as the argument to `createContext`, so `useContext(LevelContext)` returns `1`, setting all those headings to `<h1>`. Let's fix this problem by having each `Section` provide its own context.
+यदि आप कॉन्टेक्स्ट प्रदान नहीं करते हैं, तो React पिछले स्टेप में आपके द्वारा निर्दिष्ट डिफ़ॉल्ट मान का उपयोग करेगा। इस उदाहरण में, आपने `1` को `createContext` के आर्ग्युमेंट के रूप में निर्दिष्ट किया था, इसलिए `useContext(LevelContext)` `1` रिटर्न करता है, जिससे वे सभी शीर्षक `<h1>` पर सेट हो गए हैं। आइए इस समस्या को प्रत्येक `Section` अपना कॉन्टेक्स्ट प्रदान कराने के द्वारा ठीक करें ।
 
-### Step 3: Provide the context {/*step-3-provide-the-context*/}
+### स्टेप 3: कॉन्टेक्स्ट प्रदान करें {/*step-3-provide-the-context*/}
 
-The `Section` component currently renders its children:
+अभी `Section` कौम्पोनॅन्ट अपने चिल्ड्रन को रेंडर करता है:
 
 ```js
 export default function Section({ children }) {
@@ -460,7 +460,7 @@ export default function Section({ children }) {
 }
 ```
 
-**Wrap them with a context provider** to provide the `LevelContext` to them:
+उन्हें `LevelContext` प्रदान करने के लिए **उन्हें एक कॉन्टेक्स्ट प्रदाता के साथ लपेटें**:
 
 ```js {1,6,8}
 import { LevelContext } from './LevelContext.js';
@@ -476,7 +476,7 @@ export default function Section({ level, children }) {
 }
 ```
 
-This tells React: "if any component inside this `<Section>` asks for `LevelContext`, give them this `level`." The component will use the value of the nearest `<LevelContext>` in the UI tree above it.
+यह React को बताता है: "यदि इस `<Section>` के अंदर कोई भी कौम्पोनॅन्ट `LevelContext` के लिए पूछता है, तो उन्हें यह `level` दें।" कौम्पोनॅन्ट इसके ऊपर UI पेड़ में निकटतम `<LevelContext>` के मान का उपयोग करेगा।
 
 <Sandpack>
 
@@ -564,15 +564,15 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-It's the same result as the original code, but you did not need to pass the `level` prop to each `Heading` component! Instead, it "figures out" its heading level by asking the closest `Section` above:
+यह मूल कोड के समान परिणाम है, लेकिन आपको प्रत्येक `Heading` कौम्पोनॅन्ट को `level` प्रोप को पास करने की आवश्यकता नहीं पड़ी! इसके बजाय, यह अपने ऊपर निकटतम `Section` से पूछकर अपने शीर्षक स्तर का "पता कर लेता है":
 
-1. You pass a `level` prop to the `<Section>`.
-2. `Section` wraps its children into `<LevelContext value={level}>`.
-3. `Heading` asks the closest value of `LevelContext` above with `useContext(LevelContext)`.
+1. आप `<Section>` में एक `level` प्रोप को पास करते हैं।
+2. `Section` अपने चिल्ड्रन को `<LevelContext value={level}>` में लपेटता है।
+3. `Heading` `LevelContext` के निकटतम मूल्य को `useContext(LevelContext)` का उपयोग करके ऊपर पूछता है।
 
-## Using and providing context from the same component {/*using-and-providing-context-from-the-same-component*/}
+## एक ही कौम्पोनॅन्ट से कॉन्टेक्स्ट का उपयोग करना और प्रदान करना {/*using-and-providing-context-from-the-same-component*/}
 
-Currently, you still have to specify each section's `level` manually:
+वर्तमान में, आपको अभी भी प्रत्येक सेक्शन का `level` खुद से निर्दिष्ट करना पड़ रहा है:
 
 ```js
 export default function Page() {
@@ -585,7 +585,7 @@ export default function Page() {
           ...
 ```
 
-Since context lets you read information from a component above, each `Section` could read the `level` from the `Section` above, and pass `level + 1` down automatically. Here is how you could do it:
+चूंकि कॉन्टेक्स्ट आपको ऊपर एक कौम्पोनॅन्ट से जानकारी पढ़ने देता है, प्रत्येक `Section` ऊपर वाले `Section` से `level` पढ़ सकता है, और स्वचालित रूप से `level + 1` नीचे पास कर सकता है। यहां बताया गया है कि आप इसे कैसे कर सकते हैं:
 
 ```js src/Section.js {5,8}
 import { useContext } from 'react';
@@ -603,7 +603,7 @@ export default function Section({ children }) {
 }
 ```
 
-With this change, you don't need to pass the `level` prop *either* to the `<Section>` or to the `<Heading>`:
+इस परिवर्तन के साथ, आपको `level` प्रोप को न ही `<Section>` न ही `<Heading>` में पास करने की आवश्यकता है।
 
 <Sandpack>
 
@@ -695,19 +695,19 @@ export const LevelContext = createContext(0);
 
 </Sandpack>
 
-Now both `Heading` and `Section` read the `LevelContext` to figure out how "deep" they are. And the `Section` wraps its children into the `LevelContext` to specify that anything inside of it is at a "deeper" level.
+अब दोनों `Heading` और `Section` `LevelContext` को पढ़ते है यह पता लगाने के लिए कि वे कितने "गहरे" हैं। और `Section` अपने चिल्ड्रन को `LevelContext` में लपेटता है, यह निर्दिष्ट करने के लिए कि इसके अंदर कुछ भी "गहरे" स्तर पर है।
 
 <Note>
 
-This example uses heading levels because they show visually how nested components can override context. But context is useful for many other use cases too. You can pass down any information needed by the entire subtree: the current color theme, the currently logged in user, and so on.
+यह उदाहरण हेडिंग स्तर का उपयोग करता है क्योंकि वे दिखाते हैं कि कैसे नेस्टेड कौम्पोनॅन्ट कॉन्टेक्स्ट को ओवरराइड कर सकते हैं। लेकिन कॉन्टेक्स्ट कई अन्य उपयोग के मामलों के लिए भी उपयोगी है। आप संपूर्ण उप-वृक्ष द्वारा आवश्यक किसी भी जानकारी को पास कर सकते हैं: वर्तमान कलर थीम, वर्तमान में लॉग इन उपयोगकर्ता, और इसी तरह।
 
 </Note>
 
-## Context passes through intermediate components {/*context-passes-through-intermediate-components*/}
+## कॉन्टेक्स्ट मध्यवर्ती कौम्पोनॅन्ट कॉम्पोनेंट्स से गुजरता है {/*context-passes-through-intermediate-components*/}
 
-You can insert as many components as you like between the component that provides context and the one that uses it. This includes both built-in components like `<div>` and components you might build yourself.
+आप उन कॉम्पोनेंट्स के बीच में कई कॉम्पोनेंट्स को सम्मिलित कर सकते हैं जो कॉन्टेक्स्ट प्रदान करता है और जो इसका उपयोग करता है। इसमें `<div>` जैसे अंतर्निहित कॉम्पोनेंट्स और वे कॉम्पोनेंट्स जो आप स्वयं बना सकते हैं, दोनों शामिल हैं।
 
-In this example, the same `Post` component (with a dashed border) is rendered at two different nesting levels. Notice that the `<Heading>` inside of it gets its level automatically from the closest `<Section>`:
+इस उदाहरण में, एक ही `Post` कौम्पोनॅन्ट (एक धराशायी सीमा के साथ) को दो अलग -अलग nesting स्तरों पर रेंडर किया गया है। ध्यान दें कि इसके अंदर `<Heading>` को इसका स्तर निकटतम `<Section>` से स्वचालित रूप से मिल जाता है:
 
 <Sandpack>
 
@@ -832,58 +832,58 @@ export const LevelContext = createContext(0);
 
 </Sandpack>
 
-You didn't do anything special for this to work. A `Section` specifies the context for the tree inside it, so you can insert a `<Heading>` anywhere, and it will have the correct size. Try it in the sandbox above!
+आपने इसे काम करने के लिए कुछ खास नहीं किया। एक `Section` उसके अंदर के पेड़ के लिए कॉन्टेक्स्ट को निर्दिष्ट करता है, जिससे आप कहीं भी एक `<Heading>` डाल सकते हैं, और इसका सही आकार होगा। इसे ऊपर सैंडबॉक्स में आज़माएं!
 
-**Context lets you write components that "adapt to their surroundings" and display themselves differently depending on _where_ (or, in other words, _in which context_) they are being rendered.**
+**कॉन्टेक्स्ट आपको ऐसे कौम्पोनॅन्ट को लिखने देता है जो "अपने परिवेश के अनुकूल बन जाते हैं" और खुद को अलग -अलग तरीके से प्रदर्शित करते हैं जो इस बात पर निर्भर करता है की वे _कहाँ_ (या, दूसरे शब्दों में, _किस कॉन्टेक्स्ट में_) रेंडर हो रहे हैं।**
 
-How context works might remind you of [CSS property inheritance.](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance) In CSS, you can specify `color: blue` for a `<div>`, and any DOM node inside of it, no matter how deep, will inherit that color unless some other DOM node in the middle overrides it with `color: green`. Similarly, in React, the only way to override some context coming from above is to wrap children into a context provider with a different value.
+कैसे कॉन्टेक्स्ट काम करता है आपको [CSS property inheritance](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance) की याद दिला सकता है। CSS में आप एक `<div>` और उसके अंदर किसी भी DOM node के लिए `color: blue` को निर्दिष्ट कर सकते हैं। इसी तरह, React में, ऊपर से आने वाले कुछ कॉन्टेक्स्ट को ओवरराइड करने का एकमात्र तरीका चिल्ड्रन को एक अलग मूल्य के साथ एक कॉन्टेक्स्ट प्रदाता में लपेटना है।
 
-In CSS, different properties like `color` and `background-color` don't override each other. You can set all  `<div>`'s `color` to red without impacting `background-color`. Similarly, **different React contexts don't override each other.** Each context that you make with `createContext()` is completely separate from other ones, and ties together components using and providing *that particular* context. One component may use or provide many different contexts without a problem.
+CSS में, `color` और `background-color` जैसे विभिन्न प्रोपर्टीज़ एक दूसरे को ओवरराइड नहीं करती हैं। आप `background-color` को प्रभावित किए बिना सभी `<div>` के `color` को red सेट कर सकते हैं। इसी प्रकार, **अलग-अलग React कॉन्टेक्स्ट एक-दूसरे को ओवरराइड नहीं करते हैं।** प्रत्येक कॉन्टेक्स्ट जो आप `createContext()` का प्रयोग कर बनाते हैं, अन्य कॉन्टेक्स्ट से पूरी तरह से अलग होता है, और उन कॉम्पोनेंट्स को जो *उस विशिष्ट कॉन्टेक्स्ट* का उपयोग और प्रदान करते हैं, एक साथ बांधता है। एक कौम्पोनॅन्ट बिना किसी समस्या के कई अलग-अलग कॉन्टेक्स्ट का उपयोग या प्रदान कर सकता है।
 
-## Before you use context {/*before-you-use-context*/}
+## इससे पहले कि आप कॉन्टेक्स्ट का उपयोग करें {/*before-you-use-context*/}
 
-Context is very tempting to use! However, this also means it's too easy to overuse it. **Just because you need to pass some props several levels deep doesn't mean you should put that information into context.**
+कॉन्टेक्स्ट का उपयोग करना बहुत लुभावना है! हालांकि, इसका मतलब यह भी है कि इसे अति प्रयोग करना बहुत आसान है। **सिर्फ इसलिए कि आपको कई गहरे स्तरों तक कुछ प्रॉप्स पास करने की आवश्यकता का यह मतलब नहीं है कि आपको उस जानकारी को कॉन्टेक्स्ट में रखना चाहिए।**
 
-Here's a few alternatives you should consider before using context:
+कॉन्टेक्स्ट का उपयोग करने से पहले आपको इन कुछ विकल्पों पर विचार करना चाहिए:
 
-1. **Start by [passing props.](/learn/passing-props-to-a-component)** If your components are not trivial, it's not unusual to pass a dozen props down through a dozen components. It may feel like a slog, but it makes it very clear which components use which data! The person maintaining your code will be glad you've made the data flow explicit with props.
-2. **Extract components and [pass JSX as `children`](/learn/passing-props-to-a-component#passing-jsx-as-children) to them.** If you pass some data through many layers of intermediate components that don't use that data (and only pass it further down), this often means that you forgot to extract some components along the way. For example, maybe you pass data props like `posts` to visual components that don't use them directly, like `<Layout posts={posts} />`. Instead, make `Layout` take `children` as a prop, and render `<Layout><Posts posts={posts} /></Layout>`. This reduces the number of layers between the component specifying the data and the one that needs it.
+1. **[प्रॉप्स को पास करने](/learn/passing-props-to-a-component) से शुरू करें।** यदि आपके कॉम्पोनेंट्स तुच्छ नहीं हैं, तो दर्जन भर कॉम्पोनेंट्स के माध्यम से दर्जन भर प्रॉप्स को पास करना असामान्य नहीं है। यह एक नारे की तरह लग सकता है, लेकिन यह बहुत स्पष्ट करता है कि कौन से कॉम्पोनेंट्स किस डेटा का उपयोग करते हैं! आपके कोड को मेन्टेन रखने वाले व्यक्ति को खुशी होगी कि आपने डेटा प्रवाह को प्रॉप्स के साथ स्पष्ट कर दिया है।
+2. **कॉम्पोनेंट्स को एक्सट्रेक्ट करें और [JSX को `चिल्ड्रन` के रूप में](/learn/passing-props-to-a-component#passing-jsx-as-children) उनमे भेजें।** यदि आप मध्यवर्ती कॉम्पोनेंट्स की कई परतों के माध्यम से कुछ डेटा पास करते हैं जो उस डेटा का उपयोग नहीं करते हैं (और केवल इसे और नीचे पास करते हैं), तो इसका मतलब है कि आप कुछ कॉम्पोनेंट्स को एक्सट्रेक्ट करने के लिए भूल गए। उदाहरण के लिए, हो सकता है कि आप दृश्य कॉम्पोनेंट्स के लिए `posts` जैसे डेटा प्रॉप्स पास करते हैं जो उन्हें सीधे उपयोग नहीं करते हैं, जैसे कि `<Layout posts={posts} />`। इसके बजाय, `Layout` को `children` को एक प्रोप के रूप में लेने के लिए बनाएं, और `<Layout><Posts posts={posts} /></Layout>` को रेंडर करें। यह डेटा को निर्दिष्ट करने वाले कौम्पोनॅन्ट और डेटा की आवश्यकता वाले कौम्पोनॅन्ट के बीच परतों की संख्या को कम करता है।
 
-If neither of these approaches works well for you, consider context.
+यदि इनमें से कोई भी दृष्टिकोण आपके लिए अच्छा काम नहीं करता है, तो कॉन्टेक्स्ट पर विचार करें।
 
-## Use cases for context {/*use-cases-for-context*/}
+## कॉन्टेक्स्ट के लिए उपयोग के मामले {/*use-cases-for-context*/}
 
-* **Theming:** If your app lets the user change its appearance (e.g. dark mode), you can put a context provider at the top of your app, and use that context in components that need to adjust their visual look.
-* **Current account:** Many components might need to know the currently logged in user. Putting it in context makes it convenient to read it anywhere in the tree. Some apps also let you operate multiple accounts at the same time (e.g. to leave a comment as a different user). In those cases, it can be convenient to wrap a part of the UI into a nested provider with a different current account value.
-* **Routing:** Most routing solutions use context internally to hold the current route. This is how every link "knows" whether it's active or not. If you build your own router, you might want to do it too.
-* **Managing state:** As your app grows, you might end up with a lot of state closer to the top of your app. Many distant components below may want to change it. It is common to [use a reducer together with context](/learn/scaling-up-with-reducer-and-context) to manage complex state and pass it down to distant components without too much hassle.
-  
-Context is not limited to static values. If you pass a different value on the next render, React will update all the components reading it below! This is why context is often used in combination with state.
+* **थीम:** यदि आपका ऐप उपयोगकर्ता को अपनी उपस्थिति (जैसे डार्क मोड) को बदलने देता है, तो आप अपने ऐप के शीर्ष पर एक कॉन्टेक्स्ट प्रदाता रख सकते हैं, और उस कॉन्टेक्स्ट का उपयोग उन कॉन्टेक्स्ट में कर सकते हैं जिन्हें अपने दृश्य लुक को समायोजित करने की आवश्यकता है।
+* **चालू खाता:** कई कॉम्पोनेंट्स को वर्तमान में logged in उपयोगकर्ता का पता करने की आवश्यकता हो सकती है। इसे कॉन्टेक्स्ट में रखना पेड़ में कहीं भी इसे पढ़ने के लिए सुविधाजनक बनाता है। कुछ ऐप्स आपको एक ही समय में कई खाते संचालित करने देते हैं (उदाहरण के लिए एक अलग उपयोगकर्ता के रूप में एक टिप्पणी छोड़ने के लिए)। उन मामलों में, एक अलग चालू खाता मूल्य के साथ एक नेस्टेड कॉन्टेक्स्ट प्रदाता में UI के एक हिस्से को लपेटना सुविधाजनक हो सकता है।
+* **राउटिंग:** अधिकांश राउटिंग समाधान वर्तमान मार्ग को रखने के लिए आंतरिक रूप से कॉन्टेक्स्ट का उपयोग करते हैं। इस प्रकार से हर लिंक "जानता है" कि यह सक्रिय है या नहीं। यदि आप अपना खुद का राउटर बनाते हैं, तो आप इसे भी करना चाह सकते हैं।
+* **स्टेट को मैनेज करना:** जैसे-जैसे आपका ऐप बढ़ता है, आप अपने ऐप के शीर्ष के करीब बहुत सारे स्टेट के साथ समाप्त हो सकते हैं। नीचे कई दूर के कौम्पोनॅन्ट इसे बदलना चाह सकते हैं। जटिल स्टेट को मैनेज करने के लिए [कॉन्टेक्स्ट के साथ एक रेड्यूसर का उपयोग करना](/learn/scaling-up-with-reducer-and-context) और और इसे बहुत अधिक परेशानी के बिना दूर के कॉम्पोनेंट्स तक पास करना सामान्य है।
 
-In general, if some information is needed by distant components in different parts of the tree, it's a good indication that context will help you.
+कॉन्टेक्स्ट स्थैतिक मूल्यों तक सीमित नहीं है। यदि आप अगले रेंडर पर एक अलग मूल्य पास करते हैं, तो React नीचे पढ़ते हुए सभी कॉम्पोनेंट्स को अपडेट करेगा! यही कारण है कि कॉन्टेक्स्ट का उपयोग अक्सर स्टेट के साथ संयोजन में किया जाता है।
+
+सामान्य तौर पर, यदि पेड़ के विभिन्न हिस्सों में दूर के कॉम्पोनेंट्स द्वारा कुछ जानकारी की आवश्यकता होती है, तो यह एक अच्छा संकेत है कि कॉन्टेक्स्ट आपकी मदद करेगा।
 
 <Recap>
 
-* Context lets a component provide some information to the entire tree below it.
-* To pass context:
-  1. Create and export it with `export const MyContext = createContext(defaultValue)`.
-  2. Pass it to the `useContext(MyContext)` Hook to read it in any child component, no matter how deep.
-  3. Wrap children into `<MyContext value={...}>` to provide it from a parent.
-* Context passes through any components in the middle.
-* Context lets you write components that "adapt to their surroundings".
-* Before you use context, try passing props or passing JSX as `children`.
+* कॉन्टेक्स्ट एक कौम्पोनॅन्ट को इसके नीचे पूरे पेड़ को कुछ जानकारी प्रदान करता है।
+* कॉन्टेक्स्ट को पास करने के लिए:
+  1. इसे बनाएं और निर्यात करें `export const MyContext = createContext(defaultValue)`.
+  2. इसे किसी भी चाइल्ड कौम्पोनॅन्ट में पढ़ने के लिए `useContext(MyContext)` हुक में पास करें, चाहे वह कितना भी गहरा क्यों न हो।
+  3. चिल्ड्रन को पैरेंट से प्रदान करने के लिए `<MyContext value={...}>` में लपेटें।
+* कॉन्टेक्स्ट बीच में किसी भी कॉम्पोनेंट्स से गुजरता है।
+* कॉन्टेक्स्ट आपको उन कॉम्पोनेंट्स को लिखने देता है जो "अपने परिवेश के अनुकूल हो जाते" हैं।
+* कॉन्टेक्स्ट का उपयोग करने से पहले, प्रॉप्स पास करने या JSX को `children` के रूप में पास करने का प्रयास करें।
 
 </Recap>
 
 <Challenges>
 
-#### Replace prop drilling with context {/*replace-prop-drilling-with-context*/}
+#### प्रॉप ड्रिलिंग को कॉन्टेक्स्ट से बदलें {/*replace-prop-drilling-with-context*/}
 
-In this example, toggling the checkbox changes the `imageSize` prop passed to each `<PlaceImage>`. The checkbox state is held in the top-level `App` component, but each `<PlaceImage>` needs to be aware of it.
+इस उदाहरण में, चेकबॉक्स को टॉगल करने से प्रत्येक `<PlaceImage>` के लिए पारित `imageSize` प्रोप बदल जाता है। चेकबॉक्स स्टेट शीर्ष-स्तरीय `App` कौम्पोनॅन्ट में रखा जाता है, लेकिन प्रत्येक `<PlaceImage>` को इसके बारे में पता होना चाहिए।
 
-Currently, `App` passes `imageSize` to `List`, which passes it to each `Place`, which passes it to the `PlaceImage`. Remove the `imageSize` prop, and instead pass it from the `App` component directly to `PlaceImage`.
+वर्तमान में, `App` `List` में `imageSize` को पास करता है, जो इसे प्रत्येक `Place` को पास करता है, जो इसे `PlaceImage` को पास करता है। `imageSize` प्रोप को हटा दें, और इसके बजाय इसे `App` कौम्पोनॅन्ट से सीधे `PlaceImage` तक पास करें।
 
-You can declare context in `Context.js`.
+आप `Context.js` में कॉन्टेक्स्ट घोषित कर सकते हैं।
 
 <Sandpack>
 
@@ -1020,9 +1020,9 @@ li {
 
 <Solution>
 
-Remove `imageSize` prop from all the components.
+सभी कॉम्पोनेंट्स से `imageSize` प्रोप निकालें।
 
-Create and export `ImageSizeContext` from `Context.js`. Then wrap the List into `<ImageSizeContext value={imageSize}>` to pass the value down, and `useContext(ImageSizeContext)` to read it in the `PlaceImage`:
+`ImageSizeContext` बनाएं और `Context.js` से निर्यात करें। फिर मान को नीचे पास करने के लिए सूची को `<ImageSizeContext value={imageSize}>` में लपेटें, और इसे `PlaceImage` में पढ़ने के लिए `useContext(ImageSizeContext)` का उपयोग करें:
 
 <Sandpack>
 
@@ -1157,7 +1157,7 @@ li {
 
 </Sandpack>
 
-Note how components in the middle don't need to pass `imageSize` anymore.
+ध्यान दें कि कैसे बीच में कॉम्पोनेंट्स को `imageSize` अब पास करने की आवश्यकता नहीं है।
 
 </Solution>
 
