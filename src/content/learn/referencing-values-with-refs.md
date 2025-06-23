@@ -463,7 +463,11 @@ export default function Toggle() {
 
 #### डिबाउंसिंग को ठीक करें {/*fix-debouncing*/}
 
+<<<<<<< HEAD
 इस उदाहरण में, सभी बटन क्लिक हैंडलर ["डिबाउंस्ड"](https://redd.one/blog/debounce-vs-throttle) हैं। इसका क्या मतलब होता है देखने के लिए, किसी एक बटन पर क्लिक करें। ध्यान दें कि मैसेज एक सेकंड बाद दिखाई देता है। अगर आप मैसेज के इंतजार में बटन दबाते रहते हैं, तो टाइमर रीसेट हो जाएगा। तो यदि आप बहुत जल्दी बटन को कई बार दबाते रहें, तो मैसेज दिखाई नहीं देगा, *जब तक* आप दबाना बंद नहीं करते। डिबाउंसिंग आपको कुछ एक्शन को तब तक डिले करने देता है जब तक यूजर "कुछ-न-कुछ करता रहता है" है।
+=======
+In this example, all button click handlers are ["debounced".](https://kettanaito.com/blog/debounce-vs-throttle) To see what this means, press one of the buttons. Notice how the message appears a second later. If you press the button while waiting for the message, the timer will reset. So if you keep clicking the same button fast many times, the message won't appear until a second *after* you stop clicking. Debouncing lets you delay some action until the user "stops doing things".
+>>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
 
 यह उदाहरण काम करता है, लेकिन इच्छित रूप से नहीं। बटन एक दूसरे से अलग नहीं हैं। समस्या देखने के लिए, उनमें से किसी एक बटन पर क्लिक करें, और फिर तुरंत दूसरे बटन पर क्लिक करें। आप उम्मीद करते हैं कि देरी के बाद, आप दोनों बटन के मैसेज देखेंगे। लेकिन केवल अंतिम बटन का मैसेज दिखाई देता है। पहले बटन का मैसेज खो जाता है।
 
