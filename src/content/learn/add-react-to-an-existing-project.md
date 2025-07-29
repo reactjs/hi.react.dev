@@ -149,11 +149,7 @@ root.render(<NavigationBar />);
 
 ध्यान दें कि `index.html` से मूल HTML सामग्री कैसे संरक्षित है, लेकिन आपका अपना` नेविगेशनबार` React घटक अब आपके HTML से `<nav id =" नेविगेशन ">` के अंदर दिखाई देता है।मौजूदा HTML पृष्ठ के अंदर React घटकों को प्रस्तुत करने के बारे में अधिक जानने के लिए [`createroot` उपयोग दस्तावेज़](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) पढ़ें।
 
-<<<<<<< HEAD
-जब आप किसी मौजूदा प्रोजेक्ट में React को अपनाते हैं, तो छोटे इंटरैक्टिव घटकों (जैसे बटन) के साथ शुरू करना आम है, और फिर धीरे -धीरे "ऊपर की ओर बढ़ते" रहें जब तक कि आपका पूरा पेज React के साथ नहीं बन जाता।यदि आप कभी भी उस बिंदु तक पहुँचते हैं, तो हम React से बाहर निकलने के बाद [एक रिएक्ट फ्रेमवर्क](/learn/start-a-new-react-project) पर माइग्रेट करने की सलाह देते हैं।
-=======
-When you adopt React in an existing project, it's common to start with small interactive components (like buttons), and then gradually keep "moving upwards" until eventually your entire page is built with React. If you ever reach that point, we recommend migrating to [a React framework](/learn/creating-a-react-app) right after to get the most out of React.
->>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
+जब आप किसी मौजूदा प्रोजेक्ट में React को अपनाते हैं, तो छोटे इंटरैक्टिव घटकों (जैसे बटन) के साथ शुरू करना आम है, और फिर धीरे -धीरे "ऊपर की ओर बढ़ते" रहें जब तक कि आपका पूरा पेज React के साथ नहीं बन जाता।यदि आप कभी भी उस बिंदु तक पहुँचते हैं, तो हम React से बाहर निकलने के बाद [एक रिएक्ट फ्रेमवर्क](/learn/creating-a-react-app) पर माइग्रेट करने की सलाह देते हैं।
 
 ## एक मौजूदा native मोबाइल ऐप में React native का उपयोग करना {/*using-react-native-in-an-existing-native-mobile-app*/}
 
