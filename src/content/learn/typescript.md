@@ -9,28 +9,16 @@ re: https://github.com/reactjs/react.dev/issues/5960
 
 <YouWillLearn>
 
-<<<<<<< HEAD
 * [टाइपस्क्रिप्ट के साथ रिएक्ट कंपोनेंट्स:](/learn/typescript#typescript-with-react-components)
 * [हुक्स के साथ टाइपिंग के उदाहरण](/learn/typescript#example-hooks)
-* [सामान्य प्रकारें से `@types/react`](/learn/typescript/#useful-types)
-* [और सीखने के स्थान](/learn/typescript/#further-learning)
-=======
-* [TypeScript with React Components](/learn/typescript#typescript-with-react-components)
-* [Examples of typing with Hooks](/learn/typescript#example-hooks)
-* [Common types from `@types/react`](/learn/typescript#useful-types)
-* [Further learning locations](/learn/typescript#further-learning)
->>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
+* [सामान्य प्रकारें से `@types/react`](/learn/typescript#useful-types)
+* [और सीखने के स्थान](/learn/typescript#further-learning)
 
 </YouWillLearn>
 
 ## Installation {/*installation*/}
 
-<<<<<<< HEAD
-सभी [प्रोडक्शन-ग्रेड रिएक्ट फ्रेमवर्क्स](/learn/start-a-new-react-project#production-grade-react-frameworks) टाइपस्क्रिप्ट का समर्थन करते हैं। स्थापना के लिए फ्रेमवर्क विशिष्ट गाइड का पालन करें:
-
-=======
-All [production-grade React frameworks](/learn/creating-a-react-app#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
->>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
+सभी [प्रोडक्शन-ग्रेड रिएक्ट फ्रेमवर्क्स](/learn/creating-a-react-app#full-stack-frameworks) टाइपस्क्रिप्ट का समर्थन करते हैं। स्थापना के लिए फ्रेमवर्क विशिष्ट गाइड का पालन करें:
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
