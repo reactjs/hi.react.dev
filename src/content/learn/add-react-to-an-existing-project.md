@@ -26,7 +26,11 @@ title: किसी मौजूदा प्रोजेक्ट में Rea
    
 यह सुनिश्चित करता है कि आपके ऐप का React हिस्सा हो सकता है[सर्वोत्तम प्रथाओं से लाभ](/learn/start-a-new-react-project#can-i-use-react-without-a-framework) उन फ्रेमवर्क में पका हुआ।
 
+<<<<<<< HEAD
 कई React-आधारित फ्रेमवर्क full-stack हैं और आपके React ऐप को सर्वर का लाभ उठाते हैं।हालाँकि, आप उसी दृष्टिकोण का उपयोग कर सकते हैं, भले ही आप सर्वर पर जावास्क्रिप्ट नहीं चलाना चाहते हैं या नहीं चाहते हैं।उस स्थिति में, HTML/CSS/JS निर्यात परोसें([`next export` output](https://nextjs.org/docs/advanced-features/static-html-export) Next.js के लिए, GATSBY के लिए डिफ़ॉल्ट) इसके `/some-app/` बजाय।
+=======
+This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
+>>>>>>> e9a7cb1b6ca1659b42d81555ecef0cd554b7a983
 
 ## अपनी मौजूदा वेबसाइट के संपूर्ण सबरूट के लिए React का उपयोग करना {/*using-react-for-a-part-of-your-existing-page*/}
 
