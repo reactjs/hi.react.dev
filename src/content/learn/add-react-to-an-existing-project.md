@@ -21,10 +21,10 @@ title: किसी मौजूदा प्रोजेक्ट में Rea
 यहां बताया गया है कि हम इसे कैसे सेट करने की सलाह देते हैं:
 
 1. **अपने ऐप के React भाग का निर्माण करें** इनमें से एक का उपयोग करके [React-based frameworks](/learn/start-a-new-react-project)।
-2. **निर्दिष्ट करना `/some-app` अपने फ्रेमवर्क के कॉन्फ़िगरेशन में *बेस पथ***  के रूप में (यहां कैसे है: [Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/))।
+2. **निर्दिष्ट करना `/some-app` अपने फ्रेमवर्क के कॉन्फ़िगरेशन में *बेस पथ***  के रूप में (यहां कैसे है: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/))।
 3. **अपने सर्वर या एक प्रॉक्सी सर्वर को कॉन्फ़िगर करें**ताकि सभी अनुरोधों को `/some-app/` आपके React ऐप द्वारा नियंत्रित किया जाए।
    
-यह सुनिश्चित करता है कि आपके ऐप का React हिस्सा हो सकता है[सर्वोत्तम प्रथाओं से लाभ](/learn/start-a-new-react-project#can-i-use-react-without-a-framework) उन फ्रेमवर्क में पका हुआ।
+यह सुनिश्चित करता है कि आपके ऐप का React हिस्सा हो सकता है [सर्वोत्तम प्रथाओं से लाभ](/learn/creating-a-react-app#full-stack-frameworks) उन फ्रेमवर्क में पका हुआ।
 
 कई React-आधारित फ्रेमवर्क full-stack हैं और आपके React ऐप को सर्वर का लाभ उठाते हैं।हालाँकि, आप उसी दृष्टिकोण का उपयोग कर सकते हैं, भले ही आप सर्वर पर जावास्क्रिप्ट नहीं चलाना चाहते हैं या नहीं चाहते हैं।उस स्थिति में, HTML/CSS/JS निर्यात परोसें([`next export` output](https://nextjs.org/docs/advanced-features/static-html-export) Next.js के लिए, GATSBY के लिए डिफ़ॉल्ट) इसके `/some-app/` बजाय।
 
@@ -149,7 +149,7 @@ root.render(<NavigationBar />);
 
 ध्यान दें कि `index.html` से मूल HTML सामग्री कैसे संरक्षित है, लेकिन आपका अपना` नेविगेशनबार` React घटक अब आपके HTML से `<nav id =" नेविगेशन ">` के अंदर दिखाई देता है।मौजूदा HTML पृष्ठ के अंदर React घटकों को प्रस्तुत करने के बारे में अधिक जानने के लिए [`createroot` उपयोग दस्तावेज़](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) पढ़ें।
 
-जब आप किसी मौजूदा प्रोजेक्ट में React को अपनाते हैं, तो छोटे इंटरैक्टिव घटकों (जैसे बटन) के साथ शुरू करना आम है, और फिर धीरे -धीरे "ऊपर की ओर बढ़ते" रहें जब तक कि आपका पूरा पेज React के साथ नहीं बन जाता।यदि आप कभी भी उस बिंदु तक पहुँचते हैं, तो हम React से बाहर निकलने के बाद [एक रिएक्ट फ्रेमवर्क](/learn/start-a-new-react-project) पर माइग्रेट करने की सलाह देते हैं।
+जब आप किसी मौजूदा प्रोजेक्ट में React को अपनाते हैं, तो छोटे इंटरैक्टिव घटकों (जैसे बटन) के साथ शुरू करना आम है, और फिर धीरे -धीरे "ऊपर की ओर बढ़ते" रहें जब तक कि आपका पूरा पेज React के साथ नहीं बन जाता।यदि आप कभी भी उस बिंदु तक पहुँचते हैं, तो हम React से बाहर निकलने के बाद [एक रिएक्ट फ्रेमवर्क](/learn/creating-a-react-app) पर माइग्रेट करने की सलाह देते हैं।
 
 ## एक मौजूदा native मोबाइल ऐप में React native का उपयोग करना {/*using-react-native-in-an-existing-native-mobile-app*/}
 

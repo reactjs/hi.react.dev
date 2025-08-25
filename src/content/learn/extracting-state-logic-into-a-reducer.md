@@ -897,7 +897,7 @@ li {
 
 ## इमर के साथ संक्षिप्त रिड्यूसर लिखना {/*writing-concise-reducers-with-immer*/}
 
-ठीक वैसे ही जैसे [ऑब्जेक्ट्स को अपडेट करना](/सीखना/अपडेट करना-ऑब्जेक्ट्स-इन-स्टेट#लिखना-संक्षिप्त-अपडेट-लॉजिक-विथ-इमर) और [array]( /सीखना/अपडेट करना-सरणी-इन-स्टेट#लिखना-संक्षिप्त) -update-logic-with-immer) नियमित स्थिति में, आप रिड्यूसर को अधिक संक्षिप्त बनाने के लिए Immer लाइब्रेरी का उपयोग कर सकते हैं। यहां, [`useImmerReducer`](https://github.com/immerjs/use-immer#useimmerreducer) आपको `push` या `arr[i] =` असाइनमेंट के साथ स्थिति को बदलने की सुविधा देता है:
+ठीक वैसे ही जैसे [ऑब्जेक्ट्स को अपडेट करना](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) और [arrays](/learn/updating-arrays-in-state#write-concise-update-logic-with-immer) नियमित स्थिति में, आप रिड्यूसर को अधिक संक्षिप्त बनाने के लिए Immer लाइब्रेरी का उपयोग कर सकते हैं। यहां, [`useImmerReducer`](https://github.com/immerjs/use-immer#useimmerreducer) आपको `push` या `arr[i] =` असाइनमेंट के साथ स्थिति को बदलने की सुविधा देता है:
 
 <Sandpack>
 
