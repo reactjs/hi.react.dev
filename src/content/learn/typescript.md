@@ -9,17 +9,28 @@ re: https://github.com/reactjs/react.dev/issues/5960
 
 <YouWillLearn>
 
+<<<<<<< HEAD
 * [टाइपस्क्रिप्ट के साथ रिएक्ट कंपोनेंट्स:](/learn/typescript#typescript-with-react-components)
 * [हुक्स के साथ टाइपिंग के उदाहरण](/learn/typescript#example-hooks)
 * [सामान्य प्रकारें से `@types/react`](/learn/typescript/#useful-types)
 * [और सीखने के स्थान](/learn/typescript/#further-learning)
+=======
+* [TypeScript with React Components](/learn/typescript#typescript-with-react-components)
+* [Examples of typing with Hooks](/learn/typescript#example-hooks)
+* [Common types from `@types/react`](/learn/typescript#useful-types)
+* [Further learning locations](/learn/typescript#further-learning)
+>>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
 
 </YouWillLearn>
 
 ## Installation {/*installation*/}
 
+<<<<<<< HEAD
 सभी [प्रोडक्शन-ग्रेड रिएक्ट फ्रेमवर्क्स](/learn/start-a-new-react-project#production-grade-react-frameworks) टाइपस्क्रिप्ट का समर्थन करते हैं। स्थापना के लिए फ्रेमवर्क विशिष्ट गाइड का पालन करें:
 
+=======
+All [production-grade React frameworks](/learn/start-a-new-react-project#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
+>>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
@@ -123,7 +134,11 @@ export default App = AppTSX;
 
 ## हुक्स का उदाहरण: {/*example-hooks*/}
 
+<<<<<<< HEAD
 `@types/react` से आने वाले टाइप डेफिनीशन्स में बिल्ट-इन हुक्स के लिए टाइप्स शामिल हैं, इसलिए आप उन्हें अपने कंपोनेंट्स में किसी भी अतिरिक्त सेटअप के बिना उपयोग कर सकते हैं। वे आपके कंपोनेंट में लिखे गए कोड को ध्यान में रखकर बनाए गए हैं, इसलिए आपको बहुत से समय [अनुमानित टाइप्स](https://www.typescriptlang.org/docs/handbook/type-inference.html) मिलेंगे और आपको आशा है कि आपको टाइप्स प्रदान करने के छोटे विवादों का सामना करने की आवश्यकता नहीं होगी। 
+=======
+The type definitions from `@types/react` include types for the built-in Hooks, so you can use them in your components without any additional setup. They are built to take into account the code you write in your component, so you will get [inferred types](https://www.typescriptlang.org/docs/handbook/type-inference.html) a lot of the time and ideally do not need to handle the minutiae of providing the types.
+>>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
 
 हालांकि, हम कुछ हुक्स के लिए टाइप्स प्रदान करने के कुछ उदाहरण देख सकते हैं।
 
@@ -138,7 +153,7 @@ const [enabled, setEnabled] = useState(false);
 
 `enabled` को `boolean` का प्रकार सौंपेगा, और `setEnabled` एक फ़ंक्शन होगा जो या एक `boolean` तर्क स्वीकार करता है, या एक `boolean` वापस करने वाले फ़ंक्शन को। यदि आप रूपयांतरित रूप से राज्य के लिए एक प्रकार प्रदान करना चाहते हैं, तो आप `useState` कॉल को एक प्रकार के तर्क से सही करके ऐसा कर सकते हैं:
 
-```ts 
+```ts
 // Explicitly set the type to "boolean"
 const [enabled, setEnabled] = useState<boolean>(false);
 ```
@@ -173,7 +188,7 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 import {useReducer} from 'react';
 
 interface State {
-   count: number 
+   count: number
 };
 
 type CounterAction =
@@ -283,7 +298,11 @@ export default App = AppTSX;
 
 </Sandpack>
 
+<<<<<<< HEAD
 यह तकनीक तब कारगर है जब आपके पास एक ऐसा मूल्य है जिसका सांविदानिक रूप से कोई डिफ़ॉल्ट मूल्य है - लेकिन कभी-कभी ऐसे केसेस हो सकते हैं जब ऐसा नहीं है, और उन केसेस में `null` को एक डिफ़ॉल्ट मूल्य के रूप में सही महसूस हो सकता है। हालांकि, अपने कोड को समझने के लिए टाइप-सिस्टम को अनुमति देने के लिए, आपको `createContext` पर `ContextShape | null` को स्पष्ट रूप से सेट करना होगा। 
+=======
+This technique works when you have a default value which makes sense - but there are occasionally cases when you do not, and in those cases `null` can feel reasonable as a default value. However, to allow the type-system to understand your code, you need to explicitly set `ContextShape | null` on the `createContext`.
+>>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
 
 इससे एक समस्या उत्पन्न होती है कि आपको कॉन्टेक्स्ट कंस्यूमर्स के लिए टाइप में `| null` को हटाना होता है। हमारी सिफारिश है कि हुक इसके मौजूदगी के लिए एक रनटाइम चेक करें और उपस्थित नहीं होने पर एक त्रुटि फेंके:
 
@@ -328,7 +347,17 @@ function MyComponent() {
 
 ### `useMemo` {/*typing-usememo*/}
 
+<<<<<<< HEAD
 [`useMemo`](/reference/react/useMemo) हुक्स एक फ़ंक्शन कॉल से एक स्मृति मेमोराइज़्ड मूल्य बनाएगा/पुनर-पहुँचेगा, केवल जब दूसरे पैरामीटर के रूप में पास किए गए डिपेंडेंसीज़ बदले जाएँ। हुक को कॉल करने का परिणाम पहले पैरामीटर में दिए गए फ़ंक्शन से इन्फर किया जाता है। आप हुक को एक प्रकार तर्क प्रदान करके अधिक स्पष्ट हो सकते हैं।
+=======
+<Note>
+
+[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useMemo` calls. You can use the compiler to handle memoization automatically.
+
+</Note>
+
+The [`useMemo`](/reference/react/useMemo) Hooks will create/re-access a memorized value from a function call, re-running the function only when dependencies passed as the 2nd parameter are changed. The result of calling the Hook is inferred from the return value from the function in the first parameter. You can be more explicit by providing a type argument to the Hook.
+>>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
 
 ```ts
 // The type of visibleTodos is inferred from the return value of filterTodos
@@ -338,7 +367,17 @@ const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 
 ### `useCallback` {/*typing-usecallback*/}
 
+<<<<<<< HEAD
 [`useCallback`](/reference/react/useCallback) दूसरे पैरामीटर में पास किए गए डिपेंडेंसीज़ के समान होते हैं, एक फ़ंक्शन के लिए एक स्थिर संदर्भ प्रदान करता है। `useMemo` की तरह, पहले पैरामीटर में दिए गए फ़ंक्शन के वापसी मूल्य से फ़ंक्शन का प्रकार इन्फर किया जाता है, और आप हुक को एक प्रकार तर्क प्रदान करके अधिक स्पष्ट हो सकते हैं।
+=======
+<Note>
+
+[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useCallback` calls. You can use the compiler to handle memoization automatically.
+
+</Note>
+
+The [`useCallback`](/reference/react/useCallback) provide a stable reference to a function as long as the dependencies passed into the second parameter are the same. Like `useMemo`, the function's type is inferred from the return value of the function in the first parameter, and you can be more explicit by providing a type argument to the Hook.
+>>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
 
 
 ```ts
@@ -349,7 +388,11 @@ const handleClick = useCallback(() => {
 
 टाइपस्क्रिप्ट स्ट्रिक्ट मोड में काम करते समय, `useCallback` में आपको अपने कॉलबैक के पैरामीटर्स के लिए टाइप्स जोड़ना आवश्यक है। यह इसलिए है क्योंकि कॉलबैक के प्रकार को फ़ंक्शन की वापसी मूल्य से इन्फर किया जाता है, और पैरामीटर्स के बिना पूरी तरह से समझा नहीं जा सकता है।
 
+<<<<<<< HEAD
 आपके कोड-स्टाइल की पसंद के आधार पर, आप `*EventHandler` फ़ंक्शन्स का उपयोग कर सकते हैं जो इवेंट हैंडलर के लिए टाइप प्रदान करने के लिए रिएक्ट टाइप्स से साथ ही कॉलबैक को परिभाषित करते हैं: 
+=======
+Depending on your code-style preferences, you could use the `*EventHandler` functions from the React types to provide the type for the event handler at the same time as defining the callback:
+>>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
 
 ```ts
 import { useState, useCallback } from 'react';
@@ -360,7 +403,7 @@ export default function Form() {
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     setValue(event.currentTarget.value);
   }, [setValue])
-  
+
   return (
     <>
       <input value={value} onChange={handleChange} />
@@ -432,7 +475,11 @@ interface ModalRendererProps {
 }
 ```
 
+<<<<<<< HEAD
 ध्यान दें कि आप JSX एलिमेंट्स के किसी विशिष्ट प्रकार के होने को वर्णन करने के लिए टाइपस्क्रिप्ट का उपयोग नहीं कर सकते हैं, इसलिए आप टाइप-सिस्टम का उपयोग करके एक कॉम्पोनेंट को वर्णन करने के लिए नहीं कर सकते हैं जो केवल `<li>` बच्चों को स्वीकार करता है। 
+=======
+Note, that you cannot use TypeScript to describe that the children are a certain type of JSX elements, so you cannot use the type-system to describe a component which only accepts `<li>` children.
+>>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
 
 आप [इस टाइपस्क्रिप्ट प्लेग्राउंड](https://www.typescriptlang.org/play?#code/https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA) में दोनों `React.ReactNode` और `React.ReactElement` का एक उदाहरण देख सकते हैं।
 
