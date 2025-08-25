@@ -26,11 +26,7 @@ title: किसी मौजूदा प्रोजेक्ट में Rea
    
 यह सुनिश्चित करता है कि आपके ऐप का React हिस्सा हो सकता है [सर्वोत्तम प्रथाओं से लाभ](/learn/creating-a-react-app#full-stack-frameworks) उन फ्रेमवर्क में पका हुआ।
 
-<<<<<<< HEAD
-कई React-आधारित फ्रेमवर्क full-stack हैं और आपके React ऐप को सर्वर का लाभ उठाते हैं।हालाँकि, आप उसी दृष्टिकोण का उपयोग कर सकते हैं, भले ही आप सर्वर पर जावास्क्रिप्ट नहीं चलाना चाहते हैं या नहीं चाहते हैं।उस स्थिति में, HTML/CSS/JS निर्यात परोसें([`next export` output](https://nextjs.org/docs/advanced-features/static-html-export) Next.js के लिए, GATSBY के लिए डिफ़ॉल्ट) इसके `/some-app/` बजाय।
-=======
-This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
->>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
+Many React-based frameworks are full-stack and let your React app take advantage of the server. However, you can use the same approach even if you can't or don't want to run JavaScript on the server. In that case, serve the HTML/CSS/JS export ([`next export` output](https://nextjs.org/docs/advanced-features/static-html-export) for Next.js, default for Gatsby) at `/some-app/` instead.
 
 ## अपनी मौजूदा वेबसाइट के संपूर्ण सबरूट के लिए React का उपयोग करना {/*using-react-for-a-part-of-your-existing-page*/}
 
