@@ -60,7 +60,7 @@ JavaScript
 
 <Note>
 
-[JSX और React दो अलग चीजें हैं](/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) आप एक दूसरे से स्वतंत्र रूप से उपयोग कर सकते हैं।
+JSX और React दो अलग चीजें हैं। इनका अक्सर एक साथ उपयोग किया जाता है, लेकिन आप इन्हें एक दूसरे से [स्वतंत्र रूप से](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) भी उपयोग कर *सकते हैं*। JSX एक syntax extension है, जबकि React एक JavaScript library है।
 
 </Note>
 
