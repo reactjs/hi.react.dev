@@ -4,16 +4,17 @@ title: "State: एक कौम्पोनॅन्ट की मेमोर�
 
 <Intro>
 
-कोई भी इंटरेक्शन होने की वजह स कौम्पोनॅन्ट को अक्सर स्क्रीन पर क्या दिख रहा है उसको बदलना होता है। फॉर्म में टाइप करने पर इनपुट फील्ड अपडेट होने चाहिए, इमेज करौसेल के "next" को क्लिक करने पर करौसेल की इमेज बदलनी चाहिए, "buy" पर क्लिक करने पर एक प्रोडक्ट शॉपिंग कार्ट में ऐड होना चाहिए। कौम्पोनॅन्ट को चीजों को "याद रखना" चाहिए: इनपुट की अभी की वैल्यू, अभी की इमेज, शॉपिंग कार्ट। React में, इस प्रकार की कौम्पोनॅन्ट-स्पेसिफिक मेमोरी को *State* कहा जाता है।
+Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" should put a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state*.
 
 </Intro>
 
+
 <YouWillLearn>
 
-* state वेरिएबल को [`useState`](/reference/react/useState) Hook के साथ कैसे ऐड करें
-* `useState` Hook कोनसे वैल्यूज की पेअर को रिटर्न करता है 
-* एक से अधिक स्टेट वेरिएबल कैसे ऐड करें
-* state को लोकल क्यों कहा जाता है
+* How to add a state variable with the [`useState`](/reference/react/useState) Hook
+* What pair of values the `useState` Hook returns
+* How to add more than one state variable
+* Why state is called local
 
 </YouWillLearn>
 
@@ -23,7 +24,7 @@ title: "State: एक कौम्पोनॅन्ट की मेमोर�
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [7]}}
 import { sculptureList } from './data.js';
 
 export default function Gallery() {
@@ -1225,7 +1226,7 @@ img { width: 120px; height: 120px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [6]}}
 export default function Form() {
   let firstName = '';
   let lastName = '';
@@ -1333,7 +1334,7 @@ h1 { margin-top: 10px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [9]}}
 import { useState } from 'react';
 
 export default function FeedbackForm() {
@@ -1341,6 +1342,7 @@ export default function FeedbackForm() {
   if (isSent) {
     return <h1>Thank you!</h1>;
   } else {
+    // eslint-disable-next-line
     const [message, setMessage] = useState('');
     return (
       <form onSubmit={e => {
