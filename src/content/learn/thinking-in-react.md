@@ -38,7 +38,13 @@ React में एक UI को लागू करने के लिए, आ
 
 आपके बैकग्राउंड के अनुरूप, आप कौम्पोनॅन्टस को विभाजित करने के लिए विभिन्न तरीकों पर विचार कर सकते हैं:
 
+<<<<<<< HEAD
 * **प्रोग्रामिंग**--यदि आप नए फ़ंक्शन या ऑब्जेक्ट बनाने का फैसला कर रहे हैं तो एक ही तकनीक का उपयोग करें। एक ऐसी तकनीक है [एक जिम्मेवारी का सिद्धांत](https://en.wikipedia.org/wiki/Single_responsibility_principle), अर्थात्, एक कौम्पोनॅन्ट को आदर्शरूप से केवल एक काम करना चाहिए। यदि यह बढ़ जाता है, तो इसे छोटे से छोटे सब-कौम्पोनॅन्ट में विभाजित किया जाना चाहिए।
+=======
+* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), that is, a component should ideally only be concerned with one thing. If it ends up growing, it should be decomposed into smaller subcomponents. 
+* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
+* **Design**--consider how you would organize the design's layers.
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 * **CSS**--विचार करें कि आप class selectors किसके लिए बनाएँगे। (हालांकि, कौम्पोनॅन्टस थोड़े कम सूक्ष्म होते हैं।)
 
