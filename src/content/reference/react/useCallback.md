@@ -130,7 +130,7 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }
-  
+
   return (
     <div className={theme}>
       {/* ...इसलिए ShippingForm के प्रॉप्स हमेशा बदलेंगे और यह हर बार री-रेंडर होगा */}
@@ -208,8 +208,13 @@ function ProductPage({ productId, referrer }) {
 
 यदि आप [`useMemo`](/reference/react/useMemo) से परिचित हैं, तो `useCallback` को इस तरह समझ सकते हैं:
 
+<<<<<<< HEAD
 ```js
 // आसान इम्प्लिमेंटेशन (React में कुछ ऐसा होता है)
+=======
+```js {expectedErrors: {'react-compiler': [3]}}
+// Simplified implementation (inside React)
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 function useCallback(fn, dependencies) {
   return useMemo(() => fn, dependencies);
 }
@@ -223,7 +228,11 @@ function useCallback(fn, dependencies) {
 
 #### क्या हर जगह `useCallback` जोड़ना चाहिए? {/*should-you-add-usecallback-everywhere*/}
 
+<<<<<<< HEAD
 यदि आपका ऐप इस साइट जैसा है, और ज़्यादातर इंटरैक्शन्स मोटे स्तर के हैं (जैसे पूरे पेज या सेक्शन को रिप्लेस करना), तो सामान्यतः मेमोइज़ेशन की ज़रूरत नहीं होती। लेकिन यदि आपका ऐप ड्रॉइंग एडिटर जैसा है और इंटरैक्शन्स छोटे स्तर के हैं (जैसे शेप्स को मूव करना), तो मेमोइज़ेशन बहुत मददगार हो सकता है।
+=======
+If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
 `useCallback` से फंक्शन को कैश करना केवल कुछ स्थितियों में उपयोगी है:
 
@@ -316,7 +325,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -455,7 +464,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -872,7 +881,7 @@ Object.is(temp1[2], temp2[2]); // ...और इसी तरह हर डिप
 
 मान लें `Chart` कौम्पोनॅन्ट को [`memo`](/reference/react/memo) में रैप किया गया है। आप चाहते हैं कि `ReportList` कौम्पोनॅन्ट के री-रेंडर होने पर लिस्ट में हर `Chart` का री-रेंडर स्किप हो जाए। लेकिन आप लूप के अंदर `useCallback` कॉल नहीं कर सकते:
 
-```js {5-14}
+```js {expectedErrors: {'react-compiler': [6]}} {5-14}
 function ReportList({ items }) {
   return (
     <article>
