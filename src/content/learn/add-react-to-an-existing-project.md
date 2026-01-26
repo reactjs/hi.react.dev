@@ -20,11 +20,19 @@ title: किसी मौजूदा प्रोजेक्ट में Rea
 
 यहां बताया गया है कि हम इसे कैसे सेट करने की सलाह देते हैं:
 
+<<<<<<< HEAD
 1. **अपने ऐप के React भाग का निर्माण करें** इनमें से एक का उपयोग करके [React-based frameworks](/learn/start-a-new-react-project)।
 2. **निर्दिष्ट करना `/some-app` अपने फ्रेमवर्क के कॉन्फ़िगरेशन में *बेस पथ***  के रूप में (यहां कैसे है: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/))।
 3. **अपने सर्वर या एक प्रॉक्सी सर्वर को कॉन्फ़िगर करें**ताकि सभी अनुरोधों को `/some-app/` आपके React ऐप द्वारा नियंत्रित किया जाए।
    
 यह सुनिश्चित करता है कि आपके ऐप का React हिस्सा हो सकता है [सर्वोत्तम प्रथाओं से लाभ](/learn/creating-a-react-app#full-stack-frameworks) उन फ्रेमवर्क में पका हुआ।
+=======
+1. **Build the React part of your app** using one of the [React-based frameworks](/learn/creating-a-react-app).
+2. **Specify `/some-app` as the *base path*** in your framework's configuration (here's how: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
+3. **Configure your server or a proxy** so that all requests under `/some-app/` are handled by your React app.
+
+This ensures the React part of your app can [benefit from the best practices](/learn/build-a-react-app-from-scratch#consider-using-a-framework) baked into those frameworks.
+>>>>>>> a1ddcf51a08cc161182b90a24b409ba11289f73e
 
 Many React-based frameworks are full-stack and let your React app take advantage of the server. However, you can use the same approach even if you can't or don't want to run JavaScript on the server. In that case, serve the HTML/CSS/JS export ([`next export` output](https://nextjs.org/docs/advanced-features/static-html-export) for Next.js, default for Gatsby) at `/some-app/` instead.
 
@@ -149,7 +157,11 @@ root.render(<NavigationBar />);
 
 ध्यान दें कि `index.html` से मूल HTML सामग्री कैसे संरक्षित है, लेकिन आपका अपना` नेविगेशनबार` React घटक अब आपके HTML से `<nav id =" नेविगेशन ">` के अंदर दिखाई देता है।मौजूदा HTML पृष्ठ के अंदर React घटकों को प्रस्तुत करने के बारे में अधिक जानने के लिए [`createroot` उपयोग दस्तावेज़](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) पढ़ें।
 
+<<<<<<< HEAD
 जब आप किसी मौजूदा प्रोजेक्ट में React को अपनाते हैं, तो छोटे इंटरैक्टिव घटकों (जैसे बटन) के साथ शुरू करना आम है, और फिर धीरे -धीरे "ऊपर की ओर बढ़ते" रहें जब तक कि आपका पूरा पेज React के साथ नहीं बन जाता।यदि आप कभी भी उस बिंदु तक पहुँचते हैं, तो हम React से बाहर निकलने के बाद [एक रिएक्ट फ्रेमवर्क](/learn/creating-a-react-app) पर माइग्रेट करने की सलाह देते हैं।
+=======
+When you adopt React in an existing project, it's common to start with small interactive components (like buttons), and then gradually keep "moving upwards" until eventually your entire page is built with React. If you ever reach that point, we recommend migrating to [a React framework](/learn/creating-a-react-app) right after to get the most out of React.
+>>>>>>> a1ddcf51a08cc161182b90a24b409ba11289f73e
 
 ## एक मौजूदा native मोबाइल ऐप में React native का उपयोग करना {/*using-react-native-in-an-existing-native-mobile-app*/}
 
