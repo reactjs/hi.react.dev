@@ -52,7 +52,11 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 पहले रेंडर पर, `useCallback` आपके द्वारा पास किया गया `fn` फंक्शन रिटर्न करता है।
 
+<<<<<<< HEAD
 अगले रेंडर पर, यह या तो पिछले रेंडर से कैश्ड `fn` फंक्शन रिटर्न करता है (यदि डिपेंडेंसीज़ नहीं बदली हैं), या इस रेंडर में पास किया गया नया `fn` फंक्शन रिटर्न करता है।
+=======
+During subsequent renders, it will either return an already stored `fn` function from the last render (if the dependencies haven't changed), or return the `fn` function you have passed during this render.
+>>>>>>> 38b52cfdf059b2efc5ee3223a758efe00319fcc7
 
 #### Caveats {/*caveats*/}
 
@@ -130,7 +134,7 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }
-  
+
   return (
     <div className={theme}>
       {/* ...इसलिए ShippingForm के प्रॉप्स हमेशा बदलेंगे और यह हर बार री-रेंडर होगा */}
@@ -208,8 +212,13 @@ function ProductPage({ productId, referrer }) {
 
 यदि आप [`useMemo`](/reference/react/useMemo) से परिचित हैं, तो `useCallback` को इस तरह समझ सकते हैं:
 
+<<<<<<< HEAD
 ```js
 // आसान इम्प्लिमेंटेशन (React में कुछ ऐसा होता है)
+=======
+```js {expectedErrors: {'react-compiler': [3]}}
+// Simplified implementation (inside React)
+>>>>>>> 38b52cfdf059b2efc5ee3223a758efe00319fcc7
 function useCallback(fn, dependencies) {
   return useMemo(() => fn, dependencies);
 }
@@ -223,9 +232,15 @@ function useCallback(fn, dependencies) {
 
 #### क्या हर जगह `useCallback` जोड़ना चाहिए? {/*should-you-add-usecallback-everywhere*/}
 
+<<<<<<< HEAD
 यदि आपका ऐप इस साइट जैसा है, और ज़्यादातर इंटरैक्शन्स मोटे स्तर के हैं (जैसे पूरे पेज या सेक्शन को रिप्लेस करना), तो सामान्यतः मेमोइज़ेशन की ज़रूरत नहीं होती। लेकिन यदि आपका ऐप ड्रॉइंग एडिटर जैसा है और इंटरैक्शन्स छोटे स्तर के हैं (जैसे शेप्स को मूव करना), तो मेमोइज़ेशन बहुत मददगार हो सकता है।
 
 `useCallback` से फंक्शन को कैश करना केवल कुछ स्थितियों में उपयोगी है:
+=======
+If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
+
+Caching a function with `useCallback` is only valuable in a few cases:
+>>>>>>> 38b52cfdf059b2efc5ee3223a758efe00319fcc7
 
 * जब आप इसे किसी [`memo`](/reference/react/memo) में रैप किए गए कौम्पोनॅन्ट को प्रॉप के रूप में पास करते हैं। आप चाहते हैं कि वैल्यू न बदलने पर री-रेंडरिंग स्किप हो जाए। मेमोइज़ेशन से कौम्पोनॅन्ट तभी री-रेंडर होगा जब उसकी डिपेंडेंसीज़ बदलेंगी।
 * जब आपका पास किया हुआ फंक्शन किसी हुक की डिपेंडेंसी के रूप में उपयोग होता है। उदाहरण के लिए, किसी दूसरे `useCallback` में रैप किए गए फंक्शन की डिपेंडेंसी के रूप में, या [`useEffect`](/reference/react/useEffect) की डिपेंडेंसी के रूप में।
@@ -236,7 +251,15 @@ function useCallback(fn, dependencies) {
 
 **नीचे दिए गए सिद्धांतों को फॉलो करके आप काफी मेमोइज़ेशन को अनावश्यक बना सकते हैं:**
 
+<<<<<<< HEAD
 1. जब कोई कौम्पोनॅन्ट अन्य कौम्पोनॅन्ट्स को विज़ुअली रैप करता है, तो उसे [JSX को चिल्ड्रन के रूप में स्वीकार](/learn/passing-props-to-a-component#passing-jsx-as-children) करने दें। इससे यदि रैपर कौम्पोनॅन्ट अपने स्टेट को अपडेट करता है, तो React जानता है कि उसके चिल्ड्रन को री-रेंडर करने की ज़रूरत नहीं है।
+=======
+1. When a component visually wraps other components, let it [accept JSX as children.](/learn/passing-props-to-a-component#passing-jsx-as-children) Then, if the wrapper component updates its own state, React knows that its children don't need to re-render.
+2. Prefer local state and don't [lift state up](/learn/sharing-state-between-components) any further than necessary. Don't keep transient state like forms and whether an item is hovered at the top of your tree or in a global state library.
+3. Keep your [rendering logic pure.](/learn/keeping-components-pure) If re-rendering a component causes a problem or produces some noticeable visual artifact, it's a bug in your component! Fix the bug instead of adding memoization.
+4. Avoid [unnecessary Effects that update state.](/learn/you-might-not-need-an-effect) Most performance problems in React apps are caused by chains of updates originating from Effects that cause your components to render over and over.
+5. Try to [remove unnecessary dependencies from your Effects.](/learn/removing-effect-dependencies) For example, instead of memoization, it's often simpler to move some object or a function inside an Effect or outside the component.
+>>>>>>> 38b52cfdf059b2efc5ee3223a758efe00319fcc7
 
 2. लोकल स्टेट का उपयोग करें और ज़रूरत से ज़्यादा [स्टेट को ऊपर न ले जाएँ](/learn/sharing-state-between-components)। फ़ॉर्म जैसे ट्रांज़िएंट स्टेट या आइटम होवर की जानकारी जैसे स्टेट्स को कौम्पोनॅन्ट ट्री के सबसे ऊपर या ग्लोबल स्टेट लाइब्रेरी में न रखें।
 
@@ -316,7 +339,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -455,7 +478,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -872,7 +895,7 @@ Object.is(temp1[2], temp2[2]); // ...और इसी तरह हर डिप
 
 मान लें `Chart` कौम्पोनॅन्ट को [`memo`](/reference/react/memo) में रैप किया गया है। आप चाहते हैं कि `ReportList` कौम्पोनॅन्ट के री-रेंडर होने पर लिस्ट में हर `Chart` का री-रेंडर स्किप हो जाए। लेकिन आप लूप के अंदर `useCallback` कॉल नहीं कर सकते:
 
-```js {5-14}
+```js {expectedErrors: {'react-compiler': [6]}} {5-14}
 function ReportList({ items }) {
   return (
     <article>
