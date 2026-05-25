@@ -18,7 +18,7 @@ re: https://github.com/reactjs/react.dev/issues/5960
 
 ## Installation {/*installation*/}
 
-All [production-grade React frameworks](/learn/start-a-new-react-project#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
+All [production-grade React frameworks](/learn/creating-a-react-app#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
@@ -30,14 +30,20 @@ All [production-grade React frameworks](/learn/start-a-new-react-project#full-st
 लेटेस्ट वर्शन की रिएक्ट के टाइप डेफिनीशन्स को स्थापित करने के लिए:
 
 <TerminalBlock>
-npm install @types/react @types/react-dom
+npm install --save-dev @types/react @types/react-dom
 </TerminalBlock>
 
 आपके `tsconfig.json` में निम्नलिखित कंपाइलर विकल्प सेट करने की आवश्यकता है:
 
+<<<<<<< HEAD
 1. `dom` को [`lib`](https://www.typescriptlang.org/tsconfig/#lib) में शामिल किया जाना चाहिए  (नोट: यदि कोई lib विकल्प निर्दिष्ट नहीं किया गया है, तो dom डिफ़ॉल्ट रूप से शामिल है).
 1. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) को मान्य विकल्पों में से एक पर सेट किया जाना चाहिए। अधिकांश अनुप्रयोगों के लिए, `preserve` काफी होगा।
   यदि आप एक पुस्तकालय प्रकाशित कर रहे हैं, तो [`jsx` दस्तावेज़](https://www.typescriptlang.org/tsconfig/#jsx) पर आपको कौनसी मान चुननी चाहिए, उस पर परामर्श लें।
+=======
+1. `dom` must be included in [`lib`](https://www.typescriptlang.org/tsconfig/#lib) (Note: If no `lib` option is specified, `dom` is included by default).
+2. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) must be set to one of the valid options. `preserve` should suffice for most applications.
+  If you're publishing a library, consult the [`jsx` documentation](https://www.typescriptlang.org/tsconfig/#jsx) on what value to choose.
+>>>>>>> 47e64bf7ad81aab8bacfa791a37816ee869135eb
 
 ## रिएक्ट कंपोनेंट्स के साथ टाइपस्क्रिप्ट {/*typescript-with-react-components*/}
 
