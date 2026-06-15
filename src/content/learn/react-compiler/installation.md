@@ -18,28 +18,24 @@ This guide will help you install and configure React Compiler in your React appl
 
 React Compiler is designed to work best with React 19, but it also supports React 17 and 18. Learn more about [React version compatibility](/reference/react-compiler/target).
 
-<Note>
-React Compiler is currently in RC. Install it using the `@rc` tag to get the latest release candidate version.
-</Note>
-
 ## Installation {/*installation*/}
 
 Install React Compiler as a `devDependency`:
 
 <TerminalBlock>
-npm install -D babel-plugin-react-compiler@rc
+npm install -D babel-plugin-react-compiler@latest
 </TerminalBlock>
 
 Or with Yarn:
 
 <TerminalBlock>
-yarn add -D babel-plugin-react-compiler@rc
+yarn add -D babel-plugin-react-compiler@latest
 </TerminalBlock>
 
 Or with pnpm:
 
 <TerminalBlock>
-pnpm install -D babel-plugin-react-compiler@rc
+pnpm install -D babel-plugin-react-compiler@latest
 </TerminalBlock>
 
 ## Basic Setup {/*basic-setup*/}
@@ -68,9 +64,32 @@ module.exports = {
 
 ### Vite {/*vite*/}
 
-If you use Vite, you can add the plugin to vite-plugin-react:
+If you use Vite with version 6.0.0 or later of `@vitejs/plugin-react`, you can use the `reactCompilerPreset`:
 
-```js {3,9}
+<TerminalBlock>
+npm install -D @rolldown/plugin-babel
+</TerminalBlock>
+
+```js {3-4,9-11}
+// vite.config.js
+import { defineConfig } from 'vite';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    babel({
+      presets: [reactCompilerPreset()]
+    }),
+  ],
+});
+```
+
+<Note>
+In `@vitejs/plugin-react@6.0.0`, the inline Babel option was removed. If you're using an older version, you can use:
+
+```js
 // vite.config.js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -85,26 +104,21 @@ export default defineConfig({
   ],
 });
 ```
+</Note>
 
-Alternatively, if you prefer a separate Babel plugin for Vite:
+Alternatively, you can use the Babel plugin directly with `@rolldown/plugin-babel`:
 
-<TerminalBlock>
-npm install -D vite-plugin-babel
-</TerminalBlock>
-
-```js {2,11}
+```js {3,9}
 // vite.config.js
-import babel from 'vite-plugin-babel';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
 
 export default defineConfig({
   plugins: [
     react(),
     babel({
-      babelConfig: {
-        plugins: ['babel-plugin-react-compiler'],
-      },
+      plugins: ['babel-plugin-react-compiler'],
     }),
   ],
 });
@@ -118,7 +132,7 @@ Please refer to the [Next.js docs](https://nextjs.org/docs/app/api-reference/nex
 Install `vite-plugin-babel`, and add the compiler's Babel plugin to it:
 
 <TerminalBlock>
-{`npm install vite-plugin-babel`}
+npm install vite-plugin-babel
 </TerminalBlock>
 
 ```js {3-4,16}
@@ -173,10 +187,10 @@ React Compiler includes an ESLint rule that helps identify code that can't be op
 Install the ESLint plugin:
 
 <TerminalBlock>
-npm install -D eslint-plugin-react-hooks@rc
+npm install -D eslint-plugin-react-hooks@latest
 </TerminalBlock>
 
-If you haven't already configured eslint-plugin-react-hooks, follow the [installation instructions in the readme](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation). The compiler rule is enabled by default in the latest RC, so no additional configuration is needed.
+If you haven't already configured eslint-plugin-react-hooks, follow the [installation instructions in the readme](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation). The compiler rules are available in the `recommended-latest` preset.
 
 The ESLint rule will:
 - Identify violations of the [Rules of React](/reference/rules)
