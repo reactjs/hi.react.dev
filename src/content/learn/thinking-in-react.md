@@ -38,7 +38,13 @@ React में एक UI को लागू करने के लिए, आ
 
 आपके बैकग्राउंड के अनुरूप, आप कौम्पोनॅन्टस को विभाजित करने के लिए विभिन्न तरीकों पर विचार कर सकते हैं:
 
+<<<<<<< HEAD
 * **प्रोग्रामिंग**--यदि आप नए फ़ंक्शन या ऑब्जेक्ट बनाने का फैसला कर रहे हैं तो एक ही तकनीक का उपयोग करें। एक ऐसी तकनीक है [एक जिम्मेवारी का सिद्धांत](https://en.wikipedia.org/wiki/Single_responsibility_principle), अर्थात्, एक कौम्पोनॅन्ट को आदर्शरूप से केवल एक काम करना चाहिए। यदि यह बढ़ जाता है, तो इसे छोटे से छोटे सब-कौम्पोनॅन्ट में विभाजित किया जाना चाहिए।
+=======
+* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), that is, a component should ideally only be concerned with one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
+* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
+* **Design**--consider how you would organize the design's layers.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 * **CSS**--विचार करें कि आप class selectors किसके लिए बनाएँगे। (हालांकि, कौम्पोनॅन्टस थोड़े कम सूक्ष्म होते हैं।)
 
@@ -235,10 +241,17 @@ What's left is probably state.
 
 उन्हें एक बार फिर से एक एक करके देखते हैं:
 
+<<<<<<< HEAD
 1. प्रोडक्ट्स की मूल सूची **props के रूप में पारित होती है, इसलिए यह state नहीं है।**
 2. सर्च टेक्स्ट state के रूप में लगता है क्योंकि इसका समय के साथ बदलना चाहिए और इसे कुछ से भी गणना नहीं किया जा सकता है।
 3. चेकबॉक्स के मान state के रूप में लगते हैं क्योंकि इसका समय के साथ बदलना चाहिए और इसे कुछ से भी गणना नहीं किया जा सकता है।
 4. फ़िल्टर हुए प्रोडक्ट्स की सूची **state नहीं है क्योंकि इसे गणना किया जा सकता है**, मूल प्रोडक्ट्स की सूची लें और सर्च टेक्स्ट और चेकबॉक्स के मान के अनुसार फ़िल्टर करें।
+=======
+1. The original list of products is **passed in as props, so it's not state.**
+2. The search text seems to be state since it changes over time and can't be computed from anything.
+3. The value of the checkbox seems to be state since it changes over time and can't be computed from anything.
+4. The filtered list of products **isn't state because it can be computed** by taking the original list of products and filtering it according to the search text and value of the checkbox.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 इसका मतलब है कि केवल सर्च टेक्स्ट और चेकबॉक्स के मान ही state है!
 
@@ -272,6 +285,7 @@ React में दो प्रकार के "मॉडल" डेटा ह
 
 अब आगे चलकर हम उनके लिए अपनी रणनीति का अनुसरण करेंगे:
 
+<<<<<<< HEAD
 1. **स्थिति का उपयोग करने वाले कंपोनेंट की पहचान करें:**
     * `ProductTable` को उस state के आधार पर प्रोडक्ट सूची को फ़िल्टर करने की आवश्यकता है (सर्च टेक्स्ट और चेकबॉक्स के मान)।
     * `SearchBar` को उस state का विवरण दिखाने की आवश्यकता है (सर्च टेक्स्ट और चेकबॉक्स के मान)।
@@ -279,23 +293,32 @@ React में दो प्रकार के "मॉडल" डेटा ह
 3. **state को रखने के लिए निर्णय लें:** हम filterText और inStockOnly state मूल्यों को `FilterableProductTable` में रखेंगे।
 
 इसलिए स्थिति मूल्य `FilterableProductTable` में रहेंगे।
+=======
+1. **Identify components that use state:**
+    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value).
+    * `SearchBar` needs to display that state (search text and checkbox value).
+2. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
+3. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
+
+So the state values will live in `FilterableProductTable`.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 [`useState()` Hook](/reference/react/useState) के साथ कंपोनेंट को state जोड़ें। हुक्स विशेष फ़ंक्शन हैं जो रिएक्ट में "हुक इंटो" करने की अनुमति देते हैं। `FilterableProductTable` के शीर्ष पर दो state चर को जोड़ें और उनके प्रारंभिक state को निर्दिष्ट करें:
 
 ```js
 function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState('');
-  const [inStockOnly, setInStockOnly] = useState(false);  
+  const [inStockOnly, setInStockOnly] = useState(false);
 ```
 
 फिर, `filterText` और `inStockOnly` को `ProductTable` और `SearchBar` को props के रूप में पास करें:
 
 ```js
 <div>
-  <SearchBar 
-    filterText={filterText} 
+  <SearchBar
+    filterText={filterText}
     inStockOnly={inStockOnly} />
-  <ProductTable 
+  <ProductTable
     products={products}
     filterText={filterText}
     inStockOnly={inStockOnly} />
@@ -315,10 +338,10 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
+      <SearchBar
+        filterText={filterText}
         inStockOnly={inStockOnly} />
-      <ProductTable 
+      <ProductTable
         products={products}
         filterText={filterText}
         inStockOnly={inStockOnly} />
@@ -396,13 +419,13 @@ function ProductTable({ products, filterText, inStockOnly }) {
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} 
+      <input
+        type="text"
+        value={filterText}
         placeholder="Search..."/>
       <label>
-        <input 
-          type="checkbox" 
+        <input
+          type="checkbox"
           checked={inStockOnly} />
         {' '}
         Only show products in stock
@@ -459,9 +482,9 @@ td {
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} 
+      <input
+        type="text"
+        value={filterText}
         placeholder="Search..."/>
 ```
 
@@ -470,7 +493,11 @@ function SearchBar({ filterText, inStockOnly }) {
 
 ## Step 5: inverse data flow (पालटती डेटा प्रवाह) जोड़ें {/*step-5-add-inverse-data-flow*/}
 
+<<<<<<< HEAD
 वर्तमान में आपका ऐप प्रोप्स और state के साथ अनुकूलित रूप से रेंडर होता है। लेकिन यूजर इनपुट के अनुसार state को बदलने के लिए, आपको पालटती डेटा प्रवाह को समर्थन करने की आवश्यकता होगी: पदानुक्रम में गहरे फ़ॉर्म कंपोनेंट्स को अपडेट करने के लिए `FilterableProductTable` में state को अपडेट करने की जरूरत है।
+=======
+Currently your app renders correctly with props and state flowing down the hierarchy. But to change the state according to user input, you will need to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 React इस डेटा प्रवाह को स्पष्ट बनाता है, लेकिन यह दो-तरफ़ा डेटा बाइंडिंग से थोड़ा ज्यादा टाइपिंग की आवश्यकता है। यदि आप ऊपर दिए गए उदाहरण में टाइप करने या चेकबॉक्स को चेक करने का प्रयास करें, तो आप देखेंगे कि React आपके इनपुट को नज़रअंदाज़ करता है। यह इच्छित है। `<input value={filterText} />` लिखकर, आपने `input` के `value` प्रॉप को हमेशा `FilterableProductTable` से आये `filterText` state से बराबर सेट कर दिया है। क्योंकि `filterText` state कभी नहीं सेट की जाती है, इनपुट कभी नहीं बदलता है।
 
@@ -483,8 +510,8 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
+      <SearchBar
+        filterText={filterText}
         inStockOnly={inStockOnly}
         onFilterTextChange={setFilterText}
         onInStockOnlyChange={setInStockOnly} />
@@ -527,13 +554,13 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
-        inStockOnly={inStockOnly} 
-        onFilterTextChange={setFilterText} 
+      <SearchBar
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+        onFilterTextChange={setFilterText}
         onInStockOnlyChange={setInStockOnly} />
-      <ProductTable 
-        products={products} 
+      <ProductTable
+        products={products}
         filterText={filterText}
         inStockOnly={inStockOnly} />
     </div>
@@ -615,14 +642,14 @@ function SearchBar({
 }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} placeholder="Search..." 
+      <input
+        type="text"
+        value={filterText} placeholder="Search..."
         onChange={(e) => onFilterTextChange(e.target.value)} />
       <label>
-        <input 
-          type="checkbox" 
-          checked={inStockOnly} 
+        <input
+          type="checkbox"
+          checked={inStockOnly}
           onChange={(e) => onInStockOnlyChange(e.target.checked)} />
         {' '}
         Only show products in stock
