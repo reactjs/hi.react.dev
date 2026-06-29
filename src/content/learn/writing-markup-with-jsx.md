@@ -70,9 +70,9 @@ JSX और React दो अलग चीजें हैं। इनका अ�
 
 ```html
 <h1>Hedy Lamarr's Todos</h1>
-<img 
-  src="https://i.imgur.com/yXOvdOSs.jpg" 
-  alt="Hedy Lamarr" 
+<img
+  src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+  alt="Hedy Lamarr"
   class="photo"
  >
 <ul>
@@ -102,7 +102,11 @@ export default function TodoList() {
     // यह काम नहीं करता!
     <h1>Hedy Lamarr's Todos</h1>
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/yXOvdOSs.jpg"
+=======
+      src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+>>>>>>> 152a471aa9ac2f6f0f3e64c04f39da790d40cf61
       alt="Hedy Lamarr"
       class="photo"
     >
@@ -140,7 +144,11 @@ img { height: 90px }
 <div>
   <h1>Hedy Lamarr's Todos</h1>
   <img
+<<<<<<< HEAD
     src="https://i.imgur.com/yXOvdOSs.jpg"
+=======
+    src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+>>>>>>> 152a471aa9ac2f6f0f3e64c04f39da790d40cf61
     alt="Hedy Lamarr"
     class="photo"
   >
@@ -156,7 +164,11 @@ img { height: 90px }
 <>
   <h1>Hedy Lamarr's Todos</h1>
   <img
+<<<<<<< HEAD
     src="https://i.imgur.com/yXOvdOSs.jpg"
+=======
+    src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+>>>>>>> 152a471aa9ac2f6f0f3e64c04f39da790d40cf61
     alt="Hedy Lamarr"
     class="photo"
   >
@@ -184,10 +196,17 @@ JSX को टैग को स्पष्ट रूप से बंद कर
 
 ```js {2-6,8-10}
 <>
+<<<<<<< HEAD
   <img 
     src="https://i.imgur.com/yXOvdOSs.jpg" 
     alt="Hedy Lamarr" 
     class="photo" 
+=======
+  <img
+    src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+    alt="Hedy Lamarr"
+    class="photo"
+>>>>>>> 152a471aa9ac2f6f0f3e64c04f39da790d40cf61
    />
   <ul>
     <li>नई ट्रैफिक लाइट का आविष्कार करें</li>
@@ -204,10 +223,17 @@ JSX जावास्क्रिप्ट में बदल जाता ह
 यही कारण है कि, React में, कई HTML और SVG ऐट्रिब्यूट्स camelCase में लिखी जाती हैं। उदाहरण के लिए, `stroke-width` के बजाय आप `strokeWidth` का उपयोग करते हैं। चूंकि `class` एक रिजर्व्ड शब्द है, इसलिए React में आप इसके बजाय `className` लिखते हैं, जिसका नाम [संबंधित DOM प्रॉपर्टी](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) के नाम पर रखा गया है।:
 
 ```js {4}
+<<<<<<< HEAD
 <img 
   src="https://i.imgur.com/yXOvdOSs.jpg" 
   alt="Hedy Lamarr" 
   className="photo" 
+=======
+<img
+  src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+  alt="Hedy Lamarr"
+  className="photo"
+>>>>>>> 152a471aa9ac2f6f0f3e64c04f39da790d40cf61
 />
 ```
 
@@ -233,7 +259,11 @@ export default function TodoList() {
     <>
       <h1>Hedy Lamarr's Todos</h1>
       <img
+<<<<<<< HEAD
         src="https://i.imgur.com/yXOvdOSs.jpg"
+=======
+        src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+>>>>>>> 152a471aa9ac2f6f0f3e64c04f39da790d40cf61
         alt="Hedy Lamarr"
         className="photo"
       />
