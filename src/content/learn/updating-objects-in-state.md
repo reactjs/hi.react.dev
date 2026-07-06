@@ -55,7 +55,7 @@ position.x = 5;
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [11]}}
 import { useState } from 'react';
 
 export default function MovingDot() {
@@ -199,7 +199,7 @@ setPosition({
 
 म्युटेशन  केवल एक समस्या है जब आप *मौजूदा* ऑब्जेक्ट् को बदलते हैं जो पहले से ही स्टेट  में हैं। आपके द्वारा अभी-अभी बनाये गए ऑब्जेक्ट को बदलना ठीक है क्योंकि *अभी तक कोई अन्य कोड इसको रिफरेन्स नहीं करता।* इसे बदलने से गलती से उस पर निर्भर किसी चीज़ पर प्रभाव नहीं पड़ेगा। इसे "लोकल म्युटेशन" कहा जाता है। आप स्थानीय उत्परिवर्तन भी कर सकते हैं [प्रतिपादन करते समय](/learn/keeping-components-pure#local-mutation-your-components-little-secret) बहुत सुविधाजनक और पूरी तरह से ठीक! 
 
-</DeepDive>  
+</DeepDive>
 
 ## स्प्रेड सिंटैक्स के साथ ऑब्जेक्ट्स की कॉपी बनाना {/*copying-objects-with-the-spread-syntax*/}
 
@@ -209,7 +209,7 @@ setPosition({
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [11, 15, 19]}}
 import { useState } from 'react';
 
 export default function Form() {
@@ -296,7 +296,11 @@ setPerson({
 });
 ```
 
+<<<<<<< HEAD
 अब फॉर्म काम कर रहा!
+=======
+Now the form works!
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
 
 ध्यान दें कि आपने प्रत्येक इनपुट फ़ील्ड के लिए एक अलग स्टेट वैल्यू डिक्लेअर नहीं किया। बड़े फॉर्म्स के लिए, सभी डेटा को किसी ऑब्जेक्ट में एक साथ ग्रुप में रखना बहुत सुविधाजनक है--जब तक आप इसे सही तरीके से अपडेट करते हैं!
 
@@ -373,7 +377,11 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 ध्यान दें कि `...` स्प्रेड सिंटैक्स "shallow" है - यह केवल चीजों को एक लेवल की गहराई तक कॉपी करता है। यह इसे तेज़ बनाता है, लेकिन इसका मतलब यह भी है कि यदि आप किसी नेस्टेड प्रॉपर्टी को अपडेट करना चाहते हैं, तो आपको इसे एक से अधिक बार उपयोग करना होगा।
+=======
+Note that the `...` spread syntax is "shallow"--it only copies things one level deep. This makes it fast, but it also means that if you want to update a nested property, you'll have to use it more than once.
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
 
 <DeepDive>
 
@@ -457,7 +465,7 @@ const [person, setPerson] = useState({
   artwork: {
     title: 'Blue Nana',
     city: 'Hamburg',
-    image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+    image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   }
 });
 ```
@@ -501,7 +509,7 @@ export default function Form() {
     artwork: {
       title: 'Blue Nana',
       city: 'Hamburg',
-      image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+      image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
     }
   });
 
@@ -579,8 +587,8 @@ export default function Form() {
         <br />
         (located in {person.artwork.city})
       </p>
-      <img 
-        src={person.artwork.image} 
+      <img
+        src={person.artwork.image}
         alt={person.artwork.title}
       />
     </>
@@ -608,7 +616,7 @@ let obj = {
   artwork: {
     title: 'Blue Nana',
     city: 'Hamburg',
-    image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+    image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   }
 };
 ```
@@ -619,7 +627,7 @@ let obj = {
 let obj1 = {
   title: 'Blue Nana',
   city: 'Hamburg',
-  image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
 };
 
 let obj2 = {
@@ -634,7 +642,7 @@ let obj2 = {
 let obj1 = {
   title: 'Blue Nana',
   city: 'Hamburg',
-  image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
 };
 
 let obj2 = {
@@ -650,7 +658,7 @@ let obj3 = {
 
 अगर आप `obj3.artwork.city` को बदलते हैं, तो यह `obj2.artwork.city` और `obj1.city` दोनों को प्रभावित करेगा। ऐसा इसलिए है क्योंकि `obj3.artwork`, `obj2.artwork`, और `obj1` एक ही ऑब्जेक्ट  हैं। जब आप ऑब्जेक्ट्स को "नेस्टेड" रुट में सोचते है तो यह देखना मुश्किल होता है। इसके बजाय, वे अलग-अलग ऑब्जेक्ट  हैं जो प्रॉपर्टीज के साथ एक दूसरे पर "पॉइंट" करती हैं।
 
-</DeepDive>  
+</DeepDive>
 
 ### Immer के साथ संक्षिप्त अपडेट लॉजिक लिखें {/*write-concise-update-logic-with-immer*/}
 
@@ -691,7 +699,7 @@ export default function Form() {
     artwork: {
       title: 'Blue Nana',
       city: 'Hamburg',
-      image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+      image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
     }
   });
 
@@ -756,8 +764,8 @@ export default function Form() {
         <br />
         (located in {person.artwork.city})
       </p>
-      <img 
-        src={person.artwork.image} 
+      <img
+        src={person.artwork.image}
         alt={person.artwork.title}
       />
     </>
@@ -833,7 +841,7 @@ img { width: 200px; height: 200px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [11]}}
 import { useState } from 'react';
 
 export default function Scoreboard() {
@@ -989,7 +997,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 <Sandpack>
 
-```js src/App.js
+```js {expectedErrors: {'react-compiler': [17]}} src/App.js
 import { useState } from 'react';
 import Background from './Background.js';
 import Box from './Box.js';
@@ -1294,7 +1302,7 @@ select { margin-bottom: 10px; }
 
 <Sandpack>
 
-```js src/App.js
+```js {expectedErrors: {'react-compiler': [18]}} src/App.js
 import { useState } from 'react';
 import { useImmer } from 'use-immer';
 import Background from './Background.js';
