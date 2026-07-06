@@ -54,7 +54,7 @@ root.render(<Image />);
 export default function Image() {
   return (
     <img
-      src="https://i.imgur.com/ZF6s192.jpg"
+      src="https://react.dev/images/docs/scientists/ZF6s192.jpg"
       alt="'Floralis Genérica' by Eduardo Catalano: a gigantic metallic flower sculpture with reflective petals"
     />
   );
@@ -103,7 +103,7 @@ export default function Gallery() {
 function Image() {
   return (
     <img
-      src="https://i.imgur.com/ZF6s192.jpg"
+      src="https://react.dev/images/docs/scientists/ZF6s192.jpg"
       alt="'Floralis Genérica' by Eduardo Catalano: a gigantic metallic flower sculpture with reflective petals"
     />
   );
@@ -124,8 +124,13 @@ img { margin: 0 10px 10px 0; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 * **प्रारंभिक रेंडर के दौरान,** React `<section>`, `<h1>`, और तीन `<img>` टैग के लिए [DOM नोड्स बनाएगा](https://developer.mozilla.org/docs/Web/API/Document/createElement)।
 * **री-रेंडर के दौरान,** React यह कैलकुलेट करेगा कि पिछले रेंडर के बाद से उनकी कौन सी प्रॉपर्टीज, यदि कोई, बदल गई है। यह अगले स्टेप, कमिट कमिट फेज तक उस जानकारी के साथ कुछ नहीं करेगा।
+=======
+* **During the initial render,** React will [create the DOM nodes](https://developer.mozilla.org/docs/Web/API/Document/createElement) for `<section>`, `<h1>`, and three `<img>` tags.
+* **During a re-render,** React will calculate which of their properties, if any, have changed since the previous render. It won't do anything with that information until the next step, the commit phase.
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
 
 <Pitfall>
 
