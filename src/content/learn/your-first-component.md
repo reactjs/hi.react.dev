@@ -63,7 +63,7 @@ HTML टैग्स की तरह ही, आप संपूर्ण प�
 export default function Profile() {
   return (
     <img
-      src="https://i.imgur.com/MK3eW3Am.jpg"
+      src="https://react.dev/images/docs/scientists/MK3eW3Am.jpg"
       alt="Katherine Johnson"
     />
   );
@@ -99,7 +99,7 @@ React कौम्पोनॅन्ट नियमित जावास्क
 रिटर्न स्टेटमेंट सभी को एक लाइन पर लिखा जा सकता है, जैसा कि इस कौम्पोनॅन्ट में है:
 
 ```js
-return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
+return <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```
 
 लेकिन अगर आपका मार्कअप `return` कीवर्ड की तरह एक ही लाइन पर नहीं है, तो आपको इसे इस तरह के ब्रैकेट्स की एक जोड़ी में लपेटना होगा:
@@ -107,7 +107,7 @@ return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```js
 return (
   <div>
-    <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+    <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
   </div>
 );
 ```
@@ -127,9 +127,15 @@ return (
 ```js
 function Profile() {
   return (
+<<<<<<< HEAD
     <img 
       src="https://i.imgur.com/MK3eW3As.jpg" 
       alt="Katherine Johnson" 
+=======
+    <img
+      src="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
+      alt="Katherine Johnson"
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
     />
   );
 }
@@ -164,9 +170,9 @@ img { margin: 0 10px 10px 0; height: 90px; }
 ```html
 <section>
   <h1>Amazing scientists</h1>
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
 </section>
 ```
 
@@ -215,7 +221,11 @@ When a child component needs some data from a parent, [pass it by props](/learn/
 
 अधिकांश React ऐप्स सभी तरह से कौम्पोनॅन्ट का उपयोग करते हैं। इसका मतलब है कि आप न केवल बटन जैसे  रीयुज़बल कौम्पोनॅन्टस का उपयोग करेंगे, बल्कि साइडबार, लिस्ट्स और अंततः पूरे पेजेज़ जैसे बड़े पीसेज का भी! कौम्पोनॅन्टस UI कोड और मार्कअप को व्यवस्थित करने का एक आसान तरीका है, भले ही उनमें से कुछ का उपयोग केवल एक बार किया गया हो।
 
+<<<<<<< HEAD
 [React-based frameworks](/learn/creating-a-react-app) इससे एक कदम आगे ले जाते हैं। एक खाली HTML फ़ाइल का उपयोग करने और जावास्क्रिप्ट के साथ पेज को मैनेज करने के लिए React को "टेक ओवर" करने देने के बजाय, वे आपके React कौम्पोनॅन्ट से ऑटोमेटिकली HTML उत्पन्न करता हैं। यह आपके ऐप को जावास्क्रिप्ट कोड लोड होने से पहले कुछ कंटेंट दिखाने देता है।
+=======
+[React-based frameworks](/learn/creating-a-react-app) take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they *also* generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 फिर भी, कई वेबसाइटें ["स्प्रिंकल्स ऑफ़ इंटरएक्टिविटी" डालने के लिए](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) केवल React का उपयोग करती हैं। उनके पास पूरे पेज के लिए एक के बजाय कई रुट कौम्पोनॅन्टस हैं। आप जितना चाहें उतना - ज़्यादा या कम React - उपयोग कर सकते हैं।
 
@@ -245,9 +255,15 @@ When a child component needs some data from a parent, [pass it by props](/learn/
 ```js
 function Profile() {
   return (
+<<<<<<< HEAD
     <img 
       src="https://i.imgur.com/lICfvbD.jpg" 
       alt="Aklilu Lemma" 
+=======
+    <img
+      src="https://react.dev/images/docs/scientists/lICfvbD.jpg"
+      alt="Aklilu Lemma"
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
     />
   );
 }
@@ -270,9 +286,15 @@ img { height: 181px; }
 ```js
 export default function Profile() {
   return (
+<<<<<<< HEAD
     <img 
       src="https://i.imgur.com/lICfvbD.jpg" 
       alt="Aklilu Lemma" 
+=======
+    <img
+      src="https://react.dev/images/docs/scientists/lICfvbD.jpg"
+      alt="Aklilu Lemma"
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
     />
   );
 }
@@ -303,7 +325,7 @@ img { height: 181px; }
 ```js
 export default function Profile() {
   return
-    <img src="https://i.imgur.com/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
+    <img src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
 }
 ```
 
@@ -321,7 +343,7 @@ img { height: 180px; }
 
 ```js
 export default function Profile() {
-  return <img src="https://i.imgur.com/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
+  return <img src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
 }
 ```
 
@@ -338,9 +360,9 @@ img { height: 180px; }
 ```js
 export default function Profile() {
   return (
-    <img 
-      src="https://i.imgur.com/jA8hHMpm.jpg" 
-      alt="Katsuko Saruhashi" 
+    <img
+      src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg"
+      alt="Katsuko Saruhashi"
     />
   );
 }
@@ -363,9 +385,15 @@ img { height: 180px; }
 ```js
 function profile() {
   return (
+<<<<<<< HEAD
     <img 
       src="https://i.imgur.com/QIrZWGIs.jpg" 
       alt="Alan L. Hart" 
+=======
+    <img
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
     />
   );
 }
@@ -399,9 +427,15 @@ React कौम्पोनॅन्ट नाम कैपिटल अक्�
 ```js
 function Profile() {
   return (
+<<<<<<< HEAD
     <img 
       src="https://i.imgur.com/QIrZWGIs.jpg" 
       alt="Alan L. Hart" 
+=======
+    <img
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
     />
   );
 }
