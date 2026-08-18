@@ -4,22 +4,22 @@ title: स्टेट में ऑब्जेक्ट्स को अपड
 
 <Intro>
 
-स्टेट ऑब्जेक्ट समेत कोई भी जावास्क्रिप्ट वैल्यू स्टोर कर सकती है। लेकिन आपको कभी भी  ऑब्जेक्ट्स को बदलना नहीं चाहिए जो आप React स्टेट में रखते हैं। उसके बजाए आपको जब भी  ऑब्जेक्ट को अपडेट करना हो या तो आप  एक नया ऑब्जेक्ट बनाये  (या उसी की एक कॉपी बनाये) और फिर उस कॉपी का उपयोग करने के लिये स्टेट को सेट कर दें। 
+स्टेट ऑब्जेक्ट समेत कोई भी जावास्क्रिप्ट वैल्यू स्टोर कर सकती है। लेकिन आपको कभी भी  ऑब्जेक्ट्स को बदलना नहीं चाहिए जो आप React स्टेट में रखते हैं। उसके बजाए आपको जब भी  ऑब्जेक्ट को अपडेट करना हो या तो आप  एक नया ऑब्जेक्ट बनाये  (या उसी की एक कॉपी बनाये) और फिर उस कॉपी का उपयोग करने के लिये स्टेट को सेट कर दें।
 
 </Intro>
 
 <YouWillLearn>
 
 - React में सही से ऑब्जेक्ट को कैसे अपडेट करे
-- बिना बदले कैसे नेस्टेड ऑब्जेक्ट को अपडेट करे 
-- इम्म्यूटेबलिटी  क्या होती है और कैसे उसे ब्रेक ना करें 
+- बिना बदले कैसे नेस्टेड ऑब्जेक्ट को अपडेट करे
+- इम्म्यूटेबलिटी  क्या होती है और कैसे उसे ब्रेक ना करें
 - Immer की मदद से बार-बार ऑब्जेक्टस की कॉपी बनाने को कम कैसे करें
 
 </YouWillLearn>
 
 ## म्युटेशन क्या होता है? {/*whats-a-mutation*/}
 
-आप स्टेट में कोई भी जावास्क्रिप्ट वैल्यू स्टोर करसकते है 
+आप स्टेट में कोई भी जावास्क्रिप्ट वैल्यू स्टोर करसकते है
 
 ```js
 const [x, setX] = useState(0);
@@ -31,7 +31,7 @@ const [x, setX] = useState(0);
 setX(5);
 ```
 
-स्टेट `x`   `0` से  `5` तक बदली है,  लेकिन _नंबर `0` खुद_  बदला नहीं है। जावास्क्रिप्ट में ये मुमकिन नहीं है की बिल्ट-इन प्रिमिटिव वैल्यूज जैसे की नंबर्स, स्टिंग्स, और बूलियन बदल सके। 
+स्टेट `x`   `0` से  `5` तक बदली है,  लेकिन _नंबर `0` खुद_  बदला नहीं है। जावास्क्रिप्ट में ये मुमकिन नहीं है की बिल्ट-इन प्रिमिटिव वैल्यूज जैसे की नंबर्स, स्टिंग्स, और बूलियन बदल सके।
 
 अब विचार कीजिये एक ऑब्जेक्ट स्टेट में है:
 
@@ -45,7 +45,7 @@ const [position, setPosition] = useState({ x: 0, y: 0 });
 position.x = 5;
 ```
 
-हलाक, जबकि React स्टेट में ऑब्जेक्ट्स तकनीकी रूप से मुटेबल होते है, आपको उनके साथ ऐसे व्यवहार करना चैयाह **जैसे वो** इम्म्यूटेबल हो--नंबर्स, बूलियनस, और स्ट्रिंग्स की तरह। उनको म्यूटेट करने की बजाए, आपको हमेशा उनको रीप्लेस करना चाहिए।  
+हलाक, जबकि React स्टेट में ऑब्जेक्ट्स तकनीकी रूप से मुटेबल होते है, आपको उनके साथ ऐसे व्यवहार करना चैयाह **जैसे वो** इम्म्यूटेबल हो--नंबर्स, बूलियनस, और स्ट्रिंग्स की तरह। उनको म्यूटेट करने की बजाए, आपको हमेशा उनको रीप्लेस करना चाहिए।
 
 ## स्टेट का रीड-ओनली मानें {/*treat-state-as-read-only*/}
 
@@ -55,7 +55,7 @@ position.x = 5;
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [11]}}
 import { useState } from 'react';
 
 export default function MovingDot() {
@@ -95,7 +95,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-दिकत इस दिए गए कोड में है। 
+दिकत इस दिए गए कोड में है।
 
 ```js
 onPointerMove={e => {
@@ -104,7 +104,7 @@ onPointerMove={e => {
 }}
 ```
 
-ये कोड [पिछले रेंडर](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) से `position` को एसाइन्ड ऑब्जेक्ट को बदलता है। परन्तु बिना स्टेट सेटिंग फंक्शन का उपयोग करे, React को कोई अंदाज़ा नहीं है की ऑब्जेक्ट में परिवर्तन आये है। इसलिए React कुछ नहीं करता उसके जवाब में। उद्धरण के लिए आप भोजन करने के बाद भोजन का आर्डर बदल रहे है। हालाँकि कुछ मामलो में स्टेट को म्यूटेट करना काम करता, परन्तु हम ऐसा करने का हम सुझाव नहीं देते। आपको हमेशा स्टेट में उपलब्ध वैल्यू को मौजूद रेंडर में हमेशा रीड-ओनली व्यवहार करना चैयाह।  
+ये कोड [पिछले रेंडर](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) से `position` को एसाइन्ड ऑब्जेक्ट को बदलता है। परन्तु बिना स्टेट सेटिंग फंक्शन का उपयोग करे, React को कोई अंदाज़ा नहीं है की ऑब्जेक्ट में परिवर्तन आये है। इसलिए React कुछ नहीं करता उसके जवाब में। उद्धरण के लिए आप भोजन करने के बाद भोजन का आर्डर बदल रहे है। हालाँकि कुछ मामलो में स्टेट को म्यूटेट करना काम करता, परन्तु हम ऐसा करने का हम सुझाव नहीं देते। आपको हमेशा स्टेट में उपलब्ध वैल्यू को मौजूद रेंडर में हमेशा रीड-ओनली व्यवहार करना चैयाह।
 
 वास्तव में [री-रेंडर ट्रिगर](/learn/state-as-a-snapshot#setting-state-triggers-renders) करने के लिया , **एक *नया* ऑब्जेक्ट बनाये करे और स्टेट सेटिंग फंक्शन में पास करदे:**
 
@@ -119,8 +119,8 @@ onPointerMove={e => {
 
 `setPosition` के द्वारा, आप React को बता रहे है:
 
-* `position` को बदलें नए बने ऑब्जेक्ट्स से 
-* इस कॉम्पोनेन्ट को दोबारा रेंडर करे 
+* `position` को बदलें नए बने ऑब्जेक्ट्स से
+* इस कॉम्पोनेन्ट को दोबारा रेंडर करे
 
 नोटिस करिये कैसे लाल बिंदु पालन कर रहा है पॉइंटर का जब आप टच या होवर करते है प्रीव्यू पर:
 
@@ -197,9 +197,9 @@ setPosition({
 });
 ```
 
-म्युटेशन  केवल एक समस्या है जब आप *मौजूदा* ऑब्जेक्ट् को बदलते हैं जो पहले से ही स्टेट  में हैं। आपके द्वारा अभी-अभी बनाये गए ऑब्जेक्ट को बदलना ठीक है क्योंकि *अभी तक कोई अन्य कोड इसको रिफरेन्स नहीं करता।* इसे बदलने से गलती से उस पर निर्भर किसी चीज़ पर प्रभाव नहीं पड़ेगा। इसे "लोकल म्युटेशन" कहा जाता है। आप स्थानीय उत्परिवर्तन भी कर सकते हैं [प्रतिपादन करते समय](/learn/keeping-components-pure#local-mutation-your-components-little-secret) बहुत सुविधाजनक और पूरी तरह से ठीक! 
+म्युटेशन  केवल एक समस्या है जब आप *मौजूदा* ऑब्जेक्ट् को बदलते हैं जो पहले से ही स्टेट  में हैं। आपके द्वारा अभी-अभी बनाये गए ऑब्जेक्ट को बदलना ठीक है क्योंकि *अभी तक कोई अन्य कोड इसको रिफरेन्स नहीं करता।* इसे बदलने से गलती से उस पर निर्भर किसी चीज़ पर प्रभाव नहीं पड़ेगा। इसे "लोकल म्युटेशन" कहा जाता है। आप स्थानीय उत्परिवर्तन भी कर सकते हैं [प्रतिपादन करते समय](/learn/keeping-components-pure#local-mutation-your-components-little-secret) बहुत सुविधाजनक और पूरी तरह से ठीक!
 
-</DeepDive>  
+</DeepDive>
 
 ## स्प्रेड सिंटैक्स के साथ ऑब्जेक्ट्स की कॉपी बनाना {/*copying-objects-with-the-spread-syntax*/}
 
@@ -209,7 +209,7 @@ setPosition({
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [11, 15, 19]}}
 import { useState } from 'react';
 
 export default function Form() {
@@ -457,7 +457,7 @@ const [person, setPerson] = useState({
   artwork: {
     title: 'Blue Nana',
     city: 'Hamburg',
-    image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+    image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   }
 });
 ```
@@ -501,7 +501,7 @@ export default function Form() {
     artwork: {
       title: 'Blue Nana',
       city: 'Hamburg',
-      image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+      image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
     }
   });
 
@@ -579,8 +579,8 @@ export default function Form() {
         <br />
         (located in {person.artwork.city})
       </p>
-      <img 
-        src={person.artwork.image} 
+      <img
+        src={person.artwork.image}
         alt={person.artwork.title}
       />
     </>
@@ -608,7 +608,7 @@ let obj = {
   artwork: {
     title: 'Blue Nana',
     city: 'Hamburg',
-    image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+    image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   }
 };
 ```
@@ -619,7 +619,7 @@ let obj = {
 let obj1 = {
   title: 'Blue Nana',
   city: 'Hamburg',
-  image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
 };
 
 let obj2 = {
@@ -634,7 +634,7 @@ let obj2 = {
 let obj1 = {
   title: 'Blue Nana',
   city: 'Hamburg',
-  image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
 };
 
 let obj2 = {
@@ -650,7 +650,7 @@ let obj3 = {
 
 अगर आप `obj3.artwork.city` को बदलते हैं, तो यह `obj2.artwork.city` और `obj1.city` दोनों को प्रभावित करेगा। ऐसा इसलिए है क्योंकि `obj3.artwork`, `obj2.artwork`, और `obj1` एक ही ऑब्जेक्ट  हैं। जब आप ऑब्जेक्ट्स को "नेस्टेड" रुट में सोचते है तो यह देखना मुश्किल होता है। इसके बजाय, वे अलग-अलग ऑब्जेक्ट  हैं जो प्रॉपर्टीज के साथ एक दूसरे पर "पॉइंट" करती हैं।
 
-</DeepDive>  
+</DeepDive>
 
 ### Immer के साथ संक्षिप्त अपडेट लॉजिक लिखें {/*write-concise-update-logic-with-immer*/}
 
@@ -691,7 +691,7 @@ export default function Form() {
     artwork: {
       title: 'Blue Nana',
       city: 'Hamburg',
-      image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+      image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
     }
   });
 
@@ -756,8 +756,8 @@ export default function Form() {
         <br />
         (located in {person.artwork.city})
       </p>
-      <img 
-        src={person.artwork.image} 
+      <img
+        src={person.artwork.image}
         alt={person.artwork.title}
       />
     </>
@@ -833,7 +833,7 @@ img { width: 200px; height: 200px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [11]}}
 import { useState } from 'react';
 
 export default function Scoreboard() {
@@ -989,7 +989,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 <Sandpack>
 
-```js src/App.js
+```js {expectedErrors: {'react-compiler': [17]}} src/App.js
 import { useState } from 'react';
 import Background from './Background.js';
 import Box from './Box.js';
@@ -1294,7 +1294,7 @@ select { margin-bottom: 10px; }
 
 <Sandpack>
 
-```js src/App.js
+```js {expectedErrors: {'react-compiler': [18]}} src/App.js
 import { useState } from 'react';
 import { useImmer } from 'use-immer';
 import Background from './Background.js';

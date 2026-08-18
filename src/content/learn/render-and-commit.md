@@ -54,7 +54,7 @@ root.render(<Image />);
 export default function Image() {
   return (
     <img
-      src="https://i.imgur.com/ZF6s192.jpg"
+      src="https://react.dev/images/docs/scientists/ZF6s192.jpg"
       alt="'Floralis Genérica' by Eduardo Catalano: a gigantic metallic flower sculpture with reflective petals"
     />
   );
@@ -103,7 +103,7 @@ export default function Gallery() {
 function Image() {
   return (
     <img
-      src="https://i.imgur.com/ZF6s192.jpg"
+      src="https://react.dev/images/docs/scientists/ZF6s192.jpg"
       alt="'Floralis Genérica' by Eduardo Catalano: a gigantic metallic flower sculpture with reflective petals"
     />
   );
@@ -206,7 +206,7 @@ export default function App() {
   1. ट्रिगर
   2. रेंडर
   3. कमिट
-* आप अपने कौम्पोनॅन्टस में गलतियों को खोजने के लिए Strict Mode का उपयोग कर सकते हैं। 
+* आप अपने कौम्पोनॅन्टस में गलतियों को खोजने के लिए Strict Mode का उपयोग कर सकते हैं।
 * यदि रेंडरिंग परिणाम पिछली बार की तरह ही है तो React DOM को नहीं छूता है।
 
 </Recap>

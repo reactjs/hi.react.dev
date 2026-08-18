@@ -101,7 +101,7 @@ Next.js को [Vercel](https://vercel.com/) द्वारा मेंटे�
 Next.js का ऐप राउटर bundler आधिकारिक [React Server Components specification](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md) को पूरी तरह से लागू करता है। इससे आप एक ही React ट्री में बिल्ड-टाइम, सर्वर-केवल, और इंटरएक्टिव कंपोनेंट्स को मिक्स कर सकते हैं।
 
 उदाहरण के लिए, आप एक सर्वर-केवल React कंपोनेंट को एक `async` फंक्शन के रूप में लिख सकते हैं जो डेटाबेस या फाइल से डेटा पढ़ता है। फिर आप उस डेटा को अपने इंटरएक्टिव कंपोनेंट्स तक पास कर सकते हैं:
-  
+
 ```js
 // This component runs *only* on the server (or during the build).
 async function Talks({ confId }) {
@@ -117,7 +117,7 @@ async function Talks({ confId }) {
 ```
 
 Next.js का ऐप राउटर [Suspense के साथ डेटा फेचिंग](https://nextjs.org/blog/2022/03/29/react-v18#suspense-in-data-frameworks) भी इंटीग्रेट करता है। इससे आप अपने यूजर इंटरफेस के विभिन्न हिस्सों के लिए लोडिंग स्टेट (जैसे कि स्केलेटन प्लेसहोल्डर) को सीधे अपने React ट्री में निर्दिष्ट कर सकते हैं:
-  
+
 ```js
 <Suspense fallback={<TalksLoading />}>
   <Talks confId={conf.id} />

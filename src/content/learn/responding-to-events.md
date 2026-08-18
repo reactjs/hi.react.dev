@@ -126,10 +126,10 @@ Event handlers में पास की गई फंक्शन्स को
 
 * `<button onClick={handleClick}>` `handleClick` फंक्शन को पास करता है।
 * `<button onClick={() => alert('...')}>` `() => alert('...')` फंक्शन को पास करता है।
-  
+
 [एरो फंक्शन्स के बारे में और पढ़ें](https://javascript.info/arrow-functions-basics)
 
-</Pitfall> 
+</Pitfall>
 
 ### Event हैंडलर्स में props को पढ़ना {/*reading-props-in-event-handlers*/}
 
@@ -172,7 +172,7 @@ button { margin-right: 10px; }
 
 ### Event हैंडलर्स को props के रूप में पास करना {/*passing-event-handlers-as-props*/}
 
-अक्सर आपको पैरेंट कौम्पोनॅन्ट को बच्चे के event हैंडलर को निर्दिष्ट करने की आवश्यकता होती है। बटनों पर विचार करें: जिस स्थान पर आप `Button` कौम्पोनॅन्ट का उपयोग कर रहे हैं, वहां आप एक अलग फंक्शन चलाना चाह सकते हैं—शायद एक फिल्म चलाता है और दूसरा इमेज अपलोड करता है। 
+अक्सर आपको पैरेंट कौम्पोनॅन्ट को बच्चे के event हैंडलर को निर्दिष्ट करने की आवश्यकता होती है। बटनों पर विचार करें: जिस स्थान पर आप `Button` कौम्पोनॅन्ट का उपयोग कर रहे हैं, वहां आप एक अलग फंक्शन चलाना चाह सकते हैं—शायद एक फिल्म चलाता है और दूसरा इमेज अपलोड करता है।
 
 इसके लिए, उस event हैंडलर के रूप में props को पास करें जो कौम्पोनॅन्ट अपने पैरेंट से प्राप्त करता है, जैसे कि:
 
@@ -324,13 +324,13 @@ button { margin-right: 10px; }
 
 ध्यान दें कि `App` कौम्पोनॅन्ट को यह जानने की आवश्यकता नहीं है कि `Toolbar` `onPlayMovie` या `onUploadImage` के साथ *क्या* करेगा। यह `Toolbar` का एक कार्यान्वयन विवरण है। यहाँ, `Toolbar` इन्हें `onClick` हैंडलर्स के रूप में अपने `Button` कौम्पोनॅन्ट्स को पास करता है, लेकिन बाद में इसे कीबोर्ड शॉर्टकट पर भी ट्रिगर किया जा सकता है। ऐप-स्पेसिफिक इंटरएक्शन्स जैसे `onPlayMovie` के आधार पर props का नामकरण आपको लचीलापन देता है कि आप बाद में इनका उपयोग कैसे करें।
 
-  
+
 <Note>
 
 
 सुनिश्चित करें कि आप अपने event-handler के लिए उपयुक्त HTML टैग्स का उपयोग करें। उदाहरण के लिए, क्लिक हैंडल करने के लिए [`<button onClick={handleClick}>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) का उपयोग करें, न कि `<div onClick={handleClick}>`। एक वास्तविक ब्राउज़र `<button>` का उपयोग करने से कीबोर्ड नेविगेशन जैसी बिल्ट-इन ब्राउज़र विशेषताएँ सक्षम होती हैं। यदि आपको बटन की डिफ़ॉल्ट ब्राउज़र स्टाइलिंग पसंद नहीं है और आप इसे लिंक या किसी अन्य UI एलिमेंट की तरह दिखाना चाहते हैं, तो आप इसे CSS के साथ प्राप्त कर सकते हैं। [सुलभ मार्कअप लिखने के बारे में अधिक जानें।](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
 
-  
+
 </Note>
 
 
@@ -572,7 +572,7 @@ button { margin-left: 5px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [5, 7]}}
 export default function LightSwitch() {
   function handleClick() {
     let bodyStyle = document.body.style;

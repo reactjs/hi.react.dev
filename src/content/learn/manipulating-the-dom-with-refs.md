@@ -75,10 +75,10 @@ export default function Form() {
 
 इसका उपयोग करने के लिए:
 
-1. `useRef` हुक के साथ `inputRef` डिक्लेअर करें।  
-2. इसे `<input ref={inputRef}>` के रूप में पास करें। यह React को यह बताता है कि **इस `<input>` के DOM नोड को `inputRef.current` में डालें।**  
-3. `handleClick` फंक्शन में, इनपुट DOM नोड को `inputRef.current` से पढ़ें और `focus()` को `inputRef.current.focus()` के साथ कॉल करें।  
-4. `handleClick` इवेंट हैंडलर को `<button>` में `onClick` के साथ पास करें।  
+1. `useRef` हुक के साथ `inputRef` डिक्लेअर करें।
+2. इसे `<input ref={inputRef}>` के रूप में पास करें। यह React को यह बताता है कि **इस `<input>` के DOM नोड को `inputRef.current` में डालें।**
+3. `handleClick` फंक्शन में, इनपुट DOM नोड को `inputRef.current` से पढ़ें और `focus()` को `inputRef.current.focus()` के साथ कॉल करें।
+4. `handleClick` इवेंट हैंडलर को `<button>` में `onClick` के साथ पास करें।
 
 हालांकि DOM मैनिपुलेशन रेफ्स के लिए सबसे आम उपयोग है, `useRef` हुक का उपयोग React के बाहर अन्य चीजों, जैसे टाइमर IDs, को स्टोर करने के लिए भी किया जा सकता है। स्टेट की तरह, रेफ्स रेंडर के बीच बने रहते हैं। रेफ्स स्टेट वेरिएबल्स की तरह हैं, लेकिन इन्हें सेट करने पर री-रेंडर नहीं होता। रेफ्स के बारे में अधिक जानने के लिए पढ़ें [Referencing Values with Refs.](/learn/referencing-values-with-refs)
 
@@ -211,7 +211,7 @@ li {
 
 इस समस्या को हल करने का एक तरीका यह है कि उनके पैरेंट एलिमेंट के लिए एक रिफ लें और फिर DOM मैनिपुलेशन विधियों जैसे [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) का उपयोग करके व्यक्तिगत चाइल्ड नोड्स "खोजें"। लेकिन यह तरीका नाजुक है और आपके DOM स्ट्रक्चर के बदलने पर टूट सकता है।
 
-एक और समाधान है कि **`ref` एट्रिब्यूट को एक फ़ंक्शन पास करें।** इसे [`ref` कॉलबैक](/reference/react-dom/components/common#ref-callback) कहा जाता है। React आपके रिफ कॉलबैक को DOM नोड के साथ तब कॉल करेगा जब रिफ सेट करना हो, और `null` के साथ जब रिफ को क्लियर करना हो। यह आपको अपनी खुद की [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) या ऐरे बनाए रखने देता है और किसी रिफ तक इसकी इंडेक्स या किसी प्रकार के ID के माध्यम से पहुंचने देता है।
+एक और समाधान है कि **`ref` एट्रिब्यूट को एक फ़ंक्शन पास करें।** इसे [`ref` कॉलबैक](/reference/react-dom/components/common#ref-callback) कहा जाता है। React आपके रिफ कॉलबैक को DOM नोड के साथ तब कॉल करेगा जब रिफ सेट करना हो, और जब रिफ को क्लियर करना हो तब कॉलबैक से रिटर्न हुए क्लीनअप फंक्शन को कॉल करेगा। यह आपको अपनी खुद की [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) या ऐरे बनाए रखने देता है और किसी रिफ तक इसकी इंडेक्स या किसी प्रकार के ID के माध्यम से पहुंचने देता है।
 
 यह उदाहरण दिखाता है कि आप इस तरीके का उपयोग करके किसी लंबी लिस्ट में किसी भी नोड को स्क्रॉल कैसे कर सकते हैं:
 
@@ -247,13 +247,13 @@ export default function CatFriends() {
       <nav>
         <button onClick={() => scrollToCat(catList[0])}>Neo</button>
         <button onClick={() => scrollToCat(catList[5])}>Millie</button>
-        <button onClick={() => scrollToCat(catList[9])}>Bella</button>
+        <button onClick={() => scrollToCat(catList[8])}>Bella</button>
       </nav>
       <div>
         <ul>
           {catList.map((cat) => (
             <li
-              key={cat}
+              key={cat.id}
               ref={(node) => {
                 const map = getMap();
                 map.set(cat, node);
@@ -263,7 +263,7 @@ export default function CatFriends() {
                 };
               }}
             >
-              <img src={cat} />
+              <img src={cat.imageUrl} />
             </li>
           ))}
         </ul>
@@ -273,11 +273,22 @@ export default function CatFriends() {
 }
 
 function setupCatList() {
-  const catList = [];
-  for (let i = 0; i < 10; i++) {
-    catList.push("https://loremflickr.com/320/240/cat?lock=" + i);
+  const catCount = 10;
+  const catList = new Array(catCount)
+  for (let i = 0; i < catCount; i++) {
+    let imageUrl = '';
+    if (i < 5) {
+      imageUrl = "https://placecats.com/neo/320/240";
+    } else if (i < 8) {
+      imageUrl = "https://placecats.com/millie/320/240";
+    } else {
+      imageUrl = "https://placecats.com/bella/320/240";
+    }
+    catList[i] = {
+      id: i,
+      imageUrl,
+    };
   }
-
   return catList;
 }
 
@@ -343,8 +354,8 @@ li {
 
 ## किसी अन्य कौम्पोनॅन्ट के DOM नोड्स तक पहुंचना {/*accessing-another-components-dom-nodes*/}
 
-<Pitfall>  
-Refs एक अंतिम उपाय हैं। किसी _दूसरे_ कौम्पोनॅन्ट के DOM नोड्स को मैन्युअली मैनिपुलेट करना आपके कोड को नाजुक बना सकता है।  
+<Pitfall>
+Refs एक अंतिम उपाय हैं। किसी _दूसरे_ कौम्पोनॅन्ट के DOM नोड्स को मैन्युअली मैनिपुलेट करना आपके कोड को नाजुक बना सकता है।
 </Pitfall>
 
 आप पैरेंट कौम्पोनॅन्ट से चाइल्ड कौम्पोनॅन्टस तक refs को [किसी अन्य प्रॉप की तरह](/learn/passing-props-to-a-component) पास कर सकते हैं।
@@ -395,11 +406,11 @@ export default function MyForm() {
 
 </Sandpack>
 
-<DeepDive>  
+<DeepDive>
 
 #### API के एक सबसेट को एक इम्पेरेटिव हैंडल के साथ एक्सपोज करना {/*exposing-a-subset-of-the-api-with-an-imperative-handle*/}
 
-ऊपर दिए गए उदाहरण में, `MyInput` को पास किया गया ref ऑरिजिनल DOM इनपुट एलिमेंट तक पास होता है। यह पैरेंट कौम्पोनॅन्ट को इस पर `focus()` कॉल करने की अनुमति देता है। हालांकि, इससे पैरेंट कौम्पोनॅन्ट को कुछ और भी करने की अनुमति मिलती है—उदाहरण के लिए, इसकी CSS स्टाइल्स को बदलना।  
+ऊपर दिए गए उदाहरण में, `MyInput` को पास किया गया ref ऑरिजिनल DOM इनपुट एलिमेंट तक पास होता है। यह पैरेंट कौम्पोनॅन्ट को इस पर `focus()` कॉल करने की अनुमति देता है। हालांकि, इससे पैरेंट कौम्पोनॅन्ट को कुछ और भी करने की अनुमति मिलती है—उदाहरण के लिए, इसकी CSS स्टाइल्स को बदलना।
 कुछ असामान्य मामलों में, आप एक्सपोज़ की गई कार्यक्षमता को सीमित करना चाह सकते हैं। आप यह [`useImperativeHandle`](/reference/react/useImperativeHandle) का उपयोग करके कर सकते हैं:
 
 <Sandpack>
@@ -436,10 +447,10 @@ export default function Form() {
 
 </Sandpack>
 
-यहां, `MyInput` के अंदर `realInputRef` असली इनपुट DOM नोड को होल्ड करता है। हालांकि, [`useImperativeHandle`](/reference/react/useImperativeHandle) React को निर्देश देता है कि वह पैरेंट कौम्पोनॅन्ट को एक कस्टम ऑब्जेक्ट को रिफ के रूप में प्रोवाइड करे।  
-इसलिए, `Form` कौम्पोनॅन्ट के अंदर `inputRef.current` केवल `focus` मेथड तक ही पहुंच प्रदान करेगा। इस मामले में, रिफ "हैंडल" DOM नोड नहीं है, बल्कि वह कस्टम ऑब्जेक्ट है जिसे आप [`useImperativeHandle`](/reference/react/useImperativeHandle) कॉल के अंदर बनाते हैं।  
+यहां, `MyInput` के अंदर `realInputRef` असली इनपुट DOM नोड को होल्ड करता है। हालांकि, [`useImperativeHandle`](/reference/react/useImperativeHandle) React को निर्देश देता है कि वह पैरेंट कौम्पोनॅन्ट को एक कस्टम ऑब्जेक्ट को रिफ के रूप में प्रोवाइड करे।
+इसलिए, `Form` कौम्पोनॅन्ट के अंदर `inputRef.current` केवल `focus` मेथड तक ही पहुंच प्रदान करेगा। इस मामले में, रिफ "हैंडल" DOM नोड नहीं है, बल्कि वह कस्टम ऑब्जेक्ट है जिसे आप [`useImperativeHandle`](/reference/react/useImperativeHandle) कॉल के अंदर बनाते हैं।
 
-</DeepDive>  
+</DeepDive>
 
 ## जब React रेफ्स को जोड़ता है {/*when-react-attaches-the-refs*/}
 
@@ -878,12 +889,30 @@ export default function CatFriends() {
   );
 }
 
-const catList = [];
-for (let i = 0; i < 10; i++) {
-  catList.push({
+const catCount = 10;
+const catList = new Array(catCount);
+for (let i = 0; i < catCount; i++) {
+  const bucket = Math.floor(Math.random() * catCount) % 2;
+  let imageUrl = '';
+  switch (bucket) {
+    case 0: {
+      imageUrl = "https://placecats.com/neo/250/200";
+      break;
+    }
+    case 1: {
+      imageUrl = "https://placecats.com/millie/250/200";
+      break;
+    }
+    case 2:
+    default: {
+      imageUrl = "https://placecats.com/bella/250/200";
+      break;
+    }
+  }
+  catList[i] = {
     id: i,
-    imageUrl: 'https://loremflickr.com/250/200/cat?lock=' + i
-  });
+    imageUrl,
+  };
 }
 
 ```
@@ -962,7 +991,7 @@ export default function CatFriends() {
             behavior: 'smooth',
             block: 'nearest',
             inline: 'center'
-          });            
+          });
         }}>
           Next
         </button>
@@ -994,12 +1023,30 @@ export default function CatFriends() {
   );
 }
 
-const catList = [];
-for (let i = 0; i < 10; i++) {
-  catList.push({
+const catCount = 10;
+const catList = new Array(catCount);
+for (let i = 0; i < catCount; i++) {
+  const bucket = Math.floor(Math.random() * catCount) % 2;
+  let imageUrl = '';
+  switch (bucket) {
+    case 0: {
+      imageUrl = "https://placecats.com/neo/250/200";
+      break;
+    }
+    case 1: {
+      imageUrl = "https://placecats.com/millie/250/200";
+      break;
+    }
+    case 2:
+    default: {
+      imageUrl = "https://placecats.com/bella/250/200";
+      break;
+    }
+  }
+  catList[i] = {
     id: i,
-    imageUrl: 'https://loremflickr.com/250/200/cat?lock=' + i
-  });
+    imageUrl,
+  };
 }
 
 ```

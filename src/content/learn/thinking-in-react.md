@@ -38,7 +38,7 @@ React में एक UI को लागू करने के लिए, आ
 
 आपके बैकग्राउंड के अनुरूप, आप कौम्पोनॅन्टस को विभाजित करने के लिए विभिन्न तरीकों पर विचार कर सकते हैं:
 
-* **प्रोग्रामिंग**--यदि आप नए फ़ंक्शन या ऑब्जेक्ट बनाने का फैसला कर रहे हैं तो एक ही तकनीक का उपयोग करें। एक ऐसी तकनीक है [एक जिम्मेवारी का सिद्धांत](https://en.wikipedia.org/wiki/Single_responsibility_principle), अर्थात्, एक कौम्पोनॅन्ट को आदर्शरूप से केवल एक काम करना चाहिए। यदि यह बढ़ जाता है, तो इसे छोटे से छोटे सब-कौम्पोनॅन्ट में विभाजित किया जाना चाहिए।
+* **प्रोग्रामिंग**--यदि आप नए फ़ंक्शन या ऑब्जेक्ट बनाने का फैसला कर रहे हैं तो एक ही तकनीक का उपयोग करें। एक ऐसी तकनीक है [कंसर्न्स का पृथक्करण](https://en.wikipedia.org/wiki/Separation_of_concerns), अर्थात्, एक कौम्पोनॅन्ट को आदर्शरूप से केवल एक काम करना चाहिए। यदि यह बढ़ जाता है, तो इसे छोटे से छोटे सब-कौम्पोनॅन्ट में विभाजित किया जाना चाहिए।
 
 * **CSS**--विचार करें कि आप class selectors किसके लिए बनाएँगे। (हालांकि, कौम्पोनॅन्टस थोड़े कम सूक्ष्म होते हैं।)
 
@@ -231,7 +231,7 @@ State को एक ऐसे छोटे सेट के रूप में 
 * क्या आप इसे **कंपोनेंट में मौजूदा state या props से गणना कर सकते** हैं? यदि हां, तो यह स्थिति निश्चित रूप से नहीं है!
 
 What's left is probably state.
-जो बचा हुआ है, संभवतः वो एक state है। 
+जो बचा हुआ है, संभवतः वो एक state है।
 
 उन्हें एक बार फिर से एक एक करके देखते हैं:
 
@@ -275,7 +275,7 @@ React में दो प्रकार के "मॉडल" डेटा ह
 1. **स्थिति का उपयोग करने वाले कंपोनेंट की पहचान करें:**
     * `ProductTable` को उस state के आधार पर प्रोडक्ट सूची को फ़िल्टर करने की आवश्यकता है (सर्च टेक्स्ट और चेकबॉक्स के मान)।
     * `SearchBar` को उस state का विवरण दिखाने की आवश्यकता है (सर्च टेक्स्ट और चेकबॉक्स के मान)।
-2. **उनके सामान्य पैरेंट कंपोनेंट का पता लगाएं:** जो पहले पैरेंट कंपोनेंट दोनों कंपोनेंट को साझा करते हैं, वह है `FilterableProductTable`। 
+2. **उनके सामान्य पैरेंट कंपोनेंट का पता लगाएं:** जो पहले पैरेंट कंपोनेंट दोनों कंपोनेंट को साझा करते हैं, वह है `FilterableProductTable`।
 3. **state को रखने के लिए निर्णय लें:** हम filterText और inStockOnly state मूल्यों को `FilterableProductTable` में रखेंगे।
 
 इसलिए स्थिति मूल्य `FilterableProductTable` में रहेंगे।
@@ -285,17 +285,17 @@ React में दो प्रकार के "मॉडल" डेटा ह
 ```js
 function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState('');
-  const [inStockOnly, setInStockOnly] = useState(false);  
+  const [inStockOnly, setInStockOnly] = useState(false);
 ```
 
 फिर, `filterText` और `inStockOnly` को `ProductTable` और `SearchBar` को props के रूप में पास करें:
 
 ```js
 <div>
-  <SearchBar 
-    filterText={filterText} 
+  <SearchBar
+    filterText={filterText}
     inStockOnly={inStockOnly} />
-  <ProductTable 
+  <ProductTable
     products={products}
     filterText={filterText}
     inStockOnly={inStockOnly} />
@@ -315,10 +315,10 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
+      <SearchBar
+        filterText={filterText}
         inStockOnly={inStockOnly} />
-      <ProductTable 
+      <ProductTable
         products={products}
         filterText={filterText}
         inStockOnly={inStockOnly} />
@@ -396,13 +396,13 @@ function ProductTable({ products, filterText, inStockOnly }) {
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} 
+      <input
+        type="text"
+        value={filterText}
         placeholder="Search..."/>
       <label>
-        <input 
-          type="checkbox" 
+        <input
+          type="checkbox"
           checked={inStockOnly} />
         {' '}
         Only show products in stock
@@ -459,9 +459,9 @@ td {
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} 
+      <input
+        type="text"
+        value={filterText}
         placeholder="Search..."/>
 ```
 
@@ -483,8 +483,8 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
+      <SearchBar
+        filterText={filterText}
         inStockOnly={inStockOnly}
         onFilterTextChange={setFilterText}
         onInStockOnlyChange={setInStockOnly} />
@@ -527,13 +527,13 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
-        inStockOnly={inStockOnly} 
-        onFilterTextChange={setFilterText} 
+      <SearchBar
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+        onFilterTextChange={setFilterText}
         onInStockOnlyChange={setInStockOnly} />
-      <ProductTable 
-        products={products} 
+      <ProductTable
+        products={products}
         filterText={filterText}
         inStockOnly={inStockOnly} />
     </div>
@@ -615,14 +615,14 @@ function SearchBar({
 }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} placeholder="Search..." 
+      <input
+        type="text"
+        value={filterText} placeholder="Search..."
         onChange={(e) => onFilterTextChange(e.target.value)} />
       <label>
-        <input 
-          type="checkbox" 
-          checked={inStockOnly} 
+        <input
+          type="checkbox"
+          checked={inStockOnly}
           onChange={(e) => onInStockOnlyChange(e.target.checked)} />
         {' '}
         Only show products in stock

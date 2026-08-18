@@ -34,7 +34,7 @@ const ref = useRef(0);
 `useRef` एक इस तरह के ऑब्जेक्ट को रिटर्न करता है:
 
 ```js
-{ 
+{
   current: 0 // The value you passed to useRef
 }
 ```
@@ -74,7 +74,7 @@ export default function Counter() {
 
 ## उदाहरण: एक स्टॉपवॉच बनाए {/*example-building-a-stopwatch*/}
 
-आप एक कौम्पोनॅन्ट में ref और state को ऐड कर सकते हैं। उदाहरण के लिए, आइए एक स्टॉपवॉच बनाते हैं जिसे यूज़र एक बटन दबाकर शुरू या बंद कर सकता है। यह डिस्प्ले करने के लिए कि यूज़र द्वारा "Start" बटन दबाए जाने के बाद से कितना समय बीत चुका है, 
+आप एक कौम्पोनॅन्ट में ref और state को ऐड कर सकते हैं। उदाहरण के लिए, आइए एक स्टॉपवॉच बनाते हैं जिसे यूज़र एक बटन दबाकर शुरू या बंद कर सकता है। यह डिस्प्ले करने के लिए कि यूज़र द्वारा "Start" बटन दबाए जाने के बाद से कितना समय बीत चुका है,
 आपको इस बात का ध्यान रखना होगा कि स्टार्ट बटन कब दबाया गया था और करंट समय क्या है **इस जानकारी का इस्तेमाल रेंडरिंग के लिए किया जाता है, इसीलिए आप इसे state में रखेंगे:**
 
 ```js
@@ -212,7 +212,7 @@ export default function Counter() {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [13]}}
 import { useRef } from 'react';
 
 export default function Counter() {
@@ -278,7 +278,7 @@ React state की सीमाएँ ref के लिए लागू नह�
 ```js
 ref.current = 5;
 console.log(ref.current); // 5
-``` 
+```
 
 यह इसलिए होता है क्योंकि **ref खुद एक साधारण जावास्क्रिप्ट ऑब्जेक्ट है** और इसलिए यह उसके जैसे काम करता है।
 
@@ -313,7 +313,7 @@ console.log(ref.current); // 5
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [10]}}
 import { useState } from 'react';
 
 export default function Chat() {
@@ -417,7 +417,7 @@ export default function Chat() {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [10]}}
 import { useRef } from 'react';
 
 export default function Toggle() {

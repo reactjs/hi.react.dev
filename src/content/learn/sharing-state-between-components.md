@@ -477,7 +477,7 @@ function SearchBar() {
 
 function List({ items }) {
   return (
-    <table> 
+    <table>
       <tbody>
         {items.map(food => (
           <tr key={food.id}>
@@ -570,7 +570,7 @@ function SearchBar({ query, onChange }) {
 
 function List({ items }) {
   return (
-    <table> 
+    <table>
       <tbody>
         {items.map(food => (
           <tr key={food.id}>

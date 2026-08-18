@@ -63,7 +63,7 @@ HTML टैग्स की तरह ही, आप संपूर्ण प�
 export default function Profile() {
   return (
     <img
-      src="https://i.imgur.com/MK3eW3Am.jpg"
+      src="https://react.dev/images/docs/scientists/MK3eW3Am.jpg"
       alt="Katherine Johnson"
     />
   );
@@ -99,7 +99,7 @@ React कौम्पोनॅन्ट नियमित जावास्क
 रिटर्न स्टेटमेंट सभी को एक लाइन पर लिखा जा सकता है, जैसा कि इस कौम्पोनॅन्ट में है:
 
 ```js
-return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
+return <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```
 
 लेकिन अगर आपका मार्कअप `return` कीवर्ड की तरह एक ही लाइन पर नहीं है, तो आपको इसे इस तरह के ब्रैकेट्स की एक जोड़ी में लपेटना होगा:
@@ -107,7 +107,7 @@ return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```js
 return (
   <div>
-    <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+    <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
   </div>
 );
 ```
@@ -127,9 +127,9 @@ return (
 ```js
 function Profile() {
   return (
-    <img 
-      src="https://i.imgur.com/MK3eW3As.jpg" 
-      alt="Katherine Johnson" 
+    <img
+      src="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
+      alt="Katherine Johnson"
     />
   );
 }
@@ -164,9 +164,9 @@ img { margin: 0 10px 10px 0; height: 90px; }
 ```html
 <section>
   <h1>Amazing scientists</h1>
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
 </section>
 ```
 
@@ -245,9 +245,9 @@ When a child component needs some data from a parent, [pass it by props](/learn/
 ```js
 function Profile() {
   return (
-    <img 
-      src="https://i.imgur.com/lICfvbD.jpg" 
-      alt="Aklilu Lemma" 
+    <img
+      src="https://react.dev/images/docs/scientists/lICfvbD.jpg"
+      alt="Aklilu Lemma"
     />
   );
 }
@@ -270,9 +270,9 @@ img { height: 181px; }
 ```js
 export default function Profile() {
   return (
-    <img 
-      src="https://i.imgur.com/lICfvbD.jpg" 
-      alt="Aklilu Lemma" 
+    <img
+      src="https://react.dev/images/docs/scientists/lICfvbD.jpg"
+      alt="Aklilu Lemma"
     />
   );
 }
@@ -303,7 +303,7 @@ img { height: 181px; }
 ```js
 export default function Profile() {
   return
-    <img src="https://i.imgur.com/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
+    <img src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
 }
 ```
 
@@ -321,7 +321,7 @@ img { height: 180px; }
 
 ```js
 export default function Profile() {
-  return <img src="https://i.imgur.com/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
+  return <img src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
 }
 ```
 
@@ -338,9 +338,9 @@ img { height: 180px; }
 ```js
 export default function Profile() {
   return (
-    <img 
-      src="https://i.imgur.com/jA8hHMpm.jpg" 
-      alt="Katsuko Saruhashi" 
+    <img
+      src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg"
+      alt="Katsuko Saruhashi"
     />
   );
 }
@@ -363,9 +363,9 @@ img { height: 180px; }
 ```js
 function profile() {
   return (
-    <img 
-      src="https://i.imgur.com/QIrZWGIs.jpg" 
-      alt="Alan L. Hart" 
+    <img
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
     />
   );
 }
@@ -399,9 +399,9 @@ React कौम्पोनॅन्ट नाम कैपिटल अक्�
 ```js
 function Profile() {
   return (
-    <img 
-      src="https://i.imgur.com/QIrZWGIs.jpg" 
-      alt="Alan L. Hart" 
+    <img
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
     />
   );
 }

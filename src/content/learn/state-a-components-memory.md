@@ -11,7 +11,7 @@ title: "State: एक कौम्पोनॅन्ट की मेमोर�
 <YouWillLearn>
 
 * state वेरिएबल को [`useState`](/reference/react/useState) Hook के साथ कैसे ऐड करें
-* `useState` Hook कोनसे वैल्यूज की पेअर को रिटर्न करता है 
+* `useState` Hook कोनसे वैल्यूज की पेअर को रिटर्न करता है
 * एक से अधिक स्टेट वेरिएबल कैसे ऐड करें
 * state को लोकल क्यों कहा जाता है
 
@@ -23,7 +23,7 @@ title: "State: एक कौम्पोनॅन्ट की मेमोर�
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [7]}}
 import { sculptureList } from './data.js';
 
 export default function Gallery() {
@@ -40,14 +40,14 @@ export default function Gallery() {
         Next
       </button>
       <h2>
-        <i>{sculpture.name} </i> 
+        <i>{sculpture.name} </i>
         by {sculpture.artist}
       </h2>
-      <h3>  
+      <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
-      <img 
-        src={sculpture.url} 
+      <img
+        src={sculpture.url}
         alt={sculpture.alt}
       />
       <p>
@@ -63,73 +63,73 @@ export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
   description: 'This enormous (75 ft. or 23m) silver flower is located in Buenos Aires. It is designed to move, closing its petals in the evening or when strong winds blow and opening them in the morning.',
-  url: 'https://i.imgur.com/ZF6s192m.jpg',
+  url: 'https://react.dev/images/docs/scientists/ZF6s192m.jpg',
   alt: 'A gigantic metallic flower sculpture with reflective mirror-like petals and strong stamens.'
 }, {
   name: 'Eternal Presence',
   artist: 'John Woodrow Wilson',
   description: 'Wilson was known for his preoccupation with equality, social justice, as well as the essential and spiritual qualities of humankind. This massive (7ft. or 2,13m) bronze represents what he described as "a symbolic Black presence infused with a sense of universal humanity."',
-  url: 'https://i.imgur.com/aTtVpES.jpg',
+  url: 'https://react.dev/images/docs/scientists/aTtVpES.jpg',
   alt: 'The sculpture depicting a human head seems ever-present and solemn. It radiates calm and serenity.'
 }, {
   name: 'Moai',
   artist: 'Unknown Artist',
   description: 'Located on the Easter Island, there are 1,000 moai, or extant monumental statues, created by the early Rapa Nui people, which some believe represented deified ancestors.',
-  url: 'https://i.imgur.com/RCwLEoQm.jpg',
+  url: 'https://react.dev/images/docs/scientists/RCwLEoQm.jpg',
   alt: 'Three monumental stone busts with the heads that are disproportionately large with somber faces.'
 }, {
   name: 'Blue Nana',
   artist: 'Niki de Saint Phalle',
   description: 'The Nanas are triumphant creatures, symbols of femininity and maternity. Initially, Saint Phalle used fabric and found objects for the Nanas, and later on introduced polyester to achieve a more vibrant effect.',
-  url: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  url: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   alt: 'A large mosaic sculpture of a whimsical dancing female figure in a colorful costume emanating joy.'
 }, {
   name: 'Ultimate Form',
   artist: 'Barbara Hepworth',
   description: 'This abstract bronze sculpture is a part of The Family of Man series located at Yorkshire Sculpture Park. Hepworth chose not to create literal representations of the world but developed abstract forms inspired by people and landscapes.',
-  url: 'https://i.imgur.com/2heNQDcm.jpg',
+  url: 'https://react.dev/images/docs/scientists/2heNQDcm.jpg',
   alt: 'A tall sculpture made of three elements stacked on each other reminding of a human figure.'
 }, {
   name: 'Cavaliere',
   artist: 'Lamidi Olonade Fakeye',
   description: "Descended from four generations of woodcarvers, Fakeye's work blended traditional and contemporary Yoruba themes.",
-  url: 'https://i.imgur.com/wIdGuZwm.png',
+  url: 'https://react.dev/images/docs/scientists/wIdGuZwm.png',
   alt: 'An intricate wood sculpture of a warrior with a focused face on a horse adorned with patterns.'
 }, {
   name: 'Big Bellies',
   artist: 'Alina Szapocznikow',
   description: "Szapocznikow is known for her sculptures of the fragmented body as a metaphor for the fragility and impermanence of youth and beauty. This sculpture depicts two very realistic large bellies stacked on top of each other, each around five feet (1,5m) tall.",
-  url: 'https://i.imgur.com/AlHTAdDm.jpg',
+  url: 'https://react.dev/images/docs/scientists/AlHTAdDm.jpg',
   alt: 'The sculpture reminds a cascade of folds, quite different from bellies in classical sculptures.'
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
   description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
-  url: 'https://i.imgur.com/HMFmH6m.jpg',
+  url: 'https://react.dev/images/docs/scientists/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
   name: 'Lunar Landscape',
   artist: 'Louise Nevelson',
   description: 'Nevelson was known for scavenging objects from New York City debris, which she would later assemble into monumental constructions. In this one, she used disparate parts like a bedpost, juggling pin, and seat fragment, nailing and gluing them into boxes that reflect the influence of Cubism’s geometric abstraction of space and form.',
-  url: 'https://i.imgur.com/rN7hY6om.jpg',
+  url: 'https://react.dev/images/docs/scientists/rN7hY6om.jpg',
   alt: 'A black matte sculpture where the individual elements are initially indistinguishable.'
 }, {
   name: 'Aureole',
   artist: 'Ranjani Shettar',
   description: 'Shettar merges the traditional and the modern, the natural and the industrial. Her art focuses on the relationship between man and nature. Her work was described as compelling both abstractly and figuratively, gravity defying, and a "fine synthesis of unlikely materials."',
-  url: 'https://i.imgur.com/okTpbHhm.jpg',
+  url: 'https://react.dev/images/docs/scientists/okTpbHhm.jpg',
   alt: 'A pale wire-like sculpture mounted on concrete wall and descending on the floor. It appears light.'
 }, {
   name: 'Hippos',
   artist: 'Taipei Zoo',
   description: 'The Taipei Zoo commissioned a Hippo Square featuring submerged hippos at play.',
-  url: 'https://i.imgur.com/6o5Vuyu.jpg',
+  url: 'https://react.dev/images/docs/scientists/6o5Vuyu.jpg',
   alt: 'A group of bronze hippo sculptures emerging from the sett sidewalk as if they were swimming.'
 }];
 ```
@@ -188,7 +188,7 @@ const [index, setIndex] = useState(0);
 
 `index` एक state वैरिएबल है और `setIndex` एक सेटर फ़ंक्शन है।
 
-> यहाँ पर  `[` और `]` सिंटेक्स को [ऐरे डेस्ट्रक्टरिंग](https://javascript.info/destructuring-assignment) कहा जाता हे और यह आपको array की वैल्यू पढ़ने देता है। `useState` द्वारा रिटर्न किये गए array हमेशा दो आइटम्स होते है। 
+> यहाँ पर  `[` और `]` सिंटेक्स को [ऐरे डेस्ट्रक्टरिंग](https://javascript.info/destructuring-assignment) कहा जाता हे और यह आपको array की वैल्यू पढ़ने देता है। `useState` द्वारा रिटर्न किये गए array हमेशा दो आइटम्स होते है।
 
 इस तरह वे `handleClick()` में एक साथ काम करते हैं :
 
@@ -220,14 +220,14 @@ export default function Gallery() {
         Next
       </button>
       <h2>
-        <i>{sculpture.name} </i> 
+        <i>{sculpture.name} </i>
         by {sculpture.artist}
       </h2>
-      <h3>  
+      <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
-      <img 
-        src={sculpture.url} 
+      <img
+        src={sculpture.url}
         alt={sculpture.alt}
       />
       <p>
@@ -243,73 +243,73 @@ export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
   description: 'This enormous (75 ft. or 23m) silver flower is located in Buenos Aires. It is designed to move, closing its petals in the evening or when strong winds blow and opening them in the morning.',
-  url: 'https://i.imgur.com/ZF6s192m.jpg',
+  url: 'https://react.dev/images/docs/scientists/ZF6s192m.jpg',
   alt: 'A gigantic metallic flower sculpture with reflective mirror-like petals and strong stamens.'
 }, {
   name: 'Eternal Presence',
   artist: 'John Woodrow Wilson',
   description: 'Wilson was known for his preoccupation with equality, social justice, as well as the essential and spiritual qualities of humankind. This massive (7ft. or 2,13m) bronze represents what he described as "a symbolic Black presence infused with a sense of universal humanity."',
-  url: 'https://i.imgur.com/aTtVpES.jpg',
+  url: 'https://react.dev/images/docs/scientists/aTtVpES.jpg',
   alt: 'The sculpture depicting a human head seems ever-present and solemn. It radiates calm and serenity.'
 }, {
   name: 'Moai',
   artist: 'Unknown Artist',
   description: 'Located on the Easter Island, there are 1,000 moai, or extant monumental statues, created by the early Rapa Nui people, which some believe represented deified ancestors.',
-  url: 'https://i.imgur.com/RCwLEoQm.jpg',
+  url: 'https://react.dev/images/docs/scientists/RCwLEoQm.jpg',
   alt: 'Three monumental stone busts with the heads that are disproportionately large with somber faces.'
 }, {
   name: 'Blue Nana',
   artist: 'Niki de Saint Phalle',
   description: 'The Nanas are triumphant creatures, symbols of femininity and maternity. Initially, Saint Phalle used fabric and found objects for the Nanas, and later on introduced polyester to achieve a more vibrant effect.',
-  url: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  url: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   alt: 'A large mosaic sculpture of a whimsical dancing female figure in a colorful costume emanating joy.'
 }, {
   name: 'Ultimate Form',
   artist: 'Barbara Hepworth',
   description: 'This abstract bronze sculpture is a part of The Family of Man series located at Yorkshire Sculpture Park. Hepworth chose not to create literal representations of the world but developed abstract forms inspired by people and landscapes.',
-  url: 'https://i.imgur.com/2heNQDcm.jpg',
+  url: 'https://react.dev/images/docs/scientists/2heNQDcm.jpg',
   alt: 'A tall sculpture made of three elements stacked on each other reminding of a human figure.'
 }, {
   name: 'Cavaliere',
   artist: 'Lamidi Olonade Fakeye',
   description: "Descended from four generations of woodcarvers, Fakeye's work blended traditional and contemporary Yoruba themes.",
-  url: 'https://i.imgur.com/wIdGuZwm.png',
+  url: 'https://react.dev/images/docs/scientists/wIdGuZwm.png',
   alt: 'An intricate wood sculpture of a warrior with a focused face on a horse adorned with patterns.'
 }, {
   name: 'Big Bellies',
   artist: 'Alina Szapocznikow',
   description: "Szapocznikow is known for her sculptures of the fragmented body as a metaphor for the fragility and impermanence of youth and beauty. This sculpture depicts two very realistic large bellies stacked on top of each other, each around five feet (1,5m) tall.",
-  url: 'https://i.imgur.com/AlHTAdDm.jpg',
+  url: 'https://react.dev/images/docs/scientists/AlHTAdDm.jpg',
   alt: 'The sculpture reminds a cascade of folds, quite different from bellies in classical sculptures.'
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
   description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
-  url: 'https://i.imgur.com/HMFmH6m.jpg',
+  url: 'https://react.dev/images/docs/scientists/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
   name: 'Lunar Landscape',
   artist: 'Louise Nevelson',
   description: 'Nevelson was known for scavenging objects from New York City debris, which she would later assemble into monumental constructions. In this one, she used disparate parts like a bedpost, juggling pin, and seat fragment, nailing and gluing them into boxes that reflect the influence of Cubism’s geometric abstraction of space and form.',
-  url: 'https://i.imgur.com/rN7hY6om.jpg',
+  url: 'https://react.dev/images/docs/scientists/rN7hY6om.jpg',
   alt: 'A black matte sculpture where the individual elements are initially indistinguishable.'
 }, {
   name: 'Aureole',
   artist: 'Ranjani Shettar',
   description: 'Shettar merges the traditional and the modern, the natural and the industrial. Her art focuses on the relationship between man and nature. Her work was described as compelling both abstractly and figuratively, gravity defying, and a "fine synthesis of unlikely materials."',
-  url: 'https://i.imgur.com/okTpbHhm.jpg',
+  url: 'https://react.dev/images/docs/scientists/okTpbHhm.jpg',
   alt: 'A pale wire-like sculpture mounted on concrete wall and descending on the floor. It appears light.'
 }, {
   name: 'Hippos',
   artist: 'Taipei Zoo',
   description: 'The Taipei Zoo commissioned a Hippo Square featuring submerged hippos at play.',
-  url: 'https://i.imgur.com/6o5Vuyu.jpg',
+  url: 'https://react.dev/images/docs/scientists/6o5Vuyu.jpg',
   alt: 'A group of bronze hippo sculptures emerging from the sett sidewalk as if they were swimming.'
 }];
 ```
@@ -341,7 +341,7 @@ State उन फीचर्स में से एक है, लेकिन 
 
 <Pitfall>
 
-**`use` से शुरू होने वाले हुक फ़ंक्शंस केवल कौम्पोनॅन्टस के ऊपरी लेवल या [आपके अपने हुक](/learn/reusing-logic-with-custom-hooks) से कॉल हो सकते हे।** आप हुक को कंडीशंस, लूप्स, या अन्य नेस्टेड फ़ंक्शंस के अंदर कॉल नहीं कर सकते। हुक फ़ंक्शंस हैं, लेकिन उनको आपके कौम्पोनॅन्टस की जरूरतों के बारे में बिना शर्त डेक्लेरेशंस के जैसे समझिये। जिस प्रकार से आप अपनी फाइल की शुरुआत में मॉडल्स "इम्पोर्ट" करते है, उसी प्रकार से आप React के फीचर्स का उपयोग फाइल के शुरुवात में कर सकते है।  
+**`use` से शुरू होने वाले हुक फ़ंक्शंस केवल कौम्पोनॅन्टस के ऊपरी लेवल या [आपके अपने हुक](/learn/reusing-logic-with-custom-hooks) से कॉल हो सकते हे।** आप हुक को कंडीशंस, लूप्स, या अन्य नेस्टेड फ़ंक्शंस के अंदर कॉल नहीं कर सकते। हुक फ़ंक्शंस हैं, लेकिन उनको आपके कौम्पोनॅन्टस की जरूरतों के बारे में बिना शर्त डेक्लेरेशंस के जैसे समझिये। जिस प्रकार से आप अपनी फाइल की शुरुआत में मॉडल्स "इम्पोर्ट" करते है, उसी प्रकार से आप React के फीचर्स का उपयोग फाइल के शुरुवात में कर सकते है।
 
 </Pitfall>
 
@@ -353,11 +353,11 @@ State उन फीचर्स में से एक है, लेकिन 
 const [index, setIndex] = useState(0);
 ```
 
-इस मामले में, आप चाहते हैं कि React `index` को याद रखे। 
+इस मामले में, आप चाहते हैं कि React `index` को याद रखे।
 
-> कन्वेंशनल तरीके से आप इस पेअर को ऐसे लिखेंगे : `const [something, setSomething]`। वैसे तो आप जो चाहे वो नाम इसे दे सकते हे, लेकिन पारंपरिक तरीके से लिखने पर, आपका कोड बाकि लोगो को भी आसानी से समझ आता है। 
+> कन्वेंशनल तरीके से आप इस पेअर को ऐसे लिखेंगे : `const [something, setSomething]`। वैसे तो आप जो चाहे वो नाम इसे दे सकते हे, लेकिन पारंपरिक तरीके से लिखने पर, आपका कोड बाकि लोगो को भी आसानी से समझ आता है।
 
-useState` केवल एक ही आर्गुमेंट लेता है और वह है **इनिशियल वैल्यू** आपके state वेरिएबल का। इस उदाहरण में, `index` की इनिशियल वैल्यू है `0` क्युकी `useState(0)` लिखा गया है। 
+useState` केवल एक ही आर्गुमेंट लेता है और वह है **इनिशियल वैल्यू** आपके state वेरिएबल का। इस उदाहरण में, `index` की इनिशियल वैल्यू है `0` क्युकी `useState(0)` लिखा गया है।
 
 जब भी आपका कौम्पोनॅन्ट रेंडर होता है, `useState` आपको एक array देता है जिसमें दो वैल्यूज होते हैं:
 
@@ -370,14 +370,14 @@ useState` केवल एक ही आर्गुमेंट लेता �
 const [index, setIndex] = useState(0);
 ```
 
-1. **आपका कौम्पोनॅन्ट पहली बार रेंडर होता है।** क्युकी आपने `useState` को `0` वैल्यू `index` की इनिशियल वैल्यू के तौर पर दी थीं, वह `[0, setIndex]` रिटर्न करेगा। React `0` को नई state वैल्यू के तौर पर याद रखेगा। 
+1. **आपका कौम्पोनॅन्ट पहली बार रेंडर होता है।** क्युकी आपने `useState` को `0` वैल्यू `index` की इनिशियल वैल्यू के तौर पर दी थीं, वह `[0, setIndex]` रिटर्न करेगा। React `0` को नई state वैल्यू के तौर पर याद रखेगा।
 2. **आप state को अपडेट करें।** जब कोई यूजर, बटन पर क्लिक करता है, यह `setIndex(index + 1)` को कॉल करता है। `index` अभी `0` है, तो `setIndex(1)` हो जायेगा। यह React को याद रखने के लिए कहता है कि `index` अब `1` है और एक और रेंडर ट्रिगर करता है।
-3. **आपके कौम्पोनॅन्ट का दूसरा रेंडर.** React अभी भी देखता है `useState(0)`, लेकिन क्योंकि React को *याद है* की आपने `index` को `1` सेट किया था , वह `[1, setIndex]` रिटर्न करता है। 
+3. **आपके कौम्पोनॅन्ट का दूसरा रेंडर.** React अभी भी देखता है `useState(0)`, लेकिन क्योंकि React को *याद है* की आपने `index` को `1` सेट किया था , वह `[1, setIndex]` रिटर्न करता है।
 4. और इसी तरह आगे भी होता रहता है!
 
 ## एक कौम्पोनॅन्ट को कई state वेरिएबल देना {/*giving-a-component-multiple-state-variables*/}
 
-आपके पास एक कौम्पोनॅन्ट में जितने चाहें उतने प्रकार के state वेरिएबल हो सकते हैं। इस कौम्पोनॅन्ट में दो state वेरिएबल हैं, एक number `index` और एक boolean `showMore` जिसकी वैल्यू तब बदलती है जब आप "Show details" को क्लिक करते है : 
+आपके पास एक कौम्पोनॅन्ट में जितने चाहें उतने प्रकार के state वेरिएबल हो सकते हैं। इस कौम्पोनॅन्ट में दो state वेरिएबल हैं, एक number `index` और एक boolean `showMore` जिसकी वैल्यू तब बदलती है जब आप "Show details" को क्लिक करते है :
 
 <Sandpack>
 
@@ -404,18 +404,18 @@ export default function Gallery() {
         Next
       </button>
       <h2>
-        <i>{sculpture.name} </i> 
+        <i>{sculpture.name} </i>
         by {sculpture.artist}
       </h2>
-      <h3>  
+      <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
       <button onClick={handleMoreClick}>
         {showMore ? 'Hide' : 'Show'} details
       </button>
       {showMore && <p>{sculpture.description}</p>}
-      <img 
-        src={sculpture.url} 
+      <img
+        src={sculpture.url}
         alt={sculpture.alt}
       />
     </>
@@ -428,73 +428,73 @@ export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
   description: 'This enormous (75 ft. or 23m) silver flower is located in Buenos Aires. It is designed to move, closing its petals in the evening or when strong winds blow and opening them in the morning.',
-  url: 'https://i.imgur.com/ZF6s192m.jpg',
+  url: 'https://react.dev/images/docs/scientists/ZF6s192m.jpg',
   alt: 'A gigantic metallic flower sculpture with reflective mirror-like petals and strong stamens.'
 }, {
   name: 'Eternal Presence',
   artist: 'John Woodrow Wilson',
   description: 'Wilson was known for his preoccupation with equality, social justice, as well as the essential and spiritual qualities of humankind. This massive (7ft. or 2,13m) bronze represents what he described as "a symbolic Black presence infused with a sense of universal humanity."',
-  url: 'https://i.imgur.com/aTtVpES.jpg',
+  url: 'https://react.dev/images/docs/scientists/aTtVpES.jpg',
   alt: 'The sculpture depicting a human head seems ever-present and solemn. It radiates calm and serenity.'
 }, {
   name: 'Moai',
   artist: 'Unknown Artist',
   description: 'Located on the Easter Island, there are 1,000 moai, or extant monumental statues, created by the early Rapa Nui people, which some believe represented deified ancestors.',
-  url: 'https://i.imgur.com/RCwLEoQm.jpg',
+  url: 'https://react.dev/images/docs/scientists/RCwLEoQm.jpg',
   alt: 'Three monumental stone busts with the heads that are disproportionately large with somber faces.'
 }, {
   name: 'Blue Nana',
   artist: 'Niki de Saint Phalle',
   description: 'The Nanas are triumphant creatures, symbols of femininity and maternity. Initially, Saint Phalle used fabric and found objects for the Nanas, and later on introduced polyester to achieve a more vibrant effect.',
-  url: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  url: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   alt: 'A large mosaic sculpture of a whimsical dancing female figure in a colorful costume emanating joy.'
 }, {
   name: 'Ultimate Form',
   artist: 'Barbara Hepworth',
   description: 'This abstract bronze sculpture is a part of The Family of Man series located at Yorkshire Sculpture Park. Hepworth chose not to create literal representations of the world but developed abstract forms inspired by people and landscapes.',
-  url: 'https://i.imgur.com/2heNQDcm.jpg',
+  url: 'https://react.dev/images/docs/scientists/2heNQDcm.jpg',
   alt: 'A tall sculpture made of three elements stacked on each other reminding of a human figure.'
 }, {
   name: 'Cavaliere',
   artist: 'Lamidi Olonade Fakeye',
   description: "Descended from four generations of woodcarvers, Fakeye's work blended traditional and contemporary Yoruba themes.",
-  url: 'https://i.imgur.com/wIdGuZwm.png',
+  url: 'https://react.dev/images/docs/scientists/wIdGuZwm.png',
   alt: 'An intricate wood sculpture of a warrior with a focused face on a horse adorned with patterns.'
 }, {
   name: 'Big Bellies',
   artist: 'Alina Szapocznikow',
   description: "Szapocznikow is known for her sculptures of the fragmented body as a metaphor for the fragility and impermanence of youth and beauty. This sculpture depicts two very realistic large bellies stacked on top of each other, each around five feet (1,5m) tall.",
-  url: 'https://i.imgur.com/AlHTAdDm.jpg',
+  url: 'https://react.dev/images/docs/scientists/AlHTAdDm.jpg',
   alt: 'The sculpture reminds a cascade of folds, quite different from bellies in classical sculptures.'
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
   description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
-  url: 'https://i.imgur.com/HMFmH6m.jpg',
+  url: 'https://react.dev/images/docs/scientists/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
   name: 'Lunar Landscape',
   artist: 'Louise Nevelson',
   description: 'Nevelson was known for scavenging objects from New York City debris, which she would later assemble into monumental constructions. In this one, she used disparate parts like a bedpost, juggling pin, and seat fragment, nailing and gluing them into boxes that reflect the influence of Cubism’s geometric abstraction of space and form.',
-  url: 'https://i.imgur.com/rN7hY6om.jpg',
+  url: 'https://react.dev/images/docs/scientists/rN7hY6om.jpg',
   alt: 'A black matte sculpture where the individual elements are initially indistinguishable.'
 }, {
   name: 'Aureole',
   artist: 'Ranjani Shettar',
   description: 'Shettar merges the traditional and the modern, the natural and the industrial. Her art focuses on the relationship between man and nature. Her work was described as compelling both abstractly and figuratively, gravity defying, and a "fine synthesis of unlikely materials."',
-  url: 'https://i.imgur.com/okTpbHhm.jpg',
+  url: 'https://react.dev/images/docs/scientists/okTpbHhm.jpg',
   alt: 'A pale wire-like sculpture mounted on concrete wall and descending on the floor. It appears light.'
 }, {
   name: 'Hippos',
   artist: 'Taipei Zoo',
   description: 'The Taipei Zoo commissioned a Hippo Square featuring submerged hippos at play.',
-  url: 'https://i.imgur.com/6o5Vuyu.jpg',
+  url: 'https://react.dev/images/docs/scientists/6o5Vuyu.jpg',
   alt: 'A group of bronze hippo sculptures emerging from the sett sidewalk as if they were swimming.'
 }];
 ```
@@ -522,7 +522,7 @@ button {
 
 #### How does React know which state to return? {/*how-does-react-know-which-state-to-return*/}
 
-आपने देखा होगा कि `useState` कॉल को स्टेट वेरिएबल के बारे में कोई जानकारी नहीं मिलती है। कोई "आइडेंटिफायर" नहीं है जो `useState` को पास किया जाता है, तो उसे कैसे पता चलता है कि किस state वेरिएबल को वापस करना है? क्या यह आपके फ़ंक्शन को पार्स करने जैसे किसी जादू पर निर्भर करता है? इसका जवाब है नहीं। 
+आपने देखा होगा कि `useState` कॉल को स्टेट वेरिएबल के बारे में कोई जानकारी नहीं मिलती है। कोई "आइडेंटिफायर" नहीं है जो `useState` को पास किया जाता है, तो उसे कैसे पता चलता है कि किस state वेरिएबल को वापस करना है? क्या यह आपके फ़ंक्शन को पार्स करने जैसे किसी जादू पर निर्भर करता है? इसका जवाब है नहीं।
 
 इसके बजाय, उनके संक्षिप्त सिंटैक्स को सक्षम करने के लिए, Hooks ** एक ही कौम्पोनॅन्ट के प्रत्येक रेंडर पर स्थिर कॉल ऑर्डर पर भरोसा करते है।** अगर आप ऊपर दिए गए नियम का पालन करते हैं ("हुक को केवल टॉप लेवल पर करें"), तो यह अक्सर अच्छा काम करता है, Hooks को हमेशा उसी क्रम में बुलाया जाएगा। और, एक [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) बाकी की ज़्यादातर गलतियाँ पकड़ता है।
 
@@ -624,73 +624,73 @@ let sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
   description: 'This enormous (75 ft. or 23m) silver flower is located in Buenos Aires. It is designed to move, closing its petals in the evening or when strong winds blow and opening them in the morning.',
-  url: 'https://i.imgur.com/ZF6s192m.jpg',
+  url: 'https://react.dev/images/docs/scientists/ZF6s192m.jpg',
   alt: 'A gigantic metallic flower sculpture with reflective mirror-like petals and strong stamens.'
 }, {
   name: 'Eternal Presence',
   artist: 'John Woodrow Wilson',
   description: 'Wilson was known for his preoccupation with equality, social justice, as well as the essential and spiritual qualities of humankind. This massive (7ft. or 2,13m) bronze represents what he described as "a symbolic Black presence infused with a sense of universal humanity."',
-  url: 'https://i.imgur.com/aTtVpES.jpg',
+  url: 'https://react.dev/images/docs/scientists/aTtVpES.jpg',
   alt: 'The sculpture depicting a human head seems ever-present and solemn. It radiates calm and serenity.'
 }, {
   name: 'Moai',
   artist: 'Unknown Artist',
   description: 'Located on the Easter Island, there are 1,000 moai, or extant monumental statues, created by the early Rapa Nui people, which some believe represented deified ancestors.',
-  url: 'https://i.imgur.com/RCwLEoQm.jpg',
+  url: 'https://react.dev/images/docs/scientists/RCwLEoQm.jpg',
   alt: 'Three monumental stone busts with the heads that are disproportionately large with somber faces.'
 }, {
   name: 'Blue Nana',
   artist: 'Niki de Saint Phalle',
   description: 'The Nanas are triumphant creatures, symbols of femininity and maternity. Initially, Saint Phalle used fabric and found objects for the Nanas, and later on introduced polyester to achieve a more vibrant effect.',
-  url: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  url: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   alt: 'A large mosaic sculpture of a whimsical dancing female figure in a colorful costume emanating joy.'
 }, {
   name: 'Ultimate Form',
   artist: 'Barbara Hepworth',
   description: 'This abstract bronze sculpture is a part of The Family of Man series located at Yorkshire Sculpture Park. Hepworth chose not to create literal representations of the world but developed abstract forms inspired by people and landscapes.',
-  url: 'https://i.imgur.com/2heNQDcm.jpg',
+  url: 'https://react.dev/images/docs/scientists/2heNQDcm.jpg',
   alt: 'A tall sculpture made of three elements stacked on each other reminding of a human figure.'
 }, {
   name: 'Cavaliere',
   artist: 'Lamidi Olonade Fakeye',
   description: "Descended from four generations of woodcarvers, Fakeye's work blended traditional and contemporary Yoruba themes.",
-  url: 'https://i.imgur.com/wIdGuZwm.png',
+  url: 'https://react.dev/images/docs/scientists/wIdGuZwm.png',
   alt: 'An intricate wood sculpture of a warrior with a focused face on a horse adorned with patterns.'
 }, {
   name: 'Big Bellies',
   artist: 'Alina Szapocznikow',
   description: "Szapocznikow is known for her sculptures of the fragmented body as a metaphor for the fragility and impermanence of youth and beauty. This sculpture depicts two very realistic large bellies stacked on top of each other, each around five feet (1,5m) tall.",
-  url: 'https://i.imgur.com/AlHTAdDm.jpg',
+  url: 'https://react.dev/images/docs/scientists/AlHTAdDm.jpg',
   alt: 'The sculpture reminds a cascade of folds, quite different from bellies in classical sculptures.'
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
   description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
-  url: 'https://i.imgur.com/HMFmH6m.jpg',
+  url: 'https://react.dev/images/docs/scientists/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
   name: 'Lunar Landscape',
   artist: 'Louise Nevelson',
   description: 'Nevelson was known for scavenging objects from New York City debris, which she would later assemble into monumental constructions. In this one, she used disparate parts like a bedpost, juggling pin, and seat fragment, nailing and gluing them into boxes that reflect the influence of Cubism’s geometric abstraction of space and form.',
-  url: 'https://i.imgur.com/rN7hY6om.jpg',
+  url: 'https://react.dev/images/docs/scientists/rN7hY6om.jpg',
   alt: 'A black matte sculpture where the individual elements are initially indistinguishable.'
 }, {
   name: 'Aureole',
   artist: 'Ranjani Shettar',
   description: 'Shettar merges the traditional and the modern, the natural and the industrial. Her art focuses on the relationship between man and nature. Her work was described as compelling both abstractly and figuratively, gravity defying, and a "fine synthesis of unlikely materials."',
-  url: 'https://i.imgur.com/okTpbHhm.jpg',
+  url: 'https://react.dev/images/docs/scientists/okTpbHhm.jpg',
   alt: 'A pale wire-like sculpture mounted on concrete wall and descending on the floor. It appears light.'
 }, {
   name: 'Hippos',
   artist: 'Taipei Zoo',
   description: 'The Taipei Zoo commissioned a Hippo Square featuring submerged hippos at play.',
-  url: 'https://i.imgur.com/6o5Vuyu.jpg',
+  url: 'https://react.dev/images/docs/scientists/6o5Vuyu.jpg',
   alt: 'A group of bronze hippo sculptures emerging from the sett sidewalk as if they were swimming.'
 }];
 
@@ -769,18 +769,18 @@ export default function Gallery() {
         Next
       </button>
       <h2>
-        <i>{sculpture.name} </i> 
+        <i>{sculpture.name} </i>
         by {sculpture.artist}
       </h2>
-      <h3>  
+      <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
       <button onClick={handleMoreClick}>
         {showMore ? 'Hide' : 'Show'} details
       </button>
       {showMore && <p>{sculpture.description}</p>}
-      <img 
-        src={sculpture.url} 
+      <img
+        src={sculpture.url}
         alt={sculpture.alt}
       />
     </section>
@@ -793,73 +793,73 @@ export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
   description: 'This enormous (75 ft. or 23m) silver flower is located in Buenos Aires. It is designed to move, closing its petals in the evening or when strong winds blow and opening them in the morning.',
-  url: 'https://i.imgur.com/ZF6s192m.jpg',
+  url: 'https://react.dev/images/docs/scientists/ZF6s192m.jpg',
   alt: 'A gigantic metallic flower sculpture with reflective mirror-like petals and strong stamens.'
 }, {
   name: 'Eternal Presence',
   artist: 'John Woodrow Wilson',
   description: 'Wilson was known for his preoccupation with equality, social justice, as well as the essential and spiritual qualities of humankind. This massive (7ft. or 2,13m) bronze represents what he described as "a symbolic Black presence infused with a sense of universal humanity."',
-  url: 'https://i.imgur.com/aTtVpES.jpg',
+  url: 'https://react.dev/images/docs/scientists/aTtVpES.jpg',
   alt: 'The sculpture depicting a human head seems ever-present and solemn. It radiates calm and serenity.'
 }, {
   name: 'Moai',
   artist: 'Unknown Artist',
   description: 'Located on the Easter Island, there are 1,000 moai, or extant monumental statues, created by the early Rapa Nui people, which some believe represented deified ancestors.',
-  url: 'https://i.imgur.com/RCwLEoQm.jpg',
+  url: 'https://react.dev/images/docs/scientists/RCwLEoQm.jpg',
   alt: 'Three monumental stone busts with the heads that are disproportionately large with somber faces.'
 }, {
   name: 'Blue Nana',
   artist: 'Niki de Saint Phalle',
   description: 'The Nanas are triumphant creatures, symbols of femininity and maternity. Initially, Saint Phalle used fabric and found objects for the Nanas, and later on introduced polyester to achieve a more vibrant effect.',
-  url: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  url: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   alt: 'A large mosaic sculpture of a whimsical dancing female figure in a colorful costume emanating joy.'
 }, {
   name: 'Ultimate Form',
   artist: 'Barbara Hepworth',
   description: 'This abstract bronze sculpture is a part of The Family of Man series located at Yorkshire Sculpture Park. Hepworth chose not to create literal representations of the world but developed abstract forms inspired by people and landscapes.',
-  url: 'https://i.imgur.com/2heNQDcm.jpg',
+  url: 'https://react.dev/images/docs/scientists/2heNQDcm.jpg',
   alt: 'A tall sculpture made of three elements stacked on each other reminding of a human figure.'
 }, {
   name: 'Cavaliere',
   artist: 'Lamidi Olonade Fakeye',
   description: "Descended from four generations of woodcarvers, Fakeye's work blended traditional and contemporary Yoruba themes.",
-  url: 'https://i.imgur.com/wIdGuZwm.png',
+  url: 'https://react.dev/images/docs/scientists/wIdGuZwm.png',
   alt: 'An intricate wood sculpture of a warrior with a focused face on a horse adorned with patterns.'
 }, {
   name: 'Big Bellies',
   artist: 'Alina Szapocznikow',
   description: "Szapocznikow is known for her sculptures of the fragmented body as a metaphor for the fragility and impermanence of youth and beauty. This sculpture depicts two very realistic large bellies stacked on top of each other, each around five feet (1,5m) tall.",
-  url: 'https://i.imgur.com/AlHTAdDm.jpg',
+  url: 'https://react.dev/images/docs/scientists/AlHTAdDm.jpg',
   alt: 'The sculpture reminds a cascade of folds, quite different from bellies in classical sculptures.'
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
   description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
-  url: 'https://i.imgur.com/HMFmH6m.jpg',
+  url: 'https://react.dev/images/docs/scientists/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
   name: 'Lunar Landscape',
   artist: 'Louise Nevelson',
   description: 'Nevelson was known for scavenging objects from New York City debris, which she would later assemble into monumental constructions. In this one, she used disparate parts like a bedpost, juggling pin, and seat fragment, nailing and gluing them into boxes that reflect the influence of Cubism’s geometric abstraction of space and form.',
-  url: 'https://i.imgur.com/rN7hY6om.jpg',
+  url: 'https://react.dev/images/docs/scientists/rN7hY6om.jpg',
   alt: 'A black matte sculpture where the individual elements are initially indistinguishable.'
 }, {
   name: 'Aureole',
   artist: 'Ranjani Shettar',
   description: 'Shettar merges the traditional and the modern, the natural and the industrial. Her art focuses on the relationship between man and nature. Her work was described as compelling both abstractly and figuratively, gravity defying, and a "fine synthesis of unlikely materials."',
-  url: 'https://i.imgur.com/okTpbHhm.jpg',
+  url: 'https://react.dev/images/docs/scientists/okTpbHhm.jpg',
   alt: 'A pale wire-like sculpture mounted on concrete wall and descending on the floor. It appears light.'
 }, {
   name: 'Hippos',
   artist: 'Taipei Zoo',
   description: 'The Taipei Zoo commissioned a Hippo Square featuring submerged hippos at play.',
-  url: 'https://i.imgur.com/6o5Vuyu.jpg',
+  url: 'https://react.dev/images/docs/scientists/6o5Vuyu.jpg',
   alt: 'A group of bronze hippo sculptures emerging from the sett sidewalk as if they were swimming.'
 }];
 ```
@@ -902,7 +902,7 @@ button {
 * `useState` हुक वैल्यूज की एक जोड़ी देता है: अभी का state और इसे अपडेट करने के लिए फंक्शन।
 * आपके पास एक से अधिक state वेरिएबल हो सकते हैं। आंतरिक रूप से, React उनके क्रम से उनको मैच करता है।
 * State कौम्पोनॅन्ट के लिए प्राइवेट है। यदि आप इसे दो स्थानों पर रेंडर करते हैं, तो हर कॉपी को अपना state मिलता है।
-  
+
 </Recap>
 
 
@@ -940,18 +940,18 @@ export default function Gallery() {
         Next
       </button>
       <h2>
-        <i>{sculpture.name} </i> 
+        <i>{sculpture.name} </i>
         by {sculpture.artist}
       </h2>
-      <h3>  
+      <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
       <button onClick={handleMoreClick}>
         {showMore ? 'Hide' : 'Show'} details
       </button>
       {showMore && <p>{sculpture.description}</p>}
-      <img 
-        src={sculpture.url} 
+      <img
+        src={sculpture.url}
         alt={sculpture.alt}
       />
     </>
@@ -964,73 +964,73 @@ export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
   description: 'This enormous (75 ft. or 23m) silver flower is located in Buenos Aires. It is designed to move, closing its petals in the evening or when strong winds blow and opening them in the morning.',
-  url: 'https://i.imgur.com/ZF6s192m.jpg',
+  url: 'https://react.dev/images/docs/scientists/ZF6s192m.jpg',
   alt: 'A gigantic metallic flower sculpture with reflective mirror-like petals and strong stamens.'
 }, {
   name: 'Eternal Presence',
   artist: 'John Woodrow Wilson',
   description: 'Wilson was known for his preoccupation with equality, social justice, as well as the essential and spiritual qualities of humankind. This massive (7ft. or 2,13m) bronze represents what he described as "a symbolic Black presence infused with a sense of universal humanity."',
-  url: 'https://i.imgur.com/aTtVpES.jpg',
+  url: 'https://react.dev/images/docs/scientists/aTtVpES.jpg',
   alt: 'The sculpture depicting a human head seems ever-present and solemn. It radiates calm and serenity.'
 }, {
   name: 'Moai',
   artist: 'Unknown Artist',
   description: 'Located on the Easter Island, there are 1,000 moai, or extant monumental statues, created by the early Rapa Nui people, which some believe represented deified ancestors.',
-  url: 'https://i.imgur.com/RCwLEoQm.jpg',
+  url: 'https://react.dev/images/docs/scientists/RCwLEoQm.jpg',
   alt: 'Three monumental stone busts with the heads that are disproportionately large with somber faces.'
 }, {
   name: 'Blue Nana',
   artist: 'Niki de Saint Phalle',
   description: 'The Nanas are triumphant creatures, symbols of femininity and maternity. Initially, Saint Phalle used fabric and found objects for the Nanas, and later on introduced polyester to achieve a more vibrant effect.',
-  url: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  url: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   alt: 'A large mosaic sculpture of a whimsical dancing female figure in a colorful costume emanating joy.'
 }, {
   name: 'Ultimate Form',
   artist: 'Barbara Hepworth',
   description: 'This abstract bronze sculpture is a part of The Family of Man series located at Yorkshire Sculpture Park. Hepworth chose not to create literal representations of the world but developed abstract forms inspired by people and landscapes.',
-  url: 'https://i.imgur.com/2heNQDcm.jpg',
+  url: 'https://react.dev/images/docs/scientists/2heNQDcm.jpg',
   alt: 'A tall sculpture made of three elements stacked on each other reminding of a human figure.'
 }, {
   name: 'Cavaliere',
   artist: 'Lamidi Olonade Fakeye',
   description: "Descended from four generations of woodcarvers, Fakeye's work blended traditional and contemporary Yoruba themes.",
-  url: 'https://i.imgur.com/wIdGuZwm.png',
+  url: 'https://react.dev/images/docs/scientists/wIdGuZwm.png',
   alt: 'An intricate wood sculpture of a warrior with a focused face on a horse adorned with patterns.'
 }, {
   name: 'Big Bellies',
   artist: 'Alina Szapocznikow',
   description: "Szapocznikow is known for her sculptures of the fragmented body as a metaphor for the fragility and impermanence of youth and beauty. This sculpture depicts two very realistic large bellies stacked on top of each other, each around five feet (1,5m) tall.",
-  url: 'https://i.imgur.com/AlHTAdDm.jpg',
+  url: 'https://react.dev/images/docs/scientists/AlHTAdDm.jpg',
   alt: 'The sculpture reminds a cascade of folds, quite different from bellies in classical sculptures.'
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
   description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
-  url: 'https://i.imgur.com/HMFmH6m.jpg',
+  url: 'https://react.dev/images/docs/scientists/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
   name: 'Lunar Landscape',
   artist: 'Louise Nevelson',
   description: 'Nevelson was known for scavenging objects from New York City debris, which she would later assemble into monumental constructions. In this one, she used disparate parts like a bedpost, juggling pin, and seat fragment, nailing and gluing them into boxes that reflect the influence of Cubism’s geometric abstraction of space and form.',
-  url: 'https://i.imgur.com/rN7hY6om.jpg',
+  url: 'https://react.dev/images/docs/scientists/rN7hY6om.jpg',
   alt: 'A black matte sculpture where the individual elements are initially indistinguishable.'
 }, {
   name: 'Aureole',
   artist: 'Ranjani Shettar',
   description: 'Shettar merges the traditional and the modern, the natural and the industrial. Her art focuses on the relationship between man and nature. Her work was described as compelling both abstractly and figuratively, gravity defying, and a "fine synthesis of unlikely materials."',
-  url: 'https://i.imgur.com/okTpbHhm.jpg',
+  url: 'https://react.dev/images/docs/scientists/okTpbHhm.jpg',
   alt: 'A pale wire-like sculpture mounted on concrete wall and descending on the floor. It appears light.'
 }, {
   name: 'Hippos',
   artist: 'Taipei Zoo',
   description: 'The Taipei Zoo commissioned a Hippo Square featuring submerged hippos at play.',
-  url: 'https://i.imgur.com/6o5Vuyu.jpg',
+  url: 'https://react.dev/images/docs/scientists/6o5Vuyu.jpg',
   alt: 'A group of bronze hippo sculptures emerging from the sett sidewalk as if they were swimming.'
 }];
 ```
@@ -1102,18 +1102,18 @@ export default function Gallery() {
         Next
       </button>
       <h2>
-        <i>{sculpture.name} </i> 
+        <i>{sculpture.name} </i>
         by {sculpture.artist}
       </h2>
-      <h3>  
+      <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
       <button onClick={handleMoreClick}>
         {showMore ? 'Hide' : 'Show'} details
       </button>
       {showMore && <p>{sculpture.description}</p>}
-      <img 
-        src={sculpture.url} 
+      <img
+        src={sculpture.url}
         alt={sculpture.alt}
       />
     </>
@@ -1126,73 +1126,73 @@ export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
   description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
-  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
-  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+  url: 'https://react.dev/images/docs/scientists/Mx7dA2Y.jpg',
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'
 }, {
   name: 'Floralis Genérica',
   artist: 'Eduardo Catalano',
   description: 'This enormous (75 ft. or 23m) silver flower is located in Buenos Aires. It is designed to move, closing its petals in the evening or when strong winds blow and opening them in the morning.',
-  url: 'https://i.imgur.com/ZF6s192m.jpg',
+  url: 'https://react.dev/images/docs/scientists/ZF6s192m.jpg',
   alt: 'A gigantic metallic flower sculpture with reflective mirror-like petals and strong stamens.'
 }, {
   name: 'Eternal Presence',
   artist: 'John Woodrow Wilson',
   description: 'Wilson was known for his preoccupation with equality, social justice, as well as the essential and spiritual qualities of humankind. This massive (7ft. or 2,13m) bronze represents what he described as "a symbolic Black presence infused with a sense of universal humanity."',
-  url: 'https://i.imgur.com/aTtVpES.jpg',
+  url: 'https://react.dev/images/docs/scientists/aTtVpES.jpg',
   alt: 'The sculpture depicting a human head seems ever-present and solemn. It radiates calm and serenity.'
 }, {
   name: 'Moai',
   artist: 'Unknown Artist',
   description: 'Located on the Easter Island, there are 1,000 moai, or extant monumental statues, created by the early Rapa Nui people, which some believe represented deified ancestors.',
-  url: 'https://i.imgur.com/RCwLEoQm.jpg',
+  url: 'https://react.dev/images/docs/scientists/RCwLEoQm.jpg',
   alt: 'Three monumental stone busts with the heads that are disproportionately large with somber faces.'
 }, {
   name: 'Blue Nana',
   artist: 'Niki de Saint Phalle',
   description: 'The Nanas are triumphant creatures, symbols of femininity and maternity. Initially, Saint Phalle used fabric and found objects for the Nanas, and later on introduced polyester to achieve a more vibrant effect.',
-  url: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  url: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   alt: 'A large mosaic sculpture of a whimsical dancing female figure in a colorful costume emanating joy.'
 }, {
   name: 'Ultimate Form',
   artist: 'Barbara Hepworth',
   description: 'This abstract bronze sculpture is a part of The Family of Man series located at Yorkshire Sculpture Park. Hepworth chose not to create literal representations of the world but developed abstract forms inspired by people and landscapes.',
-  url: 'https://i.imgur.com/2heNQDcm.jpg',
+  url: 'https://react.dev/images/docs/scientists/2heNQDcm.jpg',
   alt: 'A tall sculpture made of three elements stacked on each other reminding of a human figure.'
 }, {
   name: 'Cavaliere',
   artist: 'Lamidi Olonade Fakeye',
   description: "Descended from four generations of woodcarvers, Fakeye's work blended traditional and contemporary Yoruba themes.",
-  url: 'https://i.imgur.com/wIdGuZwm.png',
+  url: 'https://react.dev/images/docs/scientists/wIdGuZwm.png',
   alt: 'An intricate wood sculpture of a warrior with a focused face on a horse adorned with patterns.'
 }, {
   name: 'Big Bellies',
   artist: 'Alina Szapocznikow',
   description: "Szapocznikow is known for her sculptures of the fragmented body as a metaphor for the fragility and impermanence of youth and beauty. This sculpture depicts two very realistic large bellies stacked on top of each other, each around five feet (1,5m) tall.",
-  url: 'https://i.imgur.com/AlHTAdDm.jpg',
+  url: 'https://react.dev/images/docs/scientists/AlHTAdDm.jpg',
   alt: 'The sculpture reminds a cascade of folds, quite different from bellies in classical sculptures.'
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
   description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
-  url: 'https://i.imgur.com/HMFmH6m.jpg',
+  url: 'https://react.dev/images/docs/scientists/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
   name: 'Lunar Landscape',
   artist: 'Louise Nevelson',
   description: 'Nevelson was known for scavenging objects from New York City debris, which she would later assemble into monumental constructions. In this one, she used disparate parts like a bedpost, juggling pin, and seat fragment, nailing and gluing them into boxes that reflect the influence of Cubism’s geometric abstraction of space and form.',
-  url: 'https://i.imgur.com/rN7hY6om.jpg',
+  url: 'https://react.dev/images/docs/scientists/rN7hY6om.jpg',
   alt: 'A black matte sculpture where the individual elements are initially indistinguishable.'
 }, {
   name: 'Aureole',
   artist: 'Ranjani Shettar',
   description: 'Shettar merges the traditional and the modern, the natural and the industrial. Her art focuses on the relationship between man and nature. Her work was described as compelling both abstractly and figuratively, gravity defying, and a "fine synthesis of unlikely materials."',
-  url: 'https://i.imgur.com/okTpbHhm.jpg',
+  url: 'https://react.dev/images/docs/scientists/okTpbHhm.jpg',
   alt: 'A pale wire-like sculpture mounted on concrete wall and descending on the floor. It appears light.'
 }, {
   name: 'Hippos',
   artist: 'Taipei Zoo',
   description: 'The Taipei Zoo commissioned a Hippo Square featuring submerged hippos at play.',
-  url: 'https://i.imgur.com/6o5Vuyu.jpg',
+  url: 'https://react.dev/images/docs/scientists/6o5Vuyu.jpg',
   alt: 'A group of bronze hippo sculptures emerging from the sett sidewalk as if they were swimming.'
 }];
 ```
@@ -1225,7 +1225,7 @@ img { width: 120px; height: 120px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [6]}}
 export default function Form() {
   let firstName = '';
   let lastName = '';
@@ -1262,7 +1262,7 @@ export default function Form() {
 }
 ```
 
-```css 
+```css
 h1 { margin-top: 10px; }
 ```
 
@@ -1313,7 +1313,7 @@ export default function Form() {
 }
 ```
 
-```css 
+```css
 h1 { margin-top: 10px; }
 ```
 
@@ -1326,14 +1326,14 @@ h1 { margin-top: 10px; }
 यहां एक छोटा फॉर्म है जो यूज़र को फीडबैक देने देता है। फीडबैक देने पर, एक धन्यवाद सन्देश प्रदर्शित करना अपेक्षित है। हालांकि, यह एक एरर मैसेज दे कर क्रैश हो जाता है "Rendered fewer hooks than expected"। क्या आप गलती का पता लगा कर उसे ठीक कर सकते हैं?
 
 <Hint>
-  
+
 हुक को _कहाँ_ कॉल करें क्या इस पर कोई पाबंदी है? क्या यह कौम्पोनॅन्ट कोई नियम तोड़ रहा है?
-  
+
 </Hint>
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [8]}}
 import { useState } from 'react';
 
 export default function FeedbackForm() {
@@ -1401,8 +1401,8 @@ export default function FeedbackForm() {
 </Sandpack>
 
 याद रखें, हुक्स बिना कंडीशन और हमेशा उसी क्रम में कॉल होने चाहिए!
-आप नेस्टिंग को कम करने के लिए अनावश्यक `else` ब्रांच को भी हटा सकते हैं। हालांकि, यह अभी भी महत्वपूर्ण है कि Hooks के सभी कॉल्स पहले `return` से *पहले* हो। 
-  
+आप नेस्टिंग को कम करने के लिए अनावश्यक `else` ब्रांच को भी हटा सकते हैं। हालांकि, यह अभी भी महत्वपूर्ण है कि Hooks के सभी कॉल्स पहले `return` से *पहले* हो।
+
 <Sandpack>
 
 ```js
@@ -1435,10 +1435,10 @@ export default function FeedbackForm() {
 ```
 
 </Sandpack>
-  
-ध्यान दें कि कैसे अगर आपने दूसरे `useState` कॉल को `if` के बाद स्थानांतरित करने का प्रयास किया तो यह काम नहीं करेगा। 
 
-सामान्य तौर पर, इस प्रकार की गलतियों को [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) लिंटर रूल के द्वारा पकड़ा जाता है। यदि आप अपने मशीन पर कोड करते समय यह एरर नहीं देखते हैं तो आपको इसे अपने बिल्ड टूलिंग कॉन्फ़िगरेशन में सेट अप करने की आवश्यकता है।
+ध्यान दें कि कैसे अगर आपने दूसरे `useState` कॉल को `if` के बाद स्थानांतरित करने का प्रयास किया तो यह काम नहीं करेगा।
+
+यदि आपका लिंटर [React के लिए कॉन्फ़िगर किया गया है](/learn/editor-setup#linting), तो इस प्रकार की गलती करने पर आपको एक लिंट एरर दिखना चाहिए। यदि आप अपने मशीन पर गलत कोड चलाते समय एरर नहीं देखते हैं, तो आपको अपने प्रोजेक्ट के लिए लिंटिंग सेट अप करने की आवश्यकता है।
 
 </Solution>
 
@@ -1474,7 +1474,7 @@ export default function FeedbackForm() {
 </Sandpack>
 
 <Solution>
-  
+
 यहां एक फिक्स्ड वर्शन है जो उस फ़ंक्शन में डिक्लेअर एक रेगुलर `name` वेरिएबल का उपयोग करता है जिसे इसकी आवश्यकता होती है:
 
 <Sandpack>

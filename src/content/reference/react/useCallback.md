@@ -130,7 +130,7 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }
-  
+
   return (
     <div className={theme}>
       {/* ...इसलिए ShippingForm के प्रॉप्स हमेशा बदलेंगे और यह हर बार री-रेंडर होगा */}
@@ -208,7 +208,7 @@ function ProductPage({ productId, referrer }) {
 
 यदि आप [`useMemo`](/reference/react/useMemo) से परिचित हैं, तो `useCallback` को इस तरह समझ सकते हैं:
 
-```js
+```js {expectedErrors: {'react-compiler': [3]}}
 // आसान इम्प्लिमेंटेशन (React में कुछ ऐसा होता है)
 function useCallback(fn, dependencies) {
   return useMemo(() => fn, dependencies);
@@ -316,7 +316,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -455,7 +455,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -872,7 +872,7 @@ Object.is(temp1[2], temp2[2]); // ...और इसी तरह हर डिप
 
 मान लें `Chart` कौम्पोनॅन्ट को [`memo`](/reference/react/memo) में रैप किया गया है। आप चाहते हैं कि `ReportList` कौम्पोनॅन्ट के री-रेंडर होने पर लिस्ट में हर `Chart` का री-रेंडर स्किप हो जाए। लेकिन आप लूप के अंदर `useCallback` कॉल नहीं कर सकते:
 
-```js {5-14}
+```js {expectedErrors: {'react-compiler': [6]}} {5-14}
 function ReportList({ items }) {
   return (
     <article>

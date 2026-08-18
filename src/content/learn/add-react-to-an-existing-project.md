@@ -20,11 +20,11 @@ title: किसी मौजूदा प्रोजेक्ट में Rea
 
 यहां बताया गया है कि हम इसे कैसे सेट करने की सलाह देते हैं:
 
-1. **अपने ऐप के React भाग का निर्माण करें** इनमें से एक का उपयोग करके [React-based frameworks](/learn/start-a-new-react-project)।
+1. **अपने ऐप के React भाग का निर्माण करें** इनमें से एक का उपयोग करके [React-based frameworks](/learn/creating-a-react-app)।
 2. **निर्दिष्ट करना `/some-app` अपने फ्रेमवर्क के कॉन्फ़िगरेशन में *बेस पथ***  के रूप में (यहां कैसे है: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/))।
 3. **अपने सर्वर या एक प्रॉक्सी सर्वर को कॉन्फ़िगर करें**ताकि सभी अनुरोधों को `/some-app/` आपके React ऐप द्वारा नियंत्रित किया जाए।
-   
-यह सुनिश्चित करता है कि आपके ऐप का React हिस्सा हो सकता है [सर्वोत्तम प्रथाओं से लाभ](/learn/creating-a-react-app#full-stack-frameworks) उन फ्रेमवर्क में पका हुआ।
+
+यह सुनिश्चित करता है कि आपके ऐप का React हिस्सा हो सकता है [सर्वोत्तम प्रथाओं से लाभ](/learn/build-a-react-app-from-scratch#consider-using-a-framework) उन फ्रेमवर्क में पका हुआ।
 
 Many React-based frameworks are full-stack and let your React app take advantage of the server. However, you can use the same approach even if you can't or don't want to run JavaScript on the server. In that case, serve the HTML/CSS/JS export ([`next export` output](https://nextjs.org/docs/advanced-features/static-html-export) for Next.js, default for Gatsby) at `/some-app/` instead.
 
