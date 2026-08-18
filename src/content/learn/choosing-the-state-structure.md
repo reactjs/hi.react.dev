@@ -1122,7 +1122,7 @@ export const initialTravelPlan = {
 
 किसी स्थान को अभी निकालने के लिए, आपको केवल state के दो लेवल को अपडेट करने की ज़रूरत है:
 
-- अपडेटेड वर्शन के *parent* की जगह में हटाई गयी ID `childIds` array से एक्सक्लूड होनी चाहिए।  
+- अपडेटेड वर्शन के *parent* की जगह में हटाई गयी ID `childIds` array से एक्सक्लूड होनी चाहिए।
 - रूट "टेबल" ऑब्जेक्ट के अपडेटेड वर्जन में पैरेंट प्लेस का अपडेटेड वर्जन शामिल होना चाहिए।
 
 आप इसके बारे में कैसे जा सकते हैं इसका एक उदाहरण यहां दिया गया है:
@@ -1821,7 +1821,6 @@ button { margin: 10px; }
 
 <Recap>
 
-<<<<<<< HEAD
 * अगर दो स्टेट वेरिएबल हमेशा एक साथ अपडेट होते हैं, तो उन्हें एक में मर्ज करने पर विचार करें।
 * "नामुमकिन" state को बनाने से बचने के लिए अपने state वेरिएबल्स सावधानी से चुनें।
 * अपने state को इस तरह से स्ट्रक्चर करें जिससे आपके द्वारा इसे अपडेट करने में गलती होने की संभावना कम हो जाए।
@@ -1829,15 +1828,6 @@ button { margin: 10px; }
 * जब तक आप विशेष रूप से अपडेट को रोकना नहीं चाहते हैं, तब तक props को state *में* न रखें।
 * UI पैटर्न जैसे सिलेक्शन के लिए, ऑब्जेक्ट के बजाय ID या index को state में रखें।
 * यदि गहराई से नेस्टेड state को अपडेट करना कॉम्प्लेक्स है, तो इसे फ़्लैट करने का प्रयास करें।
-=======
-* If two state variables always update together, consider merging them into one.
-* Choose your state variables carefully to avoid creating "impossible" states.
-* Structure your state in a way that reduces the chances that you'll make a mistake updating it.
-* Avoid redundant and duplicate state so that you don't need to keep it in sync.
-* Don't put props *into* state unless you specifically want to prevent updates.
-* For UI patterns like selection, keep ID or index in state instead of the object itself.
-* If updating deeply nested state is complicated, try flattening it.
->>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 </Recap>
 

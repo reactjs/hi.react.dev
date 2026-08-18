@@ -124,13 +124,8 @@ img { margin: 0 10px 10px 0; }
 
 </Sandpack>
 
-<<<<<<< HEAD
 * **प्रारंभिक रेंडर के दौरान,** React `<section>`, `<h1>`, और तीन `<img>` टैग के लिए [DOM नोड्स बनाएगा](https://developer.mozilla.org/docs/Web/API/Document/createElement)।
 * **री-रेंडर के दौरान,** React यह कैलकुलेट करेगा कि पिछले रेंडर के बाद से उनकी कौन सी प्रॉपर्टीज, यदि कोई, बदल गई है। यह अगले स्टेप, कमिट कमिट फेज तक उस जानकारी के साथ कुछ नहीं करेगा।
-=======
-* **During the initial render,** React will [create the DOM nodes](https://developer.mozilla.org/docs/Web/API/Document/createElement) for `<section>`, `<h1>`, and three `<img>` tags.
-* **During a re-render,** React will calculate which of their properties, if any, have changed since the previous render. It won't do anything with that information until the next step, the commit phase.
->>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 <Pitfall>
 
@@ -211,7 +206,7 @@ export default function App() {
   1. ट्रिगर
   2. रेंडर
   3. कमिट
-* आप अपने कौम्पोनॅन्टस में गलतियों को खोजने के लिए Strict Mode का उपयोग कर सकते हैं। 
+* आप अपने कौम्पोनॅन्टस में गलतियों को खोजने के लिए Strict Mode का उपयोग कर सकते हैं।
 * यदि रेंडरिंग परिणाम पिछली बार की तरह ही है तो React DOM को नहीं छूता है।
 
 </Recap>

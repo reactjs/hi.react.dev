@@ -323,11 +323,7 @@ React एप्लीकेशन में, कई कौम्पोनॅन�
 
 #### सिंक किये हुए इनपुट {/*synced-inputs*/}
 
-<<<<<<< HEAD
 ये दो इनपुट इंडिपेंडेंट हैं। इन्हें सिंक में रखने की कोशिश करें: एक इनपुट को एडिट करने पर दूसरा इनपुट उसकी टेक्स्ट से अपडेट होना चाहिए, और फिर वाईस वर्सा।
-=======
-These two inputs are independent. Make them stay in sync: editing one input should update the other input with the same text, and vice versa.
->>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 <Hint>
 
@@ -481,7 +477,7 @@ function SearchBar() {
 
 function List({ items }) {
   return (
-    <table> 
+    <table>
       <tbody>
         {items.map(food => (
           <tr key={food.id}>
@@ -574,11 +570,7 @@ function SearchBar({ query, onChange }) {
 
 function List({ items }) {
   return (
-<<<<<<< HEAD
-    <table> 
-=======
     <table>
->>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
       <tbody>
         {items.map(food => (
           <tr key={food.id}>

@@ -853,19 +853,10 @@ CSS में, `color` और `background-color` जैसे विभिन्
 
 ## कॉन्टेक्स्ट के लिए उपयोग के मामले {/*use-cases-for-context*/}
 
-<<<<<<< HEAD
 * **थीम:** यदि आपका ऐप उपयोगकर्ता को अपनी उपस्थिति (जैसे डार्क मोड) को बदलने देता है, तो आप अपने ऐप के शीर्ष पर एक कॉन्टेक्स्ट प्रदाता रख सकते हैं, और उस कॉन्टेक्स्ट का उपयोग उन कॉन्टेक्स्ट में कर सकते हैं जिन्हें अपने दृश्य लुक को समायोजित करने की आवश्यकता है।
 * **चालू खाता:** कई कॉम्पोनेंट्स को वर्तमान में logged in उपयोगकर्ता का पता करने की आवश्यकता हो सकती है। इसे कॉन्टेक्स्ट में रखना पेड़ में कहीं भी इसे पढ़ने के लिए सुविधाजनक बनाता है। कुछ ऐप्स आपको एक ही समय में कई खाते संचालित करने देते हैं (उदाहरण के लिए एक अलग उपयोगकर्ता के रूप में एक टिप्पणी छोड़ने के लिए)। उन मामलों में, एक अलग चालू खाता मूल्य के साथ एक नेस्टेड कॉन्टेक्स्ट प्रदाता में UI के एक हिस्से को लपेटना सुविधाजनक हो सकता है।
 * **राउटिंग:** अधिकांश राउटिंग समाधान वर्तमान मार्ग को रखने के लिए आंतरिक रूप से कॉन्टेक्स्ट का उपयोग करते हैं। इस प्रकार से हर लिंक "जानता है" कि यह सक्रिय है या नहीं। यदि आप अपना खुद का राउटर बनाते हैं, तो आप इसे भी करना चाह सकते हैं।
 * **स्टेट को मैनेज करना:** जैसे-जैसे आपका ऐप बढ़ता है, आप अपने ऐप के शीर्ष के करीब बहुत सारे स्टेट के साथ समाप्त हो सकते हैं। नीचे कई दूर के कौम्पोनॅन्ट इसे बदलना चाह सकते हैं। जटिल स्टेट को मैनेज करने के लिए [कॉन्टेक्स्ट के साथ एक रेड्यूसर का उपयोग करना](/learn/scaling-up-with-reducer-and-context) और और इसे बहुत अधिक परेशानी के बिना दूर के कॉम्पोनेंट्स तक पास करना सामान्य है।
-=======
-* **Theming:** If your app lets the user change its appearance (e.g. dark mode), you can put a context provider at the top of your app, and use that context in components that need to adjust their visual look.
-* **Current account:** Many components might need to know the currently logged in user. Putting it in context makes it convenient to read it anywhere in the tree. Some apps also let you operate multiple accounts at the same time (e.g. to leave a comment as a different user). In those cases, it can be convenient to wrap a part of the UI into a nested provider with a different current account value.
-* **Routing:** Most routing solutions use context internally to hold the current route. This is how every link "knows" whether it's active or not. If you build your own router, you might want to do it too.
-* **Managing state:** As your app grows, you might end up with a lot of state closer to the top of your app. Many distant components below may want to change it. It is common to [use a reducer together with context](/learn/scaling-up-with-reducer-and-context) to manage complex state and pass it down to distant components without too much hassle.
-
-Context is not limited to static values. If you pass a different value on the next render, React will update all the components reading it below! This is why context is often used in combination with state.
->>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 कॉन्टेक्स्ट स्थैतिक मूल्यों तक सीमित नहीं है। यदि आप अगले रेंडर पर एक अलग मूल्य पास करते हैं, तो React नीचे पढ़ते हुए सभी कॉम्पोनेंट्स को अपडेट करेगा! यही कारण है कि कॉन्टेक्स्ट का उपयोग अक्सर स्टेट के साथ संयोजन में किया जाता है।
 
