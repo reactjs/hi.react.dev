@@ -170,11 +170,15 @@ button { margin-right: 10px; }
 यह इन दो बटनों को अलग-अलग संदेश दिखाने देता है। उनके पास किए गए संदेशों को बदलकर देखें।
 
 
+<<<<<<< HEAD
 ### Event हैंडलर्स को props के रूप में पास करना {/*passing-event-handlers-as-props*/}
 
 अक्सर आपको पैरेंट कौम्पोनॅन्ट को बच्चे के event हैंडलर को निर्दिष्ट करने की आवश्यकता होती है। बटनों पर विचार करें: जिस स्थान पर आप `Button` कौम्पोनॅन्ट का उपयोग कर रहे हैं, वहां आप एक अलग फंक्शन चलाना चाह सकते हैं—शायद एक फिल्म चलाता है और दूसरा इमेज अपलोड करता है। 
 
 इसके लिए, उस event हैंडलर के रूप में props को पास करें जो कौम्पोनॅन्ट अपने पैरेंट से प्राप्त करता है, जैसे कि:
+=======
+Often you'll want the parent component to specify a child's event handler. Consider buttons: depending on where you're using a `Button` component, you might want to execute a different function—perhaps one plays a movie and another uploads an image.
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 
 <Sandpack>
@@ -321,6 +325,7 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 
 ध्यान दें कि `App` कौम्पोनॅन्ट को यह जानने की आवश्यकता नहीं है कि `Toolbar` `onPlayMovie` या `onUploadImage` के साथ *क्या* करेगा। यह `Toolbar` का एक कार्यान्वयन विवरण है। यहाँ, `Toolbar` इन्हें `onClick` हैंडलर्स के रूप में अपने `Button` कौम्पोनॅन्ट्स को पास करता है, लेकिन बाद में इसे कीबोर्ड शॉर्टकट पर भी ट्रिगर किया जा सकता है। ऐप-स्पेसिफिक इंटरएक्शन्स जैसे `onPlayMovie` के आधार पर props का नामकरण आपको लचीलापन देता है कि आप बाद में इनका उपयोग कैसे करें।
 
@@ -331,6 +336,14 @@ button { margin-right: 10px; }
 सुनिश्चित करें कि आप अपने event-handler के लिए उपयुक्त HTML टैग्स का उपयोग करें। उदाहरण के लिए, क्लिक हैंडल करने के लिए [`<button onClick={handleClick}>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) का उपयोग करें, न कि `<div onClick={handleClick}>`। एक वास्तविक ब्राउज़र `<button>` का उपयोग करने से कीबोर्ड नेविगेशन जैसी बिल्ट-इन ब्राउज़र विशेषताएँ सक्षम होती हैं। यदि आपको बटन की डिफ़ॉल्ट ब्राउज़र स्टाइलिंग पसंद नहीं है और आप इसे लिंक या किसी अन्य UI एलिमेंट की तरह दिखाना चाहते हैं, तो आप इसे CSS के साथ प्राप्त कर सकते हैं। [सुलभ मार्कअप लिखने के बारे में अधिक जानें।](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
 
   
+=======
+Notice how the `App` component does not need to know *what* `Toolbar` will do with `onPlayMovie` or `onUploadImage`. That's an implementation detail of the `Toolbar`. Here, `Toolbar` passes them down as `onClick` handlers to its `Button`s, but it could later also trigger them on a keyboard shortcut. Naming props after app-specific interactions like `onPlayMovie` gives you the flexibility to change how they're used later.
+
+<Note>
+
+Make sure that you use the appropriate HTML tags for your event handlers. For example, to handle clicks, use [`<button onClick={handleClick}>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) instead of `<div onClick={handleClick}>`. Using a real browser `<button>` enables built-in browser behaviors like keyboard navigation. If you don't like the default browser styling of a button and want to make it look more like a link or a different UI element, you can achieve it with CSS. [Learn more about writing accessible markup.](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
+
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 </Note>
 
 
@@ -429,6 +442,7 @@ button { margin: 5px; }
 
 जब आप किसी बटन पर क्लिक करते हैं:
 
+<<<<<<< HEAD
 1. React `<button>` को पास किए गए `onClick` हैंडलर को कॉल करता है।
 2. वह हैंडलर, जो `Button` में परिभाषित है, निम्नलिखित करता है:
    * `e.stopPropagation()` को कॉल करता है, जिससे event का बबलिंग आगे नहीं बढ़ता।
@@ -437,6 +451,14 @@ button { margin: 5px; }
 4. चूंकि प्रचारण को रोका गया था, पैरेंट `<div>` का `onClick` हैंडलर *नहीं* चलेगा।
 
 `e.stopPropagation()` के परिणामस्वरूप, बटन पर क्लिक करने से अब केवल एक ही अलर्ट (जो `<button>` से आता है) दिखाई देता है, न कि दोनों (जो `<button>` और पैरेंट टूलबार `<div>` से आते थे)। बटन पर क्लिक करना और आसपास के टूलबार पर क्लिक करना एक जैसा नहीं है, इसलिए प्रचारण को रोकना इस UI के लिए उचित है।
+=======
+1. React calls the `onClick` handler passed to `<button>`.
+2. That handler, defined in `Button`, does the following:
+   * Calls `e.stopPropagation()`, preventing the event from bubbling further.
+   * Calls the `onClick` function, which is a prop passed from the `Toolbar` component.
+3. That function, defined in the `Toolbar` component, displays the button's own alert.
+4. Since the propagation was stopped, the parent `<div>`'s `onClick` handler does *not* run.
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 
 <DeepDive>
@@ -453,6 +475,7 @@ button { margin: 5px; }
 </div>
 ```
 
+<<<<<<< HEAD
 प्रत्येक event तीन चरणों में प्रचारित होता है:
 
 1. यह नीचे की ओर यात्रा करता है, सभी `onClickCapture` हैंडलर्स को कॉल करता है।
@@ -460,6 +483,13 @@ button { margin: 5px; }
 3. यह ऊपर की ओर यात्रा करता है, सभी `onClick` हैंडलर्स को कॉल करता है।
 
 कैप्चर events राउटर्स या एनालिटिक्स जैसे कोड के लिए उपयोगी होते हैं, लेकिन आप इन्हें ऐप कोड में शायद ही कभी उपयोग करेंगे।
+=======
+Each event propagates in three phases:
+
+1. It travels down, calling all `onClickCapture` handlers.
+2. It runs the clicked element's `onClick` handler.
+3. It travels upwards, calling all `onClick` handlers.
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 
 </DeepDive>
@@ -572,7 +602,7 @@ button { margin-left: 5px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [5, 7]}}
 export default function LightSwitch() {
   function handleClick() {
     let bodyStyle = document.body.style;
