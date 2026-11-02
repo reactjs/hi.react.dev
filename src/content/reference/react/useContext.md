@@ -59,7 +59,7 @@ import { useContext } from 'react';
 
 function Button() {
   const theme = useContext(ThemeContext);
-  // ... 
+  // ...
 ```
 
 `useContext` आपके द्वारा पास किए गए <CodeStep step={1}>कॉन्टेक्स्ट</CodeStep> के लिए <CodeStep step={2}>कॉन्टेक्स्ट वैल्यू</CodeStep> रिटर्न करता है। इस वैल्यू को निर्धारित करने के लिए, React कौम्पोनॅन्ट ट्री में ऊपर की ओर खोजता है और उस विशेष कॉन्टेक्स्ट के लिए **सबसे नज़दीकी कॉन्टेक्स्ट प्रोवाइडर** ढूंढता है।
@@ -825,7 +825,7 @@ const initialTasks = [
 ```
 
 ```js src/AddTask.js
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useTasksDispatch } from './TasksContext.js';
 
 export default function AddTask() {
@@ -844,7 +844,7 @@ export default function AddTask() {
           type: 'added',
           id: nextId++,
           text: text,
-        }); 
+        });
       }}>Add</button>
     </>
   );
@@ -854,7 +854,7 @@ let nextId = 3;
 ```
 
 ```js src/TaskList.js
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useTasks, useTasksDispatch } from './TasksContext.js';
 
 export default function TaskList() {
@@ -1291,7 +1291,7 @@ export const LevelContext = createContext(0);
 
 आप कॉन्टेक्स्ट के ज़रिए कोई भी वैल्यू पास कर सकते हैं, जिनमें ऑब्जेक्ट्स और फंक्शन्स भी शामिल हैं।
 
-```js [[2, 10, "{ currentUser, login }"]] 
+```js [[2, 10, "{ currentUser, login }"]]
 function MyApp() {
   const [currentUser, setCurrentUser] = useState(null);
 
