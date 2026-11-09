@@ -141,7 +141,7 @@ return (
 ```js
 const user = {
   name: 'Hedy Lamarr',
-  imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
+  imageUrl: 'https://react.dev/images/docs/scientists/yXOvdOSs.jpg',
   imageSize: 90,
 };
 
@@ -335,7 +335,11 @@ function MyButton() {
 }
 ```
 
+<<<<<<< HEAD
 React आपके कौम्पोनॅन्ट फ़ंक्शन को फिर से कॉल करेगा। इस बार, `count` `1` होगा। फिर यह `2` होगा। और इसी तरह।
+=======
+Calling `setCount` tells React to call your component function again. This is called a *re-render*. This time, `count` will be `1`. Then it will be `2`. And so on.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 अगर आप वही कौम्पोनॅन्ट कई बार रेंडर करते हैं, तो प्रत्येक को अपनी अपनी स्टेट मिलेगी। प्रत्येक बटन पर अलग-अलग क्लिक करें:
 

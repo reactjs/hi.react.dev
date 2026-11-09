@@ -874,7 +874,11 @@ li {
 
 - **Code Size:** आम तौर पर, `useState` के साथ आपको पहले कम कोड लिखना होता है। `useReducer` के साथ, आपको रेड्यूसर फ़ंक्शन _और_ डिस्पैच क्रियाएं दोनों लिखनी होंगी। हालाँकि, यदि कई ईवेंट हैंडलर इसी तरह से स्थिति को संशोधित करते हैं, तो `useReducer` कोड को कम करने में मदद कर सकता है।
 
+<<<<<<< HEAD
 - **Readability:** state अपडेट सरल होने पर `useState` को पढ़ना बहुत आसान है। जब वे अधिक जटिल हो जाते हैं, तो वे आपके component के कोड को फूला सकते हैं और स्कैन करना कठिन बना सकते हैं। इस मामले में, `useReducer` आपको अपडेट लॉजिक के _how_ को इवेंट हैंडलर के _what happened_ से स्पष्ट रूप से अलग करने देता है।
+=======
+We recommend using a reducer if you often encounter bugs due to incorrect state updates in some component, and want to introduce more structure to its code. You don't have to use reducers for everything: feel free to mix and match! You can even use `useState` and `useReducer` in the same component.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 - **Debugging:** जब आपके पास `useState` के साथ कोई बग होता है, तो यह बताना मुश्किल हो सकता है कि _where_ State गलत तरीके से सेट की गई थी, और _why_। `useReducer` के साथ, आप प्रत्येक State अपडेट को देखने के लिए अपने रेड्यूसर में एक कंसोल लॉग जोड़ सकते हैं, और _क्यों_ ऐसा हुआ (किस `action` के कारण)। यदि प्रत्येक `action` सही है, तो आपको पता चल जाएगा कि गलती रिड्यूसर लॉजिक में ही है। हालाँकि, आपको `useState` की तुलना में अधिक कोड से गुजरना होगा।
 
