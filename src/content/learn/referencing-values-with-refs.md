@@ -34,7 +34,7 @@ const ref = useRef(0);
 `useRef` एक इस तरह के ऑब्जेक्ट को रिटर्न करता है:
 
 ```js
-{ 
+{
   current: 0 // The value you passed to useRef
 }
 ```
@@ -212,7 +212,7 @@ export default function Counter() {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [13]}}
 import { useRef } from 'react';
 
 export default function Counter() {
@@ -313,7 +313,7 @@ console.log(ref.current); // 5
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [10]}}
 import { useState } from 'react';
 
 export default function Chat() {
@@ -417,7 +417,7 @@ export default function Chat() {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [10]}}
 import { useRef } from 'react';
 
 export default function Toggle() {

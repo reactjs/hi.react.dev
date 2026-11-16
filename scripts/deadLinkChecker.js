@@ -1,4 +1,10 @@
 #!/usr/bin/env node
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
 const fs = require('fs');
 const path = require('path');
@@ -305,7 +311,7 @@ async function buildContributorMap() {
 async function fetchErrorCodes() {
   try {
     const response = await fetch(
-      'https://raw.githubusercontent.com/facebook/react/main/scripts/error-codes/codes.json'
+      'https://raw.githubusercontent.com/react/react/main/scripts/error-codes/codes.json'
     );
     if (!response.ok) {
       throw new Error(`Failed to fetch error codes: ${response.status}`);
